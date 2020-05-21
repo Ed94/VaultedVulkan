@@ -33,6 +33,71 @@ namespace Vulkan
 		using Size = VkDeviceSize;   // Device memory size and offsets.
 
 
+		struct Features
+		{
+			Bool RobustBufferAccess;   // Out of bounds buffer accesses are well defined.
+			Bool FullDrawIndexUint32;   // full 32-bit range of indices are supported for indexed draw calls using VK_INDEX_TYPE_UINT32.
+			Bool ImageCubeArray;
+			Bool IndependentBlend;
+			Bool GeometryShader;
+			Bool TessellationShader;
+			Bool SampleRateShading;
+			Bool DualSrcBlend;
+			Bool LogicOperations;
+			Bool MultiDrawIndirect;
+			Bool drawIndirectFirstInstance;
+			Bool DepthClamping;
+			Bool DepthBiasClamping;
+			Bool NonSolidFillModes;   // Point and wireframe fill modes are supported.
+			Bool DepthBounds;   // Depth bounds test supported.
+			Bool WideLines;
+			Bool LargePoints;
+			Bool AlphaToOne;   // The implementation can replace the alpha value of the color fragment output to the maximum representable alpha value for fixed - point colors or 1.0 for floating - point colors.
+			Bool MultiViewport;   // Mulitple viewports are supported. (VR)
+			Bool AnisotropySampler;
+			Bool TextureCompressionETC2;
+			Bool TextureCompressionASTC_LDR;
+			Bool TextureCompressionBC;
+			Bool OcclusionQueryPrecise;
+			Bool PipelineStatisticsQuery;
+			Bool VertexPipelineStoresAndAtomics;
+			Bool FragmentStoresAndAtomics;
+			Bool ShaderTessellationAndGeometryPointSize;
+			Bool ShaderImageGatherExtended;
+			Bool ShaderStorageImageExtendedFormats;
+			Bool ShaderStorageImageMultisample;
+			Bool ShaderStorageImageReadWithoutFormat;
+			Bool ShaderStorageImageWriteWithoutFormat;
+			Bool ShaderUniformBufferArrayDynamicIndexing;
+			Bool ShaderSampledImageArrayDynamicIndexing;
+			Bool ShaderStorageBufferArrayDynamicIndexing;
+			Bool ShaderStorageImageArrayDynamicIndexing;
+			Bool ShaderClipDistance;
+			Bool ShaderCullDistance;
+			Bool ShaderFloat64;
+			Bool ShaderInt64;
+			Bool ShaderInt16;
+			Bool ShaderResourceResidency;
+			Bool ShaderResourceMinLod;
+			Bool SparseBinding;
+			Bool SparseResidencyBuffer;
+			Bool SparseResidencyImage2D;
+			Bool SparseResidencyImage3D;
+			Bool SparseResidency2Samples;
+			Bool SparseResidency4Samples;
+			Bool SparseResidency8Samples;
+			Bool SparseResidency16Samples;
+			Bool SparseResidencyAliased;
+			Bool VariableMultisampleRate;
+			Bool InheritedQueries;
+
+			operator VkPhysicalDeviceFeatures()
+			{
+				return *(VkPhysicalDeviceFeatures*)(this);
+			}
+		};
+
+
 		struct Limits
 		{
 			using SampleCountFlags = bitmask<Flags, ESampleCountFlags>;
@@ -164,6 +229,19 @@ namespace Vulkan
 			}
 		};
 
+		struct QueueFamilyProperties
+		{
+			QueueFlags QueueFlags                 ;
+			uint32     QueueCount                 ;
+			uint32     TimestampValidBits         ;
+			Extent3D   MinImageTransferGranularity;
+
+			operator VkQueueFamilyProperties()
+			{
+				return *(VkQueueFamilyProperties*)(this);
+			}
+		};
+
 		struct Properties
 		{
 			uint32 API_Version;
@@ -206,13 +284,45 @@ namespace Vulkan
 
 	EResult GetAvailablePhysicalDevices(AppInstance::Handle _instance, PhysicalDevice::Handle* _deviceListing)
 	{
-		uint32 deviceCount = GetNumOf_PhysicalDevices(_instance);
+		uint32 deviceCount;
+		
+		vkEnumeratePhysicalDevices(_instance, &deviceCount, nullptr);
 
 		return EResult(vkEnumeratePhysicalDevices(_instance, &deviceCount, _deviceListing));
 	}
 
-	void GetPhysicalDeviceProperties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Properties& _propertiesContainer)
+	void GetPhysicalDevice_Properties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Properties& _propertiesContainer)
 	{
 		vkGetPhysicalDeviceProperties(_deviceHandle, (VkPhysicalDeviceProperties*)(&_propertiesContainer));
+	}
+
+	void GetPhysicalDevice_Features(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Features& _featuresContainer)
+	{
+		vkGetPhysicalDeviceFeatures(_deviceHandle, (VkPhysicalDeviceFeatures*)&_featuresContainer);
+	}
+
+	uint32 GetPhysicalDevice_NumOf_QueueFamilyProperties(PhysicalDevice::Handle _deviceHandle)
+	{
+		uint32 result;
+
+		vkGetPhysicalDeviceQueueFamilyProperties(_deviceHandle, &result, nullptr);
+
+		return result;
+	}
+
+	void GetPhysicalDevice_QueueFamilyProperties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::QueueFamilyProperties* _familyContainer)
+	{
+		uint32 numQueueFamilies;
+
+		vkGetPhysicalDeviceQueueFamilyProperties(_deviceHandle, &numQueueFamilies, nullptr);
+
+		VkQueueFamilyProperties test;
+
+		//vkGetPhysicalDeviceQueueFamilyProperties(_deviceHandle, &numQueueFamilies, &test);
+		vkGetPhysicalDeviceQueueFamilyProperties(_deviceHandle, &numQueueFamilies, (VkQueueFamilyProperties*)_familyContainer);
+
+		//PhysicalDevice::QueueFamilyProperties conversionTest = *(PhysicalDevice::QueueFamilyProperties*)(&test);
+
+		//*_familyContainer = conversionTest;
 	}
 }

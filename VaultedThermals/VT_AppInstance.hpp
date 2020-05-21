@@ -54,17 +54,14 @@ namespace Vulkan
 
 		struct CreateInfo
 		{
-			using CStr      = char*      ;
-			using CStrArray = const CStr*;
-
-			      EStructureType SType                ;
-			const void*          Extension            ;
-			      CreateFlags    Flags                ;
-			const AppInfo*       AppInfo              ;
-			      uint32         EnabledLayerCount    ;
-			      CStrArray      EnabledLayerNames    ;
-			      uint32         EnabledExtensionCount;
-			     CStrArray       EnabledExtensionNames;
+			      EStructureType       SType                ;
+			const void*                Extension            ;
+			      CreateFlags          Flags                ;
+			const AppInfo*             AppInfo              ;
+			      uint32               EnabledLayerCount    ;
+				  RoSCtr_roArray_Array EnabledLayerNames    ;
+			      uint32               EnabledExtensionCount;
+				  RoSCtr_roArray_Array EnabledExtensionNames;
 
 			operator VkInstanceCreateInfo() const
 			{
@@ -86,13 +83,22 @@ namespace Vulkan
 	};
 
 
-	EResult CreateAppInstance
+	EResult AppInstance_Create
 	(
 		const AppInstance::CreateInfo& _appSpec        ,
 		const AllocationCallbacks*     _customAllocator,
 		      AppInstance::Handle&     _handleContainer
 	)
 	{
-		return EResult(vkCreateInstance(&(const VkInstanceCreateInfo)(_appSpec), _customAllocator, &_handleContainer));
+		return EResult(vkCreateInstance((VkInstanceCreateInfo*)(&_appSpec), _customAllocator, &_handleContainer));
+	}
+
+	void AppInstance_Destory
+	(
+		AppInstance::Handle  _instance ,
+		AllocationCallbacks* _callbacks
+	)
+	{
+		vkDestroyInstance(_instance, _callbacks);
 	}
 }

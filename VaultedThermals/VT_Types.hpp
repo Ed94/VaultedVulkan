@@ -11,6 +11,7 @@
 #include <vulkan/vulkan.h>
 
 
+#include <cstddef>
 #include <cstdint>
 
 
@@ -54,16 +55,27 @@ namespace Vulkan
 	using sIntPtr  = std::intptr_t ;
 	using uIntPtr  = std::uintptr_t;
 
+	using CStr = char*;
 
+	using RoCStr = const char*;
+
+	using CStrArray = CStr*;
+
+	using RoCStrArray = const char**;   // Readonly c-string array.
+
+	using RoSCtr_roArray_Array = const char* const*;   // Array of readonly array of readonly c-string.
 
 	using Bool = VkBool32;
 
-	using Flags = VkFlags;
+	using Flags         = VkFlags     ;
+	using RawQueueFlags = VkQueueFlags;
 
+	using QueueFlags = bitmask<EQueueFlags, RawQueueFlags>;
+
+	using CallbackDataFlags = bitmask<EUndefined, Flags>;
 
 	using ExtensionNameStr = char[ExtensionName_MaxSize];
 	using DescrptionStr    = char[Description_MaxSize  ];	
-
 	
 	template<typename ReturnType, typename... ParameterTypes>
 	// Vulkan Function Pointer
@@ -76,4 +88,16 @@ namespace Vulkan
 	using AllocationCallbacks = VkAllocationCallbacks;
 
 	using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
+
+	struct Extent3D
+	{
+		uint32_t    Width;
+		uint32_t    Height;
+		uint32_t    Depth;
+
+		operator VkExtent3D()
+		{
+			return *(VkExtent3D*)(this);
+		}
+	};
 }

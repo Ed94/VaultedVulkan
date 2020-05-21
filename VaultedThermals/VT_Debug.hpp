@@ -56,20 +56,20 @@ namespace Vulkan
 
 			struct CallbackData
 			{
-				using CallbackDataFlags = bitmask<EUndefined, Flags>;
+				using FlagsMask = bitmask<EUndefined, Flags>;
 
-				      EStructureType    SType               ;
-				const void*             Extension           ;
-				      CallbackDataFlags Flags               ;
-				const char*             MesssageIDName      ;
-				      sint32            MessageIDNumber     ;
-				const char*             Message             ;
-				      uint32            QueueLabelCount     ;
-				const Label*            QueueLabels         ;
-				      uint32            CMDBufferLabel_Count;
-				const Label*            CMDBufferLabels     ;
-				      uint32            ObjectCount         ;
-				const ObjectInfo*       Objects             ;
+				      EStructureType SType               ;
+				const void*          Extension           ;
+				      FlagsMask      Flags               ;
+				const char*          MesssageIDName      ;
+				      sint32         MessageIDNumber     ;
+				const char*          Message             ;
+				      uint32         QueueLabelCount     ;
+				const Label*         QueueLabels         ;
+				      uint32         CMDBufferLabel_Count;
+				const Label*         CMDBufferLabels     ;
+				      uint32         ObjectCount         ;
+				const ObjectInfo*    Objects             ;
 
 				operator VkDebugUtilsMessengerCallbackDataEXT()
 				{
@@ -82,11 +82,11 @@ namespace Vulkan
 
 			struct CreateInfo
 			{
-				using MessengerCreateFlags = bitmask<EUndefined, Flags>;
+				using CreateFlags = bitmask<EUndefined, Flags>;
 
 				      EStructureType        SType       ;
 				const void*                 Extension   ;
-				      MessengerCreateFlags  Flags       ;
+				      CreateFlags           Flags       ;
 				      MessageServerityFlags Serverity   ;
 				      MessageTypeFlags      Type        ;
 				      CallbackDelegate      UserCallback;
@@ -133,9 +133,9 @@ namespace Vulkan
 
 		void DestroyMessenger
 		(
-			AppInstance::Handle            _appInstance,
-			Messenger::Handle              _messenger  ,
-			ptr<const AllocationCallbacks> _allocator
+			      AppInstance::Handle  _appInstance,
+			      Messenger::Handle    _messenger  ,
+			const AllocationCallbacks* _allocator
 		)
 		{
 			using FPtr_DestroyMessenger = PFN_vkDestroyDebugUtilsMessengerEXT;

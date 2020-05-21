@@ -20,5 +20,5 @@ namespace Vulkan
 
 	constexpr int UUID_Size = VK_UUID_SIZE;
 
-	using UUID = uInt8[UUID_Size];
+	using UUID = unsigned int[UUID_Size];
 }

@@ -1,8 +1,10 @@
 #pragma once
 
 
+
 #define Bitmaskable \
 enum class
+
 
 
 template<typename EnumType, typename BitmaskRepresentation>
@@ -20,6 +22,11 @@ public:
 	void Add(const BitType... _bits)
 	{
 		mask |= (Representation(_bits) | ...);
+	}
+
+	bool Has(const Enum _bit) const
+	{
+		return mask & Representation(_bit);
 	}
 
 	template<typename... BitType>
