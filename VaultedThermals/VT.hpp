@@ -14,7 +14,7 @@ Last Modified: 5/19/2020
 #include <typeinfo>
 
 
-#include "VT_CallingConvention.hpp"
+#include "VT_Platform.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Types.hpp"

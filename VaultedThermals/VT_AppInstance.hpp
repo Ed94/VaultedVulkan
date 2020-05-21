@@ -1,9 +1,7 @@
 #pragma once
 
 
-#include <vulkan/vulkan.h>
-
-
+#include "VT_Platform.hpp"
 #include "VT_Enums.hpp"
 
 

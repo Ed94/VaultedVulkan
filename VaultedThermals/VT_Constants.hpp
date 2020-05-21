@@ -7,6 +7,8 @@
 #pragma once
 
 
+#include "VT_Platform.hpp"
+
 
 namespace Vulkan
 {
