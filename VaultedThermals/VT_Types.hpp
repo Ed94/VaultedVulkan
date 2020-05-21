@@ -8,13 +8,10 @@
 
 
 
-#include <vulkan/vulkan.h>
-
-
 #include <cstddef>
 #include <cstdint>
 
-
+#include "VT_Platform.hpp"
 #include "VT_Constants.hpp"
 
 
@@ -100,4 +97,22 @@ namespace Vulkan
 			return *(VkExtent3D*)(this);
 		}
 	};
+
+
+	namespace Vault_00
+	{
+		template<EOS_Platform>
+		struct PlatformTypes_Maker;
+
+		template<>
+		struct PlatformTypes_Maker<EOS_Platform::Windows>
+		{
+			using OS_AppHandle    = HINSTANCE;
+			using OS_WindowHandle = HWND     ;
+		};
+
+		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;
+	}
+
+	using PlatformTypes = Vault_00::PlatformTypes;
 }

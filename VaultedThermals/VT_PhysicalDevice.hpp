@@ -8,12 +8,12 @@ VaultedThermals: Physical Device
 
 
 
-#include <vulkan/vulkan.h>
 
 
 #include "_foreign/Bitmask.hpp"
 
 
+#include "VT_Platform.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Types.hpp"
