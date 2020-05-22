@@ -44,8 +44,8 @@ namespace Vulkan
 			}
 		};
 
-		using MessageServerityFlags = bitmask<EDebugUtilities_MessageSeverityFlags, Flags>;
-		using MessageTypeFlags      = bitmask<EDebugUtilities_MessageTypeFlags    , Flags>;
+		using MessageServerityFlags = bitmask<EDebugUtilities_MessageSeverity, Flags>;
+		using MessageTypeFlags      = bitmask<EDebugUtilities_MessageType    , Flags>;
 
 		class Messenger
 		{

@@ -1,6 +1,6 @@
 /*
 
-
+Note: Review this... seems like some of it at least needs to be moved to physical device.
 */
 
 
@@ -23,6 +23,39 @@ namespace Vulkan
 		struct Surface_PlatformAgnostic
 		{
 			using Handle = VkSurfaceKHR;
+
+			using ESurfacTransformFlags = bitmask<ESurfaceTransform, Flags>;
+			using CompositeAlphaFlags   = bitmask<ECompositeAlpha  , Flags>;
+
+			struct Capabilities
+			{
+				uint32                MinImageCount          ;
+				uint32                MaxImageCount          ;
+				Extent2D              CurrentExtent          ;
+				Extent2D              MinImageExtent         ;
+				Extent2D              MaxImageExtent         ;
+				uint32                MaxImageArrayLayers    ;
+				ESurfacTransformFlags SupportedTransforms    ;
+				ESurfaceTransform     CurrentTransform       ;
+				CompositeAlphaFlags   SupportedCompositeAlpha;
+				ImageUsageFlags       SupportedUsageFlags    ;
+
+				operator VkSurfaceCapabilitiesKHR()
+				{
+					return *(VkSurfaceCapabilitiesKHR*)(this);
+				}
+			};
+
+			struct Format
+			{
+				EImageFormat Format    ;
+				EColorSpace  ColorSpace;
+
+				operator VkSurfaceFormatKHR()
+				{
+					return *(VkSurfaceFormatKHR*)(this);
+				}
+			};
 		};
 
 		template<EOS_Platform>
@@ -75,5 +108,57 @@ namespace Vulkan
 	void DestroySurface(AppInstance::Handle _appHandle, Surface::Handle _surfaceHandle, const AllocationCallbacks* _allocator)
 	{
 		vkDestroySurfaceKHR(_appHandle, _surfaceHandle, _allocator);
+	}
+
+	EResult Surface_CheckPhysicalDeviceSupport
+	(
+		PhysicalDevice::Handle _physDeviceHandle,
+		uint32 _queueFamilyIndex,
+		Surface::Handle _surfaceHandle,
+		Bool& _checkResult
+	)
+	{
+		return EResult(vkGetPhysicalDeviceSurfaceSupportKHR(_physDeviceHandle, _queueFamilyIndex, _surfaceHandle, &_checkResult));
+	}
+
+	EResult Surface_GetPhysicalDeviceCapabilities(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surface, Surface::Capabilities& _capabilitiesResult)
+	{
+		return EResult( vkGetPhysicalDeviceSurfaceCapabilitiesKHR(_deviceHandle, _surface, (VkSurfaceCapabilitiesKHR*)(&_capabilitiesResult) ));
+	}
+
+	uint32 Surface_GetNumOf_AvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
+	{
+		uint32 numFormats;
+
+		vkGetPhysicalDeviceSurfaceFormatsKHR(_deviceHandle, _surfaceHandle, &numFormats, nullptr);
+
+		return numFormats;
+	}
+
+	EResult Surface_GetAvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, Surface::Format* _formatsContainer)
+	{
+		uint32 numFormats;
+
+		vkGetPhysicalDeviceSurfaceFormatsKHR(_deviceHandle, _surfaceHandle, &numFormats, nullptr);
+
+		return EResult( vkGetPhysicalDeviceSurfaceFormatsKHR(_deviceHandle, _surfaceHandle, &numFormats, (VkSurfaceFormatKHR*)(_formatsContainer)) );
+	}
+
+	uint32 Surface_GetNumOf_SupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
+	{
+		uint32 numPresentationModes;
+
+		vkGetPhysicalDeviceSurfacePresentModesKHR(_deviceHandle, _surfaceHandle, &numPresentationModes, nullptr);
+
+		return numPresentationModes;
+	}
+
+	EResult Surface_GetSupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, EPresentationMode* _presentationModesContainer)
+	{
+		uint32 numPresentationModes;
+
+		vkGetPhysicalDeviceSurfacePresentModesKHR(_deviceHandle, _surfaceHandle, &numPresentationModes, nullptr);
+
+		return EResult( vkGetPhysicalDeviceSurfacePresentModesKHR(_deviceHandle, _surfaceHandle, &numPresentationModes, (VkPresentModeKHR*)_presentationModesContainer) );
 	}
 }

@@ -15,6 +15,9 @@
 #include "VT_PhysicalDevice.hpp"
 
 
+#include <typeinfo>
+
+
 
 namespace Vulkan
 {
@@ -30,7 +33,7 @@ namespace Vulkan
 
 			struct CreateInfo
 			{
-				using CreateFlags = bitmask<ELogicalDeviceQueueCreateFlags, Flags>;
+				using CreateFlags = bitmask<ELogicalDeviceQueueCreateFlag, Flags>;
 
 				EStructureType              SType;
 				const void*                 Extension;

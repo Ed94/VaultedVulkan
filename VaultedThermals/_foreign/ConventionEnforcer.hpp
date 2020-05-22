@@ -16,48 +16,57 @@ C++17
 
 
 
-template <class ID>
-struct EnforcementSet;
+#ifndef CONVENTION_ENFORCER_H
 
-#define MakeConventionEnforcer_ConventionID(__API_NAME) \
-class EnforcerID_##__API_NAME;
+	#define CONVENTION_ENFORCER_H
 
-#define MakeConventionEnforcer_EnforcementSet(__API_NAME, __ATTRIBUTE, __CALL)   \
-template<>																	     \
-struct EnforcementSet<EnforcerID_##__API_NAME>					                 \
-{																			     \
-	template<typename FunctionType, FunctionType*>                               \
-	struct Enforcer_CallMaker;                                                   \
-                                                                                 \
-	template																	 \
-	<																			 \
-	typename ReturnType,                                                         \
-	typename... ParameterTypes,                                                  \
-	ReturnType(*FunctionType)(ParameterTypes...)                                 \
-	>											                                 \
-	struct Enforcer_CallMaker<ReturnType(ParameterTypes...), FunctionType>       \
-	{																		     \
-		static __ATTRIBUTE ReturnType __CALL Call(ParameterTypes... _parameters) \
-		{																		 \
-			return FunctionType(std::forward<ParameterTypes>(_parameters)...);	 \
-		}																		 \
-	};																			 \
-};
 
-#define MakeConventionEnforcer(__API_NAME, __ATTRIBUTE, __CALL)        \
-MakeConventionEnforcer_ConventionID(__API_NAME);                       \
-MakeConventionEnforcer_EnforcementSet(__API_NAME, __ATTRIBUTE, __CALL);
 
-template
-<
-	class ID,
-	typename FunctionType,
-	FunctionType& _functionRef
->
-auto Enforcer_Caller()
-{
-	return &(EnforcementSet<ID>::template Enforcer_CallMaker<FunctionType, &_functionRef>::Call);
-};
+	template <class ID>
+	struct EnforcementSet;
 
-#define EnforceConvention(__API_NAME, __FUNCTION)               \
-Enforcer_Caller<__API_NAME, decltype(__FUNCTION), __FUNCTION>();
+	#define MakeConventionEnforcer_ConventionID(__API_NAME) \
+	class EnforcerID_##__API_NAME;
+
+	#define MakeConventionEnforcer_EnforcementSet(__API_NAME, __ATTRIBUTE, __CALL)   \
+	template<>																	     \
+	struct EnforcementSet<EnforcerID_##__API_NAME>					                 \
+	{																			     \
+		template<typename FunctionType, FunctionType*>                               \
+		struct Enforcer_CallMaker;                                                   \
+																					 \
+		template																	 \
+		<																			 \
+		typename ReturnType,                                                         \
+		typename... ParameterTypes,                                                  \
+		ReturnType(*FunctionType)(ParameterTypes...)                                 \
+		>											                                 \
+		struct Enforcer_CallMaker<ReturnType(ParameterTypes...), FunctionType>       \
+		{																		     \
+			static __ATTRIBUTE ReturnType __CALL Call(ParameterTypes... _parameters) \
+			{																		 \
+				return FunctionType(std::forward<ParameterTypes>(_parameters)...);	 \
+			}																		 \
+		};																			 \
+	};
+
+	#define MakeConventionEnforcer(__API_NAME, __ATTRIBUTE, __CALL)        \
+	MakeConventionEnforcer_ConventionID(__API_NAME);                       \
+	MakeConventionEnforcer_EnforcementSet(__API_NAME, __ATTRIBUTE, __CALL);
+
+	template
+	<
+		class ID,
+		typename FunctionType,
+		FunctionType& _functionRef
+	>
+	auto Enforcer_Caller()
+	{
+		return &(EnforcementSet<ID>::template Enforcer_CallMaker<FunctionType, &_functionRef>::Call);
+	};
+
+	#define EnforceConvention(__API_NAME, __FUNCTION)               \
+	Enforcer_Caller<__API_NAME, decltype(__FUNCTION), __FUNCTION>();
+
+
+#endif

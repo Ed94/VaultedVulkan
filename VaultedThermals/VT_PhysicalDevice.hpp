@@ -100,7 +100,7 @@ namespace Vulkan
 
 		struct Limits
 		{
-			using SampleCountFlags = bitmask<Flags, ESampleCountFlags>;
+			using SampleCountFlags = bitmask<Flags, ESampleCount>;
 
 			uint32           MaxImageDimension1D;
 			uint32           MaxImageDimension2D;
@@ -325,4 +325,24 @@ namespace Vulkan
 
 		//*_familyContainer = conversionTest;
 	}
+
+	uint32 PhysicalDevice_GetNumOfAvailableExtensions(PhysicalDevice::Handle _deviceHandle)
+	{
+		uint32 numExtensions;
+
+		vkEnumerateDeviceExtensionProperties(_deviceHandle, nullptr, &numExtensions, nullptr);
+
+		return numExtensions;
+	}
+
+	void PhysicalDevice_GetAvailableExtensions(PhysicalDevice::Handle _deviceHandle, ExtensionProperties* _extensionPropertiesContainer)
+	{
+		uint32 numExtensions;
+
+		vkEnumerateDeviceExtensionProperties(_deviceHandle, nullptr, &numExtensions, nullptr);
+
+		vkEnumerateDeviceExtensionProperties(_deviceHandle, nullptr, &numExtensions, (VkExtensionProperties*)(_extensionPropertiesContainer));
+	}
+
+
 }

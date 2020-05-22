@@ -67,7 +67,7 @@ namespace Vulkan
 	using Flags         = VkFlags     ;
 	using RawQueueFlags = VkQueueFlags;
 
-	using QueueFlags = bitmask<EQueueFlags, RawQueueFlags>;
+	using QueueFlags = bitmask<EQueue, RawQueueFlags>;
 
 	using CallbackDataFlags = bitmask<EUndefined, Flags>;
 
@@ -86,15 +86,37 @@ namespace Vulkan
 
 	using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
 
+	struct Extent2D
+	{
+		uint32 Width ;
+		uint32 Height;
+
+		operator VkExtent2D()
+		{
+			return *(VkExtent2D*)(this);
+		}
+	};
+
 	struct Extent3D
 	{
-		uint32_t    Width;
-		uint32_t    Height;
-		uint32_t    Depth;
+		uint32 Width ;
+		uint32 Height;
+		uint32 Depth ;
 
 		operator VkExtent3D()
 		{
 			return *(VkExtent3D*)(this);
+		}
+	};
+
+	struct ExtensionProperties
+	{		
+		ExtensionNameStr ExtensionName;
+		uint32           SpecVersion  ;
+
+		operator VkExtensionProperties()
+		{
+			return *(VkExtensionProperties*)(this);
 		}
 	};
 
@@ -115,4 +137,13 @@ namespace Vulkan
 	}
 
 	using PlatformTypes = Vault_00::PlatformTypes;
+
+	using ImageUsageFlags = bitmask<EUndefined       , Flags>;
+
+	constexpr void* NullHandle = VK_NULL_HANDLE;
+
+	struct Image
+	{
+		using Handle = VkImage;
+	};
 }
