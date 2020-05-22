@@ -2,9 +2,7 @@
 
 
 
-#define Bitmaskable \
-enum class
-
+#define Bitmaskable
 
 
 template<typename EnumType, typename BitmaskRepresentation>

@@ -7,13 +7,16 @@
 #pragma once
 
 
+
 #include "VT_Platform.hpp"
+
 
 
 namespace Vulkan
 {
-	constexpr
-	const char* ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation";
+	constexpr const char* ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
+	constexpr const char* Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;
+
 
 	constexpr int ExtensionName_MaxSize = VK_MAX_EXTENSION_NAME_SIZE;
 	constexpr int Description_MaxSize   = VK_MAX_DESCRIPTION_SIZE   ;

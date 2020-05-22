@@ -42,4 +42,18 @@ namespace Vulkan
 	{
 		return ReturnType(vkGetInstanceProcAddr(_appInstance, _procedureName));
 	}
+
+	namespace Vault_00
+	{
+		template<typename HandleType>
+		struct HandledAddressed
+		{
+			using Handle = HandleType;
+
+			static constexpr Handle NullHandle()
+			{
+				return Handle(VK_NULL_HANDLE);
+			}
+		};
+	}
 }
