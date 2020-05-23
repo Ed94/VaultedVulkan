@@ -1,0 +1,74 @@
+/*
+
+
+*/
+
+
+
+#pragma once
+
+
+#include "VT_Enums.hpp"
+#include "VT_Types.hpp"
+
+
+namespace Vulkan
+{
+	struct ImageView
+	{
+		using AspectFlags = bitmask<EImageAspect, Flags>;
+
+		using Handle = VkImageView;
+
+		struct SubresourceRange
+		{
+			AspectFlags AspectMask    ;
+			uint32      BaseMipLevel  ;
+			uint32      LevelCount    ;
+			uint32      BaseArrayLayer;
+			uint32      LayerCount    ;
+		};
+
+		struct CreateInfo
+		{
+			using CreateFlags = bitmask<EImageViewCreateFlag, Flags>;
+
+			      EStructureType            SType           ;			
+			const void*                     Extensions      ;
+			      CreateFlags               Flags           ;
+			      Image::Handle             Image           ;
+			      EImageViewType            ViewType        ;
+			      EImageFormat              Format          ;
+			      ComponentMapping          Components      ;
+				  SubresourceRange          SubresourceRange;
+
+
+			operator VkImageViewCreateInfo()
+			{
+				return *(VkImageViewCreateInfo*)(this);
+			}
+		};
+	};
+
+
+	EResult CreateImageView
+	(
+		      LogicalDevice::Handle  _deviceHandle,
+		const ImageView::CreateInfo& _creationSpec,
+		const AllocationCallbacks*   _allocator   ,
+		      ImageView::Handle*     _imageView
+	)
+	{
+		return EResult(vkCreateImageView(_deviceHandle, (VkImageViewCreateInfo*)(&_creationSpec), _allocator, (VkImageView*)(_imageView)));
+	}
+
+	void DestroyImageView
+	(
+		      LogicalDevice::Handle _deviceHandle,
+		      ImageView::Handle     _imageView   ,
+		const AllocationCallbacks*  _allocator
+	)
+	{
+		vkDestroyImageView(_deviceHandle, _imageView, _allocator);
+	}
+}
