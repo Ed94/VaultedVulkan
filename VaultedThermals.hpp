@@ -18,3 +18,4 @@ VaultedThermals Include Interface
 #include "VaultedThermals/VT_LogicalDevice.hpp"
 #include "VaultedThermals/VT_Surface.hpp"
 #include "VaultedThermals/VT_SwapChain.hpp"
+#include "VaultedThermals/VT_ImageView.hpp"

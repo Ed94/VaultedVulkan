@@ -1102,16 +1102,64 @@ namespace Vulkan
 
     // Bitmaskable
     Bitmaskable enum 
-    class ESwapchainCreateFlag : int32_t 
+    class ESwapchainCreateFlag : uint32_t 
     {
 		SplitInstanceBindRegions = VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR ,
 		CreateProtected          = VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR                   ,
 		CreateMutableFormat      = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR
     };
 
-    enum class ESharingMode
+    enum class ESharingMode : uint32_t
     {
         Excusive   = VK_SHARING_MODE_EXCLUSIVE ,
         Concurrent = VK_SHARING_MODE_CONCURRENT
+    };
+
+    Bitmaskable enum
+    class EImageViewCreateFlag : uint32_t
+    {
+        Fragment_DensityMapDynamiic = VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
+    };
+
+    enum class EImageViewType : uint32_t
+    {
+		_1D = VK_IMAGE_VIEW_TYPE_1D,
+		_2D = VK_IMAGE_VIEW_TYPE_2D,
+		_3D = VK_IMAGE_VIEW_TYPE_3D,
+		_Cube = VK_IMAGE_VIEW_TYPE_CUBE,
+		_1D_Array = VK_IMAGE_VIEW_TYPE_1D_ARRAY,
+		_2D_Array = VK_IMAGE_VIEW_TYPE_2D_ARRAY,
+		CubeArray = VK_IMAGE_VIEW_TYPE_CUBE_ARRAY
+    };
+
+    enum class EComponentSwizzle : uint32_t
+    {
+		Identitity = VK_COMPONENT_SWIZZLE_IDENTITY,
+		Zero = VK_COMPONENT_SWIZZLE_ZERO,
+		One = VK_COMPONENT_SWIZZLE_ONE,
+		R = VK_COMPONENT_SWIZZLE_R,
+		G = VK_COMPONENT_SWIZZLE_G,
+		B = VK_COMPONENT_SWIZZLE_B,
+		A = VK_COMPONENT_SWIZZLE_A
+    };
+
+    // Bitmaskable
+    Bitmaskable enum
+    class EImageAspect : uint32_t
+    {
+		Color = VK_IMAGE_ASPECT_COLOR_BIT,
+		Depth = VK_IMAGE_ASPECT_DEPTH_BIT,
+		Stencil = VK_IMAGE_ASPECT_STENCIL_BIT,
+		MetaData = VK_IMAGE_ASPECT_METADATA_BIT,
+		Plane_0 = VK_IMAGE_ASPECT_PLANE_0_BIT,
+		Plane_1 = VK_IMAGE_ASPECT_PLANE_1_BIT,
+		Plane_2 = VK_IMAGE_ASPECT_PLANE_2_BIT,
+		MemoryPlane_0 = VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT,
+		MemoryPlane_1 = VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT,
+		MemroyPlane_2 = VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT,
+		MemoryPlane_3 = VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT,
+		KHR_Plane_0 = VK_IMAGE_ASPECT_PLANE_0_BIT_KHR,
+		KHR_Plane_1 = VK_IMAGE_ASPECT_PLANE_1_BIT_KHR,
+		KHR_Plane_2 = VK_IMAGE_ASPECT_PLANE_2_BIT_KHR
     };
 }
