@@ -146,4 +146,17 @@ namespace Vulkan
 	{
 		using Handle = VkImage;
 	};
+
+	struct ComponentMapping
+	{
+		EComponentSwizzle R;
+		EComponentSwizzle G;
+		EComponentSwizzle B;
+		EComponentSwizzle A;
+
+		operator VkComponentMapping()
+		{
+			return *(VkComponentMapping*)(this);
+		}
+	};
 }
