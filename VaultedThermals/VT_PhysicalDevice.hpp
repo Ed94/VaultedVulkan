@@ -100,7 +100,7 @@ namespace Vulkan
 
 		struct Limits
 		{
-			using SampleCountFlags = bitmask<Flags, ESampleCount>;
+			using SampleCountFlags = Bitmask<ESampleCount, Flags>;
 
 			uint32           MaxImageDimension1D;
 			uint32           MaxImageDimension2D;

@@ -23,7 +23,7 @@ namespace Vulkan
 		struct CreateInfo
 		{
 			using ECreateFlag = ESwapchainCreateFlag;
-			using CreateFlags = bitmask<ECreateFlag, Flags>;
+			using CreateFlags = Bitmask<ECreateFlag, Flags>;
 
 
 			EStructureType    SType;

@@ -24,8 +24,8 @@ namespace Vulkan
 		{
 			using Handle = VkSurfaceKHR;
 
-			using ESurfacTransformFlags = bitmask<ESurfaceTransform, Flags>;
-			using CompositeAlphaFlags   = bitmask<ECompositeAlpha  , Flags>;
+			using ESurfacTransformFlags = Bitmask<ESurfaceTransform, Flags>;
+			using CompositeAlphaFlags   = Bitmask<ECompositeAlpha  , Flags>;
 
 			struct Capabilities
 			{
@@ -66,7 +66,7 @@ namespace Vulkan
 		{
 			struct CreateInfo
 			{
-				using CreateFlags = bitmask<EUndefined, Flags>;
+				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				using OS_AppHandle    = PlatformTypes::OS_AppHandle   ;
 				using OS_WindowHandle = PlatformTypes::OS_WindowHandle;

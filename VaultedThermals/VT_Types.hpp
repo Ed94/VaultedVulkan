@@ -67,9 +67,9 @@ namespace Vulkan
 	using Flags         = VkFlags     ;
 	using RawQueueFlags = VkQueueFlags;
 
-	using QueueFlags = bitmask<EQueue, RawQueueFlags>;
+	using QueueFlags = Bitmask<EQueue, RawQueueFlags>;
 
-	using CallbackDataFlags = bitmask<EUndefined, Flags>;
+	using CallbackDataFlags = Bitmask<EUndefined, Flags>;
 
 	using ExtensionNameStr = char[ExtensionName_MaxSize];
 	using DescrptionStr    = char[Description_MaxSize  ];	
@@ -138,7 +138,7 @@ namespace Vulkan
 
 	using PlatformTypes = Vault_00::PlatformTypes;
 
-	using ImageUsageFlags = bitmask<EUndefined       , Flags>;
+	using ImageUsageFlags = Bitmask<EUndefined       , Flags>;
 
 	constexpr void* NullHandle = VK_NULL_HANDLE;
 
@@ -157,6 +157,36 @@ namespace Vulkan
 		operator VkComponentMapping()
 		{
 			return *(VkComponentMapping*)(this);
+		}
+	};
+
+	namespace SPIR_V
+	{
+		using Bytecode = uint32;
+	}
+
+	struct SpecializationMapEntry
+	{
+		uint32   ConstantID;
+		uint32   Offset    ;
+		DataSize Size      ;
+
+		operator VkSpecializationMapEntry()
+		{
+			return *reinterpret_cast<VkSpecializationMapEntry*>(this);
+		}
+	};
+
+	struct SpecializationInfo
+	{
+		      uint32                  MapEntryCount;
+		const SpecializationMapEntry* MapEntires   ;
+		      DataSize                SizeOfData   ;
+		const void*                   Data         ;
+
+		operator VkSpecializationInfo()
+		{
+			return *reinterpret_cast<VkSpecializationInfo*>(this);
 		}
 	};
 }
