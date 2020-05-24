@@ -44,8 +44,8 @@ namespace Vulkan
 			}
 		};
 
-		using MessageServerityFlags = bitmask<EDebugUtilities_MessageSeverity, Flags>;
-		using MessageTypeFlags      = bitmask<EDebugUtilities_MessageType    , Flags>;
+		using MessageServerityFlags = Bitmask<EDebugUtilities_MessageSeverity, Flags>;
+		using MessageTypeFlags      = Bitmask<EDebugUtilities_MessageType    , Flags>;
 
 		class Messenger
 		{
@@ -54,7 +54,7 @@ namespace Vulkan
 
 			struct CallbackData
 			{
-				using FlagsMask = bitmask<EUndefined, Flags>;
+				using FlagsMask = Bitmask<EUndefined, Flags>;
 
 				      EStructureType SType               ;
 				const void*          Extension           ;
@@ -80,7 +80,7 @@ namespace Vulkan
 
 			struct CreateInfo
 			{
-				using CreateFlags = bitmask<EUndefined, Flags>;
+				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				      EStructureType        SType       ;
 				const void*                 Extension   ;

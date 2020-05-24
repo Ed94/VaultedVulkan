@@ -7,8 +7,6 @@
 
 
 
-#include "_foreign/Bitmask.hpp"
-
 #include "VT_Platform.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Types.hpp"
@@ -25,7 +23,7 @@ namespace Vulkan
 	{
 		using Handle = VkDevice;
 
-		using CreateFlags = bitmask<EUndefined, Flags>;
+		using CreateFlags = Bitmask<EUndefined, Flags>;
 
 		struct Queue
 		{
@@ -33,7 +31,7 @@ namespace Vulkan
 
 			struct CreateInfo
 			{
-				using CreateFlags = bitmask<ELogicalDeviceQueueCreateFlag, Flags>;
+				using CreateFlags = Bitmask<ELogicalDeviceQueueCreateFlag, Flags>;
 
 				EStructureType              SType;
 				const void*                 Extension;

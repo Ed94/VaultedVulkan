@@ -9,8 +9,10 @@
 
 namespace Vulkan
 {
-	enum class EUndefined
+	enum class EUndefined 
 	{};
+
+    SpecifyBitmaskable(EUndefined);
 
 	enum class EHandle
 	{
@@ -686,11 +688,7 @@ namespace Vulkan
 		};
 	}
 
-	
-
-	// Bitmaskable
-	Bitmaskable enum
-    class EDebugUtilities_MessageSeverity : uint32_t
+	enum class EDebugUtilities_MessageSeverity : uint32_t
 	{
 		Verbose = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
 		Info    = VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT   ,
@@ -698,21 +696,23 @@ namespace Vulkan
 		Error   = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT
 	};
 
-	// Bitmaskable
-	Bitmaskable enum 
-    class EDebugUtilities_MessageType : uint32_t
+    SpecifyBitmaskable(EDebugUtilities_MessageSeverity);
+
+    enum class EDebugUtilities_MessageType : uint32_t
 	{
 		General     = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT    ,
 		Validation  = VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT ,
 		Performance = VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT
 	};
 
-	enum class EPhysicalDeviceType : uint32_t
+    SpecifyBitmaskable(EDebugUtilities_MessageType);
+
+    enum class EPhysicalDeviceType : uint32_t
 	{
-		Other          = VK_PHYSICAL_DEVICE_TYPE_OTHER,
+		Other          = VK_PHYSICAL_DEVICE_TYPE_OTHER         ,
 		IntergratedGPU = VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU,
-		DiscreteGPU    = VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU ,
-		VirtualGPU     = VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU ,
+		DiscreteGPU    = VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU  ,
+		VirtualGPU     = VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU   ,
 		CPU            = VK_PHYSICAL_DEVICE_TYPE_CPU
 	};
 
@@ -727,64 +727,69 @@ namespace Vulkan
 		_64 = VK_SAMPLE_COUNT_64_BIT
 	};
 
-    // Bitmaskable
-    Bitmaskable enum 
-    class EQueue : uint32_t
+    SpecifyBitmaskable(ESampleCount);
+
+    enum class EQueue : uint32_t
     {
 		Graphics               = VK_QUEUE_GRAPHICS_BIT      ,
 		Compute                = VK_QUEUE_COMPUTE_BIT       ,
 		Transfer               = VK_QUEUE_TRANSFER_BIT      ,
 		SquareMemoryManagement = VK_QUEUE_SPARSE_BINDING_BIT,
 		Protected              = VK_QUEUE_PROTECTED_BIT
+	};
+
+    SpecifyBitmaskable(EQueue);
+
+
+    enum class ELogicalDeviceQueueCreateFlag : uint32_t
+    {
+		CreateProtected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT
     };
 
-    // Bitmaskable
-    Bitmaskable enum
-    class ELogicalDeviceQueueCreateFlag : uint32_t
+    SpecifyBitmaskable(ELogicalDeviceQueueCreateFlag);
+
+    enum class ESurfaceTransform : uint32_t
     {
-        CreateProtected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT
+		Identity                     = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR                    ,
+		Rotate_90                    = VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR                   ,
+		Rotate_180                   = VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR                  ,
+		Rotate_270                   = VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR                  ,
+		Horizontal_Mirror            = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR           ,
+		Horizontal_Mirror_Rotate_90  = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR ,
+		Horizontal_Mirror_Rotate_180 = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR,
+		Horizontal_Mirror_Rotate_270 = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR,
+		Inherit                      = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR 
+	};
+
+    SpecifyBitmaskable(ESurfaceTransform);
+
+    enum class ECompositeAlpha : uint32_t
+    {
+		Opaque         = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR          ,
+		PreMultiplied  = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR  ,
+		PostMultiplied = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR ,
+		Inherit        = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR 
+	};
+
+    SpecifyBitmaskable(ECompositeAlpha);
+
+
+    enum class EImageUsage : uint32_t
+    {
+		TransferSource          = VK_IMAGE_USAGE_TRANSFER_SRC_BIT            ,
+		TransferDestination     = VK_IMAGE_USAGE_TRANSFER_DST_BIT            ,
+		Sampled                 = VK_IMAGE_USAGE_SAMPLED_BIT                 ,
+		Storage                 = VK_IMAGE_USAGE_STORAGE_BIT                 ,
+		Color_Attachment        = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT        ,
+		DepthStencil_Attachment = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
+		Transient_Attachment    = VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT    ,
+		Input_Attachemnt        = VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT        ,
+		Image_ShadingRate       = VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV   ,
+		DensityMap              = VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT
     };
 
-    // Bitmaskable
-    Bitmaskable enum
-    class ESurfaceTransform : uint32_t
-    {
-        Identity          = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR                    ,
-        Rotate_90         = VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR                   ,
-        Rotate_180        = VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR                  ,
-        Rotate_270        = VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR                  ,
-        Horizontal_Mirror           = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR           ,
-        Horizontal_Mirror_Rotate_90         = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR ,
-        Horizontal_Mirror_Rotate_180        = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR,
-        Horizontal_Mirror_Rotate_270        = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR,
-        Inherit           = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR 
-    };
+    SpecifyBitmaskable(EImageUsage);
 
-    // Bitmaskable
-    Bitmaskable enum
-    class ECompositeAlpha : uint32_t
-    {
-        Opaque         = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR          ,
-        PreMultiplied  = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR  ,
-        PostMultiplied = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR ,
-        Inherit        = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR 
-    };
-
-    // Bitmaskable
-    Bitmaskable enum
-    class EImageUsage : uint32_t
-    {
-        TransferSource          = VK_IMAGE_USAGE_TRANSFER_SRC_BIT            ,
-        TransferDestination     = VK_IMAGE_USAGE_TRANSFER_DST_BIT            ,
-        Sampled                 = VK_IMAGE_USAGE_SAMPLED_BIT                 ,
-        Storage                 = VK_IMAGE_USAGE_STORAGE_BIT                 ,
-        Color_Attachment        = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT        ,
-        DepthStencil_Attachment = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
-        Transient_Attachment    = VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT    ,
-        Input_Attachemnt        = VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT        ,
-        Image_ShadingRate       = VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV   ,
-        DensityMap              = VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT
-    };
 
     // TODO: Change names...
     enum class EImageFormat : uint32_t
@@ -1100,14 +1105,14 @@ namespace Vulkan
         KHR_SharedContinuousRefresh = VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR
     };
 
-    // Bitmaskable
-    Bitmaskable enum 
-    class ESwapchainCreateFlag : uint32_t 
+    enum class ESwapchainCreateFlag : uint32_t
     {
 		SplitInstanceBindRegions = VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR ,
 		CreateProtected          = VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR                   ,
 		CreateMutableFormat      = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR
-    };
+	};
+
+    SpecifyBitmaskable(ESwapchainCreateFlag);
 
     enum class ESharingMode : uint32_t
     {
@@ -1115,11 +1120,12 @@ namespace Vulkan
         Concurrent = VK_SHARING_MODE_CONCURRENT
     };
 
-    Bitmaskable enum
-    class EImageViewCreateFlag : uint32_t
+    enum class EImageViewCreateFlag : uint32_t
     {
-        Fragment_DensityMapDynamiic = VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
+		Fragment_DensityMapDynamiic = VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
     };
+
+    SpecifyBitmaskable(EImageViewCreateFlag)
 
     enum class EImageViewType : uint32_t
     {
@@ -1143,9 +1149,7 @@ namespace Vulkan
 		A = VK_COMPONENT_SWIZZLE_A
     };
 
-    // Bitmaskable
-    Bitmaskable enum
-    class EImageAspect : uint32_t
+    enum class EImageAspect : uint32_t
     {
 		Color = VK_IMAGE_ASPECT_COLOR_BIT,
 		Depth = VK_IMAGE_ASPECT_DEPTH_BIT,
@@ -1162,4 +1166,42 @@ namespace Vulkan
 		KHR_Plane_1 = VK_IMAGE_ASPECT_PLANE_1_BIT_KHR,
 		KHR_Plane_2 = VK_IMAGE_ASPECT_PLANE_2_BIT_KHR
     };
+
+    SpecifyBitmaskable(EImageAspect);
+
+    enum class EPipelineShaderStageCreateFlag : uint32_t
+    {
+		AllowVaryingSubgroupSize = VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT,
+		RequireFullSubgroups     = VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT
+    };
+
+    SpecifyBitmaskable(EPipelineShaderStageCreateFlag);
+
+    enum class EShaderStageFlag : uint32_t
+    {
+		Vertex                 = VK_SHADER_STAGE_VERTEX_BIT                 ,
+		TessellationControl    = VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT   ,
+		TessellationEvaluation = VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT,
+		Geometry               = VK_SHADER_STAGE_GEOMETRY_BIT               ,
+		Fragment               = VK_SHADER_STAGE_FRAGMENT_BIT               ,
+		Compute                = VK_SHADER_STAGE_COMPUTE_BIT                ,
+		Graphics               = VK_SHADER_STAGE_ALL_GRAPHICS               ,
+		All                    = VK_SHADER_STAGE_ALL                        ,
+		KHR_Raygen             = VK_SHADER_STAGE_RAYGEN_BIT_KHR             ,
+		KHR_AnyHit             = VK_SHADER_STAGE_ANY_HIT_BIT_KHR            ,
+		KHR_ClosestHit         = VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR        ,
+		KHR_Miss               = VK_SHADER_STAGE_MISS_BIT_KHR               ,
+		KHR_Intersection       = VK_SHADER_STAGE_INTERSECTION_BIT_KHR       ,
+		KHR_Callable           = VK_SHADER_STAGE_CALLABLE_BIT_KHR           ,
+		NV_Task                = VK_SHADER_STAGE_TASK_BIT_NV                ,
+		NV_Mesh                = VK_SHADER_STAGE_MESH_BIT_NV                ,
+		NV_Raygen              = VK_SHADER_STAGE_RAYGEN_BIT_NV              ,
+		NV_AnyHit              = VK_SHADER_STAGE_ANY_HIT_BIT_NV             ,
+		NV_ClosestHit          = VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV         ,
+		NV_Miss                = VK_SHADER_STAGE_MISS_BIT_NV                ,
+		NV_Intersection        = VK_SHADER_STAGE_INTERSECTION_BIT_NV        ,
+		NV_Callable            = VK_SHADER_STAGE_CALLABLE_BIT_NV            
+    };
+
+    SpecifyBitmaskable(EShaderStageFlag);
 }

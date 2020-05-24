@@ -16,7 +16,7 @@ namespace Vulkan
 {
 	struct ImageView
 	{
-		using AspectFlags = bitmask<EImageAspect, Flags>;
+		using AspectFlags = Bitmask<EImageAspect, Flags>;
 
 		using Handle = VkImageView;
 
@@ -31,7 +31,7 @@ namespace Vulkan
 
 		struct CreateInfo
 		{
-			using CreateFlags = bitmask<EImageViewCreateFlag, Flags>;
+			using CreateFlags = Bitmask<EImageViewCreateFlag, Flags>;
 
 			      EStructureType            SType           ;			
 			const void*                     Extensions      ;
