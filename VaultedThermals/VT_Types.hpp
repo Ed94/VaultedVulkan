@@ -189,4 +189,37 @@ namespace Vulkan
 			return *reinterpret_cast<VkSpecializationInfo*>(this);
 		}
 	};
+
+	struct Viewport
+	{
+		float X       , Y       ;
+		float Width   , Height  ;
+		float MinDepth, MaxDepth;
+	};
+
+	struct Offset2D
+	{
+		sint32 X;
+		sint32 Y;
+	};
+
+	struct Rect2D
+	{
+		Offset2D Offset;
+		Extent2D Extent;
+	};
+
+
+	using CullModeFlags = Bitmask<ECullModeFlag, Flags>;
+	using SampleCountFlags = Bitmask<ESampleCount, Flags>;
+	using SampleMask = VkSampleMask;   // TODO: Not sure yet...
+
+	using ColorComponentFlags = Bitmask<EColorComponentFlag, Flags>;
+
+	struct Sampler
+	{
+		using Handle = VkSampler;
+	};
+
+	
 }
