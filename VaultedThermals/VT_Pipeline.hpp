@@ -130,6 +130,7 @@ namespace Vulkan
 			{
 				EStructureType SType;
 				const void* Extension;
+				CreateFlags Flags;
 				ESampleCount RasterizationSamples;
 				Bool EnableSampleShading;
 				float MinSampleShading;

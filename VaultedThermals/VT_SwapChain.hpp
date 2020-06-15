@@ -73,6 +73,15 @@ namespace Vulkan
 		vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, _allocator);
 	}
 
+	uint32 SwapChain_GetImageCount(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChain)
+	{
+		uint32 numImages;
+
+		vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &numImages, nullptr);
+
+		return numImages;
+	}
+
 	EResult SwapChain_GetImages
 	(
 		LogicalDevice::Handle _deviceHandle,
@@ -84,6 +93,11 @@ namespace Vulkan
 
 		vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &numImages, nullptr);
 
-		return EResult( vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &numImages, _images));
+
+
+		EResult&& result = EResult(vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &numImages, _images));
+
+
+		return result;
 	}
 }
