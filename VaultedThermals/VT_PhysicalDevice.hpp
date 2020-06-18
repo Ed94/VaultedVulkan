@@ -267,12 +267,12 @@ namespace Vulkan
 	};
 
 
-	EResult GeneratePhysicalDevices(AppInstance::Handle _instance, uint32& _numDevices, PhysicalDevice::Handle* _deviceListing)
+	inline EResult GeneratePhysicalDevices(AppInstance::Handle _instance, uint32& _numDevices, PhysicalDevice::Handle* _deviceListing)
 	{
 		return EResult(vkEnumeratePhysicalDevices(_instance, &_numDevices, _deviceListing));
 	}
 
-	uint32 GetNumOf_PhysicalDevices(AppInstance::Handle _instance)
+	inline uint32 GetNumOf_PhysicalDevices(AppInstance::Handle _instance)
 	{
 		uint32 deviceCount;
 
@@ -281,7 +281,7 @@ namespace Vulkan
 		return deviceCount;
 	}
 
-	EResult GetAvailablePhysicalDevices(AppInstance::Handle _instance, PhysicalDevice::Handle* _deviceListing)
+	inline EResult GetAvailablePhysicalDevices(AppInstance::Handle _instance, PhysicalDevice::Handle* _deviceListing)
 	{
 		uint32 deviceCount;
 		
@@ -290,17 +290,17 @@ namespace Vulkan
 		return EResult(vkEnumeratePhysicalDevices(_instance, &deviceCount, _deviceListing));
 	}
 
-	void GetPhysicalDevice_Properties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Properties& _propertiesContainer)
+	inline void GetPhysicalDevice_Properties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Properties& _propertiesContainer)
 	{
 		vkGetPhysicalDeviceProperties(_deviceHandle, (VkPhysicalDeviceProperties*)(&_propertiesContainer));
 	}
 
-	void GetPhysicalDevice_Features(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Features& _featuresContainer)
+	inline void GetPhysicalDevice_Features(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Features& _featuresContainer)
 	{
 		vkGetPhysicalDeviceFeatures(_deviceHandle, (VkPhysicalDeviceFeatures*)&_featuresContainer);
 	}
 
-	uint32 GetPhysicalDevice_NumOf_QueueFamilyProperties(PhysicalDevice::Handle _deviceHandle)
+	inline uint32 GetPhysicalDevice_NumOf_QueueFamilyProperties(PhysicalDevice::Handle _deviceHandle)
 	{
 		uint32 result;
 
@@ -309,7 +309,7 @@ namespace Vulkan
 		return result;
 	}
 
-	void GetPhysicalDevice_QueueFamilyProperties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::QueueFamilyProperties* _familyContainer)
+	inline void GetPhysicalDevice_QueueFamilyProperties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::QueueFamilyProperties* _familyContainer)
 	{
 		uint32 numQueueFamilies;
 
@@ -325,7 +325,7 @@ namespace Vulkan
 		//*_familyContainer = conversionTest;
 	}
 
-	uint32 PhysicalDevice_GetNumOfAvailableExtensions(PhysicalDevice::Handle _deviceHandle)
+	inline uint32 PhysicalDevice_GetNumOfAvailableExtensions(PhysicalDevice::Handle _deviceHandle)
 	{
 		uint32 numExtensions;
 
@@ -334,7 +334,7 @@ namespace Vulkan
 		return numExtensions;
 	}
 
-	void PhysicalDevice_GetAvailableExtensions(PhysicalDevice::Handle _deviceHandle, ExtensionProperties* _extensionPropertiesContainer)
+	inline void PhysicalDevice_GetAvailableExtensions(PhysicalDevice::Handle _deviceHandle, ExtensionProperties* _extensionPropertiesContainer)
 	{
 		uint32 numExtensions;
 
@@ -342,6 +342,4 @@ namespace Vulkan
 
 		vkEnumerateDeviceExtensionProperties(_deviceHandle, nullptr, &numExtensions, (VkExtensionProperties*)(_extensionPropertiesContainer));
 	}
-
-
 }

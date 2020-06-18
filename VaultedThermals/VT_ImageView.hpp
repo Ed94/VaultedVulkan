@@ -51,7 +51,7 @@ namespace Vulkan
 	};
 
 
-	EResult CreateImageView
+	inline EResult CreateImageView
 	(
 		      LogicalDevice::Handle  _deviceHandle,
 		const ImageView::CreateInfo& _creationSpec,
@@ -62,7 +62,7 @@ namespace Vulkan
 		return EResult(vkCreateImageView(_deviceHandle, (VkImageViewCreateInfo*)(&_creationSpec), _allocator, (VkImageView*)(_imageView)));
 	}
 
-	void DestroyImageView
+	inline void DestroyImageView
 	(
 		      LogicalDevice::Handle _deviceHandle,
 		      ImageView::Handle     _imageView   ,

@@ -36,12 +36,12 @@ namespace Vulkan
 	
 	// Functions
 
-	EResult GenerateGlobalLayerProperties(uint32* _numContainer, LayerProperties* _propertiesContainer)
+	inline EResult GenerateGlobalLayerProperties(uint32* _numContainer, LayerProperties* _propertiesContainer)
 	{
 		return EResult(vkEnumerateInstanceLayerProperties(_numContainer, (VkLayerProperties*)(_propertiesContainer)));
 	}
 
-	uint32 GetNumOf_AvailableGlobalLayerProperties()
+	inline uint32 GetNumOf_AvailableGlobalLayerProperties()
 	{
 		uint32 layerCount;
 
@@ -50,7 +50,7 @@ namespace Vulkan
 		return layerCount;
 	}
 
-	EResult GetAvailableGlobalLayerProperties(LayerProperties* _container)
+	inline EResult GetAvailableGlobalLayerProperties(LayerProperties* _container)
 	{
 		uint32 layerCount = GetNumOf_AvailableGlobalLayerProperties();
 

@@ -87,13 +87,13 @@ namespace Vulkan
 	constexpr typename std::enable_if< OS_Platform == EOS_Platform::Windows, 
 	EStructureType>::type OS_SurfaceCreateInfoEnum = EStructureType::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
 
-	typename std::enable_if< OS_Platform == EOS_Platform::Windows, Surface::CreateInfo::
+	inline typename std::enable_if< OS_Platform == EOS_Platform::Windows, Surface::CreateInfo::
 	OS_AppHandle>::type GetOS_AppHandle() 
 	{ 
 		return GetModuleHandle(nullptr); 
 	}
 
-	typename std::enable_if< OS_Platform == EOS_Platform::Windows, 
+	inline typename std::enable_if< OS_Platform == EOS_Platform::Windows, 
 	EResult>::type  CreateSurface
 	(
 		AppInstance::Handle        _appHandle, 
@@ -105,12 +105,12 @@ namespace Vulkan
 		return EResult(vkCreateWin32SurfaceKHR(_appHandle, (VkWin32SurfaceCreateInfoKHR*)(&_createInfo), _allocator, &_surfaceHandle));
 	}
 
-	void DestroySurface(AppInstance::Handle _appHandle, Surface::Handle _surfaceHandle, const AllocationCallbacks* _allocator)
+	inline void DestroySurface(AppInstance::Handle _appHandle, Surface::Handle _surfaceHandle, const AllocationCallbacks* _allocator)
 	{
 		vkDestroySurfaceKHR(_appHandle, _surfaceHandle, _allocator);
 	}
 
-	EResult Surface_CheckPhysicalDeviceSupport
+	inline EResult Surface_CheckPhysicalDeviceSupport
 	(
 		PhysicalDevice::Handle _physDeviceHandle,
 		uint32 _queueFamilyIndex,
@@ -121,12 +121,12 @@ namespace Vulkan
 		return EResult(vkGetPhysicalDeviceSurfaceSupportKHR(_physDeviceHandle, _queueFamilyIndex, _surfaceHandle, &_checkResult));
 	}
 
-	EResult Surface_GetPhysicalDeviceCapabilities(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surface, Surface::Capabilities& _capabilitiesResult)
+	inline EResult Surface_GetPhysicalDeviceCapabilities(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surface, Surface::Capabilities& _capabilitiesResult)
 	{
 		return EResult( vkGetPhysicalDeviceSurfaceCapabilitiesKHR(_deviceHandle, _surface, (VkSurfaceCapabilitiesKHR*)(&_capabilitiesResult) ));
 	}
 
-	uint32 Surface_GetNumOf_AvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
+	inline uint32 Surface_GetNumOf_AvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
 	{
 		uint32 numFormats;
 
@@ -135,7 +135,7 @@ namespace Vulkan
 		return numFormats;
 	}
 
-	EResult Surface_GetAvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, Surface::Format* _formatsContainer)
+	inline EResult Surface_GetAvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, Surface::Format* _formatsContainer)
 	{
 		uint32 numFormats;
 
@@ -144,7 +144,7 @@ namespace Vulkan
 		return EResult( vkGetPhysicalDeviceSurfaceFormatsKHR(_deviceHandle, _surfaceHandle, &numFormats, (VkSurfaceFormatKHR*)(_formatsContainer)) );
 	}
 
-	uint32 Surface_GetNumOf_SupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
+	inline uint32 Surface_GetNumOf_SupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
 	{
 		uint32 numPresentationModes;
 
@@ -153,7 +153,7 @@ namespace Vulkan
 		return numPresentationModes;
 	}
 
-	EResult Surface_GetSupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, EPresentationMode* _presentationModesContainer)
+	inline EResult Surface_GetSupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, EPresentationMode* _presentationModesContainer)
 	{
 		uint32 numPresentationModes;
 

@@ -38,7 +38,7 @@ namespace Vulkan
 	};
 
 
-	EResult ShaderModule_Create
+	inline EResult ShaderModule_Create
 	(
 		LogicalDevice::Handle _deviceHandle, 
 		const ShaderModule::CreateInfo& _creationSpec, 
@@ -49,7 +49,7 @@ namespace Vulkan
 		return EResult(vkCreateShaderModule(_deviceHandle, (VkShaderModuleCreateInfo*)(&_creationSpec), _allocator, &_shaderModule));
 	}
 
-	void ShaderModule_Destory(LogicalDevice::Handle _deviceHandle, ShaderModule::Handle _moduleHandle, const AllocationCallbacks* _allocator)
+	inline void ShaderModule_Destory(LogicalDevice::Handle _deviceHandle, ShaderModule::Handle _moduleHandle, const AllocationCallbacks* _allocator)
 	{
 		return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator);
 	}

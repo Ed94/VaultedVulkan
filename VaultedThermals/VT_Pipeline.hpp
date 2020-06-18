@@ -232,7 +232,7 @@ namespace Vulkan
 		};
 	};
 
-	EResult Pipeline_CreateLayout
+	inline EResult Pipeline_CreateLayout
 	(
 		      LogicalDevice::Handle         _device        ,
 		const Pipeline::Layout::CreateInfo& _creationSpec  ,
@@ -243,7 +243,7 @@ namespace Vulkan
 		return EResult(vkCreatePipelineLayout(_device, (VkPipelineLayoutCreateInfo*)(&_creationSpec), _allocator, &_pipelineLayout) );
 	}
 
-	void Pipeline_DestroyLayout
+	inline void Pipeline_DestroyLayout
 	( 
 		LogicalDevice::Handle _device,
 		Pipeline::Layout::Handle _pipelineLayout,

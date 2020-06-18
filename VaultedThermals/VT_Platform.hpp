@@ -7,19 +7,14 @@
 
 #ifdef _WIN32
 	#ifndef VK_USE_PLATFORM_WIN32_KHR
-
-		#define VK_USE_PLATFORM_WIN32_KHR 
-
-		// I had to do it manually the vulkan header was not seeing the macro definition for some reason...
-		#include <windows.h>
-		#include <vulkan/vulkan_win32.h>
-		
+	#define VK_USE_PLATFORM_WIN32_KHR 
 	#endif
 #endif
 
-
-
+#ifndef VULKAN_BSGUARD
+#define VULKAN_BSGUARD
 #include <vulkan/vulkan.h>
+#endif
 
 
 

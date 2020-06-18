@@ -33,7 +33,6 @@ namespace Vulkan
 
 		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkApplicationInfo.html
 		*/
-		//using ApplicationInformation = VkApplicationInfo;
 		struct AppInfo
 		{
 			      EStructureType SType        ;
@@ -81,7 +80,7 @@ namespace Vulkan
 	};
 
 
-	EResult AppInstance_Create
+	inline EResult AppInstance_Create
 	(
 		const AppInstance::CreateInfo& _appSpec        ,
 		const AllocationCallbacks*     _customAllocator,
@@ -91,7 +90,7 @@ namespace Vulkan
 		return EResult(vkCreateInstance((VkInstanceCreateInfo*)(&_appSpec), _customAllocator, &_handleContainer));
 	}
 
-	void AppInstance_Destory
+	inline void AppInstance_Destory
 	(
 		AppInstance::Handle  _instance ,
 		AllocationCallbacks* _callbacks

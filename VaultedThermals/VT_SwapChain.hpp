@@ -57,7 +57,7 @@ namespace Vulkan
 		}
 	};
 
-	EResult CreateSwapChain
+	inline EResult CreateSwapChain
 	(
 		LogicalDevice::Handle _deviceHandle,
 		const SwapChain::CreateInfo& _creationSpecification,
@@ -68,12 +68,12 @@ namespace Vulkan
 		return EResult(vkCreateSwapchainKHR(_deviceHandle, (VkSwapchainCreateInfoKHR*)(&_creationSpecification), _allocator, (VkSwapchainKHR*)(&_swapChain)));
 	};
 
-	void DestroySwapChain(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChainToDestroy, const AllocationCallbacks* _allocator)
+	inline void DestroySwapChain(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChainToDestroy, const AllocationCallbacks* _allocator)
 	{
 		vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, _allocator);
 	}
 
-	uint32 SwapChain_GetImageCount(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChain)
+	inline uint32 SwapChain_GetImageCount(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChain)
 	{
 		uint32 numImages;
 
@@ -82,7 +82,7 @@ namespace Vulkan
 		return numImages;
 	}
 
-	EResult SwapChain_GetImages
+	inline EResult SwapChain_GetImages
 	(
 		LogicalDevice::Handle _deviceHandle,
 		SwapChain::Handle _swapChain,

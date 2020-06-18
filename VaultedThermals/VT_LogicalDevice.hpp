@@ -68,7 +68,7 @@ namespace Vulkan
 	};
 		
 
-	EResult LogicalDevice_CreateDevice
+	inline EResult LogicalDevice_CreateDevice
 	(
 		      PhysicalDevice::Handle     _physicalDevice,
 		const LogicalDevice::CreateInfo& _createSpec    ,
@@ -79,12 +79,12 @@ namespace Vulkan
 		return EResult(vkCreateDevice(_physicalDevice, (VkDeviceCreateInfo*)(&_createSpec), _allocator, &_device));
 	}
 
-	void LogicalDevice_Destory(LogicalDevice::Handle _handle, const AllocationCallbacks* _allocator)
+	inline void LogicalDevice_Destory(LogicalDevice::Handle _handle, const AllocationCallbacks* _allocator)
 	{
 		vkDestroyDevice(_handle, _allocator);
 	}
 
-	void LogicalDevice_GetQueue(LogicalDevice::Handle _handle, uint32 _queueFamilyIndex, uint32 _queueIndex, LogicalDevice::Queue::Handle& _queueReturn)
+	inline void LogicalDevice_GetQueue(LogicalDevice::Handle _handle, uint32 _queueFamilyIndex, uint32 _queueIndex, LogicalDevice::Queue::Handle& _queueReturn)
 	{
 		vkGetDeviceQueue(_handle, _queueFamilyIndex, _queueIndex, &_queueReturn);
 	}

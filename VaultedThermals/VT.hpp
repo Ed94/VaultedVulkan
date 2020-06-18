@@ -24,13 +24,13 @@ Last Modified: 5/19/2020
 
 namespace Vulkan
 {
-	uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
+	inline uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
 	{
 		return VK_MAKE_VERSION(_major, _minor, _patch);
 	}
 
 	template<typename ReturnType> 
-	typename std::enable_if
+	inline typename std::enable_if
 	<
 		std::bool_constant
 		< 

@@ -1,5 +1,8 @@
 /*
 VaultedThermals Include Interface
+
+Note: I quickly made all the functions inline for now, not sure how I'm going to approach library.
+(If I'm going to be using header only or not)
 */
 
 
