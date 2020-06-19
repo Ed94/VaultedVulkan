@@ -4,13 +4,13 @@ Vaulted Thermals: Platform Specification
 The Vulkan C-API header is included here and platform detection implementation is defined.
 */
 
+
+
 #pragma once
 
 
 
 #pragma region Includes
-
-#include "_foreign/Foreign_ConventionEnforcer.hpp"
 
 
 #ifdef _WIN32
@@ -32,6 +32,12 @@ specified, why this is required.
 	#include <vulkan/vulkan.h>
 
 #endif
+
+// VT
+#include "_foreign/Foreign_Bitmask.hpp"
+#include "_foreign/Foreign_ConventionEnforcer.hpp"
+
+#include "VT_Vaults.hpp"
 
 #pragma endregion Includes
 
@@ -69,7 +75,7 @@ namespace Vulkan
 		struct PlatformTypes_Maker<EOS_Platform::Windows>
 		{
 			using OS_AppHandle    = HINSTANCE;
-			using OS_WindowHandle = HWND;
+			using OS_WindowHandle = HWND     ;
 		};
 
 		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;

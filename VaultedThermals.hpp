@@ -24,9 +24,15 @@ Have support for object model enforcement.
 
 #pragma once
 
+/* NS-0: Defines the vaulting scope used for the various levels of implementation within the library.
+*/ 
+#include "VaultedThermals/VT_Vaults.hpp"
 
+/* NS-1: Backend related definitions for use in implementing the library.
+*/
+#include "VaultedThermals/VT_Backend.hpp"
 
-// NS-1: Platform detection and includes the C-API vulkan header.
+// NS-2: Platform detection and includes the C-API vulkan header.
 #include "VaultedThermals/VT_Platform.hpp"
 
 /* 2: Fundamental Typedefs, Common Object Types, Non-Specification Types.
@@ -35,23 +41,30 @@ https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fu
 */
 #include "VaultedThermals/VT_Types.hpp"
 
-// NS-2: Unsorted global enum definitions.
+// NS-3: Unsorted global enum definitions.
 #include "VaultedThermals/VT_Enums.hpp"
 
-// NS-3: Unsorted constants.
+// NS-4: Unsorted constants.
 #include "VaultedThermals/VT_Constants.hpp"
 
-/* 1: Command function pointers, application instancing.
+/* 3: Command function pointers, application instancing.
 
 https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization
 */
 #include "VaultedThermals/VT_Initalization.hpp"
 
+// 4: Devices and Queues https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues
+
+/* 4.1. Physical Devices 
+
+https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration
+*/
+#include "VaultedThermals/VT_PhysicalDevice.hpp"
+
 
 
 #include "VaultedThermals/VT_Layer.hpp"
 #include "VaultedThermals/VT_Debug.hpp"
-#include "VaultedThermals/VT.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
 #include "VaultedThermals/VT_LogicalDevice.hpp"
 #include "VaultedThermals/VT_Surface.hpp"

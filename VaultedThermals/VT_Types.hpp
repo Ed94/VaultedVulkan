@@ -8,14 +8,14 @@
 #pragma once
 
 
-
+// C++ STI
 #include <cstddef>
 #include <cstdint>
 
-#include "_foreign/Foreign_Bitmask.hpp"
-
+// VT
+#include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
-#include "VT_Constants.hpp"
+#include "VT_Backend.hpp"
 
 
 
@@ -154,8 +154,13 @@ namespace Vulkan
 
 	// TODO: Needs sorting.
 
-	namespace Vault_01
+	namespace Vault_Shared
 	{
+		// These Strings are used throughout the Vulkan API.
+
+		constexpr sint32 Description_MaxSize   = VK_MAX_DESCRIPTION_SIZE   ;   // Used for DescriptionStr definition.
+		constexpr sint32 ExtensionName_MaxSize = VK_MAX_EXTENSION_NAME_SIZE;   // Used for ExtensionNameStr definition.
+
 		using ExtensionNameStr = char[ExtensionName_MaxSize];   // Can hold an extension name.
 		using DescrptionStr    = char[Description_MaxSize  ];   // Can hold a description string.
 
@@ -227,9 +232,6 @@ namespace Vulkan
 			float MinDepth, MaxDepth;
 		};
 
-		
-
-
 		using CullModeFlags = Bitmask<ECullModeFlag, Flags>;
 		using SampleCountFlags = Bitmask<ESampleCount, Flags>;
 		using SampleMask = VkSampleMask;   // TODO: Not sure yet...
@@ -240,6 +242,9 @@ namespace Vulkan
 		{
 			using Handle = VkSampler;
 		};	
+
+
+		constexpr sint32 UUID_Size = VK_UUID_SIZE;
 
 		using UUID = unsigned int[UUID_Size];
 	}

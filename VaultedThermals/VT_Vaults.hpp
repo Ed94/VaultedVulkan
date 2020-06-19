@@ -39,76 +39,78 @@ namespace Vulkan
 	/*
 	Contains meta stuff thats platform specifics etc.
 	*/
-	inline namespace Attic
-	{
-
-	}
+	inline namespace Attic {}
 
 	/*
-	TODO: Look into possibly implementing with the volk library.
+	Contains shared definitions between the vaults.
+	*/
+	namespace Vault_Shared {}
+
+	/*
+	TODO: Look into possibly implementing with the Volk library.
 
 	Meta-Loading Setup
 
 	When the heat at the control gate isn't enough. 
 	*/
-	namespace Vault_MagmaChamber {}
+	namespace Vault_MagmaChamber { using namespace Vault_Shared; }
 
 	/*
 		BackEnd vault for VaultedThermals
 
 		For now only abstracts away OS Platform details and basic meta-structure definitions
 	*/
-	namespace Vault_00 {}
+	namespace Vault_00 { using namespace Vault_Shared; }
 
 	/*
 		1:1 Wrapping of Vulkan API
 	*/
-	namespace Vault_01 {}
+	namespace Vault_01 { using namespace Vault_Shared; }
 
 	/*
 		Low cost procedural repetitive functionality wrapping.
 	*/
-	namespace Vault_02 {}
+	namespace Vault_02 { using namespace Vault_Shared; }
 
 	/*
 		Medium cost procedural, preset implementation wrapping.
 	*/
-	namespace Vault_03 {}
+	namespace Vault_03 { using namespace Vault_Shared; }
 
 	/*
 		Full setup providing procedure implementation.
 
 		(Will have its own device references, queues, layers, etc.)
 	*/
-	namespace Vault_04 {}
+	namespace Vault_04 { using namespace Vault_Shared; }
 
 	/*
 		1:1 Object oriented wrapping of Vulkan API
 	*/
-	namespace Vault_05 {}
+	namespace Vault_05 { using namespace Vault_Shared; }
 
 	/*
 		Low cost Object-oriented repetitive functionality wrapping.
 	*/
-	namespace Vault_06 {}
+	namespace Vault_06 { using namespace Vault_Shared; }
 
 	/*
 		Medium cost Object-oriented preset implementation wrapping.
 	*/
-	namespace Vault_07 {}
+	namespace Vault_07 { using namespace Vault_Shared; }
 
 	/*
 		Full setup providing object-oriented implementation.
 	*/
-	namespace Vault_08 {}
+	namespace Vault_08 { using namespace Vault_Shared; }
 
 	/*
 	Reserved
 	*/
-	namespace Vault_09 {}
+	namespace Vault_09 { using namespace Vault_Shared; }
 
 	/*
 	Reserved
 	*/
-	namespace Vault_10 {}
+	namespace Vault_10 { using namespace Vault_Shared; }
 }
