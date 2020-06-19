@@ -11,7 +11,8 @@ This library aims to have full documentation/specificaton within its comments an
 
 (Its also to help me learn Vulkan as I wanted to learn a low-level GPU API)
 
-Documentation is currently within the source comments and later on when I get the chance a Doxygen.
+Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/index.html
+(Documentation is updated ussually with implementation or if not during refactoring periods)
 
 The scope of this library is sort of outlined in the VT_Vaults.hpp and VaultedThermals.hpp
 

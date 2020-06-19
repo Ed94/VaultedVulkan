@@ -43,7 +43,7 @@ namespace VaultedThermals
 {
 	/** @namespace Attic
 
-		@brief Contains any global 
+		@brief Contains any misc global definitions.
 	*/
 	inline namespace Attic {}
 
