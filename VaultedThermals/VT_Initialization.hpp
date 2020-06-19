@@ -44,7 +44,7 @@ namespace VaultedThermals
 		{
 			using Handle = VkInstance;   ///< VkInstance - Opaque handle to an instance object
 
-			using CreateFlags = Bitmask<EUndefined, Flags>;   ///< VkInstanceCreateFlags - Reserved for future use
+			using CreateFlags = Bitmask<EUndefined, VkInstanceCreateFlags>;   ///< VkInstanceCreateFlags - Reserved for future use
 
 			/**
 			@brief 

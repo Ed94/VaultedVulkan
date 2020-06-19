@@ -37,6 +37,7 @@ specified, why this is required.
 
 // C++
 #include <stdexcept>
+#include <typeinfo>
 
 // VT
 #include "_foreign/Foreign_Bitmask.hpp"

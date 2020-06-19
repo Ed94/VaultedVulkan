@@ -81,13 +81,13 @@ namespace VaultedThermals
 	<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects">Common Object Types Specification</a>
 	*/
 
-	/** 
-	@ingroup Common_Object_types
-	@{
-	*/
-
 	namespace Vault_01
 	{
+		/** 
+		@addtogroup Common_Object_types
+		@{
+		*/
+
 		/** 
 		@struct Offset2D
 
@@ -174,11 +174,11 @@ namespace VaultedThermals
 			Offset2D Offset;
 			Extent2D Extent;
 		};
-	}
 
-	/**
-	 * @}
-	 */
+		/**
+		* @}
+		*/
+	}
 
 	#pragma endregion Common Object Types
 
@@ -210,8 +210,8 @@ namespace VaultedThermals
 
 		using Flags = VkFlags;   ///< Used to represent bitmasks for Vulkan flag types.
 
-		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   ///< TODO: Add comment on what this is for.
-		using ImageUsageFlags   = Bitmask<EImageUsage, Flags>;   ///< Bitmask specifying intended usage of an image.
+		using CallbackDataFlags = Bitmask<EUndefined , Flags            >;   ///< TODO: Add comment on what this is for.
+		using ImageUsageFlags   = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
 
 		// Pointers
 

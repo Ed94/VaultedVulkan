@@ -22,7 +22,7 @@ A physical device usually represents a single complete implementation of Vulkan
 #include "VT_Types.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Initalization.hpp"
+#include "VT_Initialization.hpp"
 #include "VT_Queues.hpp"
 
 
@@ -45,7 +45,7 @@ namespace VaultedThermals
 			using Size    = VkDeviceSize     ;   //< https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceSize.html
 
 			static constexpr
-			Handle NullHandle = Handle(VK_NULL_HANDLE);
+			Handle NullHandle = Handle(EHandle::Null);
 
 			/**
 			@brief Supported physical device types.
@@ -386,7 +386,7 @@ namespace VaultedThermals
 				return result;
 			}
 
-			/*
+			/**
 			@brief Provides the number of available queue family  properties.
 			*/
 			static uint32 GetNumOfQueueFamilyProperties(PhysicalDevice::Handle _deviceHandle)
@@ -398,7 +398,7 @@ namespace VaultedThermals
 				return result;
 			}
 
-			/*
+			/**
 			@brief Provides the queue families for the respective device.
 			*/
 			static void GetQueueFamilyProperties(PhysicalDevice::Handle _deviceHandle, Vault_01::QueueFamilyProperties* _familyContainer)
@@ -410,7 +410,7 @@ namespace VaultedThermals
 				ReportQueueFamilyProperties(_deviceHandle, &numQueueFamilies, _familyContainer);
 			}
 
-			/*
+			/** 
 			@brief Provides the number of available extensions.
 			*/
 			static uint32 GetNumOfAvailableExtensions(Handle _deviceHandle)
@@ -424,7 +424,7 @@ namespace VaultedThermals
 				return numExtensions;
 			}
 
-			/*
+			/** 
 			@brief Provides the available extensions.
 			*/
 			static EResult GetAvailableExtensions(Handle _deviceHandle, Vault_01::ExtensionProperties* _extensionPropertiesContainer)

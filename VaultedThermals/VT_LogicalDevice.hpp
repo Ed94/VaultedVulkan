@@ -1,91 +1,111 @@
-/*
+/** @file VT_LogicalDevice.hpp
 
+@brief Vaulted Thermals: Logical Device
 */
+
 
 
 #pragma once
 
 
 
+#include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
-#include "VT_Enums.hpp"
+#include "VT_Backend.hpp"
 #include "VT_Types.hpp"
+#include "VT_Enums.hpp"
+#include "VT_Constants.hpp"
+#include "VT_Initialization.hpp"
+#include "VT_Queues.hpp"
 #include "VT_PhysicalDevice.hpp"
 
 
-#include <typeinfo>
 
-
-
-namespace Vulkan
+namespace VaultedThermals
 {
-	struct LogicalDevice
+	namespace Vault_01
 	{
-		using Handle = VkDevice;
-
-		using CreateFlags = Bitmask<EUndefined, Flags>;
-
-		struct Queue
+		/**
+		 * @brief Represent logical connections to physical devices. 
+		 * 
+		 * @details
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#devsandqueues-devices">Specification</a> 
+		 */
+		struct LogicalDevice
 		{
-			using Handle = VkQueue;
+			using Handle = VkDevice;   ///< Opaque handle to a device object.  
 
-			struct CreateInfo
+			using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateInfo.html">Specification</a> 
+			 */
+			struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceCreateInfo>
 			{
-				using CreateFlags = Bitmask<ELogicalDeviceQueueCreateFlag, Flags>;
-
-				EStructureType              SType;
-				const void*                 Extension;
-				CreateFlags                 Flags;
-				uint32                      QueueFamilyIndex;
-				uint32                      QueueCount;
-				const float*                QueuePriorities;
-
-				operator VkDeviceQueueCreateInfo()
-				{
-					return *(VkDeviceQueueCreateInfo*)(this);
-				}
+					  EType                     SType                ;
+				const void*                     Extension            ;
+					  CreateFlags               Flags                ;
+					  uint32                    QueueCreateInfoCount ;
+				const Queue::CreateInfo*        QueueCreateInfos     ;
+					  uint32                    EnabledLayerCount    ;
+				      RoSCtr_roArray_Array      EnabledLayerNames    ;
+					  uint32                    EnabledExtensionCount;
+				      RoSCtr_roArray_Array      EnabledExtensionNames;
+				const PhysicalDevice::Features* EnabledFeatures      ;
 			};
-		};
 
-		struct CreateInfo
-		{
-				  EStructureType            SType                ;
-			const void*                     Extension            ;
-			      CreateFlags               Flags                ;
-				  uint32                    QueueCreateInfoCount ;
-			const Queue::CreateInfo*        QueueCreateInfos     ;
-				  uint32                    EnabledLayerCount    ;
-			RoSCtr_roArray_Array            EnabledLayerNames    ;
-				  uint32                    EnabledExtensionCount;
-			RoSCtr_roArray_Array            EnabledExtensionNames;
-			const PhysicalDevice::Features* EnabledFeatures      ;
-
-			operator VkDeviceCreateInfo() const
+			/**
+			 * @brief A logical device is created as a connection to a physical device.
+			 * 
+			 * \param _physicalDevice
+			 * \param _createSpec
+			 * \param _allocator
+			 * \param _device
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      PhysicalDevice::Handle     _physicalDevice,
+				const LogicalDevice::CreateInfo& _createSpec    ,
+				const AllocationCallbacks*       _allocator     ,
+				      LogicalDevice::Handle&     _device
+			)
 			{
-				return *(VkDeviceCreateInfo*)(this);
+				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), _allocator, &_device));
+			}
+
+			/**
+			 * @brief Destroy a logical device.
+			 * 
+			 * @details
+			 * To ensure that no work is active on the device, vkDeviceWaitIdle can be used to gate the destruction of the device. 
+			 * Prior to destroying a device, an application is responsible for destroying/freeing any Vulkan objects that were created 
+			 * using that device as the first parameter of the corresponding vkCreate* or vkAllocate* command.
+			 * 
+			 * \param _handle
+			 * \param _allocator
+			 */
+			static void Destory(LogicalDevice::Handle _handle, const AllocationCallbacks* _allocator)
+			{
+				vkDestroyDevice(_handle, _allocator);
+			}
+
+			/**
+			 * @brief Get a queue handle from a device.
+			 * 
+			 * @details
+			 * vkGetDeviceQueue must only be used to get queues that were created with the flags parameter of VkDeviceQueueCreateInfo set to zero. 
+			 * To get queues that were created with a non-zero flags parameter use vkGetDeviceQueue2.
+			 * 
+			 * \param _handle
+			 * \param _queueFamilyIndex
+			 * \param _queueIndex
+			 * \param _queueReturn
+			 */
+			static void GetQueue(LogicalDevice::Handle _handle, uint32 _queueFamilyIndex, uint32 _queueIndex, Queue::Handle& _queueReturn)
+			{
+				vkGetDeviceQueue(_handle, _queueFamilyIndex, _queueIndex, &_queueReturn);
 			}
 		};
-	};
-		
-
-	inline EResult LogicalDevice_CreateDevice
-	(
-		      PhysicalDevice::Handle     _physicalDevice,
-		const LogicalDevice::CreateInfo& _createSpec    ,
-		const AllocationCallbacks*       _allocator     ,
-		      LogicalDevice::Handle&     _device
-	)
-	{
-		return EResult(vkCreateDevice(_physicalDevice, (VkDeviceCreateInfo*)(&_createSpec), _allocator, &_device));
-	}
-
-	inline void LogicalDevice_Destory(LogicalDevice::Handle _handle, const AllocationCallbacks* _allocator)
-	{
-		vkDestroyDevice(_handle, _allocator);
-	}
-
-	inline void LogicalDevice_GetQueue(LogicalDevice::Handle _handle, uint32 _queueFamilyIndex, uint32 _queueIndex, LogicalDevice::Queue::Handle& _queueReturn)
-	{
-		vkGetDeviceQueue(_handle, _queueFamilyIndex, _queueIndex, &_queueReturn);
 	}
 }

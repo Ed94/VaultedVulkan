@@ -82,7 +82,7 @@ The library single include header.
 #include "VaultedThermals/VT_Types.hpp"
 #include "VaultedThermals/VT_Enums.hpp"
 #include "VaultedThermals/VT_Constants.hpp"
-#include "VaultedThermals/VT_Initalization.hpp"
+#include "VaultedThermals/VT_Initialization.hpp"
 #include "VaultedThermals/VT_Queues.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
 

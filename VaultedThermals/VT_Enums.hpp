@@ -739,8 +739,8 @@ namespace VaultedThermals
 
 		SpecifyBitmaskable(ESampleCount);
 
-		/*
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html
+		/**
+		@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html">Specification</a> 
 		*/
 		enum class EQueueFlag : uint32_t
 		{
