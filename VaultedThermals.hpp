@@ -1,29 +1,44 @@
-/**
+/** 
+@file VaultedThermals.hpp
+
 VaultedThermals Include Interface
 
 
 
-Summary:
-This header acts as a table of contents for the library.
+@brief
+{
+	This header acts as a table of contents for the library.
 
-The libraries files are organized based on the Khronos Vulkan Specification manual:
-https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html
+	The libraries files are organized based on the Khronos Vulkan Specification manual:
+	https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html
+}
 
-Each file Starting from the number 2 represents a chapter/category of the manual.
-Files may have non-specification within them.
+@details
+{
+	Each file Starting from the number 2 represents a chapter/category of the manual.
+	Files may have non-specification within them.
 
-Content related directly to the Vulkan API will have a link to its respective specification.
+	Content related directly to the Vulkan API will have a link to its respective specification.
 
-Files that do not follow specification are labeled with an NS-# in their comment below.
+	Files that do not follow specification are labeled with an NS-# in their comment below.
 
-Features that would be nice to have:
-Have support for object model enforcement. 
+	Features that would be nice to have:
+	Have support for object model enforcement. 
+}
 */
 
 
 
 #pragma once
 
+
+
+
+/**
+ * @addtogroup LibraryOutline
+ * @{
+ * 
+ */
 
 
 
@@ -69,6 +84,13 @@ https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#de
 https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration
 */
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
+
+
+
+/**
+ * @}
+ * .
+ */
 
 
 
