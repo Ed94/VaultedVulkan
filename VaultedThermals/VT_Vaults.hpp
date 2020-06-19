@@ -63,7 +63,7 @@ namespace VaultedThermals
 
 	/** @namespace Vault_00
 
-		@brief BackEnd vault for VaultedThermals
+		@brief Backend vault for VaultedThermals
 
 		@details For now only abstracts away OS Platform details and basic meta-structure definitions.
 	*/

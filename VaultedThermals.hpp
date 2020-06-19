@@ -36,14 +36,14 @@ The library single include header.
  * 
  * @subsection OutlineSec Outline
  * 
- * ## NS-0: VT_Vaults.hpp
+ * ## NS-1: VT_Vaults.hpp
  * Defines the vaulting scope used for the various levels of implementation within the library.
  * 
  * 
- * ## NS-1 VT_Platform.hpp
+ * ## NS-2: VT_Platform.hpp
  * Platform detection and includes the C-API vulkan header.
  * 
- * ## NS-2: VT_Backend.hpp
+ * ## NS-3: VT_Backend.hpp
  * NS-1: Backend related definitions for use in implementing the library.
  * 
  * ## 2: VT_Types.hpp
@@ -51,10 +51,10 @@ The library single include header.
  * 
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals">Fundamentals Specification</a>
  * 
- * ## NS-3 VT_Enums.hpp
+ * ## NS-4: VT_Enums.hpp
  * Unsorted global enum definitions.
  * 
- * ## NS-4 VT_Constants.hpp
+ * ## NS-5: VT_Constants.hpp
  * Unsorted constants.
  * 
  * ## 3: VT_Initialization.hpp
@@ -79,10 +79,15 @@ The library single include header.
  * 
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#devsandqueues-devices">Logical Device Specification</a> 
  * 
- * ## EX: VT_Surface.hpp
+ * ## EX-1: VT_Surface.hpp
  * Window Surface
  * 
- * <a href="https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Window_surface">Surface Detail (From tutorial due to lack of specification)</a> 
+ * <a href="https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Window_surface">Surface Guide (From tutorial due to lack of specification)</a> 
+ * 
+ * ## EX-2: VT_SwapChain.hpp
+ * Swap Chain
+ * 
+ *  
  */
 
 

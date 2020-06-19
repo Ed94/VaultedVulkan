@@ -12,8 +12,18 @@
 #include "VT_Types.hpp"
 
 
-namespace Vulkan
+
+namespace VaultedThermals
 {
+	namespace Vault_01
+	{
+
+	}
+
+	/**
+	 * @brief An object that represents an image subresource range of a specific image, 
+	 * and state that controls how the contents are interpreted.
+	 */
 	struct ImageView
 	{
 		using AspectFlags = Bitmask<EImageAspect, Flags>;

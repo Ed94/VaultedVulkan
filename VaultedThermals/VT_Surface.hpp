@@ -18,6 +18,7 @@
 #include "VT_Queues.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Resource.hpp"
 
 
 

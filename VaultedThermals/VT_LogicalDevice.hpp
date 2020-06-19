@@ -108,4 +108,9 @@ namespace VaultedThermals
 			}
 		};
 	}
+
+	namespace Vault_02
+	{
+		using Vault_01::LogicalDevice;
+	}
 }
