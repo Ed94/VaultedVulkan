@@ -24,6 +24,9 @@ Have support for object model enforcement.
 
 #pragma once
 
+
+
+
 /* NS-0: Defines the vaulting scope used for the various levels of implementation within the library.
 */ 
 #include "VaultedThermals/VT_Vaults.hpp"
@@ -54,6 +57,12 @@ https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#in
 #include "VaultedThermals/VT_Initalization.hpp"
 
 // 4: Devices and Queues https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues
+
+/* 4.3. Queues 
+
+https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-queues
+*/
+#include "VaultedThermals/VT_Queues.hpp"
 
 /* 4.1. Physical Devices 
 

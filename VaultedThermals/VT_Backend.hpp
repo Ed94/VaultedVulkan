@@ -15,7 +15,7 @@ Contains implementation related to library backend.
 
 
 
-namespace Vulkan
+namespace VaultedThermals
 {
 	namespace Vault_00
 	{
@@ -25,7 +25,9 @@ namespace Vulkan
 		template<typename VulkanType>
 		struct VKStruct_Base
 		{
-			using VkType = VulkanType;
+			// TODO: Finish making the proper enum...
+			using EType  = VkStructureType;
+			using VkType = VulkanType     ;
 
 			operator VulkanType*()
 			{

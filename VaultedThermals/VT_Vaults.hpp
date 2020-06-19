@@ -34,7 +34,7 @@ Note: All non-vaulted implementation is in the Attic.
 
 
 
-namespace Vulkan
+namespace VaultedThermals
 {
 	/*
 	Contains meta stuff thats platform specifics etc.
@@ -44,7 +44,7 @@ namespace Vulkan
 	/*
 	Contains shared definitions between the vaults.
 	*/
-	namespace Vault_Shared {}
+	namespace Corridors {}
 
 	/*
 	TODO: Look into possibly implementing with the Volk library.
@@ -53,64 +53,64 @@ namespace Vulkan
 
 	When the heat at the control gate isn't enough. 
 	*/
-	namespace Vault_MagmaChamber { using namespace Vault_Shared; }
+	namespace Vault_MagmaChamber { using namespace Corridors; }
 
 	/*
 		BackEnd vault for VaultedThermals
 
 		For now only abstracts away OS Platform details and basic meta-structure definitions
 	*/
-	namespace Vault_00 { using namespace Vault_Shared; }
+	namespace Vault_00 { using namespace Corridors; }
 
 	/*
 		1:1 Wrapping of Vulkan API
 	*/
-	namespace Vault_01 { using namespace Vault_Shared; }
+	namespace Vault_01 { using namespace Corridors; }
 
 	/*
 		Low cost procedural repetitive functionality wrapping.
 	*/
-	namespace Vault_02 { using namespace Vault_Shared; }
+	namespace Vault_02 { using namespace Corridors; }
 
 	/*
 		Medium cost procedural, preset implementation wrapping.
 	*/
-	namespace Vault_03 { using namespace Vault_Shared; }
+	namespace Vault_03 { using namespace Corridors; }
 
 	/*
 		Full setup providing procedure implementation.
 
 		(Will have its own device references, queues, layers, etc.)
 	*/
-	namespace Vault_04 { using namespace Vault_Shared; }
+	namespace Vault_04 { using namespace Corridors; }
 
 	/*
 		1:1 Object oriented wrapping of Vulkan API
 	*/
-	namespace Vault_05 { using namespace Vault_Shared; }
+	namespace Vault_05 { using namespace Corridors; }
 
 	/*
 		Low cost Object-oriented repetitive functionality wrapping.
 	*/
-	namespace Vault_06 { using namespace Vault_Shared; }
+	namespace Vault_06 { using namespace Corridors; }
 
 	/*
 		Medium cost Object-oriented preset implementation wrapping.
 	*/
-	namespace Vault_07 { using namespace Vault_Shared; }
+	namespace Vault_07 { using namespace Corridors; }
 
 	/*
 		Full setup providing object-oriented implementation.
 	*/
-	namespace Vault_08 { using namespace Vault_Shared; }
+	namespace Vault_08 { using namespace Corridors; }
 
 	/*
 	Reserved
 	*/
-	namespace Vault_09 { using namespace Vault_Shared; }
+	namespace Vault_09 { using namespace Corridors; }
 
 	/*
 	Reserved
 	*/
-	namespace Vault_10 { using namespace Vault_Shared; }
+	namespace Vault_10 { using namespace Corridors; }
 }

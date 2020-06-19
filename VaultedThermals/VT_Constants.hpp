@@ -17,10 +17,10 @@ Vaulted Thermals: Constants
 
 
 
-namespace Vulkan
+namespace VaultedThermals
 {
 	//TODO: Move constants based on specification to their respective file if possible.
-	namespace Vault_Shared
+	namespace Corridors
 	{
 		constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
 		constexpr RoCStr Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;

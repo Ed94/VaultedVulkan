@@ -19,7 +19,7 @@
 
 
 
-namespace Vulkan
+namespace VaultedThermals
 {
 	#pragma region Global Typedefs
 	// Defines commonly used types.
@@ -154,7 +154,7 @@ namespace Vulkan
 
 	// TODO: Needs sorting.
 
-	namespace Vault_Shared
+	namespace Corridors
 	{
 		// These Strings are used throughout the Vulkan API.
 
@@ -169,7 +169,6 @@ namespace Vulkan
 		using Flags = VkFlags;   // Used to represent bitmasks for Vulkan flag types.
 
 		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   // TODO: Add comment on what this is for.
-		using QueueFlags        = Bitmask<EQueueFlag , Flags>;   // Bitmask specifying capabilities of queues in a queue family.
 		using ImageUsageFlags   = Bitmask<EImageUsage, Flags>;   // Bitmask specifying intended usage of an image.
 
 		// Pointers

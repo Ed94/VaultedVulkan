@@ -33,17 +33,22 @@ specified, why this is required.
 
 #endif
 
+
+// C++
+#include <stdexcept>
+
 // VT
 #include "_foreign/Foreign_Bitmask.hpp"
 #include "_foreign/Foreign_ConventionEnforcer.hpp"
 
 #include "VT_Vaults.hpp"
 
+
 #pragma endregion Includes
 
 
 
-namespace Vulkan
+namespace VaultedThermals
 {
 	namespace Vault_00
 	{

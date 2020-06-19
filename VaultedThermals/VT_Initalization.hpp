@@ -9,13 +9,19 @@ https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#in
 #pragma once
 
 
+
+
+
+// VT
 #include "VT_Platform.hpp"
-#include "VT_Enums.hpp"
+#include "VT_Backend.hpp"
 #include "VT_Types.hpp"
+#include "VT_Enums.hpp"
+#include "VT_Constants.hpp"
 
 
 
-namespace Vulkan
+namespace VaultedThermals
 {
 	#pragma region Application Instancing
 
@@ -45,7 +51,7 @@ namespace Vulkan
 			*/
 			struct AppInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
 			{
-				EStructureType SType        ;
+				EType          SType        ;
 				const void*    Extension    ;
 				RoCStr         AppName      ;
 				uint32         AppVersion   ;
@@ -61,7 +67,7 @@ namespace Vulkan
 			*/
 			struct CreateInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
 			{
-				EStructureType       SType                ;
+				EType                SType                ;
 				const void*          Extension            ;
 				CreateFlags          Flags                ;
 				const AppInfo*       AppInfo              ;
@@ -103,6 +109,11 @@ namespace Vulkan
 		};
 	}
 
+	namespace Vault_02
+	{
+		using Vault_01::AppInstance;
+	}
+
 	namespace Vault_05
 	{
 		/*
@@ -126,7 +137,9 @@ namespace Vulkan
 				creationSpec = _creationSpec;
 				allocator    = nullptr      ;
 
-				Vault_01::AppInstance::Create(creationSpec, allocator, handle);
+				EResult&& result = Vault_01::AppInstance::Create(creationSpec, allocator, handle);
+
+				if (result != EResult::Success) throw std::runtime_error("Failed to create application instance.");
 			}
 
 			void Create(const AppInstance::CreateInfo& _creationSpec, AllocationCallbacks* _allocator)
@@ -134,7 +147,9 @@ namespace Vulkan
 				creationSpec = _creationSpec;
 				allocator    = _allocator   ;
 
-				Vault_01::AppInstance::Create(creationSpec, allocator, handle);
+				EResult&& result = Vault_01::AppInstance::Create(creationSpec, allocator, handle);
+
+				if (result != EResult::Success) throw std::runtime_error("Failed to create application instance.");
 			}
 
 			void Destroy()

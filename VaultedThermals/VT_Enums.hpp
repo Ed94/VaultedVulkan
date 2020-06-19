@@ -14,9 +14,9 @@ Vaulted Thermals: Enumerations
 
 
 //TODO: Move enums fork based on specification to their respective file if possible.
-namespace Vulkan
+namespace VaultedThermals
 {
-    namespace Vault_Shared
+    namespace Corridors
     {
 		/*
 		Necessary for Bitmasks in the Vulkan specification that are not defined but reserved for future use.
@@ -140,10 +140,6 @@ namespace Vulkan
 			Error_KHR_InvalidOpaqueCaptureAddress                 = VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS_KHR          ,
 			Error_Extension_PipelineCompileRequired               = VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT
 		};
-
-
-		// TODO: Finish making the proper enum...
-		using EStructureType = VkStructureType;
 
 		namespace TODO
 		{
@@ -715,14 +711,7 @@ namespace Vulkan
 
 		SpecifyBitmaskable(EDebugUtilities_MessageType);
 
-		enum class EPhysicalDeviceType : uint32_t
-		{
-			Other          = VK_PHYSICAL_DEVICE_TYPE_OTHER         ,
-			IntergratedGPU = VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU,
-			DiscreteGPU    = VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU  ,
-			VirtualGPU     = VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU   ,
-			CPU            = VK_PHYSICAL_DEVICE_TYPE_CPU
-		};
+		
 
 		enum class ESampleCount : uint32_t
 		{
