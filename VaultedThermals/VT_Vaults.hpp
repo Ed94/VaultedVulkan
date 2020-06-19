@@ -1,4 +1,6 @@
-/*
+/* @file VT_Vaults.hpp
+
+@brief
 Vaulted Thermals: Vault Definitions
 
 To enable a level implementation, create a macro definition:
@@ -17,6 +19,8 @@ Vault_07
 Vault_08
 Vault_09
 Vault_10
+
+@details
 
 Important: Higher numbered vaults may require a lower level vault to be opened. 
 If the vault is not open, it will define the open definition itself implicitly.
@@ -37,21 +41,23 @@ Note: All non-vaulted implementation is in the Attic.
 namespace VaultedThermals
 {
 	/** @namespace Attic
-	Contains meta stuff thats platform specifics etc.
+
+		@brief Contains meta stuff thats platform specifics etc.
 	*/
 	inline namespace Attic {}
 
-	/** @namespace
-	Contains shared definitions between the vaults.
+	/** @namespace Corridors
+
+		@brief Contains shared definitions between the vaults.
 	*/
 	namespace Corridors {}
 
 	/** @namespace Vault_MagmaChamber
-	TODO: Look into possibly implementing with the Volk library.
+		@todo Look into possibly implementing with the Volk library.
 
-	Meta-Loading Setup
+		@brief Meta-Loading Setup
 
-	When the heat at the control gate isn't enough. 
+		@details When the heat at the control gate isn't enough. 
 	*/
 	namespace Vault_MagmaChamber { using namespace Corridors; }
 
@@ -63,12 +69,14 @@ namespace VaultedThermals
 	namespace Vault_00 { using namespace Corridors; }
 
 	/** @namespace Vault_01
-	*	1:1 Wrapping of Vulkan API
+	*
+	*	@brief 1:1 Wrapping of Vulkan API
 	*/
 	namespace Vault_01 { using namespace Corridors; }
 
-	/*
-		Low cost procedural repetitive functionality wrapping.
+	/** @namespace Vault_02
+
+		@brief Low cost procedural repetitive functionality wrapping.
 	*/
 	namespace Vault_02 { using namespace Corridors; }
 

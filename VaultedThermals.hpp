@@ -5,26 +5,13 @@ VaultedThermals Include Interface
 
 
 
-@brief
-{
-	This header acts as a table of contents for the library.
+@brief 
+    The library single include header.
 
-	The libraries files are organized based on the Khronos Vulkan Specification manual:
-	https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html
-}
+	
 
 @details
-{
-	Each file Starting from the number 2 represents a chapter/category of the manual.
-	Files may have non-specification within them.
-
-	Content related directly to the Vulkan API will have a link to its respective specification.
-
-	Files that do not follow specification are labeled with an NS-# in their comment below.
-
-	Features that would be nice to have:
-	Have support for object model enforcement. 
-}
+	
 */
 
 
@@ -35,14 +22,27 @@ VaultedThermals Include Interface
 
 
 /**
- * @addtogroup LibraryOutline
- * @{
+ * @page LibraryOutline 
  * 
+ * @tableofcontents
+ *  The libraries files are organized based on the Khronos Vulkan Specification manual:
+ *  @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html
+ * 
+ * @section Guide:
+ * 	 Each file Starting from the number 2 represents a chapter/category of the manual.
+ *  Files may have non-specification within them.
+ * 
+ *  Content related directly to the Vulkan API will have a link to its respective specification.
+ * 
+ *  Files that do not follow specification are labeled with an NS-# in their comment below.
+ * 
+ *  Features that would be nice to have:
+ *  Have support for object model enforcement.
  */
 
 
 
-/** NS-0: Defines the vaulting scope used for the various levels of implementation within the library.
+/** Defines the vaulting scope used for the various levels of implementation within the library.
 */ 
 #include "VaultedThermals/VT_Vaults.hpp"
 
