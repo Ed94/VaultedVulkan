@@ -1,7 +1,7 @@
 /*
 Convention Enforcer
 
-Last Modfied: 5/21/2020
+
 
 A macro tool for defining Enforcers for a template calling convention.
 
@@ -18,8 +18,8 @@ C++17
 
 #ifndef CONVENTION_ENFORCER_H
 
-	#define CONVENTION_ENFORCER_H
 
+	#define CONVENTION_ENFORCER_H
 
 
 	template <class ID>
@@ -37,9 +37,9 @@ C++17
 																					 \
 		template																	 \
 		<																			 \
-		typename ReturnType,                                                         \
-		typename... ParameterTypes,                                                  \
-		ReturnType(*FunctionType)(ParameterTypes...)                                 \
+			typename    ReturnType    ,                                              \
+			typename... ParameterTypes,                                              \
+			ReturnType(*FunctionType)(ParameterTypes...)                             \
 		>											                                 \
 		struct Enforcer_CallMaker<ReturnType(ParameterTypes...), FunctionType>       \
 		{																		     \
@@ -56,7 +56,7 @@ C++17
 
 	template
 	<
-		class ID,
+		class    ID          ,
 		typename FunctionType,
 		FunctionType& _functionRef
 	>
@@ -65,6 +65,9 @@ C++17
 		return &(EnforcementSet<ID>::template Enforcer_CallMaker<FunctionType, &_functionRef>::Call);
 	};
 
+	/*
+	Ease of use macro to call the Enforcer_Caller for the defined API convention.
+	*/
 	#define EnforceConvention(__API_NAME, __FUNCTION)               \
 	Enforcer_Caller<__API_NAME, decltype(__FUNCTION), __FUNCTION>();
 

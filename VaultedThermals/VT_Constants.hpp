@@ -1,5 +1,5 @@
 /*
-
+Vaulted Thermals: Constants
 */
 
 
@@ -8,22 +8,24 @@
 
 
 
+// VT
+#include "VT_Vaults.hpp"
+#include "VT_Backend.hpp"
 #include "VT_Platform.hpp"
+#include "VT_Types.hpp"
+#include "VT_Enums.hpp"
 
 
 
-namespace Vulkan
+namespace VaultedThermals
 {
-	constexpr const char* ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
-	constexpr const char* Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;
+	//TODO: Move constants based on specification to their respective file if possible.
+	namespace Corridors
+	{
+		constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
+		constexpr RoCStr Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;
 
+		constexpr void* NullHandle = VK_NULL_HANDLE;
 
-	constexpr int ExtensionName_MaxSize = VK_MAX_EXTENSION_NAME_SIZE;
-	constexpr int Description_MaxSize   = VK_MAX_DESCRIPTION_SIZE   ;
-
-	constexpr int PhysicalDevice_MaxNameSize = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
-
-	constexpr int UUID_Size = VK_UUID_SIZE;
-
-	using UUID = unsigned int[UUID_Size];
+	}
 }

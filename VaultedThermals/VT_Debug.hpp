@@ -12,6 +12,9 @@
 
 namespace Vulkan
 {
+	// Pointer to the Create Debug Messenger Command.
+	using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
+
 	constexpr const char* Extension_DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME;
 
 	struct Label

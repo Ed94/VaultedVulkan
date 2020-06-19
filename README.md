@@ -16,5 +16,3 @@ Documentation is currently within the source comments and later on when I get th
 The scope of this library is sort of outlined in the VT_Vaults.hpp and VaultedThermals.hpp
 
 My current intentions is to get this going as far as I like in conjunction with following various vulkan guides, and making my engine mvp. After that is done, this will be pubically released with some sort of open source license, and I will most likely stop maintaining it unless I decide to use it for another project.
-
-
