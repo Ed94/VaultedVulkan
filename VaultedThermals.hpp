@@ -16,11 +16,10 @@ The library single include header.
 /**
  * @page LibraryOutline 
  * 
- * The libraries files are organized based on the Khronos Vulkan Specification manual:
- * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html">Vulkan Specification</a>  
- * 
- * 
  * @section GuideSec Guide
+ * The libraries files are organized based on the Khronos Vulkan Specification manual:
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html">Vulkan Specification</a>
+ *
  * Each file Starting from the number 2 represents a chapter/category of the manual.
  * Files may have non-specification within them.
  * 
@@ -45,9 +44,10 @@ The library single include header.
  * ## NS-2 VT_Platform.hpp
  * Platform detection and includes the C-API vulkan header.
  * 
- * ## 2: VT_Types
+ * ## 2: VT_Types.hpp
  * Fundamental Typedefs, Common Object Types, Non-Specification Types.
- * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals
+ * 
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals">Fundamentals Specification</a>
  * 
  * ## NS-3 VT_Enums.hpp
  * Unsorted global enum definitions.
@@ -57,17 +57,20 @@ The library single include header.
  * 
  * ## 3: VT_Initialization
  * Command function pointers, application instancing.
- * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization
+ * 
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization">Initialization Specification</a>
  * 
  * ## 4: Devices and Queues
  * 
  * ## 4.3: 
  * Queues
- * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-queues
+ * 
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-queues">Queues Specification</a>
  * 
  * ## 4.1:
  * Physical Devices
- * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration 
+ *
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Physical Device Specification</a>
  */
 
 
