@@ -1,3 +1,11 @@
+/**
+@file VT_Queues.hpp
+
+@brief Vaulted Thermals: Queues
+*/
+
+
+
 #pragma once
 
 
@@ -20,14 +28,12 @@ namespace VaultedThermals
 		struct Queue
 		{
 			using Handle = VkQueue;
-
-			
 		};
 
-		/*
-		A set of queues that have common properties and support the same functionality.
+		/**
+		@brief A set of queues that have common properties and support the same functionality.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFamilyProperties.html
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFamilyProperties.html">Specification</a> 
 		*/
 		struct QueueFamilyProperties : Vault_00::VKStruct_Base<VkQueueFamilyProperties>
 		{

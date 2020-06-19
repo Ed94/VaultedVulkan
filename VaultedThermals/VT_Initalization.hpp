@@ -5,7 +5,7 @@
 @details
 Before using Vulkan, an application must initialize it by loading the Vulkan commands, and creating a VkInstance object.
 
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization">Initalization Specification</a> 
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization">Initialization Specification</a> 
 */
 
 
@@ -42,9 +42,9 @@ namespace VaultedThermals
 		*/
 		struct AppInstance
 		{
-			using Handle = VkInstance;   ///> VkInstance - Opaque handle to an instance object
+			using Handle = VkInstance;   ///< VkInstance - Opaque handle to an instance object
 
-			using CreateFlags = Bitmask<EUndefined, Flags>;   ///> VkInstanceCreateFlags - Reserved for future use
+			using CreateFlags = Bitmask<EUndefined, Flags>;   ///< VkInstanceCreateFlags - Reserved for future use
 
 			/**
 			@brief 
@@ -57,37 +57,36 @@ namespace VaultedThermals
 			*/
 			struct AppInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
 			{
-				EType          SType        ;
-				const void*    Extension    ;
-				RoCStr         AppName      ;
-				uint32         AppVersion   ;
-				RoCStr         EngineName   ;
-				uint32         EngineVersion;
-				EAPI_Version   API_Version  ;
+				      EType        SType        ;
+				const void*        Extension    ;
+				      RoCStr       AppName      ;
+				      uint32       AppVersion   ;
+				      RoCStr       EngineName   ;
+				      uint32       EngineVersion;
+				      EAPI_Version API_Version  ;
 			};
 
-			/*
-			Structure specifying parameters of a newly created instance.
+			/**
+			@brief Structure specifying parameters of a newly created instance.
 
-			https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateInfo.html
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateInfo.html">Create Info Specification</a> 
 			*/
 			struct CreateInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
 			{
-				EType                SType                ;
-				const void*          Extension            ;
-				CreateFlags          Flags                ;
-				const AppInfo*       AppInfo              ;
-				uint32               EnabledLayerCount    ;
-				RoSCtr_roArray_Array EnabledLayerNames    ;
-				uint32               EnabledExtensionCount;
-				RoSCtr_roArray_Array EnabledExtensionNames;
+				      EType                SType                ;
+				const void*                Extension            ;
+				      CreateFlags          Flags                ;
+				const AppInfo*             AppInfo              ;
+				      uint32               EnabledLayerCount    ;
+				      RoSCtr_roArray_Array EnabledLayerNames    ;
+				      uint32               EnabledExtensionCount;
+				      RoSCtr_roArray_Array EnabledExtensionNames;
 			};
 
+			/**
+			@brief Create a new Vulkan application instance.
 
-			/*
-			Create a new Vulkan application instance.
-
-			https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html">Create Instance Specification</a> 
 			*/
 			static EResult Create
 			(
@@ -99,10 +98,10 @@ namespace VaultedThermals
 				return EResult(vkCreateInstance( _appSpec, _customAllocator, &_handleContainer));
 			}
 
-			/*
-			Destroy an application instance of Vulkan.
+			/**
+			@brief Destroy an application instance of Vulkan.
 
-			https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyInstance.html
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyInstance.html">Destroy Instance Specification</a> 
 			*/
 			static void Destory
 			(
@@ -122,15 +121,16 @@ namespace VaultedThermals
 
 	namespace Vault_05
 	{
-		/*
-		An object that manages the represented application process state within the GPU.
+		/**
+		@brief An object that manages the represented application process state within the GPU.
 
+		@details
 		Other Name: Application State Container
 
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html">Application Instance Specification</a> 
 
 		Note: This class is a singleton. There should really not be more than one app instance per process...
 		*/
@@ -138,20 +138,26 @@ namespace VaultedThermals
 		{
 		public:
 
-			void Create(const AppInstance::CreateInfo& _creationSpec)
+			void Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo& _creationSpec)
 			{
+				appInfo      = _appInfo     ;
 				creationSpec = _creationSpec;
 				allocator    = nullptr      ;
+
+				if (_creationSpec.AppInfo != &appInfo) _creationSpec.AppInfo = &appInfo;
 
 				EResult&& result = Vault_01::AppInstance::Create(creationSpec, allocator, handle);
 
 				if (result != EResult::Success) throw std::runtime_error("Failed to create application instance.");
 			}
 
-			void Create(const AppInstance::CreateInfo& _creationSpec, AllocationCallbacks* _allocator)
+			void Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo& _creationSpec, AllocationCallbacks* _allocator)
 			{
+				appInfo      = _appInfo     ;
 				creationSpec = _creationSpec;
 				allocator    = _allocator   ;
+
+				if (_creationSpec.AppInfo != &appInfo) _creationSpec.AppInfo = &appInfo;
 
 				EResult&& result = Vault_01::AppInstance::Create(creationSpec, allocator, handle);
 
@@ -165,7 +171,7 @@ namespace VaultedThermals
 
 
 			template<typename ReturnType>
-			/*
+			/**
 			Function pointers for all Vulkan commands can be obtained with this command.
 
 			vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. 
@@ -193,7 +199,7 @@ namespace VaultedThermals
 		private:
 
 			static Handle               handle      ;
-			static AppInfo              appInfo     ;
+			static AppInfo              appInfo     ;   
 			static CreateInfo           creationSpec;
 			static AllocationCallbacks* allocator   ;
 		};
@@ -213,7 +219,7 @@ namespace VaultedThermals
 	namespace Vault_01
 	{
 		template<typename ReturnType>
-		/*
+		/**
 		Function pointers for all Vulkan commands can be obtained with this command.
 
 		vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. 
@@ -223,7 +229,7 @@ namespace VaultedThermals
 
 		Note: ReturnType is restricted to only function pointing types.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html">Specification</a> 
 		*/
 		inline typename std::enable_if
 		<
@@ -249,7 +255,7 @@ namespace VaultedThermals
 		
 		Note: ReturnType is restricted to only function pointing types.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html">Specification</a> 
 
 		// TODO: Move this to Logical Device... (its technically part of this but it needs the logical device definition... just do a forward declaration for organization's sake.
 		*/

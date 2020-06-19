@@ -38,11 +38,12 @@ The library single include header.
  * ## NS-0: VT_Vaults.hpp
  * Defines the vaulting scope used for the various levels of implementation within the library.
  * 
- * ## NS-1: VT_Backend.hpp
- * NS-1: Backend related definitions for use in implementing the library. 
  * 
- * ## NS-2 VT_Platform.hpp
+ * ## NS-1 VT_Platform.hpp
  * Platform detection and includes the C-API vulkan header.
+ * 
+ * ## NS-2: VT_Backend.hpp
+ * NS-1: Backend related definitions for use in implementing the library.
  * 
  * ## 2: VT_Types.hpp
  * Fundamental Typedefs, Common Object Types, Non-Specification Types.
@@ -55,20 +56,20 @@ The library single include header.
  * ## NS-4 VT_Constants.hpp
  * Unsorted constants.
  * 
- * ## 3: VT_Initialization
+ * ## 3: VT_Initialization.hpp
  * Command function pointers, application instancing.
  * 
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization">Initialization Specification</a>
  * 
  * ## 4: Devices and Queues
  * 
- * ## 4.3: 
+ * ## 4.3: VT_Queues.hpp
  * Queues
  * 
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-queues">Queues Specification</a>
  * 
- * ## 4.1:
- * Physical Devices
+ * ## 4.1: VT_PhysicalDevice.hpp
+ * Physical Device
  *
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Physical Device Specification</a>
  */

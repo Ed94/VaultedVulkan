@@ -215,24 +215,23 @@ namespace VaultedThermals
 
 		// Pointers
 
-		/** Vulkan Function Pointer
+		/** 
+		@brief Vulkan Function Pointer
 		*/
 		template<typename ReturnType, typename... ParameterTypes>
 		using VK_FPtr = ReturnType(VKAPI_PTR*)(ParameterTypes...);
 
-		/** Equivalent to VK_FPtr<void, void>.
+		/** @brief Equivalent to VK_FPtr<void, void>.
 		*/
 		using FPtr_Void = PFN_vkVoidFunction;
-
 
 		/** 
 		@todo Make proper structure.
 		*/
 		using AllocationCallbacks = VkAllocationCallbacks;
 
-		
-
 		/** 
+		@brief
 		Structure specifying an extension properties.
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
@@ -244,6 +243,7 @@ namespace VaultedThermals
 		};
 
 		/** 
+		@brief
 		Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes 
 		(e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, 
 		or by directly specifying them as parameters to certain commands.
