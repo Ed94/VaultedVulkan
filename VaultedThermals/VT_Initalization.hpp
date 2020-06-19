@@ -1,14 +1,16 @@
-/*
-Vaulted Thermals: Initialization
+/** @file VT_Initalization.hpp
 
+@brief Vaulted Thermals: Initialization
+
+@details
 Before using Vulkan, an application must initialize it by loading the Vulkan commands, and creating a VkInstance object.
 
-https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization">Initalization Specification</a> 
 */
 
+
+
 #pragma once
-
-
 
 
 
@@ -27,27 +29,31 @@ namespace VaultedThermals
 
 	namespace Vault_01
 	{
-		/*
-		An object that manages the represented application process state within the GPU.
+		/**
+		@brief An object that manages the represented application process state within the GPU.
 
 		Other Name: Application State Container
 
+		@details
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
-
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html
+		
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html">Application Instance Specification</a> 
 		*/
 		struct AppInstance
 		{
-			using Handle = VkInstance;   // VkInstance - Opaque handle to an instance object
+			using Handle = VkInstance;   ///> VkInstance - Opaque handle to an instance object
 
-			using CreateFlags = Bitmask<EUndefined, Flags>;   // VkInstanceCreateFlags - Reserved for future use
+			using CreateFlags = Bitmask<EUndefined, Flags>;   ///> VkInstanceCreateFlags - Reserved for future use
 
-			/*
+			/**
+			@brief 
 			A structure that specifies to the Vulkan driver information about an
 			application that will run an instance.
 
-			https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkApplicationInfo.html
+			@details
+			
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkApplicationInfo.html">Application Info Specification</a> 
 			*/
 			struct AppInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
 			{

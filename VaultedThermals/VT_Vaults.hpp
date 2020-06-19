@@ -43,7 +43,7 @@ namespace VaultedThermals
 {
 	/** @namespace Attic
 
-		@brief Contains meta stuff thats platform specifics etc.
+		@brief Contains any global 
 	*/
 	inline namespace Attic {}
 

@@ -1,5 +1,7 @@
-/*
-Vaulted Thermals: Enumerations
+/**
+@file VT_Enums.hpp
+
+@brief Vaulted Thermals: Enumerations
 */
 
 #pragma once

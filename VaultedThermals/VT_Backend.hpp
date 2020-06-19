@@ -20,7 +20,7 @@ namespace VaultedThermals
 {
 	namespace Vault_00
 	{
-		/** @struct Vulkan Base Structure
+		/** @struct VKStruct_Base
 
 			@brief Base struct for wrapping Vulkan native C API Structs.
 

@@ -1,5 +1,6 @@
-/*
-Vaulted Thermals: Constants
+/** @file VT_Constants.hpp
+
+@brief Vaulted Thermals: Constants
 */
 
 

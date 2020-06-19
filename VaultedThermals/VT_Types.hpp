@@ -22,51 +22,53 @@
 namespace VaultedThermals
 {
 	#pragma region Global Typedefs
-	// Defines commonly used types.
 
-	using Bool = VkBool32;
+	namespace Corridors
+	{
+		using Bool = VkBool32;
 
-	// Integers
+		// Integers
 
-	// Flexible
+		// Flexible
 
-	using uint32 = unsigned int;
-	using sint32 = signed   int;
+		using uint32 = unsigned int;
+		using sint32 = signed   int;
 
 
-	// Strict
+		// Strict
 
-	// Signed
-	using sInt8  = signed           char;
-	using sInt16 = signed short     int ;
-	using sInt32 = signed long      int ;
-	using sInt64 = signed long long int ;
+		// Signed
+		using sInt8  = signed           char;
+		using sInt16 = signed short     int ;
+		using sInt32 = signed long      int ;
+		using sInt64 = signed long long int ;
 
-	// Unsigned
+		// Unsigned
 
-	using uInt8  = unsigned            char;
-	using uInt16 = unsigned short      int ;
-	using uInt32 = unsigned long       int ;
-	using uInt64 = unsigned long long  int ;
+		using uInt8  = unsigned            char;
+		using uInt16 = unsigned short      int ;
+		using uInt32 = unsigned long       int ;
+		using uInt64 = unsigned long long  int ;
 
-	// Floats
+		// Floats
 
-	using float32 =      float ;
-	using float64 =      double;
+		using float32 =      float ;
+		using float64 =      double;
 
-	// Data
+		// Data
 
-	using DataSize = std::size_t   ;
-	using sIntPtr  = std::intptr_t ;
-	using uIntPtr  = std::uintptr_t;
+		using DataSize = std::size_t   ;
+		using sIntPtr  = std::intptr_t ;
+		using uIntPtr  = std::uintptr_t;
 
-	// RawStrings
+		// RawStrings
 
-	using CStr                 = char*             ;
-	using RoCStr               = const char*       ;
-	using CStrArray            = CStr*             ;
-	using RoCStrArray          = const char**      ;   // Readonly c-string array.
-	using RoSCtr_roArray_Array = const char* const*;   // Array of readonly array of readonly c-string.
+		using CStr                 = char*             ;
+		using RoCStr               = const char*       ;
+		using CStrArray            = CStr*             ;
+		using RoCStrArray          = const char**      ;   // Readonly c-string array.
+		using RoSCtr_roArray_Array = const char* const*;   // Array of readonly array of readonly c-string.
+	}
 
 	#pragma endregion Global Typedefs
 
@@ -74,21 +76,29 @@ namespace VaultedThermals
 	#pragma region Common Object Types
 
 	/** 
-	@defgroup Common Object Types
+	@defgroup Common_Object_Types
+
+	<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects">Common Object Types Specification</a>
+	*/
+
+	/** 
+	@ingroup Common_Object_types
 	@{
-		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects
 	*/
 
 	namespace Vault_01
 	{
 		/** 
+		@struct Offset2D
+
 		@brief Structure specifying a two-dimensional offset.
 
 		@details
 		Offsets are used to describe a pixel location within an image or framebuffer, 
 		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
 
-		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets">Offsets Specification</a>
+		@link 
 		*/
 		struct Offset2D : Vault_00::VKStruct_Base<VkOffset2D>
 		{
@@ -97,13 +107,15 @@ namespace VaultedThermals
 		};
 
 		/** 
+		@struct Offset3D
+
 		@brief Structure specifying a three-dimensional offset.
 
 		@details
 		Offsets are used to describe a pixel location within an image or framebuffer, 
 		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
 
-		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets">Offsets Specification</a>
 		*/
 		struct Offset3D : Vault_00::VKStruct_Base<VkOffset3D>
 		{
@@ -113,13 +125,15 @@ namespace VaultedThermals
 		};
 
 		/** 
+		@struct Extent2D
+
 		@brief Structure specifying a two-dimensional extent.
 
 		@details
 		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
 		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
 
-		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html">Extent-2D Specification</a>
 		*/
 		struct Extent2D : Vault_00::VKStruct_Base<VkExtent2D>
 		{
@@ -127,14 +141,17 @@ namespace VaultedThermals
 			uint32 Height;
 		};
 
-		/*
+		/** 
+		@struct Extent3D
+
 		@brief Structure specifying a three-dimensional extent.
 
 		@details
 		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
 		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
 
-		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html
+		@link 
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html">Extent-3D Specification</a>
 		*/
 		struct Extent3D : Vault_00::VKStruct_Base<VkExtent3D>
 		{
@@ -143,7 +160,7 @@ namespace VaultedThermals
 			uint32 Depth ;
 		};
 
-		/*
+		/** 
 		@brief Structure specifying a two-dimensional subregion.
 
 		@details
@@ -170,42 +187,55 @@ namespace VaultedThermals
 
 	namespace Corridors
 	{
-		// These Strings are used throughout the Vulkan API.
+		/**
+		@defgroup CommonStrings
+		 */
 
-		constexpr sint32 Description_MaxSize   = VK_MAX_DESCRIPTION_SIZE   ;   // Used for DescriptionStr definition.
-		constexpr sint32 ExtensionName_MaxSize = VK_MAX_EXTENSION_NAME_SIZE;   // Used for ExtensionNameStr definition.
+		/**
+		@ingroup CommonStrings
+		@{
+		 */
 
-		using ExtensionNameStr = char[ExtensionName_MaxSize];   // Can hold an extension name.
-		using DescrptionStr    = char[Description_MaxSize  ];   // Can hold a description string.
+		constexpr sint32 Description_MaxSize   = VK_MAX_DESCRIPTION_SIZE   ;   ///< Used for DescriptionStr definition.
+		constexpr sint32 ExtensionName_MaxSize = VK_MAX_EXTENSION_NAME_SIZE;   ///< Used for ExtensionNameStr definition.
+
+		using ExtensionNameStr = char[ExtensionName_MaxSize];   ///< Can hold an extension name.
+		using DescrptionStr    = char[Description_MaxSize  ];   ///< Can hold a description string.
+
+		/**
+		@}
+		 */
 
 		// Flags & Bitmasks
 
-		using Flags = VkFlags;   // Used to represent bitmasks for Vulkan flag types.
+		using Flags = VkFlags;   ///< Used to represent bitmasks for Vulkan flag types.
 
-		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   // TODO: Add comment on what this is for.
-		using ImageUsageFlags   = Bitmask<EImageUsage, Flags>;   // Bitmask specifying intended usage of an image.
+		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   ///< TODO: Add comment on what this is for.
+		using ImageUsageFlags   = Bitmask<EImageUsage, Flags>;   ///< Bitmask specifying intended usage of an image.
 
 		// Pointers
 
+		/** Vulkan Function Pointer
+		*/
 		template<typename ReturnType, typename... ParameterTypes>
-		// Vulkan Function Pointer
 		using VK_FPtr = ReturnType(VKAPI_PTR*)(ParameterTypes...);
 
-		// Equivalent to VK_FPtr<void, void>.
+		/** Equivalent to VK_FPtr<void, void>.
+		*/
 		using FPtr_Void = PFN_vkVoidFunction;
 
 
-		/*
-		Note: Will most likely make a struct wrap, doing this for now...
+		/** 
+		@todo Make proper structure.
 		*/
 		using AllocationCallbacks = VkAllocationCallbacks;
 
 		
 
-		/*
+		/** 
 		Structure specifying an extension properties.
 
-		https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkExtensionProperties
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
 		*/
 		struct ExtensionProperties : Vault_00::VKStruct_Base<VkExtensionProperties>
 		{
@@ -213,22 +243,25 @@ namespace VaultedThermals
 			uint32           SpecVersion  ;
 		};
 
-		/*
+		/** 
 		Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes 
-		(e.g. attachments, textures), 
-		by binding them to a graphics or compute pipeline via descriptor sets, 
+		(e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, 
 		or by directly specifying them as parameters to certain commands.
+
+		<a href="linkURL">link text</a> 
 		*/
 		struct Image
 		{
 			using Handle = VkImage;
 		};
 
-		/*
+		/** 
 		The VkComponentMapping components member describes a remapping from components of the image to components of the vector 
 		returned by shader image instructions. This remapping must be the identity swizzle for storage image descriptors, 
 		input attachment descriptors, framebuffer attachments, and any VkImageView used with a combined image sampler that 
 		enables sampler Y’CBCR conversion.
+
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentMapping.html">Component Mapping Specification</a> 
 		*/
 		struct ComponentMapping : Vault_00::VKStruct_Base<VkComponentMapping>
 		{
