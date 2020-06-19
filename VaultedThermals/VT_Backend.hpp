@@ -36,8 +36,14 @@ namespace VaultedThermals
 			 * 
 			 * @todo Finish the proper enum...
 			 */
-			using EType  = VkStructureType;
-			using VkType = VulkanType     ;   /// @typdef VkType @brief Keeps record of the struct's inherent vulkan equivalent.
+			using EType= VkStructureType;
+			
+			/** 
+			@typdef VkType 
+			
+			@brief Keeps record of the struct's inherent vulkan equivalent.
+			*/
+			using VkType = VulkanType;   
 
 			operator VulkanType*()
 			{

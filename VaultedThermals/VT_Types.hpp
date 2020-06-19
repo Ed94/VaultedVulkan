@@ -72,7 +72,12 @@ namespace VaultedThermals
 
 	
 	#pragma region Common Object Types
-	// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects
+
+	/** 
+	@defgroup Common Object Types
+	@{
+		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects
+	*/
 
 	namespace Vault_01
 	{
@@ -91,13 +96,14 @@ namespace VaultedThermals
 			sint32 Y;
 		};
 
-		/*
-		Structure specifying a three-dimensional offset.
+		/** 
+		@brief Structure specifying a three-dimensional offset.
 
+		@details
 		Offsets are used to describe a pixel location within an image or framebuffer, 
 		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
+		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
 		*/
 		struct Offset3D : Vault_00::VKStruct_Base<VkOffset3D>
 		{
@@ -106,13 +112,14 @@ namespace VaultedThermals
 			sint32 Z;
 		};
 
-		/*
-		Structure specifying a two-dimensional extent.
+		/** 
+		@brief Structure specifying a two-dimensional extent.
 
+		@details
 		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
 		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html
+		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html
 		*/
 		struct Extent2D : Vault_00::VKStruct_Base<VkExtent2D>
 		{
@@ -121,12 +128,13 @@ namespace VaultedThermals
 		};
 
 		/*
-		Structure specifying a three-dimensional extent.
+		@brief Structure specifying a three-dimensional extent.
 
+		@details
 		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
 		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html
+		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html
 		*/
 		struct Extent3D : Vault_00::VKStruct_Base<VkExtent3D>
 		{
@@ -136,12 +144,13 @@ namespace VaultedThermals
 		};
 
 		/*
-		Structure specifying a two-dimensional subregion.
+		@brief Structure specifying a two-dimensional subregion.
 
+		@details
 		Rectangles are used to describe a specified rectangular region of pixels within an image or framebuffer. 
 		Rectangles include both an offset and an extent of the same dimensionality, as described above. 
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_rectangles
+		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_rectangles
 		*/
 		struct Rect2D : Vault_00::VKStruct_Base<VkRect2D>
 		{
@@ -149,6 +158,10 @@ namespace VaultedThermals
 			Extent2D Extent;
 		};
 	}
+
+	/**
+	 * @}
+	 */
 
 	#pragma endregion Common Object Types
 
