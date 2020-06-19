@@ -36,7 +36,7 @@ Note: All non-vaulted implementation is in the Attic.
 
 namespace VaultedThermals
 {
-	/**
+	/** \namespace Attic
 	Contains meta stuff thats platform specifics etc.
 	*/
 	inline namespace Attic {}
@@ -46,7 +46,7 @@ namespace VaultedThermals
 	*/
 	namespace Corridors {}
 
-	/**
+	/** \namespace Attic
 	TODO: Look into possibly implementing with the Volk library.
 
 	Meta-Loading Setup
@@ -55,15 +55,15 @@ namespace VaultedThermals
 	*/
 	namespace Vault_MagmaChamber { using namespace Corridors; }
 
-	/*
+	/** \namespace Vault_01
 		BackEnd vault for VaultedThermals
 
 		For now only abstracts away OS Platform details and basic meta-structure definitions
 	*/
 	namespace Vault_00 { using namespace Corridors; }
 
-	/*
-		1:1 Wrapping of Vulkan API
+	/** \namespace Vault_01
+	*	1:1 Wrapping of Vulkan API
 	*/
 	namespace Vault_01 { using namespace Corridors; }
 
