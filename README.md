@@ -5,7 +5,10 @@ A vulkan wrapper.
 This is currently a WIP, I am fleshing this out while making my engine project:
 [Abstract Realm](https://github.com/Ed94/AbstractRealm)
 
-Motivations for doing so is like clean libraries and while Vulkan-Hpp looked well designed, I cannot find a proper specification or documentation related to it, only the C-API. There is only their "samples". This library aims to have full documentation/specificaton within its comments and have clean organization. 
+Motivations for doing so is like clean libraries and while Vulkan-Hpp looked well designed, I cannot find a proper specification or documentation related to it, only the C-API. There is only their "samples". 
+
+This library aims to have full documentation/specificaton within its comments and have clean organization. 
+
 (Its also to help me learn Vulkan as I wanted to learn a low-level GPU API)
 
 Documentation is currently within the source comments and later on when I get the chance a Doxygen.
