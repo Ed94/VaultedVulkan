@@ -1,7 +1,8 @@
-/*
-Vaulted Thermals: Backend
+/** @file VT_Backend.hpp
 
-Contains implementation related to library backend.
+@brief Vaulted Thermals: Backend
+
+@details Contains implementation related to library backend.
 */
 
 
@@ -19,8 +20,11 @@ namespace VaultedThermals
 {
 	namespace Vault_00
 	{
-		/*
-		Base struct for wrapping Vulkan native C API Structs.
+		/** @struct Vulkan Base Structure
+
+			@brief Base struct for wrapping Vulkan native C API Structs.
+
+			@details 
 		*/
 		template<typename VulkanType>
 		struct VKStruct_Base

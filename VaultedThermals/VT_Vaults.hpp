@@ -1,7 +1,9 @@
-/* @file VT_Vaults.hpp
+/** 
+@file VT_Vaults.hpp
 
-@brief
-Vaulted Thermals: Vault Definitions
+@brief Vaulted Thermals: Vault Definitions
+
+@details
 
 To enable a level implementation, create a macro definition:
 #define VaultedThermals_Open_Vault_VaultDesignator
@@ -20,7 +22,6 @@ Vault_08
 Vault_09
 Vault_10
 
-@details
 
 Important: Higher numbered vaults may require a lower level vault to be opened. 
 If the vault is not open, it will define the open definition itself implicitly.
@@ -53,18 +54,20 @@ namespace VaultedThermals
 	namespace Corridors {}
 
 	/** @namespace Vault_MagmaChamber
+
 		@todo Look into possibly implementing with the Volk library.
 
-		@brief Meta-Loading Setup
+		@brief Meta-Loading Setup.
 
 		@details When the heat at the control gate isn't enough. 
 	*/
 	namespace Vault_MagmaChamber { using namespace Corridors; }
 
 	/** @namespace Vault_00
-		BackEnd vault for VaultedThermals
 
-		For now only abstracts away OS Platform details and basic meta-structure definitions
+		@brief BackEnd vault for VaultedThermals
+
+		@details For now only abstracts away OS Platform details and basic meta-structure definitions.
 	*/
 	namespace Vault_00 { using namespace Corridors; }
 
@@ -80,35 +83,41 @@ namespace VaultedThermals
 	*/
 	namespace Vault_02 { using namespace Corridors; }
 
-	/*
-		Medium cost procedural, preset implementation wrapping.
+	/** @namespace Vault_03
+
+		@brief Medium cost procedural, preset implementation wrapping.
 	*/
 	namespace Vault_03 { using namespace Corridors; }
 
-	/*
-		Full setup providing procedure implementation.
+	/* @namespace Vault_04
 
-		(Will have its own device references, queues, layers, etc.)
+		@brief Full setup providing procedure implementation.
+
+		@details (Will have its own device references, queues, layers, etc.)
 	*/
 	namespace Vault_04 { using namespace Corridors; }
 
-	/*
-		1:1 Object oriented wrapping of Vulkan API
+	/* namespace Vault_05
+		
+		@brief 1:1 Object oriented wrapping of Vulkan API
 	*/
 	namespace Vault_05 { using namespace Corridors; }
 
-	/*
-		Low cost Object-oriented repetitive functionality wrapping.
+	/* namespace Vault_06
+
+		@brief Low cost Object-oriented repetitive functionality wrapping.
 	*/
 	namespace Vault_06 { using namespace Corridors; }
 
-	/*
-		Medium cost Object-oriented preset implementation wrapping.
+	/* namespace Vault_07
+
+		@brief Medium cost Object-oriented preset implementation wrapping.
 	*/
 	namespace Vault_07 { using namespace Corridors; }
 
-	/*
-		Full setup providing object-oriented implementation.
+	/* namespace Vault_08
+
+		@brief Full setup providing object-oriented implementation.
 	*/
 	namespace Vault_08 { using namespace Corridors; }
 

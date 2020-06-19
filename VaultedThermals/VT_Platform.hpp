@@ -1,8 +1,9 @@
-/*
-Vaulted Thermals: Platform Specification
-
-The Vulkan C-API header is included here and platform detection implementation is defined.
-*/
+/*****************************************************************//**
+ * @file   VT_Platform.hpp
+ * @brief  Vaulted Thermals: Platform Specification
+ * 
+ * @details The Vulkan C-API header is included here and platform detection implementation is defined.
+ *********************************************************************/
 
 
 
@@ -52,30 +53,40 @@ namespace VaultedThermals
 {
 	namespace Vault_00
 	{
-		/*
-		Enum specifies operating system platform.
+		/** @enumc
+			@brief Enum specifies operating system platform.
 		*/
 		enum class EOS_Platform
 		{
 			Windows, Mac, Linux
 		};
 
+		/** @brief Windows platform specifics.
+		*/
 		#ifdef _WIN32
 
 			// OS Platform constant.
+
+			/** @brief Contains the definition of the OS_Platform. (Set to windows)
+			 * .
+			 */
 			constexpr EOS_Platform OS_Platform = EOS_Platform::Windows;
 
 		#endif
 
 		template<EOS_Platform>
-		/*
-		Defines maker of platform struct that defines operating system types.
+		/**  
+			@struct Platform Types Maker
+
+			@brief Defines maker of platform struct that defines operating system types.
 		*/
 		struct PlatformTypes_Maker;
 
 		template<>
-		/*
-		Defines Windows specific types.
+		/** 
+			@struct Platform Types Maker: Windows Implementation
+
+			@brief Defines Windows specific types.
 		*/
 		struct PlatformTypes_Maker<EOS_Platform::Windows>
 		{
@@ -83,11 +94,21 @@ namespace VaultedThermals
 			using OS_WindowHandle = HWND     ;
 		};
 
+		/** 
+		 * @struct Platform Types
+		 * 
+		 * @struct A structure containing the types for the detected platform.
+		 * .
+		 */
 		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;
 	}
 
 
-	// Calling Conventions
+	/**
+		@def Vulkan Convention Enforcement.
 
+		@brief Generates the convention enforcer set for the vulkan API.
+	 * .
+	 */
 	MakeConventionEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL);
 }
