@@ -1,4 +1,4 @@
-/*
+/**
 VaultedThermals Include Interface
 
 
@@ -27,11 +27,11 @@ Have support for object model enforcement.
 
 
 
-/* NS-0: Defines the vaulting scope used for the various levels of implementation within the library.
+/** NS-0: Defines the vaulting scope used for the various levels of implementation within the library.
 */ 
 #include "VaultedThermals/VT_Vaults.hpp"
 
-/* NS-1: Backend related definitions for use in implementing the library.
+/** NS-1: Backend related definitions for use in implementing the library.
 */
 #include "VaultedThermals/VT_Backend.hpp"
 

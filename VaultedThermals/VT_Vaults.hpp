@@ -36,7 +36,7 @@ Note: All non-vaulted implementation is in the Attic.
 
 namespace VaultedThermals
 {
-	/*
+	/**
 	Contains meta stuff thats platform specifics etc.
 	*/
 	inline namespace Attic {}
@@ -46,7 +46,7 @@ namespace VaultedThermals
 	*/
 	namespace Corridors {}
 
-	/*
+	/**
 	TODO: Look into possibly implementing with the Volk library.
 
 	Meta-Loading Setup
