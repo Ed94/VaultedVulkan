@@ -1,14 +1,26 @@
+/*
+Vaulted Thermals: Enumerations
+
+Note: All Enumerators here are global.
+
+TODO: Possibly vault the enums.
+*/
+
 #pragma once
 
 
 
-#include "_foreign/Bitmask.hpp"
+#include "_foreign/Foreign_Bitmask.hpp"
 
 #include "VT_Platform.hpp"
 
 
+//TODO: Move enums based on specification to their respective file if possible.
 namespace Vulkan
 {
+    /*
+    Necessary for Bitmasks in the Vulkan specification that are not defined but reserved for future use.
+    */
 	enum class EUndefined 
 	{};
 
@@ -725,7 +737,10 @@ namespace Vulkan
 
     SpecifyBitmaskable(ESampleCount);
 
-    enum class EQueue : uint32_t
+    /*
+    https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html
+	*/
+    enum class EQueueFlag : uint32_t
     {
 		Graphics               = VK_QUEUE_GRAPHICS_BIT      ,
 		Compute                = VK_QUEUE_COMPUTE_BIT       ,
@@ -734,7 +749,7 @@ namespace Vulkan
 		Protected              = VK_QUEUE_PROTECTED_BIT
 	};
 
-    SpecifyBitmaskable(EQueue);
+    SpecifyBitmaskable(EQueueFlag);
 
 
     enum class ELogicalDeviceQueueCreateFlag : uint32_t
@@ -770,6 +785,9 @@ namespace Vulkan
     SpecifyBitmaskable(ECompositeAlpha);
 
 
+    /*
+    https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageUsageFlagBits.html
+    */
     enum class EImageUsage : uint32_t
     {
 		TransferSource          = VK_IMAGE_USAGE_TRANSFER_SRC_BIT            ,

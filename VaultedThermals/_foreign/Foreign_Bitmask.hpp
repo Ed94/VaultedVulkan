@@ -1,24 +1,27 @@
 #pragma once
 
 
+
 #include <type_traits>
 
 
+
 #ifndef BITMASKABLE
-#define BITMASKABLE
 
-template<typename Enum>
-struct Bitmaskable
-{
-	static const bool specified = false;
-};
+	#define BITMASKABLE
 
-#define SpecifyBitmaskable(__ENUM) \
-template<> \
-struct Bitmaskable<__ENUM> \
-{							\
-	static const bool specified = true; \
-};	
+	template<typename Enum>
+	struct Bitmaskable
+	{
+		static const bool specified = false;
+	};
+
+	#define SpecifyBitmaskable(__ENUM)      \
+	template<>                              \
+	struct Bitmaskable<__ENUM>              \
+	{							            \
+		static const bool specified = true; \
+	};	
 
 #endif								 
 
@@ -27,7 +30,7 @@ struct Bitmaskable<__ENUM> \
 
 template
 <
-	class EnumType, 
+	class    EnumType             , 
 	typename BitmaskRepresentation
 >
 struct Bitmask
@@ -40,7 +43,7 @@ private:
 public:
 
 	using Representation = BitmaskRepresentation;
-	using Enum           =  EnumType            ;   // Garenteed to be implemented by a Bitmaskable type (or there will be a compile error..);
+	using Enum           =  EnumType            ;   // Guaranteed to be implemented by a Bitmaskable type (or there will be a compile error..);
 
 	template<typename... BitType>
 	void Add(const BitType... _bits)

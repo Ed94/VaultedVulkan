@@ -2,49 +2,29 @@
 Vulkan Hardware Abstraction Layer
 
 Last Modified: 5/19/2020
-
-
 */
 
 
 
 #pragma once
 
-
+// C++
 #include <typeinfo>
 
-
+// VT
 #include "VT_Platform.hpp"
-#include "VT_Constants.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Types.hpp"
-#include "VT_AppInstance.hpp"
 
 
 
 namespace Vulkan
 {
-	inline uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
-	{
-		return VK_MAKE_VERSION(_major, _minor, _patch);
-	}
-
-	template<typename ReturnType> 
-	inline typename std::enable_if
-	<
-		std::bool_constant
-		< 
-			std::is_pointer <                             ReturnType       >::value &&
-			std::is_function<typename std::remove_pointer<ReturnType>::type>::value
-		>::value,
-
-	ReturnType>::type GetProcedureAddress(AppInstance::Handle& _appInstance, const char* _procedureName)
-	{
-		return ReturnType(vkGetInstanceProcAddr(_appInstance, _procedureName));
-	}
-
 	namespace Vault_00
 	{
+		/*
+		TODO: Document here what this is for.
+		*/
 		template<typename HandleType>
 		struct HandledAddressed
 		{
@@ -55,5 +35,35 @@ namespace Vulkan
 				return Handle(VK_NULL_HANDLE);
 			}
 		};
+
+		/*
+		Base struct for wrapping Vulkan native C API Structs.
+		*/
+		template<typename VulkanType>
+		struct VKStruct_Base
+		{
+			using VkType = VulkanType;
+
+			operator VulkanType*()
+			{
+				return reinterpret_cast<VulkanType*>(this);
+			}
+
+			operator const VulkanType*() const
+			{
+				return reinterpret_cast<VulkanType*>(this);
+			}
+		};
+	}
+
+	namespace Vault_01
+	{
+		/*
+		Construct an API version number.
+		*/
+		inline uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
+		{
+			return VK_MAKE_VERSION(_major, _minor, _patch);
+		}
 	}
 }

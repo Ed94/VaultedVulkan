@@ -1,5 +1,6 @@
 /*
 
+
 */
 
 
@@ -11,6 +12,8 @@
 #include <cstddef>
 #include <cstdint>
 
+#include "_foreign/Foreign_Bitmask.hpp"
+
 #include "VT_Platform.hpp"
 #include "VT_Constants.hpp"
 
@@ -18,6 +21,11 @@
 
 namespace Vulkan
 {
+	#pragma region Global Typedefs
+	// Defines commonly used types.
+
+	using Bool = VkBool32;
+
 	// Integers
 
 	// Flexible
@@ -52,174 +60,192 @@ namespace Vulkan
 	using sIntPtr  = std::intptr_t ;
 	using uIntPtr  = std::uintptr_t;
 
-	using CStr = char*;
+	// RawStrings
 
-	using RoCStr = const char*;
-
-	using CStrArray = CStr*;
-
-	using RoCStrArray = const char**;   // Readonly c-string array.
-
+	using CStr                 = char*             ;
+	using RoCStr               = const char*       ;
+	using CStrArray            = CStr*             ;
+	using RoCStrArray          = const char**      ;   // Readonly c-string array.
 	using RoSCtr_roArray_Array = const char* const*;   // Array of readonly array of readonly c-string.
 
-	using Bool = VkBool32;
+	#pragma endregion Global Typedefs
 
-	using Flags         = VkFlags     ;
-	using RawQueueFlags = VkQueueFlags;
-
-	using QueueFlags = Bitmask<EQueue, RawQueueFlags>;
-
-	using CallbackDataFlags = Bitmask<EUndefined, Flags>;
-
-	using ExtensionNameStr = char[ExtensionName_MaxSize];
-	using DescrptionStr    = char[Description_MaxSize  ];	
 	
-	template<typename ReturnType, typename... ParameterTypes>
-	// Vulkan Function Pointer
-	using VK_FPtr = ReturnType(VKAPI_PTR*)(ParameterTypes...);
+	#pragma region Common Object Types
+	// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects
 
-	// Equivalent to VK_FPtr<void, void>.
-	using FPtr_Void = PFN_vkVoidFunction;
-
-	// Will most likely make a class wrap, doing this for now...
-	using AllocationCallbacks = VkAllocationCallbacks;
-
-	using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
-
-	struct Extent2D
+	namespace Vault_01
 	{
-		uint32 Width ;
-		uint32 Height;
+		/*
+		Structure specifying a two-dimensional offset.
 
-		operator VkExtent2D()
+		Offsets are used to describe a pixel location within an image or framebuffer, 
+		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
+
+		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
+		*/
+		struct Offset2D : Vault_00::VKStruct_Base<VkOffset2D>
 		{
-			return *(VkExtent2D*)(this);
-		}
-	};
-
-	struct Extent3D
-	{
-		uint32 Width ;
-		uint32 Height;
-		uint32 Depth ;
-
-		operator VkExtent3D()
-		{
-			return *(VkExtent3D*)(this);
-		}
-	};
-
-	struct ExtensionProperties
-	{		
-		ExtensionNameStr ExtensionName;
-		uint32           SpecVersion  ;
-
-		operator VkExtensionProperties()
-		{
-			return *(VkExtensionProperties*)(this);
-		}
-	};
-
-
-	namespace Vault_00
-	{
-		template<EOS_Platform>
-		struct PlatformTypes_Maker;
-
-		template<>
-		struct PlatformTypes_Maker<EOS_Platform::Windows>
-		{
-			using OS_AppHandle    = HINSTANCE;
-			using OS_WindowHandle = HWND     ;
+			sint32 X;
+			sint32 Y;
 		};
 
-		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;
+		/*
+		Structure specifying a three-dimensional offset.
+
+		Offsets are used to describe a pixel location within an image or framebuffer, 
+		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
+
+		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
+		*/
+		struct Offset3D : Vault_00::VKStruct_Base<VkOffset3D>
+		{
+			sint32 X;
+			sint32 Y;
+			sint32 Z;
+		};
+
+		/*
+		Structure specifying a two-dimensional extent.
+
+		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
+		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
+
+		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html
+		*/
+		struct Extent2D : Vault_00::VKStruct_Base<VkExtent2D>
+		{
+			uint32 Width ;
+			uint32 Height;
+		};
+
+		/*
+		Structure specifying a three-dimensional extent.
+
+		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
+		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
+
+		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html
+		*/
+		struct Extent3D : Vault_00::VKStruct_Base<VkExtent3D>
+		{
+			uint32 Width ;
+			uint32 Height;
+			uint32 Depth ;
+		};
+
+		/*
+		Structure specifying a two-dimensional subregion.
+
+		Rectangles are used to describe a specified rectangular region of pixels within an image or framebuffer. 
+		Rectangles include both an offset and an extent of the same dimensionality, as described above. 
+
+		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_rectangles
+		*/
+		struct Rect2D : Vault_00::VKStruct_Base<VkRect2D>
+		{
+			Offset2D Offset;
+			Extent2D Extent;
+		};
 	}
 
-	using PlatformTypes = Vault_00::PlatformTypes;
+	#pragma endregion Common Object Types
 
-	using ImageUsageFlags = Bitmask<EUndefined       , Flags>;
 
-	constexpr void* NullHandle = VK_NULL_HANDLE;
+	// TODO: Needs sorting.
 
-	struct Image
+	namespace Vault_01
 	{
-		using Handle = VkImage;
-	};
+		using ExtensionNameStr = char[ExtensionName_MaxSize];   // Can hold an extension name.
+		using DescrptionStr    = char[Description_MaxSize  ];   // Can hold a description string.
 
-	struct ComponentMapping
-	{
-		EComponentSwizzle R;
-		EComponentSwizzle G;
-		EComponentSwizzle B;
-		EComponentSwizzle A;
+		// Flags & Bitmasks
 
-		operator VkComponentMapping()
+		using Flags = VkFlags;   // Used to represent bitmasks for Vulkan flag types.
+
+		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   // TODO: Add comment on what this is for.
+		using QueueFlags        = Bitmask<EQueueFlag , Flags>;   // Bitmask specifying capabilities of queues in a queue family.
+		using ImageUsageFlags   = Bitmask<EImageUsage, Flags>;   // Bitmask specifying intended usage of an image.
+
+		// Pointers
+
+		template<typename ReturnType, typename... ParameterTypes>
+		// Vulkan Function Pointer
+		using VK_FPtr = ReturnType(VKAPI_PTR*)(ParameterTypes...);
+
+		// Equivalent to VK_FPtr<void, void>.
+		using FPtr_Void = PFN_vkVoidFunction;
+
+
+		/*
+		Note: Will most likely make a struct wrap, doing this for now...
+		*/
+		using AllocationCallbacks = VkAllocationCallbacks;
+
+		
+
+		/*
+		Structure specifying an extension properties.
+
+		https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkExtensionProperties
+		*/
+		struct ExtensionProperties : Vault_00::VKStruct_Base<VkExtensionProperties>
 		{
-			return *(VkComponentMapping*)(this);
-		}
-	};
+			ExtensionNameStr ExtensionName;
+			uint32           SpecVersion  ;
+		};
+
+		/*
+		Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes 
+		(e.g. attachments, textures), 
+		by binding them to a graphics or compute pipeline via descriptor sets, 
+		or by directly specifying them as parameters to certain commands.
+		*/
+		struct Image
+		{
+			using Handle = VkImage;
+		};
+
+		/*
+		The VkComponentMapping components member describes a remapping from components of the image to components of the vector 
+		returned by shader image instructions. This remapping must be the identity swizzle for storage image descriptors, 
+		input attachment descriptors, framebuffer attachments, and any VkImageView used with a combined image sampler that 
+		enables sampler Y’CBCR conversion.
+		*/
+		struct ComponentMapping : Vault_00::VKStruct_Base<VkComponentMapping>
+		{
+			EComponentSwizzle R;
+			EComponentSwizzle G;
+			EComponentSwizzle B;
+			EComponentSwizzle A;
+		};
+
+		struct Viewport
+		{
+			float X       , Y       ;
+			float Width   , Height  ;
+			float MinDepth, MaxDepth;
+		};
+
+		
+
+
+		using CullModeFlags = Bitmask<ECullModeFlag, Flags>;
+		using SampleCountFlags = Bitmask<ESampleCount, Flags>;
+		using SampleMask = VkSampleMask;   // TODO: Not sure yet...
+
+		using ColorComponentFlags = Bitmask<EColorComponentFlag, Flags>;
+
+		struct Sampler
+		{
+			using Handle = VkSampler;
+		};	
+
+		using UUID = unsigned int[UUID_Size];
+	}
 
 	namespace SPIR_V
 	{
 		using Bytecode = uint32;
 	}
-
-	struct SpecializationMapEntry
-	{
-		uint32   ConstantID;
-		uint32   Offset    ;
-		DataSize Size      ;
-
-		operator VkSpecializationMapEntry()
-		{
-			return *reinterpret_cast<VkSpecializationMapEntry*>(this);
-		}
-	};
-
-	struct SpecializationInfo
-	{
-		      uint32                  MapEntryCount;
-		const SpecializationMapEntry* MapEntires   ;
-		      DataSize                SizeOfData   ;
-		const void*                   Data         ;
-
-		operator VkSpecializationInfo()
-		{
-			return *reinterpret_cast<VkSpecializationInfo*>(this);
-		}
-	};
-
-	struct Viewport
-	{
-		float X       , Y       ;
-		float Width   , Height  ;
-		float MinDepth, MaxDepth;
-	};
-
-	struct Offset2D
-	{
-		sint32 X;
-		sint32 Y;
-	};
-
-	struct Rect2D
-	{
-		Offset2D Offset;
-		Extent2D Extent;
-	};
-
-
-	using CullModeFlags = Bitmask<ECullModeFlag, Flags>;
-	using SampleCountFlags = Bitmask<ESampleCount, Flags>;
-	using SampleMask = VkSampleMask;   // TODO: Not sure yet...
-
-	using ColorComponentFlags = Bitmask<EColorComponentFlag, Flags>;
-
-	struct Sampler
-	{
-		using Handle = VkSampler;
-	};
-
-	
 }
