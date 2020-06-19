@@ -1,4 +1,4 @@
-/** @file VT_Initalization.hpp
+/** @file VT_Initialization.hpp
 
 @brief Vaulted Thermals: Initialization
 

@@ -154,6 +154,8 @@ namespace VaultedThermals
 			Error_Extension_PipelineCompileRequired               = VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT
 		};
 
+		using EStructureType = VkStructureType;
+
 		namespace TODO
 		{
 			// TODO: Finish this.

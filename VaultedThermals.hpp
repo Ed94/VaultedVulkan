@@ -25,7 +25,8 @@ The library single include header.
  * 
  * Content related directly to the Vulkan API will have a link to its respective specification.
  * 
- * Files that do not follow specification are labeled with an NS-# in their comment below.
+ * Files that do not follow specification are labeled with an NS-#.
+ * Files that are for platform extended functionality are labeled with EX-#.
  * 
  * Note: Files are in order of include, so specification modules may be slightly out of order.
  * 
@@ -72,6 +73,16 @@ The library single include header.
  * Physical Device
  *
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Physical Device Specification</a>
+ * 
+ * ## 4.2 : VT_LogicalDevice.hpp
+ * Logical Device
+ * 
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#devsandqueues-devices">Logical Device Specification</a> 
+ * 
+ * ## EX: VT_Surface.hpp
+ * Window Surface
+ * 
+ * <a href="https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Window_surface">Surface Detail (From tutorial due to lack of specification)</a> 
  */
 
 
@@ -85,14 +96,14 @@ The library single include header.
 #include "VaultedThermals/VT_Initialization.hpp"
 #include "VaultedThermals/VT_Queues.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
+#include "VaultedThermals/VT_LogicalDevice.hpp"
+#include "VaultedThermals/VT_Surface.hpp"
 
 
 
 #include "VaultedThermals/VT_Layer.hpp"
 #include "VaultedThermals/VT_Debug.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
-#include "VaultedThermals/VT_LogicalDevice.hpp"
-#include "VaultedThermals/VT_Surface.hpp"
 #include "VaultedThermals/VT_SwapChain.hpp"
 #include "VaultedThermals/VT_ImageView.hpp"
 #include "VaultedThermals/VT_ShaderModule.hpp"

@@ -81,10 +81,10 @@ namespace VaultedThermals
 	<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects">Common Object Types Specification</a>
 	*/
 
-	namespace Vault_01
+	namespace Corridors
 	{
 		/** 
-		@addtogroup Common_Object_types
+		@addtogroup Common_Object_Types
 		@{
 		*/
 
@@ -192,7 +192,7 @@ namespace VaultedThermals
 		 */
 
 		/**
-		@ingroup CommonStrings
+		@addtogroup CommonStrings
 		@{
 		 */
 
