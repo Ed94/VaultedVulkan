@@ -13,15 +13,14 @@ The library single include header.
 
 
 
-
 /**
  * @page LibraryOutline 
  * 
  * The libraries files are organized based on the Khronos Vulkan Specification manual:
  * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html
  * 
- * #Guide
  * 
+ * @section GuideSec Guide
  * Each file Starting from the number 2 represents a chapter/category of the manual.
  * Files may have non-specification within them.
  * 
@@ -29,62 +28,59 @@ The library single include header.
  * 
  * Files that do not follow specification are labeled with an NS-# in their comment below.
  * 
- * Features that would be nice to have:
- * Have support for object model enforcement.
+ * Note: Files are in order of include, so specification modules may be slightly out of order.
  * 
- * ##VT_Vaults.hpp: 
+ * 
+ * Features that would be nice to have:
+ * @todo Have support for object model enforcement.
+ * 
+ * @subsection OutlineSec Outline
+ * 
+ * ## NS-0: VT_Vaults.hpp
  * Defines the vaulting scope used for the various levels of implementation within the library.
+ * 
+ * ## NS-1: VT_Backend.hpp
+ * NS-1: Backend related definitions for use in implementing the library. 
+ * 
+ * ## NS-2 VT_Platform.hpp
+ * Platform detection and includes the C-API vulkan header.
+ * 
+ * ## 2: VT_Types
+ * Fundamental Typedefs, Common Object Types, Non-Specification Types.
+ * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals
+ * 
+ * ## NS-3 VT_Enums.hpp
+ * Unsorted global enum definitions.
+ * 
+ * ## NS-4 VT_Constants.hpp
+ * Unsorted constants.
+ * 
+ * ## 3: VT_Initialization
+ * Command function pointers, application instancing.
+ * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization
+ * 
+ * ## 4: Devices and Queues
+ * 
+ * ## 4.3: 
+ * Queues
+ * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-queues
+ * 
+ * ## 4.1:
+ * Physical Devices
+ * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration 
  */
 
 
 
 #include "VaultedThermals/VT_Vaults.hpp"
-
-/** NS-1: Backend related definitions for use in implementing the library.
-*/
 #include "VaultedThermals/VT_Backend.hpp"
-
-// NS-2: Platform detection and includes the C-API vulkan header.
 #include "VaultedThermals/VT_Platform.hpp"
-
-/* 2: Fundamental Typedefs, Common Object Types, Non-Specification Types.
-
-https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals
-*/
 #include "VaultedThermals/VT_Types.hpp"
-
-// NS-3: Unsorted global enum definitions.
 #include "VaultedThermals/VT_Enums.hpp"
-
-// NS-4: Unsorted constants.
 #include "VaultedThermals/VT_Constants.hpp"
-
-/* 3: Command function pointers, application instancing.
-
-https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization
-*/
 #include "VaultedThermals/VT_Initalization.hpp"
-
-// 4: Devices and Queues https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues
-
-/* 4.3. Queues 
-
-https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-queues
-*/
 #include "VaultedThermals/VT_Queues.hpp"
-
-/* 4.1. Physical Devices 
-
-https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration
-*/
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
-
-
-
-/**
- * @}
- * .
- */
 
 
 

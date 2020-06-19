@@ -23,7 +23,7 @@
 #endif
 
 
-/*
+/** 
 This guard is necessary to prevent redefinition errors. I am not entirely sure with pragma once
 specified, why this is required.
 */
@@ -65,10 +65,10 @@ namespace VaultedThermals
 		*/
 		#ifdef _WIN32
 
-			// OS Platform constant.
+			/** 
+				@var   OS Platform Constant
 
-			/** @brief Contains the definition of the OS_Platform. (Set to windows)
-			 * .
+				@brief Contains the definition of the OS_Platform. (Set to windows)
 			 */
 			constexpr EOS_Platform OS_Platform = EOS_Platform::Windows;
 
@@ -98,7 +98,6 @@ namespace VaultedThermals
 		 * @struct Platform Types
 		 * 
 		 * @struct A structure containing the types for the detected platform.
-		 * .
 		 */
 		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;
 	}
@@ -108,7 +107,6 @@ namespace VaultedThermals
 		@def Vulkan Convention Enforcement.
 
 		@brief Generates the convention enforcer set for the vulkan API.
-	 * .
 	 */
 	MakeConventionEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL);
 }

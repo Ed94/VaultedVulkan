@@ -1,7 +1,7 @@
-/*
-
-
-*/
+/*****************************************************************//**
+ * \file   VT_Types.hpp
+ * \brief  Vaulted Thermals: Types
+ *********************************************************************/
 
 
 
@@ -76,13 +76,14 @@ namespace VaultedThermals
 
 	namespace Vault_01
 	{
-		/*
-		Structure specifying a two-dimensional offset.
+		/** 
+		@brief Structure specifying a two-dimensional offset.
 
+		@details
 		Offsets are used to describe a pixel location within an image or framebuffer, 
 		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
 
-		https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
+		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets
 		*/
 		struct Offset2D : Vault_00::VKStruct_Base<VkOffset2D>
 		{

@@ -29,9 +29,15 @@ namespace VaultedThermals
 		template<typename VulkanType>
 		struct VKStruct_Base
 		{
-			// TODO: Finish making the proper enum...
+			/**
+			 * @typedef EType
+			 * 
+			 * @brief Defines the EType enum to the default vkStructureType enum for now.
+			 * 
+			 * @todo Finish the proper enum...
+			 */
 			using EType  = VkStructureType;
-			using VkType = VulkanType     ;
+			using VkType = VulkanType     ;   /// @typdef VkType @brief Keeps record of the struct's inherent vulkan equivalent.
 
 			operator VulkanType*()
 			{

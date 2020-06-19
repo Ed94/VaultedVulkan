@@ -89,7 +89,7 @@ namespace VaultedThermals
 	*/
 	namespace Vault_03 { using namespace Corridors; }
 
-	/* @namespace Vault_04
+	/** @namespace Vault_04
 
 		@brief Full setup providing procedure implementation.
 
@@ -97,25 +97,25 @@ namespace VaultedThermals
 	*/
 	namespace Vault_04 { using namespace Corridors; }
 
-	/* namespace Vault_05
+	/** @namespace Vault_05
 		
 		@brief 1:1 Object oriented wrapping of Vulkan API
 	*/
 	namespace Vault_05 { using namespace Corridors; }
 
-	/* namespace Vault_06
+	/** @namespace Vault_06
 
 		@brief Low cost Object-oriented repetitive functionality wrapping.
 	*/
 	namespace Vault_06 { using namespace Corridors; }
 
-	/* namespace Vault_07
+	/** @namespace Vault_07
 
 		@brief Medium cost Object-oriented preset implementation wrapping.
 	*/
 	namespace Vault_07 { using namespace Corridors; }
 
-	/* namespace Vault_08
+	/** @namespace Vault_08
 
 		@brief Full setup providing object-oriented implementation.
 	*/
