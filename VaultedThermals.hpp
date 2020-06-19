@@ -17,7 +17,7 @@ The library single include header.
  * @page LibraryOutline 
  * 
  * The libraries files are organized based on the Khronos Vulkan Specification manual:
- * @link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html">Vulkan Specification</a>  
  * 
  * 
  * @section GuideSec Guide

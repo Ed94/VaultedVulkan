@@ -18,19 +18,30 @@ namespace VaultedThermals
 {
     namespace Corridors
     {
-		/*
-		Necessary for Bitmasks in the Vulkan specification that are not defined but reserved for future use.
+		/** 
+		@enum Undefined Enum
+		@brief Necessary for Bitmasks in the Vulkan specification that are not defined but reserved for future use.
 		*/
 		enum class EUndefined 
 		{};
 
 		SpecifyBitmaskable(EUndefined);
 
+		/**
+		 * @enum Handle Enum
+		 * 
+		 * @todo Is this still necessary?
+		 */
 		enum class EHandle
 		{
 			Null = VK_NULL_HANDLE
 		};
 
+		/**
+		 * @enum API_Version
+		 * 
+		 * 
+		 */
 		enum class EAPI_Version
 		{
 			_1_0 = VK_API_VERSION_1_0,
