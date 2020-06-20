@@ -119,13 +119,15 @@ namespace VaultedThermals
 	*/
 	namespace Vault_08 { using namespace Corridors; }
 
-	/*
-	Reserved
+	/** @namespace Vault_09
+		
+		@brief Reserved
 	*/
 	namespace Vault_09 { using namespace Corridors; }
 
-	/*
-	Reserved
+	/** @namespace Vault_10
+		
+		@brief Reserved
 	*/
 	namespace Vault_10 { using namespace Corridors; }
 }

@@ -43,7 +43,7 @@ namespace VaultedThermals
 			struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceCreateInfo>
 			{
 					  EType                     SType                ;
-				const void*                     Extension            ;
+				const void*                     Next                 ;
 					  CreateFlags               Flags                ;
 					  uint32                    QueueCreateInfoCount ;
 				const Queue::CreateInfo*        QueueCreateInfos     ;
@@ -85,7 +85,7 @@ namespace VaultedThermals
 			 * \param _handle
 			 * \param _allocator
 			 */
-			static void Destory(LogicalDevice::Handle _handle, const AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _handle, const AllocationCallbacks* _allocator)
 			{
 				vkDestroyDevice(_handle, _allocator);
 			}

@@ -50,7 +50,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
 
 				      EType       SType           ;
-				const void*       Extension       ;
+				const void*       Next            ;
 				      CreateFlags Flags           ;
 				      uint32      QueueFamilyIndex;
 				      uint32      QueueCount      ;

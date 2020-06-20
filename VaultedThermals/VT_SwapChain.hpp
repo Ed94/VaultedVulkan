@@ -47,12 +47,12 @@ namespace VaultedThermals
 
 				using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
 
-				      EType             SType;
-				const void*             Extension            ;
+				      EType             SType                ;
+				const void*             Next                 ;
 				      CreateFlags       Flags                ;
 				      Surface::Handle   Surface              ; 
 				      uint32            MinImageCount        ;
-				      EImageFormat      ImageFormat          ;
+				      EFormat           ImageFormat          ;
 				      EColorSpace       ImageColorSpace      ;
 				      Extent2D          ImageExtent          ;
 				      uint32            ImageArrayLayers     ;
@@ -138,6 +138,8 @@ namespace VaultedThermals
 
 	namespace Vault_02
 	{
+		using Vault_01::Image;
+
 		struct SwapChain : Vault_01::SwapChain
 		{
 			/**
@@ -175,7 +177,7 @@ namespace VaultedThermals
 			{
 				uint32 numImages = GetImageCount(_deviceHandle, _swapChain);
 
-				EResult&& result = EResult(vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &numImages, _images));
+				EResult&& result = QueryImages(_deviceHandle, _swapChain, numImages, _images);
 
 				if (result != EResult::Success) std::runtime_error("Failed to get number of presentable images...");
 

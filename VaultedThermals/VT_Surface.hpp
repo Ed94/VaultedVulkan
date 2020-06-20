@@ -1,6 +1,9 @@
 /** @file VT_Surface.hpp
 
-@brief <a href="https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Window_surface">Surface Guide</a> 
+@brief Vaulted Thermals: Surface
+
+@details
+<a href="https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Window_surface">Surface Guide</a> 
 */
 
 
@@ -60,7 +63,7 @@ namespace VaultedThermals
 			 */
 			struct Format : VKStruct_Base<VkSurfaceFormatKHR>
 			{
-				EImageFormat Format    ;
+				EFormat Format    ;
 				EColorSpace  ColorSpace;
 			};
 		};
@@ -83,7 +86,7 @@ namespace VaultedThermals
 				using OS_WindowHandle = PlatformTypes::OS_WindowHandle;
 
 				      EType           SType      ;
-				const void*           Extension  ;
+				const void*           Next       ;
 				      CreateFlags     Flags      ;
 				      OS_AppHandle    OSAppHandle;
 				      OS_WindowHandle OSWinHandle;

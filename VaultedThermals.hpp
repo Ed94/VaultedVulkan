@@ -79,6 +79,13 @@ The library single include header.
  * 
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#devsandqueues-devices">Logical Device Specification</a> 
  * 
+ * ## 11: Resource Creation
+ * 
+ * ## 11.1-5: VT_Resource.hpp
+ * Buffers, Buffer Views, Images, Image Layouts, Image Views
+ * 
+ * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#resources">Resource Specification</a> 
+ * 
  * ## EX-1: VT_Surface.hpp
  * Window Surface
  * 
@@ -87,7 +94,7 @@ The library single include header.
  * ## EX-2: VT_SwapChain.hpp
  * Swap Chain
  * 
- *  
+ * <a href="https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Swap_chain">Guide (No Specification...)</a>  
  */
 
 
@@ -102,14 +109,6 @@ The library single include header.
 #include "VaultedThermals/VT_Queues.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
 #include "VaultedThermals/VT_LogicalDevice.hpp"
+#include "VaultedThermals/VT_Resource.hpp"
 #include "VaultedThermals/VT_Surface.hpp"
-
-
-
-#include "VaultedThermals/VT_Layer.hpp"
-#include "VaultedThermals/VT_Debug.hpp"
-#include "VaultedThermals/VT_PhysicalDevice.hpp"
 #include "VaultedThermals/VT_SwapChain.hpp"
-#include "VaultedThermals/VT_ImageView.hpp"
-#include "VaultedThermals/VT_ShaderModule.hpp"
-#include "VaultedThermals/VT_Pipeline.hpp"

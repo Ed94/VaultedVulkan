@@ -58,7 +58,7 @@ namespace VaultedThermals
 			struct AppInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
 			{
 				      EType        SType        ;
-				const void*        Extension    ;
+				const void*        Next         ;
 				      RoCStr       AppName      ;
 				      uint32       AppVersion   ;
 				      RoCStr       EngineName   ;
@@ -74,7 +74,7 @@ namespace VaultedThermals
 			struct CreateInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
 			{
 				      EType                SType                ;
-				const void*                Extension            ;
+				const void*                Next                 ;
 				      CreateFlags          Flags                ;
 				const AppInfo*             AppInfo              ;
 				      uint32               EnabledLayerCount    ;
@@ -103,7 +103,7 @@ namespace VaultedThermals
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyInstance.html">Destroy Instance Specification</a> 
 			*/
-			static void Destory
+			static void Destroy
 			(
 				AppInstance::Handle  _instance ,
 				AllocationCallbacks* _callbacks
@@ -166,7 +166,7 @@ namespace VaultedThermals
 
 			void Destroy()
 			{
-				Vault_01::AppInstance::Destory(handle, allocator);
+				Vault_01::AppInstance::Destroy(handle, allocator);
 			}
 
 
@@ -244,8 +244,9 @@ namespace VaultedThermals
 			return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_appInstance, _procedureName));
 		};
 
-		template<typename ReturnType>
 		/*
+		template<typename ReturnType>
+		
 		Function pointers for all Vulkan commands directly addressed from the device.
 
 		In order to support systems with multiple Vulkan implementations, the function pointers returned by vkGetInstanceProcAddr 

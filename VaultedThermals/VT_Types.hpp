@@ -225,6 +225,34 @@ namespace VaultedThermals
 		*/
 		using FPtr_Void = PFN_vkVoidFunction;
 
+		// Misc
+
+		using DeviceSize = VkDeviceSize;
+
+		/**
+		 * @brief Can be used to facilitate iterating through a read-only structure pointer chain.
+		 * 
+		 * @details
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseInStructure.html">Specification</a> 
+		 */
+		struct Base_InStructure : Vault_00::VKStruct_Base<VkBaseInStructure>
+		{
+			      EType             SType;
+			const Base_InStructure* Next ;
+		};
+
+		/**
+		 * @brief Can be used to facilitate iterating through a structure pointer chain that returns data back to the application.
+		 * 
+		 * @details
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseOutStructure.html">Specification</a> 
+		 */
+		struct Base_OutStructure : Vault_00::VKStruct_Base<VkBaseOutStructure>
+		{
+			      EType              SType;
+			const Base_OutStructure* Next ;
+		};
+
 		/** 
 		@todo Make proper structure.
 		*/
@@ -243,19 +271,9 @@ namespace VaultedThermals
 		};
 
 		/** 
-		@brief
-		Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes 
-		(e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, 
-		or by directly specifying them as parameters to certain commands.
+		@brief Structure specifying a color component mapping.
 
-		<a href="linkURL">link text</a> 
-		*/
-		struct Image
-		{
-			using Handle = VkImage;
-		};
-
-		/** 
+		@details
 		The VkComponentMapping components member describes a remapping from components of the image to components of the vector 
 		returned by shader image instructions. This remapping must be the identity swizzle for storage image descriptors, 
 		input attachment descriptors, framebuffer attachments, and any VkImageView used with a combined image sampler that 
@@ -297,6 +315,6 @@ namespace VaultedThermals
 
 	namespace SPIR_V
 	{
-		using Bytecode = uint32;
+		using Bytecode = Corridors::uint32;
 	}
 }

@@ -138,42 +138,42 @@ namespace VaultedThermals
 			*/
 			struct Limits : Vault_00::VKStruct_Base<VkPhysicalDeviceLimits>
 			{
-				uint32           MaxImageDimension1D;
-				uint32           MaxImageDimension2D;
-				uint32           MaxImageDimension3D;
-				uint32           MaxImageDimensionCube;
-				uint32           MaxImageArrayLayers;
-				uint32           MaxTexelBufferElements;
-				uint32           MaxUniformBufferRange;
-				uint32           MaxStorageBufferRange;
-				uint32           MaxPushConstantsSize;
-				uint32           MaxMemoryAllocationCount;
-				uint32           MaxSamplerAllocationCount;
-				Size             BufferImageGranularity;
-				Size             SparseAddressSpaceSize;
-				uint32           MaxBoundDescriptorSets;
-				uint32           MaxPerStageDescriptorSamplers;
-				uint32           MaxPerStageDescriptorUniformBuffers;
-				uint32           MaxPerStageDescriptorStorageBuffers;
-				uint32           MaxPerStageDescriptorSampledImages;
-				uint32           MaxPerStageDescriptorStorageImages;
-				uint32           MaxPerStageDescriptorInputAttachments;
-				uint32           MaxPerStageResources;
-				uint32           MaxDescriptorSetSamplers;
-				uint32           MaxDescriptorSetUniformBuffers;
-				uint32           MaxDescriptorSetUniformBuffersDynamic;
-				uint32           MaxDescriptorSetStorageBuffers;
-				uint32           MaxDescriptorSetStorageBuffersDynamic;
-				uint32           MaxDescriptorSetSampledImages;
-				uint32           MaxDescriptorSetStorageImages;
-				uint32           MaxDescriptorSetInputAttachments;
-				uint32           MaxVertexInputAttributes;
-				uint32           MaxVertexInputBindings;
-				uint32           MaxVertexInputAttributeOffset;
-				uint32           MaxVertexInputBindingStride;
-				uint32           MaxVertexOutputComponents;
-				uint32           MaxTessellationGenerationLevel;
-				uint32           MaxTessellationPatchSize;
+				uint32           MaxImageDimension1D                            ;
+				uint32           MaxImageDimension2D                            ;
+				uint32           MaxImageDimension3D                            ;
+				uint32           MaxImageDimensionCube                          ;
+				uint32           MaxImageArrayLayers                            ;
+				uint32           MaxTexelBufferElements                         ;
+				uint32           MaxUniformBufferRange                          ;
+				uint32           MaxStorageBufferRange                          ;
+				uint32           MaxPushConstantsSize                           ;
+				uint32           MaxMemoryAllocationCount                       ;
+				uint32           MaxSamplerAllocationCount                      ;
+				Size             BufferImageGranularity                         ;
+				Size             SparseAddressSpaceSize                         ;
+				uint32           MaxBoundDescriptorSets                         ;
+				uint32           MaxPerStageDescriptorSamplers                  ;
+				uint32           MaxPerStageDescriptorUniformBuffers            ;
+				uint32           MaxPerStageDescriptorStorageBuffers            ;
+				uint32           MaxPerStageDescriptorSampledImages             ;
+				uint32           MaxPerStageDescriptorStorageImages             ;
+				uint32           MaxPerStageDescriptorInputAttachments          ;
+				uint32           MaxPerStageResources                           ;
+				uint32           MaxDescriptorSetSamplers                       ;
+				uint32           MaxDescriptorSetUniformBuffers                 ;
+				uint32           MaxDescriptorSetUniformBuffersDynamic          ;
+				uint32           MaxDescriptorSetStorageBuffers                 ;
+				uint32           MaxDescriptorSetStorageBuffersDynamic          ;
+				uint32           MaxDescriptorSetSampledImages                  ;
+				uint32           MaxDescriptorSetStorageImages                  ;
+				uint32           MaxDescriptorSetInputAttachments               ;
+				uint32           MaxVertexInputAttributes                       ;
+				uint32           MaxVertexInputBindings                         ;
+				uint32           MaxVertexInputAttributeOffset                  ;
+				uint32           MaxVertexInputBindingStride                    ;
+				uint32           MaxVertexOutputComponents                      ;
+				uint32           MaxTessellationGenerationLevel                 ;
+				uint32           MaxTessellationPatchSize                       ;
 				uint32           MaxTessellationControlPerVertexInputComponents ;
 				uint32           MaxTessellationControlPerVertexOutputComponents;
 				uint32           MaxTessellationControlPerPatchOutputComponents ;
@@ -192,58 +192,58 @@ namespace VaultedThermals
 				uint32           MaxComputeSharedMemorySize                     ;
 				uint32           MaxComputeWorkGroupCount[3]                    ;
 				uint32           MaxComputeWorkGroupInvocations                 ;
-				uint32           MaxComputeWorkGroupSize[3];
-				uint32           SubPixelPrecisionBits;
-				uint32           SubTexelPrecisionBits;
-				uint32           MipmapPrecisionBits;
-				uint32           MaxDrawIndexedIndexValue;
-				uint32           MaxDrawIndirectCount;
-				float32          MaxSamplerLodBias;
-				float32          MaxSamplerAnisotropy;
-				uint32           MaxViewports;
-				uint32           MaxViewportDimensions[2];
-				float32          ViewportBoundsRange[2];
-				uint32           ViewportSubPixelBits;
-				size_t           MinMemoryMapAlignment;
-				Size             MinTexelBufferOffsetAlignment;
-				Size             MinUniformBufferOffsetAlignment;
-				Size             MinStorageBufferOffsetAlignment;
-				sint32           MinTexelOffset;
-				uint32           MaxTexelOffset;
-				sint32           MinTexelGatherOffset;
-				uint32           MaxTexelGatherOffset;
-				float32          MinInterpolationOffset;
-				float32          MaxInterpolationOffset;
-				uint32           SubPixelInterpolationOffsetBits;
-				uint32           MaxFramebufferWidth;
-				uint32           MaxFramebufferHeight;
-				uint32           MaxFramebufferLayers;
-				SampleCountFlags FramebufferColorSampleCounts;
-				SampleCountFlags FramebufferDepthSampleCounts;
-				SampleCountFlags FramebufferStencilSampleCounts;
-				SampleCountFlags FramebufferNoAttachmentsSampleCounts;
-				uint32           MaxColorAttachments;
-				SampleCountFlags SampledImageColorSampleCounts;
-				SampleCountFlags SampledImageIntegerSampleCounts;
-				SampleCountFlags SampledImageDepthSampleCounts;
-				SampleCountFlags SampledImageStencilSampleCounts;
-				SampleCountFlags StorageImageSampleCounts;
-				uint32           MaxSampleMaskWords;
-				Bool             TimestampComputeAndGraphics;
-				float32          TimestampPeriod;
-				uint32           MaxClipDistances;
-				uint32           MaxCullDistances;
-				uint32           MaxCombinedClipAndCullDistances;
-				uint32           DiscreteQueuePriorities;
-				float32          PointSizeRange[2];
-				float32          LineWidthRange[2];
-				float32          PointSizeGranularity;
-				float32          LineWidthGranularity;
-				Bool             StrictLines;
-				Bool             StandardSampleLocations;
-				Size             OptimalBufferCopyOffsetAlignment;
-				Size             OptimalBufferCopyRowPitchAlignment;
-				Size             NonCoherentAtomSize;
+				uint32           MaxComputeWorkGroupSize[3]                     ;
+				uint32           SubPixelPrecisionBits                          ;
+				uint32           SubTexelPrecisionBits                          ;
+				uint32           MipmapPrecisionBits                            ;
+				uint32           MaxDrawIndexedIndexValue                       ;
+				uint32           MaxDrawIndirectCount                           ;
+				float32          MaxSamplerLodBias                              ;
+				float32          MaxSamplerAnisotropy                           ;
+				uint32           MaxViewports                                   ;
+				uint32           MaxViewportDimensions[2]                       ;
+				float32          ViewportBoundsRange[2]                         ;
+				uint32           ViewportSubPixelBits                           ;
+				size_t           MinMemoryMapAlignment                          ;
+				Size             MinTexelBufferOffsetAlignment                  ;
+				Size             MinUniformBufferOffsetAlignment                ;
+				Size             MinStorageBufferOffsetAlignment                ;
+				sint32           MinTexelOffset                                 ;
+				uint32           MaxTexelOffset                                 ;
+				sint32           MinTexelGatherOffset                           ;
+				uint32           MaxTexelGatherOffset                           ;
+				float32          MinInterpolationOffset                         ;
+				float32          MaxInterpolationOffset                         ;
+				uint32           SubPixelInterpolationOffsetBits                ;
+				uint32           MaxFramebufferWidth                            ;
+				uint32           MaxFramebufferHeight                           ;
+				uint32           MaxFramebufferLayers                           ;
+				SampleCountFlags FramebufferColorSampleCounts                   ;
+				SampleCountFlags FramebufferDepthSampleCounts                   ;
+				SampleCountFlags FramebufferStencilSampleCounts                 ;			    
+				SampleCountFlags FramebufferNoAttachmentsSampleCounts           ;
+				uint32           MaxColorAttachments                            ;
+				SampleCountFlags SampledImageColorSampleCounts                  ;
+				SampleCountFlags SampledImageIntegerSampleCounts                ;
+				SampleCountFlags SampledImageDepthSampleCounts                  ;
+				SampleCountFlags SampledImageStencilSampleCounts                ;
+				SampleCountFlags StorageImageSampleCounts                       ;
+				uint32           MaxSampleMaskWords                             ;
+				Bool             TimestampComputeAndGraphics                    ;
+				float32          TimestampPeriod                                ;
+				uint32           MaxClipDistances                               ;
+				uint32           MaxCullDistances                               ;
+				uint32           MaxCombinedClipAndCullDistances                ;
+				uint32           DiscreteQueuePriorities                        ;
+				float32          PointSizeRange[2]                              ;
+				float32          LineWidthRange[2]                              ;
+				float32          PointSizeGranularity                           ;
+				float32          LineWidthGranularity                           ;
+				Bool             StrictLines                                    ;
+				Bool             StandardSampleLocations                        ;
+				Size             OptimalBufferCopyOffsetAlignment               ;
+				Size             OptimalBufferCopyRowPitchAlignment             ;
+				Size             NonCoherentAtomSize                            ;
 			};
 
 			/**
@@ -356,6 +356,9 @@ namespace VaultedThermals
 
 	namespace Vault_02
 	{
+		using Vault_01::QueueFamilyProperties;
+		using Vault_01::ExtensionProperties  ;
+
 		struct PhysicalDevice : Vault_01::PhysicalDevice
 		{
 			/**
@@ -401,7 +404,7 @@ namespace VaultedThermals
 			/**
 			@brief Provides the queue families for the respective device.
 			*/
-			static void GetQueueFamilyProperties(PhysicalDevice::Handle _deviceHandle, Vault_01::QueueFamilyProperties* _familyContainer)
+			static void GetQueueFamilyProperties(PhysicalDevice::Handle _deviceHandle, QueueFamilyProperties* _familyContainer)
 			{
 				uint32 numQueueFamilies;
 
@@ -427,7 +430,7 @@ namespace VaultedThermals
 			/** 
 			@brief Provides the available extensions.
 			*/
-			static EResult GetAvailableExtensions(Handle _deviceHandle, Vault_01::ExtensionProperties* _extensionPropertiesContainer)
+			static EResult GetAvailableExtensions(Handle _deviceHandle, ExtensionProperties* _extensionPropertiesContainer)
 			{
 				uint32 numExtensions;
 

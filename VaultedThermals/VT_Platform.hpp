@@ -64,8 +64,7 @@ namespace VaultedThermals
 
 		#ifdef _WIN32
 
-			/** 
-				@var OS_Platform
+			/** @var OS_Platform
 
 				@brief Contains the definition of the OS_Platform. (Set to windows)
 			 */

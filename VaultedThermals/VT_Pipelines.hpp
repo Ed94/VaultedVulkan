@@ -218,7 +218,7 @@ namespace Vulkan
 				{
 					uint32       Location;
 					uint32       Binding ;
-					EImageFormat Format  ;
+					EFormat Format  ;
 					uint32       Offset  ;
 				};
 
