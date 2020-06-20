@@ -43,6 +43,9 @@ namespace VaultedThermals
 
 			/**
 			 * @brief Structure describing capabilities of a surface.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceCapabilitiesKHR.html">Specification</a> 
 			 */
 			struct Capabilities : VKStruct_Base<VkSurfaceCapabilitiesKHR>
 			{
@@ -60,11 +63,13 @@ namespace VaultedThermals
 
 			/**
 			 * @brief Structure describing a supported swapchain format-color space pair.
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceFormatKHR.html">Specification</a> 
 			 */
 			struct Format : VKStruct_Base<VkSurfaceFormatKHR>
 			{
-				EFormat Format    ;
-				EColorSpace  ColorSpace;
+				EFormat     Format    ;
+				EColorSpace ColorSpace;
 			};
 		};
 
@@ -76,8 +81,9 @@ namespace VaultedThermals
 		template<>
 		struct Surface_Maker<EOS_Platform::Windows> : Surface_PlatformAgnostic
 		{
-			static constexpr EStructureType CreateInfoType = EStructureType::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+			static constexpr EStructureType CreateInfoType = EStructureType::Win32_Surface_CreateInfo_KHR;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkWin32SurfaceCreateInfoKHR.html">Specification</a> */
 			struct CreateInfo : VKStruct_Base<VkWin32SurfaceCreateInfoKHR>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
@@ -93,7 +99,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief Returns the handle for the current process..
+			 * @brief Returns the handle for the current process.
 			 * 
 			 * @details
 			 * <a href="https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlea">Specification</a> 
