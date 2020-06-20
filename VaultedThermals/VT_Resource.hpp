@@ -1,5 +1,5 @@
 /** 
-@file VT_Resource
+@file VT_Resource.hpp
 
 @brief
 
