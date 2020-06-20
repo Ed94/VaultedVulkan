@@ -1647,5 +1647,10 @@ namespace VaultedThermals
 		};
 
 		SpecifyBitmaskable(EDependencyFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a>  */
+		enum class EFrameBufferCreateFlag : uint32 {};
+
+		SpecifyBitmaskable(EFrameBufferCreateFlag);
     }
 }

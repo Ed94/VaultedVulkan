@@ -148,7 +148,69 @@ namespace VaultedThermals
 			}
 		};
 
+		/**
+		 * @brief Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.
+		 * 
+		 * @details
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#_framebuffers">Specification</a> 
+		 */
+		struct Framebuffer
+		{
+			using Handle = VkFramebuffer;
+			
+			using CreateFlags = Bitmask<EFrameBufferCreateFlag, VkFramebufferCreateFlags>;
 
-		
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  */
+			struct CreateInfo : Vault_00::VKStruct_Base<VkFramebufferCreateInfo>
+			{
+				      EType              SType          ;
+				const void*              Next           ;
+				      CreateFlags        Flags          ;
+				      RenderPass::Handle RenderPass     ;
+				      uint32             attachmentCount;
+				const ImageView::Handle* Attachments    ;
+				      uint32             Width          ;
+				      uint32             Height         ;
+				      uint32             Layers         ;
+			};
+
+			/**
+			 * @brief Creates a framebuffer.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html">Specification</a> 
+			 * 
+			 * \param _deviceHanle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _framebuffer
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle _deviceHanle ,
+				const CreateInfo&           _creationSpec,
+				const AllocationCallbacks*  _allocator   ,
+				      Framebuffer::Handle&  _framebuffer
+			)
+			{
+				return EResult(vkCreateFramebuffer(_deviceHanle, _creationSpec.operator const VkFramebufferCreateInfo*(), _allocator, &_framebuffer));
+			}
+
+			/**
+			 * @brief Destroy a framebuffer.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _framebuffer
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Framebuffer::Handle _framebuffer, const AllocationCallbacks* _allocator)
+			{
+				vkDestroyFramebuffer(_deviceHandle, _framebuffer, _allocator);
+			}
+		};
 	}
 }

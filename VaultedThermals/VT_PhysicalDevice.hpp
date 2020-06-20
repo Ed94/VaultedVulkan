@@ -32,7 +32,7 @@ namespace VaultedThermals
 	namespace Vault_01
 	{
 		/**
-		@brief
+		@brief Represents a physical device.
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 		 */
 		struct PhysicalDevice
@@ -361,7 +361,7 @@ namespace VaultedThermals
 
 
 		/**
-		@brief
+		@brief Represents a physical device.
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 		*/
 		struct PhysicalDevice : Vault_01::PhysicalDevice
