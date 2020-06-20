@@ -1553,5 +1553,99 @@ namespace VaultedThermals
 			Stencil_AttachmentOptimal_KHR                = VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL_KHR                ,
 			Stencil_ReadonlyOptimal_KHR                  = VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR                 
 		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentDescriptionFlagBits">Specification</a>  */
+		enum class EAttachmentDescriptionFlag : uint32
+		{
+			AttachmentDescription_MAY_ALIAS = VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT 
+		};
+
+		SpecifyBitmaskable(EAttachmentDescriptionFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentLoadOp">Specification</a>  */
+		enum class EAttachmentLoadOperation : uint32
+		{
+			Load     = VK_ATTACHMENT_LOAD_OP_LOAD     , 
+			Clear    = VK_ATTACHMENT_LOAD_OP_CLEAR    ,
+			DontCare = VK_ATTACHMENT_LOAD_OP_DONT_CARE 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentStoreOp">Specification</a>  */
+		enum class EAttachmentStoreOperation : uint32
+		{
+			Store    = VK_ATTACHMENT_STORE_OP_STORE    ,
+			DontCare = VK_ATTACHMENT_STORE_OP_DONT_CARE
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkSubpassDescriptionFlagBits">Specification</a>  */
+		enum class ESubpassDescriptionFlag : uint32
+		{
+
+		};
+
+		SpecifyBitmaskable(ESubpassDescriptionFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkPipelineBindPoint">Specification</a>  */
+		enum class EPipelineBindPoint : uint32
+		{
+			Graphics = VK_PIPELINE_BIND_POINT_GRAPHICS,
+			Compute  = VK_PIPELINE_BIND_POINT_COMPUTE 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkPipelineStageFlagBits">Specification</a>  */
+		enum class EPipelineStageFlag : uint32
+		{
+			TopOfPipe                    = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT                   ,
+			DrawIndirect                 = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT                 ,
+			VertexInput                  = VK_PIPELINE_STAGE_VERTEX_INPUT_BIT                  ,
+			VertexShader                 = VK_PIPELINE_STAGE_VERTEX_SHADER_BIT                 ,
+			TessellationControlShader    = VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT   ,
+			TessellationEvaluationShader = VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT,
+			GeometryShader               = VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT               ,
+			FragementShader              = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT               ,
+			EarlyFragmentTests           = VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT          ,
+			LateFragmentTests            = VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT           ,
+			ColorAttachmentOutput        = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT       ,
+			ComputeShader                = VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT                ,
+			Transfer                     = VK_PIPELINE_STAGE_TRANSFER_BIT                      ,
+			BottomOfPipe                 = VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT                ,
+			Host                         = VK_PIPELINE_STAGE_HOST_BIT                          ,
+			AllGraphics                  = VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT                  ,
+			AllCommands                  = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT 
+		};
+
+		SpecifyBitmaskable(EPipelineStageFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAccessFlagBits">Specification</a>  */
+		enum class EAccessFlag : uint32
+		{
+			IndirectCommandRead         = VK_ACCESS_INDIRECT_COMMAND_READ_BIT         ,
+			IndexRead                   = VK_ACCESS_INDEX_READ_BIT                    ,
+			VertexAttributeRead         = VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT         ,
+			UniformRead                 = VK_ACCESS_UNIFORM_READ_BIT                  ,
+			InputAttachmentRead         = VK_ACCESS_INPUT_ATTACHMENT_READ_BIT         ,
+			ShaderRead                  = VK_ACCESS_SHADER_READ_BIT                   ,
+			ShaderWrite                 = VK_ACCESS_SHADER_WRITE_BIT                  ,
+			ColorAttachmentRead         = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT         ,
+			ColorWriteAttachmentWrite   = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT        ,
+			DepthStencilAttachmentRead  = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT ,
+			DepthStencilAttachmentWrite = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT,
+			TransferRead                = VK_ACCESS_TRANSFER_READ_BIT                 ,
+			TransferWrite               = VK_ACCESS_TRANSFER_WRITE_BIT                ,
+			HostRead                    = VK_ACCESS_HOST_READ_BIT                     ,
+			HostWrite                   = VK_ACCESS_HOST_WRITE_BIT                    ,
+			MemoryRead                  = VK_ACCESS_MEMORY_READ_BIT                   ,
+			MemoryWrite                 = VK_ACCESS_MEMORY_WRITE_BIT
+		};
+
+		SpecifyBitmaskable(EAccessFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkDependencyFlagBits">Specification</a>  */
+		enum class EDependencyFlag : uint32
+		{
+			ByRegion = VK_DEPENDENCY_BY_REGION_BIT 
+		};
+
+		SpecifyBitmaskable(EDependencyFlag);
     }
 }

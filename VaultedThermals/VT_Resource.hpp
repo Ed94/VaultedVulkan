@@ -1,7 +1,7 @@
 /** 
 @file VT_Resource.hpp
 
-@brief
+@brief Vaulted Thermals: Resources
 
 @details
 Vulkan supports two primary resource types: buffers and images. 
@@ -29,7 +29,6 @@ can be multidimensional and may have associated metadata.
 #include "VT_Queues.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
-#include "VT_Surface.hpp"
 
 
 
@@ -215,11 +214,12 @@ namespace VaultedThermals
 			 * \param _deviceHandle
 			 * \param _createInfo
 			 * \param _allocator
+			 * \param _imageHandle
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const AllocationCallbacks* _allocator)
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const AllocationCallbacks* _allocator, Image::Handle& _imageHandle)
 			{
-				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), _allocator));
+				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), _allocator, &_imageHandle));
 			}
 
 			/** 
