@@ -9,7 +9,7 @@ Resources are views of memory with associated formatting and dimensionality.
 Buffers are essentially unformatted arrays of bytes whereas images contain format information, 
 can be multidimensional and may have associated metadata.
 
-<a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#resources">Specification</a> 
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources">Specification</a> 
 */
 
 
@@ -26,7 +26,6 @@ can be multidimensional and may have associated metadata.
 #include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
-#include "VT_Queues.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 
@@ -44,7 +43,7 @@ namespace VaultedThermals
 		 * to a graphics or compute pipeline via descriptor sets or via certain commands, or by
 		 * directly specifying them as parameters to certain commands.
 		 * 
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#resources-buffers">Specification</a> 
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources-buffers">Specification</a> 
 		 */
 		struct Buffer
 		{
@@ -112,7 +111,7 @@ namespace VaultedThermals
 		 * In order to create a valid buffer view, the buffer must have been created with at least one of 
 		 * the following usage flags: UnformTexelBuffer or StorageTexelBuffer
 		 * 
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#resources-buffer-views">Specification</a> 
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources-buffer-views">Specification</a> 
 		 */
 		struct BufferView
 		{
@@ -173,7 +172,7 @@ namespace VaultedThermals
 		(e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, 
 		or by directly specifying them as parameters to certain commands.
 
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#resources-images">Specification</a> 
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources-images">Specification</a> 
 		*/
 		struct Image
 		{
@@ -209,7 +208,7 @@ namespace VaultedThermals
 			/**  
 			 * @brief  Create an image object.
 			 * 
-			 * @details <a href="https:www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImage.html">Specification</a>.
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImage.html">Specification</a>.
 			 * 
 			 * \param _deviceHandle
 			 * \param _createInfo
@@ -225,7 +224,7 @@ namespace VaultedThermals
 			/** 
 			 * @brief Destroy an image object.
 			 * 
-			 * @details <a href="https:www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImage.html">Specification</a>.
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImage.html">Specification</a>.
 			 * 
 			 * \param _deviceHandle
 			 * \param _image
@@ -249,7 +248,7 @@ namespace VaultedThermals
 
 			using EViewType = EImageViewType;
 
-			/** @brief <a href="linkURL">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresourceRange.html">Specification</a>  */
 			struct SubresourceRange : Vault_00::VKStruct_Base<VkImageSubresourceRange>
 			{
 				AspectFlags AspectMask    ;
@@ -259,7 +258,7 @@ namespace VaultedThermals
 				uint32      LayerCount    ;
 			};
 
-			/** @brief <a href="linkURL">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateInfo.html">Specification</a>  */
 			struct CreateInfo : Vault_00::VKStruct_Base<VkImageViewCreateInfo>
 			{
 				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;

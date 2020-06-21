@@ -5,7 +5,7 @@
 
 @details
 
-<a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#renderpass">Specification</a> 
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#renderpass">Specification</a> 
 */
 
 
@@ -22,7 +22,6 @@
 #include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
-#include "VT_Queues.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 #include "VT_Resource.hpp"
@@ -47,7 +46,7 @@ namespace VaultedThermals
 			using PipelineStageFlags         = Bitmask<EPipelineStageFlag        , VkPipelineStageFlags        >;
 			using CreateFlags                = Bitmask<EUndefined                , VkRenderPassCreateFlags     >;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentDescription">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a>  */
 			struct AttachmentDescription : Vault_00::VKStruct_Base<VkAttachmentDescription>
 			{
 				AttachmentDescriptionFlags Flags         ;
@@ -61,14 +60,14 @@ namespace VaultedThermals
 				EImageLayout               FinalLayout   ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentReference">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentReference">Specification</a>  */
 			struct AttachmentReference : Vault_00::VKStruct_Base<VkAttachmentReference >
 			{
 				uint32       Attachment;
 				EImageLayout Layout    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkSubpassDescription">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescription">Specification</a>  */
 			struct SubpassDescription : Vault_00::VKStruct_Base<VkSubpassDescription>
 			{
 				      SubpassDesriptionFlags Flags                  ;
@@ -83,7 +82,7 @@ namespace VaultedThermals
 				const uint32*                PreserveAttachments    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkSubpassDependency">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a>  */
 			struct SubpassDependency : Vault_00::VKStruct_Base<VkSubpassDependency >
 			{
 				uint32             SourceSubpass        ;
@@ -95,7 +94,7 @@ namespace VaultedThermals
 				DependencyFlags    DependencyFlags      ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkRenderPassCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateInfo">Specification</a>  */
 			struct CreateInfo : Vault_00::VKStruct_Base<VkRenderPassCreateInfo>
 			{
 				      EType                  SType          ;
@@ -113,7 +112,7 @@ namespace VaultedThermals
 			 * @brief Create a render pass.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#renderpass-creation">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#renderpass-creation">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _createInfo
@@ -152,7 +151,7 @@ namespace VaultedThermals
 		 * @brief Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.
 		 * 
 		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#_framebuffers">Specification</a> 
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_framebuffers">Specification</a> 
 		 */
 		struct Framebuffer
 		{
@@ -160,7 +159,7 @@ namespace VaultedThermals
 			
 			using CreateFlags = Bitmask<EFrameBufferCreateFlag, VkFramebufferCreateFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  */
 			struct CreateInfo : Vault_00::VKStruct_Base<VkFramebufferCreateInfo>
 			{
 				      EType              SType          ;

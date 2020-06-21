@@ -3,7 +3,7 @@
 @brief Vaulted Thermals: Swap Chain
 
 @details
-<a href="https://vulkan-tutorial.com/Drawing_a_triangle/Presentation/Swap_chain">Guide (No Specification...)</a> 
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a> 
 */
 
 
@@ -20,7 +20,6 @@
 #include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
-#include "VT_Queues.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 #include "VT_Resource.hpp"

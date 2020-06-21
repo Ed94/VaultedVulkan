@@ -84,6 +84,29 @@ namespace VaultedThermals
 			};
 
 			/**
+			 * @brief.
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
+			 */
+			struct ValidationFeatures
+			{
+
+			};
+
+			/**
+			 * @brief.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFlagsEXT">Specification</a> 
+			 * 
+			 * @todo Implement.
+			 */
+			struct ValidationFlags
+			{
+
+			};
+
+			/**
 			@brief Create a new Vulkan application instance.
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html">Create Instance Specification</a> 
@@ -110,6 +133,20 @@ namespace VaultedThermals
 			)
 			{
 				vkDestroyInstance(_instance, _callbacks);
+			}
+
+			/**
+			 * @brief Query the version of application instance-level functionality supported by the implementation.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceVersion.html">Specification</a> 
+			 * 
+			 * \param _versionContainer
+			 * \return 
+			 */
+			static EResult GetVersion(uint32& _versionContainer)
+			{
+				vkEnumerateInstanceVersion(&_versionContainer);
 			}
 		};
 	}

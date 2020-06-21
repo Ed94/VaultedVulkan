@@ -39,7 +39,7 @@ namespace VaultedThermals
 		/**
 		 * @enum API_Version
 		 * 
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#extendingvulkan-coreversions-versionnumbers">Specification</a> 
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#extendingvulkan-coreversions-versionnumbers">Specification</a> 
 		 * 
 		 */
 		enum class EAPI_Version
@@ -50,7 +50,7 @@ namespace VaultedThermals
 		};
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#fundamentals-commandsyntax">Specification</a> .
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a> .
 		 */
 		enum EBool
 		{
@@ -1256,7 +1256,7 @@ namespace VaultedThermals
 			PatchList                   = VK_PRIMITIVE_TOPOLOGY_PATCH_LIST                    
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#primsrast-polygonmode">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#primsrast-polygonmode">Specification</a>  */
 		enum class EPolygonMode : uint32
 		{
 			Fill              = VK_POLYGON_MODE_FILL             ,
@@ -1447,9 +1447,6 @@ namespace VaultedThermals
 
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlagBits.html">Specification</a> 
-		 * 
-		 * @details
-		 * 
 		 */
 		enum class EBufferCreateFlag : uint32
 		{
@@ -1554,7 +1551,7 @@ namespace VaultedThermals
 			Stencil_ReadonlyOptimal_KHR                  = VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR                 
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentDescriptionFlagBits">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlagBits">Specification</a>  */
 		enum class EAttachmentDescriptionFlag : uint32
 		{
 			AttachmentDescription_MAY_ALIAS = VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT 
@@ -1562,7 +1559,7 @@ namespace VaultedThermals
 
 		SpecifyBitmaskable(EAttachmentDescriptionFlag);
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentLoadOp">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentLoadOp">Specification</a>  */
 		enum class EAttachmentLoadOperation : uint32
 		{
 			Load     = VK_ATTACHMENT_LOAD_OP_LOAD     , 
@@ -1570,29 +1567,26 @@ namespace VaultedThermals
 			DontCare = VK_ATTACHMENT_LOAD_OP_DONT_CARE 
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAttachmentStoreOp">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentStoreOp">Specification</a>  */
 		enum class EAttachmentStoreOperation : uint32
 		{
 			Store    = VK_ATTACHMENT_STORE_OP_STORE    ,
 			DontCare = VK_ATTACHMENT_STORE_OP_DONT_CARE
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkSubpassDescriptionFlagBits">Specification</a>  */
-		enum class ESubpassDescriptionFlag : uint32
-		{
-
-		};
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlagBits">Specification</a>  */
+		enum class ESubpassDescriptionFlag : uint32 {};
 
 		SpecifyBitmaskable(ESubpassDescriptionFlag);
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkPipelineBindPoint">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineBindPoint">Specification</a>  */
 		enum class EPipelineBindPoint : uint32
 		{
 			Graphics = VK_PIPELINE_BIND_POINT_GRAPHICS,
 			Compute  = VK_PIPELINE_BIND_POINT_COMPUTE 
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkPipelineStageFlagBits">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlagBits">Specification</a>  */
 		enum class EPipelineStageFlag : uint32
 		{
 			TopOfPipe                    = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT                   ,
@@ -1616,7 +1610,7 @@ namespace VaultedThermals
 
 		SpecifyBitmaskable(EPipelineStageFlag);
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkAccessFlagBits">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlagBits">Specification</a>  */
 		enum class EAccessFlag : uint32
 		{
 			IndirectCommandRead         = VK_ACCESS_INDIRECT_COMMAND_READ_BIT         ,
@@ -1640,7 +1634,7 @@ namespace VaultedThermals
 
 		SpecifyBitmaskable(EAccessFlag);
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkDependencyFlagBits">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDependencyFlagBits">Specification</a>  */
 		enum class EDependencyFlag : uint32
 		{
 			ByRegion = VK_DEPENDENCY_BY_REGION_BIT 
@@ -1648,9 +1642,86 @@ namespace VaultedThermals
 
 		SpecifyBitmaskable(EDependencyFlag);
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a>  */
 		enum class EFrameBufferCreateFlag : uint32 {};
 
 		SpecifyBitmaskable(EFrameBufferCreateFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlagBits">Specification</a>  */
+		enum class EPipelineCreateFlag : uint32
+		{
+			DisableOptimization                    = VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT                        ,
+			AllowDerivatives                       = VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT                           ,
+			Derivative                             = VK_PIPELINE_CREATE_DERIVATIVE_BIT                                  ,
+			ViewIndexFromDeviceIndex               = VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT                ,
+			DispatchBase                           = VK_PIPELINE_CREATE_DISPATCH_BASE_BIT                               ,
+			Raytracing_NoNull_AnyHit_Shaders       = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR     ,
+			Raytracing_NoNull_ClosestHit_Shaders   = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR ,
+			Raytracing_NoNull_Miss_Shaders         = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR        ,
+			Raytracing_NoNull_Intersection_Shaders = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR,
+			Raytracing_SkipTriangles               = VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR              ,
+			Raytracing_Skip_AABBS                  = VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR                  ,
+			DeferCompile                           = VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV                            ,
+			CaptureStatistics                      = VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR                      ,
+			CaptureInternalRepresentations         = VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR        ,
+			IndirectBindable                       = VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV                        ,
+			Library                                = VK_PIPELINE_CREATE_LIBRARY_BIT_KHR                                 ,
+			FailOn_PipelineCompileRequired         = VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT       ,
+			EarlyReturnOn_Failure                  = VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT                 ,
+			DispatchBase2                          = VK_PIPELINE_CREATE_DISPATCH_BASE                                   ,
+			ViewIndexFromDeviceInex                = VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR            ,
+			DispatchBase_KHR                       = VK_PIPELINE_CREATE_DISPATCH_BASE_KHR                               
+		};
+
+		SpecifyBitmaskable(EPipelineCreateFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlagBits">Specification</a>  */
+		enum class EPipelineCacheCreateFlag : uint32
+		{
+			Externally_Synchronized = VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT 
+		};
+
+		SpecifyBitmaskable(EPipelineCacheCreateFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompareOp">Specification</a>  */
+		enum class ECompareOperation : uint32
+		{
+			Never          = VK_COMPARE_OP_NEVER           ,
+			Less           = VK_COMPARE_OP_LESS            ,
+			Equal          = VK_COMPARE_OP_EQUAL           ,
+			LessOrEqual    = VK_COMPARE_OP_LESS_OR_EQUAL   ,
+			Greater        = VK_COMPARE_OP_GREATER         ,
+			NotEqual       = VK_COMPARE_OP_NOT_EQUAL       ,
+			GreaterOrEqual = VK_COMPARE_OP_GREATER_OR_EQUAL,
+			Always         = VK_COMPARE_OP_ALWAYS
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOp">Specification</a>  */
+		enum class EStencilOperation : uint32
+		{
+			Keep              = VK_STENCIL_OP_KEEP               ,
+			Zero              = VK_STENCIL_OP_ZERO               ,
+			Replace           = VK_STENCIL_OP_REPLACE            ,
+			IncrementAndClamp = VK_STENCIL_OP_INCREMENT_AND_CLAMP,
+			DecrementAndClamp = VK_STENCIL_OP_DECREMENT_AND_CLAMP,
+			Invert            = VK_STENCIL_OP_INVERT             ,
+			IncrementAndClamp = VK_STENCIL_OP_INCREMENT_AND_WRAP ,
+			DecrementAndWrap  = VK_STENCIL_OP_DECREMENT_AND_WRAP 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlagBits">Specification</a>  */
+		enum class EDescriptorBindingFlag : uint32
+		{
+			UpdateAfterBind              = VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT              ,
+			UpdateUnusedWhilePending     = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT    ,
+			PartiallyBound               = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT                ,
+			VariableDescriptorCount      = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT      ,
+			UpdateAfterBind              = VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT          ,
+			UpdateUnusedWhilePending_EXT = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT,
+			PartiallyBound_EXT           = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT            ,
+			VariableDescriptorCount_EXT  = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT
+		};
+
+		SpecifyBitmaskable(EDescriptorBindingFlag);
     }
 }

@@ -71,7 +71,6 @@ namespace VaultedThermals
 	}
 
 	#pragma endregion Global Typedefs
-
 	
 	#pragma region Common Object Types
 
@@ -227,7 +226,11 @@ namespace VaultedThermals
 
 		// Misc
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceSize.html">Specification</a>  */
 		using DeviceSize = VkDeviceSize;
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
+		using DeviceAddress = VkDeviceAddress;
 
 		/**
 		 * @brief Can be used to facilitate iterating through a read-only structure pointer chain.
@@ -262,7 +265,7 @@ namespace VaultedThermals
 		@brief
 		Structure specifying an extension properties.
 
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
 		*/
 		struct ExtensionProperties : Vault_00::VKStruct_Base<VkExtensionProperties>
 		{
@@ -306,6 +309,8 @@ namespace VaultedThermals
 		{
 			using Handle = VkSampler;
 		};	
+
+		using SampleMask = VkSampleMask;
 
 
 		constexpr sint32 UUID_Size = VK_UUID_SIZE;

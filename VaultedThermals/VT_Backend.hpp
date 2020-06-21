@@ -36,7 +36,7 @@ namespace VaultedThermals
 			 * 
 			 * @todo Finish the proper enum...
 			 */
-			using EType= VkStructureType;
+			using EType= EStructureType;
 			
 			/** 
 			@typdef VkType 
