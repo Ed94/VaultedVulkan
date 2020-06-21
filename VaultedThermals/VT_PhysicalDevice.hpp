@@ -19,11 +19,13 @@ A physical device usually represents a single complete implementation of Vulkan
 // VT
 #include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_CPP_STL.hpp"
+#include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
-#include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
+#include "VT_Sampler.hpp"
 
 
 
@@ -383,6 +385,14 @@ namespace VaultedThermals
 						vkGetPhysicalDeviceQueueFamilyProperties(_deviceHandle, _numQueueFamilies, _queuefamilyContainer->operator VkQueueFamilyProperties*());
 					}
 
+					/**
+					* @brief.
+					* 
+					* @details
+					* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR">Specification</a> 
+					* 
+					* @todo Implement.
+					*/
 					static EResult GetPerfomranceQueryCounters();
 				};
 
@@ -559,7 +569,15 @@ namespace VaultedThermals
 				*/
 				struct Group
 				{
-
+					/**
+					* @brief 
+					* 
+					* @details
+					* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a> 
+					* 
+					* @todo Implement.
+					*/
+					static EResult GetListing();
 				};
 			};
 
@@ -628,15 +646,7 @@ namespace VaultedThermals
 				vkGetPhysicalDeviceFeatures(_deviceHandle, _featuresContainer.operator VkPhysicalDeviceFeatures*());
 			}
 
-			/**
-			* @brief 
-			* 
-			* @details
-			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a> 
-			* 
-			* @todo Implement.
-			*/
-			static EResult GetGroups();
+			
 
 			/**
 			@brief Device extensions add new device-level functionality to the API, outside of the core specification.

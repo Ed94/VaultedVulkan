@@ -17,14 +17,17 @@
 // VT
 #include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_CPP_STL.hpp"
+#include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
-#include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
+#include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 #include "VT_Resource.hpp"
+#include "VT_Pipelines.hpp"
 
 
 
@@ -43,7 +46,6 @@ namespace VaultedThermals
 			using AttachmentDescriptionFlags = Bitmask<EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags>;
 			using DependencyFlags            = Bitmask<EDependencyFlag           , VkDependencyFlags           >;
 			using SubpassDesriptionFlags     = Bitmask<ESubpassDescriptionFlag   , VkSubpassDescriptionFlags   >;
-			using PipelineStageFlags         = Bitmask<EPipelineStageFlag        , VkPipelineStageFlags        >;
 			using CreateFlags                = Bitmask<EUndefined                , VkRenderPassCreateFlags     >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a>  */
@@ -85,13 +87,13 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a>  */
 			struct SubpassDependency : Vault_00::VKStruct_Base<VkSubpassDependency >
 			{
-				uint32             SourceSubpass        ;
-				uint32             DestinationSubpass   ;
-				PipelineStageFlags SourceStageMask      ;
-				PipelineStageFlags DestinationStageMask ;
-				AccessFlags        SourceAccessMask     ;
-				AccessFlags        DestinationAccessMask;
-				DependencyFlags    DependencyFlags      ;
+				uint32               SourceSubpass        ;
+				uint32               DestinationSubpass   ;
+				Pipeline::StageFlags SourceStageMask      ;
+				Pipeline::StageFlags DestinationStageMask ;
+				AccessFlags          SourceAccessMask     ;
+				AccessFlags          DestinationAccessMask;
+				DependencyFlags      DependencyFlags      ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateInfo">Specification</a>  */

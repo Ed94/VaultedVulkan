@@ -15,9 +15,9 @@
 // VT
 #include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
-#include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_PhysicalDevice.hpp"
@@ -47,24 +47,24 @@ namespace VaultedThermals
 
 				using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
 
-				      EType             SType                ;
-				const void*             Next                 ;
-				      CreateFlags       Flags                ;
-				      Surface::Handle   Surface              ; 
-				      uint32            MinImageCount        ;
-				      EFormat           ImageFormat          ;
-				      EColorSpace       ImageColorSpace      ;
-				      Extent2D          ImageExtent          ;
-				      uint32            ImageArrayLayers     ;
-				      ImageUsageFlags	ImageUsage           ;
-				      ESharingMode      ImageSharingMode     ;
-				      uint32            QueueFamilyIndexCount;
-				const uint32*           QueueFamilyIndices   ;
-				      ESurfaceTransform PreTransform         ;
-				      ECompositeAlpha   CompositeAlpha       ;
-				      EPresentationMode PresentationMode     ;
-				      Bool              Clipped              ;
-				      Handle            OldSwapchain         ;
+				      EType                 SType                ;
+				const void*                 Next                 ;
+				      CreateFlags           Flags                ;
+				      Surface::Handle       Surface              ; 
+				      uint32                MinImageCount        ;
+				      EFormat               ImageFormat          ;
+				      EColorSpace           ImageColorSpace      ;
+				      Extent2D              ImageExtent          ;
+				      uint32                ImageArrayLayers     ;
+				      Image::UsageFlags	    ImageUsage           ;
+				      ESharingMode          ImageSharingMode     ;
+				      uint32                QueueFamilyIndexCount;
+				const uint32*               QueueFamilyIndices   ;
+				      ESurfaceTransformFlag PreTransform         ;
+				      ECompositeAlpha       CompositeAlpha       ;
+				      EPresentationMode     PresentationMode     ;
+				      Bool                  Clipped              ;
+				      Handle                OldSwapchain         ;
 			};
 
 			static constexpr Handle NullHandle = Handle(EHandle::Null);

@@ -2,6 +2,8 @@
 @file VT_Enums.hpp
 
 @brief Vaulted Thermals: Enumerations
+
+@todo It would be nice if this was sorted alphabetically...
 */
 
 #pragma once
@@ -9,9 +11,9 @@
 
 
 // VT
-#include "_foreign/Foreign_Bitmask.hpp"
-
+#include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_CPP_STL.hpp"
 
 
 
@@ -763,7 +765,7 @@ namespace VaultedThermals
 		SpecifyBitmaskable(ELogicalDeviceQueueCreateFlag);
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceTransformFlagBitsKHR.html">Specification</a>  */
-		enum class ESurfaceTransform : uint32
+		enum class ESurfaceTransformFlag : uint32
 		{
 			Identity                     = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR                    ,
 			Rotate_90                    = VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR                   ,
@@ -776,7 +778,7 @@ namespace VaultedThermals
 			Inherit                      = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR 
 		};
 
-		SpecifyBitmaskable(ESurfaceTransform);
+		SpecifyBitmaskable(ESurfaceTransformFlag);
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagBitsKHR.html">Specification</a>  */
 		enum class ECompositeAlpha : uint32
@@ -1723,5 +1725,69 @@ namespace VaultedThermals
 		};
 
 		SpecifyBitmaskable(EDescriptorBindingFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlagBits">Specification</a>  */
+		enum class ECommandPoolCreateFlag : uint32
+		{
+			Transient          = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT           ,
+			ResetCommandBuffer = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,
+			Protected          = VK_COMMAND_POOL_CREATE_PROTECTED_BIT 
+		};
+
+		SpecifyBitmaskable(ECommandPoolCreateFlag);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlagBits">Specification</a>  */
+		enum class ECommandPoolResetFlags : uInt32
+		{
+			ReleaseResources = VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT
+		};
+
+		SpecifyBitmaskable(ECommandPoolResetFlags);
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferLevel">Specification</a>  */
+		enum class ECommandBufferLevel
+		{
+			Primary   = VK_COMMAND_BUFFER_LEVEL_PRIMARY  ,
+			Secondary = VK_COMMAND_BUFFER_LEVEL_SECONDARY 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits ">Specification</a>  */
+		enum class ECommandBufferResetFlag : uInt32
+		{
+			ReleaseResources = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT 
+		};
+
+		SpecifyBitmaskable(ECommandBufferResetFlag);
+
+		enum class ECommandBufferUsageFlag : uint32
+		{
+			OneTimeSubmit      = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT     ,
+			RenderPassContinue = VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT,
+			SimultaneousUse    = VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT  
+		};
+
+		SpecifyBitmaskable(ECommandBufferUsageFlag);
+
+		enum class EQueryControlFlags : uint32
+		{
+			Precise = VK_QUERY_CONTROL_PRECISE_BIT
+		};
+
+		SpecifyBitmaskable(EQueryControlFlags);
+
+		enum class EQueryPipelineStatisticFlag : uint32
+		{
+			AssemblyVertices                        = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT                   ,
+			AssemblyPrimitives                      = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT                 ,
+			VertexShaderInovcations                 = VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT                 ,
+			GeometryShaderInvocations               = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT               ,
+			GeometryShaderPrimitives                = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT                ,
+			ClippingInocation                       = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT                      ,
+			ClippingPrimitives                      = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT                       ,
+			FragmentShaderInvoations                = VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT               ,
+			TessellationControlShaderPatches        = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT       ,
+			TessellationEvaluationShaderInvocations = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT,
+			ComputeShaderInvocations                = VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT 
+		};
     }
 }

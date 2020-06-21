@@ -16,16 +16,16 @@
 // VT
 #include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_CPP_STL.hpp"
+#include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
-#include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
+#include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 #include "VT_Resource.hpp"
-#include "VT_RenderPass.hpp"
-#include "VT_Shaders.hpp"
 
 
 
@@ -41,6 +41,8 @@ namespace VaultedThermals
 			using Handle = VkPipeline;
 
 			using ShaderStageFlags = Bitmask<EShaderStageFlag, Flags>;
+
+			using StageFlags = Bitmask<EPipelineStageFlag, VkPipelineStageFlags>;
 
 			/**
 			 * @brief Pipeline cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application. 
@@ -295,12 +297,12 @@ namespace VaultedThermals
 					static EResult Create
 					(
 						      LogicalDevice::Handle  _deviceHandle,
-						const CreateInfo*            _createInfo  ,
+						const CreateInfo&            _createInfo  ,
 						const AllocationCallbacks*   _allocator   ,
 						      Handle&                _setLayout
 					)
 					{
-						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo->operator const VkDescriptorSetLayoutCreateInfo*(), _allocator, &_setLayout));
+						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo.operator const VkDescriptorSetLayoutCreateInfo*(), _allocator, &_setLayout));
 					}
 
 					/**
@@ -368,7 +370,7 @@ namespace VaultedThermals
 					      Pipeline::Layout::Handle&     _pipelineLayout
 				)
 				{
-					return EResult(vkCreatePipelineLayout(_deviceHandle, (VkPipelineLayoutCreateInfo*)(&_creationSpec), _allocator, &_pipelineLayout));
+					return EResult(vkCreatePipelineLayout(_deviceHandle, _creationSpec.operator const VkPipelineLayoutCreateInfo*(), _allocator, &_pipelineLayout));
 				}
 
 				/**
@@ -397,6 +399,8 @@ namespace VaultedThermals
 			{
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
+				using SampleMask = VkSampleMask;   // TODO: Not sure yet...
+
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineMultisampleStateCreateInfo">Specification</a>  */
 				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineMultisampleStateCreateInfo >
 				{
@@ -416,6 +420,8 @@ namespace VaultedThermals
 			struct RasterizationState
 			{
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
+
+				using CullModeFlags = Bitmask<ECullModeFlag, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineRasterizationStateCreateInfo">Specification</a>  */
 				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineRasterizationStateCreateInfo>
@@ -464,7 +470,6 @@ namespace VaultedThermals
 					const void*     Data         ;
 				};
 			};
-
 
 			/**
 			 * @brief Used to handle shader staging within a pipeline, more than one shader can be staged in a pipeline.
@@ -678,7 +683,7 @@ namespace VaultedThermals
 					      Handle&                _pipelines
 				)
 				{
-					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos, _allocator, &_pipelines));
+					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos.operator const VkGraphicsPipelineCreateInfo*(), _allocator, &_pipelines));
 				}
 			};
 

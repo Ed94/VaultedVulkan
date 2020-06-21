@@ -15,10 +15,12 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 
 // VT
+#include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_CPP_STL.hpp"
+#include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
-#include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 
 
@@ -83,27 +85,30 @@ namespace VaultedThermals
 				      RoSCtr_roArray_Array EnabledExtensionNames;
 			};
 
-			/**
-			 * @brief.
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
-			 */
-			struct ValidationFeatures
+			struct Validation
 			{
+				/**
+				* @brief.
+				* @details
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
+				*/
+				struct Features
+				{
 
-			};
+				};
 
-			/**
-			 * @brief.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFlagsEXT">Specification</a> 
-			 * 
-			 * @todo Implement.
-			 */
-			struct ValidationFlags
-			{
+				/**
+				* @brief.
+				* 
+				* @details
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFlagsEXT">Specification</a> 
+				* 
+				* @todo Implement.
+				*/
+				struct Flags
+				{
 
+				};
 			};
 
 			/**
@@ -233,7 +238,7 @@ namespace VaultedThermals
 				return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
 			}
 
-		private:
+		protected:
 
 			static Handle               handle      ;
 			static AppInfo              appInfo     ;   

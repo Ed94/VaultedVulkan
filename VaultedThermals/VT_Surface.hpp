@@ -15,14 +15,19 @@
 // VT
 #include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_CPP_STL.hpp"
+#include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
-#include "VT_Enums.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Initialization.hpp"
+#include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 #include "VT_Resource.hpp"
+#include "VT_RenderPass.hpp"
+#include "VT_Shaders.hpp"
+#include "VT_Pipelines.hpp"
 
 
 
@@ -30,6 +35,8 @@ namespace VaultedThermals
 {
 	namespace Vault_00
 	{
+		using Vault_01::Image;
+
 		/**
 		 * @brief Cross-Platform set of definitions for a Surface.
 		 */
@@ -37,9 +44,9 @@ namespace VaultedThermals
 		{
 			using Handle = VkSurfaceKHR;   ///< Opaque handle to a surface object.
 
-			using ETransform = ESurfaceTransform;
+			using ETransform = ESurfaceTransformFlag;
 
-			using ETransformFlags     = Bitmask<ESurfaceTransform, VkSurfaceTransformFlagsKHR>;
+			using ETransformFlags     = Bitmask<ESurfaceTransformFlag, VkSurfaceTransformFlagsKHR>;
 			using CompositeAlphaFlags = Bitmask<ECompositeAlpha  , VkCompositeAlphaFlagsKHR  >;
 
 			/**
@@ -59,7 +66,7 @@ namespace VaultedThermals
 				ETransformFlags     SupportedTransforms    ;
 				ETransform          CurrentTransform       ;
 				CompositeAlphaFlags SupportedCompositeAlpha;
-				ImageUsageFlags     SupportedUsageFlags    ;
+				Image::UsageFlags   SupportedUsageFlags    ;
 			};
 
 			/**

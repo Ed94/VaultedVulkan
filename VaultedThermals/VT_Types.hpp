@@ -8,70 +8,18 @@
 #pragma once
 
 
-// C++ STI
-#include <cstddef>
-#include <cstdint>
 
 // VT
 #include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
+#include "VT_CPP_STL.hpp"
+#include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 
 
 
 namespace VaultedThermals
 {
-	#pragma region Global Typedefs
-
-	namespace Corridors
-	{
-		using Bool = VkBool32;
-
-		// Integers
-
-		// Flexible
-
-		using uint32 = unsigned int;
-		using sint32 = signed   int;
-
-
-		// Strict
-
-		// Signed
-		using sInt8  = signed           char;
-		using sInt16 = signed short     int ;
-		using sInt32 = signed long      int ;
-		using sInt64 = signed long long int ;
-
-		// Unsigned
-
-		using uInt8  = unsigned            char;
-		using uInt16 = unsigned short      int ;
-		using uInt32 = unsigned long       int ;
-		using uInt64 = unsigned long long  int ;
-
-		// Floats
-
-		using float32 =      float ;
-		using float64 =      double;
-
-		// Data
-
-		using DataSize = std::size_t   ;
-		using sIntPtr  = std::intptr_t ;
-		using uIntPtr  = std::uintptr_t;
-
-		// RawStrings
-
-		using CStr                 = char*             ;
-		using RoCStr               = const char*       ;
-		using CStrArray            = CStr*             ;
-		using RoCStrArray          = const char**      ;   // Readonly c-string array.
-		using RoSCtr_roArray_Array = const char* const*;   // Array of readonly array of readonly c-string.
-	}
-
-	#pragma endregion Global Typedefs
-	
 	#pragma region Common Object Types
 
 	/** 
@@ -209,9 +157,6 @@ namespace VaultedThermals
 
 		using Flags = VkFlags;   ///< Used to represent bitmasks for Vulkan flag types.
 
-		using CallbackDataFlags = Bitmask<EUndefined , Flags            >;   ///< TODO: Add comment on what this is for.
-		using ImageUsageFlags   = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
-
 		// Pointers
 
 		/** 
@@ -299,19 +244,7 @@ namespace VaultedThermals
 			float MinDepth, MaxDepth;
 		};
 
-		using CullModeFlags = Bitmask<ECullModeFlag, Flags>;
-		using SampleCountFlags = Bitmask<ESampleCount, Flags>;
-		using SampleMask = VkSampleMask;   // TODO: Not sure yet...
-
 		using ColorComponentFlags = Bitmask<EColorComponentFlag, Flags>;
-
-		struct Sampler
-		{
-			using Handle = VkSampler;
-		};	
-
-		using SampleMask = VkSampleMask;
-
 
 		constexpr sint32 UUID_Size = VK_UUID_SIZE;
 

@@ -35,10 +35,6 @@ specified, why this is required.
 #endif
 
 
-// C++
-#include <stdexcept>
-#include <typeinfo>
-
 // VT
 #include "_foreign/Foreign_Bitmask.hpp"
 #include "_foreign/Foreign_ConventionEnforcer.hpp"

@@ -45,7 +45,10 @@ The library single include header.
  * ## NS-2: VT_Platform.hpp
  * Platform detection and includes the C-API vulkan header.
  * 
- * ## NS-3: VT_Backend.hpp
+ * * ## NS-3: Unsorted global enum definitions. 
+ * ### VT_Enums.hpp
+ * 
+ * ## NS-4: VT_Backend.hpp
  * NS-1: Backend related definitions for use in implementing the library.
  * 
  * ## 2: Fundamentals
@@ -53,10 +56,7 @@ The library single include header.
  * Fundamental Typedefs, Common Object Types, Non-Specification Types.
  * 
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals">Fundamentals Specification</a>
- * 
- * ## NS-4: Unsorted global enum definitions. 
- * ### VT_Enums.hpp
- * 
+  
  * ## NS-5: Unsorted global enum definitions.
  * ### VT_Constants.hpp
  * 
@@ -102,7 +102,7 @@ The library single include header.
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines">Specification</a> 
  * 
  * ## 5 Command Buffers
- * ### VT_CommandBuffers.hpp
+ * ### VT_Command.hpp
  * 
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
  * 
@@ -120,14 +120,18 @@ The library single include header.
 
 
 #include "VaultedThermals/VT_Vaults.hpp"
-#include "VaultedThermals/VT_Backend.hpp"
 #include "VaultedThermals/VT_Platform.hpp"
-#include "VaultedThermals/VT_Types.hpp"
+#include "VaultedThermals/VT_CPP_STL.hpp"
 #include "VaultedThermals/VT_Enums.hpp"
+#include "VaultedThermals/VT_Backend.hpp"
+#include "VaultedThermals/VT_Types.hpp"
 #include "VaultedThermals/VT_Constants.hpp"
 #include "VaultedThermals/VT_Initialization.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
 #include "VaultedThermals/VT_LogicalDevice.hpp"
 #include "VaultedThermals/VT_Resource.hpp"
+#include "VaultedThermals/VT_RenderPass.hpp"
+#include "VaultedThermals/VT_Shaders.hpp"
+#include "VaultedThermals/VT_Pipelines.hpp"
 #include "VaultedThermals/VT_Surface.hpp"
 #include "VaultedThermals/VT_SwapChain.hpp"
