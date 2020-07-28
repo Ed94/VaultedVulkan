@@ -81,7 +81,7 @@ namespace VaultedThermals
 			 * 
 			 * @todo Implement.
 			 */
-			enum class EVendorID
+			enum class EVendorID : uint32
 			{
 				VK_VENDOR_ID_VIV = 0x10001,
 				VK_VENDOR_ID_VSI = 0x10002,
@@ -96,7 +96,8 @@ namespace VaultedThermals
 			* 
 			* @todo Implement.
 			*/
-			struct ConformanceVersion;
+			struct ConformanceVersion : Vault_00::VKStruct_Base<VkConformanceVersion>
+			{};
 
 			/**
 			@brief Structure describing the fine-grained features that can be supported by an implementation.
@@ -551,7 +552,8 @@ namespace VaultedThermals
 				*  
 				* @todo Implement.
 				*/
-				struct PCIBusInfo
+				struct PCIBusInfo : Vault_00::VKStruct_Base
+					<VkPhysicalDevicePCIBusInfoPropertiesEXT, EStructureType::PhysicalDevice_PCI_BUS_Info_Properties_EXT>
 				{
 					VkStructureType    sType;
 					void* pNext;
@@ -607,7 +609,7 @@ namespace VaultedThermals
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 			*/
-			static EResult GetDeviceListing(AppInstance::Handle _instance, uint32* _numDevices, Handle* _deviceListing)
+			static EResult QueryDeviceListing(AppInstance::Handle _instance, uint32* _numDevices, Handle* _deviceListing)
 			{
 				return EResult(vkEnumeratePhysicalDevices(_instance, _numDevices, _deviceListing));
 			}
@@ -713,7 +715,7 @@ namespace VaultedThermals
 			{
 				uint32 deviceCount;
 
-				EResult result = GetDeviceListing(_instance, &deviceCount, nullptr);
+				EResult result = QueryDeviceListing(_instance, &deviceCount, nullptr);
 
 				if (result != EResult::Success) throw std::runtime_error("Failed to get number of extensions for a physical device.");
 
@@ -727,9 +729,9 @@ namespace VaultedThermals
 			{
 				uint32 deviceCount;
 
-				EResult&& result = GetDeviceListing(_instance, &deviceCount, nullptr);
+				EResult&& result = QueryDeviceListing(_instance, &deviceCount, nullptr);
 
-				result = GetDeviceListing(_instance, &deviceCount, _deviceListing);
+				result = QueryDeviceListing(_instance, &deviceCount, _deviceListing);
 
 				return result;
 			}
@@ -761,6 +763,41 @@ namespace VaultedThermals
 
 				return result;
 			}
+		};
+	}
+
+	namespace Vault_05
+	{
+		struct PhysicalDevice : Vault_02::PhysicalDevice
+		{
+		private:
+			Handle handle;
+
+			EDeviceType type    ;
+			EDriverID   driverID;
+			EVendorID   vendorID;
+
+			//ConformanceVersion conformance;
+
+
+			Features features;
+			Limits   limits  ;
+
+			PerformanceCounter perfCounter;
+
+
+			Properties               properties      ;
+			Properties2              properties2     ;
+			Properties::DeviceID     deviceID        ;
+			Properties::QueueFamily  queueFamily     ;
+			Properties::QueueFamily2 queueFamily2    ;
+			Properties::Group        group           ;
+			Properties::PCIBusInfo   pciBusInfo      ;
+			Properties::Vulkan11     vulk11Properties;
+			Properties::Vulkan12     vulk12Properites;
+
+			SparseMemoryProperties sparseMemProps;
+
 		};
 	}
 }

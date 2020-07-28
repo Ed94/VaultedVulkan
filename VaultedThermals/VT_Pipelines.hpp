@@ -26,6 +26,8 @@
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 #include "VT_Resource.hpp"
+#include "VT_SyncAndCacheControl.hpp"
+#include "VT_Shaders.hpp"
 
 
 
@@ -62,7 +64,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineCacheCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineCacheCreateInfo, EStructureType::Pipeline_Cache_CreateInfo>
 				{
 					      EType       SType          ;
 					const void*       Next           ;
@@ -114,7 +116,7 @@ namespace VaultedThermals
 			struct ColorBlendState
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendAttachmentState">Specification</a>  */
-				struct AttachmentState : Vault_00::VKStruct_Base<VkPipelineColorBlendAttachmentState>
+				struct AttachmentState : Vault_00::VKStruct_Base<VkPipelineColorBlendAttachmentState, EStructureType::Pipeline_ColorBlendAdvancedState_CreateInfo_EXT>
 				{
 					Bool                EnableBlend                 ;
 					EBlendFactor        Source_ColorBlendFactor     ;
@@ -129,7 +131,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineColorBlendStateCreateInfo >
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineColorBlendStateCreateInfo, EStructureType::Pipeline_ColorBlendState_CreateInfo>
 				{
 					      EType            SType                ;
 					const void*            Next                 ;
@@ -148,7 +150,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EUndefined, VkPipelineDepthStencilStateCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo, EStructureType::Pipeline_DepthStencilState_CreateInfo>
 				{
 					      EType             SType                ;			   
 					const void*             Next                 ;
@@ -171,7 +173,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDynamicStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineDynamicStateCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineDynamicStateCreateInfo, EStructureType::Pipeline_DynamicState_CreateInfo>
 				{
 					      EType          SType     ;
 					const void*          Next      ;
@@ -187,7 +189,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineInputAssemblyStateCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineInputAssemblyStateCreateInfo, EStructureType::Pipeline_InputAssemblyState_CreateInfo>
 				{
 						  EType              SType                 ;
 					const void*              Next                  ;
@@ -238,7 +240,7 @@ namespace VaultedThermals
 							using Mask = Bitmask<EDescriptorBindingFlag ,VkDescriptorBindingFlags>;
 
 							/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a>  */
-							struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo >
+							struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
 							{
 								       EType SType       ;
 								const void*  Next        ;
@@ -257,7 +259,7 @@ namespace VaultedThermals
 					using CreateFlags = Bitmask<EDescriptorSetLayoutCreateFlag, Flags>;
 
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateInfo">Specification</a>  */
-					struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorSetLayoutCreateInfo>
+					struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorSetLayoutCreateInfo, EStructureType::Descriptor_SetLayout_CreateInfo>
 					{
 						      EType       SType       ;
 						const void*       Extension   ;
@@ -267,10 +269,11 @@ namespace VaultedThermals
 					};
 
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutSupport">Specification</a>  */
-					struct Support : Vault_00::VKStruct_Base<VkDescriptorSetLayoutSupport>
+					struct Support : Vault_00::VKStruct_Base<VkDescriptorSetLayoutSupport, EStructureType::Descriptor_SetLayoutSupport>
 					{
 						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetVariableDescriptorCountLayoutSupport">Specification</a>  */
-						struct SetVariableCount : Vault_00::VKStruct_Base<VkDescriptorSetVariableDescriptorCountLayoutSupport>
+						struct SetVariableCount : Vault_00::VKStruct_Base
+							<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
 						{
 							EType  sType           ;
 							void*  Next            ;
@@ -339,7 +342,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineLayoutCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineLayoutCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineLayoutCreateInfo, EStructureType::Pipeline_Layout_CreateInfo>
 				{
 					      EType                  SType                 ;
 					const void*                  Next                  ;
@@ -402,7 +405,7 @@ namespace VaultedThermals
 				using SampleMask = VkSampleMask;   // TODO: Not sure yet...
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineMultisampleStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineMultisampleStateCreateInfo >
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineMultisampleStateCreateInfo, EStructureType::Pipeline_MultisampleState_CreateInfo>
 				{
 					      EType        SType                ;
 					const void*        Next                 ;
@@ -424,7 +427,7 @@ namespace VaultedThermals
 				using CullModeFlags = Bitmask<ECullModeFlag, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineRasterizationStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineRasterizationStateCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineRasterizationStateCreateInfo, EStructureType::Pipeline_RasterizationState_CreateInfo>
 				{
 						  EType         SType                  ;
 					const void*         Next                   ;
@@ -479,7 +482,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EPipelineShaderStageCreateFlag, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkShaderModuleCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineShaderStageCreateInfo , EStructureType::Pipeline_ShaderStage_CreateInfo>
 				{
 						  EType                 SType         ;
 					const void*                 Next          ;
@@ -497,7 +500,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EUndefined, VkPipelineTessellationStateCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineTessellationStateCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineTessellationStateCreateInfo, EStructureType::Pipeline_TessellationState_CreateInfo>
 				{
 					      EType       SType             ;
 					const void*       Next              ;
@@ -531,7 +534,7 @@ namespace VaultedThermals
 				};
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineVertexInputStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineVertexInputStateCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineVertexInputStateCreateInfo, EStructureType::Pipeline_VertexInputState_CreateInfo>
 				{
 						  EType                 SType                        ;
 					const void*                 Next                         ;
@@ -549,14 +552,15 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineViewportStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineViewportStateCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineViewportStateCreateInfo, EStructureType::Pipeline_ViewportState_CreateInfo>
 				{
-						  EType     SType        ;
-					const void*     Extension    ;
-						  uint32    ViewportCount;
-					const Viewport* Viewports    ;
-						  uint32    ScissorCount ;
-					const Rect2D*   Scissors     ;
+						  EType       SType        ;
+					const void*       Next         ;
+					      CreateFlags Flags        ;
+						  uint32      ViewportCount;
+					const Viewport*   Viewports    ;
+						  uint32      ScissorCount ;
+					const Rect2D*     Scissors     ;
 				};
 			};
 
@@ -571,7 +575,7 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkComputePipelineCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkComputePipelineCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkComputePipelineCreateInfo, EStructureType::ComputePipeline_CreateInfo>
 				{
 					      EType                   SType             ;
 					const void*                   Next              ;
@@ -618,8 +622,10 @@ namespace VaultedThermals
 				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkGraphicsPipelineCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkGraphicsPipelineCreateInfo, EStructureType::GraphicsPipeline_CreateInfo>
 				{
+					using RenderPass_Handle = VkRenderPass;   // RenderPass::Handle not defined yet. (Defined in VT_RenderPass.hpp)
+
 					      EType                           SType             ;
 					const void*                           Next              ;
 					      CreateFlags                     Flags             ;
@@ -634,8 +640,8 @@ namespace VaultedThermals
 					const DepthStencilState::CreateInfo*  DepthStencilState ;
 					const ColorBlendState::CreateInfo*    ColorBlendState   ;
 					const DynamicState::CreateInfo*       DynamicState      ;
-					      Pipeline::Layout                Layout            ;
-					      RenderPass                      RenderPass        ;
+					      Pipeline::Layout::Handle        Layout            ;
+						  RenderPass_Handle               RenderPass        ;
 					      uint32                          Subpass           ;
 					      Pipeline::Handle                BasePipelineHandle;
 					      sint32                          BasePipelineIndex ;

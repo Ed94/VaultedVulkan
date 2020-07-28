@@ -38,6 +38,7 @@ namespace VaultedThermals
 		// Strict
 
 		// Signed
+
 		using sInt8  = signed           char;
 		using sInt16 = signed short     int ;
 		using sInt32 = signed long      int ;

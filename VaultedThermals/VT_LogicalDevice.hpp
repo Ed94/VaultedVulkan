@@ -58,7 +58,7 @@ namespace VaultedThermals
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateInfo.html">Specification</a> 
 				 */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceQueueCreateInfo>
+				struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
 				{
 					using ECreateFlag = ELogicalDeviceQueueCreateFlag                 ;
 					using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
@@ -123,7 +123,7 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateInfo.html">Specification</a> 
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceCreateInfo>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
 			{
 					  EType                     SType                ;
 				const void*                     Next                 ;
@@ -220,11 +220,21 @@ namespace VaultedThermals
 			{
 				vkDestroyDevice(_handle, _allocator);
 			}
+
+			static EResult WaitUntilIdle(LogicalDevice::Handle _device)
+			{
+				return EResult(vkDeviceWaitIdle(_device));
+			}
 		};
 	}
 
 	namespace Vault_02
 	{
 		using Vault_01::LogicalDevice;
+	}
+
+	namespace Vault_05
+	{
+
 	}
 }

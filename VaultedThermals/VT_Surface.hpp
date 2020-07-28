@@ -47,7 +47,7 @@ namespace VaultedThermals
 			using ETransform = ESurfaceTransformFlag;
 
 			using ETransformFlags     = Bitmask<ESurfaceTransformFlag, VkSurfaceTransformFlagsKHR>;
-			using CompositeAlphaFlags = Bitmask<ECompositeAlpha  , VkCompositeAlphaFlagsKHR  >;
+			using CompositeAlphaFlags = Bitmask<ECompositeAlpha      , VkCompositeAlphaFlagsKHR  >;
 
 			/**
 			 * @brief Structure describing capabilities of a surface.
@@ -92,7 +92,7 @@ namespace VaultedThermals
 			static constexpr EStructureType CreateInfoType = EStructureType::Win32_Surface_CreateInfo_KHR;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkWin32SurfaceCreateInfoKHR.html">Specification</a> */
-			struct CreateInfo : VKStruct_Base<VkWin32SurfaceCreateInfoKHR>
+			struct CreateInfo : VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
 
@@ -134,9 +134,9 @@ namespace VaultedThermals
 			static EResult CreateSurface
 			(
 				      Vault_01::AppInstance::Handle _appHandle    ,
-				      Surface::CreateInfo&          _createInfo   ,
+				      CreateInfo&                   _createInfo   ,
 				const AllocationCallbacks*          _allocator    ,
-				      Surface::Handle&              _surfaceHandle
+				      Handle&                       _surfaceHandle
 			)
 			{
 				return EResult(vkCreateWin32SurfaceKHR(_appHandle, _createInfo.operator const VkWin32SurfaceCreateInfoKHR*(), _allocator, &_surfaceHandle));
@@ -245,7 +245,7 @@ namespace VaultedThermals
 			 */
 			static EResult QuerySupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, uint32& _numPresentationModes, EPresentationMode* _presentationModesContainer)
 			{
-				return EResult(vkGetPhysicalDeviceSurfacePresentModesKHR(_deviceHandle, _surfaceHandle, &_numPresentationModes, (VkPresentModeKHR*)(&_presentationModesContainer)));
+				return EResult(vkGetPhysicalDeviceSurfacePresentModesKHR(_deviceHandle, _surfaceHandle, &_numPresentationModes, (VkPresentModeKHR*)(_presentationModesContainer)));
 			}
 		};
 	}
@@ -326,7 +326,7 @@ namespace VaultedThermals
 				
 				if (result != EResult::Success) throw std::runtime_error("Failed to get supported presentation modes...");
 
-				return ;
+				return result;
 			}
 		};
 	}

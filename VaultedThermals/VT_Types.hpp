@@ -249,6 +249,31 @@ namespace VaultedThermals
 		constexpr sint32 UUID_Size = VK_UUID_SIZE;
 
 		using UUID = unsigned int[UUID_Size];
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearValue">Specification</a>  */
+		struct ClearValue
+		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearColorValue">Specification</a>  */
+			union UColor
+			{
+				float32 InFloat[4];
+				sint32  InSInt [4];
+				uint32  InUInt [4];
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearDepthStencilValue">Specification</a>  */
+			union UStencil
+			{
+				float32 Depth  ;
+				uint32  Stencil;
+			};
+
+			union
+			{
+				UColor   Color  ;
+				UStencil Stencil;
+			};
+		};
 	}
 
 	namespace SPIR_V

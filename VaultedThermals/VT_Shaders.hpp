@@ -26,6 +26,7 @@
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
 #include "VT_Resource.hpp"
+#include "VT_SyncAndCacheControl.hpp"
 
 
 
@@ -50,7 +51,7 @@ namespace VaultedThermals
 			using CreateFlags = Bitmask<EUndefined, Flags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkShaderModuleCreateInfo>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
 			{
 				      EType             SType    ;
 				const void*             Extension;

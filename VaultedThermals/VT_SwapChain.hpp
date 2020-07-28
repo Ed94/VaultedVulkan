@@ -38,10 +38,14 @@ namespace VaultedThermals
 		{
 			using Handle = VkSwapchainKHR;
 
+
+			static constexpr Handle NullHandle = Handle(EHandle::Null);
+
+
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> .
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkSwapchainCreateInfoKHR>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
 			{
 				using ECreateFlag = ESwapchainCreateFlag;
 
@@ -67,7 +71,44 @@ namespace VaultedThermals
 				      Handle                OldSwapchain         ;
 			};
 
-			static constexpr Handle NullHandle = Handle(EHandle::Null);
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a>  */
+			struct PresentationInfo : Vault_00::VKStruct_Base<VkPresentInfoKHR, EStructureType::PresentInfo_KHR>
+			{
+				      EType              SType             ;
+				const void*              Next              ;
+				      uint32             WaitSemaphoreCount;
+				const Semaphore::Handle* WaitSemaphores    ;
+				      uint32             SwapchainCount    ;
+				const SwapChain::Handle* Swapchains        ;
+				const uint32*            ImageIndices      ;
+				      EResult*           Results           ;
+			};
+
+			/**
+			 * @brief
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAcquireNextImageKHR">Specification</a>
+			 * 
+			 * \param _device
+			 * \param _swapchain
+			 * \param _timeout
+			 * \param _semaphore
+			 * \param _fence
+			 * \param _imageIndex
+			 * \return 
+			 */
+			static EResult AcquireNextImage
+			(
+				LogicalDevice::Handle _device    ,
+				SwapChain::Handle     _swapchain ,
+				uInt64                _timeout   ,
+				Semaphore::Handle     _semaphore ,
+				Fence::Handle         _fence     ,
+				uint32&               _imageIndex
+			)
+			{
+				return EResult(vkAcquireNextImageKHR(_device, _swapchain, _timeout, _semaphore, _fence, &_imageIndex));
+			}
 
 			/**
 			 * @brief Create a swapchain.
@@ -132,6 +173,20 @@ namespace VaultedThermals
 			static EResult QueryImages(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChain, uint32& _numImages, Image::Handle* _imagesContainer)
 			{
 				return EResult(vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &_numImages, _imagesContainer));
+			}
+
+			/**
+			 * @brief.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueuePresentKHR">Specification</a> 
+			 * 
+			 * \param _queue
+			 * \param _presentation
+			 * \return 
+			 */
+			static EResult QueuePresentation(LogicalDevice::Queue::Handle _queue, const PresentationInfo& _presentation)
+			{
+				return EResult(vkQueuePresentKHR(_queue, (const VkPresentInfoKHR*)(&_presentation)));
 			}
 		};
 	}

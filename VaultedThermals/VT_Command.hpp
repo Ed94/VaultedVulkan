@@ -37,6 +37,9 @@ namespace VaultedThermals
 {
 	namespace Vault_01
 	{
+		
+
+
 		/**
 		 * @brief.
 		 */
@@ -49,7 +52,7 @@ namespace VaultedThermals
 			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkCommandPoolCreateInfo>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
 			{
 				      EType       SType           ;
 				const void*       Next            ;
@@ -71,13 +74,13 @@ namespace VaultedThermals
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle  _deviceHandle,
-				const CreateInfo&            _createInfo  ,
-				const VkAllocationCallbacks* _allocator   ,
-				      CommandPool::Handle&   _commandPool
+				      LogicalDevice::Handle _deviceHandle,
+				const CreateInfo&           _createInfo  ,
+				const AllocationCallbacks*  _allocator   ,
+				      CommandPool::Handle&  _commandPool
 			)
 			{
-				return EResult(vkCreateCommandPool(_deviceHandle, _createInfo.operator const VkCommandPoolCreateInfo*(), _allocator, &_commandPool));
+				return EResult(vkCreateCommandPool(_deviceHandle, (const VkCommandPoolCreateInfo*)(&_createInfo), _allocator, &_commandPool));
 			}
 
 			/**
@@ -104,14 +107,14 @@ namespace VaultedThermals
 			 * \param _commandPool
 			 * \param _flags
 			 */
-			static void Reset
+			static EResult Reset
 			(
 				LogicalDevice::Handle _deviceHandle,
 				Handle                _commandPool ,
 				ResetFlags            _flags
 			)
 			{
-				vkResetCommandPool(_deviceHandle, _commandPool, _flags);
+				return EResult(vkResetCommandPool(_deviceHandle, _commandPool, _flags));
 			}
 
 			/**
@@ -132,6 +135,7 @@ namespace VaultedThermals
 			}
 		};
 
+
 		/**
 		 * @brief.
 		 */
@@ -149,7 +153,7 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> .
 			 */
-			struct AllocateInfo : Vault_00::VKStruct_Base<VkCommandBufferAllocateInfo>
+			struct AllocateInfo : Vault_00::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
 			{
 				      EType               SType      ;
 				const void*               Next       ;
@@ -161,7 +165,7 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceInfoURL">Specification</a>
 			 */
-			struct InheritanceWindow : Vault_00::VKStruct_Base<VkCommandBufferInheritanceInfo>
+			struct InheritanceWindow : Vault_00::VKStruct_Base<VkCommandBufferInheritanceInfo, EStructureType::CommandBuffer_InheritanceInfo>
 			{
 				      EType                       SType               ;
 				const void*                       Next                ;
@@ -175,7 +179,7 @@ namespace VaultedThermals
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceConditionalRenderingInfoEXT">Specification</a>
 				 */
-				struct ConditionalRenderingInfo : Vault_00::VKStruct_Base<VkCommandBufferInheritanceConditionalRenderingInfoEXT>
+				struct ConditionalRenderingInfo : Vault_00::VKStruct_Base<VkCommandBufferInheritanceConditionalRenderingInfoEXT, EStructureType::CommandBuffer_Inheritance_ConditionalRendering_Info_EXT>
 				{
 					      EType SType ;
 					const void* Next  ;
@@ -185,7 +189,8 @@ namespace VaultedThermals
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">Specification</a> 
 				 */
-				struct PassTransformInfo : Vault_00::VKStruct_Base<VkCommandBufferInheritanceRenderPassTransformInfoQCOM >
+				struct PassTransformInfo : Vault_00::VKStruct_Base
+					<VkCommandBufferInheritanceRenderPassTransformInfoQCOM, EStructureType::CommandBufferInheritance_RenderPassTransform_Info_QCOM>
 				{
 					EType                 SType     ;
 					void*                 Next      ;
@@ -197,7 +202,7 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferBeginInfo">Specification</a>
 			 */
-			struct BeginInfo : Vault_00::VKStruct_Base<VkCommandBufferBeginInfo>
+			struct BeginInfo : Vault_00::VKStruct_Base<VkCommandBufferBeginInfo, EStructureType::CommandBuffer_BeginInfo>
 			{
 				      EType              SType          ;
 				const void*              Next           ;
@@ -208,17 +213,17 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a>
 			 */
-			struct SubmitInfo : Vault_00::VKStruct_Base<VkSubmitInfo>
+			struct SubmitInfo : Vault_00::VKStruct_Base<VkSubmitInfo, EStructureType::SubmitInfo>
 			{
 				      EType                 SType               ;
 				const void*                 Next                ;
 				      uint32                WaitSemaphoreCount  ;
-				const VkSemaphore*          WaitSemaphores      ;   ///< @todo Replace with proper later.
+				const Semaphore::Handle*    WaitSemaphores      ;   
 				const Pipeline::StageFlags* WaitDstStageMask    ;
 				      uint32                CommandBufferCount  ;
 				const Handle*               CommandBuffers      ;
 				      uint32                SignalSemaphoreCount;
-				const VkSemaphore*          SignalSemaphores    ;   ///< @todo Replace with proper later.
+				const Semaphore::Handle*    SignalSemaphores    ;   
 
 
 				/**
@@ -309,7 +314,7 @@ namespace VaultedThermals
 				      Handle*               _commandBuffers
 			)
 			{
-				return EResult(vkAllocateCommandBuffers(_deviceHandle, _allocateInfo.operator const VkCommandBufferAllocateInfo*(), _commandBuffers));
+				return EResult(vkAllocateCommandBuffers(_deviceHandle, (const VkCommandBufferAllocateInfo*)(&_allocateInfo), _commandBuffers));
 			}
 
 			/**
@@ -355,9 +360,41 @@ namespace VaultedThermals
 			 * \param _flags
 			 * \return 
 			 */
-			static EResult BeginRecord(Handle _commandBuffer, BeginInfo _flags)
+			static EResult BeginRecord(Handle _commandBuffer, const BeginInfo& _flags)
 			{
-				vkBeginCommandBuffer(_commandBuffer, _flags);
+				return EResult(vkBeginCommandBuffer(_commandBuffer, _flags.operator const VkCommandBufferBeginInfo*()));
+			}
+
+			static void BeginRenderPass
+			(
+				      CommandBuffer::Handle  _commandBuffer,
+				const RenderPass::BeginInfo& _beginInfo    ,
+				      ESubpassContents       _contents
+			)
+			{
+				vkCmdBeginRenderPass(_commandBuffer, _beginInfo.operator const VkRenderPassBeginInfo*(), VkSubpassContents(_contents));
+			}
+
+			static void BindPipeline
+			(
+				CommandBuffer::Handle _commandBuffer    ,
+				EPipelineBindPoint    _pipelineBindPoint,
+				Pipeline::Handle      _pipeline
+			)
+			{
+				vkCmdBindPipeline(_commandBuffer, VkPipelineBindPoint(_pipelineBindPoint), _pipeline);
+			}
+
+			static void Draw
+			(
+				CommandBuffer::Handle _commandBuffer,
+				uint32                _firstVertex,
+				uint32                _vertexCount,
+				uint32                _firstInstance,
+				uint32                _instanceCount
+			)
+			{
+				vkCmdDraw(_commandBuffer, _vertexCount, _instanceCount, _firstVertex, _firstInstance);
 			}
 
 			/**
@@ -368,7 +405,12 @@ namespace VaultedThermals
 			 */
 			static EResult EndRecord(Handle _commandBuffer)
 			{
-				vkEndCommandBuffer(_commandBuffer);
+				return EResult(vkEndCommandBuffer(_commandBuffer));
+			}
+
+			static void EndRenderPass(CommandBuffer::Handle _commandBuffer)
+			{
+				vkCmdEndRenderPass(_commandBuffer);
 			}
 
 			/**
@@ -380,7 +422,7 @@ namespace VaultedThermals
 			 */
 			static EResult Reset(Handle _commandBuffer, ResetFlags _flags)
 			{
-				vkResetCommandBuffer(_commandBuffer, _flags);
+				return EResult(vkResetCommandBuffer(_commandBuffer, _flags));
 			}
 
 			/**
@@ -394,23 +436,61 @@ namespace VaultedThermals
 			 */
 			static EResult SubmitToQueue
 			(
-				LogicalDevice::Queue::Handle _queue      ,
-				uint32                       _submitCount,
-				const SubmitInfo*            _submissions,
-				VkFence                      _fence
+				      LogicalDevice::Queue::Handle _queue      ,
+				      uint32                       _submitCount,
+				      const SubmitInfo*                  _submissions,
+				      Fence::Handle                _fence
 			)
 			{
-				vkQueueSubmit(_queue, _submitCount, _submissions->operator const VkSubmitInfo*(), _fence);
+				return EResult(vkQueueSubmit(_queue, _submitCount, _submissions->operator const VkSubmitInfo*(), _fence));
 			}
 
-			/**
-			 * @todo Implement.
-			 * 
-			 */
-			static void SetDeviceMask()
-			{
+			///**
+			// * @todo Implement.
+			// * 
+			// */
+			//static void SetDeviceMask()
+			//{
 
-			}
+			//}
+
+			//static EResult ResetEvent
+			//(
+			//	VkCommandBuffer                             commandBuffer,
+			//	VkEvent                                     event,
+			//	VkPipelineStageFlags                        stageMask
+			//)
+			//{
+
+			//}
+
+			//static EResult SetEvent
+			//(
+			//	VkCommandBuffer                             commandBuffer,
+			//	VkEvent                                     event,
+			//	VkPipelineStageFlags                        stageMask
+			//)
+			//{
+
+			//}
+
+			//static EResult WaitForEvents
+			//(
+			//	VkCommandBuffer                             commandBuffer,
+			//	uint32_t                                    eventCount,
+			//	const VkEvent*                              pEvents,
+			//	VkPipelineStageFlags                        srcStageMask,
+			//	VkPipelineStageFlags                        dstStageMask,
+			//	uint32_t                                    memoryBarrierCount,
+			//	const VkMemoryBarrier*                      pMemoryBarriers,
+			//	uint32_t                                    bufferMemoryBarrierCount,
+			//	const VkBufferMemoryBarrier*                pBufferMemoryBarriers,
+			//	uint32_t                                    imageMemoryBarrierCount,
+			//	const VkImageMemoryBarrier*                 pImageMemoryBarriers
+			//)
+			//{
+
+			//}
 		};
 	}
 }

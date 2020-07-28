@@ -29,6 +29,5 @@ namespace VaultedThermals
 		constexpr RoCStr Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;
 
 		constexpr void* NullHandle = VK_NULL_HANDLE;
-
 	}
 }

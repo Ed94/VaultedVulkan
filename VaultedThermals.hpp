@@ -135,3 +135,4 @@ The library single include header.
 #include "VaultedThermals/VT_Pipelines.hpp"
 #include "VaultedThermals/VT_Surface.hpp"
 #include "VaultedThermals/VT_SwapChain.hpp"
+#include "VaultedThermals/VT_Debug.hpp"

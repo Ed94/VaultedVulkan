@@ -32,6 +32,21 @@ namespace VaultedThermals
 	namespace Vault_01
 	{
 		/**
+		 * @brief Construct an API version number.
+		 * 
+		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_MAKE_VERSION">Specification</a> 
+		 * 
+		 * \param _major
+		 * \param _minor
+		 * \param _patch
+		 * \return 
+		 */
+		inline uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
+		{
+			return VK_MAKE_VERSION(_major, _minor, _patch);
+		}
+		
+		/**
 		@brief An object that manages the represented application process state within the GPU.
 
 		Other Name: Application State Container
@@ -57,7 +72,7 @@ namespace VaultedThermals
 			
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkApplicationInfo.html">Application Info Specification</a> 
 			*/
-			struct AppInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
+			struct AppInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo, EStructureType::ApplicationInformation>
 			{
 				      EType        SType        ;
 				const void*        Next         ;
@@ -73,7 +88,7 @@ namespace VaultedThermals
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateInfo.html">Create Info Specification</a> 
 			*/
-			struct CreateInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
 			{
 				      EType                SType                ;
 				const void*                Next                 ;
@@ -151,7 +166,7 @@ namespace VaultedThermals
 			 */
 			static EResult GetVersion(uint32& _versionContainer)
 			{
-				vkEnumerateInstanceVersion(&_versionContainer);
+				return EResult(vkEnumerateInstanceVersion(&_versionContainer));
 			}
 		};
 	}

@@ -22,11 +22,13 @@ namespace VaultedThermals
 {
     namespace Corridors
     {
+	#pragma region VT_Enums
+
 		/** 
 		@enum Undefined Enum
 		@brief Necessary for Bitmasks in the Vulkan specification that are not defined but reserved for future use.
 		*/
-		enum class EUndefined {};
+		enum class EUndefined : uint32 {};
 
 		SpecifyBitmaskable(EUndefined);
 
@@ -36,6 +38,43 @@ namespace VaultedThermals
 		enum class EHandle
 		{
 			Null = VK_NULL_HANDLE
+		};
+
+	#pragma endregion VT_Enums
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlagBits">Specification</a>  */
+		enum class EAccessFlag : uint32
+		{
+			IndirectCommandRead                 = VK_ACCESS_INDIRECT_COMMAND_READ_BIT                ,
+			IndexRead                           = VK_ACCESS_INDEX_READ_BIT                           ,
+			VertexAttributeRead                 = VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT                ,
+			UniformRead                         = VK_ACCESS_UNIFORM_READ_BIT                         ,
+			InputAttachmentRead                 = VK_ACCESS_INPUT_ATTACHMENT_READ_BIT                ,
+			ShaderRead                          = VK_ACCESS_SHADER_READ_BIT                          ,
+			ShaderWrite                         = VK_ACCESS_SHADER_WRITE_BIT                         ,
+			ColorAttachmentRead                 = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT                ,
+			ColorAttachmentWrite                = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT               ,
+			DepthStencilAttachmentRead          = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT        ,
+			DepthStencilAttachmentWrite         = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT       ,
+			TransferRead                        = VK_ACCESS_TRANSFER_READ_BIT                        ,
+			TransferWrite                       = VK_ACCESS_TRANSFER_WRITE_BIT                       ,
+			HostRead                            = VK_ACCESS_HOST_READ_BIT                            ,
+			HostWrite                           = VK_ACCESS_HOST_WRITE_BIT                           ,
+			MemoryRead                          = VK_ACCESS_MEMORY_READ_BIT                          ,
+			MemoryWrite                         = VK_ACCESS_MEMORY_WRITE_BIT                         ,
+			TransformFeedback_Write_EXT         = VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT         ,   // Provided by VK_EXT_transform_feedback
+			TransformFeedback_CounterRead_EXT   = VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT  ,   // Provided by VK_EXT_transform_feedback
+			TransformFeedback_CounterWrite_EXT  = VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT ,   // Provided by VK_EXT_transform_feedback
+			ConditionalRendering_Read_EXT       = VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT       ,   // Provided by VK_EXT_conditional_rendering
+			ColorAttachment_ReadNoncoherent_EXT = VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT,   // Provided by VK_EXT_blend_operation_advanced
+			AccelerationStructure_Read_KHR      = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR      ,   // Provided by VK_KHR_ray_tracing
+			AccelerationStructure_Write_KHR     = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR     ,   // Provided by VK_KHR_ray_tracing
+			ShadingRateImage_Read_NV            = VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV           ,   // Provided by VK_NV_shading_rate_image
+			FragmentDensityMap_Read_EXT         = VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT        ,   // Provided by VK_EXT_fragment_density_map
+			CommandPreprocess_Read_NV           = VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV           ,   // Provided by VK_NV_device_generated_commands
+			CommandPreprocess_Write_NV          = VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV          ,   // Provided by VK_NV_device_generated_commands
+			AccelerationStructure_Read_NV       = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV       ,   // Provided by VK_NV_ray_tracing
+			AccelerationStructure_Write_NV      = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV      ,   // Provided by VK_NV_ray_tracing
 		};
 
 		/**
@@ -51,6 +90,107 @@ namespace VaultedThermals
 			_1_2 = VK_API_VERSION_1_2
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlagBits">Specification</a>  */
+		enum class EAttachmentDescriptionFlag : uint32
+		{
+			AttachmentDescription_MAY_ALIAS = VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentLoadOp">Specification</a>  */
+		enum class EAttachmentLoadOperation : uint32
+		{
+			Load     = VK_ATTACHMENT_LOAD_OP_LOAD     , 
+			Clear    = VK_ATTACHMENT_LOAD_OP_CLEAR    ,
+			DontCare = VK_ATTACHMENT_LOAD_OP_DONT_CARE 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentStoreOp">Specification</a>  */
+		enum class EAttachmentStoreOperation : uint32
+		{
+			Store    = VK_ATTACHMENT_STORE_OP_STORE    ,
+			DontCare = VK_ATTACHMENT_STORE_OP_DONT_CARE
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendFactor.html">Specification</a>  */
+		enum class EBlendFactor : uint32
+		{
+			Zero                      = VK_BLEND_FACTOR_ZERO                    ,
+			One                       = VK_BLEND_FACTOR_ONE                     ,
+			SourceColor               = VK_BLEND_FACTOR_SRC_COLOR               ,
+			OneMinusOne_SourceColor   = VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR     ,
+			DesinationColor           = VK_BLEND_FACTOR_DST_COLOR               ,
+			OneMinus_DestinationColor = VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR     ,
+			AlphaSource               = VK_BLEND_FACTOR_SRC_ALPHA               ,
+			OneMinus_AlphaSource      = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA     ,
+			AlphaDestination          = VK_BLEND_FACTOR_DST_ALPHA               ,
+			OneMinus_AlphaDestination = VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA     ,
+			ConstantColor             = VK_BLEND_FACTOR_CONSTANT_COLOR          ,
+			OneMinus_ConstantColor    = VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR,
+			ConstantAlpha             = VK_BLEND_FACTOR_CONSTANT_ALPHA          ,
+			OneMinus_ConstantAlpha    = VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA,
+			SourceAlphaSaturate       = VK_BLEND_FACTOR_SRC_ALPHA_SATURATE      ,
+			SourceOne_Color           = VK_BLEND_FACTOR_SRC1_COLOR              ,
+			OneMinus_SourceOneColor   = VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR    ,
+			SourceOneAlpha            = VK_BLEND_FACTOR_SRC1_ALPHA              ,
+			OneMinus_SourceOneAlpha   = VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA    
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendOp.html">Specification</a>  */
+		enum class EBlendOperation : uint32
+		{
+			Add                  = VK_BLEND_OP_ADD                   ,
+			Subtract             = VK_BLEND_OP_SUBTRACT              ,
+			ReverseSubtract      = VK_BLEND_OP_REVERSE_SUBTRACT      ,
+			Mininum              = VK_BLEND_OP_MIN                   ,
+			Maximum              = VK_BLEND_OP_MAX                   ,
+			Zero_EXT             = VK_BLEND_OP_ZERO_EXT              ,
+			Source_EXT           = VK_BLEND_OP_SRC_EXT               ,
+			Destination_EXT      = VK_BLEND_OP_DST_EXT               ,
+			SourceOver_EXT       = VK_BLEND_OP_SRC_OVER_EXT          ,
+			DestinationOver_EXT  = VK_BLEND_OP_DST_OVER_EXT          ,
+			SourceIn_EXT         = VK_BLEND_OP_SRC_IN_EXT            ,
+			DestinationIN_ET     = VK_BLEND_OP_DST_IN_EXT            ,
+			SourceOut_EXT        = VK_BLEND_OP_SRC_OUT_EXT           ,
+			DestinationOut_EXT   = VK_BLEND_OP_DST_OUT_EXT           ,
+			SourceAtop_EXT       = VK_BLEND_OP_SRC_ATOP_EXT          ,
+			DestinationATop_EXT  = VK_BLEND_OP_DST_ATOP_EXT          ,
+			XOR_EXT              = VK_BLEND_OP_XOR_EXT               ,
+			Multiply_EXT         = VK_BLEND_OP_MULTIPLY_EXT          ,
+			Screen_EXT           = VK_BLEND_OP_SCREEN_EXT            ,
+			Overlay_EXT          = VK_BLEND_OP_OVERLAY_EXT           ,
+			Darken_EXT           = VK_BLEND_OP_DARKEN_EXT            ,
+			Lighten_EXT          = VK_BLEND_OP_LIGHTEN_EXT           ,
+			ColorDodge_EXT       = VK_BLEND_OP_COLORDODGE_EXT        ,
+			ColorBurn_EXT        = VK_BLEND_OP_COLORBURN_EXT         ,
+			HardLight_EXT        = VK_BLEND_OP_HARDLIGHT_EXT         ,
+			SoftLight_Ext        = VK_BLEND_OP_SOFTLIGHT_EXT         ,
+			Difference_Ext       = VK_BLEND_OP_DIFFERENCE_EXT        ,
+			Exclusion_Ext        = VK_BLEND_OP_EXCLUSION_EXT         ,
+			Invert_Ext           = VK_BLEND_OP_INVERT_EXT            ,
+			Invert_RGB_Ext       = VK_BLEND_OP_INVERT_RGB_EXT        ,
+			LinearDodge_Ext      = VK_BLEND_OP_LINEARDODGE_EXT       ,
+			LinearBurn_Ext       = VK_BLEND_OP_LINEARBURN_EXT        ,
+			VividLight_Ext       = VK_BLEND_OP_VIVIDLIGHT_EXT        ,
+			LinearLight_Ext      = VK_BLEND_OP_LINEARLIGHT_EXT       ,
+			PinLight_Ext         = VK_BLEND_OP_PINLIGHT_EXT          ,
+			Hardmix_Ext          = VK_BLEND_OP_HARDMIX_EXT           ,
+			HSL_Hue_Ext          = VK_BLEND_OP_HSL_HUE_EXT           ,
+			HSL_Saturation_Ext   = VK_BLEND_OP_HSL_SATURATION_EXT    ,
+			HSL_Color_Ext        = VK_BLEND_OP_HSL_COLOR_EXT         ,
+			HSL_Luminosity_Ext   = VK_BLEND_OP_HSL_LUMINOSITY_EXT    ,
+			Plus_Ext             = VK_BLEND_OP_PLUS_EXT              ,
+			PlusClamped_Ext      = VK_BLEND_OP_PLUS_CLAMPED_EXT      ,
+			PlusClampedAlpha_Ext = VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT,
+			PlusDarker_EXT       = VK_BLEND_OP_PLUS_DARKER_EXT       ,
+			Minus_EXT            = VK_BLEND_OP_MINUS_EXT             ,
+			MinusClamped_EXT     = VK_BLEND_OP_MINUS_CLAMPED_EXT     ,
+			Constrast_EXT        = VK_BLEND_OP_CONTRAST_EXT          ,
+			InvertOVG_EXT        = VK_BLEND_OP_INVERT_OVG_EXT        ,
+			Red_EXT              = VK_BLEND_OP_RED_EXT               ,
+			Green_EXT            = VK_BLEND_OP_GREEN_EXT             ,
+			Blue_EXT             = VK_BLEND_OP_BLUE_EXT
+		};
+
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a> .
 		 */
@@ -58,6 +198,712 @@ namespace VaultedThermals
 		{
 			True  = VK_TRUE ,
 			False = VK_FALSE
+		};
+
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlagBits.html">Specification</a> 
+		 */
+		enum class EBufferCreateFlag : uint32
+		{
+			SparseBinding                       = VK_BUFFER_CREATE_SPARSE_BINDING_BIT                   ,
+			SparseResidency                     = VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT                 ,
+			SparseAliased                       = VK_BUFFER_CREATE_SPARSE_ALIASED_BIT                   ,
+			Protected                           = VK_BUFFER_CREATE_PROTECTED_BIT                        ,
+			DeviceAddressCaptureReplay          = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT    ,
+			DeviceAddressCaptureReplayExtension = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT,
+			DeviceAddressCaptureReplayKHR       = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferUsageFlagBits.html">Specification</a>  */
+		enum class EBufferUsage : uint32
+		{
+			TransferSource      = VK_BUFFER_USAGE_TRANSFER_SRC_BIT        ,
+			TransferDestination = VK_BUFFER_USAGE_TRANSFER_DST_BIT        ,
+			UniformTexelBuffer  = VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT,
+			StorageTexelBuffer  = VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT,
+			UniformBuffer       = VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT      ,
+			StorageBuffer       = VK_BUFFER_USAGE_STORAGE_BUFFER_BIT      ,
+			IndexBuffer         = VK_BUFFER_USAGE_INDEX_BUFFER_BIT        ,
+			VertexBuffer        = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT       ,
+			IndirectBuffer      = VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT     
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorComponentFlagBits.html">Specification</a>  */
+		enum class EColorComponentFlag : uint32
+		{
+			R = VK_COLOR_COMPONENT_R_BIT,
+			G = VK_COLOR_COMPONENT_G_BIT,
+			B = VK_COLOR_COMPONENT_B_BIT,
+			A = VK_COLOR_COMPONENT_A_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorSpaceKHR.html">Specification</a>  */
+		enum class EColorSpace : uint32
+		{
+			SRGB_NonLinear                   = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR         ,
+			NonLinear_Display_P3             = VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT   ,
+			ExtendedSRGB_Linear              = VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT   ,
+			Display_P3_LInear                = VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT      ,
+			DCI_P3_NonLinear                 = VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT       ,
+			BT709_Linear                     = VK_COLOR_SPACE_BT709_LINEAR_EXT           ,
+			BT709_NonLinear                  = VK_COLOR_SPACE_BT709_NONLINEAR_EXT        ,
+			BT2020_Linear                    = VK_COLOR_SPACE_BT2020_LINEAR_EXT          ,
+			Extensions_HDR_ST2084            = VK_COLOR_SPACE_HDR10_ST2084_EXT           ,
+			Extension_DoblyVision            = VK_COLOR_SPACE_DOLBYVISION_EXT            ,
+			HDR10_HLG                        = VK_COLOR_SPACE_HDR10_HLG_EXT              ,
+			AdobeRGB_Linear                  = VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT        ,
+			AdobeRGB_NonLinear               = VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT     ,
+			Extension_PassThrough            = VK_COLOR_SPACE_PASS_THROUGH_EXT           ,
+			Extension_ExtendedSRGB_NonLinear = VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT,
+			AMD_Native                       = VK_COLOR_SPACE_DISPLAY_NATIVE_AMD         ,
+			KHR_SRGB_NonLinear               = VK_COLORSPACE_SRGB_NONLINEAR_KHR          ,
+			Extension_DCI_P3_Linear          = VK_COLOR_SPACE_DCI_P3_LINEAR_EXT          ,
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferLevel">Specification</a>  */
+		enum class ECommandBufferLevel
+		{
+			Primary   = VK_COMMAND_BUFFER_LEVEL_PRIMARY  ,
+			Secondary = VK_COMMAND_BUFFER_LEVEL_SECONDARY 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits ">Specification</a>  */
+		enum class ECommandBufferResetFlag : uInt32
+		{
+			ReleaseResources = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits">Specification</a>  */
+		enum class ECommandBufferUsageFlag : uint32
+		{
+			OneTimeSubmit      = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT     ,
+			RenderPassContinue = VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT,
+			SimultaneousUse    = VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT  
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlagBits">Specification</a>  */
+		enum class ECommandPoolCreateFlag : uint32
+		{
+			Transient          = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT           ,
+			ResetCommandBuffer = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,
+			Protected          = VK_COMMAND_POOL_CREATE_PROTECTED_BIT 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlagBits">Specification</a>  */
+		enum class ECommandPoolResetFlags : uInt32
+		{
+			ReleaseResources = VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentSwizzle.html">Specification</a>  */
+		enum class EComponentSwizzle : uint32
+		{
+			Identitity = VK_COMPONENT_SWIZZLE_IDENTITY,
+			Zero       = VK_COMPONENT_SWIZZLE_ZERO    ,
+			One        = VK_COMPONENT_SWIZZLE_ONE     ,
+			R          = VK_COMPONENT_SWIZZLE_R       ,
+			G          = VK_COMPONENT_SWIZZLE_G       ,
+			B          = VK_COMPONENT_SWIZZLE_B       ,
+			A          = VK_COMPONENT_SWIZZLE_A
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagBitsKHR.html">Specification</a>  */
+		enum class ECompositeAlpha : uint32
+		{
+			Opaque         = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR          ,
+			PreMultiplied  = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR  ,
+			PostMultiplied = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR ,
+			Inherit        = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompareOp">Specification</a>  */
+		enum class ECompareOperation : uint32
+		{
+			Never          = VK_COMPARE_OP_NEVER           ,
+			Less           = VK_COMPARE_OP_LESS            ,
+			Equal          = VK_COMPARE_OP_EQUAL           ,
+			LessOrEqual    = VK_COMPARE_OP_LESS_OR_EQUAL   ,
+			Greater        = VK_COMPARE_OP_GREATER         ,
+			NotEqual       = VK_COMPARE_OP_NOT_EQUAL       ,
+			GreaterOrEqual = VK_COMPARE_OP_GREATER_OR_EQUAL,
+			Always         = VK_COMPARE_OP_ALWAYS
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCullModeFlagBits.html">Specification</a>  */
+		enum class ECullModeFlag : uint32
+		{
+			None           = VK_CULL_MODE_NONE          ,
+			Front          = VK_CULL_MODE_FRONT_BIT     ,
+			Back           = VK_CULL_MODE_BACK_BIT      ,
+			Front_And_Back = VK_CULL_MODE_FRONT_AND_BACK 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageSeverityFlagBitsEXT.html">Specification</a>  */
+		enum class EDebugUtilities_MessageSeverity : uint32
+		{
+			Verbose = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
+			Info    = VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT   ,
+			Warning = VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT,
+			Error   = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageTypeFlagBitsEXT.html">Specification</a> de */
+		enum class EDebugUtilities_MessageType : uint32
+		{
+			General     = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT    ,
+			Validation  = VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT ,
+			Performance = VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDependencyFlagBits">Specification</a>  */
+		enum class EDependencyFlag : uint32
+		{
+			ByRegion = VK_DEPENDENCY_BY_REGION_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlagBits">Specification</a>  */
+		enum class EDescriptorBindingFlag : uint32
+		{
+			UpdateAfterBind              = VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT              ,
+			UpdateUnusedWhilePending     = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT    ,
+			PartiallyBound               = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT                ,
+			VariableDescriptorCount      = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT      ,
+			UpdateAfterBind_EXT          = VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT          ,
+			UpdateUnusedWhilePending_EXT = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT,
+			PartiallyBound_EXT           = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT            ,
+			VariableDescriptorCount_EXT  = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlagBits.html">Specification</a>  */
+		enum class EDescriptorSetLayoutCreateFlag : uint32
+		{
+			UpdateAfterBindPool           = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT    ,
+			PushDescriptor                = VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR       ,
+			UpdateAfterBindPool_Extension = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorType.html">Specification</a>  */
+		enum class EDescriptorType : uint32
+		{
+			Sampler                      = VK_DESCRIPTOR_TYPE_SAMPLER                   ,
+			CombinedImageSampler         = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER    ,
+			SampledImage                 = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE             ,
+			StorageImage                 = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE             ,
+			UniformTexelBuffer           = VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER      ,
+			StorageTexelBuffer           = VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER      ,
+			UniformBuffer                = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER            ,
+			StorageBuffer                = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER            ,
+			UniformBufferDynamic         = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC    ,
+			StorageBufferDynamic         = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC    ,
+			InputAttachment              = VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT          ,
+			InlineUniformBlock_Extension = VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT  ,
+			AccelerationStructure_KHR    = VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR,
+			AccelerationStructure_NV     = VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventTypeEXT">Specification</a>  */
+		enum class EDeviceEventTypeExt : uint32
+		{
+			DisplayHotPlug_EXT = VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventTypeEXT">Specification</a>  */
+		enum class EDisplayEventType : uint32 
+		{
+			FirstPixelOut_EXT = VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDynamicState.html">Specification</a>  */
+		enum class EDynamicState : uint32
+		{
+			Viewport                      = VK_DYNAMIC_STATE_VIEWPORT                        ,
+			Scissor                       = VK_DYNAMIC_STATE_SCISSOR                         ,
+			LineWidth                     = VK_DYNAMIC_STATE_LINE_WIDTH                      ,
+			DepthBias                     = VK_DYNAMIC_STATE_DEPTH_BIAS                      ,
+			BlendConstants                = VK_DYNAMIC_STATE_BLEND_CONSTANTS                 ,
+			DepthBounds                   = VK_DYNAMIC_STATE_DEPTH_BOUNDS                    ,
+			StencilCompareMask            = VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK            ,
+			StencilWriteMask              = VK_DYNAMIC_STATE_STENCIL_WRITE_MASK              ,
+			StencilReference              = VK_DYNAMIC_STATE_STENCIL_REFERENCE               ,
+			Viewport_W_Scaling_NV         = VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV           ,
+			DiscardRectangle_Extension    = VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT           ,
+			SampleLocations_Extension     = VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT            ,
+			ViewportShadingRatePalette_NV = VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV,
+			ViewportCoarseSampleOrder_NV  = VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV ,
+			ExclusiveScissor_NV           = VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV            ,
+			LineStipple_Extension         = VK_DYNAMIC_STATE_LINE_STIPPLE_EXT                
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlagBits">Specification</a>  */
+		enum class EExternalFenceHandleTypeFlag : uint32
+		{
+			OpaqueFD             = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT           ,
+			Opaque_Win32         = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT        ,
+			Opaque_Win32_KMT     = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT    ,
+			SyncFD               = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT             ,
+			OpaqueFD_KHR         = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR       ,   // Provided by VK_KHR_external_fence_capabilities
+			Opaque_Win32_KHR     = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR    ,   // Provided by VK_KHR_external_fence_capabilities
+			Opaque_Win32_KMT_KHR = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR,   // Provided by VK_KHR_external_fence_capabilities
+			SyncFD_KHR           = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR         ,   // Provided by VK_KHR_external_fence_capabilities
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlagBits">Specification</a>  */
+		enum class EFenceCreateFlag : uint32
+		{
+			Signaled = VK_FENCE_CREATE_SIGNALED_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlagBits">Specification</a>  */
+		enum class EFenceImportFlag
+		{
+			Temporary     = VK_FENCE_IMPORT_TEMPORARY_BIT    ,   // Provided by VK_KHR_external_fence
+			Temporary_KHR = VK_FENCE_IMPORT_TEMPORARY_BIT_KHR,
+		};
+
+		/**
+		 * @brief Supported buffer and image formats.
+		 * 
+		 * @details
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#formats">Specification</a> 
+		 */
+		enum class EFormat : uint32
+		{
+			Undefined                                            = VK_FORMAT_UNDEFINED                                     ,
+			R4_G4_UNormalized_8Pack                              = VK_FORMAT_R4G4_UNORM_PACK8                              ,
+			R4_G4_B4_A4_UNormalized_16Pack                       = VK_FORMAT_R4G4B4A4_UNORM_PACK16                         ,
+			B4_G4_R4_A4_UNormalized_16Pack                       = VK_FORMAT_B4G4R4A4_UNORM_PACK16                         ,
+			R5_G6_B5_UNormalized_16Pack                          = VK_FORMAT_R5G6B5_UNORM_PACK16                           ,
+			B5_G6_R5_UNormalized_16Pack                          = VK_FORMAT_B5G6R5_UNORM_PACK16                           ,
+			R5_G5_B5_1A_UNormalized_16Pack                       = VK_FORMAT_R5G5B5A1_UNORM_PACK16                         ,
+			B5_G5_R5_A1_UNormalized_16Pack                       = VK_FORMAT_B5G5R5A1_UNORM_PACK16                         ,
+			A1_R5_G5_B5_UNormalized_16Pack                       = VK_FORMAT_A1R5G5B5_UNORM_PACK16                         ,
+			R8_UNormalized                                       = VK_FORMAT_R8_UNORM                                      ,
+			R8_SNormalized                                       = VK_FORMAT_R8_SNORM                                      ,
+			R8_UScaled                                           = VK_FORMAT_R8_USCALED                                    ,
+			R8_SScaled                                           = VK_FORMAT_R8_SSCALED                                    ,
+			R8_UInt                                              = VK_FORMAT_R8_UINT                                       ,
+			R8_SInt                                              = VK_FORMAT_R8_SINT                                       ,
+			R8_SRGB                                              = VK_FORMAT_R8_SRGB                                       ,
+			R8_G8_UNormalized                                    = VK_FORMAT_R8G8_UNORM                                    ,
+			R8_G8_SNormalized                                    = VK_FORMAT_R8G8_SNORM                                    ,
+			R8_G8_UScaled                                        = VK_FORMAT_R8G8_USCALED                                  ,
+			R8_G8_SScaled                                        = VK_FORMAT_R8G8_SSCALED                                  ,
+			R8_G8_UInt                                           = VK_FORMAT_R8G8_UINT                                     ,
+			R8_G8_SInt                                           = VK_FORMAT_R8G8_SINT                                     ,
+			R8_G8_SRGB                                           = VK_FORMAT_R8G8_SRGB                                     ,
+			R8_G8_B8_UNormalized                                 = VK_FORMAT_R8G8B8_UNORM                                  ,
+			R8_G8_B8_SNormalized                                 = VK_FORMAT_R8G8B8_SNORM                                  ,
+			R8_G8_B8_UScaled                                     = VK_FORMAT_R8G8B8_USCALED                                ,
+			R8_G8_B8_SScaled                                     = VK_FORMAT_R8G8B8_SSCALED                                ,
+			R8_G8_B8_UInt                                        = VK_FORMAT_R8G8B8_UINT                                   ,
+			R8_G8_B8_SInt                                        = VK_FORMAT_R8G8B8_SINT                                   ,
+			R8_G8_B8_SRGB                                        = VK_FORMAT_R8G8B8_SRGB                                   ,
+			B8_G8_R8_UNormalized                                 = VK_FORMAT_B8G8R8_UNORM                                  ,
+			B8_G8_R8_SNormalized                                 = VK_FORMAT_B8G8R8_SNORM                                  ,
+			B8_G8_R8_UScaled                                     = VK_FORMAT_B8G8R8_USCALED                                ,
+			B8_G8_R8_SScaled                                     = VK_FORMAT_B8G8R8_SSCALED                                ,
+			B8_G8_R8_UInt                                        = VK_FORMAT_B8G8R8_UINT                                   ,
+			B8_G8_R8_SInt                                        = VK_FORMAT_B8G8R8_SINT                                   ,
+			B8_G8_R8_SRGB                                        = VK_FORMAT_B8G8R8_SRGB                                   ,
+			R8_G8_B8_A8_UNormalized                              = VK_FORMAT_R8G8B8A8_UNORM                                ,
+			R8_G8_B8_A8_SNormalized                              = VK_FORMAT_R8G8B8A8_SNORM                                ,
+			R8_G8_B8_A8_UScaled                                  = VK_FORMAT_R8G8B8A8_USCALED                              ,
+			R8_G8_B8_A8_SScaled                                  = VK_FORMAT_R8G8B8A8_SSCALED                              ,
+			R8_G8_B8_A8_UInt                                     = VK_FORMAT_R8G8B8A8_UINT                                 ,
+			R8_G8_B8_A8_SInt                                     = VK_FORMAT_R8G8B8A8_SINT                                 ,
+			R8_G8_B8_A8_SRGB                                     = VK_FORMAT_R8G8B8A8_SRGB                                 ,
+			B8_G8_R8_A8_UNormalized                              = VK_FORMAT_B8G8R8A8_UNORM                                ,
+			B8_G8_R8_A8_SNormalized                              = VK_FORMAT_B8G8R8A8_SNORM                                ,
+			B8_G8_R8_A8_UScaled                                  = VK_FORMAT_B8G8R8A8_USCALED                              ,
+			B8_G8_R8_A8_SScaled                                  = VK_FORMAT_B8G8R8A8_SSCALED                              ,
+			B8_G8_R8_A8_Uint                                     = VK_FORMAT_B8G8R8A8_UINT                                 ,
+			B8_G8_R8_A8_SInt                                     = VK_FORMAT_B8G8R8A8_SINT                                 ,
+			B8_G8_R8_A8_SRGB                                     = VK_FORMAT_B8G8R8A8_SRGB                                 ,
+			A8_B8_G8_R8_UNormalized_Pack32                       = VK_FORMAT_A8B8G8R8_UNORM_PACK32                         ,
+			A8_B8_G8_R8_SNormalized_Pack32                       = VK_FORMAT_A8B8G8R8_SNORM_PACK32                         ,
+			A8_B8_G8_R8_UScaled_Pack32                           = VK_FORMAT_A8B8G8R8_USCALED_PACK32                       ,
+			A8_B8_G8_R8_SScaled_Pack32                           = VK_FORMAT_A8B8G8R8_SSCALED_PACK32                       ,
+			A8_B8_G8_R8_UInt_Pack32                              = VK_FORMAT_A8B8G8R8_UINT_PACK32                          ,
+			A8_B8_G8_R8_SInt_Pack32                              = VK_FORMAT_A8B8G8R8_SINT_PACK32                          ,
+			A8_B8_G8_R8_SRGB_Pack32                              = VK_FORMAT_A8B8G8R8_SRGB_PACK32                          ,
+			A2_R10_G10_B10_UNormalized_Pack32                    = VK_FORMAT_A2R10G10B10_UNORM_PACK32                      ,
+			A2_R10_G10_B10_SNormalized_Pack32                    = VK_FORMAT_A2R10G10B10_SNORM_PACK32                      ,
+			A2_R10_G10_B10_UScaled_Pack32                        = VK_FORMAT_A2R10G10B10_USCALED_PACK32                    ,
+			A2_R10_G10_B10_SScaled_Pack32                        = VK_FORMAT_A2R10G10B10_SSCALED_PACK32                    ,
+			A2_R10_G10_B10_UInt_Pack32                           = VK_FORMAT_A2R10G10B10_UINT_PACK32                       ,
+			A2_R10_G10_B10_SInt_Pack32                           = VK_FORMAT_A2R10G10B10_SINT_PACK32                       ,
+			A2_B10_G10_R10_UNormalized_Pack32                    = VK_FORMAT_A2B10G10R10_UNORM_PACK32                      ,
+			A2_B10_G10_R10_SNormalized_Pack32                    = VK_FORMAT_A2B10G10R10_SNORM_PACK32                      ,
+			A2_B10_G10_R10_UScaled_Pack32                        = VK_FORMAT_A2B10G10R10_USCALED_PACK32                    ,
+			A2_B10_G10_R10_SScaled_Pack32                        = VK_FORMAT_A2B10G10R10_SSCALED_PACK32                    ,
+			A2_B10_G10_R10_UInt_Pack32                           = VK_FORMAT_A2B10G10R10_UINT_PACK32                       ,
+			A2_B10_G10_R10_SInt_Pack32                           = VK_FORMAT_A2B10G10R10_SINT_PACK32                       ,
+			R16_UNormalized                                      = VK_FORMAT_R16_UNORM                                     ,
+			R16_SNormalized                                      = VK_FORMAT_R16_SNORM                                     ,
+			R16_UScaled                                          = VK_FORMAT_R16_USCALED                                   ,
+			R16_SScaled                                          = VK_FORMAT_R16_SSCALED                                   ,
+			R16_UInt                                             = VK_FORMAT_R16_UINT                                      ,
+			R16_SInt                                             = VK_FORMAT_R16_SINT                                      ,
+			R16_SFloat                                           = VK_FORMAT_R16_SFLOAT                                    ,
+			R16_G16_UNormalized                                  = VK_FORMAT_R16G16_UNORM                                  ,
+			R16_G16_SNormalized                                  = VK_FORMAT_R16G16_SNORM                                  ,
+			R16_G16_UScaled                                      = VK_FORMAT_R16G16_USCALED                                ,
+			R16_G16_SScaled                                      = VK_FORMAT_R16G16_SSCALED                                ,
+			R16_G16_UInt                                         = VK_FORMAT_R16G16_UINT                                   ,
+			R16_G16_SInt                                         = VK_FORMAT_R16G16_SINT                                   ,
+			R16_G16_SFloat                                       = VK_FORMAT_R16G16_SFLOAT                                 ,
+			R16_G16_B16_UNormalized                              = VK_FORMAT_R16G16B16_UNORM                               ,
+			R16_G16_B16_SNormalized                              = VK_FORMAT_R16G16B16_SNORM                               ,
+			R16_G16_B16_UScaled                                  = VK_FORMAT_R16G16B16_USCALED                             ,
+			R16_G16_B16_SScaled                                  = VK_FORMAT_R16G16B16_SSCALED                             ,
+			R16_G16_B16_UInt                                     = VK_FORMAT_R16G16B16_UINT                                ,
+			R16_G16_B16_SInt                                     = VK_FORMAT_R16G16B16_SINT                                ,
+			R16_G16_B16_SFloat                                   = VK_FORMAT_R16G16B16_SFLOAT                              ,
+			R16_G16_B16_A16_UNormalized                          = VK_FORMAT_R16G16B16A16_UNORM                            ,
+			R16_G16_B16_A16_SNormalized                          = VK_FORMAT_R16G16B16A16_SNORM                            ,
+			R16_G16_B16_A16_UScaled                              = VK_FORMAT_R16G16B16A16_USCALED                          ,
+			R16_G16_B16_A16_SScaled                              = VK_FORMAT_R16G16B16A16_SSCALED                          ,
+			R16_G16_B16_A16_UInt                                 = VK_FORMAT_R16G16B16A16_UINT                             ,
+			R16_G16_B16_A16_SInt                                 = VK_FORMAT_R16G16B16A16_SINT                             ,
+			R16_G16_B16_A16_SFloat                               = VK_FORMAT_R16G16B16A16_SFLOAT                           ,
+			R32_UInt                                             = VK_FORMAT_R32_UINT                                      ,
+			R32_SInt                                             = VK_FORMAT_R32_SINT                                      ,
+			R32_SFloat                                           = VK_FORMAT_R32_SFLOAT                                    ,
+			R32_G32_UInt                                         = VK_FORMAT_R32G32_UINT                                   ,
+			R32_G32_SInt                                         = VK_FORMAT_R32G32_SINT                                   ,
+			R32_G32_SFloat                                       = VK_FORMAT_R32G32_SFLOAT                                 ,
+			R32_G32_B32_UInt                                     = VK_FORMAT_R32G32B32_UINT                                ,
+			R32_G32_B32_Sint                                     = VK_FORMAT_R32G32B32_SINT                                ,
+			R32_G32_B32_SFloat                                   = VK_FORMAT_R32G32B32_SFLOAT                              ,
+			R32_G32_B32_A32_UInt                                 = VK_FORMAT_R32G32B32A32_UINT                             ,
+			R32_G32_B32_A32_SInt                                 = VK_FORMAT_R32G32B32A32_SINT                             ,
+			R32_G32_B32_A32_SFloat                               = VK_FORMAT_R32G32B32A32_SFLOAT                           ,
+			R64_Uint                                             = VK_FORMAT_R64_UINT                                      ,
+			R64_SInt                                             = VK_FORMAT_R64_SINT                                      ,
+			R64_SFloat                                           = VK_FORMAT_R64_SFLOAT                                    ,
+			R64_G64_UInt                                         = VK_FORMAT_R64G64_UINT                                   ,
+			R64_G64_SInt                                         = VK_FORMAT_R64G64_SINT                                   ,
+			R64_G64_SFloat                                       = VK_FORMAT_R64G64_SFLOAT                                 ,
+			R64_G64_B64_UInt                                     = VK_FORMAT_R64G64B64_UINT                                ,
+			R64_G64_B64_SInt                                     = VK_FORMAT_R64G64B64_SINT                                ,
+			R64_G64_B64_SFloat                                   = VK_FORMAT_R64G64B64_SFLOAT                              ,
+			R64_G64_B64_A64_UInt                                 = VK_FORMAT_R64G64B64A64_UINT                             ,
+			R64_G64_B64_A64_SInt                                 = VK_FORMAT_R64G64B64A64_SINT                             ,
+			R64_G64_B64_A64_SFloat                               = VK_FORMAT_R64G64B64A64_SFLOAT                           ,
+			B10_G11_R11_UFloat_Pack32                            = VK_FORMAT_B10G11R11_UFLOAT_PACK32                       ,
+			E5_B9_G9_R9_UFloat_Pack32                            = VK_FORMAT_E5B9G9R9_UFLOAT_PACK32                        ,
+			D16_UNormalized                                      = VK_FORMAT_D16_UNORM                                     ,
+			X8_D24_UNormalized_Pack32                            = VK_FORMAT_X8_D24_UNORM_PACK32                           ,
+			D32_SFloat                                           = VK_FORMAT_D32_SFLOAT                                    ,
+			S8_UInt                                              = VK_FORMAT_S8_UINT                                       ,
+			D16_UNormalized_S8_UInt                              = VK_FORMAT_D16_UNORM_S8_UINT                             ,
+			D24_UNormalized_S8_UInt                              = VK_FORMAT_D24_UNORM_S8_UINT                             ,
+			D32_SFloat_S8_UInt                                   = VK_FORMAT_D32_SFLOAT_S8_UINT                            ,
+			BC1_RGB_UNormalized_Block                            = VK_FORMAT_BC1_RGB_UNORM_BLOCK                           ,
+			BC1_RGB_SRGB_Block                                   = VK_FORMAT_BC1_RGB_SRGB_BLOCK                            ,
+			BC1_RGBA_Unormalized_Block                           = VK_FORMAT_BC1_RGBA_UNORM_BLOCK                          ,
+			BC1_RGBA_SRGB_Block                                  = VK_FORMAT_BC1_RGBA_SRGB_BLOCK                           ,
+			BC2_UNormalized_Block                                = VK_FORMAT_BC2_UNORM_BLOCK                               ,
+			BC2_SRGB_Block                                       = VK_FORMAT_BC2_SRGB_BLOCK                                ,
+			BC3_UNormalized_Block                                = VK_FORMAT_BC3_UNORM_BLOCK                               ,
+			BC3_SRGB_Block                                       = VK_FORMAT_BC3_SRGB_BLOCK                                ,
+			BC4_UNormalized_Block                                = VK_FORMAT_BC4_UNORM_BLOCK                               ,
+			BC4_SNormalized_Block                                = VK_FORMAT_BC4_SNORM_BLOCK                               ,
+			BC5_UNormalized_Block                                = VK_FORMAT_BC5_UNORM_BLOCK                               ,
+			BC5_SNormalized_Block                                = VK_FORMAT_BC5_SNORM_BLOCK                               ,
+			BC6H_UFloat_Block                                    = VK_FORMAT_BC6H_UFLOAT_BLOCK                             ,
+			BC6H_SFloat_Block                                    = VK_FORMAT_BC6H_SFLOAT_BLOCK                             ,
+			BC7_UNormalized_Block                                = VK_FORMAT_BC7_UNORM_BLOCK                               ,
+			BC7_SRGB_Block                                       = VK_FORMAT_BC7_SRGB_BLOCK                                ,
+			ETC2_R8_G8_B8_UNormalized_Block                      = VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK                       ,
+			ETC2_R8_G8_B8_SRGB_Block                             = VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK                        ,
+			ETC2_R8_G8_B8_A1_UNormalized_Block                   = VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK                     ,
+			ETC2_R8_G8_B8_A1_Block                               = VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK                      ,
+			ETC_2_R8_G8_B8_A8_UNormalized_Block                  = VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK                     ,
+			ETC2_R8_G8_B8_A8_SRGB_Block                          = VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK                      ,
+			EAC_R11_UNormalized_Block                            = VK_FORMAT_EAC_R11_UNORM_BLOCK                           ,
+			EAC_R11_SNormalized_Block                            = VK_FORMAT_EAC_R11_SNORM_BLOCK                           ,
+			EAC_R11_G11_UNormalized_Block                        = VK_FORMAT_EAC_R11G11_UNORM_BLOCK                        ,
+			EAC_R11_G11_SNormalized_Block                        = VK_FORMAT_EAC_R11G11_SNORM_BLOCK                        ,
+			ASTC_4x4_UNormalized_Block                           = VK_FORMAT_ASTC_4x4_UNORM_BLOCK                          ,
+			ASTC_4x4_SRGB_Block                                  = VK_FORMAT_ASTC_4x4_SRGB_BLOCK                           ,
+			ASTC_5x4_UNormalized_Block                           = VK_FORMAT_ASTC_5x4_UNORM_BLOCK                          ,
+			ASTC_5x4_SRGB_Block                                  = VK_FORMAT_ASTC_5x4_SRGB_BLOCK                           ,
+			ASTC_5x5_UNormalized_Block                           = VK_FORMAT_ASTC_5x5_UNORM_BLOCK                          ,
+			ASTC_5x5_SRGB_Block                                  = VK_FORMAT_ASTC_5x5_SRGB_BLOCK                           ,
+			ASTC_6x5_UNormalized_Block                           = VK_FORMAT_ASTC_6x5_UNORM_BLOCK                          ,
+			ASTC_6x5_SRGB_Block                                  = VK_FORMAT_ASTC_6x5_SRGB_BLOCK                           ,
+			ASTC_6x6_UNormalized_Block                           = VK_FORMAT_ASTC_6x6_UNORM_BLOCK                          ,
+			ASTC_6x6_SRGB_Block                                  = VK_FORMAT_ASTC_6x6_SRGB_BLOCK                           ,
+			ASTC_8x5_UNormalized_Block                           = VK_FORMAT_ASTC_8x5_UNORM_BLOCK                          ,
+			ASTC_8x5_SRGB_Block                                  = VK_FORMAT_ASTC_8x5_SRGB_BLOCK                           ,
+			ASTC_8x6_UNormalized_Block                           = VK_FORMAT_ASTC_8x6_UNORM_BLOCK                          ,
+			ASTC_8x6_SRGB_Block                                  = VK_FORMAT_ASTC_8x6_SRGB_BLOCK                           ,
+			ASTC_8x8_UNormalized_Block                           = VK_FORMAT_ASTC_8x8_UNORM_BLOCK                          ,
+			ASTC_8x8_SRGB_Block                                  = VK_FORMAT_ASTC_8x8_SRGB_BLOCK                           ,
+			ASTC_10x5_UNormalized_Block                          = VK_FORMAT_ASTC_10x5_UNORM_BLOCK                         ,
+			ASTC_10x5_SRGB_Block                                 = VK_FORMAT_ASTC_10x5_SRGB_BLOCK                          ,
+			ASTC_10x6_UNormalized_Block                          = VK_FORMAT_ASTC_10x6_UNORM_BLOCK                         ,
+			ASTC_10x6_SRGB_Block                                 = VK_FORMAT_ASTC_10x6_SRGB_BLOCK                          ,
+			ASTC_10x8_UNormalized_Block                          = VK_FORMAT_ASTC_10x8_UNORM_BLOCK                         ,
+			ASTC_10x8_SRGB_Block                                 = VK_FORMAT_ASTC_10x8_SRGB_BLOCK                          ,
+			ASTC_10x10_UNormalized_Block                         = VK_FORMAT_ASTC_10x10_UNORM_BLOCK                        ,
+			ASTC_10x10_SRGB_Block                                = VK_FORMAT_ASTC_10x10_SRGB_BLOCK                         ,
+			ASTC_12x10_UNormalized_Block                         = VK_FORMAT_ASTC_12x10_UNORM_BLOCK                        ,
+			ASTC_12x10_SRGB_Block                                = VK_FORMAT_ASTC_12x10_SRGB_BLOCK                         ,
+			ASTC_12x12_UNormalize_Block                          = VK_FORMAT_ASTC_12x12_UNORM_BLOCK                        ,
+			ASTC_12x12_SRGB_Block                                = VK_FORMAT_ASTC_12x12_SRGB_BLOCK                         ,
+			G8_B8_G8_R8_422_UNormalized                          = VK_FORMAT_G8B8G8R8_422_UNORM                            ,
+			B8_G8_R8_G8_422_UNormalized                          = VK_FORMAT_B8G8R8G8_422_UNORM                            ,
+			G8_B8_R8_3Plane_420_UNormalized                      = VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM                     ,
+			G8_B8_R8_2Plane_420_UNormalized                      = VK_FORMAT_G8_B8R8_2PLANE_420_UNORM                      ,
+			G8_B8_R8_3Plane_422_UNormalized                      = VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM                     ,
+			G8_B8_R8_2Plane_422_UNormalized                      = VK_FORMAT_G8_B8R8_2PLANE_422_UNORM                      ,
+			G8_B8_R8_3Plane_444_UNormalized                      = VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM                     ,
+			R10x6_UNormalized_Pack16                             = VK_FORMAT_R10X6_UNORM_PACK16                            ,
+			R10x6_G10x6_UNormalized_2Pack16                      = VK_FORMAT_R10X6G10X6_UNORM_2PACK16                      ,
+			R10x6_G10x6_B10x6_A10x6_UNormalized_4Pack16          = VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16            ,
+			G10x6_B10x6_G10x6_R10x6_422_UNormalized_4Pack16      = VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16        ,
+			B10x6_G10x6_R10x6_G10x6_422_UNormalized_4Pack16      = VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16        ,
+			G10x6_B10x6_R10x6_3Plane_420_UNormalized_3Pack16     = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16    ,
+			G10x6_B10x6_R10x6_2Plane_420_UNormalized_3Pack16     = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16     ,
+			G10x6_B10x6_R10x6_3Plane_422_UNormalized_3Pack16     = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16    ,
+			G10x6_B10x6_R10x6_2Plane_422_UNormalized_3Pack16     = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16     ,
+			G10x6_B10x6_R10x6_3Plane_444_UNormalized_3Pack16     = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16    ,
+			R12x4_UNormalized_Pack16                             = VK_FORMAT_R12X4_UNORM_PACK16                            ,
+			R12x4_G12x4_UNormalized_2Pack16                      = VK_FORMAT_R12X4G12X4_UNORM_2PACK16                      ,
+			R12x4_G12x4_B12x4_A12x4_UNormalized_4Pack16          = VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16            ,
+			G12x4_B12x4_G12x4_R12x4_422_UNormalized_4Pack16      = VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16        ,
+			B12x4_G12x4_R12x4_G12x4_422_UNormalized_4Pack16      = VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16        ,
+			G12x4_B12x4_R12x4_3Plane_420_UNormalized_3Pack16     = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16    ,
+			G12x4_B12x4_R12x4_2Plane_420_UNormalized_3Pack16     = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16     ,
+			G12x4_B12x4_R12x4_3Plane_422_UNormalized_3Pack16     = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16    ,
+			G12x4_B12x4_R12x4_2Plane_422_UNormalized_3Pack16     = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16     ,
+			G12x4_B12x4_R12x4_3Plane_444_UNormalized_3Pack16     = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16    ,
+			G16_B16_G16_R16_422_UNormalized                      = VK_FORMAT_G16B16G16R16_422_UNORM                        ,
+			B16_G16_R16_G16_422_UNormalized                      = VK_FORMAT_B16G16R16G16_422_UNORM                        ,
+			G16_B16_R16_3Plane_420_UNormalized                   = VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM                  ,
+			G16_B16_R16_2Plane_420_UNormalized                   = VK_FORMAT_G16_B16R16_2PLANE_420_UNORM                   ,
+			G16_B16_3Plane_422_UNormalized                       = VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM                  ,
+			G16_B16_R16_2Plane_422_UNormalized                   = VK_FORMAT_G16_B16R16_2PLANE_422_UNORM                   ,
+			G16_B16_R16_3Plane_444_UNormalized                   = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM                  ,
+			PVRTC1_2BPP_UNormalized_Block_Image                  = VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG                   ,
+			PVRTC1_4BPP_UNormalized_Block_Image                  = VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG                   ,
+			PVRTC2_2BPP_UNormalized_Block_Image                  = VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG                   ,
+			PVRTC2_4BPP_UNormalized_Block_Image                  = VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG                   ,
+			PVRTC1_2BPP_SRGB_Block_Image                         = VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG                    ,
+			PVRTC1_4BPP_SRGB_Block_Image                         = VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG                    ,
+			PVRTC2_2BPP_SRGB_Block_Image                         = VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG                    ,
+			PVRTC2_4BPP_SRGB_Block_Image                         = VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG                    ,
+			ASTC_4x4_SFloat_Block_EXT                            = VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT                     ,
+			ASTC_5x4_SFloat_Block_EXT                            = VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT                     ,
+			ASTC_5x5_SFloat_Block_EXT                            = VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT                     ,
+			ASTC_6x5_SFloat_Block_EXT                            = VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT                     ,
+			ASTC_6x6_SFloat_Block_EXT                            = VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT                     ,
+			ASTC_8x5_SFloat_Block_EXT                            = VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT                     ,
+			ASTC_8x6_SFloat_Block_EXT                            = VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT                     ,
+			ASTC_8x8_SFloat_Block_EXT                            = VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT                     ,
+			ASTC_10x5_SFloat_Block_EXT                           = VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT                    ,
+			ASTC_10x6_SFloat_Block_EXT                           = VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT                    ,
+			ASTC_10x8_SFloat_Block_EXT                           = VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT                    ,
+			ASTC_10x10_SFloat_Block_EXT                          = VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT                   ,
+			ASTC_12x10_SFloat_Block_EXT                          = VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT                   ,
+			ASTC_12x12_SFloat_Block_EXT                          = VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT                   ,
+			G8_B8_G8_R8_422_UNormalized_KHR                      = VK_FORMAT_G8B8G8R8_422_UNORM_KHR                        ,
+			B8_G8_R8_G8_422_UNormalized_KHR                      = VK_FORMAT_B8G8R8G8_422_UNORM_KHR                        ,
+			G8_B8_R8_3Plane_420_UNormalized_KHR                  = VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM_KHR                 ,
+			G8_B8_R8_2Plane_420_UNormalized_KHR                  = VK_FORMAT_G8_B8R8_2PLANE_420_UNORM_KHR                  ,
+			G8_B8_R8_3Plane_422_UNormalized_KHR                  = VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM_KHR                 ,
+			G8_B8_R8_2Plane_422_Unormalized_KHR                  = VK_FORMAT_G8_B8R8_2PLANE_422_UNORM_KHR                  ,
+			G8_B8_R8_3Plane_444_UNormalized_KHR                  = VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM_KHR                 ,
+			R10x6_UNormalized_Pack16_KHR                         = VK_FORMAT_R10X6_UNORM_PACK16_KHR                        ,
+			R10x6_G10x6_UNormalized_2Pack16_KHR                  = VK_FORMAT_R10X6G10X6_UNORM_2PACK16_KHR                  ,
+			R10x6_G10x6_B10x6_A10x6_UNormalized_4Pack16_KHR      = VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16_KHR        ,
+			G10x6_B10x6_G10x6_R10x6_422_UNormalized_4Pack16_KHR  = VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16_KHR    ,
+			B10x6_G10x6_R10x6_G10x6_422_UNormalized_4Pack16_KHR  = VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16_KHR    ,
+			G10x6_B10x6_3Plane_420_UNormalized_3Pac16_KHR        = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16_KHR,
+			G10x6_B10x6_R10x6_2PLane_420_UNormalized_3Pack16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16_KHR ,
+			G10x6_B10x6_R10x6_3Plane_422_UNormalized_3Pack16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16_KHR,
+			G10x6_B10x6_R10x6_2Plane_422_UNormalized_3Pack16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16_KHR ,
+			G10x6_B10x6_R10x6_3Plane_444_UNormalized_3Pack16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16_KHR,
+			R12X4_UNormalized_Pack16_KHR                         = VK_FORMAT_R12X4_UNORM_PACK16_KHR                        ,
+			R12x4_G12x4_UNormalized_2Pack16_KHR                  = VK_FORMAT_R12X4G12X4_UNORM_2PACK16_KHR                  ,
+			R12x4_G12x4_B12x4_A12x4_UNormalized_4Pack16_KHR      = VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16_KHR        ,
+			G12x4_B12x4_G12x4_R12x4_422_UNormalized_4Pack16_KHR  = VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16_KHR    ,
+			B12x4_G12x4_R12x4_G12x4_422_UNormalized_4Pack16_KHR  = VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16_KHR    ,
+			G12x4_B12x4_R12x4_3Plane_410_UNormalized_3Pack16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16_KHR,
+			G12x4_B12x4_R12x4_2Plane_420_UNormalized_3Pack16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16_KHR ,
+			G12x4_B12x4_R12x4_3Plane_422_UNormalized_3Pack16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16_KHR,
+			G12x4_B12x4_R12x4_2Plane_422_UNormalized_3Pack16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16_KHR ,
+			G12x4_B12x4_R12x4_3Plane_444_UNormalized_3Pack16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16_KHR,
+			G16_B16_G16_R16_422_UNormalized_KHR                  = VK_FORMAT_G16B16G16R16_422_UNORM_KHR                    ,
+			B16_G16_R16_G16_422_UNormalized_KHR                  = VK_FORMAT_B16G16R16G16_422_UNORM_KHR                    ,
+			G16_B16_R16_3Plane_420_UNormalized_KHR               = VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM_KHR              ,
+			G16_B16_R16_2Plane_420_UNormalized_KHR               = VK_FORMAT_G16_B16R16_2PLANE_420_UNORM_KHR               ,
+			G16_B16_R16_3Plane_422_UNormalized_KHR               = VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM_KHR              ,
+			G16_B16_R16_2Plane_422_UNormalized_KHR               = VK_FORMAT_G16_B16R16_2PLANE_422_UNORM_KHR               ,
+			G16_B16_R16_3Plane_444_UNormalized_KHR               = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR                  // Specifies an unsigned normalized multi-planar format that has a 16-bit G component in each 16-bit word of plane 0, a 16-bit B component in each 16-bit word of plane 1, and a 16-bit R component in each 16-bit word of plane 2. Each plane has the same dimensions and each R, G and B component contributes to a single texel. The location of each plane when this image is in linear layout can be determined via vkGetImageSubresourceLayout, using VK_IMAGE_ASPECT_PLANE_0_BIT for the G plane, VK_IMAGE_ASPECT_PLANE_1_BIT for the B plane, and VK_IMAGE_ASPECT_PLANE_2_BIT for the R plane.
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a>  */
+		enum class EFrameBufferCreateFlag : uint32 {};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFrontFace.html">Specification</a>  */
+		enum class EFrontFace : uint32
+		{
+			CounterClockwise = VK_FRONT_FACE_COUNTER_CLOCKWISE,
+			Clockwise        = VK_FRONT_FACE_CLOCKWISE
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageAspectFlagBits.html">Specification</a>  */
+		enum class EImageAspect : uint32
+		{
+			Color         = VK_IMAGE_ASPECT_COLOR_BIT             ,
+			Depth         = VK_IMAGE_ASPECT_DEPTH_BIT             ,
+			Stencil       = VK_IMAGE_ASPECT_STENCIL_BIT           ,
+			MetaData      = VK_IMAGE_ASPECT_METADATA_BIT          ,
+			Plane_0       = VK_IMAGE_ASPECT_PLANE_0_BIT           ,
+			Plane_1       = VK_IMAGE_ASPECT_PLANE_1_BIT           ,
+			Plane_2       = VK_IMAGE_ASPECT_PLANE_2_BIT           ,
+			MemoryPlane_0 = VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT,
+			MemoryPlane_1 = VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT,
+			MemroyPlane_2 = VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT,
+			MemoryPlane_3 = VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT,
+			KHR_Plane_0   = VK_IMAGE_ASPECT_PLANE_0_BIT_KHR       ,
+			KHR_Plane_1   = VK_IMAGE_ASPECT_PLANE_1_BIT_KHR       ,
+			KHR_Plane_2   = VK_IMAGE_ASPECT_PLANE_2_BIT_KHR
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateFlagBits.html">Specification</a> */
+		enum class EImageCreateFlag : uint32
+		{
+			SparseBinding                      = VK_IMAGE_CREATE_SPARSE_BINDING_BIT                       ,
+			SparseResidency                    = VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT                     ,
+			SparseAliased                      = VK_IMAGE_CREATE_SPARSE_ALIASED_BIT                       ,
+			MutableFormat                      = VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT                       ,
+			CubeCompatible                     = VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT                      ,
+			Alias                              = VK_IMAGE_CREATE_ALIAS_BIT                                ,
+			SplitInstanceBindRegions           = VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT          ,
+			_2DArrayCompatible                 = VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT                  ,
+			BlockTexelViewCompatible           = VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT          ,
+			ExtendedUsage                      = VK_IMAGE_CREATE_EXTENDED_USAGE_BIT                       ,
+			Protected                          = VK_IMAGE_CREATE_PROTECTED_BIT                            ,
+			Disjoint                           = VK_IMAGE_CREATE_DISJOINT_BIT                             ,
+			CornerSampled                      = VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV                    ,
+			SampleLocationsCompatibleDepth_Ext = VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT,
+			Subsampled_Ext                     = VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT                       ,
+			SplitInstanceBindRegions_KHR       = VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR      ,
+			_2DArrayCompatible_KHR             = VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR              ,
+			BlockTexelViewCompatible_KHR       = VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT_KHR      ,
+			ExtendedUsage_KHR                  = VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR                   ,
+			Disjoint_KHR                       = VK_IMAGE_CREATE_DISJOINT_BIT_KHR                         ,
+			Alias_KHR                          = VK_IMAGE_CREATE_ALIAS_BIT_KHR                            
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageLayout.html">Specification</a>  */
+		enum class EImageLayout : uint32
+		{
+			Undefined                                    = VK_IMAGE_LAYOUT_UNDEFINED                                     ,
+			General                                      = VK_IMAGE_LAYOUT_GENERAL                                       ,
+			Color_AttachmentOptimal                      = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL                      ,
+			DepthStencil_AttachmentOptimal               = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL              ,
+			DepthStencil_ReadonlyOptimal                 = VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL               ,
+			Shader_ReadonlyOptimal                       = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL                      ,
+			TransferSource_Optimal                       = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL                          ,
+			TransferDestination_Optimal                  = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL                          ,
+			Preinitalized                                = VK_IMAGE_LAYOUT_PREINITIALIZED                                ,
+			Depth_Readonly_Stencil_AttachemntOptimal     = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL    ,
+			Depth_Attachment_Stencil_ReadonlyOptimal     = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL    ,
+			Depth_AttachmentOptimal                      = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL                      ,
+			Depth_ReadonlyOptimal                        = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL                       ,
+			Stencil_AttachmentOptimal                    = VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL                    ,
+			Stencil_ReadonlyOptimal                      = VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL                     ,
+			PresentSource_KHR                            = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR                               ,
+			SharedPresent_KHR                            = VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR                            ,
+			ShadingRate_Optimal                          = VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV                       ,
+			Fragment_DensityMapOptimal_EXT               = VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT              ,
+			Depth_Readonly_Stencil_AttachmentOptimal_KHR = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR,
+			Depth_Atteachment_StencilReadonlyOptimal_KHR = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR,
+			Depth_AttachmentOptimal_KHR                  = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL_KHR                  ,
+			Depth_ReadonlyOptimal_KHR                    = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL_KHR                   ,
+			Stencil_AttachmentOptimal_KHR                = VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL_KHR                ,
+			Stencil_ReadonlyOptimal_KHR                  = VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR                 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageTiling.html">Specification</a>  */
+		enum class EImageTiling : uint32
+		{
+			Optional                     = VK_IMAGE_TILING_OPTIMAL                ,
+			Linear                       = VK_IMAGE_TILING_LINEAR                 ,
+			DRM_FormatModifier_Extension = VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageType.html">Specification</a>  */
+		enum class EImageType : uint32
+		{
+			_1D = VK_IMAGE_TYPE_1D,
+			_2D = VK_IMAGE_TYPE_2D,
+			_3D = VK_IMAGE_TYPE_3D
+		};
+
+		/** @brief <a href"https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageUsageFlagBits.html">Specification</a> */
+		enum class EImageUsage : uint32
+		{
+			TransferSource          = VK_IMAGE_USAGE_TRANSFER_SRC_BIT            ,
+			TransferDestination     = VK_IMAGE_USAGE_TRANSFER_DST_BIT            ,
+			Sampled                 = VK_IMAGE_USAGE_SAMPLED_BIT                 ,
+			Storage                 = VK_IMAGE_USAGE_STORAGE_BIT                 ,
+			Color_Attachment        = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT        ,
+			DepthStencil_Attachment = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
+			Transient_Attachment    = VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT    ,
+			Input_Attachemnt        = VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT        ,
+			Image_ShadingRate       = VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV   ,
+			DensityMap              = VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlagBits.html">Specification</a>  */
+		enum class EImageViewCreateFlag : uint32
+		{
+			Fragment_DensityMapDynamiic = VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageView.html">Specification</a>  */
+		enum class EImageViewType : uint32
+		{
+			_1D       = VK_IMAGE_VIEW_TYPE_1D        ,
+			_2D       = VK_IMAGE_VIEW_TYPE_2D        ,
+			_3D       = VK_IMAGE_VIEW_TYPE_3D        ,
+			_Cube     = VK_IMAGE_VIEW_TYPE_CUBE      ,
+			_1D_Array = VK_IMAGE_VIEW_TYPE_1D_ARRAY  ,
+			_2D_Array = VK_IMAGE_VIEW_TYPE_2D_ARRAY  ,
+			CubeArray = VK_IMAGE_VIEW_TYPE_CUBE_ARRAY
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html">Specification</a>  */
+		enum class ELogicalDeviceQueueCreateFlag : uint32
+		{
+			CreateProtected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkLogicOp.html">Specification</a>  */
+		enum class ELogicOperation : uint32
+		{
+			Clear         = VK_LOGIC_OP_CLEAR        ,
+			And           = VK_LOGIC_OP_AND          ,
+			And_Reverse   = VK_LOGIC_OP_AND_REVERSE  ,
+			Copy          = VK_LOGIC_OP_COPY         ,
+			And_Inverted  = VK_LOGIC_OP_AND_INVERTED ,
+			No            = VK_LOGIC_OP_NO_OP        ,
+			XOR           = VK_LOGIC_OP_XOR          ,
+			Or            = VK_LOGIC_OP_OR           ,
+			NOR           = VK_LOGIC_OP_NOR          ,
+			Equivalent    = VK_LOGIC_OP_EQUIVALENT   ,
+			Int           = VK_LOGIC_OP_INVERT       ,
+			OR_Reverse    = VK_LOGIC_OP_OR_REVERSE   ,
+			Copy_Inverted = VK_LOGIC_OP_COPY_INVERTED,
+			Or_Inverted   = VK_LOGIC_OP_OR_INVERTED  ,
+			NAND          = VK_LOGIC_OP_NAND         ,
+			Set           = VK_LOGIC_OP_SET          
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkObjectType.html">Specification</a>  */
@@ -107,6 +953,144 @@ namespace VaultedThermals
 			DescriptorUpdateTemplate_KHR   = VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR ,
 			Sampler_YCBCR_Conversion_KHR   = VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR   ,
 			AccelerationStructure          = VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineBindPoint">Specification</a>  */
+		enum class EPipelineBindPoint : uint32
+		{
+			Graphics = VK_PIPELINE_BIND_POINT_GRAPHICS,
+			Compute  = VK_PIPELINE_BIND_POINT_COMPUTE 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlagBits">Specification</a>  */
+		enum class EPipelineCacheCreateFlag : uint32
+		{
+			Externally_Synchronized = VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlagBits">Specification</a>  */
+		enum class EPipelineCreateFlag : uint32
+		{
+			DisableOptimization                    = VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT                        ,
+			AllowDerivatives                       = VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT                           ,
+			Derivative                             = VK_PIPELINE_CREATE_DERIVATIVE_BIT                                  ,
+			ViewIndexFromDeviceIndex               = VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT                ,
+			DispatchBase                           = VK_PIPELINE_CREATE_DISPATCH_BASE_BIT                               ,
+			Raytracing_NoNull_AnyHit_Shaders       = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR     ,
+			Raytracing_NoNull_ClosestHit_Shaders   = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR ,
+			Raytracing_NoNull_Miss_Shaders         = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR        ,
+			Raytracing_NoNull_Intersection_Shaders = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR,
+			Raytracing_SkipTriangles               = VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR              ,
+			Raytracing_Skip_AABBS                  = VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR                  ,
+			DeferCompile                           = VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV                            ,
+			CaptureStatistics                      = VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR                      ,
+			CaptureInternalRepresentations         = VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR        ,
+			IndirectBindable                       = VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV                        ,
+			Library                                = VK_PIPELINE_CREATE_LIBRARY_BIT_KHR                                 ,
+			FailOn_PipelineCompileRequired         = VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT       ,
+			EarlyReturnOn_Failure                  = VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT                 ,
+			DispatchBase2                          = VK_PIPELINE_CREATE_DISPATCH_BASE                                   ,
+			ViewIndexFromDeviceInex                = VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR            ,
+			DispatchBase_KHR                       = VK_PIPELINE_CREATE_DISPATCH_BASE_KHR                               
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineShaderStageCreateFlagBits.html">Specification</a>  */
+		enum class EPipelineShaderStageCreateFlag : uint32
+		{
+			AllowVaryingSubgroupSize = VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT,
+			RequireFullSubgroups     = VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlagBits">Specification</a>  */
+		enum class EPipelineStageFlag : uint32
+		{
+			TopOfPipe                    = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT                   ,
+			DrawIndirect                 = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT                 ,
+			VertexInput                  = VK_PIPELINE_STAGE_VERTEX_INPUT_BIT                  ,
+			VertexShader                 = VK_PIPELINE_STAGE_VERTEX_SHADER_BIT                 ,
+			TessellationControlShader    = VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT   ,
+			TessellationEvaluationShader = VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT,
+			GeometryShader               = VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT               ,
+			FragementShader              = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT               ,
+			EarlyFragmentTests           = VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT          ,
+			LateFragmentTests            = VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT           ,
+			ColorAttachmentOutput        = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT       ,
+			ComputeShader                = VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT                ,
+			Transfer                     = VK_PIPELINE_STAGE_TRANSFER_BIT                      ,
+			BottomOfPipe                 = VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT                ,
+			Host                         = VK_PIPELINE_STAGE_HOST_BIT                          ,
+			AllGraphics                  = VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT                  ,
+			AllCommands                  = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#primsrast-polygonmode">Specification</a>  */
+		enum class EPolygonMode : uint32
+		{
+			Fill              = VK_POLYGON_MODE_FILL             ,
+			Line              = VK_POLYGON_MODE_LINE             ,
+			Point             = VK_POLYGON_MODE_POINT            ,
+			NV_Fill_Rectangle = VK_POLYGON_MODE_FILL_RECTANGLE_NV
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentModeKHR">Specification</a>  */
+		enum class EPresentationMode : uint32
+		{
+			Immediate               = VK_PRESENT_MODE_IMMEDIATE_KHR                ,
+			Mailbox                 = VK_PRESENT_MODE_MAILBOX_KHR                  ,
+			FIFO                    = VK_PRESENT_MODE_FIFO_KHR                     ,
+			FIFO_Relaxed            = VK_PRESENT_MODE_FIFO_RELAXED_KHR             ,
+			SharedDemandRefresh     = VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR    ,
+			SharedContinuousRefresh = VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPrimitiveTopology.html">Specification</a>  */
+		enum class EPrimitiveTopology : uint32
+		{
+			PointList                   = VK_PRIMITIVE_TOPOLOGY_POINT_LIST                   ,
+			LineList                    = VK_PRIMITIVE_TOPOLOGY_LINE_LIST                    ,
+			LineStrip                   = VK_PRIMITIVE_TOPOLOGY_LINE_STRIP                   ,
+			TriangleList                = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST                ,
+			TriangleStrip               = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP               ,
+			TriangleFan                 = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN                 ,
+			LineList_WithAdjacency      = VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY     ,
+			LineStrip_WithAdjacency     = VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY    ,
+			TriangleList_WithAdjaceny   = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY ,
+			TriangleStrip_WithAdjacency = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY,
+			PatchList                   = VK_PRIMITIVE_TOPOLOGY_PATCH_LIST                    
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlagBits">Specification</a>  */
+		enum class EQueryControlFlags : uint32
+		{
+			Precise = VK_QUERY_CONTROL_PRECISE_BIT
+		};
+
+		/**
+		@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html">Specification</a> 
+		*/
+		enum class EQueueFlag : uint32
+		{
+			Graphics               = VK_QUEUE_GRAPHICS_BIT      ,
+			Compute                = VK_QUEUE_COMPUTE_BIT       ,
+			Transfer               = VK_QUEUE_TRANSFER_BIT      ,
+			SquareMemoryManagement = VK_QUEUE_SPARSE_BINDING_BIT,
+			Protected              = VK_QUEUE_PROTECTED_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlagBits">Specification</a>  */
+		enum class EQueryPipelineStatisticFlag : uint32
+		{
+			AssemblyVertices                        = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT                   ,
+			AssemblyPrimitives                      = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT                 ,
+			VertexShaderInovcations                 = VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT                 ,
+			GeometryShaderInvocations               = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT               ,
+			GeometryShaderPrimitives                = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT                ,
+			ClippingInocation                       = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT                      ,
+			ClippingPrimitives                      = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT                       ,
+			FragmentShaderInvoations                = VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT               ,
+			TessellationControlShaderPatches        = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT       ,
+			TessellationEvaluationShaderInvocations = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT,
+			ComputeShaderInvocations                = VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResult.html">Specification</a>  */
@@ -159,13 +1143,95 @@ namespace VaultedThermals
 			Error_PipelineCompileRequired_EXT               = VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampleCountFlagBits.html">Specification</a>  */
+		enum class ESampleCount : uint32
+		{
+			_1  = VK_SAMPLE_COUNT_1_BIT ,
+			_2  = VK_SAMPLE_COUNT_2_BIT ,
+			_4  = VK_SAMPLE_COUNT_4_BIT ,
+			_8  = VK_SAMPLE_COUNT_8_BIT ,
+			_16 = VK_SAMPLE_COUNT_16_BIT,
+			_32 = VK_SAMPLE_COUNT_32_BIT,
+			_64 = VK_SAMPLE_COUNT_64_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlagBits">Specification</a>  */
+		enum class ESemaphoreImportFlag
+		{
+			Temporary     = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT    ,
+			Temporary_KHR = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreType">Specification</a>  */
+		enum class ESemaphoreType : uint32
+		{
+			Binary       = VK_SEMAPHORE_TYPE_BINARY      ,
+			Timeline     = VK_SEMAPHORE_TYPE_TIMELINE    ,
+			Binary_KHR   = VK_SEMAPHORE_TYPE_BINARY_KHR  ,
+			Timeline_KHR = VK_SEMAPHORE_TYPE_TIMELINE_KHR
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlagBits">Specification</a>  */
+		enum class ESemaphoreWaitFlag : uint32
+		{
+			Any     = VK_SEMAPHORE_WAIT_ANY_BIT    ,
+			Any_KHR = VK_SEMAPHORE_WAIT_ANY_BIT_KHR 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderStageFlagBits.html">Specification</a>  */
+		enum class EShaderStageFlag : uint32_t
+		{
+			Vertex                 = VK_SHADER_STAGE_VERTEX_BIT                 ,
+			TessellationControl    = VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT   ,
+			TessellationEvaluation = VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT,
+			Geometry               = VK_SHADER_STAGE_GEOMETRY_BIT               ,
+			Fragment               = VK_SHADER_STAGE_FRAGMENT_BIT               ,
+			Compute                = VK_SHADER_STAGE_COMPUTE_BIT                ,
+			Graphics               = VK_SHADER_STAGE_ALL_GRAPHICS               ,
+			All                    = VK_SHADER_STAGE_ALL                        ,
+			Raygen_KHR             = VK_SHADER_STAGE_RAYGEN_BIT_KHR             ,
+			AnyHit_KHR             = VK_SHADER_STAGE_ANY_HIT_BIT_KHR            ,
+			ClosestHit_KHR         = VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR        ,
+			Miss_KHR               = VK_SHADER_STAGE_MISS_BIT_KHR               ,
+			Intersection_KHR       = VK_SHADER_STAGE_INTERSECTION_BIT_KHR       ,
+			Callable_KHR           = VK_SHADER_STAGE_CALLABLE_BIT_KHR           ,
+			Task_NV                = VK_SHADER_STAGE_TASK_BIT_NV                ,
+			Mesh_NV                = VK_SHADER_STAGE_MESH_BIT_NV                ,
+			Raygen_NV              = VK_SHADER_STAGE_RAYGEN_BIT_NV              ,
+			AnyHit_NV              = VK_SHADER_STAGE_ANY_HIT_BIT_NV             ,
+			ClosestHit_NV          = VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV         ,
+			Miss_NV                = VK_SHADER_STAGE_MISS_BIT_NV                ,
+			Intersection_NV        = VK_SHADER_STAGE_INTERSECTION_BIT_NV        ,
+			Callable_NV            = VK_SHADER_STAGE_CALLABLE_BIT_NV            
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSharingMode.html">Specification</a>  */
+		enum class ESharingMode : uint32
+		{
+			Excusive   = VK_SHARING_MODE_EXCLUSIVE ,
+			Concurrent = VK_SHARING_MODE_CONCURRENT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOp">Specification</a>  */
+		enum class EStencilOperation : uint32
+		{
+			Keep              = VK_STENCIL_OP_KEEP               ,
+			Zero              = VK_STENCIL_OP_ZERO               ,
+			Replace           = VK_STENCIL_OP_REPLACE            ,
+			IncrementAndClamp = VK_STENCIL_OP_INCREMENT_AND_CLAMP,
+			DecrementAndClamp = VK_STENCIL_OP_DECREMENT_AND_CLAMP,
+			Invert            = VK_STENCIL_OP_INVERT             ,
+			IncrementAndWrap  = VK_STENCIL_OP_INCREMENT_AND_WRAP ,
+			DecrementAndWrap  = VK_STENCIL_OP_DECREMENT_AND_WRAP 
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStructureType.html">Specification</a>  */
 		enum class EStructureType : uint32
 		{
 			ApplicationInformation                                      = VK_STRUCTURE_TYPE_APPLICATION_INFO                                               ,
 			Instance_CreateInfo                                         = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO                                           ,
 			DeviceQueue_CreateInfo                                      = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO                                       ,
-			Device_CreateInfo                                           = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO                                       ,
+			Device_CreateInfo                                           = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO                                             ,
 			SubmitInfo                                                  = VK_STRUCTURE_TYPE_SUBMIT_INFO                                                    ,
 			MemoryAllocateInfo                                          = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO                                           ,
 			MappedMemoryRange                                           = VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE                                            ,
@@ -180,7 +1246,7 @@ namespace VaultedThermals
 			ImageView_CreateInfo                                        = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO                                         ,  									     
 			ShaderModule_CreateInfo                                     = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO                                      ,
 			Pipeline_Cache_CreateInfo                                   = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO                                     ,
-			Pipeline_ShaderState_CreateInfo                             = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO                              ,
+			Pipeline_ShaderStage_CreateInfo                             = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO                              ,
 			Pipeline_VertexInputState_CreateInfo                        = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO                        ,
 			Pipeline_InputAssemblyState_CreateInfo                      = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO                      ,
 			Pipeline_TessellationState_CreateInfo                       = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO                        ,
@@ -275,7 +1341,7 @@ namespace VaultedThermals
 			ExternalSemaphore_Properties                                = VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES                                  ,
 			PhysicalDevice_Maintence_3_Properties                       = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES                       ,
 			Descriptor_SetLayoutSupport                                 = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT                                  , 							    
-			PhysicalDevice_ShaderDrawParameter_Features                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES                ,   		     
+			PhysicalDevice_ShaderDrawParameters_Features                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES                ,   		     
 			PhysicalDevice_Vulkan_1_1_Features                          = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES                            ,
 			PhysicalDevice_Vulkan_1_1_Properties                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES                          ,
 			PhysicalDevice_Vulkan_1_2_Features                          = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES                            ,
@@ -649,7 +1715,7 @@ namespace VaultedThermals
 			ImageViewUsage_CreateInfo_KHR                               = VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO_KHR                               ,
 			Pipeline_TessellationDomain_OriginState_CreateInfo_KHR      = VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO_KHR      ,
 			PhysicalDevice_VariablePointer_Features_KHR                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR                  ,
-			PhysicalDevice_VariablePointer_Features_KHR                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR                 ,
+			PhysicalDevice_VariablePointers_Features_KHR                = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR                 ,
 			MemoryDedicated_Requirements_KHR                            = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR                              ,
 			MemoryDedicated_AllocateInfo_KHR                            = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_KHR                             ,
 			PhysicalDevice_SamplerFilter_MinMax_Properties_EXT          = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT           ,
@@ -705,64 +1771,18 @@ namespace VaultedThermals
 			MemoryOpaque_CaptureAddressAllocate_Info_KHR                = VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR                ,
 			DeviceMemory_OpaqueCaptureAddress_Info_KHR                  = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR                  ,
 			PhysicalDevice_HostQuery_ResetFeatures_EXT                  = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT                  ,
+			Max_Enum                                                    = VK_STRUCTURE_TYPE_MAX_ENUM
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageSeverityFlagBitsEXT.html">Specification</a>  */
-		enum class EDebugUtilities_MessageSeverity : uint32
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassContents">Specification</a>  */
+		enum class ESubpassContents : uint32
 		{
-			Verbose = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
-			Info    = VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT   ,
-			Warning = VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT,
-			Error   = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT
+			Inline                  = VK_SUBPASS_CONTENTS_INLINE                   ,
+			SecondaryCommandBuffers = VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS 
 		};
 
-		SpecifyBitmaskable(EDebugUtilities_MessageSeverity);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageTypeFlagBitsEXT.html">Specification</a> de */
-		enum class EDebugUtilities_MessageType : uint32
-		{
-			General     = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT    ,
-			Validation  = VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT ,
-			Performance = VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT
-		};
-
-		SpecifyBitmaskable(EDebugUtilities_MessageType);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampleCountFlagBits.html">Specification</a>  */
-		enum class ESampleCount : uint32
-		{
-			_1  = VK_SAMPLE_COUNT_1_BIT ,
-			_2  = VK_SAMPLE_COUNT_2_BIT ,
-			_4  = VK_SAMPLE_COUNT_4_BIT ,
-			_8  = VK_SAMPLE_COUNT_8_BIT ,
-			_16 = VK_SAMPLE_COUNT_16_BIT,
-			_32 = VK_SAMPLE_COUNT_32_BIT,
-			_64 = VK_SAMPLE_COUNT_64_BIT
-		};
-
-		SpecifyBitmaskable(ESampleCount);
-
-		/**
-		@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html">Specification</a> 
-		*/
-		enum class EQueueFlag : uint32
-		{
-			Graphics               = VK_QUEUE_GRAPHICS_BIT      ,
-			Compute                = VK_QUEUE_COMPUTE_BIT       ,
-			Transfer               = VK_QUEUE_TRANSFER_BIT      ,
-			SquareMemoryManagement = VK_QUEUE_SPARSE_BINDING_BIT,
-			Protected              = VK_QUEUE_PROTECTED_BIT
-		};
-
-		SpecifyBitmaskable(EQueueFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html">Specification</a>  */
-		enum class ELogicalDeviceQueueCreateFlag : uint32
-		{
-			CreateProtected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT
-		};
-
-		SpecifyBitmaskable(ELogicalDeviceQueueCreateFlag);
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlagBits">Specification</a>  */
+		enum class ESubpassDescriptionFlag : uint32 {};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceTransformFlagBitsKHR.html">Specification</a>  */
 		enum class ESurfaceTransformFlag : uint32
@@ -778,355 +1798,6 @@ namespace VaultedThermals
 			Inherit                      = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR 
 		};
 
-		SpecifyBitmaskable(ESurfaceTransformFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagBitsKHR.html">Specification</a>  */
-		enum class ECompositeAlpha : uint32
-		{
-			Opaque         = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR          ,
-			PreMultiplied  = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR  ,
-			PostMultiplied = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR ,
-			Inherit        = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR 
-		};
-
-		SpecifyBitmaskable(ECompositeAlpha);
-
-		/** @brief <a href"https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageUsageFlagBits.html">Specification</a> */
-		enum class EImageUsage : uint32
-		{
-			TransferSource          = VK_IMAGE_USAGE_TRANSFER_SRC_BIT            ,
-			TransferDestination     = VK_IMAGE_USAGE_TRANSFER_DST_BIT            ,
-			Sampled                 = VK_IMAGE_USAGE_SAMPLED_BIT                 ,
-			Storage                 = VK_IMAGE_USAGE_STORAGE_BIT                 ,
-			Color_Attachment        = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT        ,
-			DepthStencil_Attachment = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
-			Transient_Attachment    = VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT    ,
-			Input_Attachemnt        = VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT        ,
-			Image_ShadingRate       = VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV   ,
-			DensityMap              = VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT
-		};
-
-		SpecifyBitmaskable(EImageUsage);
-
-		/**
-		 * @brief Supported buffer and image formats.
-		 * 
-		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#formats">Specification</a> 
-		 */
-		enum class EFormat : uint32
-		{
-			Undefined                       = VK_FORMAT_UNDEFINED            ,
-			UNormalized_R4_G4_8Pack         = VK_FORMAT_R4G4_UNORM_PACK8     ,
-			UNormalized_R4_G4_B4_A4_16Pack  = VK_FORMAT_R4G4B4A4_UNORM_PACK16,
-			UNormalized_B4_G4_R4_A4_16Pack  = VK_FORMAT_B4G4R4A4_UNORM_PACK16,
-			UNormalized_R5_G6_B5_16Pack     = VK_FORMAT_R5G6B5_UNORM_PACK16  ,
-			UNormalized_B5_G6_R5_16Pack     = VK_FORMAT_B5G6R5_UNORM_PACK16  ,
-			UNormalized_R5_G5_B5_1A_16Pack  = VK_FORMAT_R5G5B5A1_UNORM_PACK16,
-			UNormalized_B5_G5_R5_A1_16Pack  = VK_FORMAT_B5G5R5A1_UNORM_PACK16,
-			UNormalized_A1_R5_G5_B5_16Pack  = VK_FORMAT_A1R5G5B5_UNORM_PACK16,
-			UNormalized_R8                  = VK_FORMAT_R8_UNORM             ,
-			SNormalized_R8                  = VK_FORMAT_R8_SNORM             ,
-			VK_FORMAT_R8_USCALED = 11,
-			VK_FORMAT_R8_SSCALED = 12,
-			VK_FORMAT_R8_UINT = 13,
-			VK_FORMAT_R8_SINT = 14,
-			VK_FORMAT_R8_SRGB = 15,
-			VK_FORMAT_R8G8_UNORM = 16,
-			VK_FORMAT_R8G8_SNORM = 17,
-			VK_FORMAT_R8G8_USCALED = 18,
-			VK_FORMAT_R8G8_SSCALED = 19,
-			VK_FORMAT_R8G8_UINT = 20,
-			VK_FORMAT_R8G8_SINT = 21,
-			VK_FORMAT_R8G8_SRGB = 22,
-			VK_FORMAT_R8G8B8_UNORM = 23,
-			VK_FORMAT_R8G8B8_SNORM = 24,
-			VK_FORMAT_R8G8B8_USCALED = 25,
-			VK_FORMAT_R8G8B8_SSCALED = 26,
-			VK_FORMAT_R8G8B8_UINT = 27,
-			VK_FORMAT_R8G8B8_SINT = 28,
-			VK_FORMAT_R8G8B8_SRGB = 29,
-			VK_FORMAT_B8G8R8_UNORM = 30,
-			VK_FORMAT_B8G8R8_SNORM = 31,
-			VK_FORMAT_B8G8R8_USCALED = 32,
-			VK_FORMAT_B8G8R8_SSCALED = 33,
-			VK_FORMAT_B8G8R8_UINT = 34,
-			VK_FORMAT_B8G8R8_SINT = 35,
-			VK_FORMAT_B8G8R8_SRGB = 36,
-			VK_FORMAT_R8G8B8A8_UNORM = 37,
-			VK_FORMAT_R8G8B8A8_SNORM = 38,
-			VK_FORMAT_R8G8B8A8_USCALED = 39,
-			VK_FORMAT_R8G8B8A8_SSCALED = 40,
-			VK_FORMAT_R8G8B8A8_UINT = 41,
-			VK_FORMAT_R8G8B8A8_SINT = 42,
-			VK_FORMAT_R8G8B8A8_SRGB = 43,
-			VK_FORMAT_B8G8R8A8_UNORM = 44,
-			VK_FORMAT_B8G8R8A8_SNORM = 45,
-			VK_FORMAT_B8G8R8A8_USCALED = 46,
-			VK_FORMAT_B8G8R8A8_SSCALED = 47,
-			VK_FORMAT_B8G8R8A8_UINT = 48,
-			VK_FORMAT_B8G8R8A8_SINT = 49,
-			VK_FORMAT_B8G8R8A8_SRGB = 50,
-			VK_FORMAT_A8B8G8R8_UNORM_PACK32 = 51,
-			VK_FORMAT_A8B8G8R8_SNORM_PACK32 = 52,
-			VK_FORMAT_A8B8G8R8_USCALED_PACK32 = 53,
-			VK_FORMAT_A8B8G8R8_SSCALED_PACK32 = 54,
-			VK_FORMAT_A8B8G8R8_UINT_PACK32 = 55,
-			VK_FORMAT_A8B8G8R8_SINT_PACK32 = 56,
-			VK_FORMAT_A8B8G8R8_SRGB_PACK32 = 57,
-			VK_FORMAT_A2R10G10B10_UNORM_PACK32 = 58,
-			VK_FORMAT_A2R10G10B10_SNORM_PACK32 = 59,
-			VK_FORMAT_A2R10G10B10_USCALED_PACK32 = 60,
-			VK_FORMAT_A2R10G10B10_SSCALED_PACK32 = 61,
-			VK_FORMAT_A2R10G10B10_UINT_PACK32 = 62,
-			VK_FORMAT_A2R10G10B10_SINT_PACK32 = 63,
-			VK_FORMAT_A2B10G10R10_UNORM_PACK32 = 64,
-			VK_FORMAT_A2B10G10R10_SNORM_PACK32 = 65,
-			VK_FORMAT_A2B10G10R10_USCALED_PACK32 = 66,
-			VK_FORMAT_A2B10G10R10_SSCALED_PACK32 = 67,
-			VK_FORMAT_A2B10G10R10_UINT_PACK32 = 68,
-			VK_FORMAT_A2B10G10R10_SINT_PACK32 = 69,
-			VK_FORMAT_R16_UNORM = 70,
-			VK_FORMAT_R16_SNORM = 71,
-			VK_FORMAT_R16_USCALED = 72,
-			VK_FORMAT_R16_SSCALED = 73,
-			VK_FORMAT_R16_UINT = 74,
-			VK_FORMAT_R16_SINT = 75,
-			VK_FORMAT_R16_SFLOAT = 76,
-			VK_FORMAT_R16G16_UNORM = 77,
-			VK_FORMAT_R16G16_SNORM = 78,
-			VK_FORMAT_R16G16_USCALED = 79,
-			VK_FORMAT_R16G16_SSCALED = 80,
-			VK_FORMAT_R16G16_UINT = 81,
-			VK_FORMAT_R16G16_SINT = 82,
-			VK_FORMAT_R16G16_SFLOAT = 83,
-			VK_FORMAT_R16G16B16_UNORM = 84,
-			VK_FORMAT_R16G16B16_SNORM = 85,
-			VK_FORMAT_R16G16B16_USCALED = 86,
-			VK_FORMAT_R16G16B16_SSCALED = 87,
-			VK_FORMAT_R16G16B16_UINT = 88,
-			VK_FORMAT_R16G16B16_SINT = 89,
-			VK_FORMAT_R16G16B16_SFLOAT = 90,
-			VK_FORMAT_R16G16B16A16_UNORM = 91,
-			VK_FORMAT_R16G16B16A16_SNORM = 92,
-			VK_FORMAT_R16G16B16A16_USCALED = 93,
-			VK_FORMAT_R16G16B16A16_SSCALED = 94,
-			VK_FORMAT_R16G16B16A16_UINT = 95,
-			VK_FORMAT_R16G16B16A16_SINT = 96,
-			VK_FORMAT_R16G16B16A16_SFLOAT = 97,
-			VK_FORMAT_R32_UINT = 98,
-			VK_FORMAT_R32_SINT = 99,
-			VK_FORMAT_R32_SFLOAT = 100,
-			VK_FORMAT_R32G32_UINT = 101,
-			VK_FORMAT_R32G32_SINT = 102,
-			VK_FORMAT_R32G32_SFLOAT = 103,
-			VK_FORMAT_R32G32B32_UINT = 104,
-			VK_FORMAT_R32G32B32_SINT = 105,
-			VK_FORMAT_R32G32B32_SFLOAT = 106,
-			VK_FORMAT_R32G32B32A32_UINT = 107,
-			VK_FORMAT_R32G32B32A32_SINT = 108,
-			VK_FORMAT_R32G32B32A32_SFLOAT = 109,
-			VK_FORMAT_R64_UINT = 110,
-			VK_FORMAT_R64_SINT = 111,
-			VK_FORMAT_R64_SFLOAT = 112,
-			VK_FORMAT_R64G64_UINT = 113,
-			VK_FORMAT_R64G64_SINT = 114,
-			VK_FORMAT_R64G64_SFLOAT = 115,
-			VK_FORMAT_R64G64B64_UINT = 116,
-			VK_FORMAT_R64G64B64_SINT = 117,
-			VK_FORMAT_R64G64B64_SFLOAT = 118,
-			VK_FORMAT_R64G64B64A64_UINT = 119,
-			VK_FORMAT_R64G64B64A64_SINT = 120,
-			VK_FORMAT_R64G64B64A64_SFLOAT = 121,
-			VK_FORMAT_B10G11R11_UFLOAT_PACK32 = 122,
-			VK_FORMAT_E5B9G9R9_UFLOAT_PACK32 = 123,
-			VK_FORMAT_D16_UNORM = 124,
-			VK_FORMAT_X8_D24_UNORM_PACK32 = 125,
-			VK_FORMAT_D32_SFLOAT = 126,
-			VK_FORMAT_S8_UINT = 127,
-			VK_FORMAT_D16_UNORM_S8_UINT = 128,
-			VK_FORMAT_D24_UNORM_S8_UINT = 129,
-			VK_FORMAT_D32_SFLOAT_S8_UINT = 130,
-			VK_FORMAT_BC1_RGB_UNORM_BLOCK = 131,
-			VK_FORMAT_BC1_RGB_SRGB_BLOCK = 132,
-			VK_FORMAT_BC1_RGBA_UNORM_BLOCK = 133,
-			VK_FORMAT_BC1_RGBA_SRGB_BLOCK = 134,
-			VK_FORMAT_BC2_UNORM_BLOCK = 135,
-			VK_FORMAT_BC2_SRGB_BLOCK = 136,
-			VK_FORMAT_BC3_UNORM_BLOCK = 137,
-			VK_FORMAT_BC3_SRGB_BLOCK = 138,
-			VK_FORMAT_BC4_UNORM_BLOCK = 139,
-			VK_FORMAT_BC4_SNORM_BLOCK = 140,
-			VK_FORMAT_BC5_UNORM_BLOCK = 141,
-			VK_FORMAT_BC5_SNORM_BLOCK = 142,
-			VK_FORMAT_BC6H_UFLOAT_BLOCK = 143,
-			VK_FORMAT_BC6H_SFLOAT_BLOCK = 144,
-			VK_FORMAT_BC7_UNORM_BLOCK = 145,
-			VK_FORMAT_BC7_SRGB_BLOCK = 146,
-			VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK = 147,
-			VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK = 148,
-			VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK = 149,
-			VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK = 150,
-			VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK = 151,
-			VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK = 152,
-			VK_FORMAT_EAC_R11_UNORM_BLOCK = 153,
-			VK_FORMAT_EAC_R11_SNORM_BLOCK = 154,
-			VK_FORMAT_EAC_R11G11_UNORM_BLOCK = 155,
-			VK_FORMAT_EAC_R11G11_SNORM_BLOCK = 156,
-			VK_FORMAT_ASTC_4x4_UNORM_BLOCK = 157,
-			VK_FORMAT_ASTC_4x4_SRGB_BLOCK = 158,
-			VK_FORMAT_ASTC_5x4_UNORM_BLOCK = 159,
-			VK_FORMAT_ASTC_5x4_SRGB_BLOCK = 160,
-			VK_FORMAT_ASTC_5x5_UNORM_BLOCK = 161,
-			VK_FORMAT_ASTC_5x5_SRGB_BLOCK = 162,
-			VK_FORMAT_ASTC_6x5_UNORM_BLOCK = 163,
-			VK_FORMAT_ASTC_6x5_SRGB_BLOCK = 164,
-			VK_FORMAT_ASTC_6x6_UNORM_BLOCK = 165,
-			VK_FORMAT_ASTC_6x6_SRGB_BLOCK = 166,
-			VK_FORMAT_ASTC_8x5_UNORM_BLOCK = 167,
-			VK_FORMAT_ASTC_8x5_SRGB_BLOCK = 168,
-			VK_FORMAT_ASTC_8x6_UNORM_BLOCK = 169,
-			VK_FORMAT_ASTC_8x6_SRGB_BLOCK = 170,
-			VK_FORMAT_ASTC_8x8_UNORM_BLOCK = 171,
-			VK_FORMAT_ASTC_8x8_SRGB_BLOCK = 172,
-			VK_FORMAT_ASTC_10x5_UNORM_BLOCK = 173,
-			VK_FORMAT_ASTC_10x5_SRGB_BLOCK = 174,
-			VK_FORMAT_ASTC_10x6_UNORM_BLOCK = 175,
-			VK_FORMAT_ASTC_10x6_SRGB_BLOCK = 176,
-			VK_FORMAT_ASTC_10x8_UNORM_BLOCK = 177,
-			VK_FORMAT_ASTC_10x8_SRGB_BLOCK = 178,
-			VK_FORMAT_ASTC_10x10_UNORM_BLOCK = 179,
-			VK_FORMAT_ASTC_10x10_SRGB_BLOCK = 180,
-			VK_FORMAT_ASTC_12x10_UNORM_BLOCK = 181,
-			VK_FORMAT_ASTC_12x10_SRGB_BLOCK = 182,
-			VK_FORMAT_ASTC_12x12_UNORM_BLOCK = 183,
-			VK_FORMAT_ASTC_12x12_SRGB_BLOCK = 184,
-			VK_FORMAT_G8B8G8R8_422_UNORM = 1000156000,
-			VK_FORMAT_B8G8R8G8_422_UNORM = 1000156001,
-			VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM = 1000156002,
-			VK_FORMAT_G8_B8R8_2PLANE_420_UNORM = 1000156003,
-			VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM = 1000156004,
-			VK_FORMAT_G8_B8R8_2PLANE_422_UNORM = 1000156005,
-			VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM = 1000156006,
-			VK_FORMAT_R10X6_UNORM_PACK16 = 1000156007,
-			VK_FORMAT_R10X6G10X6_UNORM_2PACK16 = 1000156008,
-			VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16 = 1000156009,
-			VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16 = 1000156010,
-			VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16 = 1000156011,
-			VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16 = 1000156012,
-			VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 = 1000156013,
-			VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16 = 1000156014,
-			VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 = 1000156015,
-			VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16 = 1000156016,
-			VK_FORMAT_R12X4_UNORM_PACK16 = 1000156017,
-			VK_FORMAT_R12X4G12X4_UNORM_2PACK16 = 1000156018,
-			VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16 = 1000156019,
-			VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16 = 1000156020,
-			VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16 = 1000156021,
-			VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16 = 1000156022,
-			VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16 = 1000156023,
-			VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16 = 1000156024,
-			VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16 = 1000156025,
-			VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16 = 1000156026,
-			VK_FORMAT_G16B16G16R16_422_UNORM = 1000156027,
-			VK_FORMAT_B16G16R16G16_422_UNORM = 1000156028,
-			VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM = 1000156029,
-			VK_FORMAT_G16_B16R16_2PLANE_420_UNORM = 1000156030,
-			VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM = 1000156031,
-			VK_FORMAT_G16_B16R16_2PLANE_422_UNORM = 1000156032,
-			VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM = 1000156033,
-			VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG = 1000054000,
-			VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG = 1000054001,
-			VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG = 1000054002,
-			VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG = 1000054003,
-			VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG = 1000054004,
-			VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG = 1000054005,
-			VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = 1000054006,
-			VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = 1000054007,
-			VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT = 1000066000,
-			VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT = 1000066001,
-			VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT = 1000066002,
-			VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT = 1000066003,
-			VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT = 1000066004,
-			VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT = 1000066005,
-			VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT = 1000066006,
-			VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT = 1000066007,
-			VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT = 1000066008,
-			VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT = 1000066009,
-			VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT = 1000066010,
-			VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT = 1000066011,
-			VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT = 1000066012,
-			VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT = 1000066013,
-			VK_FORMAT_G8B8G8R8_422_UNORM_KHR = VK_FORMAT_G8B8G8R8_422_UNORM,
-			VK_FORMAT_B8G8R8G8_422_UNORM_KHR = VK_FORMAT_B8G8R8G8_422_UNORM,
-			VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM,
-			VK_FORMAT_G8_B8R8_2PLANE_420_UNORM_KHR = VK_FORMAT_G8_B8R8_2PLANE_420_UNORM,
-			VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM,
-			VK_FORMAT_G8_B8R8_2PLANE_422_UNORM_KHR = VK_FORMAT_G8_B8R8_2PLANE_422_UNORM,
-			VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM,
-			VK_FORMAT_R10X6_UNORM_PACK16_KHR = VK_FORMAT_R10X6_UNORM_PACK16,
-			VK_FORMAT_R10X6G10X6_UNORM_2PACK16_KHR = VK_FORMAT_R10X6G10X6_UNORM_2PACK16,
-			VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16_KHR = VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16,
-			VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16_KHR = VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16,
-			VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16_KHR = VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16,
-			VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16,
-			VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16,
-			VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16,
-			VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16,
-			VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16,
-			VK_FORMAT_R12X4_UNORM_PACK16_KHR = VK_FORMAT_R12X4_UNORM_PACK16,
-			VK_FORMAT_R12X4G12X4_UNORM_2PACK16_KHR = VK_FORMAT_R12X4G12X4_UNORM_2PACK16,
-			VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16_KHR = VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16,
-			VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16_KHR = VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16,
-			VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16_KHR = VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16,
-			VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16,
-			VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16,
-			VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16,
-			VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16,
-			VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16,
-			VK_FORMAT_G16B16G16R16_422_UNORM_KHR = VK_FORMAT_G16B16G16R16_422_UNORM,
-			VK_FORMAT_B16G16R16G16_422_UNORM_KHR = VK_FORMAT_B16G16R16G16_422_UNORM,
-			VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM,
-			VK_FORMAT_G16_B16R16_2PLANE_420_UNORM_KHR = VK_FORMAT_G16_B16R16_2PLANE_420_UNORM,
-			VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM,
-			UNormalized_G16_B16_R16_2Plane_422_KHR     = VK_FORMAT_G16_B16R16_2PLANE_422_UNORM_KHR,
-			UNormalized_3Plane_G16_B16_R16_444_KHR     = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR   // Specifies an unsigned normalized multi-planar format that has a 16-bit G component in each 16-bit word of plane 0, a 16-bit B component in each 16-bit word of plane 1, and a 16-bit R component in each 16-bit word of plane 2. Each plane has the same dimensions and each R, G and B component contributes to a single texel. The location of each plane when this image is in linear layout can be determined via vkGetImageSubresourceLayout, using VK_IMAGE_ASPECT_PLANE_0_BIT for the G plane, VK_IMAGE_ASPECT_PLANE_1_BIT for the B plane, and VK_IMAGE_ASPECT_PLANE_2_BIT for the R plane.
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorSpaceKHR.html">Specification</a>  */
-		enum class EColorSpace : uint32
-		{
-			SRGB_NonLinear                   = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR         ,
-			NonLinear_Display_P3             = VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT   ,
-			ExtendedSRGB_Linear              = VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT   ,
-			Display_P3_LInear                = VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT      ,
-			DCI_P3_NonLinear                 = VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT       ,
-			BT709_Linear                     = VK_COLOR_SPACE_BT709_LINEAR_EXT           ,
-			BT709_NonLinear                  = VK_COLOR_SPACE_BT709_NONLINEAR_EXT        ,
-			BT2020_Linear                    = VK_COLOR_SPACE_BT2020_LINEAR_EXT          ,
-			Extensions_HDR_ST2084            = VK_COLOR_SPACE_HDR10_ST2084_EXT           ,
-			Extension_DoblyVision            = VK_COLOR_SPACE_DOLBYVISION_EXT            ,
-			HDR10_HLG                        = VK_COLOR_SPACE_HDR10_HLG_EXT              ,
-			AdobeRGB_Linear                  = VK_COLOR_SPACE_ADOBERGB_LINEAR_EXT        ,
-			AdobeRGB_NonLinear               = VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT     ,
-			Extension_PassThrough            = VK_COLOR_SPACE_PASS_THROUGH_EXT           ,
-			Extension_ExtendedSRGB_NonLinear = VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT,
-			AMD_Native                       = VK_COLOR_SPACE_DISPLAY_NATIVE_AMD         ,
-			KHR_SRGB_NonLinear               = VK_COLORSPACE_SRGB_NONLINEAR_KHR          ,
-			Extension_DCI_P3_Linear          = VK_COLOR_SPACE_DCI_P3_LINEAR_EXT          ,
-		};
-
-		/** @brief <a href="VkPresentModeKHR">Specification</a>  */
-		enum class EPresentationMode : uint32
-		{
-			Immediate               = VK_PRESENT_MODE_IMMEDIATE_KHR                ,
-			Mailbox                 = VK_PRESENT_MODE_MAILBOX_KHR                  ,
-			FIFO                    = VK_PRESENT_MODE_FIFO_KHR                     ,
-			FIFO_Relaxed            = VK_PRESENT_MODE_FIFO_RELAXED_KHR             ,
-			SharedDemandRefresh     = VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR    ,
-			SharedContinuousRefresh = VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR
-		};
-
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateFlagBitsKHR.html">Specification</a>  */
 		enum class ESwapchainCreateFlag : uint32
 		{
@@ -1135,659 +1806,54 @@ namespace VaultedThermals
 			CreateMutableFormat      = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR
 		};
 
-		SpecifyBitmaskable(ESwapchainCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSharingMode.html">Specification</a>  */
-		enum class ESharingMode : uint32
-		{
-			Excusive   = VK_SHARING_MODE_EXCLUSIVE ,
-			Concurrent = VK_SHARING_MODE_CONCURRENT
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlagBits.html">Specification</a>  */
-		enum class EImageViewCreateFlag : uint32
-		{
-			Fragment_DensityMapDynamiic = VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
-		};
-
-		SpecifyBitmaskable(EImageViewCreateFlag)
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageView.html">Specification</a>  */
-		enum class EImageViewType : uint32
-		{
-			_1D       = VK_IMAGE_VIEW_TYPE_1D        ,
-			_2D       = VK_IMAGE_VIEW_TYPE_2D        ,
-			_3D       = VK_IMAGE_VIEW_TYPE_3D        ,
-			_Cube     = VK_IMAGE_VIEW_TYPE_CUBE      ,
-			_1D_Array = VK_IMAGE_VIEW_TYPE_1D_ARRAY  ,
-			_2D_Array = VK_IMAGE_VIEW_TYPE_2D_ARRAY  ,
-			CubeArray = VK_IMAGE_VIEW_TYPE_CUBE_ARRAY
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentSwizzle.html">Specification</a>  */
-		enum class EComponentSwizzle : uint32
-		{
-			Identitity = VK_COMPONENT_SWIZZLE_IDENTITY,
-			Zero       = VK_COMPONENT_SWIZZLE_ZERO    ,
-			One        = VK_COMPONENT_SWIZZLE_ONE     ,
-			R          = VK_COMPONENT_SWIZZLE_R       ,
-			G          = VK_COMPONENT_SWIZZLE_G       ,
-			B          = VK_COMPONENT_SWIZZLE_B       ,
-			A          = VK_COMPONENT_SWIZZLE_A
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageAspectFlagBits.html">Specification</a>  */
-		enum class EImageAspect : uint32
-		{
-			Color         = VK_IMAGE_ASPECT_COLOR_BIT             ,
-			Depth         = VK_IMAGE_ASPECT_DEPTH_BIT             ,
-			Stencil       = VK_IMAGE_ASPECT_STENCIL_BIT           ,
-			MetaData      = VK_IMAGE_ASPECT_METADATA_BIT          ,
-			Plane_0       = VK_IMAGE_ASPECT_PLANE_0_BIT           ,
-			Plane_1       = VK_IMAGE_ASPECT_PLANE_1_BIT           ,
-			Plane_2       = VK_IMAGE_ASPECT_PLANE_2_BIT           ,
-			MemoryPlane_0 = VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT,
-			MemoryPlane_1 = VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT,
-			MemroyPlane_2 = VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT,
-			MemoryPlane_3 = VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT,
-			KHR_Plane_0   = VK_IMAGE_ASPECT_PLANE_0_BIT_KHR       ,
-			KHR_Plane_1   = VK_IMAGE_ASPECT_PLANE_1_BIT_KHR       ,
-			KHR_Plane_2   = VK_IMAGE_ASPECT_PLANE_2_BIT_KHR
-		};
-
-		SpecifyBitmaskable(EImageAspect);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineShaderStageCreateFlagBits.html">Specification</a>  */
-		enum class EPipelineShaderStageCreateFlag : uint32
-		{
-			AllowVaryingSubgroupSize = VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT,
-			RequireFullSubgroups     = VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT
-		};
-
-		SpecifyBitmaskable(EPipelineShaderStageCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderStageFlagBits.html">Specification</a>  */
-		enum class EShaderStageFlag : uint32_t
-		{
-			Vertex                 = VK_SHADER_STAGE_VERTEX_BIT                 ,
-			TessellationControl    = VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT   ,
-			TessellationEvaluation = VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT,
-			Geometry               = VK_SHADER_STAGE_GEOMETRY_BIT               ,
-			Fragment               = VK_SHADER_STAGE_FRAGMENT_BIT               ,
-			Compute                = VK_SHADER_STAGE_COMPUTE_BIT                ,
-			Graphics               = VK_SHADER_STAGE_ALL_GRAPHICS               ,
-			All                    = VK_SHADER_STAGE_ALL                        ,
-			Raygen_KHR             = VK_SHADER_STAGE_RAYGEN_BIT_KHR             ,
-			AnyHit_KHR             = VK_SHADER_STAGE_ANY_HIT_BIT_KHR            ,
-			ClosestHit_KHR         = VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR        ,
-			Miss_KHR               = VK_SHADER_STAGE_MISS_BIT_KHR               ,
-			Intersection_KHR       = VK_SHADER_STAGE_INTERSECTION_BIT_KHR       ,
-			Callable_KHR           = VK_SHADER_STAGE_CALLABLE_BIT_KHR           ,
-			Task_NV                = VK_SHADER_STAGE_TASK_BIT_NV                ,
-			Mesh_NV                = VK_SHADER_STAGE_MESH_BIT_NV                ,
-			Raygen_NV              = VK_SHADER_STAGE_RAYGEN_BIT_NV              ,
-			AnyHit_NV              = VK_SHADER_STAGE_ANY_HIT_BIT_NV             ,
-			ClosestHit_NV          = VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV         ,
-			Miss_NV                = VK_SHADER_STAGE_MISS_BIT_NV                ,
-			Intersection_NV        = VK_SHADER_STAGE_INTERSECTION_BIT_NV        ,
-			Callable_NV            = VK_SHADER_STAGE_CALLABLE_BIT_NV            
-		};
-
-		SpecifyBitmaskable(EShaderStageFlag);
-
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVertexInputRate.html">Specification</a>  */
 		enum class EVertexInputRate : uint32
 		{
 			Vertex   = VK_VERTEX_INPUT_RATE_VERTEX,
 			Instance = VK_VERTEX_INPUT_RATE_INSTANCE
 		};
+		
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPrimitiveTopology.html">Specification</a>  */
-		enum class EPrimitiveTopology : uint32
-		{
-			PointList                   = VK_PRIMITIVE_TOPOLOGY_POINT_LIST                   ,
-			LineList                    = VK_PRIMITIVE_TOPOLOGY_LINE_LIST                    ,
-			LineStrip                   = VK_PRIMITIVE_TOPOLOGY_LINE_STRIP                   ,
-			TriangleList                = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST                ,
-			TriangleStrip               = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP               ,
-			TriangleFan                 = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN                 ,
-			LineList_WithAdjacency      = VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY     ,
-			LineStrip_WithAdjacency     = VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY    ,
-			TriangleList_WithAdjaceny   = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY ,
-			TriangleStrip_WithAdjacency = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY,
-			PatchList                   = VK_PRIMITIVE_TOPOLOGY_PATCH_LIST                    
-		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#primsrast-polygonmode">Specification</a>  */
-		enum class EPolygonMode : uint32
-		{
-			Fill              = VK_POLYGON_MODE_FILL             ,
-			Line              = VK_POLYGON_MODE_LINE             ,
-			Point             = VK_POLYGON_MODE_POINT            ,
-			NV_Fill_Rectangle = VK_POLYGON_MODE_FILL_RECTANGLE_NV
-		};
+		// Bitmask attribute specification
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCullModeFlagBits.html">Specification</a>  */
-		enum class ECullModeFlag : uint32
-		{
-			None           = VK_CULL_MODE_NONE          ,
-			Front          = VK_CULL_MODE_FRONT_BIT     ,
-			Back           = VK_CULL_MODE_BACK_BIT      ,
-			Front_And_Back = VK_CULL_MODE_FRONT_AND_BACK 
-		};
-
-		SpecifyBitmaskable(ECullModeFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFrontFace.html">Specification</a>  */
-		enum class EFrontFace : uint32
-		{
-			CounterClockwise = VK_FRONT_FACE_COUNTER_CLOCKWISE,
-			Clockwise        = VK_FRONT_FACE_CLOCKWISE
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendFactor.html">Specification</a>  */
-		enum class EBlendFactor : uint32
-		{
-			Zero                      = VK_BLEND_FACTOR_ZERO                    ,
-			One                       = VK_BLEND_FACTOR_ONE                     ,
-			SourceColor               = VK_BLEND_FACTOR_SRC_COLOR               ,
-			OneMinusOne_SourceColor   = VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR     ,
-			DesinationColor           = VK_BLEND_FACTOR_DST_COLOR               ,
-			OneMinus_DestinationColor = VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR     ,
-			AlphaSource               = VK_BLEND_FACTOR_SRC_ALPHA               ,
-			OneMinus_AlphaSource      = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA     ,
-			AlphaDestination          = VK_BLEND_FACTOR_DST_ALPHA               ,
-			OneMinus_AlphaDestination = VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA     ,
-			ConstantColor             = VK_BLEND_FACTOR_CONSTANT_COLOR          ,
-			OneMinus_ConstantColor    = VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR,
-			ConstantAlpha             = VK_BLEND_FACTOR_CONSTANT_ALPHA          ,
-			OneMinus_ConstantAlpha    = VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA,
-			SourceAlphaSaturate       = VK_BLEND_FACTOR_SRC_ALPHA_SATURATE      ,
-			SourceOne_Color           = VK_BLEND_FACTOR_SRC1_COLOR              ,
-			OneMinus_SourceOneColor   = VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR    ,
-			SourceOneAlpha            = VK_BLEND_FACTOR_SRC1_ALPHA              ,
-			OneMinus_SourceOneAlpha   = VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA    
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendOp.html">Specification</a>  */
-		enum class EBlendOperation : uint32
-		{
-			Add                        = VK_BLEND_OP_ADD                   ,
-			Subtract                   = VK_BLEND_OP_SUBTRACT              ,
-			ReverseSubtract            = VK_BLEND_OP_REVERSE_SUBTRACT      ,
-			Mininum                    = VK_BLEND_OP_MIN                   ,
-			Maximum                    = VK_BLEND_OP_MAX                   ,
-			Zero_Extension             = VK_BLEND_OP_ZERO_EXT              ,
-			Source_Extension           = VK_BLEND_OP_SRC_EXT               ,
-			Destination_Extension      = VK_BLEND_OP_DST_EXT               ,
-			SourceOver_Extension       = VK_BLEND_OP_SRC_OVER_EXT          ,
-			DestinationOver_Extension  = VK_BLEND_OP_DST_OVER_EXT          ,
-			SourceIn_Extension         = VK_BLEND_OP_SRC_IN_EXT            ,
-			DestinationIN_Extension    = VK_BLEND_OP_DST_IN_EXT            ,
-			SourceOut_Extension        = VK_BLEND_OP_SRC_OUT_EXT           ,
-			DestinationOut_Extension   = VK_BLEND_OP_DST_OUT_EXT           ,
-			SourceAtop_Extension       = VK_BLEND_OP_SRC_ATOP_EXT          ,
-			DestinationATop_Extension  = VK_BLEND_OP_DST_ATOP_EXT          ,
-			XOR_Extension              = VK_BLEND_OP_XOR_EXT               ,
-			Multiply_Extension         = VK_BLEND_OP_MULTIPLY_EXT          ,
-			Screen_Extension           = VK_BLEND_OP_SCREEN_EXT            ,
-			Overlay_Extension          = VK_BLEND_OP_OVERLAY_EXT           ,
-			Darken_Extension           = VK_BLEND_OP_DARKEN_EXT            ,
-			Lighten_Extension          = VK_BLEND_OP_LIGHTEN_EXT           ,
-			ColorDodge_Extension       = VK_BLEND_OP_COLORDODGE_EXT        ,
-			ColorBurn_Extension        = VK_BLEND_OP_COLORBURN_EXT         ,
-			HardLight_Extension        = VK_BLEND_OP_HARDLIGHT_EXT         ,
-			SoftLight_Extension        = VK_BLEND_OP_SOFTLIGHT_EXT         ,
-			Difference_Extension       = VK_BLEND_OP_DIFFERENCE_EXT        ,
-			Exclusion_Extention        = VK_BLEND_OP_EXCLUSION_EXT         ,
-			Invert_Extension           = VK_BLEND_OP_INVERT_EXT            ,
-			Invert_RGB_Extension       = VK_BLEND_OP_INVERT_RGB_EXT        ,
-			LinearDodge_Extension      = VK_BLEND_OP_LINEARDODGE_EXT       ,
-			LinearBurn_Extension       = VK_BLEND_OP_LINEARBURN_EXT        ,
-			VividLight_Extension       = VK_BLEND_OP_VIVIDLIGHT_EXT        ,
-			LinearLight_Extension      = VK_BLEND_OP_LINEARLIGHT_EXT       ,
-			PinLight_Extension         = VK_BLEND_OP_PINLIGHT_EXT          ,
-			Hardmix_Extension          = VK_BLEND_OP_HARDMIX_EXT           ,
-			HSL_Hue_Extension          = VK_BLEND_OP_HSL_HUE_EXT           ,
-			HSL_Saturation_Extension   = VK_BLEND_OP_HSL_SATURATION_EXT    ,
-			HSL_Color_Extension        = VK_BLEND_OP_HSL_COLOR_EXT         ,
-			HSL_Luminosity_Extension   = VK_BLEND_OP_HSL_LUMINOSITY_EXT    ,
-			Plus_Extension             = VK_BLEND_OP_PLUS_EXT              ,
-			PlusClamped_Extension      = VK_BLEND_OP_PLUS_CLAMPED_EXT      ,
-			PlusClampedAlpha_Extension = VK_BLEND_OP_PLUS_CLAMPED_ALPHA_EXT,
-			PlusDarker_Extension       = VK_BLEND_OP_PLUS_DARKER_EXT       ,
-			Minus_Extension            = VK_BLEND_OP_MINUS_EXT             ,
-			MinusClamped_Extension     = VK_BLEND_OP_MINUS_CLAMPED_EXT     ,
-			Constrast_Extension        = VK_BLEND_OP_CONTRAST_EXT          ,
-			InvertOVG_Extension        = VK_BLEND_OP_INVERT_OVG_EXT        ,
-			Red_Extension              = VK_BLEND_OP_RED_EXT               ,
-			Green_Extension            = VK_BLEND_OP_GREEN_EXT             ,
-			Blue_Extension             = VK_BLEND_OP_BLUE_EXT
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorComponentFlagBits.html">Specification</a>  */
-		enum class EColorComponentFlag : uint32
-		{
-			R = VK_COLOR_COMPONENT_R_BIT,
-			G = VK_COLOR_COMPONENT_G_BIT,
-			B = VK_COLOR_COMPONENT_B_BIT,
-			A = VK_COLOR_COMPONENT_A_BIT
-		};
-
-		SpecifyBitmaskable(EColorComponentFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkLogicOp.html">Specification</a>  */
-		enum class ELogicOperation : uint32
-		{
-			Clear         = VK_LOGIC_OP_CLEAR        ,
-			And           = VK_LOGIC_OP_AND          ,
-			And_Reverse   = VK_LOGIC_OP_AND_REVERSE  ,
-			Copy          = VK_LOGIC_OP_COPY         ,
-			And_Inverted  = VK_LOGIC_OP_AND_INVERTED ,
-			No            = VK_LOGIC_OP_NO_OP        ,
-			XOR           = VK_LOGIC_OP_XOR          ,
-			Or            = VK_LOGIC_OP_OR           ,
-			NOR           = VK_LOGIC_OP_NOR          ,
-			Equivalent    = VK_LOGIC_OP_EQUIVALENT   ,
-			Int           = VK_LOGIC_OP_INVERT       ,
-			OR_Reverse    = VK_LOGIC_OP_OR_REVERSE   ,
-			Copy_Inverted = VK_LOGIC_OP_COPY_INVERTED,
-			Or_Inverted   = VK_LOGIC_OP_OR_INVERTED  ,
-			NAND          = VK_LOGIC_OP_NAND         ,
-			Set           = VK_LOGIC_OP_SET          
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDynamicState.html">Specification</a>  */
-		enum class EDynamicState : uint32
-		{
-			Viewport                      = VK_DYNAMIC_STATE_VIEWPORT                        ,
-			Scissor                       = VK_DYNAMIC_STATE_SCISSOR                         ,
-			LineWidth                     = VK_DYNAMIC_STATE_LINE_WIDTH                      ,
-			DepthBias                     = VK_DYNAMIC_STATE_DEPTH_BIAS                      ,
-			BlendConstants                = VK_DYNAMIC_STATE_BLEND_CONSTANTS                 ,
-			DepthBounds                   = VK_DYNAMIC_STATE_DEPTH_BOUNDS                    ,
-			StencilCompareMask            = VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK            ,
-			StencilWriteMask              = VK_DYNAMIC_STATE_STENCIL_WRITE_MASK              ,
-			StencilReference              = VK_DYNAMIC_STATE_STENCIL_REFERENCE               ,
-			Viewport_W_Scaling_NV         = VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV           ,
-			DiscardRectangle_Extension    = VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT           ,
-			SampleLocations_Extension     = VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT            ,
-			ViewportShadingRatePalette_NV = VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV,
-			ViewportCoarseSampleOrder_NV  = VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV ,
-			ExclusiveScissor_NV           = VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV            ,
-			LineStipple_Extension         = VK_DYNAMIC_STATE_LINE_STIPPLE_EXT                
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlagBits.html">Specification</a>  */
-		enum class EDescriptorSetLayoutCreateFlag : uint32
-		{
-			UpdateAfterBindPool           = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT    ,
-			PushDescriptor                = VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR       ,
-			UpdateAfterBindPool_Extension = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT
-		};
-
-		SpecifyBitmaskable(EDescriptorSetLayoutCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorType.html">Specification</a>  */
-		enum class EDescriptorType : uint32
-		{
-			Sampler                      = VK_DESCRIPTOR_TYPE_SAMPLER                   ,
-			CombinedImageSampler         = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER    ,
-			SampledImage                 = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE             ,
-			StorageImage                 = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE             ,
-			UniformTexelBuffer           = VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER      ,
-			StorageTexelBuffer           = VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER      ,
-			UniformBuffer                = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER            ,
-			StorageBuffer                = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER            ,
-			UniformBufferDynamic         = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC    ,
-			StorageBufferDynamic         = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC    ,
-			InputAttachment              = VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT          ,
-			InlineUniformBlock_Extension = VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK_EXT  ,
-			AccelerationStructure_KHR    = VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR,
-			AccelerationStructure_NV     = VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV 
-		};
-
-		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlagBits.html">Specification</a> 
-		 */
-		enum class EBufferCreateFlag : uint32
-		{
-			SparseBinding                       = VK_BUFFER_CREATE_SPARSE_BINDING_BIT                   ,
-			SparseResidency                     = VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT                 ,
-			SparseAliased                       = VK_BUFFER_CREATE_SPARSE_ALIASED_BIT                   ,
-			Protected                           = VK_BUFFER_CREATE_PROTECTED_BIT                        ,
-			DeviceAddressCaptureReplay          = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT    ,
-			DeviceAddressCaptureReplayExtension = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT,
-			DeviceAddressCaptureReplayKHR       = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR
-		};
-
-		SpecifyBitmaskable(EBufferCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferUsageFlagBits.html">Specification</a>  */
-		enum class EBufferUsage : uint32
-		{
-			TransferSource      = VK_BUFFER_USAGE_TRANSFER_SRC_BIT        ,
-			TransferDestination = VK_BUFFER_USAGE_TRANSFER_DST_BIT        ,
-			UniformTexelBuffer  = VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT,
-			StorageTexelBuffer  = VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT,
-			UniformBuffer       = VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT      ,
-			StorageBuffer       = VK_BUFFER_USAGE_STORAGE_BUFFER_BIT      ,
-			IndexBuffer         = VK_BUFFER_USAGE_INDEX_BUFFER_BIT        ,
-			VertexBuffer        = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT       ,
-			IndirectBuffer      = VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT     
-		};
-
-		SpecifyBitmaskable(EBufferUsage);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateFlagBits.html">Specification</a> */
-		enum class EImageCreateFlag : uint32
-		{
-			SparseBinding                      = VK_IMAGE_CREATE_SPARSE_BINDING_BIT                       ,
-			SparseResidency                    = VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT                     ,
-			SparseAliased                      = VK_IMAGE_CREATE_SPARSE_ALIASED_BIT                       ,
-			MutableFormat                      = VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT                       ,
-			CubeCompatible                     = VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT                      ,
-			Alias                              = VK_IMAGE_CREATE_ALIAS_BIT                                ,
-			SplitInstanceBindRegions           = VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT          ,
-			_2DArrayCompatible                 = VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT                  ,
-			BlockTexelViewCompatible           = VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT          ,
-			ExtendedUsage                      = VK_IMAGE_CREATE_EXTENDED_USAGE_BIT                       ,
-			Protected                          = VK_IMAGE_CREATE_PROTECTED_BIT                            ,
-			Disjoint                           = VK_IMAGE_CREATE_DISJOINT_BIT                             ,
-			CornerSampled                      = VK_IMAGE_CREATE_CORNER_SAMPLED_BIT_NV                    ,
-			SampleLocationsCompatibleDepth_Ext = VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT,
-			Subsampled_Ext                     = VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT                       ,
-			SplitInstanceBindRegions_KHR       = VK_IMAGE_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR      ,
-			_2DArrayCompatible_KHR             = VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR              ,
-			BlockTexelViewCompatible_KHR       = VK_IMAGE_CREATE_BLOCK_TEXEL_VIEW_COMPATIBLE_BIT_KHR      ,
-			ExtendedUsage_KHR                  = VK_IMAGE_CREATE_EXTENDED_USAGE_BIT_KHR                   ,
-			Disjoint_KHR                       = VK_IMAGE_CREATE_DISJOINT_BIT_KHR                         ,
-			Alias_KHR                          = VK_IMAGE_CREATE_ALIAS_BIT_KHR                            
-		};
-
-		SpecifyBitmaskable(EImageCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageType.html">Specification</a>  */
-		enum class EImageType : uint32
-		{
-			_1D = VK_IMAGE_TYPE_1D,
-			_2D = VK_IMAGE_TYPE_2D,
-			_3D = VK_IMAGE_TYPE_3D
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageTiling.html">Specification</a>  */
-		enum class EImageTiling : uint32
-		{
-			Optional                     = VK_IMAGE_TILING_OPTIMAL                ,
-			Linear                       = VK_IMAGE_TILING_LINEAR                 ,
-			DRM_FormatModifier_Extension = VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageLayout.html">Specification</a>  */
-		enum class EImageLayout : uint32
-		{
-			Undefined                                    = VK_IMAGE_LAYOUT_UNDEFINED                                     ,
-			General                                      = VK_IMAGE_LAYOUT_GENERAL                                       ,
-			Color_AttachmentOptimal                      = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL                      ,
-			DepthStencil_AttachmentOptimal               = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL              ,
-			DepthStencil_ReadonlyOptimal                 = VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL               ,
-			Shader_ReadonlyOptimal                       = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL                      ,
-			TransferSource_Optimal                       = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL                          ,
-			TransferDestination_Optimal                  = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL                          ,
-			Preinitalized                                = VK_IMAGE_LAYOUT_PREINITIALIZED                                ,
-			Depth_Readonly_Stencil_AttachemntOptimal     = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL    ,
-			Depth_Attachment_Stencil_ReadonlyOptimal     = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL    ,
-			Depth_AttachmentOptimal                      = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL                      ,
-			Depth_ReadonlyOptimal                        = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL                       ,
-			Stencil_AttachmentOptimal                    = VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL                    ,
-			Stencil_ReadonlyOptimal                      = VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL                     ,
-			PresentSource_KHR                            = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR                               ,
-			SharedPresent_KHR                            = VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR                            ,
-			ShadingRate_Optimal                          = VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV                       ,
-			Fragment_DensityMapOptimal_EXT               = VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT              ,
-			Depth_Readonly_Stencil_AttachmentOptimal_KHR = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR,
-			Depth_Atteachment_StencilReadonlyOptimal_KHR = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR,
-			Depth_AttachmentOptimal_KHR                  = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL_KHR                  ,
-			Depth_ReadonlyOptimal_KHR                    = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL_KHR                   ,
-			Stencil_AttachmentOptimal_KHR                = VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL_KHR                ,
-			Stencil_ReadonlyOptimal_KHR                  = VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR                 
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlagBits">Specification</a>  */
-		enum class EAttachmentDescriptionFlag : uint32
-		{
-			AttachmentDescription_MAY_ALIAS = VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT 
-		};
-
-		SpecifyBitmaskable(EAttachmentDescriptionFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentLoadOp">Specification</a>  */
-		enum class EAttachmentLoadOperation : uint32
-		{
-			Load     = VK_ATTACHMENT_LOAD_OP_LOAD     , 
-			Clear    = VK_ATTACHMENT_LOAD_OP_CLEAR    ,
-			DontCare = VK_ATTACHMENT_LOAD_OP_DONT_CARE 
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentStoreOp">Specification</a>  */
-		enum class EAttachmentStoreOperation : uint32
-		{
-			Store    = VK_ATTACHMENT_STORE_OP_STORE    ,
-			DontCare = VK_ATTACHMENT_STORE_OP_DONT_CARE
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlagBits">Specification</a>  */
-		enum class ESubpassDescriptionFlag : uint32 {};
-
-		SpecifyBitmaskable(ESubpassDescriptionFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineBindPoint">Specification</a>  */
-		enum class EPipelineBindPoint : uint32
-		{
-			Graphics = VK_PIPELINE_BIND_POINT_GRAPHICS,
-			Compute  = VK_PIPELINE_BIND_POINT_COMPUTE 
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlagBits">Specification</a>  */
-		enum class EPipelineStageFlag : uint32
-		{
-			TopOfPipe                    = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT                   ,
-			DrawIndirect                 = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT                 ,
-			VertexInput                  = VK_PIPELINE_STAGE_VERTEX_INPUT_BIT                  ,
-			VertexShader                 = VK_PIPELINE_STAGE_VERTEX_SHADER_BIT                 ,
-			TessellationControlShader    = VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT   ,
-			TessellationEvaluationShader = VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT,
-			GeometryShader               = VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT               ,
-			FragementShader              = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT               ,
-			EarlyFragmentTests           = VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT          ,
-			LateFragmentTests            = VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT           ,
-			ColorAttachmentOutput        = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT       ,
-			ComputeShader                = VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT                ,
-			Transfer                     = VK_PIPELINE_STAGE_TRANSFER_BIT                      ,
-			BottomOfPipe                 = VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT                ,
-			Host                         = VK_PIPELINE_STAGE_HOST_BIT                          ,
-			AllGraphics                  = VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT                  ,
-			AllCommands                  = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT 
-		};
-
-		SpecifyBitmaskable(EPipelineStageFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlagBits">Specification</a>  */
-		enum class EAccessFlag : uint32
-		{
-			IndirectCommandRead         = VK_ACCESS_INDIRECT_COMMAND_READ_BIT         ,
-			IndexRead                   = VK_ACCESS_INDEX_READ_BIT                    ,
-			VertexAttributeRead         = VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT         ,
-			UniformRead                 = VK_ACCESS_UNIFORM_READ_BIT                  ,
-			InputAttachmentRead         = VK_ACCESS_INPUT_ATTACHMENT_READ_BIT         ,
-			ShaderRead                  = VK_ACCESS_SHADER_READ_BIT                   ,
-			ShaderWrite                 = VK_ACCESS_SHADER_WRITE_BIT                  ,
-			ColorAttachmentRead         = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT         ,
-			ColorWriteAttachmentWrite   = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT        ,
-			DepthStencilAttachmentRead  = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT ,
-			DepthStencilAttachmentWrite = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT,
-			TransferRead                = VK_ACCESS_TRANSFER_READ_BIT                 ,
-			TransferWrite               = VK_ACCESS_TRANSFER_WRITE_BIT                ,
-			HostRead                    = VK_ACCESS_HOST_READ_BIT                     ,
-			HostWrite                   = VK_ACCESS_HOST_WRITE_BIT                    ,
-			MemoryRead                  = VK_ACCESS_MEMORY_READ_BIT                   ,
-			MemoryWrite                 = VK_ACCESS_MEMORY_WRITE_BIT
-		};
-
-		SpecifyBitmaskable(EAccessFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDependencyFlagBits">Specification</a>  */
-		enum class EDependencyFlag : uint32
-		{
-			ByRegion = VK_DEPENDENCY_BY_REGION_BIT 
-		};
-
-		SpecifyBitmaskable(EDependencyFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a>  */
-		enum class EFrameBufferCreateFlag : uint32 {};
-
-		SpecifyBitmaskable(EFrameBufferCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlagBits">Specification</a>  */
-		enum class EPipelineCreateFlag : uint32
-		{
-			DisableOptimization                    = VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT                        ,
-			AllowDerivatives                       = VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT                           ,
-			Derivative                             = VK_PIPELINE_CREATE_DERIVATIVE_BIT                                  ,
-			ViewIndexFromDeviceIndex               = VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT                ,
-			DispatchBase                           = VK_PIPELINE_CREATE_DISPATCH_BASE_BIT                               ,
-			Raytracing_NoNull_AnyHit_Shaders       = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR     ,
-			Raytracing_NoNull_ClosestHit_Shaders   = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR ,
-			Raytracing_NoNull_Miss_Shaders         = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR        ,
-			Raytracing_NoNull_Intersection_Shaders = VK_PIPELINE_CREATE_RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR,
-			Raytracing_SkipTriangles               = VK_PIPELINE_CREATE_RAY_TRACING_SKIP_TRIANGLES_BIT_KHR              ,
-			Raytracing_Skip_AABBS                  = VK_PIPELINE_CREATE_RAY_TRACING_SKIP_AABBS_BIT_KHR                  ,
-			DeferCompile                           = VK_PIPELINE_CREATE_DEFER_COMPILE_BIT_NV                            ,
-			CaptureStatistics                      = VK_PIPELINE_CREATE_CAPTURE_STATISTICS_BIT_KHR                      ,
-			CaptureInternalRepresentations         = VK_PIPELINE_CREATE_CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR        ,
-			IndirectBindable                       = VK_PIPELINE_CREATE_INDIRECT_BINDABLE_BIT_NV                        ,
-			Library                                = VK_PIPELINE_CREATE_LIBRARY_BIT_KHR                                 ,
-			FailOn_PipelineCompileRequired         = VK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT       ,
-			EarlyReturnOn_Failure                  = VK_PIPELINE_CREATE_EARLY_RETURN_ON_FAILURE_BIT_EXT                 ,
-			DispatchBase2                          = VK_PIPELINE_CREATE_DISPATCH_BASE                                   ,
-			ViewIndexFromDeviceInex                = VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR            ,
-			DispatchBase_KHR                       = VK_PIPELINE_CREATE_DISPATCH_BASE_KHR                               
-		};
-
-		SpecifyBitmaskable(EPipelineCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlagBits">Specification</a>  */
-		enum class EPipelineCacheCreateFlag : uint32
-		{
-			Externally_Synchronized = VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT 
-		};
-
-		SpecifyBitmaskable(EPipelineCacheCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompareOp">Specification</a>  */
-		enum class ECompareOperation : uint32
-		{
-			Never          = VK_COMPARE_OP_NEVER           ,
-			Less           = VK_COMPARE_OP_LESS            ,
-			Equal          = VK_COMPARE_OP_EQUAL           ,
-			LessOrEqual    = VK_COMPARE_OP_LESS_OR_EQUAL   ,
-			Greater        = VK_COMPARE_OP_GREATER         ,
-			NotEqual       = VK_COMPARE_OP_NOT_EQUAL       ,
-			GreaterOrEqual = VK_COMPARE_OP_GREATER_OR_EQUAL,
-			Always         = VK_COMPARE_OP_ALWAYS
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOp">Specification</a>  */
-		enum class EStencilOperation : uint32
-		{
-			Keep              = VK_STENCIL_OP_KEEP               ,
-			Zero              = VK_STENCIL_OP_ZERO               ,
-			Replace           = VK_STENCIL_OP_REPLACE            ,
-			IncrementAndClamp = VK_STENCIL_OP_INCREMENT_AND_CLAMP,
-			DecrementAndClamp = VK_STENCIL_OP_DECREMENT_AND_CLAMP,
-			Invert            = VK_STENCIL_OP_INVERT             ,
-			IncrementAndClamp = VK_STENCIL_OP_INCREMENT_AND_WRAP ,
-			DecrementAndWrap  = VK_STENCIL_OP_DECREMENT_AND_WRAP 
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlagBits">Specification</a>  */
-		enum class EDescriptorBindingFlag : uint32
-		{
-			UpdateAfterBind              = VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT              ,
-			UpdateUnusedWhilePending     = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT    ,
-			PartiallyBound               = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT                ,
-			VariableDescriptorCount      = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT      ,
-			UpdateAfterBind              = VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT          ,
-			UpdateUnusedWhilePending_EXT = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT,
-			PartiallyBound_EXT           = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT            ,
-			VariableDescriptorCount_EXT  = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT
-		};
-
-		SpecifyBitmaskable(EDescriptorBindingFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlagBits">Specification</a>  */
-		enum class ECommandPoolCreateFlag : uint32
-		{
-			Transient          = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT           ,
-			ResetCommandBuffer = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,
-			Protected          = VK_COMMAND_POOL_CREATE_PROTECTED_BIT 
-		};
-
-		SpecifyBitmaskable(ECommandPoolCreateFlag);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlagBits">Specification</a>  */
-		enum class ECommandPoolResetFlags : uInt32
-		{
-			ReleaseResources = VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT
-		};
-
-		SpecifyBitmaskable(ECommandPoolResetFlags);
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferLevel">Specification</a>  */
-		enum class ECommandBufferLevel
-		{
-			Primary   = VK_COMMAND_BUFFER_LEVEL_PRIMARY  ,
-			Secondary = VK_COMMAND_BUFFER_LEVEL_SECONDARY 
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits ">Specification</a>  */
-		enum class ECommandBufferResetFlag : uInt32
-		{
-			ReleaseResources = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT 
-		};
-
-		SpecifyBitmaskable(ECommandBufferResetFlag);
-
-		enum class ECommandBufferUsageFlag : uint32
-		{
-			OneTimeSubmit      = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT     ,
-			RenderPassContinue = VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT,
-			SimultaneousUse    = VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT  
-		};
-
-		SpecifyBitmaskable(ECommandBufferUsageFlag);
-
-		enum class EQueryControlFlags : uint32
-		{
-			Precise = VK_QUERY_CONTROL_PRECISE_BIT
-		};
-
-		SpecifyBitmaskable(EQueryControlFlags);
-
-		enum class EQueryPipelineStatisticFlag : uint32
-		{
-			AssemblyVertices                        = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT                   ,
-			AssemblyPrimitives                      = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT                 ,
-			VertexShaderInovcations                 = VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT                 ,
-			GeometryShaderInvocations               = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT               ,
-			GeometryShaderPrimitives                = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT                ,
-			ClippingInocation                       = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT                      ,
-			ClippingPrimitives                      = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT                       ,
-			FragmentShaderInvoations                = VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT               ,
-			TessellationControlShaderPatches        = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT       ,
-			TessellationEvaluationShaderInvocations = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT,
-			ComputeShaderInvocations                = VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT 
-		};
+		SpecifyBitmaskable(EAccessFlag                    );
+		SpecifyBitmaskable(EAttachmentDescriptionFlag     );
+		SpecifyBitmaskable(EBufferCreateFlag              );
+		SpecifyBitmaskable(EBufferUsage                   );
+		SpecifyBitmaskable(EColorComponentFlag            );
+		SpecifyBitmaskable(ECommandBufferResetFlag        );
+		SpecifyBitmaskable(ECommandBufferUsageFlag        );
+		SpecifyBitmaskable(ECommandPoolCreateFlag         );
+		SpecifyBitmaskable(ECommandPoolResetFlags         );
+		SpecifyBitmaskable(ECompositeAlpha                );
+		SpecifyBitmaskable(ECullModeFlag                  );
+		SpecifyBitmaskable(EDebugUtilities_MessageSeverity);
+		SpecifyBitmaskable(EDebugUtilities_MessageType    );
+		SpecifyBitmaskable(EDependencyFlag                );
+		SpecifyBitmaskable(EDescriptorBindingFlag         );
+		SpecifyBitmaskable(EDescriptorSetLayoutCreateFlag );
+		SpecifyBitmaskable(EExternalFenceHandleTypeFlag   );
+		SpecifyBitmaskable(EFenceCreateFlag               );
+		SpecifyBitmaskable(EFenceImportFlag               );
+		SpecifyBitmaskable(EFrameBufferCreateFlag         );
+		SpecifyBitmaskable(EImageAspect                   );
+		SpecifyBitmaskable(EImageCreateFlag               );
+		SpecifyBitmaskable(EImageUsage                    );
+		SpecifyBitmaskable(EImageViewCreateFlag           );
+		SpecifyBitmaskable(ELogicalDeviceQueueCreateFlag  );
+		SpecifyBitmaskable(EPipelineCacheCreateFlag       );
+		SpecifyBitmaskable(EPipelineCreateFlag            );
+		SpecifyBitmaskable(EPipelineShaderStageCreateFlag );
+		SpecifyBitmaskable(EPipelineStageFlag             );
+		SpecifyBitmaskable(EQueryControlFlags             );
+		SpecifyBitmaskable(EQueueFlag                     );
+		SpecifyBitmaskable(EQueryPipelineStatisticFlag    );
+		SpecifyBitmaskable(ESampleCount                   );
+		SpecifyBitmaskable(ESemaphoreWaitFlag             );
+		SpecifyBitmaskable(EShaderStageFlag               );
+		SpecifyBitmaskable(ESubpassDescriptionFlag        );
+		SpecifyBitmaskable(ESurfaceTransformFlag          );	
+		SpecifyBitmaskable(ESwapchainCreateFlag           );
     }
 }

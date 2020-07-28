@@ -60,7 +60,7 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSharingMode.html">Specification</a>
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferCreateInfo>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
@@ -124,7 +124,7 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a> .
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferViewCreateInfo >
+			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
 			{
 				      EType       SType  ;
 				const void*       Next   ;
@@ -190,23 +190,23 @@ namespace VaultedThermals
 			using UsageFlags = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateInfo.html">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkImageCreateInfo>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
 			{
-				      EType        SType             ;
-				const void*        Next              ;
-				      CreateFlags  Flags             ;
-				      EImageType   ImageType         ;
-				      EFormat      Format            ;
-				      Extent3D     Extent            ;
-				      uint32       MipmapLevels      ;
-				      uint32       ArrayLayers       ;
-				      ESampleCount Samples           ;
-				      ETiling      Tiling            ;
-				      EUsage       Usage             ;
-				      ESharingMode SharingMode       ;
-				      uint32       QueueFamilyIndices;
-				const uint32*      QueueFamilyIndices;
-					  EImageLayout InitalLayout      ;
+				      EType        SType                ;
+				const void*        Next                 ;
+				      CreateFlags  Flags                ;
+				      EImageType   ImageType            ;
+				      EFormat      Format               ;
+				      Extent3D     Extent               ;
+				      uint32       MipmapLevels         ;
+				      uint32       ArrayLayers          ;
+				      ESampleCount Samples              ;
+				      ETiling      Tiling               ;
+				      EUsage       Usage                ;
+				      ESharingMode SharingMode          ;
+				      uint32       QueueFamilyIndexCount;
+				const uint32*      QueueFamilyIndices   ;
+					  EImageLayout InitalLayout         ;
 			};
 
 			/**  
@@ -263,7 +263,7 @@ namespace VaultedThermals
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateInfo.html">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkImageViewCreateInfo>
+			struct CreateInfo : Vault_00::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
 			{
 				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
 

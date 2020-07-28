@@ -29,7 +29,7 @@ namespace VaultedThermals
 
 			@details 
 		*/
-		template<typename VulkanType>
+		template<typename VulkanType, EStructureType TemplateSpecifiedStype = EStructureType::Max_Enum>
 		struct VKStruct_Base
 		{
 			/**
@@ -40,6 +40,10 @@ namespace VaultedThermals
 			 * @todo Finish the proper enum...
 			 */
 			using EType= EStructureType;
+
+			//constexpr EType STypeSpecifier() { return TemplateSpecifiedStype; }
+
+			static constexpr EType STypeEnum = TemplateSpecifiedStype;
 			
 			/** 
 			@typdef VkType 
@@ -55,7 +59,7 @@ namespace VaultedThermals
 
 			operator const VulkanType*() const
 			{
-				return reinterpret_cast<VulkanType*>(this);
+				return reinterpret_cast<const VulkanType*>(this);
 			}
 		};
 	}
