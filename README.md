@@ -5,7 +5,7 @@ A vulkan wrapper.
 This is currently a WIP, I am fleshing this out while making my engine project:
 [Abstract Realm](https://github.com/Ed94/AbstractRealm)
 
-Motivations for doing so is like clean libraries and while Vulkan-Hpp looked well designed, I cannot find a proper specification or documentation related to it, only the C-API. There is only their "samples". 
+Motivations for doing so is I like clean libraries and while Vulkan-Hpp looked well designed, I cannot find a proper specification or documentation related to it, only the C-API. There is only their "samples". 
 
 This library aims to have full documentation/specificaton within its comments and have clean organization. 
 
