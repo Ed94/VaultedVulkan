@@ -879,6 +879,22 @@ namespace VaultedThermals
 			CubeArray = VK_IMAGE_VIEW_TYPE_CUBE_ARRAY
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkIndexType">Specification</a>  */
+		enum class EIndexType : uint32
+		{
+			uInt16   = VK_INDEX_TYPE_UINT16   ,
+			uInt32   = VK_INDEX_TYPE_UINT32   ,
+			None_KHR = VK_INDEX_TYPE_NONE_KHR ,
+			uInt8    = VK_INDEX_TYPE_UINT8_EXT,
+			None_NV  = VK_INDEX_TYPE_NONE_NV 
+		};
+
+		/** @brief <a href="linkURL">Specification</a>  */
+		enum class EInternalAllocationType
+		{
+			Executable = VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html">Specification</a>  */
 		enum class ELogicalDeviceQueueCreateFlag : uint32
 		{
@@ -904,6 +920,27 @@ namespace VaultedThermals
 			Or_Inverted   = VK_LOGIC_OP_OR_INVERTED  ,
 			NAND          = VK_LOGIC_OP_NAND         ,
 			Set           = VK_LOGIC_OP_SET          
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeapFlagBits">Specification</a>  */
+		enum class EMemoryHeapFlag : uint32
+		{
+			DeviceLocal       = VK_MEMORY_HEAP_DEVICE_LOCAL_BIT      ,
+			MultiInstance     = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT    ,
+			MultiInstance_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryPropertyFlagBits">Specification</a>  */
+		enum class EMemoryPropertyFlag : uint32
+		{
+			DeviceLocal        = VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT       ,
+			HostVisible        = VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT       ,
+			HostCoherent       = VK_MEMORY_PROPERTY_HOST_COHERENT_BIT      , 
+			HostCached         = VK_MEMORY_PROPERTY_HOST_CACHED_BIT        ,
+			LazilyAllocated    = VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT   ,
+			Protected          = VK_MEMORY_PROPERTY_PROTECTED_BIT          ,
+			DeviceCoherent_AMD = VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD,
+			DeviceUncached_AMD = VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkObjectType.html">Specification</a>  */
@@ -1806,6 +1843,16 @@ namespace VaultedThermals
 			CreateMutableFormat      = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSystemAllocationScope">Specification</a>  */
+		enum class ESystemAllocationScope : uint32
+		{
+			Command  = VK_SYSTEM_ALLOCATION_SCOPE_COMMAND ,
+			Object   = VK_SYSTEM_ALLOCATION_SCOPE_OBJECT  ,
+			Cache    = VK_SYSTEM_ALLOCATION_SCOPE_CACHE   ,
+			Device   = VK_SYSTEM_ALLOCATION_SCOPE_DEVICE  ,
+			Instance = VK_SYSTEM_ALLOCATION_SCOPE_INSTANCE
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVertexInputRate.html">Specification</a>  */
 		enum class EVertexInputRate : uint32
 		{
@@ -1842,6 +1889,8 @@ namespace VaultedThermals
 		SpecifyBitmaskable(EImageUsage                    );
 		SpecifyBitmaskable(EImageViewCreateFlag           );
 		SpecifyBitmaskable(ELogicalDeviceQueueCreateFlag  );
+		SpecifyBitmaskable(EMemoryHeapFlag                );
+		SpecifyBitmaskable(EMemoryPropertyFlag            );
 		SpecifyBitmaskable(EPipelineCacheCreateFlag       );
 		SpecifyBitmaskable(EPipelineCreateFlag            );
 		SpecifyBitmaskable(EPipelineShaderStageCreateFlag );

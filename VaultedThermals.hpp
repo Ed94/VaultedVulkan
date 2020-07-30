@@ -126,6 +126,7 @@ The library single include header.
 #include "VaultedThermals/VT_Backend.hpp"
 #include "VaultedThermals/VT_Types.hpp"
 #include "VaultedThermals/VT_Constants.hpp"
+#include "VaultedThermals/VT_Memory.hpp"
 #include "VaultedThermals/VT_Initialization.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
 #include "VaultedThermals/VT_LogicalDevice.hpp"

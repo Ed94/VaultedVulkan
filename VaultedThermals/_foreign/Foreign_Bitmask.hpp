@@ -40,15 +40,36 @@
 		using Representation = BitmaskRepresentation;
 		using Enum           =  EnumType            ;   // Guaranteed to be implemented by a Bitmaskable type (or there will be a compile error..);
 
+		template<typename... BitTypes>
+		Bitmask(BitTypes... _bits)
+		{
+			mask = (Representation(_bits) | ...);
+		}
+
 		template<typename... BitType>
 		void Add(const BitType... _bits)
 		{
 			mask |= (Representation(_bits) | ...);
 		}
 
+		void Clear()
+		{
+			mask = 0;
+		}
+
 		bool Has(const Enum _bit) const
 		{
 			return mask & Representation(_bit);
+		}
+
+		template<typename... BitType>
+		template Remove(const BitType... _bits)
+		{
+			if (mask <= 0) return n;
+
+			Representation
+
+			mask &= ~(Representation(_bits) | ...);
 		}
 
 		template<typename... BitType>

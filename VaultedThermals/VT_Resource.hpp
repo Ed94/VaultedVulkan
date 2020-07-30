@@ -26,6 +26,7 @@ can be multidimensional and may have associated metadata.
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
@@ -55,7 +56,7 @@ namespace VaultedThermals
 
 			using CreateFlag = Bitmask<EBufferCreateFlag, VkBufferCreateFlags>;
 
-			using EUsage = EBufferUsage;
+			using UsageFlags = Bitmask<EBufferUsage, VkBufferUsageFlags>;
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSharingMode.html">Specification</a>
@@ -66,10 +67,38 @@ namespace VaultedThermals
 				const void*        Next                 ;
 				      CreateFlag   Flags                ;
 					  DeviceSize   Size                 ;
-					  EUsage       Usuage               ;
+					  UsageFlags   Usuage               ;
 				      ESharingMode SharingMode          ;
 					  uint32       QueueFamilyIndexCount;
 			};
+
+			/** @brief <a href="linkURL">Specification</a>  */
+			struct CopyInfo : Vault_00::VKStruct_Base<VkBufferCopy>
+			{
+				DeviceSize SourceOffset;
+				DeviceSize DestinationOffset;
+				DeviceSize Size;
+			};
+
+			/**
+			 * @brief.
+			 * 
+			 * \param _device
+			 * \param _buffer
+			 * \param _memory
+			 * \param _memoryOffset
+			 * \return 
+			 */
+			static EResult BindMemory
+			(
+				LogicalDevice::Handle _device      ,
+				Buffer::Handle        _buffer      ,
+				Memory::Handle        _memory      ,
+				DeviceSize            _memoryOffset
+			)
+			{
+				return EResult(vkBindBufferMemory(_device, _buffer, _memory, _memoryOffset));
+			}
 
 			/**
 			 * @brief Create a new buffer object.
@@ -102,6 +131,23 @@ namespace VaultedThermals
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Buffer::Handle _buffer, const AllocationCallbacks* _allocator)
 			{
 				vkDestroyBuffer(_deviceHandle, _buffer, _allocator);
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetBufferMemoryRequirements">Specification</a>
+			 * 
+			 * \param _device
+			 * \param _buffer
+			 * \param _memoryRequirements
+			 */
+			static void GetMemoryRequirements
+			(
+				LogicalDevice::Handle _device             ,
+				Buffer::Handle        _buffer             ,
+				Memory::Requirements& _memoryRequirements
+			)
+			{
+				vkGetBufferMemoryRequirements(_device, _buffer, _memoryRequirements);
 			}
 		};
 
@@ -320,5 +366,7 @@ namespace VaultedThermals
 				vkDestroyImageView(_deviceHandle, _imageView, _allocator);
 			}
 		};
+
+		
 	}
 }

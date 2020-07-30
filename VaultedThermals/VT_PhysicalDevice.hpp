@@ -24,6 +24,7 @@ A physical device usually represents a single complete implementation of Vulkan
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_Sampler.hpp"
 
@@ -280,7 +281,16 @@ namespace VaultedThermals
 				Size             NonCoherentAtomSize                            ;
 			};
 
-			
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification</a> 
+			 */
+			struct MemoryProperties : Vault_00::VKStruct_Base<VkPhysicalDeviceMemoryProperties >
+			{
+				uint32       TypeCount            ;
+				Memory::Type Types[MaxMemoryTypes];
+				uint32       HeapCount            ;
+				Memory::Heap Heaps[MaxMemoryHeaps];
+			};
 
 			/**
 			@brief Structure specifying various sparse related properties of the physical device.
@@ -612,6 +622,11 @@ namespace VaultedThermals
 			static EResult QueryDeviceListing(AppInstance::Handle _instance, uint32* _numDevices, Handle* _deviceListing)
 			{
 				return EResult(vkEnumeratePhysicalDevices(_instance, _numDevices, _deviceListing));
+			}
+
+			static void GetMemoryProperties(PhysicalDevice::Handle _physicalDevice, MemoryProperties& _properties)
+			{
+				vkGetPhysicalDeviceMemoryProperties(_physicalDevice, _properties);
 			}
 
 			/**

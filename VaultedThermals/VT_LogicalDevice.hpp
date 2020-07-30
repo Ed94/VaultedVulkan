@@ -17,6 +17,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
@@ -87,6 +88,11 @@ namespace VaultedThermals
 				{
 					vkGetDeviceQueue(_handle, _queueFamilyIndex, _queueIndex, &_queueReturn);
 				}
+
+				static EResult WaitUntilIdle(Handle _queue)
+				{
+					return EResult(vkQueueWaitIdle(_queue));
+				}
 			};
 
 			/**
@@ -156,6 +162,13 @@ namespace VaultedThermals
 
 			struct Memory
 			{
+				using Handle = VkDeviceMemory;
+
+				using AllocateInfo = Vault_01::Memory::AllocateInfo;
+				using AllocationCallbacks = Vault_01::Memory::AllocationCallbacks;
+				using MapFlags = Vault_01::Memory::MapFlags;
+				//using Vault_01::Memory::
+
 				struct Overallocation
 				{
 					/**
@@ -169,6 +182,81 @@ namespace VaultedThermals
 
 					};
 				};
+
+				/**
+				* @brief.
+				* 
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateMemory">Specification</a> 
+				* 
+				* \param _device
+				* \param _allocateInfo
+				* \param _allocator
+				* \param _memory
+				* \return 
+				*/
+				static EResult Allocate
+				(
+					LogicalDevice::Handle _device      ,
+					const AllocateInfo&         _allocateInfo,
+					const AllocationCallbacks*  _allocator   ,
+					Handle&               _memory
+				)
+				{
+					return EResult(vkAllocateMemory(_device, _allocateInfo, _allocator->operator const VkAllocationCallbacks*(), &_memory) );
+				}
+
+				/**
+				* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
+				* 
+				* \param _device
+				* \param _memory
+				* \param _allocator
+				* \return 
+				*/
+				static void Free
+				(
+					LogicalDevice::Handle _device,
+					Memory::Handle _memory,
+					const AllocationCallbacks* _allocator
+				)
+				{
+					vkFreeMemory(_device, _memory, _allocator->operator const VkAllocationCallbacks*());
+				}
+
+				/** 
+				* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkMapMemory">Specification</a>
+				* 
+				* \param _device
+				* \param _memory
+				* \param _offset
+				* \param _size
+				* \param _flags
+				* \param _data
+				* \return 
+				*/
+				static EResult Map
+				(
+					LogicalDevice::Handle _device,
+					Handle                _memory,
+					DeviceSize            _offset,
+					DeviceSize            _size  ,
+					MapFlags              _flags ,
+					VoidPtr&              _data
+				)
+				{
+					return EResult(vkMapMemory(_device, _memory, _offset, _size, _flags, &_data));
+				}
+
+				/**
+				* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUnmapMemory">Specification</a>
+				* 
+				* \param _device
+				* \param _memory
+				*/
+				static void Unmap(LogicalDevice::Handle _device, Handle _memory)
+				{
+					vkUnmapMemory(_device, _memory);
+				}
 			};
 
 			struct PrivateData

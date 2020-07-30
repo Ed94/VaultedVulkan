@@ -58,6 +58,9 @@ namespace VaultedThermals
 
 		// Data
 
+		using VoidPtr  = void*  ;
+		using PtrArray = void*[];
+
 		using DataSize = std::size_t   ;
 		using sIntPtr  = std::intptr_t ;
 		using uIntPtr  = std::uintptr_t;

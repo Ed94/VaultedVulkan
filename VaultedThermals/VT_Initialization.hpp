@@ -22,6 +22,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
+#include "VT_Memory.hpp"
 
 
 

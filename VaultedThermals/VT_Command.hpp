@@ -22,6 +22,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
@@ -375,6 +376,29 @@ namespace VaultedThermals
 				vkCmdBeginRenderPass(_commandBuffer, _beginInfo.operator const VkRenderPassBeginInfo*(), VkSubpassContents(_contents));
 			}
 
+			static void BindIndexBuffer
+			(
+				CommandBuffer::Handle _commandBuffer,
+				Buffer::Handle        _buffer       ,
+				DeviceSize            _offset       ,
+				EIndexType            _indexType
+			)
+			{
+				vkCmdBindIndexBuffer(_commandBuffer, _buffer, _offset, VkIndexType(_indexType));
+			}
+
+			static void BindVertexBuffers
+			(
+				      Handle          _commandBuffer,
+				      uint32          _firstBinding ,
+				      uint32          _bindingCount ,
+				const Buffer::Handle& _buffers      ,
+				const DeviceSize&     _offsets
+			)
+			{
+				vkCmdBindVertexBuffers(_commandBuffer, _firstBinding, _bindingCount, &_buffers, &_offsets);
+			}
+
 			static void BindPipeline
 			(
 				CommandBuffer::Handle _commandBuffer    ,
@@ -395,6 +419,19 @@ namespace VaultedThermals
 			)
 			{
 				vkCmdDraw(_commandBuffer, _vertexCount, _instanceCount, _firstVertex, _firstInstance);
+			}
+
+			static void DrawIndexed
+			(
+				CommandBuffer::Handle _commandBuffer,
+				uint32                _indexCount   ,
+				uint32                _instanceCount,
+				uint32                _firstIndex   ,
+				sint32                _vertexOffset ,
+				uint32                _firstInstance
+			)
+			{
+				vkCmdDrawIndexed(_commandBuffer, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
 			}
 
 			/**
@@ -443,6 +480,23 @@ namespace VaultedThermals
 			)
 			{
 				return EResult(vkQueueSubmit(_queue, _submitCount, _submissions->operator const VkSubmitInfo*(), _fence));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBuffer">Specification</a>
+			 * 
+			 * \return 
+			 */
+			static void CopyBuffer
+			(
+				      CommandBuffer::Handle _commandBuffer    ,
+				      Buffer::Handle        _sourceBuffer     ,
+				      Buffer::Handle        _destinationBuffer,
+				      uint32                _regionCount      ,
+				const Buffer::CopyInfo*     _regions
+			)
+			{
+				vkCmdCopyBuffer(_commandBuffer, _sourceBuffer, _destinationBuffer, _regionCount, _regions->operator const VkBufferCopy*());
 			}
 
 			///**
