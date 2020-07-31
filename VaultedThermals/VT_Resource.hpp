@@ -34,7 +34,11 @@ can be multidimensional and may have associated metadata.
 
 
 
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
 	namespace Vault_01
 	{
@@ -54,7 +58,7 @@ namespace VaultedThermals
 
 			using ECreateFlag = EBufferCreateFlag;
 
-			using CreateFlag = Bitmask<EBufferCreateFlag, VkBufferCreateFlags>;
+			using CreateFlags = Bitmask<EBufferCreateFlag, VkBufferCreateFlags>;
 
 			using UsageFlags = Bitmask<EBufferUsage, VkBufferUsageFlags>;
 
@@ -65,7 +69,7 @@ namespace VaultedThermals
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
-				      CreateFlag   Flags                ;
+				      CreateFlags  Flags                ;
 					  DeviceSize   Size                 ;
 					  UsageFlags   Usuage               ;
 				      ESharingMode SharingMode          ;
@@ -211,6 +215,62 @@ namespace VaultedThermals
 			static void Destroy(LogicalDevice::Handle _deviceHandle, BufferView::Handle _bufferView, const AllocationCallbacks* _allocator)
 			{
 				vkDestroyBufferView(_deviceHandle, _bufferView, _allocator);
+			}
+		};
+
+		struct DescriptorPool
+		{
+			using Handle = VkDescriptorPool;
+
+			using CreateFlags = Bitmask<EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags>;
+
+			using ResetFlags = Bitmask<EUndefined, VkDescriptorPoolResetFlags>;
+
+			struct Size : Vault_00::VKStruct_Base<VkDescriptorPoolSize>
+			{
+				EDescriptorType Type ;
+				uint32          Count;
+			};
+
+			struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
+			{
+					  EType       SType        ;
+				const void*       Next         ;
+					  CreateFlags Flags        ;
+					  uint32      MaxSets      ;
+					  uint32      PoolSizeCount;
+				const Size*       PoolSizes    ;
+			};
+
+			static EResult Create
+			(
+					  LogicalDevice::Handle         _device        ,
+				const CreateInfo&                   _createInfo    ,
+				const Memory::AllocationCallbacks*  _allocator     ,
+					  Handle&                       _descriptorPool
+			)
+			{
+				return EResult(vkCreateDescriptorPool(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
+			}
+
+			static void Destroy
+			(
+				LogicalDevice::Handle               _device,
+				Handle                              _descriptorPool,
+				const Memory::AllocationCallbacks*  _allocator
+			)
+			{
+				vkDestroyDescriptorPool(_device, _descriptorPool, _allocator->operator const VkAllocationCallbacks*());
+			}
+
+			static EResult Reset
+			(
+				LogicalDevice::Handle _device,
+				Handle                _descriptorPool,
+				ResetFlags            _flags
+			)
+			{
+				vkResetDescriptorPool(_device, _descriptorPool, _flags);
 			}
 		};
 
@@ -367,6 +427,95 @@ namespace VaultedThermals
 			}
 		};
 
-		
+		struct DescriptorSet
+		{
+			using Handle = VkDescriptorSet;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a>  */
+			struct AllocateInfo : Vault_00::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
+			{
+				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
+
+					  EType                  SType             ;
+				const void*                  Next              ;
+					  DescriptorPool::Handle DescriptorPool    ;
+					  uint32                 DescriptorSetCount;
+				const PipelineLayoutDescriptorSetHandle*                SetLayouts        ;
+			};
+
+			struct BufferInfo : Vault_00::VKStruct_Base<VkDescriptorBufferInfo>
+			{
+				Buffer::Handle Buffer;
+				DeviceSize     Offset;
+				DeviceSize     Range ;
+			};
+
+			struct Copy : Vault_00::VKStruct_Base<VkCopyDescriptorSet>
+			{
+				      EType  SType          ;
+				const void*  Next           ;
+				      Handle SrcSet         ;
+				      uint32 SrcBinding     ;
+				      uint32 SrcArrayElement;
+				      Handle DstSet         ;
+				      uint32 DstBinding     ;
+				      uint32 DstArrayElement;
+				      uint32 DescriptorCount;
+			};
+
+			struct ImageInfo : Vault_00::VKStruct_Base<VkDescriptorImageInfo>
+			{
+				Sampler::Handle   Sampler    ;
+				ImageView::Handle ImageView  ;
+				EImageLayout      ImageLayout;
+			};
+
+			struct Write : Vault_00::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
+			{
+				      EType                  SType          ;
+				const void*                  Next           ;
+				      Handle                 DstSet         ;
+				      uint32                 DstBinding     ;
+				      uint32                 DstArrayElement;
+				      uint32                 DescriptorCount;
+				      EDescriptorType        DescriptorType ;
+				const VkDescriptorImageInfo* ImageInfo      ;
+				const BufferInfo*            BufferInfo     ;
+				const BufferView::Handle*    TexelBufferView;
+			};
+
+			static EResult Allocate
+			(
+					  LogicalDevice::Handle _device        ,
+				const AllocateInfo&         _allocateInfo  ,
+					  Handle*               _descriptorSets
+			)
+			{
+				return EResult(vkAllocateDescriptorSets(_device, _allocateInfo, _descriptorSets));
+			}
+
+			static EResult Free
+			(
+				      LogicalDevice::Handle  _device            ,
+				      DescriptorPool::Handle _descriptorPool    ,
+				      uint32                 _descriptorSetCount,
+				const Handle*                _descriptorSets
+			)
+			{
+				vkFreeDescriptorSets(_device, _descriptorPool, _descriptorSetCount, _descriptorSets);
+			}
+
+			static void Update
+			(
+				      LogicalDevice::Handle _device              ,
+				      uint32                _descriptorWriteCount,
+				const Write*                _descriptorWrites    ,
+				      uint32                _descriptorCopyCount ,
+				const Copy*                 _descriptorCopies
+			)
+			{
+				vkUpdateDescriptorSets(_device, _descriptorWriteCount, _descriptorWrites->operator const VkWriteDescriptorSet*(), _descriptorCopyCount, _descriptorCopies->operator const VkCopyDescriptorSet*());
+			}
+		};	
 	}
 }

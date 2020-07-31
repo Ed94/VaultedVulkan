@@ -20,7 +20,11 @@
 
 
 
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
 	//TODO: Move constants based on specification to their respective file if possible.
 	namespace Corridors

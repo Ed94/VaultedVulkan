@@ -18,9 +18,13 @@
 
 
 
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
-	#pragma region Common Object Types
+#pragma region Common Object Types
 
 	/** 
 	@defgroup Common_Object_Types
@@ -127,7 +131,7 @@ namespace VaultedThermals
 		*/
 	}
 
-	#pragma endregion Common Object Types
+#pragma endregion Common Object Types
 
 
 	// TODO: Needs sorting.

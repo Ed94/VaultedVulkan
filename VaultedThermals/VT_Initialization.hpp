@@ -26,9 +26,13 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 
 
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
-	#pragma region Application Instancing
+#pragma region Application Instancing
 
 	namespace Vault_01
 	{
@@ -263,10 +267,10 @@ namespace VaultedThermals
 		};
 	}
 
-	#pragma endregion Application Instancing
+#pragma endregion Application Instancing
 
 
-	#pragma region Command Function Pointers
+#pragma region Command Function Pointers
 	/*
 	Vulkan commands are not necessarily exposed by static linking on a platform. 
 	Commands to query function pointers for Vulkan commands are described below.
@@ -332,5 +336,5 @@ namespace VaultedThermals
 		}*/
 	}
 
-	#pragma endregion Command Function Pointers
+#pragma endregion Command Function Pointers
 }

@@ -5,6 +5,8 @@
 VaultedThermals Include Interface
     
 The library single include header.
+
+If you want to use the short namespace: #define VT_Option__Use_Short_Namespace
 */
 
 

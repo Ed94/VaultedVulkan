@@ -32,7 +32,11 @@
 
 
 
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
 	namespace Vault_01
 	{
@@ -218,6 +222,7 @@ namespace VaultedThermals
 					uint32           Size      ;
 				};
 
+
 				/**
 				 * @brief Descriptors are grouped together into descriptor set objects. 
 				 * 
@@ -286,6 +291,8 @@ namespace VaultedThermals
 						Bool  Supported;
 					};
 
+					
+
 					/**
 					 * @brief Create a descriptor set layout.
 					 * 
@@ -340,6 +347,7 @@ namespace VaultedThermals
 					}
 				};
 
+				
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineLayoutCreateInfo">Specification</a>  */

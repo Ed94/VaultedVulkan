@@ -17,8 +17,11 @@
 
 
 
-//TODO: Move enums fork based on specification to their respective file if possible.
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
     namespace Corridors
     {
@@ -347,7 +350,7 @@ namespace VaultedThermals
 			Error   = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageTypeFlagBitsEXT.html">Specification</a> de */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDebugUtilsMessageTypeFlagBitsEXT.html">Specification</a> */
 		enum class EDebugUtilities_MessageType : uint32
 		{
 			General     = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT    ,
@@ -372,6 +375,14 @@ namespace VaultedThermals
 			UpdateUnusedWhilePending_EXT = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT,
 			PartiallyBound_EXT           = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT            ,
 			VariableDescriptorCount_EXT  = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlagBits">Specification</a>  */
+		enum class EDescriptorPoolCreateFlag : uint32
+		{
+			FreeDescriptorSet   = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT  ,
+			UpdateAfterBind     = VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT    ,
+			UpdateAfterBind_EXT = VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlagBits.html">Specification</a>  */
@@ -1879,6 +1890,7 @@ namespace VaultedThermals
 		SpecifyBitmaskable(EDebugUtilities_MessageType    );
 		SpecifyBitmaskable(EDependencyFlag                );
 		SpecifyBitmaskable(EDescriptorBindingFlag         );
+		SpecifyBitmaskable(EDescriptorPoolCreateFlag      );
 		SpecifyBitmaskable(EDescriptorSetLayoutCreateFlag );
 		SpecifyBitmaskable(EExternalFenceHandleTypeFlag   );
 		SpecifyBitmaskable(EFenceCreateFlag               );

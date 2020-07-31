@@ -46,7 +46,11 @@ specified, why this is required.
 
 
 
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
 	namespace Vault_00
 	{

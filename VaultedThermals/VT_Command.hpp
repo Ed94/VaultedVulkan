@@ -34,7 +34,11 @@
 
 
 
-namespace VaultedThermals
+#ifndef VT_Option__Use_Short_Namespace
+	namespace VaultedThermals
+#else
+	namespace VT
+#endif
 {
 	namespace Vault_01
 	{
@@ -376,6 +380,31 @@ namespace VaultedThermals
 				vkCmdBeginRenderPass(_commandBuffer, _beginInfo.operator const VkRenderPassBeginInfo*(), VkSubpassContents(_contents));
 			}
 
+			static void BindDescriptorSets
+			(
+				      CommandBuffer::Handle    _commandBuffer     ,
+				      EPipelineBindPoint       _pipelineBindPoint ,
+				      Pipeline::Layout::Handle _layout            ,
+				      uint32                   _firstSet          ,
+				      uint32                   _descriptorSetCount,
+				const DescriptorSet::Handle*   _descriptorSets    ,
+				      uint32                   _dynamicOffsetCount,
+				const uint32*                  _dynamicOffsets
+			)
+			{
+				vkCmdBindDescriptorSets
+				(
+					_commandBuffer                         , 
+					VkPipelineBindPoint(_pipelineBindPoint), 
+					_layout                                , 
+					_firstSet                    , 
+					_descriptorSetCount                              ,
+					_descriptorSets                        , 
+					_dynamicOffsetCount                    , 
+					_dynamicOffsets
+				);
+			}
+
 			static void BindIndexBuffer
 			(
 				CommandBuffer::Handle _commandBuffer,
@@ -412,8 +441,8 @@ namespace VaultedThermals
 			static void Draw
 			(
 				CommandBuffer::Handle _commandBuffer,
-				uint32                _firstVertex,
-				uint32                _vertexCount,
+				uint32                _firstVertex  ,
+				uint32                _vertexCount  , 
 				uint32                _firstInstance,
 				uint32                _instanceCount
 			)
