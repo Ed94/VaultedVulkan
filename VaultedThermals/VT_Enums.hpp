@@ -203,6 +203,23 @@
 			False = VK_FALSE
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBorderColor">Specification</a>  */
+		enum EBorderColor : uint32
+		{
+			Float_TransparentBlack = VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK,
+			Int_TransparentBlack   = VK_BORDER_COLOR_INT_TRANSPARENT_BLACK  ,
+			Float_OpaqueBlack      = VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK     , 
+			Int_OpaqueBlack        = VK_BORDER_COLOR_INT_OPAQUE_BLACK       , 
+			Float_OpaqueWhite      = VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE     , 
+			Int_OpaqueWhite        = VK_BORDER_COLOR_INT_OPAQUE_WHITE       , 
+
+			// Provided by VK_EXT_custom_border_color
+			Float_Custom_EXT = VK_BORDER_COLOR_FLOAT_CUSTOM_EXT,
+
+			// Provided by VK_EXT_custom_border_color
+			Int_Custom_EXT = VK_BORDER_COLOR_INT_CUSTOM_EXT,
+		};
+
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlagBits.html">Specification</a> 
 		 */
@@ -469,6 +486,15 @@
 		{
 			Temporary     = VK_FENCE_IMPORT_TEMPORARY_BIT    ,   // Provided by VK_KHR_external_fence
 			Temporary_KHR = VK_FENCE_IMPORT_TEMPORARY_BIT_KHR,
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFilter">Specification</a>  */
+		enum class EFilter : uint32
+		{
+			Nearest   = VK_FILTER_NEAREST  ,
+			Linear    = VK_FILTER_LINEAR   ,
+			Cubic     = VK_FILTER_CUBIC_IMG,
+			Cubic_EXT = VK_FILTER_CUBIC_EXT 
 		};
 
 		/**
@@ -1203,6 +1229,33 @@
 			_64 = VK_SAMPLE_COUNT_64_BIT
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerAddressMode">Specification</a>  */
+		enum class ESamplerAddressMode : uint32
+		{
+			Repeat         = VK_SAMPLER_ADDRESS_MODE_REPEAT         ,
+			MirroredRepeat = VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT,
+			ClampToEdge    = VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE  ,
+			ClampToBorder  = VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER,
+			
+			// Provided by VK_VERSION_1_2, VK_KHR_sampler_mirror_clamp_to_edge
+			MirrorClampToEdge     = VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE    ,
+			MirrorClampToEdge_KHR = VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE_KHR
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlagBits">Specification</a>  */
+		enum class ESamplerCreateFlag : uint32
+		{
+			Subsampled_EXT                     = VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT                      ,
+			SubsampledCoarseReconstruction_EXT = VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerMipmapMode">Specification</a>  */
+		enum class ESamplerMipmapMode : uint32
+		{
+			Nearest = VK_SAMPLER_MIPMAP_MODE_NEAREST,
+			Linear  = VK_SAMPLER_MIPMAP_MODE_LINEAR 
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlagBits">Specification</a>  */
 		enum class ESemaphoreImportFlag
 		{
@@ -1321,7 +1374,7 @@
 			CommandBuffer_BeginInfo                                     = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO                                      ,
 			RenderPass_BeginInfo                                        = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO                                         ,
 			BufferMemory_Barrier                                        = VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER                                          ,
-			ImageMMemory_Barrier                                        = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER                                           ,
+			ImageMemory_Barrier                                         = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER                                           ,
 			Memory_Barrier                                              = VK_STRUCTURE_TYPE_MEMORY_BARRIER                                                 ,
 			LoaderInstance_CreateInfo                                   = VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO                                    ,
 			LoaderDevice_CreateInfo                                     = VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO                                      ,
@@ -1911,6 +1964,7 @@
 		SpecifyBitmaskable(EQueueFlag                     );
 		SpecifyBitmaskable(EQueryPipelineStatisticFlag    );
 		SpecifyBitmaskable(ESampleCount                   );
+		SpecifyBitmaskable(ESamplerCreateFlag             );
 		SpecifyBitmaskable(ESemaphoreWaitFlag             );
 		SpecifyBitmaskable(EShaderStageFlag               );
 		SpecifyBitmaskable(ESubpassDescriptionFlag        );

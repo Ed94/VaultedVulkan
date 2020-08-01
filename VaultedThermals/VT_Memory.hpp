@@ -70,6 +70,20 @@
 			};
 
 			/**
+			 * @brief.
+			 * 
+			 * @details
+			 * 
+			 */
+			struct Barrier : Vault_00::VKStruct_Base<VkMemoryBarrier, EStructureType::Memory_Barrier>
+			{
+				      EType       SType        ;
+				const void*       Next         ;
+				      AccessFlags SrcAccessMask;
+				      AccessFlags DstAccessMask;
+			};
+
+			/**
 
 
 			 * @todo Implement.

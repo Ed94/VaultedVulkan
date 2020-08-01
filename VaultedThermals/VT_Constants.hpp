@@ -36,5 +36,7 @@
 
 		constexpr DataSize MaxMemoryHeaps = VK_MAX_MEMORY_HEAPS;
 		constexpr DataSize MaxMemoryTypes = VK_MAX_MEMORY_TYPES;
+
+		constexpr uint32 QueueFamily_Ignored = VK_QUEUE_FAMILY_IGNORED;
 	}
 }

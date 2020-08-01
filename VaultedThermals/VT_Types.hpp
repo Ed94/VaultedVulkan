@@ -161,6 +161,10 @@
 
 		using Flags = VkFlags;   ///< Used to represent bitmasks for Vulkan flag types.
 
+		using AccessFlags = Bitmask<EAccessFlag, VkAccessFlags>;
+		using DependencyFlags = Bitmask<EDependencyFlag, VkDependencyFlags>;
+		using SampleCountFlags = Bitmask<ESampleCount, Flags>;
+
 		// Pointers
 
 		/** 

@@ -132,6 +132,7 @@ If you want to use the short namespace: #define VT_Option__Use_Short_Namespace
 #include "VaultedThermals/VT_Initialization.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
 #include "VaultedThermals/VT_LogicalDevice.hpp"
+#include "VaultedThermals/VT_Sampler.hpp"
 #include "VaultedThermals/VT_Resource.hpp"
 #include "VaultedThermals/VT_RenderPass.hpp"
 #include "VaultedThermals/VT_Shaders.hpp"

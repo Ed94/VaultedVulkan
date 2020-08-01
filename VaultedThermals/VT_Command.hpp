@@ -24,9 +24,9 @@
 #include "VT_Constants.hpp"
 #include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
-#include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
 #include "VT_RenderPass.hpp"
 #include "VT_Shaders.hpp"
@@ -165,6 +165,16 @@
 				      CommandPool::Handle Pool       ;
 					  EBufferLevel        Level      ;
 				      uint32              BufferCount;
+			};
+
+			struct BufferImageRegion : Vault_00::VKStruct_Base<VkBufferImageCopy>
+			{
+				DeviceSize               bufferOffset;
+				uint32                   bufferRowLength;
+				uint32                   bufferImageHeight;
+				Image::SubresourceLayers imageSubresource;
+				Offset3D                 imageOffset;
+				Extent3D                 imageExtent;
 			};
 
 			/**
@@ -493,7 +503,9 @@
 
 			/**
 			 * @brief.
-			 * 
+			 *
+			 * @todo Should this be in LogicalDevice::Queue?
+			 *  
 			 * \param _queue
 			 * \param _submitCount
 			 * \param _submissions
@@ -526,6 +538,48 @@
 			)
 			{
 				vkCmdCopyBuffer(_commandBuffer, _sourceBuffer, _destinationBuffer, _regionCount, _regions->operator const VkBufferCopy*());
+			}
+
+			static void CopyBufferToImage
+			(
+				      Handle             _commandBuffer ,
+				      Buffer::Handle     _srcBuffer     ,
+				      Image::Handle      _dstImage      ,
+				      EImageLayout       _dstImageLayout,
+				      uint32			 _regionCount   ,
+				const BufferImageRegion* _regions
+			)
+			{
+				vkCmdCopyBufferToImage(_commandBuffer, _srcBuffer, _dstImage, VkImageLayout(_dstImageLayout), _regionCount, _regions->operator const VkBufferImageCopy*());
+			}
+
+			static void SubmitPipelineBarrier
+			(
+				      Handle                  _commandBuffer           ,
+				      Pipeline::StageFlags    _sourceStageMask         ,
+				      Pipeline::StageFlags    _destinationStageMask    ,
+				      DependencyFlags         _dependencyFlags         ,
+				      uint32                  _memoryBarrierCount      ,
+				const Memory::Barrier*        _memoryBarriers          ,
+				      uint32                  _bufferMemoryBarrierCount,
+				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
+				      uint32                  _imageMemoryBarrierCount ,
+				const Image::Memory_Barrier*  _imageMemoryBarriers
+			)
+			{
+				vkCmdPipelineBarrier
+				(
+					_commandBuffer, 
+					_sourceStageMask, 
+					_destinationStageMask, 
+					_dependencyFlags, 
+					_memoryBarrierCount, 
+					_memoryBarriers->operator const VkMemoryBarrier*(), 
+					_bufferMemoryBarrierCount, 
+					_bufferMemoryBarriers->operator const VkBufferMemoryBarrier*(), 
+					_imageMemoryBarrierCount,
+					_imageMemoryBarriers->operator const VkImageMemoryBarrier*()
+				);
 			}
 
 			///**

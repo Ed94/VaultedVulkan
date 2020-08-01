@@ -23,6 +23,7 @@
 #include "VT_Initialization.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
 #include "VT_Surface.hpp"
 

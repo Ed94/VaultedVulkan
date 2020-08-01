@@ -28,9 +28,9 @@ can be multidimensional and may have associated metadata.
 #include "VT_Constants.hpp"
 #include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
-#include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Sampler.hpp"
 
 
 
@@ -82,6 +82,19 @@ can be multidimensional and may have associated metadata.
 				DeviceSize SourceOffset;
 				DeviceSize DestinationOffset;
 				DeviceSize Size;
+			};
+
+			struct Memory_Barrier : Vault_00::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
+			{
+				      EType          SType              ;
+				const void*          Next               ;
+				      AccessFlags    SrcAccessMask      ;
+				      AccessFlags    DstAccessMask      ;
+				      uint32         SrcQueueFamilyIndex;
+				      uint32         DstQueueFamilyIndex;
+				      Buffer::Handle Buffer             ;
+				      DeviceSize     Offset             ;
+				      DeviceSize     Size               ;
 			};
 
 			/**
@@ -270,7 +283,7 @@ can be multidimensional and may have associated metadata.
 				ResetFlags            _flags
 			)
 			{
-				vkResetDescriptorPool(_device, _descriptorPool, _flags);
+				return EResult(vkResetDescriptorPool(_device, _descriptorPool, _flags));
 			}
 		};
 
@@ -285,6 +298,8 @@ can be multidimensional and may have associated metadata.
 		struct Image
 		{
 			using Handle = VkImage;
+
+			using AspectFlags = Bitmask<EImageAspect, VkImageAspectFlags>;
 
 			using ECreateFlag = EImageCreateFlag;
 
@@ -308,11 +323,43 @@ can be multidimensional and may have associated metadata.
 				      uint32       ArrayLayers          ;
 				      ESampleCount Samples              ;
 				      ETiling      Tiling               ;
-				      EUsage       Usage                ;
+					  UsageFlags   Usage                ;
 				      ESharingMode SharingMode          ;
 				      uint32       QueueFamilyIndexCount;
 				const uint32*      QueueFamilyIndices   ;
 					  EImageLayout InitalLayout         ;
+			};
+
+			struct SubresourceLayers : Vault_00::VKStruct_Base<VkImageSubresourceLayers>
+			{
+				AspectFlags AspectMask    ;
+				uint32      MipLevel      ;
+				uint32      BaseArrayLayer;
+				uint32      LayerCount    ;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresourceRange.html">Specification</a>  */
+			struct SubresourceRange : Vault_00::VKStruct_Base<VkImageSubresourceRange>
+			{
+				AspectFlags AspectMask    ;
+				uint32      BaseMipLevel  ;
+				uint32      LevelCount    ;
+				uint32      BaseArrayLayer;
+				uint32      LayerCount    ;
+			};
+
+			struct Memory_Barrier : Vault_00::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
+			{
+				      EType            SType              ;
+				const void*            Next               ;
+				      AccessFlags      SrcAccessMask      ;
+				      AccessFlags      DstAccessMask      ;
+				      EImageLayout     OldLayout          ;
+				      EImageLayout     NewLayout          ;
+				      uint32           SrcQueueFamilyIndex;
+				      uint32           DstQueueFamilyIndex;
+				      Image::Handle    Image              ;
+				      SubresourceRange SubresourceRange   ;
 			};
 
 			/**  
@@ -344,6 +391,22 @@ can be multidimensional and may have associated metadata.
 			{
 				vkDestroyImage(_deviceHandle, _image, _allocator);
 			}
+
+			static void GetMemoryRequirements(LogicalDevice::Handle _device, Handle _image, Memory::Requirements& _memoryRequirements)
+			{
+				vkGetImageMemoryRequirements(_device, _image, _memoryRequirements);
+			}
+
+			static EResult BindMemory
+			(
+				LogicalDevice::Handle         _device      ,
+				Handle                        _image       ,
+				LogicalDevice::Memory::Handle _memory      ,
+				DeviceSize                    _memoryOffset
+			)
+			{
+				return EResult(vkBindImageMemory(_device, _image, _memory, _memoryOffset));
+			}
 		};
 
 		/**
@@ -352,35 +415,26 @@ can be multidimensional and may have associated metadata.
 		*/
 		struct ImageView
 		{
-			using AspectFlags = Bitmask<EImageAspect, VkImageAspectFlags>;
 
 			using Handle = VkImageView;
 
 			using EViewType = EImageViewType;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSubresourceRange.html">Specification</a>  */
-			struct SubresourceRange : Vault_00::VKStruct_Base<VkImageSubresourceRange>
-			{
-				AspectFlags AspectMask    ;
-				uint32      BaseMipLevel  ;
-				uint32      LevelCount    ;
-				uint32      BaseArrayLayer;
-				uint32      LayerCount    ;
-			};
+			
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateInfo.html">Specification</a>  */
 			struct CreateInfo : Vault_00::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
 			{
 				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
 
-				EStructureType   SType           ;			
-				const void*      Next            ;
-				CreateFlags      Flags           ;
-				Image::Handle    Image           ;
-				EViewType        ViewType        ;
-				EFormat          Format          ;
-				ComponentMapping Components      ;
-				SubresourceRange SubresourceRange;
+				EStructureType          SType           ;			
+				const void*             Next            ;
+				CreateFlags             Flags           ;
+				Image::Handle           Image           ;
+				EViewType               ViewType        ;
+				EFormat                 Format          ;
+				ComponentMapping        Components      ;
+				Image::SubresourceRange SubresourceRange;
 			};
 
 			/**
@@ -400,10 +454,10 @@ can be multidimensional and may have associated metadata.
 				      LogicalDevice::Handle _deviceHandle,
 				const CreateInfo&           _creationSpec,
 				const AllocationCallbacks*  _allocator   ,
-				      Handle*               _imageView
+				      Handle&               _imageView
 			)
 			{
-				return EResult(vkCreateImageView(_deviceHandle, _creationSpec, _allocator, (VkImageView*)(_imageView)));
+				return EResult(vkCreateImageView(_deviceHandle, _creationSpec, _allocator, &_imageView));
 			}
 
 			/**
@@ -472,16 +526,16 @@ can be multidimensional and may have associated metadata.
 
 			struct Write : Vault_00::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
 			{
-				      EType                  SType          ;
-				const void*                  Next           ;
-				      Handle                 DstSet         ;
-				      uint32                 DstBinding     ;
-				      uint32                 DstArrayElement;
-				      uint32                 DescriptorCount;
-				      EDescriptorType        DescriptorType ;
-				const VkDescriptorImageInfo* ImageInfo      ;
-				const BufferInfo*            BufferInfo     ;
-				const BufferView::Handle*    TexelBufferView;
+				      EType               SType          ;
+				const void*               Next           ;
+				      Handle              DstSet         ;
+				      uint32              DstBinding     ;
+				      uint32              DstArrayElement;
+				      uint32              DescriptorCount;
+				      EDescriptorType     DescriptorType ;
+				const ImageInfo*          ImageInfo      ;
+				const BufferInfo*         BufferInfo     ;
+				const BufferView::Handle* TexelBufferView;
 			};
 
 			static EResult Allocate
@@ -502,7 +556,7 @@ can be multidimensional and may have associated metadata.
 				const Handle*                _descriptorSets
 			)
 			{
-				vkFreeDescriptorSets(_device, _descriptorPool, _descriptorSetCount, _descriptorSets);
+				return EResult(vkFreeDescriptorSets(_device, _descriptorPool, _descriptorSetCount, _descriptorSets));
 			}
 
 			static void Update

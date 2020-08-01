@@ -26,7 +26,6 @@ A physical device usually represents a single complete implementation of Vulkan
 #include "VT_Constants.hpp"
 #include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
-#include "VT_Sampler.hpp"
 
 
 
@@ -131,7 +130,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				Bool LargePoints                            ;
 				Bool AlphaToOne                             ;   ///< The implementation can replace the alpha value of the color fragment output to the maximum representable alpha value for fixed - point colors or 1.0 for floating - point colors.
 				Bool MultiViewport                          ;   ///< Multiple viewports are supported. (VR)
-				Bool AnisotropySampler                      ;
+				Bool SamplerAnisotropy                      ;
 				Bool TextureCompressionETC2                 ;
 				Bool TextureCompressionASTC_LDR             ;
 				Bool TextureCompressionBC                   ;

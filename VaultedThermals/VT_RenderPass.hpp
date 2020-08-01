@@ -24,9 +24,9 @@
 #include "VT_Constants.hpp"
 #include "VT_Memory.hpp"
 #include "VT_Initialization.hpp"
-#include "VT_Sampler.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
 #include "VT_Pipelines.hpp"
 
@@ -115,9 +115,7 @@
 		{
 			using Handle = VkRenderPass;
 
-			using AccessFlags                = Bitmask<EAccessFlag               , VkAccessFlags               >;
 			using AttachmentDescriptionFlags = Bitmask<EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags>;
-			using DependencyFlags            = Bitmask<EDependencyFlag           , VkDependencyFlags           >;
 			using SubpassDesriptionFlags     = Bitmask<ESubpassDescriptionFlag   , VkSubpassDescriptionFlags   >;
 			using CreateFlags                = Bitmask<EUndefined                , VkRenderPassCreateFlags     >;
 
