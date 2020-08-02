@@ -448,6 +448,31 @@
 				vkCmdBindPipeline(_commandBuffer, VkPipelineBindPoint(_pipelineBindPoint), _pipeline);
 			}
 
+			static void BlitImage
+			(
+				      CommandBuffer::Handle _commandBuffer,
+				      Image::Handle         _srcImage,
+				      EImageLayout          _srcImageLayout,
+				      Image::Handle         _dstImage,
+				      EImageLayout          _dstImageLayout,
+				      uint32                _regionCount,
+				const Image::Blit*          _regions,
+				      EFilter               _filter
+			)
+			{
+				vkCmdBlitImage
+				(
+					_commandBuffer, 
+					_srcImage, 
+					VkImageLayout(_srcImageLayout), 
+					_dstImage, 
+					VkImageLayout(_dstImageLayout), 
+					_regionCount, 
+					_regions->operator const VkImageBlit*(), 
+					VkFilter(_filter)
+				);
+			}
+
 			static void Draw
 			(
 				CommandBuffer::Handle _commandBuffer,

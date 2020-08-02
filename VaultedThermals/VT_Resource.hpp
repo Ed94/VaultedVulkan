@@ -310,6 +310,8 @@ can be multidimensional and may have associated metadata.
 
 			using UsageFlags = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
 
+			
+
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateInfo.html">Specification</a>  */
 			struct CreateInfo : Vault_00::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
 			{
@@ -360,6 +362,14 @@ can be multidimensional and may have associated metadata.
 				      uint32           DstQueueFamilyIndex;
 				      Image::Handle    Image              ;
 				      SubresourceRange SubresourceRange   ;
+			};
+
+			struct Blit : Vault_00::VKStruct_Base<VkImageBlit>
+			{
+				SubresourceLayers SrcSubresource;
+				Offset3D          SrcOffsets[2] ;
+				SubresourceLayers DstSubresource;
+				Offset3D          DstOffsets[2] ;
 			};
 
 			/**  
