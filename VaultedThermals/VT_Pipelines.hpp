@@ -157,18 +157,18 @@
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a>  */
 				struct CreateInfo : Vault_00::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo, EStructureType::Pipeline_DepthStencilState_CreateInfo>
 				{
-					      EType             SType                ;			   
-					const void*             Next                 ;
-					      CreateFlags       Flags                ;
-					      Bool              DepthTestEnable      ;
-					      Bool              DepthWriteEnable     ;
-					      ECompareOperation DepthCompareOp       ;
- 					      Bool              DepthBoundsTestEnable;
-					      Bool              StencilTestEnable    ;   
-					      EStencilOperation Front                ;
-					      EStencilOperation Back                 ;
-					      float32           MinDepthBounds       ;
-					      float32           MaxDepthBounds       ;
+					      EType                 SType                ;			   
+					const void*                 Next                 ;
+					      CreateFlags           Flags                ;
+					      Bool                  DepthTestEnable      ;
+					      Bool                  DepthWriteEnable     ;
+					      ECompareOperation     DepthCompareOp       ;
+ 					      Bool                  DepthBoundsTestEnable;
+					      Bool                  StencilTestEnable    ;   
+						  StencilOperationState Front                ;
+						  StencilOperationState Back                 ;
+					      float32               MinDepthBounds       ;
+					      float32               MaxDepthBounds       ;
 				};
 			};
 

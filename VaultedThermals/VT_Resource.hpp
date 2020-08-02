@@ -427,14 +427,14 @@ can be multidimensional and may have associated metadata.
 			{
 				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
 
-				EStructureType          SType           ;			
-				const void*             Next            ;
-				CreateFlags             Flags           ;
-				Image::Handle           Image           ;
-				EViewType               ViewType        ;
-				EFormat                 Format          ;
-				ComponentMapping        Components      ;
-				Image::SubresourceRange SubresourceRange;
+				      EType                   SType           ;			
+				const void*                   Next            ;
+				      CreateFlags             Flags           ;
+				      Image::Handle           Image           ;
+				      EViewType               ViewType        ;
+				      EFormat                 Format          ;
+				      ComponentMapping        Components      ;
+				      Image::SubresourceRange SubresourceRange;
 			};
 
 			/**

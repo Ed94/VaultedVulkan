@@ -161,9 +161,10 @@
 
 		using Flags = VkFlags;   ///< Used to represent bitmasks for Vulkan flag types.
 
-		using AccessFlags = Bitmask<EAccessFlag, VkAccessFlags>;
-		using DependencyFlags = Bitmask<EDependencyFlag, VkDependencyFlags>;
-		using SampleCountFlags = Bitmask<ESampleCount, Flags>;
+		using AccessFlags        = Bitmask<EAccessFlag       , VkAccessFlags       >;
+		using DependencyFlags    = Bitmask<EDependencyFlag   , VkDependencyFlags   >;
+		using SampleCountFlags   = Bitmask<ESampleCount      , Flags               >;
+		using FormatFeatureFlags = Bitmask<EFormatFeatureFlag, VkFormatFeatureFlags>;
 
 		// Pointers
 
@@ -270,7 +271,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearDepthStencilValue">Specification</a>  */
-			union UStencil
+			struct UDepthStencil
 			{
 				float32 Depth  ;
 				uint32  Stencil;
@@ -278,9 +279,29 @@
 
 			union
 			{
-				UColor   Color  ;
-				UStencil Stencil;
+				UColor        Color       ;
+				UDepthStencil DepthStencil;
 			};
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
+		struct FormatProperties : Vault_00::VKStruct_Base<VkFormatProperties>
+		{
+			FormatFeatureFlags    LinearTilingFeatures ;
+			FormatFeatureFlags    OptimalTilingFeatures;
+			FormatFeatureFlags    BufferFeatures       ;
+		};
+
+		/** @brief <a href="linkURL">Specification</a>  */
+		struct StencilOperationState : Vault_00::VKStruct_Base<VkStencilOpState>
+		{
+			EStencilOperation FailOp     ;
+			EStencilOperation FassOp     ;
+			EStencilOperation DepthFailOp;
+			ECompareOperation CompareOp  ;
+			uint32            CompareMask;
+			uint32            WriteMask  ;
+			uint32            Reference  ;
 		};
 	}
 

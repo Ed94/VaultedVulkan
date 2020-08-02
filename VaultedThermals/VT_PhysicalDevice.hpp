@@ -627,6 +627,11 @@ A physical device usually represents a single complete implementation of Vulkan
 				return EResult(vkEnumeratePhysicalDevices(_instance, _numDevices, _deviceListing));
 			}
 
+			static void GetFormatProperties(PhysicalDevice::Handle _physicalDevice, EFormat _format, FormatProperties& _properties)
+			{
+				vkGetPhysicalDeviceFormatProperties(_physicalDevice, VkFormat(_format), _properties);
+			}
+
 			static void GetMemoryProperties(PhysicalDevice::Handle _physicalDevice, MemoryProperties& _properties)
 			{
 				vkGetPhysicalDeviceMemoryProperties(_physicalDevice, _properties);

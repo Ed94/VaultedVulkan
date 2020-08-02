@@ -782,6 +782,53 @@
 			G16_B16_R16_3Plane_444_UNormalized_KHR               = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR                  // Specifies an unsigned normalized multi-planar format that has a 16-bit G component in each 16-bit word of plane 0, a 16-bit B component in each 16-bit word of plane 1, and a 16-bit R component in each 16-bit word of plane 2. Each plane has the same dimensions and each R, G and B component contributes to a single texel. The location of each plane when this image is in linear layout can be determined via vkGetImageSubresourceLayout, using VK_IMAGE_ASPECT_PLANE_0_BIT for the G plane, VK_IMAGE_ASPECT_PLANE_1_BIT for the B plane, and VK_IMAGE_ASPECT_PLANE_2_BIT for the R plane.
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlagBits">Specification</a>  */
+		enum class EFormatFeatureFlag : uint32
+		{
+			SampledImage             = VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT              ,
+			StorageImage             = VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT              ,
+			ImageAtomic              = VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT       ,
+			UniformTexelBuffer       = VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT       ,
+			StroageTexelBuffer       = VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT       ,
+			StorageTexelBufferAtomic = VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT,
+			VertexBuffer             = VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT              ,
+			ColorAttachment          = VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT           ,
+			ColorAttachmentBlend     = VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT     ,
+			DepthStencilAttachment   = VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT   ,
+			BlitSource               = VK_FORMAT_FEATURE_BLIT_SRC_BIT                   ,
+			BlitDestination          = VK_FORMAT_FEATURE_BLIT_DST_BIT                   ,
+			SampledImageFilterLinear = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT,
+
+			// Provided by VK_VERSION_1_1
+			TransferSource                                                 = VK_FORMAT_FEATURE_TRANSFER_SRC_BIT                                                           ,
+			TransferDestination                                            = VK_FORMAT_FEATURE_TRANSFER_DST_BIT                                                           ,
+			MidpointChromaSamples                                          = VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT                                                ,
+			SampledImageYCBCR_ConversionLinearFilter                        = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT                           ,
+			SampledImageYCBCR_ConversionSeparateReconstructionFilter        = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT          ,
+			SampledImageYCBCR_ConversionChromaReconstructionExplicit        = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT          ,
+			SampledImageYCBCR_ConversionChromaReconstructionExplictForcable = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT,
+			Disjoint                                                       = VK_FORMAT_FEATURE_DISJOINT_BIT                                                               ,
+			CositedChromaSamples                                           = VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT                                                 ,
+
+			SampledImageFilterMinMax              = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT             ,   // Provided by VK_VERSION_1_2
+			SampledImageFilterCubic_IMG           = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG          ,   // Provided by VK_IMG_filter_cubic
+			AccelerationStructureVertexBuffer_KHR = VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR,   // Provided by VK_KHR_ray_tracing
+			FragmentDensityMap_EXT                = VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT                ,   // Provided by VK_EXT_fragment_density_map
+			TransferSource_KHR                    = VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR                        ,   // Provided by VK_KHR_maintenance1
+			TransferDestination_KHR               = VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR                        ,   // Provided by VK_KHR_maintenance1
+			SampledImageFilterMinMax_EXT          = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT         ,   // Provided by VK_EXT_sampler_filter_minmax
+
+			// Provided by VK_KHR_sampler_ycbcr_conversion
+			MidpointChromaSamples_KHR                                             = VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT_KHR                                                ,
+			SampledImageYCBCR_ConversionLinearFilter_KHR                          = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT_KHR                           ,
+			SampledImageYCBCR_ConversionSeparateReconstructionFilter_KHR          = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT_KHR          ,
+			SampledImageYCBCR_ConversionChromaReconstructionExplicit_KHR          = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT_KHR          ,
+			SampledImageYCBCR_ConversionChromaReconstructionExplicit_Forcable_KHR = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR,
+			Disjoint_KHR                                                          = VK_FORMAT_FEATURE_DISJOINT_BIT_KHR                                                               ,
+			CositedChromaSamples_KHR                                              = VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT_KHR                                                 ,
+			SampledImageFilterCubic_EXT                                           = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT                                             ,   // Provided by VK_EXT_filter_cubic
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a>  */
 		enum class EFrameBufferCreateFlag : uint32 {};
 
@@ -870,7 +917,7 @@
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageTiling.html">Specification</a>  */
 		enum class EImageTiling : uint32
 		{
-			Optional                     = VK_IMAGE_TILING_OPTIMAL                ,
+			Optimal                      = VK_IMAGE_TILING_OPTIMAL                ,
 			Linear                       = VK_IMAGE_TILING_LINEAR                 ,
 			DRM_FormatModifier_Extension = VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT
 		};
@@ -1948,6 +1995,7 @@
 		SpecifyBitmaskable(EExternalFenceHandleTypeFlag   );
 		SpecifyBitmaskable(EFenceCreateFlag               );
 		SpecifyBitmaskable(EFenceImportFlag               );
+		SpecifyBitmaskable(EFormatFeatureFlag             );
 		SpecifyBitmaskable(EFrameBufferCreateFlag         );
 		SpecifyBitmaskable(EImageAspect                   );
 		SpecifyBitmaskable(EImageCreateFlag               );
