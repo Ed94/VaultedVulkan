@@ -24,21 +24,23 @@
 
 
 /** 
+@todo
 This guard is necessary to prevent redefinition errors. I am not entirely sure with pragma once
 specified, why this is required.
 */
-#ifndef VULKAN_INCLUDEGUARD
-#define VULKAN_INCLUDEGUARD
+#ifndef VT_VULKAN_INCLUDEGUARD
+#define VT_VULKAN_INCLUDEGUARD
 
 	#include <vulkan/vulkan.h>
 
 #endif
 
-
-// VT
+// Foreign Objects: These are helper functionality I defined but are not directly related to the Vaulted Thermals Library.
+// They are however needed by the Library in order to function.
 #include "_foreign/Foreign_Bitmask.hpp"
 #include "_foreign/Foreign_ConventionEnforcer.hpp"
 
+// VT
 #include "VT_Vaults.hpp"
 
 
@@ -105,6 +107,9 @@ specified, why this is required.
 		@def Vulkan Convention Enforcement.
 
 		@brief Generates the convention enforcer set for the vulkan API.
+
+		@details
+		EnforceConvention(EnforcerID_Vulkan, _functionName) will wrap a function call with the proper calling conventions for the vulkan api.
 	 */
-	MakeConventionEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL);
+	MakeConventionEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL)
 }

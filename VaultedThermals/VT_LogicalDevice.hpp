@@ -17,9 +17,9 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory.hpp"
-#include "VT_Initialization.hpp"
+#include "VT_Memory_Corridors.hpp"
 #include "VT_PhysicalDevice.hpp"
+#include "VT_Initialization.hpp"
 
 
 
@@ -82,6 +82,8 @@
 				* vkGetDeviceQueue must only be used to get queues that were created with the flags parameter of VkDeviceQueueCreateInfo set to zero. 
 				* To get queues that were created with a non-zero flags parameter use vkGetDeviceQueue2.
 				* 
+				* <a href="linkURL">Specification</a> 
+				* 
 				* \param _handle
 				* \param _queueFamilyIndex
 				* \param _queueIndex
@@ -92,6 +94,12 @@
 					vkGetDeviceQueue(_handle, _queueFamilyIndex, _queueIndex, &_queueReturn);
 				}
 
+				/**
+				 * @brief <a href="linkURL">Specification</a> 
+				 * 
+				 * \param _queue
+				 * \return 
+				 */
 				static EResult WaitUntilIdle(Handle _queue)
 				{
 					return EResult(vkQueueWaitIdle(_queue));
@@ -163,104 +171,19 @@
 				};
 			};
 
-			struct Memory
+			struct MemoryOverallocation
 			{
-				using Handle = VkDeviceMemory;
-
-				using AllocateInfo = Vault_01::Memory::AllocateInfo;
-				using AllocationCallbacks = Vault_01::Memory::AllocationCallbacks;
-				using MapFlags = Vault_01::Memory::MapFlags;
-				//using Vault_01::Memory::
-
-				struct Overallocation
+				/**
+				* @details
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemoryOverallocationCreateInfoAMD">Specification</a> 
+				* 
+				* @todo Implement.
+				*/
+				struct CreateInfo
 				{
-					/**
-					* @details
-					* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemoryOverallocationCreateInfoAMD">Specification</a> 
-					* 
-					* @todo Implement.
-					*/
-					struct CreateInfo
-					{
 
-					};
 				};
-
-				/**
-				* @brief.
-				* 
-				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateMemory">Specification</a> 
-				* 
-				* \param _device
-				* \param _allocateInfo
-				* \param _allocator
-				* \param _memory
-				* \return 
-				*/
-				static EResult Allocate
-				(
-					LogicalDevice::Handle _device      ,
-					const AllocateInfo&         _allocateInfo,
-					const AllocationCallbacks*  _allocator   ,
-					Handle&               _memory
-				)
-				{
-					return EResult(vkAllocateMemory(_device, _allocateInfo, _allocator->operator const VkAllocationCallbacks*(), &_memory) );
-				}
-
-				/**
-				* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
-				* 
-				* \param _device
-				* \param _memory
-				* \param _allocator
-				* \return 
-				*/
-				static void Free
-				(
-					LogicalDevice::Handle _device,
-					Memory::Handle _memory,
-					const AllocationCallbacks* _allocator
-				)
-				{
-					vkFreeMemory(_device, _memory, _allocator->operator const VkAllocationCallbacks*());
-				}
-
-				/** 
-				* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkMapMemory">Specification</a>
-				* 
-				* \param _device
-				* \param _memory
-				* \param _offset
-				* \param _size
-				* \param _flags
-				* \param _data
-				* \return 
-				*/
-				static EResult Map
-				(
-					LogicalDevice::Handle _device,
-					Handle                _memory,
-					DeviceSize            _offset,
-					DeviceSize            _size  ,
-					MapFlags              _flags ,
-					VoidPtr&              _data
-				)
-				{
-					return EResult(vkMapMemory(_device, _memory, _offset, _size, _flags, &_data));
-				}
-
-				/**
-				* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUnmapMemory">Specification</a>
-				* 
-				* \param _device
-				* \param _memory
-				*/
-				static void Unmap(LogicalDevice::Handle _device, Handle _memory)
-				{
-					vkUnmapMemory(_device, _memory);
-				}
-			};
+			};	
 
 			struct PrivateData
 			{
@@ -289,11 +212,11 @@
 			(
 				      PhysicalDevice::Handle     _physicalDevice,
 				const LogicalDevice::CreateInfo& _createSpec    ,
-				const AllocationCallbacks*       _allocator     ,
+				const Memory::AllocationCallbacks*       _allocator     ,
 				      LogicalDevice::Handle&     _device
 			)
 			{
-				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), _allocator, &_device));
+				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
 			}
 
 			/**
@@ -307,15 +230,44 @@
 			 * \param _handle
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _handle, const AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _handle, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyDevice(_handle, _allocator);
+				vkDestroyDevice(_handle, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			static EResult WaitUntilIdle(LogicalDevice::Handle _device)
 			{
 				return EResult(vkDeviceWaitIdle(_device));
 			}
+
+			/*
+			template<typename ReturnType>
+
+			Function pointers for all Vulkan commands directly addressed from the device.
+
+			In order to support systems with multiple Vulkan implementations, the function pointers returned by vkGetInstanceProcAddr 
+			may point to dispatch code that calls a different real implementation for different VkDevice objects or their child objects. 
+			The overhead of the internal dispatch for VkDevice objects can be avoided by obtaining device-specific function pointers 
+			for any commands that use a device or device-child object as their dispatchable object. 
+
+			Note: ReturnType is restricted to only function pointing types.
+
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html">Specification</a> 
+
+			// TODO: Move this to Logical Device... (its technically part of this but it needs the logical device definition... just do a forward declaration for organization's sake.
+			*/
+			/*inline typename std::enable_if
+			<
+			std::bool_constant
+			< 
+			std::is_pointer <                             ReturnType       >::value &&
+			std::is_function<typename std::remove_pointer<ReturnType>::type>::value
+			>::value,
+
+			ReturnType>::type GetDeviceProcedureAddress(LogicalDevice::Handle& _appInstance, RoCStr _procedureName)
+			{
+			return reinterpret_cast<ReturnType>(vkGetDeviceProcAddr(_appInstance, _procedureName));
+			}*/
 		};
 	}
 

@@ -4,8 +4,9 @@
 @brief Vaulted Thermals: Memory
 
 @details
+Contains the full definition of the intended memory structure.
 
-<a href="linkURL">Specification</a> 
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#memory">Specification</a>
 */
 
 
@@ -13,15 +14,18 @@
 #pragma once
 
 
-
-// VT
-#include "VT_Vaults.hpp"
+// VT#include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
+#include "VT_Memory_Corridors.hpp"
+#include "VT_PhysicalDevice.hpp"
+#include "VT_Initialization.hpp"
+#include "VT_LogicalDevice.hpp"
+
 
 
 
@@ -33,88 +37,105 @@
 {
 	namespace Vault_01
 	{
-		/**
-		* @brief.
-		*/
-		struct Memory
+		struct Memory : Corridors::Memory
 		{
-			using PropertyFlags = Bitmask<EMemoryPropertyFlag, VkMemoryPropertyFlags>;
-			using MapFlags = Bitmask<EUndefined, Flags>;
-
-			using Handle = VkDeviceMemory;	
-
-			using FPtr_Allocation                     = PFN_vkAllocationFunction            ;   // VK_FPtr<void*,	void*, size_t, size_t , VkSystemAllocationScope>;
-			using FPtr_Reallocation                   = PFN_vkReallocationFunction          ;   
-			using FPtr_Free                           = PFN_vkFreeFunction                  ;
-			using FPtr_InternalAllocationNotification = PFN_vkInternalAllocationNotification;
-			using FPtr_InternalFreeNotification       = PFN_vkInternalFreeNotification      ;
-
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryAllocateInfo">Specification</a>  */
-			struct AllocateInfo : Vault_00::VKStruct_Base<VkMemoryAllocateInfo, EStructureType::MemoryAllocateInfo>
-			{
-				      EType      SType          ;
-				const void*      Next           ;
-				      DeviceSize AllocationSize ;
-				      uint32     MemoryTypeIndex;
-			};
-
-			struct AllocationCallbacks : Vault_00::VKStruct_Base<VkAllocationCallbacks>
-			{
-				void*                               UserData          ;
-				FPtr_Allocation                     Allocation        ;
-				FPtr_Reallocation                   Reallocation      ;
-				FPtr_Free                           Free              ;
-				FPtr_InternalAllocationNotification InternalAllocation;
-				FPtr_InternalFreeNotification       InternalFree      ;
-			};
+			using Handle = VkDeviceMemory;
 
 			/**
-			 * @brief.
-			 * 
-			 * @details
-			 * 
-			 */
-			struct Barrier : Vault_00::VKStruct_Base<VkMemoryBarrier, EStructureType::Memory_Barrier>
+			* @brief.
+			* 
+			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateMemory">Specification</a> 
+			* 
+			* \param _device
+			* \param _allocateInfo
+			* \param _allocator
+			* \param _memory
+			* \return 
+			*/
+			static EResult Allocate
+			(
+				LogicalDevice::Handle _device      ,
+				const AllocateInfo&         _allocateInfo,
+				const AllocationCallbacks*  _allocator   ,
+				Handle&               _memory
+			)
 			{
-				      EType       SType        ;
-				const void*       Next         ;
-				      AccessFlags SrcAccessMask;
-				      AccessFlags DstAccessMask;
-			};
+				return EResult(vkAllocateMemory(_device, _allocateInfo, _allocator->operator const VkAllocationCallbacks*(), &_memory) );
+			}
 
 			/**
-
-
-			 * @todo Implement.
-			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeap">Specification</a> 
-			 */
-			struct Heap : Vault_00::VKStruct_Base<VkMemoryHeap>
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
+			* 
+			* \param _device
+			* \param _memory
+			* \param _allocator
+			* \return 
+			*/
+			static void Free
+			(
+				LogicalDevice::Handle _device,
+				Memory::Handle _memory,
+				const AllocationCallbacks* _allocator
+			)
 			{
-				DeviceSize        size;
-				VkMemoryHeapFlags flags;
-			};
+				vkFreeMemory(_device, _memory, _allocator->operator const VkAllocationCallbacks*());
+			}
+
+			/** 
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkMapMemory">Specification</a>
+			* 
+			* \param _device
+			* \param _memory
+			* \param _offset
+			* \param _size
+			* \param _flags
+			* \param _data
+			* \return 
+			*/
+			static EResult Map
+			(
+				LogicalDevice::Handle _device,
+				Handle                _memory,
+				DeviceSize            _offset,
+				DeviceSize            _size  ,
+				MapFlags              _flags ,
+				VoidPtr&              _data
+			)
+			{
+				return EResult(vkMapMemory(_device, _memory, _offset, _size, _flags, &_data));
+			}
 
 			/**
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryRequirements">Specification</a> 
-			 */
-			struct Requirements : Vault_00::VKStruct_Base<VkMemoryRequirements>
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUnmapMemory">Specification</a>
+			* 
+			* \param _device
+			* \param _memory
+			*/
+			static void Unmap(LogicalDevice::Handle _device, Handle _memory)
 			{
-				DeviceSize Size          ;
-				DeviceSize Alignment     ;
-				uint32     MemoryTypeBits;
+				vkUnmapMemory(_device, _memory);
+			}
+		};
+	}
+
+	namespace Vault_02
+	{
+		struct Memory : Vault_01::Memory
+		{
+			using Parent = Vault_01::Memory;
+
+			struct AllocateInfo : Vault_01::Memory::AllocateInfo
+			{
+				using Parent = Vault_01::Memory::AllocateInfo;
+
+				AllocateInfo() { SType = STypeEnum; }
 			};
 
-			/**
-			 * @todo Implement.
-			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryType ">Specification</a> 
-			 */
-			struct Type : Vault_00::VKStruct_Base<VkMemoryType>
+			struct Barrier : Vault_01::Memory::Barrier
 			{
-				PropertyFlags propertyFlags;
-				uint32        heapIndex;
+				using Parent = Vault_01::Memory::Barrier;
+
+				Barrier() { SType = STypeEnum; }
 			};
 		};
 	}

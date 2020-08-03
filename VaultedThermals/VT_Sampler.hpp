@@ -17,8 +17,8 @@
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
 #include "VT_Memory.hpp"
-#include "VT_Initialization.hpp"
 #include "VT_PhysicalDevice.hpp"
+#include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
 
 

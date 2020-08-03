@@ -22,7 +22,8 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory.hpp"
+#include "VT_Memory_Corridors.hpp"
+#include "VT_PhysicalDevice.hpp"
 
 
 
@@ -36,6 +37,8 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 	namespace Vault_01
 	{
+		using namespace Corridors;
+
 		/**
 		 * @brief Construct an API version number.
 		 * 
@@ -60,13 +63,21 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
 		
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html">Application Instance Specification</a> 
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a> 
 		*/
 		struct AppInstance
 		{
-			using Handle = VkInstance;   ///< VkInstance - Opaque handle to an instance object
+			/**
+			 * @brief Opaque handle to an instance object.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a> 
+			 */
+			using Handle = VkInstance;
 
-			using CreateFlags = Bitmask<EUndefined, VkInstanceCreateFlags>;   ///< VkInstanceCreateFlags - Reserved for future use
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a>
+			 */
+			using CreateFlags = Bitmask<EUndefined, VkInstanceCreateFlags>;
 
 			/**
 			@brief 
@@ -75,7 +86,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			@details
 			
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkApplicationInfo.html">Application Info Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkApplicationInfo">Application Info Specification</a> 
 			*/
 			struct AppInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo, EStructureType::ApplicationInformation>
 			{
@@ -91,7 +102,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			/**
 			@brief Structure specifying parameters of a newly created instance.
 
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateInfo.html">Create Info Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateInfo">Create Info Specification</a> 
 			*/
 			struct CreateInfo : Vault_00::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
 			{
@@ -112,9 +123,14 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
 				*/
-				struct Features
+				struct Features : Vault_00::VKStruct_Base<VkValidationFeaturesEXT, EStructureType::ValidationFeatures_EXT>
 				{
-
+					      EType                     SType                         ;
+					const void*                     Next                          ;
+					      uint32                    EnabledValidationFeatureCount ;
+					const EValidationFeatureEnable* EnabledValidationFeatures     ;
+					      uint32                    DisabledValidationFeatureCount;
+					const EValidationFeatureEnable* DisabledValidationFeatures    ;
 				};
 
 				/**
@@ -125,46 +141,51 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				* 
 				* @todo Implement.
 				*/
-				struct Flags
+				struct Flags : Vault_00::VKStruct_Base<VkValidationFlagsEXT, EStructureType::ValidationFlags_EXT>
 				{
-
+					      EType             SType                       ;
+					const void*             Next                        ;
+					      uint32            DisabledValidationCheckCount;
+					const EValidationCheck* DisabledValidationChecks    ;
 				};
 			};
+
+			
 
 			/**
 			@brief Create a new Vulkan application instance.
 
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html">Create Instance Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a> 
 			*/
 			static EResult Create
 			(
-				const AppInstance::CreateInfo& _appSpec        ,
-				const AllocationCallbacks*     _customAllocator,
-				      AppInstance::Handle&     _handleContainer
+				const AppInstance::CreateInfo&     _appSpec        ,
+				const Memory::AllocationCallbacks* _customAllocator,
+				      AppInstance::Handle&         _handleContainer
 			)
 			{
-				return EResult(vkCreateInstance( _appSpec, _customAllocator, &_handleContainer));
+				return EResult(vkCreateInstance( _appSpec, _customAllocator->operator const VkAllocationCallbacks*(), &_handleContainer));
 			}
 
 			/**
 			@brief Destroy an application instance of Vulkan.
 
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyInstance.html">Destroy Instance Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
 			*/
 			static void Destroy
 			(
-				AppInstance::Handle  _instance ,
-				AllocationCallbacks* _callbacks
+				AppInstance::Handle          _instance ,
+				Memory::AllocationCallbacks* _callbacks
 			)
 			{
-				vkDestroyInstance(_instance, _callbacks);
+				vkDestroyInstance(_instance, _callbacks->operator const VkAllocationCallbacks*());
 			}
 
 			/**
 			 * @brief Query the version of application instance-level functionality supported by the implementation.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceVersion.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceVersion">Specification</a> 
 			 * 
 			 * \param _versionContainer
 			 * \return 
@@ -173,12 +194,92 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			{
 				return EResult(vkEnumerateInstanceVersion(&_versionContainer));
 			}
+
+			/**
+			@brief Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.
+
+			@details
+			If pPhysicalDevices is NULL, then the number of physical devices available is returned in pPhysicalDeviceCount. 
+			Otherwise, pPhysicalDeviceCount must point to a variable set by the user to the number of elements in the pPhysicalDevices array, 
+			and on return the variable is overwritten with the number of handles actually written to pPhysicalDevices.
+
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
+			*/
+			static EResult QueryPhysicalDeviceListing(AppInstance::Handle _instance, uint32& _numDevices, PhysicalDevice::Handle* _deviceListing)
+			{
+				return EResult(vkEnumeratePhysicalDevices(_instance, &_numDevices, _deviceListing));
+			}
+
+			/**
+			* @brief 
+			* 
+			* @details
+			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a> 
+			* 
+			* @todo Implement.
+			*/
+			static EResult QueryPhysicalDeviceGroups
+			(
+				Handle                 _instance       ,
+				uint32*                _groupCount     ,
+				PhysicalDevice::Group* _groupProperties
+			)
+			{
+				vkEnumeratePhysicalDeviceGroups(_instance, _groupCount, _groupProperties->operator VkPhysicalDeviceGroupProperties*());
+			}
 		};
 	}
 
 	namespace Vault_02
 	{
-		using Vault_01::AppInstance;
+		struct AppInstance : Vault_01::AppInstance
+		{
+			struct AppInfo : Vault_01::AppInstance::AppInfo
+			{
+				using Parent = Vault_01::AppInstance::AppInfo;
+
+				AppInfo() { SType = STypeEnum; }
+			};
+
+			struct CreateInfo : Vault_01::AppInstance::CreateInfo
+			{
+				using Parent = Vault_01::AppInstance::CreateInfo;
+
+				CreateInfo() { SType = STypeEnum; }
+			};
+
+			struct Validation : Vault_01::AppInstance::Validation
+			{
+				struct Features : Vault_01::AppInstance::Validation::Features
+				{
+					Features() { SType = STypeEnum; }
+				};
+
+				struct Flags : Vault_01::AppInstance::Validation::Flags
+				{
+					Flags() { SType = STypeEnum; }
+				};
+			};
+
+			/** 
+			@brief Provides the handles of all available physical devices.
+			*/
+			static EResult GetAvailablePhysicalDevices(Handle _instance, PhysicalDevice::List& _deviceListing)
+			{
+				uint32 deviceCount;
+
+				EResult&& returnCode = QueryPhysicalDeviceListing(_instance, &_deviceListing.Count, nullptr);
+
+				returnCode = QueryPhysicalDeviceListing(_instance, &_deviceListing.Count, _deviceListing.Ptr);
+
+				return returnCode;
+			}
+
+			static EResult GetAvailablePhysicalDeviceGroups(Handle _instance, PhysicalDevice::GroupList& _groupListing)
+			{
+				uint32 deviceCount;
+			}
+		};
 	}
 
 	namespace Vault_05
@@ -192,15 +293,22 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
 
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html">Application Instance Specification</a> 
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a> 
 
 		Note: This class is a singleton. There should really not be more than one app instance per process...
 		*/
 		class AppInstance : Vault_01::AppInstance
 		{
 		public:
+			using Parent = Vault_01::AppInstance;
 
-			void Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo& _creationSpec)
+			/**
+			 * @brief Create an application instance.
+			 * 
+			 * \param _appInfo
+			 * \param _creationSpec
+			 */
+			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec)
 			{
 				appInfo      = _appInfo     ;
 				creationSpec = _creationSpec;
@@ -208,30 +316,68 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 				if (_creationSpec.AppInfo != &appInfo) _creationSpec.AppInfo = &appInfo;
 
-				EResult&& result = Vault_01::AppInstance::Create(creationSpec, allocator, handle);
-
-				if (result != EResult::Success) throw std::runtime_error("Failed to create application instance.");
+				return Vault_01::AppInstance::Create(creationSpec, allocator, handle);
 			}
 
-			void Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo& _creationSpec, AllocationCallbacks* _allocator)
+			/**
+			 * @brief Create an application instance.
+			 * 
+			 * \param _appInfo
+			 * \param _creationSpec
+			 * \param _allocator
+			 */
+			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec, Memory::AllocationCallbacks* _allocator)
 			{
 				appInfo      = _appInfo     ;
 				creationSpec = _creationSpec;
 				allocator    = _allocator   ;
 
-				if (_creationSpec.AppInfo != &appInfo) _creationSpec.AppInfo = &appInfo;
-
-				EResult&& result = Vault_01::AppInstance::Create(creationSpec, allocator, handle);
-
-				if (result != EResult::Success) throw std::runtime_error("Failed to create application instance.");
+				return Vault_01::AppInstance::Create(creationSpec, allocator, handle);
 			}
 
+			/**
+			 * @brief Destroy an application instance.
+			 */
 			void Destroy()
 			{
 				Vault_01::AppInstance::Destroy(handle, allocator);
 			}
 
+			/**
+			 * @brief Get application version.
+			 * 
+			 * \return 
+			 */
+			uint32 GetVersion()
+			{
+				if (version == 0) returnCodeReference = Parent::GetVersion(version);
 
+				returnCodeReference = EResult::Success;
+
+				return version;
+			}
+
+			EResult QueryPhysicalDeviceListing(uint32& _numDevices, PhysicalDevice* _deviceListing)
+			{
+				if (_deviceListing == nullptr) return Parent::QueryPhysicalDeviceListing(handle, _numDevices, nullptr);
+
+				PhysicalDevice::Handle* devices;
+
+				EResult&& returnCode = Parent::QueryPhysicalDeviceListing(handle, _numDevices, devices);
+
+				for (DeviceSize index = 0; index < _numDevices; index++)
+				{
+					_deviceListing[index].AssignHandle(devices[index]);
+				}
+
+				return returnCode;
+			}
+
+			EResult QueryPhysicalDeviceGroups(uint32& _groupCount, PhysicalDevice::Group* _groupProperties)
+			{
+					
+			}
+	
 			template<typename ReturnType>
 			/**
 			Function pointers for all Vulkan commands can be obtained with this command.
@@ -260,10 +406,13 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 		protected:
 
-			static Handle               handle      ;
-			static AppInfo              appInfo     ;   
-			static CreateInfo           creationSpec;
-			static AllocationCallbacks* allocator   ;
+			static Handle                       handle      ;
+			static AppInfo                      appInfo     ;   
+			static CreateInfo                   creationSpec;
+			static Memory::AllocationCallbacks* allocator   ;
+			static uint32                       version     ;
+
+			static EResult returnCodeReference;
 		};
 	}
 
@@ -271,6 +420,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 
 #pragma region Command Function Pointers
+		
 	/*
 	Vulkan commands are not necessarily exposed by static linking on a platform. 
 	Commands to query function pointers for Vulkan commands are described below.
@@ -291,7 +441,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 		Note: ReturnType is restricted to only function pointing types.
 
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html">Specification</a> 
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a> 
 		*/
 		inline typename std::enable_if
 		<
@@ -305,35 +455,6 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 		{
 			return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_appInstance, _procedureName));
 		};
-
-		/*
-		template<typename ReturnType>
-		
-		Function pointers for all Vulkan commands directly addressed from the device.
-
-		In order to support systems with multiple Vulkan implementations, the function pointers returned by vkGetInstanceProcAddr 
-		may point to dispatch code that calls a different real implementation for different VkDevice objects or their child objects. 
-		The overhead of the internal dispatch for VkDevice objects can be avoided by obtaining device-specific function pointers 
-		for any commands that use a device or device-child object as their dispatchable object. 
-		
-		Note: ReturnType is restricted to only function pointing types.
-
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html">Specification</a> 
-
-		// TODO: Move this to Logical Device... (its technically part of this but it needs the logical device definition... just do a forward declaration for organization's sake.
-		*/
-		/*inline typename std::enable_if
-		<
-			std::bool_constant
-			< 
-				std::is_pointer <                             ReturnType       >::value &&
-				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
-			>::value,
-
-		ReturnType>::type GetDeviceProcedureAddress(LogicalDevice::Handle& _appInstance, RoCStr _procedureName)
-		{
-			return reinterpret_cast<ReturnType>(vkGetDeviceProcAddr(_appInstance, _procedureName));
-		}*/
 	}
 
 #pragma endregion Command Function Pointers

@@ -25,6 +25,19 @@
 	namespace VT
 #endif
 {
+	namespace Corridors
+	{
+		/**
+		* @brief Rudimentary array referenced by pointer and size kept track of with integer.
+		*/
+		template<typename Type>
+		struct CountedArray
+		{
+			Type*      Ptr  ;
+			DeviceSize Count;
+		};
+	}
+
 	namespace Vault_00
 	{
 		/** @struct VKStruct_Base
@@ -45,8 +58,7 @@
 			 */
 			using EType= EStructureType;
 
-			//constexpr EType STypeSpecifier() { return TemplateSpecifiedStype; }
-
+			/** @brief Keeps track of the structure type enum for a native vulkan struct (If an enum does not exist Max_Enum is used instead) */
 			static constexpr EType STypeEnum = TemplateSpecifiedStype;
 			
 			/** 
