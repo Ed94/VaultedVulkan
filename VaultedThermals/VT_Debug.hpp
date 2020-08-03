@@ -40,18 +40,17 @@
 	{
 		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   ///< TODO: Add comment on what this is for.
 
-		// Pointer to the Create Debug Messenger Command.
+		/** @brief Pointer to the Create Debug Messenger Command. */ 
 		using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
 
-		using MessageServerityFlags = Bitmask<EDebugUtilities_MessageSeverity, Flags>;
-		using MessageTypeFlags      = Bitmask<EDebugUtilities_MessageType    , Flags>;
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a>  */
+		using MessageServerityFlags = Bitmask<EDebugUtilities_MessageSeverity, VkDebugUtilsMessageSeverityFlagsEXT>;
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  */
+		using MessageTypeFlags      = Bitmask<EDebugUtilities_MessageType    , VkDebugUtilsMessageTypeFlagsEXT>;
 
+		constexpr RoCStr Extension_DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME;
 
-
-		constexpr const char* Extension_DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME;
-
-
-
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a>  */
 		struct Label : Vault_00::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
 		{
 				  EType   SType    ;
@@ -60,6 +59,7 @@
 				  float32 Color[4] ;
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a>  */
 		struct ObjectInfo : Vault_00::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
 		{
 				  EType       SType    ;
@@ -69,11 +69,16 @@
 			const char*       Name     ;
 		};
 
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a>
+		 */
 		struct DebugMessenger
 		{
 		public:
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a>  */
 			using Handle = VkDebugUtilsMessengerEXT;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a>  */
 			struct CallbackData : Vault_00::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
 			{
 				using FlagsMask = Bitmask<EUndefined, Flags>;
@@ -92,9 +97,9 @@
 				const ObjectInfo* Objects             ;
 			};
 
-			using CallbackDelegate = VK_FPtr<Bool,
-				MessageServerityFlags, MessageTypeFlags, const CallbackData, void* >;
+			using CallbackDelegate = VK_FPtr<Bool, MessageServerityFlags, MessageTypeFlags, const CallbackData, void* >;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a>  */
 			struct CreateInfo : Vault_00::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
 			{
 				using CreateFlags = Bitmask<EUndefined, Flags>;
@@ -108,16 +113,26 @@
 					  void*                 UserData    ;
 			};
 
-
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDebugUtilsMessengerEXT">Specification</a> 
+			 * 
+			 * \param _appInstance
+			 * \param _createSpec
+			 * \param _allocator
+			 * \param _messenger
+			 * \return 
+			 */
 			static EResult Create
 			(
-					  AppInstance::Handle         _appInstance,
-				const DebugMessenger::CreateInfo& _createSpec ,
-				const AllocationCallbacks*        _allocator  ,
-					  DebugMessenger::Handle&     _messenger
+					  AppInstance::Handle          _appInstance,
+				const DebugMessenger::CreateInfo&  _createSpec ,
+				const Memory::AllocationCallbacks* _allocator  ,
+					  DebugMessenger::Handle&      _messenger
 			)
 			{
-				FPtr_CreateMessenger delegate = GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
+				static FPtr_CreateMessenger delegate = nullptr;
+
+				if (delegate == nullptr) delegate = GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
 
 				if (delegate != nullptr)
 				{
@@ -138,27 +153,37 @@
 				}
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDebugUtilsMessengerEXT">Specification</a> .
+			 * 
+			 * \param _appInstance
+			 * \param _messenger
+			 * \param _allocator
+			 */
 			static void Destroy
 			(
-					  AppInstance::Handle  _appInstance,
-					  DebugMessenger::Handle    _messenger  ,
-				const AllocationCallbacks* _allocator
+					  AppInstance::Handle          _appInstance,
+					  DebugMessenger::Handle       _messenger  ,
+				const Memory::AllocationCallbacks* _allocator
 			)
 			{
 				using FPtr_DestroyMessenger = PFN_vkDestroyDebugUtilsMessengerEXT;
 
-				FPtr_DestroyMessenger delegate = GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
+				static FPtr_DestroyMessenger delegate = nullptr;
+				
+				if (delegate == nullptr) delegate = GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
 
 				if (delegate != nullptr)
 				{
-					delegate(_appInstance, _messenger, _allocator);
+					delegate(_appInstance, _messenger, _allocator->operator const VkAllocationCallbacks*());
 				}
 			}
 		}; 
 
-
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#extendingvulkan-layers">Specification</a>  */
 		struct ValidationLayers
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
 			struct LayerProperties : Vault_00::VKStruct_Base<VkLayerProperties>
 			{
 				ExtensionNameStr LayerName;
@@ -167,11 +192,18 @@
 				DescrptionStr    Descrption;
 			};
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  */
 			static EResult QueryAvailableLayers(uint32* _numContainer, LayerProperties* _propertiesContainer)
 			{
 				return EResult(vkEnumerateInstanceLayerProperties(_numContainer, (VkLayerProperties*)(_propertiesContainer)));
 			}
+		};
+	}
 
+	namespace Vault_02
+	{
+		struct ValidationLayers : public Vault_01::ValidationLayers
+		{
 			static uint32 GetNumberOfLayers()
 			{
 				uint32 layerCount;

@@ -427,16 +427,31 @@
 			AccelerationStructure_NV     = VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV 
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventTypeEXT">Specification</a>  */
-		enum class EDeviceEventTypeExt : uint32
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigFlagBitsNV">Specification</a>  */
+		enum class EDeviceDiagnosticConfigFlag : uint32
 		{
-			DisplayHotPlug_EXT = VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT 
+			EnableShaderDebugInfo      = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV    , 
+			EnableResourceTracking     = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV    , 
+			EnableAutomaticCheckpoints = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV 
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a>  */
+		enum class EDeviceQueueCreateFlag : uint32
+		{
+			// Provided by VK_VERSION_1_1
+			Protected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventTypeEXT">Specification</a>  */
+		enum class EDeviceEventType : uint32
+		{
+			DisplayHotPlug_ = VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventTypeEXT">Specification</a>  */
-		enum class EDisplayEventType : uint32 
+		enum class EDisplayEventType : uint32
 		{
-			FirstPixelOut_EXT = VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT 
+			FirstPixelOut_EXT = VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT
 		};
 
 		/**
@@ -507,6 +522,27 @@
 			Opaque_Win32_KHR     = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR    ,   // Provided by VK_KHR_external_fence_capabilities
 			Opaque_Win32_KMT_KHR = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR,   // Provided by VK_KHR_external_fence_capabilities
 			SyncFD_KHR           = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR         ,   // Provided by VK_KHR_external_fence_capabilities
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlagBits">Specification</a>  */
+		enum class EExternalSemaphoreHandleTypeFlag : uint32
+		{
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT = 0x00000001,
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT = 0x00000002,
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT = 0x00000004,
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT = 0x00000008,
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT = 0x00000010,
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT,
+			// Provided by VK_KHR_external_semaphore_capabilities
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT,
+			// Provided by VK_KHR_external_semaphore_capabilities
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT,
+			// Provided by VK_KHR_external_semaphore_capabilities
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT,
+			// Provided by VK_KHR_external_semaphore_capabilities
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHR = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT,
+			// Provided by VK_KHR_external_semaphore_capabilities
+			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT,
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlagBits">Specification</a>  */
@@ -1046,6 +1082,13 @@
 			DeviceLocal       = VK_MEMORY_HEAP_DEVICE_LOCAL_BIT      ,
 			MultiInstance     = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT    ,
 			MultiInstance_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR 
+		};
+
+		enum class EMemoryOverallocationBehaviorAMD : uint32
+		{
+			Default    = VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD   , 
+			Allowed    = VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD   , 
+			Disallowed = VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryPropertyFlagBits">Specification</a>  */
@@ -2057,8 +2100,13 @@
 			MemoryOpaque_CaptureAddressAllocate_Info_KHR                = VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR                ,
 			DeviceMemory_OpaqueCaptureAddress_Info_KHR                  = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR                  ,
 			PhysicalDevice_HostQuery_ResetFeatures_EXT                  = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT                  ,
+
+			// Not found... (1.2.141)
+			Device_PrivateData_CreateInfo_EXT = 1000295001,	   // VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO_EXT,
+
 			Max_Enum                                                    = VK_STRUCTURE_TYPE_MAX_ENUM
 		};
+		
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubgroupFeatureFlagBits">Specification</a>  */
 		enum class ESubgroupFeaturesFlag : uint32

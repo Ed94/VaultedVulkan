@@ -40,14 +40,16 @@
 	{
 		/**
 		 * @brief A queue of images that can be presented to a surface.
+		 * 
+		 * @details
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a> 
 		 */
 		struct SwapChain
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a>  */
 			using Handle = VkSwapchainKHR;
 
-
 			static constexpr Handle NullHandle = Handle(EHandle::Null);
-
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> .
@@ -56,6 +58,7 @@
 			{
 				using ECreateFlag = ESwapchainCreateFlag;
 
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a>  */
 				using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
 
 				      EType                 SType                ;
@@ -124,7 +127,7 @@
 			 * If the oldSwapchain parameter of pCreateInfo is a valid swapchain, which has exclusive full-screen access, that access is released from oldSwapchain. 
 			 * If the command succeeds in this case, the newly created swapchain will automatically acquire exclusive full-screen access from oldSwapchain.
 			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSwapchainKHR.html">link text</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSwapchainKHR">link text</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _creationSpecification
@@ -134,13 +137,13 @@
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle  _deviceHandle         ,
-				const SwapChain::CreateInfo& _creationSpecification,
-				const AllocationCallbacks*   _allocator            ,
-				      SwapChain::Handle&     _swapChain
+				      LogicalDevice::Handle        _deviceHandle         ,
+				const SwapChain::CreateInfo&       _creationSpecification,
+				const Memory::AllocationCallbacks* _allocator            ,
+				      SwapChain::Handle&           _swapChain
 			)
 			{
-				return EResult(vkCreateSwapchainKHR(_deviceHandle, (VkSwapchainCreateInfoKHR*)(&_creationSpecification), _allocator, (VkSwapchainKHR*)(&_swapChain)));
+				return EResult(vkCreateSwapchainKHR(_deviceHandle, _creationSpecification, _allocator->operator const VkAllocationCallbacks*(), &_swapChain));
 			};
 
 			/**
@@ -150,15 +153,15 @@
 			 * The application must not destroy a swapchain until after completion of all outstanding operations on images that were acquired from the swapchain. 
 			 * swapchain and all associated VkImage handles are destroyed, and must not be acquired or used any more by the application.
 			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySwapchainKHR.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySwapchainKHR">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _swapChainToDestroy
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChainToDestroy, const AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChainToDestroy, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, _allocator);
+				vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -169,7 +172,7 @@
 			 * Otherwise, pSwapchainImageCount must point to a variable set by the user to the number of elements in the pSwapchainImages array, 
 			 * and on return the variable is overwritten with the number of structures actually written to pSwapchainImages.
 			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetSwapchainImagesKHR.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainImagesKHR">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _swapChain
@@ -193,7 +196,7 @@
 			 */
 			static EResult QueuePresentation(LogicalDevice::Queue::Handle _queue, const PresentationInfo& _presentation)
 			{
-				return EResult(vkQueuePresentKHR(_queue, (const VkPresentInfoKHR*)(&_presentation)));
+				return EResult(vkQueuePresentKHR(_queue, _presentation));
 			}
 		};
 	}

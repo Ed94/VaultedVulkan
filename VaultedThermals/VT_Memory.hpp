@@ -37,8 +37,9 @@ Contains the full definition of the intended memory structure.
 {
 	namespace Vault_01
 	{
-		struct Memory : Corridors::Memory
+		struct Memory : public Corridors::Memory
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
 			using Handle = VkDeviceMemory;
 
 			/**
@@ -120,23 +121,38 @@ Contains the full definition of the intended memory structure.
 
 	namespace Vault_02
 	{
-		struct Memory : Vault_01::Memory
+		struct Memory : public Vault_01::Memory
 		{
 			using Parent = Vault_01::Memory;
 
-			struct AllocateInfo : Vault_01::Memory::AllocateInfo
+			struct AllocateInfo : public Vault_01::Memory::AllocateInfo
 			{
 				using Parent = Vault_01::Memory::AllocateInfo;
 
 				AllocateInfo() { SType = STypeEnum; }
 			};
 
-			struct Barrier : Vault_01::Memory::Barrier
+			struct Barrier : public Vault_01::Memory::Barrier
 			{
 				using Parent = Vault_01::Memory::Barrier;
 
 				Barrier() { SType = STypeEnum; }
 			};
+		};
+	}
+
+	namespace Vault_05
+	{
+		class Memory : public Vault_01::Memory
+		{
+		public:
+
+
+		protected:
+
+			Handle handle;
+
+			LogicalDevice& assignedDevice;
 		};
 	}
 }

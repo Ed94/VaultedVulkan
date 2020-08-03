@@ -547,7 +547,7 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_device_extensions">Specification</a> 
 			*/
-			static EResult EnumerateExtensionProperties(Handle _deviceHandle, RoCStr _layerName, uint32* _numOfExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			static inline EResult EnumerateExtensionProperties(Handle _deviceHandle, RoCStr _layerName, uint32* _numOfExtensions, ExtensionProperties* _extensionPropertiesContainer)
 			{
 				return EResult(vkEnumerateDeviceExtensionProperties(_deviceHandle, _layerName, _numOfExtensions, _extensionPropertiesContainer->operator VkExtensionProperties*()));
 			}
@@ -559,7 +559,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			 * \param _format
 			 * \param _properties
 			 */
-			static void GetFormatProperties(PhysicalDevice::Handle _physicalDevice, EFormat _format, FormatProperties& _properties)
+			static inline void GetFormatProperties(PhysicalDevice::Handle _physicalDevice, EFormat _format, FormatProperties& _properties)
 			{
 				vkGetPhysicalDeviceFormatProperties(_physicalDevice, VkFormat(_format), _properties);
 			}
@@ -570,7 +570,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			 * \param _physicalDevice
 			 * \param _properties
 			 */
-			static void GetMemoryProperties(PhysicalDevice::Handle _physicalDevice, MemoryProperties& _properties)
+			static inline void GetMemoryProperties(PhysicalDevice::Handle _physicalDevice, MemoryProperties& _properties)
 			{
 				vkGetPhysicalDeviceMemoryProperties(_physicalDevice, _properties);
 			}
@@ -580,7 +580,7 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties">Specification</a> 
 			*/
-			static void GetProperties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Properties& _propertiesContainer)
+			static inline void GetProperties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Properties& _propertiesContainer)
 			{
 				vkGetPhysicalDeviceProperties(_deviceHandle, _propertiesContainer.operator VkPhysicalDeviceProperties*());
 			}
@@ -591,7 +591,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties2">Specification</a> 
 			 */
-			static void GetProperties2
+			static inline void GetProperties2
 			(
 				Handle       _physicalDevice,
 				Properties2& _properties
@@ -752,6 +752,10 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			void AssignHandle(Handle _handle) { handle = _handle; }
 
+			EResult EnumerateExtensionProperties(RoCStr _layerName, uint32* _numOfExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			{
+				throw std::logic_error("Not Implemented");
+			}
 
 		protected:
 

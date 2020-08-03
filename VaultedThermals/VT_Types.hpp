@@ -220,6 +220,11 @@
 		using DependencyFlags = Bitmask<EDependencyFlag, VkDependencyFlags>;
 
 		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlags">Specification</a> 
+		 */
+		using FenceImportFlags = Bitmask<EFenceImportFlag, VkFenceImportFlags>;
+
+		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlags">Specification</a> 
 		 */
 		using FormatFeatureFlags = Bitmask<EFormatFeatureFlag, VkFormatFeatureFlags>;
@@ -310,6 +315,7 @@
 			EComponentSwizzle A;
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkConformanceVersion">Specification</a>  */
 		struct ConformanceVersion : Vault_00::VKStruct_Base<VkConformanceVersion>
 		{
 			uInt8 Major   ;
@@ -365,18 +371,26 @@
 		constexpr DeviceSize UUID_Size = VK_UUID_SIZE;
 
 		using UUID = unsigned int[UUID_Size];   ///< Universally unique identifier.
+
+
+		// TODO: Move these later...
+
+		struct Display
+		{
+			using Handle = VkDisplayKHR;
+		};
 	}
 
 	namespace Vault_02
 	{
-		struct Base_InStructure : Corridors::Base_InStructure
+		struct Base_InStructure : public Corridors::Base_InStructure
 		{
 			using Parent = Corridors::Base_InStructure;
 
 			Base_InStructure() { SType = STypeEnum; }
 		};
 
-		struct Base_OutStructure : Corridors::Base_OutStructure
+		struct Base_OutStructure : public Corridors::Base_OutStructure
 		{
 			using Parent = Corridors::Base_OutStructure;
 

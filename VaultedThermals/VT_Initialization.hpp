@@ -205,9 +205,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 			*/
-			static EResult QueryPhysicalDeviceListing(AppInstance::Handle _instance, uint32& _numDevices, PhysicalDevice::Handle* _deviceListing)
+			static EResult QueryPhysicalDeviceListing(AppInstance::Handle _instance, uint32* _numDevices, PhysicalDevice::Handle* _deviceListing)
 			{
-				return EResult(vkEnumeratePhysicalDevices(_instance, &_numDevices, _deviceListing));
+				return EResult(vkEnumeratePhysicalDevices(_instance, _numDevices, _deviceListing));
 			}
 
 			/**
@@ -215,8 +215,6 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			* 
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a> 
-			* 
-			* @todo Implement.
 			*/
 			static EResult QueryPhysicalDeviceGroups
 			(
@@ -232,30 +230,30 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 	namespace Vault_02
 	{
-		struct AppInstance : Vault_01::AppInstance
+		struct AppInstance : public Vault_01::AppInstance
 		{
-			struct AppInfo : Vault_01::AppInstance::AppInfo
+			struct AppInfo : public Vault_01::AppInstance::AppInfo
 			{
 				using Parent = Vault_01::AppInstance::AppInfo;
 
 				AppInfo() { SType = STypeEnum; }
 			};
 
-			struct CreateInfo : Vault_01::AppInstance::CreateInfo
+			struct CreateInfo : public Vault_01::AppInstance::CreateInfo
 			{
 				using Parent = Vault_01::AppInstance::CreateInfo;
 
 				CreateInfo() { SType = STypeEnum; }
 			};
 
-			struct Validation : Vault_01::AppInstance::Validation
+			struct Validation : public Vault_01::AppInstance::Validation
 			{
-				struct Features : Vault_01::AppInstance::Validation::Features
+				struct Features : public Vault_01::AppInstance::Validation::Features
 				{
 					Features() { SType = STypeEnum; }
 				};
 
-				struct Flags : Vault_01::AppInstance::Validation::Flags
+				struct Flags : public Vault_01::AppInstance::Validation::Flags
 				{
 					Flags() { SType = STypeEnum; }
 				};
@@ -266,8 +264,6 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			*/
 			static EResult GetAvailablePhysicalDevices(Handle _instance, PhysicalDevice::List& _deviceListing)
 			{
-				uint32 deviceCount;
-
 				EResult&& returnCode = QueryPhysicalDeviceListing(_instance, &_deviceListing.Count, nullptr);
 
 				returnCode = QueryPhysicalDeviceListing(_instance, &_deviceListing.Count, _deviceListing.Ptr);
@@ -275,9 +271,20 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				return returnCode;
 			}
 
+			/**
+			 * @brief Provides a list of the device groups present in the system.
+			 * 
+			 * \param _instance
+			 * \param _groupListing
+			 * \return 
+			 */
 			static EResult GetAvailablePhysicalDeviceGroups(Handle _instance, PhysicalDevice::GroupList& _groupListing)
 			{
-				uint32 deviceCount;
+				EResult&& returnCode = QueryPhysicalDeviceGroups(_instance, &_groupListing.Count, nullptr);
+
+				returnCode = QueryPhysicalDeviceGroups(_instance, &_groupListing.Count, _groupListing.Ptr);
+
+				return returnCode;
 			}
 		};
 	}
@@ -297,7 +304,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 		Note: This class is a singleton. There should really not be more than one app instance per process...
 		*/
-		class AppInstance : Vault_01::AppInstance
+		class AppInstance : public Vault_01::AppInstance
 		{
 		public:
 			using Parent = Vault_01::AppInstance;
@@ -357,15 +364,15 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				return version;
 			}
 
-			EResult QueryPhysicalDeviceListing(uint32& _numDevices, PhysicalDevice* _deviceListing)
+			EResult QueryPhysicalDeviceListing(uint32* _numDevices, PhysicalDevice* _deviceListing)
 			{
-				if (_deviceListing == nullptr) return Parent::QueryPhysicalDeviceListing(handle, _numDevices, nullptr);
+				if (_numDevices == nullptr) return Parent::QueryPhysicalDeviceListing(handle, _numDevices, nullptr);
 
 				PhysicalDevice::Handle* devices;
 
 				EResult&& returnCode = Parent::QueryPhysicalDeviceListing(handle, _numDevices, devices);
 
-				for (DeviceSize index = 0; index < _numDevices; index++)
+				for (DeviceSize index = 0; index < *_numDevices; index++)
 				{
 					_deviceListing[index].AssignHandle(devices[index]);
 				}
@@ -373,9 +380,13 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				return returnCode;
 			}
 
-			EResult QueryPhysicalDeviceGroups(uint32& _groupCount, PhysicalDevice::Group* _groupProperties)
+			EResult QueryPhysicalDeviceGroups(uint32* _groupCount, PhysicalDevice::Group* _groupProperties)
 			{
-					
+				if (_groupCount == nullptr) return Parent::QueryPhysicalDeviceGroups(handle, _groupCount, nullptr);
+
+				EResult&& returnCode = Parent::QueryPhysicalDeviceGroups(handle, _groupCount, _groupProperties);
+
+				return returnCode;
 			}
 	
 			template<typename ReturnType>
