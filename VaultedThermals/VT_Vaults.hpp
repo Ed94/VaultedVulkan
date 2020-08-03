@@ -42,30 +42,12 @@ Vault 8 Open Macro: #define VT_Vault_8_Open
 
 
 
-//#pragma region Vault_Macros
-//
-//	#ifndef VaultedThermals__VT_Vaults__DEFINED
-//
-//		#define VaultedThermals__VT_Vaults__DEFINED
-//
-//	#endif
-//
-//#pragma endregion Vault_Macros
-
-
-
 #ifndef VT_Option__Use_Short_Namespace
 	namespace VaultedThermals
 #else
 	namespace VT
 #endif
 {
-	/** @namespace Attic
-
-		@brief Contains any misc global definitions.
-	*/
-	inline namespace Attic {}
-
 	/** @namespace Corridors
 
 		@brief Contains shared definitions between the vaults.

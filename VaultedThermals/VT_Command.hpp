@@ -5,7 +5,7 @@
 
 @details
 
-<a href="linkURL">Specification</a> 
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
 */
 
 
@@ -22,10 +22,11 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory.hpp"
-#include "VT_Initialization.hpp"
+#include "VT_Memory_Corridors.hpp"
 #include "VT_PhysicalDevice.hpp"
+#include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
 #include "VT_RenderPass.hpp"
@@ -42,18 +43,19 @@
 {
 	namespace Vault_01
 	{
-		
-
-
 		/**
-		 * @brief.
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a> 
 		 */
 		struct CommandPool
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPool">Specification</a>  */
 			using Handle = VkCommandPool;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlags">Specification</a>  */
 			using CreateFlgas = Bitmask<ECommandPoolCreateFlag, VkCommandPoolCreateFlags>;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlags">Specification</a>  */
 			using ResetFlags  = Bitmask<ECommandPoolResetFlags, VkCommandPoolResetFlags >;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a>  */
 			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a>  */
@@ -79,17 +81,17 @@
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle _deviceHandle,
-				const CreateInfo&           _createInfo  ,
-				const AllocationCallbacks*  _allocator   ,
-				      CommandPool::Handle&  _commandPool
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _createInfo  ,
+				const Memory::AllocationCallbacks* _allocator   ,
+				      CommandPool::Handle&         _commandPool
 			)
 			{
-				return EResult(vkCreateCommandPool(_deviceHandle, (const VkCommandPoolCreateInfo*)(&_createInfo), _allocator, &_commandPool));
+				return EResult(vkCreateCommandPool(_deviceHandle, (const VkCommandPoolCreateInfo*)(&_createInfo), _allocator->operator const VkAllocationCallbacks*(), &_commandPool));
 			}
 
 			/**
-			 * @brief.
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
@@ -97,16 +99,16 @@
 			 */
 			static void Destroy
 			(
-				      LogicalDevice::Handle _deviceHandle,
-				      Handle                _commandPool ,
-				const AllocationCallbacks*  _allocator
+				      LogicalDevice::Handle        _deviceHandle,
+				      Handle                       _commandPool ,
+				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				vkDestroyCommandPool(_deviceHandle, _commandPool, _allocator);
+				vkDestroyCommandPool(_deviceHandle, _commandPool, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
-			 * @brief.
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetCommandPool">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
@@ -123,7 +125,7 @@
 			}
 
 			/**
-			 * @brief.
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkTrimCommandPool">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
@@ -142,17 +144,22 @@
 
 
 		/**
-		 * @brief.
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
 		 */
 		struct CommandBuffer
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBuffer">Specification</a>  */
 			using Handle = VkCommandBuffer;
 
 			using EBufferLevel = ECommandBufferLevel;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlags">Specification</a>  */
 			using QueryControlFlags           = Bitmask<EQueryControlFlags         , VkQueryControlFlags          >;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlags">Specification</a>  */
 			using QueryPipelineStatisticFlags = Bitmask<EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags>;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlags">Specification</a>  */
 			using ResetFlags                  = Bitmask<ECommandBufferResetFlag    , VkCommandBufferResetFlags    >;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferUsageFlags">Specification</a>  */
 			using UsageFlags                  = Bitmask<ECommandBufferUsageFlag    , VkCommandBufferUsageFlags    >;
 
 			/**
@@ -167,14 +174,15 @@
 				      uint32              BufferCount;
 			};
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a>  */
 			struct BufferImageRegion : Vault_00::VKStruct_Base<VkBufferImageCopy>
 			{
-				DeviceSize               bufferOffset;
-				uint32                   bufferRowLength;
-				uint32                   bufferImageHeight;
-				Image::SubresourceLayers imageSubresource;
-				Offset3D                 imageOffset;
-				Extent3D                 imageExtent;
+				DeviceSize               BufferOffset     ;
+				uint32                   BufferRowLength  ;
+				uint32                   BufferImageHeight;
+				Image::SubresourceLayers ImageSubresource ;
+				Offset3D                 ImageOffset      ;
+				Extent3D                 ImageExtent      ;
 			};
 
 			/**
@@ -243,79 +251,94 @@
 
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkTimelineSemaphoreSubmitInfo">Specification</a>
-				 * 
-				 * @todo Implement.
 				 */
 				struct TimelineSemaphore : Vault_00::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
 				{
-
+					      EType   SType                    ;
+					const void*   Next                     ;
+					      uint32  WaitSemaphoreValueCount  ;
+					const uInt64* WaitSemaphoreValues      ;
+					      uint32  SignalSemaphoreValueCount;
+					const uInt64* SignalSemaphoreValues    ;
 				};	
 
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a>	
-				 * 
-				 * @todo Implement.
 				 */
 				struct D3D12Fence : Vault_00::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
 				{
-
+					      EType   SType                     ;
+					const void*   Next                      ;
+					      uint32  WaitSemaphoreValuesCount  ;
+					const uInt64* WaitSemaphoreValues       ;
+					      uint32  SignalSemaphoreValuesCount;
+					const uInt64* SignalSemaphoreValues     ;
 				};
 
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32KeyedMutexAcquireReleaseInfoKHR">Specification</a> 
-				 * 
-				 * @todo Implement.
 				 */
 				struct Win32KeyedMutexAcquireRelease : Vault_00::VKStruct_Base<VkWin32KeyedMutexAcquireReleaseInfoKHR>
 				{
-
+					      EType           SType          ;
+					const void*           Next           ;
+					      uint32          AcquireCount   ;
+					const Memory::Handle* AcquireSyncs   ;
+					const uInt64*         AcquireKeys    ;
+					const uint32*         AcquireTimeouts;
+					      uint32          ReleaseCount   ;
+					const Memory::Handle* ReleaseSyncs   ;
+					const uInt64*         ReleaseKeys    ;
 				};
 
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkProtectedSubmitInfo">Specification</a> 
-				 * 
-				 * @todo Implement.
 				 */
 				struct Protected : Vault_00::VKStruct_Base<VkProtectedSubmitInfo>
 				{
-
+					      EType SType          ;
+					const void* Next           ;
+					      Bool  ProtectedSubmit;
 				};
 
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupSubmitInfo">Specification</a>
-				 * 
-				 * @todo Implement.
 				 */
 				struct DeviceGroup : Vault_00::VKStruct_Base<VkDeviceGroupSubmitInfo>
 				{
-
+					      EType   SType                       ;
+					const void*   Next                        ;
+					      uint32  WaitSemaphoreCount          ;
+					const uint32* WaitSemaphoreDeviceIndices  ;
+					      uint32  CommandBufferCount          ;
+					const uint32* CommandBufferDeviceMasks    ;
+					      uint32  SignalSemaphoreCount        ;
+					const uint32* SignalSemaphoreDeviceIndices;
 				};
 
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceQuerySubmitInfoKHR">Specification</a> 
-				 * 
-				 * @todo Implement.
 				 */
 				struct PerformanceQuery : Vault_00::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
 				{
-
+					      EType  Type            ;
+					const void*  Next            ;
+					      uint32 CounterPassIndex;
 				};
 			};
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupCommandBufferBeginInfo">Specification</a> 
-			 * 
-			 * @todo Implement.
 			 */
 			struct DeviceGroupBeginInfo : Vault_00::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
 			{
-
+				      EType  SType     ;
+				const void*  Next      ;
+				      uint32 DeviceMask;
 			};
 
-
-
 			/**
-			 * .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateCommandBuffers">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _allocateInfo
@@ -333,43 +356,7 @@
 			}
 
 			/**
-			 * @brief.
-			 * 
-			 * \param _primaryCommandBuffer
-			 * \param _secondaryBufferCount
-			 * \param _secondaryBuffers
-			 */
-			static void Execute
-			(
-				Handle        _primaryCommandBuffer,
-				uint32        _secondaryBufferCount,
-				const Handle* _secondaryBuffers
-			)
-			{
-				vkCmdExecuteCommands(_primaryCommandBuffer, _secondaryBufferCount, _secondaryBuffers);
-			}
-
-			/**
-			 * .
-			 * 
-			 * \param _deviceHandle
-			 * \param _commandPool
-			 * \param _bufferCount
-			 * \param _commandBuffers
-			 */
-			static void Free
-			(
-				      LogicalDevice::Handle _deviceHandle  ,
-				      CommandPool::Handle   _commandPool   ,
-				      uint32                _bufferCount   ,
-				const Handle*               _commandBuffers
-			)
-			{
-				vkFreeCommandBuffers(_deviceHandle, _commandPool, _bufferCount, _commandBuffers);
-			}
-
-			/**
-			 * .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBeginCommandBuffer">Specification</a> 
 			 * 
 			 * \param _commandBuffer
 			 * \param _flags
@@ -380,6 +367,14 @@
 				return EResult(vkBeginCommandBuffer(_commandBuffer, _flags.operator const VkCommandBufferBeginInfo*()));
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBeginRenderPass">Specification</a>.
+			 * 
+			 * \param _deviceHandle
+			 * \param _commandPool
+			 * \param _bufferCount
+			 * \param _commandBuffers
+			 */
 			static void BeginRenderPass
 			(
 				      CommandBuffer::Handle  _commandBuffer,
@@ -390,6 +385,10 @@
 				vkCmdBeginRenderPass(_commandBuffer, _beginInfo.operator const VkRenderPassBeginInfo*(), VkSubpassContents(_contents));
 			}
 
+			
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindDescriptorSets">Specification</a> 
+			 */
 			static void BindDescriptorSets
 			(
 				      CommandBuffer::Handle    _commandBuffer     ,
@@ -407,14 +406,17 @@
 					_commandBuffer                         , 
 					VkPipelineBindPoint(_pipelineBindPoint), 
 					_layout                                , 
-					_firstSet                    , 
-					_descriptorSetCount                              ,
+					_firstSet                              , 
+					_descriptorSetCount                    ,
 					_descriptorSets                        , 
 					_dynamicOffsetCount                    , 
 					_dynamicOffsets
 				);
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindIndexBuffer">Specification</a> 
+			 */
 			static void BindIndexBuffer
 			(
 				CommandBuffer::Handle _commandBuffer,
@@ -426,6 +428,9 @@
 				vkCmdBindIndexBuffer(_commandBuffer, _buffer, _offset, VkIndexType(_indexType));
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindVertexBuffers">Specification</a>.
+			 */
 			static void BindVertexBuffers
 			(
 				      Handle          _commandBuffer,
@@ -438,6 +443,14 @@
 				vkCmdBindVertexBuffers(_commandBuffer, _firstBinding, _bindingCount, &_buffers, &_offsets);
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindPipeline">Specification</a>
+			 * 
+			 * \param commandBuffer
+			 * \param event
+			 * \param stageMask
+			 * \return 
+			 */
 			static void BindPipeline
 			(
 				CommandBuffer::Handle _commandBuffer    ,
@@ -448,6 +461,14 @@
 				vkCmdBindPipeline(_commandBuffer, VkPipelineBindPoint(_pipelineBindPoint), _pipeline);
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBlitImage">Specification</a> .
+			 * 
+			 * \param commandBuffer
+			 * \param event
+			 * \param stageMask
+			 * \return 
+			 */
 			static void BlitImage
 			(
 				      CommandBuffer::Handle _commandBuffer,
@@ -473,6 +494,42 @@
 				);
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBuffer">Specification</a>
+			 * 
+			 * \return 
+			 */
+			static void CopyBuffer
+			(
+				      CommandBuffer::Handle _commandBuffer    ,
+				      Buffer::Handle        _sourceBuffer     ,
+				      Buffer::Handle        _destinationBuffer,
+				      uint32                _regionCount      ,
+				const Buffer::CopyInfo*     _regions
+			)
+			{
+				vkCmdCopyBuffer(_commandBuffer, _sourceBuffer, _destinationBuffer, _regionCount, _regions->operator const VkBufferCopy*());
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBufferToImage">Specification</a> 
+			 */
+			static void CopyBufferToImage
+			(
+				      Handle             _commandBuffer ,
+				      Buffer::Handle     _srcBuffer     ,
+				      Image::Handle      _dstImage      ,
+				      EImageLayout       _dstImageLayout,
+				      uint32			 _regionCount   ,
+				const BufferImageRegion* _regions
+			)
+			{
+				vkCmdCopyBufferToImage(_commandBuffer, _srcBuffer, _dstImage, VkImageLayout(_dstImageLayout), _regionCount, _regions->operator const VkBufferImageCopy*());
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdDraw">Specification</a> 
+			 */
 			static void Draw
 			(
 				CommandBuffer::Handle _commandBuffer,
@@ -485,6 +542,9 @@
 				vkCmdDraw(_commandBuffer, _vertexCount, _instanceCount, _firstVertex, _firstInstance);
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdDrawIndexed">Specification</a> 
+			 */
 			static void DrawIndexed
 			(
 				CommandBuffer::Handle _commandBuffer,
@@ -499,7 +559,7 @@
 			}
 
 			/**
-			 * .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEndCommandBuffer">Specification</a> 
 			 * 
 			 * \param _commandBuffer
 			 * \return 
@@ -509,13 +569,52 @@
 				return EResult(vkEndCommandBuffer(_commandBuffer));
 			}
 
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdEndRenderPass">Specification</a> .
+			 */
 			static void EndRenderPass(CommandBuffer::Handle _commandBuffer)
 			{
 				vkCmdEndRenderPass(_commandBuffer);
 			}
 
 			/**
-			 * .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdExecuteCommands">Specification</a> 
+			 * 
+			 * \param _primaryCommandBuffer
+			 * \param _secondaryBufferCount
+			 * \param _secondaryBuffers
+			 */
+			static void Execute
+			(
+				Handle        _primaryCommandBuffer,
+				uint32        _secondaryBufferCount,
+				const Handle* _secondaryBuffers
+			)
+			{
+				vkCmdExecuteCommands(_primaryCommandBuffer, _secondaryBufferCount, _secondaryBuffers);
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeCommandBuffers">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _commandPool
+			 * \param _bufferCount
+			 * \param _commandBuffers
+			 */
+			static void Free
+			(
+				      LogicalDevice::Handle _deviceHandle  ,
+				      CommandPool::Handle   _commandPool   ,
+				      uint32                _bufferCount   ,
+				const Handle*               _commandBuffers
+			)
+			{
+				vkFreeCommandBuffers(_deviceHandle, _commandPool, _bufferCount, _commandBuffers);
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetCommandBuffer">Specification</a> 
 			 * 
 			 * \param _commandBuffer
 			 * \param _flags
@@ -527,7 +626,7 @@
 			}
 
 			/**
-			 * @brief.
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueSubmit">Specification</a> 
 			 *
 			 * @todo Should this be in LogicalDevice::Queue?
 			 *  
@@ -549,35 +648,8 @@
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBuffer">Specification</a>
-			 * 
-			 * \return 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a>
 			 */
-			static void CopyBuffer
-			(
-				      CommandBuffer::Handle _commandBuffer    ,
-				      Buffer::Handle        _sourceBuffer     ,
-				      Buffer::Handle        _destinationBuffer,
-				      uint32                _regionCount      ,
-				const Buffer::CopyInfo*     _regions
-			)
-			{
-				vkCmdCopyBuffer(_commandBuffer, _sourceBuffer, _destinationBuffer, _regionCount, _regions->operator const VkBufferCopy*());
-			}
-
-			static void CopyBufferToImage
-			(
-				      Handle             _commandBuffer ,
-				      Buffer::Handle     _srcBuffer     ,
-				      Image::Handle      _dstImage      ,
-				      EImageLayout       _dstImageLayout,
-				      uint32			 _regionCount   ,
-				const BufferImageRegion* _regions
-			)
-			{
-				vkCmdCopyBufferToImage(_commandBuffer, _srcBuffer, _dstImage, VkImageLayout(_dstImageLayout), _regionCount, _regions->operator const VkBufferImageCopy*());
-			}
-
 			static void SubmitPipelineBarrier
 			(
 				      Handle                  _commandBuffer           ,
@@ -607,52 +679,75 @@
 				);
 			}
 
-			///**
-			// * @todo Implement.
-			// * 
-			// */
-			//static void SetDeviceMask()
-			//{
+			/**
+			 * 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetDeviceMask">Specification</a> 
+			 * 
+			 */
+			static void SetDeviceMask(Handle _commandBuffer, uint32 _deviceMask)
+			{
+				vkCmdSetDeviceMask(_commandBuffer, _deviceMask);
+			}
 
-			//}
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdResetEvent">Specification</a> 
+			 */
+			static void ResetEvent
+			(
+				Handle               _commandBuffer,
+				Event::Handle        _event        ,
+				Pipeline::StageFlags _stageMask
+			)
+			{
+				vkCmdResetEvent(_commandBuffer, _event, _stageMask);
+			}
 
-			//static EResult ResetEvent
-			//(
-			//	VkCommandBuffer                             commandBuffer,
-			//	VkEvent                                     event,
-			//	VkPipelineStageFlags                        stageMask
-			//)
-			//{
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a> 
+			 */
+			static void SetEvent
+			(
+				Handle               _commandBuffer,
+				Event::Handle        _event        ,
+				Pipeline::StageFlags _stageMask
+			)
+			{
+				vkCmdSetEvent(_commandBuffer, _event, _stageMask);
+			}
 
-			//}
-
-			//static EResult SetEvent
-			//(
-			//	VkCommandBuffer                             commandBuffer,
-			//	VkEvent                                     event,
-			//	VkPipelineStageFlags                        stageMask
-			//)
-			//{
-
-			//}
-
-			//static EResult WaitForEvents
-			//(
-			//	VkCommandBuffer                             commandBuffer,
-			//	uint32_t                                    eventCount,
-			//	const VkEvent*                              pEvents,
-			//	VkPipelineStageFlags                        srcStageMask,
-			//	VkPipelineStageFlags                        dstStageMask,
-			//	uint32_t                                    memoryBarrierCount,
-			//	const VkMemoryBarrier*                      pMemoryBarriers,
-			//	uint32_t                                    bufferMemoryBarrierCount,
-			//	const VkBufferMemoryBarrier*                pBufferMemoryBarriers,
-			//	uint32_t                                    imageMemoryBarrierCount,
-			//	const VkImageMemoryBarrier*                 pImageMemoryBarriers
-			//)
-			//{
-
-			//}
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a> 
+			 */
+			static EResult WaitForEvents
+			(
+				      Handle                  _commandBuffer           ,
+				      uint32                  _eventCount              ,
+				const Event::Handle*          _events                  ,
+				      Pipeline::StageFlags    _srcStageMask            ,
+				      Pipeline::StageFlags    _dstStageMask            ,
+				      uint32                  _memoryBarrierCount      ,
+				const Memory::Barrier*        _memoryBarriers          ,
+				      uint32                  _bufferMemoryBarrierCount,
+				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
+				      uint32                  _imageMemoryBarrierCount ,
+				const Image::Memory_Barrier*  _imageMemoryBarriers
+			)
+			{
+				vkCmdWaitEvents
+				(
+					_commandBuffer, 
+					_eventCount, 
+					_events, 
+					_srcStageMask, 
+					_dstStageMask, 
+					_memoryBarrierCount, 
+					_memoryBarriers->operator const VkMemoryBarrier*(), 
+					_bufferMemoryBarrierCount, 
+					_bufferMemoryBarriers->operator const VkBufferMemoryBarrier*(),
+					_imageMemoryBarrierCount,
+					_imageMemoryBarriers->operator const VkImageMemoryBarrier*()
+				);
+			}
 		};
 	}
 }

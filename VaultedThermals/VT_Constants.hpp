@@ -26,17 +26,19 @@
 	namespace VT
 #endif
 {
-	//TODO: Move constants based on specification to their respective file if possible.
 	namespace Corridors
 	{
-		constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
-		constexpr RoCStr Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;
-
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_NULL_HANDLE">Specification</a> .
+		 */
 		constexpr void* NullHandle = VK_NULL_HANDLE;
 
-		constexpr DataSize MaxMemoryHeaps = VK_MAX_MEMORY_HEAPS;
-		constexpr DataSize MaxMemoryTypes = VK_MAX_MEMORY_TYPES;
+		constexpr DeviceSize MaxMemoryHeaps = VK_MAX_MEMORY_HEAPS;
+		constexpr DeviceSize MaxMemoryTypes = VK_MAX_MEMORY_TYPES;
 
-		constexpr uint32 QueueFamily_Ignored = VK_QUEUE_FAMILY_IGNORED;
+		constexpr RoCStr Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;
+		constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
+
+		constexpr DeviceSize QueueFamily_Ignored = VK_QUEUE_FAMILY_IGNORED;
 	}
 }

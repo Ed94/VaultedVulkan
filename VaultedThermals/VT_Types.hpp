@@ -39,6 +39,36 @@
 		@{
 		*/
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
+		using DeviceAddress = VkDeviceAddress;
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceSize.html">Specification</a>  */
+		using DeviceSize = VkDeviceSize;
+
+		/**
+		* @brief Can be used to facilitate iterating through a read-only structure pointer chain.
+		* 
+		* @details
+		* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseInStructure.html">Specification</a> 
+		*/
+		struct Base_InStructure : Vault_00::VKStruct_Base<VkBaseInStructure>
+		{
+			      EType             SType;
+			const Base_InStructure* Next ;
+		};
+
+		/**
+		* @brief Can be used to facilitate iterating through a structure pointer chain that returns data back to the application.
+		* 
+		* @details
+		* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseOutStructure.html">Specification</a> 
+		*/
+		struct Base_OutStructure : Vault_00::VKStruct_Base<VkBaseOutStructure>
+		{
+			      EType              SType;
+			const Base_OutStructure* Next ;
+		};
+
 		/** 
 		@struct Offset2D
 
@@ -147,8 +177,8 @@
 		@{
 		 */
 
-		constexpr sint32 Description_MaxSize   = VK_MAX_DESCRIPTION_SIZE   ;   ///< Used for DescriptionStr definition.
-		constexpr sint32 ExtensionName_MaxSize = VK_MAX_EXTENSION_NAME_SIZE;   ///< Used for ExtensionNameStr definition.
+		constexpr DeviceSize Description_MaxSize   = VK_MAX_DESCRIPTION_SIZE   ;   ///< Used for DescriptionStr definition.
+		constexpr DeviceSize ExtensionName_MaxSize = VK_MAX_EXTENSION_NAME_SIZE;   ///< Used for ExtensionNameStr definition.
 
 		using ExtensionNameStr = char[ExtensionName_MaxSize];   ///< Can hold an extension name.
 		using DescrptionStr    = char[Description_MaxSize  ];   ///< Can hold a description string.
@@ -157,16 +187,70 @@
 		@}
 		 */
 
-		// Flags & Bitmasks
 
-		using Flags = VkFlags;   ///< Used to represent bitmasks for Vulkan flag types.
+		/**
+		@defgroup Flags & Bitmasks
+		*/
 
-		using AccessFlags        = Bitmask<EAccessFlag       , VkAccessFlags       >;
-		using DependencyFlags    = Bitmask<EDependencyFlag   , VkDependencyFlags   >;
-		using SampleCountFlags   = Bitmask<ESampleCount      , Flags               >;
+		/**
+		@addtogroup Flags & Bitmasks (General)
+		@{
+		*/
+
+		/**
+		 * @brief Used to represent bitmasks for Vulkan flag types.
+		 * 
+		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFlags">Specification</a> 
+		 */
+		using Flags = VkFlags;
+
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
+		 */
+		using AccessFlags = Bitmask<EAccessFlag, VkAccessFlags>;
+
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorComponentFlags">Specification</a>
+		 */
+		using ColorComponentFlags = Bitmask<EColorComponentFlag, VkColorComponentFlags>;
+
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
+		 */
+		using DependencyFlags = Bitmask<EDependencyFlag, VkDependencyFlags>;
+
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlags">Specification</a> 
+		 */
+		using FenceImportFlags = Bitmask<EFenceImportFlag, VkFenceImportFlags>;
+
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlags">Specification</a> 
+		 */
 		using FormatFeatureFlags = Bitmask<EFormatFeatureFlag, VkFormatFeatureFlags>;
 
-		// Pointers
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResolveModeFlags">Specification</a>
+		 */
+		using ResolveModeFlags = Bitmask<EResolveModeFlags, VkResolveModeFlags>;
+
+		/**
+		* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleCountFlags">Specification</a> 
+		*/
+		using SampleCountFlags = Bitmask<ESampleCount, VkSampleCountFlags>;
+
+		/**
+		@}
+		*/
+
+		/**
+		@defgroup Pointers
+		*/
+
+		/**
+		@addtogroup Pointers
+		@{
+		*/
 
 		/** 
 		@brief Vulkan Function Pointer
@@ -174,90 +258,18 @@
 		template<typename ReturnType, typename... ParameterTypes>
 		using VK_FPtr = ReturnType(VKAPI_PTR*)(ParameterTypes...);
 
-		/** @brief Equivalent to VK_FPtr<void, void>.
+		/** 
+		@brief Equivalent to VK_FPtr<void, void>.
+
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkVoidFunction">Specification</a> 
 		*/
 		using FPtr_Void = PFN_vkVoidFunction;
 
+		/**
+		@}
+		*/
+
 		// Misc
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceSize.html">Specification</a>  */
-		using DeviceSize = VkDeviceSize;
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
-		using DeviceAddress = VkDeviceAddress;
-
-		/**
-		 * @brief Can be used to facilitate iterating through a read-only structure pointer chain.
-		 * 
-		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseInStructure.html">Specification</a> 
-		 */
-		struct Base_InStructure : Vault_00::VKStruct_Base<VkBaseInStructure>
-		{
-			      EType             SType;
-			const Base_InStructure* Next ;
-		};
-
-		/**
-		 * @brief Can be used to facilitate iterating through a structure pointer chain that returns data back to the application.
-		 * 
-		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseOutStructure.html">Specification</a> 
-		 */
-		struct Base_OutStructure : Vault_00::VKStruct_Base<VkBaseOutStructure>
-		{
-			      EType              SType;
-			const Base_OutStructure* Next ;
-		};
-
-		/** 
-		@todo Make proper structure.
-		*/
-		using AllocationCallbacks = VkAllocationCallbacks;
-
-		/** 
-		@brief
-		Structure specifying an extension properties.
-
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
-		*/
-		struct ExtensionProperties : Vault_00::VKStruct_Base<VkExtensionProperties>
-		{
-			ExtensionNameStr ExtensionName;
-			uint32           SpecVersion  ;
-		};
-
-		/** 
-		@brief Structure specifying a color component mapping.
-
-		@details
-		The VkComponentMapping components member describes a remapping from components of the image to components of the vector 
-		returned by shader image instructions. This remapping must be the identity swizzle for storage image descriptors, 
-		input attachment descriptors, framebuffer attachments, and any VkImageView used with a combined image sampler that 
-		enables sampler Y’CBCR conversion.
-
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentMapping.html">Component Mapping Specification</a> 
-		*/
-		struct ComponentMapping : Vault_00::VKStruct_Base<VkComponentMapping>
-		{
-			EComponentSwizzle R;
-			EComponentSwizzle G;
-			EComponentSwizzle B;
-			EComponentSwizzle A;
-		};
-
-		struct Viewport
-		{
-			float X       , Y       ;
-			float Width   , Height  ;
-			float MinDepth, MaxDepth;
-		};
-
-		using ColorComponentFlags = Bitmask<EColorComponentFlag, Flags>;
-
-		constexpr sint32 UUID_Size = VK_UUID_SIZE;
-
-		using UUID = unsigned int[UUID_Size];
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearValue">Specification</a>  */
 		struct ClearValue
@@ -284,29 +296,120 @@
 			};
 		};
 
+		/** 
+		@brief Structure specifying a color component mapping.
+
+		@details
+		The VkComponentMapping components member describes a remapping from components of the image to components of the vector 
+		returned by shader image instructions. This remapping must be the identity swizzle for storage image descriptors, 
+		input attachment descriptors, framebuffer attachments, and any VkImageView used with a combined image sampler that 
+		enables sampler Y’CBCR conversion.
+
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentMapping.html">Component Mapping Specification</a> 
+		*/
+		struct ComponentMapping : Vault_00::VKStruct_Base<VkComponentMapping>
+		{
+			EComponentSwizzle R;
+			EComponentSwizzle G;
+			EComponentSwizzle B;
+			EComponentSwizzle A;
+		};
+
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkConformanceVersion">Specification</a>  */
+		struct ConformanceVersion : Vault_00::VKStruct_Base<VkConformanceVersion>
+		{
+			uInt8 Major   ;
+			uInt8 Minor   ;
+			uInt8 Subminor;
+			uInt8 Patch   ;
+		};
+
+		/** 
+		@brief
+		Structure specifying an extension properties.
+
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
+		*/
+		struct ExtensionProperties : Vault_00::VKStruct_Base<VkExtensionProperties>
+		{
+			ExtensionNameStr ExtensionName;
+			uint32           SpecVersion  ;
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
 		struct FormatProperties : Vault_00::VKStruct_Base<VkFormatProperties>
 		{
-			FormatFeatureFlags    LinearTilingFeatures ;
+			FormatFeatureFlags    LinearTilingFeatures;
 			FormatFeatureFlags    OptimalTilingFeatures;
-			FormatFeatureFlags    BufferFeatures       ;
+			FormatFeatureFlags    BufferFeatures;
 		};
 
-		/** @brief <a href="linkURL">Specification</a>  */
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOpState">Specification</a>  */
 		struct StencilOperationState : Vault_00::VKStruct_Base<VkStencilOpState>
 		{
-			EStencilOperation FailOp     ;
-			EStencilOperation FassOp     ;
+			EStencilOperation FailOp;
+			EStencilOperation FassOp;
 			EStencilOperation DepthFailOp;
-			ECompareOperation CompareOp  ;
+			ECompareOperation CompareOp;
 			uint32            CompareMask;
-			uint32            WriteMask  ;
-			uint32            Reference  ;
+			uint32            WriteMask;
+			uint32            Reference;
+		};
+		
+		/**
+		 * @brief Surface viewing region.
+
+		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkViewport">Specification</a> 
+		 */
+		struct Viewport : Vault_00::VKStruct_Base<VkViewport>
+		{
+			float32 X       , Y       ;
+			float32 Width   , Height  ;
+			float32 MinDepth, MaxDepth;
+		};
+
+		constexpr DeviceSize UUID_Size = VK_UUID_SIZE;
+
+		using UUID = unsigned int[UUID_Size];   ///< Universally unique identifier.
+
+
+		// TODO: Move these later...
+
+		struct Display
+		{
+			using Handle = VkDisplayKHR;
+		};
+
+		/**
+		* @brief Rudimentary array referenced by pointer and size kept track of with integer.
+		*/
+		template<typename Type>
+		struct QueriedListing
+		{
+			std::vector<Type> Vector;
+			uint32            Count ;
+		};
+	}
+
+	namespace Vault_02
+	{
+		struct Base_InStructure : public Corridors::Base_InStructure
+		{
+			using Parent = Corridors::Base_InStructure;
+
+			Base_InStructure() { SType = STypeEnum; }
+		};
+
+		struct Base_OutStructure : public Corridors::Base_OutStructure
+		{
+			using Parent = Corridors::Base_OutStructure;
+
+			Base_OutStructure() { SType = STypeEnum; }
 		};
 	}
 
 	namespace SPIR_V
 	{
-		using Bytecode = Corridors::uint32;
+		using Bytecode = Corridors::uint32;   ///< Word size of a SPIR-V instruction.
 	}
 }

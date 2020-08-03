@@ -1,12 +1,21 @@
+/*****************************************************************//**
+ * \file   Foreign_Bitmask.hpp
+ * \brief  
+ * A really bare bones bitmasking wrapping implementation for
+ * making bitmasks more intuitive to deal with.
+ * 
+ *********************************************************************/
+
+
+
 #pragma once
 
 
 
-#include <type_traits>
-
-
-
 #ifndef BITMASK_DEFINED
+
+	// Using STL Unfortunately.
+	#include <type_traits>
 
 	#define BITMASK_DEFINED
 

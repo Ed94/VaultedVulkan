@@ -22,10 +22,11 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory.hpp"
-#include "VT_Initialization.hpp"
+#include "VT_Memory_Corridors.hpp"
 #include "VT_PhysicalDevice.hpp"
+#include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
 #include "VT_Pipelines.hpp"
@@ -48,8 +49,10 @@
 		 */
 		struct Framebuffer
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebuffer">Specification</a>  */
 			using Handle = VkFramebuffer;
 			
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlags">Specification</a>  */
 			using CreateFlags = Bitmask<EFrameBufferCreateFlag, VkFramebufferCreateFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  */
@@ -72,7 +75,7 @@
 			 * @brief Creates a framebuffer.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFramebuffer">Specification</a> 
 			 * 
 			 * \param _deviceHanle
 			 * \param _creationSpec
@@ -82,41 +85,47 @@
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle _deviceHanle ,
-				const CreateInfo&           _creationSpec,
-				const AllocationCallbacks*  _allocator   ,
-				      Framebuffer::Handle&  _framebuffer
+				      LogicalDevice::Handle        _deviceHanle ,
+				const CreateInfo&                  _creationSpec,
+				const Memory::AllocationCallbacks* _allocator   ,
+				      Framebuffer::Handle&         _framebuffer
 			)
 			{
-				return EResult(vkCreateFramebuffer(_deviceHanle, _creationSpec.operator const VkFramebufferCreateInfo*(), _allocator, &_framebuffer));
+				return EResult(vkCreateFramebuffer(_deviceHanle, _creationSpec.operator const VkFramebufferCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_framebuffer));
 			}
 
 			/**
 			 * @brief Destroy a framebuffer.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFramebuffer">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _framebuffer
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Framebuffer::Handle _framebuffer, const AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Framebuffer::Handle _framebuffer, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyFramebuffer(_deviceHandle, _framebuffer, _allocator);
+				vkDestroyFramebuffer(_deviceHandle, _framebuffer, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
 
 
 		/**
 		 * @brief A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.
+		 * 
+		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#renderpass">Specification</a> 
 		 */
 		struct RenderPass
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPass">Specification</a>  */
 			using Handle = VkRenderPass;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlags">Specification</a>  */
 			using AttachmentDescriptionFlags = Bitmask<EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags>;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlags">Specification</a>  */
 			using SubpassDesriptionFlags     = Bitmask<ESubpassDescriptionFlag   , VkSubpassDescriptionFlags   >;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateFlags">Specification</a>  */
 			using CreateFlags                = Bitmask<EUndefined                , VkRenderPassCreateFlags     >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a>  */
@@ -134,7 +143,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentReference">Specification</a>  */
-			struct AttachmentReference : Vault_00::VKStruct_Base<VkAttachmentReference >
+			struct AttachmentReference : Vault_00::VKStruct_Base<VkAttachmentReference>
 			{
 				uint32       Attachment;
 				EImageLayout Layout    ;
@@ -207,28 +216,28 @@
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle _deviceHandle,
-				const CreateInfo&           _createInfo  ,
-				const AllocationCallbacks*  _allocator   ,
-				      RenderPass::Handle&   _renderPass
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _createInfo  ,
+				const Memory::AllocationCallbacks* _allocator   ,
+				      RenderPass::Handle&          _renderPass
 			)
 			{
-				return EResult(vkCreateRenderPass(_deviceHandle, _createInfo.operator const VkRenderPassCreateInfo*(), _allocator, &_renderPass));
+				return EResult(vkCreateRenderPass(_deviceHandle, _createInfo.operator const VkRenderPassCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_renderPass));
 			}
 
 			/**
 			 * @brief Destroy a render pass.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyRenderPass.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyRenderPass">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _renderPass
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, RenderPass::Handle _renderPass, const AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, RenderPass::Handle _renderPass, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyRenderPass(_deviceHandle, _renderPass, _allocator);
+				vkDestroyRenderPass(_deviceHandle, _renderPass, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
 

@@ -1,8 +1,6 @@
 /*
 Convention Enforcer
 
-
-
 A macro tool for defining Enforcers for a template calling convention.
 
 Requires std::forward.

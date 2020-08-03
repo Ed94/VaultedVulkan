@@ -21,10 +21,11 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory.hpp"
-#include "VT_Initialization.hpp"
+#include "VT_Memory_Corridors.hpp"
 #include "VT_PhysicalDevice.hpp"
+#include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
 #include "VT_SyncAndCacheControl.hpp"
@@ -51,8 +52,10 @@
 		 */
 		struct ShaderModule
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModule">Specification</a>  */
 			using Handle = VkShaderModule;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a>  */
 			using CreateFlags = Bitmask<EUndefined, Flags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a>  */
@@ -69,7 +72,7 @@
 			 * @brief Create a sher module.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateShaderModule.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateShaderModule">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _creationSpec
@@ -79,28 +82,28 @@
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle _deviceHandle,
-				const CreateInfo&           _creationSpec,
-				const AllocationCallbacks*  _allocator   ,
-				      ShaderModule::Handle& _shaderModule
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _creationSpec,
+				const Memory::AllocationCallbacks* _allocator   ,
+				      ShaderModule::Handle&        _shaderModule
 			)
 			{
-				return EResult(vkCreateShaderModule(_deviceHandle, _creationSpec.operator const VkShaderModuleCreateInfo*(), _allocator, &_shaderModule));
+				return EResult(vkCreateShaderModule(_deviceHandle, _creationSpec.operator const VkShaderModuleCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_shaderModule));
 			}
 
 			/**
 			 * @brief Destroy a shader module.
 			 * 
 			 * @details
-			 * <a href="vkDestroyShaderModule">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyShaderModule">Specification</a> 
 			 * 
 			 * \param _deviceHandle
 			 * \param _moduleHandle
 			 * \param _allocator
 			 */
-			static void Destory(LogicalDevice::Handle _deviceHandle, ShaderModule::Handle _moduleHandle, const AllocationCallbacks* _allocator)
+			static void Destory(LogicalDevice::Handle _deviceHandle, ShaderModule::Handle _moduleHandle, const Memory::AllocationCallbacks* _allocator)
 			{
-				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator);
+				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
 	}

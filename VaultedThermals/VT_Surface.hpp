@@ -20,10 +20,11 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory.hpp"
-#include "VT_Initialization.hpp"
+#include "VT_Memory_Corridors.hpp"
 #include "VT_PhysicalDevice.hpp"
+#include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
+#include "VT_Memory.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
 #include "VT_RenderPass.hpp"
@@ -47,18 +48,21 @@
 		 */
 		struct Surface_PlatformAgnostic
 		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceKHR">Specification</a>  */
 			using Handle = VkSurfaceKHR;   ///< Opaque handle to a surface object.
 
 			using ETransform = ESurfaceTransformFlag;
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagsKHR">Specification</a>  */
 			using ETransformFlags     = Bitmask<ESurfaceTransformFlag, VkSurfaceTransformFlagsKHR>;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagsKHR">Specification</a>  */
 			using CompositeAlphaFlags = Bitmask<ECompositeAlpha      , VkCompositeAlphaFlagsKHR  >;
 
 			/**
 			 * @brief Structure describing capabilities of a surface.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceCapabilitiesKHR.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceCapabilitiesKHR">Specification</a> 
 			 */
 			struct Capabilities : VKStruct_Base<VkSurfaceCapabilitiesKHR>
 			{
@@ -77,7 +81,7 @@
 			/**
 			 * @brief Structure describing a supported swapchain format-color space pair.
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceFormatKHR.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceFormatKHR">Specification</a> 
 			 */
 			struct Format : VKStruct_Base<VkSurfaceFormatKHR>
 			{
@@ -94,9 +98,9 @@
 		template<>
 		struct Surface_Maker<EOS_Platform::Windows> : Surface_PlatformAgnostic
 		{
-			static constexpr EStructureType CreateInfoType = EStructureType::Win32_Surface_CreateInfo_KHR;
+			//static constexpr EStructureType CreateInfoType = EStructureType::Win32_Surface_CreateInfo_KHR;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkWin32SurfaceCreateInfoKHR.html">Specification</a> */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a> */
 			struct CreateInfo : VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
@@ -128,7 +132,7 @@
 			 * @brief Create a slink:VkSurfaceKHR object for an Win32 native window.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateWin32SurfaceKHR.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateWin32SurfaceKHR">Specification</a> 
 			 * 
 			 * \param _appHandle
 			 * \param _createInfo
@@ -140,11 +144,11 @@
 			(
 				      Vault_01::AppInstance::Handle _appHandle    ,
 				      CreateInfo&                   _createInfo   ,
-				const AllocationCallbacks*          _allocator    ,
+				const Memory::AllocationCallbacks*  _allocator    ,
 				      Handle&                       _surfaceHandle
 			)
 			{
-				return EResult(vkCreateWin32SurfaceKHR(_appHandle, _createInfo.operator const VkWin32SurfaceCreateInfoKHR*(), _allocator, &_surfaceHandle));
+				return EResult(vkCreateWin32SurfaceKHR(_appHandle, _createInfo.operator const VkWin32SurfaceCreateInfoKHR*(), _allocator->operator const VkAllocationCallbacks*(), &_surfaceHandle));
 			}
 		};
 
@@ -161,22 +165,22 @@
 			 * @brief Destroy a VkSurfaceKHR object.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySurfaceKHR.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySurfaceKHR">Specification</a> 
 			 * 
 			 * \param _appHandle
 			 * \param _surfaceHandle
 			 * \param _allocator
 			 */
-			static void Destroy(AppInstance::Handle _appHandle, Surface::Handle _surfaceHandle, const AllocationCallbacks* _allocator)
+			static void Destroy(AppInstance::Handle _appHandle, Surface::Handle _surfaceHandle, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroySurfaceKHR(_appHandle, _surfaceHandle, _allocator);
+				vkDestroySurfaceKHR(_appHandle, _surfaceHandle, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
 			 * @brief Query if presentation is supported.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceSupportKHR.html">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceSupportKHR">Specification</a> 
 			 * 
 			 * \param _physDeviceHandle
 			 * \param _queueFamilyIndex
@@ -199,7 +203,7 @@
 			 * @brief Query surface capabilities.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html">Specification</a>  
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceCapabilitiesKHR">Specification</a>  
 			 * 
 			 * \param _deviceHandle
 			 * \param _surface
@@ -219,7 +223,7 @@
 			 * Otherwise, pSurfaceFormatCount must point to a variable set by the user to the number of elements in the pSurfaceFormats array, 
 			 * and on return the variable is overwritten with the number of structures actually written to pSurfaceFormats.
 			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceFormatsKHR.html">Specification</a>  
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceFormatsKHR">Specification</a>  
 			 * 
 			 * \param _deviceHandle
 			 * \param _surfaceHandle
@@ -240,7 +244,7 @@
 			 * Otherwise, pPresentModeCount must point to a variable set by the user to the number of elements in the pPresentModes array, 
 			 * and on return the variable is overwritten with the number of values actually written to pPresentModes.
 			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfacePresentModesKHR.html">Specification</a>  
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfacePresentModesKHR">Specification</a>  
 			 * 
 			 * \param _deviceHandle
 			 * \param _surfaceHandle
@@ -260,6 +264,9 @@
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
 		struct Surface : Vault_01::Surface
 		{
+
+
+
 			/**
 			 * @brief Provides the number of available surface formats.
 			 * 
