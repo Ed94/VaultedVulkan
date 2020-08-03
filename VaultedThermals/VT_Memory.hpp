@@ -37,7 +37,7 @@ Contains the full definition of the intended memory structure.
 {
 	namespace Vault_01
 	{
-		struct Memory : public Corridors::Memory
+		struct Memory : public Vault_00::Memory
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
 			using Handle = VkDeviceMemory;
@@ -55,10 +55,10 @@ Contains the full definition of the intended memory structure.
 			*/
 			static EResult Allocate
 			(
-				LogicalDevice::Handle _device      ,
+				      LogicalDevice::Handle _device      ,
 				const AllocateInfo&         _allocateInfo,
 				const AllocationCallbacks*  _allocator   ,
-				Handle&               _memory
+				      Handle&               _memory
 			)
 			{
 				return EResult(vkAllocateMemory(_device, _allocateInfo, _allocator->operator const VkAllocationCallbacks*(), &_memory) );
@@ -74,8 +74,8 @@ Contains the full definition of the intended memory structure.
 			*/
 			static void Free
 			(
-				LogicalDevice::Handle _device,
-				Memory::Handle _memory,
+				      LogicalDevice::Handle _device,
+				      Memory::Handle _memory,
 				const AllocationCallbacks* _allocator
 			)
 			{

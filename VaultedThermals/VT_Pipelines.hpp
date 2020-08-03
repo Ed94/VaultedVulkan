@@ -251,27 +251,22 @@
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBinding">Specification</a>  */
 					struct Binding : Vault_00::VKStruct_Base<VkDescriptorSetLayoutBinding>
 					{
+						      uint32           BindingID        ;
+						      EDescriptorType  Type             ;
+						      uint32           Count            ;
+						      ShaderStageFlags StageFlags       ;
+						const Sampler::Handle* ImmutableSamplers;
+
+						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlags">Specification</a>  */
+						using CreateFlags = Bitmask<EDescriptorBindingFlag ,VkDescriptorBindingFlags>;
+
 						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a>  */
-						struct Flags
+						struct FlagsCreateInfo : Vault_00::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
 						{
-							      uint32           Binding          ;
-							      EDescriptorType  Type             ;
-							      uint32           Count            ;
-							      ShaderStageFlags StageFlags       ;
-							const Sampler::Handle* ImmutableSamplers;
-
-
-							/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlags">Specification</a>  */
-							using Mask = Bitmask<EDescriptorBindingFlag ,VkDescriptorBindingFlags>;
-
-							/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a>  */
-							struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
-							{
-								       EType SType       ;
-								const void*  Next        ;
-								      uint32 BindingCount;
-								const Mask*  BindingFlags;
-							};
+								   EType       SType       ;
+							const void*        Next        ;
+								  uint32       BindingCount;
+							const CreateFlags* BindingFlags;
 						};
 					};
 

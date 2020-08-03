@@ -32,7 +32,10 @@ Had to make this as there are definitions used by both application instance and 
 	namespace VT
 #endif
 {
-	namespace Corridors
+	/**
+	 * @todo Should this stay?.
+	 */
+	namespace Vault_00
 	{
 		/**
 		* @brief General memory definitions.

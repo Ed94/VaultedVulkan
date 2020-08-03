@@ -42,6 +42,8 @@ A physical device usually represents a single complete implementation of Vulkan
 		 */
 		struct PhysicalDevice
 		{
+			using Memory = Vault_00::Memory;
+
 			static constexpr DeviceSize MaxNameSize        = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
 			static constexpr DeviceSize MaxDeviceGroupSize = VK_MAX_DEVICE_GROUP_SIZE;
 
@@ -682,8 +684,8 @@ A physical device usually represents a single complete implementation of Vulkan
 		{
 			using Parent = Vault_01::PhysicalDevice;
 
-			using List      = CountedArray<PhysicalDevice::Handle>;
-			using GroupList = CountedArray<PhysicalDevice::Group >;
+			using List      = QueriedListing<PhysicalDevice::Handle>;
+			using GroupList = QueriedListing<PhysicalDevice::Group >;
 
 			struct QueueFamilyProperties : Vault_01::PhysicalDevice::QueueFamilyProperties
 			{

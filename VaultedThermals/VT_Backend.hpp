@@ -25,19 +25,6 @@
 	namespace VT
 #endif
 {
-	namespace Corridors
-	{
-		/**
-		* @brief Rudimentary array referenced by pointer and size kept track of with integer.
-		*/
-		template<typename Type>
-		struct CountedArray
-		{
-			Type*      Ptr  ;
-			DeviceSize Count;
-		};
-	}
-
 	namespace Vault_00
 	{
 		/** @struct VKStruct_Base

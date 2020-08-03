@@ -37,8 +37,6 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 	namespace Vault_01
 	{
-		using namespace Corridors;
-
 		/**
 		 * @brief Construct an API version number.
 		 * 
@@ -67,6 +65,8 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 		*/
 		struct AppInstance
 		{
+			using Memory = Vault_00::Memory;
+
 			/**
 			 * @brief Opaque handle to an instance object.
 			 * 
@@ -266,7 +266,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			{
 				EResult&& returnCode = QueryPhysicalDeviceListing(_instance, &_deviceListing.Count, nullptr);
 
-				returnCode = QueryPhysicalDeviceListing(_instance, &_deviceListing.Count, _deviceListing.Ptr);
+				_deviceListing.Vector.resize(_deviceListing.Count);
+
+				returnCode = QueryPhysicalDeviceListing(_instance, &_deviceListing.Count, _deviceListing.Vector.data());
 
 				return returnCode;
 			}
@@ -282,7 +284,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			{
 				EResult&& returnCode = QueryPhysicalDeviceGroups(_instance, &_groupListing.Count, nullptr);
 
-				returnCode = QueryPhysicalDeviceGroups(_instance, &_groupListing.Count, _groupListing.Ptr);
+				_groupListing.Vector.resize(_groupListing.Count);
+
+				returnCode = QueryPhysicalDeviceGroups(_instance, &_groupListing.Count, _groupListing.Vector.data());
 
 				return returnCode;
 			}

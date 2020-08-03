@@ -48,12 +48,6 @@ Vault 8 Open Macro: #define VT_Vault_8_Open
 	namespace VT
 #endif
 {
-	/** @namespace Attic
-
-		@brief Contains any misc global definitions.
-	*/
-	inline namespace Attic {}
-
 	/** @namespace Corridors
 
 		@brief Contains shared definitions between the vaults.

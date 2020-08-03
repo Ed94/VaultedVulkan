@@ -379,6 +379,16 @@
 		{
 			using Handle = VkDisplayKHR;
 		};
+
+		/**
+		* @brief Rudimentary array referenced by pointer and size kept track of with integer.
+		*/
+		template<typename Type>
+		struct QueriedListing
+		{
+			std::vector<Type> Vector;
+			uint32            Count ;
+		};
 	}
 
 	namespace Vault_02

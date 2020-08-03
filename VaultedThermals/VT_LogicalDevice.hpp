@@ -39,6 +39,8 @@
 		 */
 		struct LogicalDevice
 		{
+			using Memory = Vault_00::Memory;
+
 			using Handle = VkDevice;   ///< Opaque handle to a device object.  
 
 			using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.

@@ -1163,12 +1163,12 @@
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterScopeKHR">Specification</a>  */
 		enum class EPerformanceCounterScope : uint32
 		{
-			CommandBuffer = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR,
-			RenderPass    = VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR   ,
-			Command       = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR       ,
-			Buffer        = VK_QUERY_SCOPE_COMMAND_BUFFER_KHR              ,
-			RenderPass    = VK_QUERY_SCOPE_RENDER_PASS_KHR                 ,
-			Command       = VK_QUERY_SCOPE_COMMAND_KHR
+			Performance_CommandBuffer = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR,
+			Performance_RenderPass    = VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR   ,
+			Performance_Command       = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR       ,
+			Query_Buffer              = VK_QUERY_SCOPE_COMMAND_BUFFER_KHR              ,
+			Query_RenderPass          = VK_QUERY_SCOPE_RENDER_PASS_KHR                 ,
+			Query_Command             = VK_QUERY_SCOPE_COMMAND_KHR
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterStorageKHR">Specification</a>  */
@@ -2208,48 +2208,54 @@
 
 		// Bitmask attribute specification
 
-		SpecifyBitmaskable(EAccessFlag                    );
-		SpecifyBitmaskable(EAttachmentDescriptionFlag     );
-		SpecifyBitmaskable(EBufferCreateFlag              );
-		SpecifyBitmaskable(EBufferUsage                   );
-		SpecifyBitmaskable(EColorComponentFlag            );
-		SpecifyBitmaskable(ECommandBufferResetFlag        );
-		SpecifyBitmaskable(ECommandBufferUsageFlag        );
-		SpecifyBitmaskable(ECommandPoolCreateFlag         );
-		SpecifyBitmaskable(ECommandPoolResetFlags         );
-		SpecifyBitmaskable(ECompositeAlpha                );
-		SpecifyBitmaskable(ECullModeFlag                  );
-		SpecifyBitmaskable(EDebugUtilities_MessageSeverity);
-		SpecifyBitmaskable(EDebugUtilities_MessageType    );
-		SpecifyBitmaskable(EDependencyFlag                );
-		SpecifyBitmaskable(EDescriptorBindingFlag         );
-		SpecifyBitmaskable(EDescriptorPoolCreateFlag      );
-		SpecifyBitmaskable(EDescriptorSetLayoutCreateFlag );
-		SpecifyBitmaskable(EExternalFenceHandleTypeFlag   );
-		SpecifyBitmaskable(EFenceCreateFlag               );
-		SpecifyBitmaskable(EFenceImportFlag               );
-		SpecifyBitmaskable(EFormatFeatureFlag             );
-		SpecifyBitmaskable(EFrameBufferCreateFlag         );
-		SpecifyBitmaskable(EImageAspect                   );
-		SpecifyBitmaskable(EImageCreateFlag               );
-		SpecifyBitmaskable(EImageUsage                    );
-		SpecifyBitmaskable(EImageViewCreateFlag           );
-		SpecifyBitmaskable(ELogicalDeviceQueueCreateFlag  );
-		SpecifyBitmaskable(EMemoryHeapFlag                );
-		SpecifyBitmaskable(EMemoryPropertyFlag            );
-		SpecifyBitmaskable(EPipelineCacheCreateFlag       );
-		SpecifyBitmaskable(EPipelineCreateFlag            );
-		SpecifyBitmaskable(EPipelineShaderStageCreateFlag );
-		SpecifyBitmaskable(EPipelineStageFlag             );
-		SpecifyBitmaskable(EQueryControlFlags             );
-		SpecifyBitmaskable(EQueueFlag                     );
-		SpecifyBitmaskable(EQueryPipelineStatisticFlag    );
-		SpecifyBitmaskable(ESampleCount                   );
-		SpecifyBitmaskable(ESamplerCreateFlag             );
-		SpecifyBitmaskable(ESemaphoreWaitFlag             );
-		SpecifyBitmaskable(EShaderStageFlag               );
-		SpecifyBitmaskable(ESubpassDescriptionFlag        );
-		SpecifyBitmaskable(ESurfaceTransformFlag          );	
-		SpecifyBitmaskable(ESwapchainCreateFlag           );
+		SpecifyBitmaskable(EAccessFlag                       );
+		SpecifyBitmaskable(EAttachmentDescriptionFlag        );
+		SpecifyBitmaskable(EBufferCreateFlag                 );
+		SpecifyBitmaskable(EBufferUsage                      );
+		SpecifyBitmaskable(EColorComponentFlag               );
+		SpecifyBitmaskable(ECommandBufferResetFlag           );
+		SpecifyBitmaskable(ECommandBufferUsageFlag           );
+		SpecifyBitmaskable(ECommandPoolCreateFlag            );
+		SpecifyBitmaskable(ECommandPoolResetFlags            );
+		SpecifyBitmaskable(ECompositeAlpha                   );
+		SpecifyBitmaskable(ECullModeFlag                     );
+		SpecifyBitmaskable(EDebugUtilities_MessageSeverity   );
+		SpecifyBitmaskable(EDebugUtilities_MessageType       );
+		SpecifyBitmaskable(EDependencyFlag                   );
+		SpecifyBitmaskable(EDescriptorBindingFlag            );
+		SpecifyBitmaskable(EDescriptorPoolCreateFlag         );
+		SpecifyBitmaskable(EDescriptorSetLayoutCreateFlag    );
+		SpecifyBitmaskable(EDeviceQueueCreateFlag            );
+		SpecifyBitmaskable(EDeviceDiagnosticConfigFlag       );
+		SpecifyBitmaskable(EExternalFenceHandleTypeFlag      );
+		SpecifyBitmaskable(EExternalSemaphoreHandleTypeFlag  );
+		SpecifyBitmaskable(EFenceCreateFlag                  );
+		SpecifyBitmaskable(EFenceImportFlag                  );
+		SpecifyBitmaskable(EFormatFeatureFlag                );
+		SpecifyBitmaskable(EFrameBufferCreateFlag            );
+		SpecifyBitmaskable(EImageAspect                      );
+		SpecifyBitmaskable(EImageCreateFlag                  );
+		SpecifyBitmaskable(EImageUsage                       );
+		SpecifyBitmaskable(EImageViewCreateFlag              );
+		SpecifyBitmaskable(ELogicalDeviceQueueCreateFlag     );
+		SpecifyBitmaskable(EMemoryHeapFlag                   );
+		SpecifyBitmaskable(EMemoryPropertyFlag               );
+		SpecifyBitmaskable(EPerformanceCounterDescriptionFlag);
+		SpecifyBitmaskable(EPipelineCacheCreateFlag          );
+		SpecifyBitmaskable(EPipelineCreateFlag               );
+		SpecifyBitmaskable(EPipelineShaderStageCreateFlag    );
+		SpecifyBitmaskable(EPipelineStageFlag                );
+		SpecifyBitmaskable(EQueryControlFlags                );
+		SpecifyBitmaskable(EQueueFlag                        );
+		SpecifyBitmaskable(EQueryPipelineStatisticFlag       );
+		SpecifyBitmaskable(EResolveModeFlags                 );
+		SpecifyBitmaskable(ESampleCount                      );
+		SpecifyBitmaskable(ESamplerCreateFlag                );
+		SpecifyBitmaskable(ESemaphoreImportFlag              );
+		SpecifyBitmaskable(ESemaphoreWaitFlag                );
+		SpecifyBitmaskable(EShaderStageFlag                  );
+		SpecifyBitmaskable(ESubpassDescriptionFlag           );
+		SpecifyBitmaskable(ESurfaceTransformFlag             );	
+		SpecifyBitmaskable(ESwapchainCreateFlag              );
     }
 }
