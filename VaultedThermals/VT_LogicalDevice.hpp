@@ -290,7 +290,24 @@
 
 	namespace Vault_02
 	{
-		using Vault_01::LogicalDevice;
+		struct LogicalDevice : public Vault_01::LogicalDevice
+		{
+			struct Queue : public Vault_01::LogicalDevice::Queue
+			{
+				
+			};
+		};
+	}
+
+	namespace Vault_03
+	{
+		struct LogicalDevice : public Vault_02::LogicalDevice
+		{
+			struct Queue : public Vault_02::LogicalDevice::Queue
+			{
+
+			};
+		};
 	}
 
 	namespace Vault_05

@@ -750,4 +750,139 @@
 			}
 		};
 	}
+
+	namespace Vault_02
+	{
+		struct CommandPool : public Vault_01::CommandPool
+		{
+
+		};
+
+		struct CommandBuffer : public Vault_01::CommandBuffer
+		{
+			struct AllocateInfo : public Vault_01::CommandBuffer::AllocateInfo
+			{
+				AllocateInfo() 
+				{ 
+					SType       = STypeEnum                   ; 
+					Next        = nullptr                     ;
+					Pool        = 0                           ;
+					Level       = ECommandBufferLevel::Primary;
+					BufferCount = 0                           ;
+				}
+			};
+
+			struct BeginInfo : public Vault_01::CommandBuffer::BeginInfo
+			{
+				BeginInfo() 
+				{
+					SType           = STypeEnum; 
+					Next            = nullptr  ;
+					Flags           = 0        ;
+					InheritanceInfo = nullptr  ;
+				}
+			};
+
+			struct SubmitInfo : public Vault_01::CommandBuffer::SubmitInfo
+			{
+				SubmitInfo() 
+				{
+					SType                = STypeEnum;  
+					Next                 = nullptr  ;
+					WaitSemaphoreCount   = NULL     ;
+					WaitSemaphores       = nullptr  ;
+					WaitDstStageMask     = nullptr  ;
+					CommandBufferCount   = NULL     ;
+					CommandBuffers       = nullptr  ;
+					SignalSemaphoreCount = NULL     ;
+					SignalSemaphores     = nullptr  ;
+				}
+			};
+		};
+	}
+
+	namespace Vault_03
+	{
+		struct CommandPool : public Vault_02::CommandPool
+		{
+
+		};
+
+		struct CommandBuffer : public Vault_02::CommandBuffer
+		{
+			
+
+		#pragma region SingleTimeCommands
+
+			/**
+			 * @brief.
+			 */
+			static Handle BeginSingleTimeCommands(LogicalDevice::Handle _device, CommandPool::Handle _commandPool)
+			{
+				AllocateInfo allocationInfo{};
+
+				allocationInfo.Level       = ECommandBufferLevel::Primary;
+				allocationInfo.Pool        = _commandPool                ;
+				allocationInfo.BufferCount = 1                           ;
+
+				Handle commandBuffer;
+
+				Allocate(_device, allocationInfo, &commandBuffer);
+
+				BeginInfo beginInfo{};
+
+				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
+
+				BeginRecord(commandBuffer, beginInfo);
+
+				return commandBuffer;
+			}
+
+			/**
+			 * @brief.
+			 */
+			static void EndSingleTimeCommands
+			(
+				CommandBuffer       ::Handle _commandBuffer, 
+				CommandPool         ::Handle _commandPool  , 
+				LogicalDevice       ::Handle _device       , 
+				LogicalDevice::Queue::Handle _queue
+			)
+			{
+				EndRecord(_commandBuffer);
+
+				SubmitInfo submitInfo{};
+
+				submitInfo.CommandBufferCount = 1              ;
+				submitInfo.CommandBuffers     = &_commandBuffer;
+
+				SubmitToQueue(_queue, 1, &submitInfo, Fence::NullHandle);
+
+				LogicalDevice::Queue::WaitUntilIdle(_queue);
+
+				Free(_device, _commandPool, 1, &_commandBuffer);
+			}
+
+		#pragma endregion SingleTimeCommands
+
+			/** @brief  */
+			static void CopyBuffer
+			(
+				Buffer::Handle               _sourceBuffer     , 
+				Buffer::Handle               _destinationBuffer, 
+				Buffer::CopyInfo             _regionInfo       ,
+				LogicalDevice::Handle        _device           ,
+				CommandPool::Handle          _pool             ,
+				LogicalDevice::Queue::Handle _queue
+			)
+			{
+				Handle commandBuffer = BeginSingleTimeCommands(_device, _pool);
+
+				Vault_01::CommandBuffer::CopyBuffer(commandBuffer, _sourceBuffer, _destinationBuffer, 1, &_regionInfo);
+
+				EndSingleTimeCommands(commandBuffer, _pool, _device, _queue);
+			}
+		};
+
+	}
 }

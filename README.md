@@ -25,5 +25,3 @@ This library aims to have full documentation/specificaton within its comments an
 
 My current intentions is to get this going as far as I like in conjunction with following various vulkan guides, and making my engine mvp. 
 After that is done, this will be publicly released with some sort of open source license.
-
-### P.S. Vulkan should have been mainly a C++ library with a generated C library, not the other way around.

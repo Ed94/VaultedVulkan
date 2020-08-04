@@ -129,15 +129,33 @@ Contains the full definition of the intended memory structure.
 			{
 				using Parent = Vault_01::Memory::AllocateInfo;
 
-				AllocateInfo() { SType = STypeEnum; }
+				AllocateInfo() 
+				{ 
+					SType           = STypeEnum; 
+					Next            = nullptr  ;
+					AllocationSize  = 0        ;
+					MemoryTypeIndex = 0        ;
+				}
 			};
 
 			struct Barrier : public Vault_01::Memory::Barrier
 			{
 				using Parent = Vault_01::Memory::Barrier;
 
-				Barrier() { SType = STypeEnum; }
+				Barrier() 
+				{ 
+					SType = STypeEnum; 
+					Next  = nullptr  ;
+				}
 			};
+		};
+	}
+
+	namespace Vault_03
+	{
+		struct Memory : public Vault_02::Memory
+		{
+
 		};
 	}
 

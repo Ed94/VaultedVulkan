@@ -721,4 +721,20 @@
 			}
 		};
 	}
+
+	namespace Vault_02
+	{
+		struct Fence : public Vault_01::Fence
+		{
+
+		};
+	}
+
+	namespace Vault_03
+	{
+		struct Fence : public Vault_02::Fence
+		{
+
+		};
+	}
 }

@@ -744,6 +744,35 @@ A physical device usually represents a single complete implementation of Vulkan
 		};
 	}
 
+	namespace Vault_03
+	{
+		struct PhysicalDevice : public Vault_02::PhysicalDevice
+		{
+			static uint32 FindMemoryType(PhysicalDevice::Handle _device, uint32 _typeFilter, Memory::PropertyFlags _properties)
+			{
+				MemoryProperties memProperties;
+
+				GetMemoryProperties(_device, memProperties);
+
+				for (DeviceSize index = 0; index < memProperties.TypeCount; index++)
+				{
+					if
+					(
+						_typeFilter & (1 << index) &&
+						(memProperties.Types[index].PropertyFlags & _properties) == _properties
+					)
+					{
+						return index;
+					}
+				}
+
+			#ifdef VT_Option__USE_STL_EXCEPTIONS
+				throw std::runtime_error("Failed to find suitable memory type!");
+			#endif
+			}
+		};
+	}
+
 	namespace Vault_05
 	{
 		class PhysicalDevice : public Vault_01::PhysicalDevice

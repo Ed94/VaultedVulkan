@@ -75,7 +75,7 @@ can be multidimensional and may have associated metadata.
 				const void*        Next                 ;
 				      CreateFlags  Flags                ;
 					  DeviceSize   Size                 ;
-					  UsageFlags   Usuage               ;
+					  UsageFlags   Usage                ;
 				      ESharingMode SharingMode          ;
 					  uint32       QueueFamilyIndexCount;
 			};
@@ -679,5 +679,95 @@ can be multidimensional and may have associated metadata.
 				vkUpdateDescriptorSets(_device, _descriptorWriteCount, _descriptorWrites->operator const VkWriteDescriptorSet*(), _descriptorCopyCount, _descriptorCopies->operator const VkCopyDescriptorSet*());
 			}
 		};	
+	}
+
+	namespace Vault_02
+	{
+		struct Buffer : Vault_01::Buffer
+		{
+			struct CreateInfo : public Vault_01::Buffer::CreateInfo
+			{
+				CreateInfo() 
+				{
+					SType = STypeEnum;
+					Next = nullptr;
+					Size  = 0;
+					QueueFamilyIndexCount = 0;
+				}
+
+				CreateInfo(UsageFlags _usage, ESharingMode _sharingMode)
+				{
+					SType = STypeEnum;
+					Next = nullptr;
+					Size = 0;
+					Usage = _usage;
+					SharingMode = _sharingMode;
+					QueueFamilyIndexCount = 0;
+				}
+			};
+
+			
+		};
+	}
+
+	namespace Vault_03
+	{
+		struct Buffer : Vault_02::Buffer
+		{
+			static 
+			
+			#ifdef VT_Option__USE_STL_EXCEPTIONS
+				void
+			#else
+				EResult
+			#endif
+
+			Create
+			(
+				Buffer::CreateInfo     _bufferInfo    ,
+				Memory::PropertyFlags  _propertyFlags , 
+				Buffer::Handle&        _buffer        , 
+				Memory::Handle&        _bufferMemory  ,
+				PhysicalDevice::Handle _physicalDevice,
+				LogicalDevice::Handle  _device
+			)
+			{
+			#ifndef VT_Option__USE_STL_EXCEPTIONS
+				EResult&& returnCode
+			#endif
+
+
+			#ifdef VT_Option__USE_STL_EXCEPTIONS
+				if (Vault_01::Buffer::Create(_device, _bufferInfo, nullptr, _buffer) != EResult::Success)
+					throw std::runtime_error("Failed to create vertex buffer!");
+			#else
+				returnCode = Buffer::Create(_device, bufferInfo, nullptr, _buffer);
+
+				if (Vault_01::Buffer::Create(_device, _bufferInfo, nullptr, _buffer) != EResult::Success)
+					return returnCode;
+			#endif
+
+				Memory::Requirements memReq;
+
+				Buffer::GetMemoryRequirements(_device, _buffer, memReq);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize  = memReq.Size;
+				allocationInfo.MemoryTypeIndex = Vault_03::PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
+
+			#ifdef VT_Option__USE_STL_EXCEPTIONS
+				if (Memory::Allocate(_device, allocationInfo, nullptr, _bufferMemory) != EResult::Success)
+					throw std::runtime_error("Failed to allocate vertex buffer memory!");
+			#else
+				returnCode = Memory::Allocate(_device, allocationInfo, nullptr, _bufferMemory);
+
+				if (Memory::Allocate(_device, allocationInfo, nullptr, _bufferMemory) != EResult::Success)
+					return returnCode;
+			#endif
+
+				Buffer::BindMemory(_device, _buffer, _bufferMemory, 0);
+			}
+		};
 	}
 }
