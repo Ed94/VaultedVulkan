@@ -29,7 +29,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		 * @brief Represent logical connections to physical devices. 
@@ -39,7 +39,7 @@
 		 */
 		struct LogicalDevice
 		{
-			using Memory = Vault_00::Memory;
+			using Memory = Vault_0::Memory;
 
 			using Handle = VkDevice;   ///< Opaque handle to a device object.  
 
@@ -49,7 +49,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigCreateInfoNV">Specification</a> 
 			*/
-			struct DiagnoisticsConfigCreateInfo : Vault_00::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
+			struct DiagnoisticsConfigCreateInfo : Vault_0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
 			{
 				using ConfigFlags = Bitmask<EDeviceDiagnosticConfigFlag, VkDeviceDiagnosticsConfigFlagsNV>;
 
@@ -77,7 +77,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateInfo">Specification</a> 
 				 */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
+				struct CreateInfo : Vault_0::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
 				{
 					using ECreateFlag = ELogicalDeviceQueueCreateFlag                 ;
 					using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
@@ -127,7 +127,7 @@
 			* 
 			* @todo Implement.
 			*/
-			struct Queue2 : Vault_00::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
+			struct Queue2 : Vault_0::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a>  */
 				using CreateFlags = Bitmask<EDeviceQueueCreateFlag ,VkDeviceQueueCreateFlags>;
@@ -159,7 +159,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupDeviceCreateInfo">Specification</a> 
 			*/
-			struct GroupCreateInfo : Vault_00::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
+			struct GroupCreateInfo : Vault_0::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
 			{
 				      EType   SType              ;
 				const void*   Next               ;
@@ -171,7 +171,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemoryOverallocationCreateInfoAMD">Specification</a> 
 			*/
-			struct MemoryOverallocationCreateInfo : Vault_00::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
+			struct MemoryOverallocationCreateInfo : Vault_0::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
 			{
 				      EType                            SType                 ;
 				const void*                            Next                  ;
@@ -182,7 +182,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevicePrivateDataCreateInfoEXT">Specification</a> 
 			*/
-			struct PrivateDataCreateInfo : Vault_00::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
+			struct PrivateDataCreateInfo : Vault_0::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
 			{
 				      EType  SType                      ;
 				const void*  Next                       ;
@@ -192,7 +192,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceCreateInfo">Specification</a> 
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
 			{
 					  EType                     SType                ;
 				const void*                     Next                 ;
@@ -288,41 +288,30 @@
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		struct LogicalDevice : public Vault_01::LogicalDevice
+		struct LogicalDevice : public Vault_1::LogicalDevice
 		{
-			struct Queue : public Vault_01::LogicalDevice::Queue
+			using Parent = Vault_1::LogicalDevice;
+
+			struct Queue : public Parent::Queue
 			{
 				
 			};
 		};
 	}
 
-	namespace Vault_03
+	namespace Vault_5
 	{
-		struct LogicalDevice : public Vault_02::LogicalDevice
-		{
-			struct Queue : public Vault_02::LogicalDevice::Queue
-			{
-
-			};
-		};
-	}
-
-	namespace Vault_05
-	{
-		class LogicalDevice : public Vault_01::LogicalDevice
+		class LogicalDevice : public Vault_1::LogicalDevice
 		{
 		public:
-			using Parent = Vault_01::LogicalDevice;
+			using Parent = Vault_1::LogicalDevice;
 
 
 		protected:
 
 			Handle handle;
-
-
 		};
 	}
 }

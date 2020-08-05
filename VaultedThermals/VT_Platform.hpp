@@ -54,7 +54,7 @@ specified, why this is required.
 	namespace VT
 #endif
 {
-	namespace Vault_00
+	namespace Vault_0
 	{
 		/** @enum EOS_Platform
 			@brief Enum specifies operating system platform.

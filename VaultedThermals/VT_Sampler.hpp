@@ -30,7 +30,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
         /**
          * @brief.
@@ -47,7 +47,7 @@
             using AddressMode = ESamplerAddressMode;
 
             /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkSamplerCreateInfo, EStructureType::Sampler_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkSamplerCreateInfo, EStructureType::Sampler_CreateInfo>
 			{
                       EType             SType                  ;
                 const void*             Next                   ;

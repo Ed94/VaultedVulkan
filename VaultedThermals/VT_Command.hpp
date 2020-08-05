@@ -41,7 +41,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a> 
@@ -59,7 +59,7 @@
 			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
 			{
 				      EType       SType           ;
 				const void*       Next            ;
@@ -165,7 +165,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> .
 			 */
-			struct AllocateInfo : Vault_00::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
+			struct AllocateInfo : Vault_0::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
 			{
 				      EType               SType      ;
 				const void*               Next       ;
@@ -175,7 +175,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a>  */
-			struct BufferImageRegion : Vault_00::VKStruct_Base<VkBufferImageCopy>
+			struct BufferImageRegion : Vault_0::VKStruct_Base<VkBufferImageCopy>
 			{
 				DeviceSize               BufferOffset     ;
 				uint32                   BufferRowLength  ;
@@ -188,7 +188,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceInfoURL">Specification</a>
 			 */
-			struct InheritanceWindow : Vault_00::VKStruct_Base<VkCommandBufferInheritanceInfo, EStructureType::CommandBuffer_InheritanceInfo>
+			struct InheritanceWindow : Vault_0::VKStruct_Base<VkCommandBufferInheritanceInfo, EStructureType::CommandBuffer_InheritanceInfo>
 			{
 				      EType                       SType               ;
 				const void*                       Next                ;
@@ -202,7 +202,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceConditionalRenderingInfoEXT">Specification</a>
 				 */
-				struct ConditionalRenderingInfo : Vault_00::VKStruct_Base<VkCommandBufferInheritanceConditionalRenderingInfoEXT, EStructureType::CommandBuffer_Inheritance_ConditionalRendering_Info_EXT>
+				struct ConditionalRenderingInfo : Vault_0::VKStruct_Base<VkCommandBufferInheritanceConditionalRenderingInfoEXT, EStructureType::CommandBuffer_Inheritance_ConditionalRendering_Info_EXT>
 				{
 					      EType SType ;
 					const void* Next  ;
@@ -212,7 +212,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">Specification</a> 
 				 */
-				struct PassTransformInfo : Vault_00::VKStruct_Base
+				struct PassTransformInfo : Vault_0::VKStruct_Base
 					<VkCommandBufferInheritanceRenderPassTransformInfoQCOM, EStructureType::CommandBufferInheritance_RenderPassTransform_Info_QCOM>
 				{
 					EType                 SType     ;
@@ -225,7 +225,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferBeginInfo">Specification</a>
 			 */
-			struct BeginInfo : Vault_00::VKStruct_Base<VkCommandBufferBeginInfo, EStructureType::CommandBuffer_BeginInfo>
+			struct BeginInfo : Vault_0::VKStruct_Base<VkCommandBufferBeginInfo, EStructureType::CommandBuffer_BeginInfo>
 			{
 				      EType              SType          ;
 				const void*              Next           ;
@@ -236,7 +236,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a>
 			 */
-			struct SubmitInfo : Vault_00::VKStruct_Base<VkSubmitInfo, EStructureType::SubmitInfo>
+			struct SubmitInfo : Vault_0::VKStruct_Base<VkSubmitInfo, EStructureType::SubmitInfo>
 			{
 				      EType                 SType               ;
 				const void*                 Next                ;
@@ -252,7 +252,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkTimelineSemaphoreSubmitInfo">Specification</a>
 				 */
-				struct TimelineSemaphore : Vault_00::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
+				struct TimelineSemaphore : Vault_0::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
 				{
 					      EType   SType                    ;
 					const void*   Next                     ;
@@ -265,7 +265,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a>	
 				 */
-				struct D3D12Fence : Vault_00::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
+				struct D3D12Fence : Vault_0::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
 				{
 					      EType   SType                     ;
 					const void*   Next                      ;
@@ -278,7 +278,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32KeyedMutexAcquireReleaseInfoKHR">Specification</a> 
 				 */
-				struct Win32KeyedMutexAcquireRelease : Vault_00::VKStruct_Base<VkWin32KeyedMutexAcquireReleaseInfoKHR>
+				struct Win32KeyedMutexAcquireRelease : Vault_0::VKStruct_Base<VkWin32KeyedMutexAcquireReleaseInfoKHR>
 				{
 					      EType           SType          ;
 					const void*           Next           ;
@@ -294,7 +294,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkProtectedSubmitInfo">Specification</a> 
 				 */
-				struct Protected : Vault_00::VKStruct_Base<VkProtectedSubmitInfo>
+				struct Protected : Vault_0::VKStruct_Base<VkProtectedSubmitInfo>
 				{
 					      EType SType          ;
 					const void* Next           ;
@@ -304,7 +304,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupSubmitInfo">Specification</a>
 				 */
-				struct DeviceGroup : Vault_00::VKStruct_Base<VkDeviceGroupSubmitInfo>
+				struct DeviceGroup : Vault_0::VKStruct_Base<VkDeviceGroupSubmitInfo>
 				{
 					      EType   SType                       ;
 					const void*   Next                        ;
@@ -319,7 +319,7 @@
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceQuerySubmitInfoKHR">Specification</a> 
 				 */
-				struct PerformanceQuery : Vault_00::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
+				struct PerformanceQuery : Vault_0::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
 				{
 					      EType  Type            ;
 					const void*  Next            ;
@@ -330,7 +330,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupCommandBufferBeginInfo">Specification</a> 
 			 */
-			struct DeviceGroupBeginInfo : Vault_00::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
+			struct DeviceGroupBeginInfo : Vault_0::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
 			{
 				      EType  SType     ;
 				const void*  Next      ;
@@ -751,16 +751,18 @@
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		struct CommandPool : public Vault_01::CommandPool
+		struct CommandPool : public Vault_1::CommandPool
 		{
 
 		};
 
-		struct CommandBuffer : public Vault_01::CommandBuffer
+		struct CommandBuffer : public Vault_1::CommandBuffer
 		{
-			struct AllocateInfo : public Vault_01::CommandBuffer::AllocateInfo
+			using Parent = Vault_1::CommandBuffer;
+
+			struct AllocateInfo : public Parent::AllocateInfo
 			{
 				AllocateInfo() 
 				{ 
@@ -772,7 +774,7 @@
 				}
 			};
 
-			struct BeginInfo : public Vault_01::CommandBuffer::BeginInfo
+			struct BeginInfo : public Parent::BeginInfo
 			{
 				BeginInfo() 
 				{
@@ -783,7 +785,7 @@
 				}
 			};
 
-			struct SubmitInfo : public Vault_01::CommandBuffer::SubmitInfo
+			struct SubmitInfo : public Parent::SubmitInfo
 			{
 				SubmitInfo() 
 				{
@@ -798,21 +800,8 @@
 					SignalSemaphores     = nullptr  ;
 				}
 			};
-		};
-	}
 
-	namespace Vault_03
-	{
-		struct CommandPool : public Vault_02::CommandPool
-		{
-
-		};
-
-		struct CommandBuffer : public Vault_02::CommandBuffer
-		{
-			
-
-		#pragma region SingleTimeCommands
+			#pragma region SingleTimeCommands
 
 			/**
 			 * @brief.
@@ -878,11 +867,10 @@
 			{
 				Handle commandBuffer = BeginSingleTimeCommands(_device, _pool);
 
-				Vault_01::CommandBuffer::CopyBuffer(commandBuffer, _sourceBuffer, _destinationBuffer, 1, &_regionInfo);
+				Parent::CopyBuffer(commandBuffer, _sourceBuffer, _destinationBuffer, 1, &_regionInfo);
 
 				EndSingleTimeCommands(commandBuffer, _pool, _device, _queue);
 			}
 		};
-
-	}
+	};
 }

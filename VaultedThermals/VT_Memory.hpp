@@ -35,9 +35,9 @@ Contains the full definition of the intended memory structure.
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
-		struct Memory : public Vault_00::Memory
+		struct Memory : public Vault_0::Memory
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
 			using Handle = VkDeviceMemory;
@@ -74,9 +74,9 @@ Contains the full definition of the intended memory structure.
 			*/
 			static void Free
 			(
-				      LogicalDevice::Handle _device,
-				      Memory::Handle _memory,
-				const AllocationCallbacks* _allocator
+				      LogicalDevice::Handle _device   ,
+				      Memory::Handle        _memory   ,
+				const AllocationCallbacks*  _allocator
 			)
 			{
 				vkFreeMemory(_device, _memory, _allocator->operator const VkAllocationCallbacks*());
@@ -119,16 +119,14 @@ Contains the full definition of the intended memory structure.
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		struct Memory : public Vault_01::Memory
+		struct Memory : public Vault_1::Memory
 		{
-			using Parent = Vault_01::Memory;
+			using Parent = Vault_1::Memory;
 
-			struct AllocateInfo : public Vault_01::Memory::AllocateInfo
+			struct AllocateInfo : public Parent::AllocateInfo
 			{
-				using Parent = Vault_01::Memory::AllocateInfo;
-
 				AllocateInfo() 
 				{ 
 					SType           = STypeEnum; 
@@ -138,30 +136,50 @@ Contains the full definition of the intended memory structure.
 				}
 			};
 
-			struct Barrier : public Vault_01::Memory::Barrier
+			struct Barrier : public Parent::Barrier
 			{
-				using Parent = Vault_01::Memory::Barrier;
-
 				Barrier() 
 				{ 
 					SType = STypeEnum; 
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			 * @brief Writes to GPU memory by mapping to device memory specified by a 
+			 * handle and then using memcpy to copy data specified in _data.
+			 * 
+			 * \param _device
+			 * \param _memory
+			 * \param _offset
+			 * \param _size
+			 * \param _flags
+			 * \param _data
+			 */
+			static void WriteToGPU
+			(
+				LogicalDevice::Handle _device,
+				Handle                _memory,
+				DeviceSize            _offset,
+				DeviceSize            _size  ,
+				MapFlags              _flags ,
+				VoidPtr&              _data
+			)
+			{
+				VoidPtr gpuAddressing;
+
+				Map(_device, _memory, _offset, _size, _flags, gpuAddressing);
+
+					memcpy(gpuAddressing, _data, _size);
+
+				Unmap(_device, _memory);
+			}
 		};
 	}
 
-	namespace Vault_03
+	namespace Vault_5
 	{
-		struct Memory : public Vault_02::Memory
-		{
-
-		};
-	}
-
-	namespace Vault_05
-	{
-		class Memory : public Vault_01::Memory
+		class Memory : public Vault_1::Memory
 		{
 		public:
 

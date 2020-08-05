@@ -39,9 +39,9 @@
 	namespace VT
 #endif
 {
-	namespace Vault_00
+	namespace Vault_0
 	{
-		using Vault_01::Image;
+		using Vault_1::Image;
 
 		/**
 		 * @brief Cross-Platform set of definitions for a Surface.
@@ -140,12 +140,12 @@
 			 * \param _surfaceHandle
 			 * \return 
 			 */
-			static EResult CreateSurface
+			static EResult Create
 			(
-				      Vault_01::AppInstance::Handle _appHandle    ,
-				      CreateInfo&                   _createInfo   ,
-				const Memory::AllocationCallbacks*  _allocator    ,
-				      Handle&                       _surfaceHandle
+				      Vault_1::AppInstance::Handle _appHandle    ,
+				      CreateInfo&                  _createInfo   ,
+				const Memory::AllocationCallbacks* _allocator    ,
+				      Handle&                      _surfaceHandle
 			)
 			{
 				return EResult(vkCreateWin32SurfaceKHR(_appHandle, _createInfo.operator const VkWin32SurfaceCreateInfoKHR*(), _allocator->operator const VkAllocationCallbacks*(), &_surfaceHandle));
@@ -156,10 +156,10 @@
 		using Surface = Surface_Maker<OS_Platform>;
 	}
 
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
-		struct Surface : Vault_00::Surface
+		struct Surface : Vault_0::Surface
 		{
 			/**
 			 * @brief Destroy a VkSurfaceKHR object.
@@ -190,9 +190,9 @@
 			 */
 			static EResult CheckPhysicalDeviceSupport
 			(
-				Vault_01::PhysicalDevice::Handle _physDeviceHandle,
-				uint32                           _queueFamilyIndex,
-				Surface::Handle                  _surfaceHandle   ,
+				Vault_1::PhysicalDevice::Handle _physDeviceHandle,
+				uint32                          _queueFamilyIndex,
+				Surface::Handle                 _surfaceHandle   ,
 				Bool& _checkResult
 			)
 			{
@@ -259,14 +259,11 @@
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
-		struct Surface : Vault_01::Surface
+		struct Surface : Vault_1::Surface
 		{
-
-
-
 			/**
 			 * @brief Provides the number of available surface formats.
 			 * 

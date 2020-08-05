@@ -38,7 +38,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		 * @brief 
@@ -59,10 +59,10 @@
 			using CreateFlags = Bitmask<EUndefined, Flags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
 			{
 				      EType             SType    ;
-				const void*             Extension;
+				const void*             Next     ;
 				      CreateFlags       Flags    ;
 				      DataSize          CodeSize ;
 				const SPIR_V::Bytecode* Code     ;
@@ -104,6 +104,48 @@
 			static void Destory(LogicalDevice::Handle _deviceHandle, ShaderModule::Handle _moduleHandle, const Memory::AllocationCallbacks* _allocator)
 			{
 				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator->operator const VkAllocationCallbacks*());
+			}
+		};
+	}
+
+	namespace Vault_2
+	{
+		struct ShaderModule : public Vault_1::ShaderModule
+		{
+			using Parent = Vault_1::ShaderModule;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType    = STypeEnum;
+					Next     = nullptr;
+					CodeSize = 0;
+					Code     = nullptr;
+				}
+			};
+
+			static ShaderModule::Handle Create(LogicalDevice::Handle _device, RoCStr _code, DataSize _codeSize)
+			{
+				using SPIR_V::Bytecode;
+
+				ShaderModule::CreateInfo creationSpec{};
+
+				creationSpec.Code     = RCast<const Bytecode>(_code);
+				creationSpec.CodeSize = _codeSize                   ;
+
+				ShaderModule::Handle createdModule;
+
+				EResult&& creationResult = Parent::Create(_device, creationSpec, nullptr, createdModule);
+
+			#ifdef VT_Option__USE_STL_EXCEPTIONS
+				if (creationResult != EResult::Success)
+				{
+					throw std::runtime_error("Failed to create TriShader module!");
+				}
+			#endif
+
+				return createdModule;
 			}
 		};
 	}

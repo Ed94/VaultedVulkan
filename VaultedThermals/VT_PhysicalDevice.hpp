@@ -34,7 +34,7 @@ A physical device usually represents a single complete implementation of Vulkan
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		@brief Represents a physical device.
@@ -42,7 +42,7 @@ A physical device usually represents a single complete implementation of Vulkan
 		 */
 		struct PhysicalDevice
 		{
-			using Memory = Vault_00::Memory;
+			using Memory = Vault_0::Memory;
 
 			static constexpr DeviceSize MaxNameSize        = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
 			static constexpr DeviceSize MaxDeviceGroupSize = VK_MAX_DEVICE_GROUP_SIZE;
@@ -66,7 +66,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkConformanceVersion">Specification</a> 
 			*/
-			struct ConformanceVersion : Vault_00::VKStruct_Base<VkConformanceVersion>
+			struct ConformanceVersion : Vault_0::VKStruct_Base<VkConformanceVersion>
 			{
 				uInt8 Major   ;
 				uInt8 Minor   ;
@@ -80,7 +80,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceFeatures">Specification</a> 
 			*/
-			struct Features : Vault_00::VKStruct_Base<VkPhysicalDeviceFeatures>
+			struct Features : Vault_0::VKStruct_Base<VkPhysicalDeviceFeatures>
 			{
 				Bool RobustBufferAccess                     ;   ///< Out of bounds buffer accesses are well defined.
 				Bool FullDrawIndexUint32                    ;   ///< full 32-bit range of indices are supported for indexed draw calls using VK_INDEX_TYPE_UINT32.
@@ -143,7 +143,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceGroupProperties ">Specification</a> 
 			*/
-			struct Group : Vault_00::VKStruct_Base<VkPhysicalDeviceGroupProperties, EStructureType::PhysicalDevice_GroupProperties>
+			struct Group : Vault_0::VKStruct_Base<VkPhysicalDeviceGroupProperties, EStructureType::PhysicalDevice_GroupProperties>
 			{
 				using DeviceListing = Handle[MaxDeviceGroupSize];
 
@@ -160,7 +160,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceLimits">Specification</a> 
 			*/
-			struct Limits : Vault_00::VKStruct_Base<VkPhysicalDeviceLimits>
+			struct Limits : Vault_0::VKStruct_Base<VkPhysicalDeviceLimits>
 			{
 				uint32           MaxImageDimension1D                            ;
 				uint32           MaxImageDimension2D                            ;
@@ -273,7 +273,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification</a> 
 			 */
-			struct MemoryProperties : Vault_00::VKStruct_Base<VkPhysicalDeviceMemoryProperties>
+			struct MemoryProperties : Vault_0::VKStruct_Base<VkPhysicalDeviceMemoryProperties>
 			{
 				uint32       TypeCount            ;
 				Memory::Type Types[MaxMemoryTypes];
@@ -287,7 +287,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterKHR">Specification</a> 
 			*/
-			struct PerformanceCounter : Vault_00::VKStruct_Base<VkPerformanceCounterKHR, EStructureType::PerformacneCounter_KHR>
+			struct PerformanceCounter : Vault_0::VKStruct_Base<VkPerformanceCounterKHR, EStructureType::PerformacneCounter_KHR>
 			{
 				      EType                      SType      ;
 				const void*                      Next       ;
@@ -297,7 +297,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				      UUID                       CounterUUID;
 
 
-				using DescriptionFlags = Bitmask<EPerformanceCounterDescriptionFlag, VkPerformanceCounterDescriptionFlagBitsKHR>;
+				using DescriptionFlags = Bitmask<EPerformanceCounterDescriptionFlag, VkPerformanceCounterDescriptionFlagsKHR>;
 
 				/**
 				* @brief.
@@ -307,7 +307,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				* 
 				* @todo Implement.
 				*/
-				struct Description : Vault_00::VKStruct_Base<VkPerformanceCounterDescriptionKHR>
+				struct Description : Vault_0::VKStruct_Base<VkPerformanceCounterDescriptionKHR>
 				{
 					      EType            SType      ;
 					const void*            Next       ;
@@ -328,7 +328,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#sparsememory-physicalprops">Specification</a> 
 			*/
-			struct SparseMemoryProperties : Vault_00::VKStruct_Base<VkPhysicalDeviceSparseProperties>
+			struct SparseMemoryProperties : Vault_0::VKStruct_Base<VkPhysicalDeviceSparseProperties>
 			{
 				Bool ResidencyStandard2DBlockShape           ;
 				Bool ResidencyStandard2DMultisampleBlockShape;
@@ -342,7 +342,7 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties">Specification</a> 
 			*/
-			struct Properties : Vault_00::VKStruct_Base<VkPhysicalDeviceProperties>
+			struct Properties : Vault_0::VKStruct_Base<VkPhysicalDeviceProperties>
 			{
 				uint32                 API_Version      ;
 				uint32                 DriverVersion    ;
@@ -358,7 +358,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties">Specification</a> 
 				*/
-				struct DeviceID : Vault_00::VKStruct_Base<VkPhysicalDeviceIDProperties >
+				struct DeviceID : Vault_0::VKStruct_Base<VkPhysicalDeviceIDProperties >
 				{
 					EType  SType          ;
 					void*  Next           ;
@@ -373,7 +373,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevicePCIBusInfoPropertiesEXT">Specification</a> 
 				*/
-				struct PCIBusInfo : Vault_00::VKStruct_Base
+				struct PCIBusInfo : Vault_0::VKStruct_Base
 					<VkPhysicalDevicePCIBusInfoPropertiesEXT, EStructureType::PhysicalDevice_PCI_BUS_Info_Properties_EXT>
 				{
 					EType  SType   ;
@@ -388,7 +388,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceVulkan11Properties">Specification</a> 
 				*/
-				struct Vulkan11 : Vault_00::VKStruct_Base<VkPhysicalDeviceVulkan11Properties, EStructureType::PhysicalDevice_Vulkan_1_1_Properties>
+				struct Vulkan11 : Vault_0::VKStruct_Base<VkPhysicalDeviceVulkan11Properties, EStructureType::PhysicalDevice_Vulkan_1_1_Properties>
 				{
 					using ShaderStageFlags = Bitmask<EShaderStageFlag, VkShaderStageFlags>;
 
@@ -418,7 +418,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				*  
 				* @todo Implement.
 				*/
-				struct Vulkan12 : Vault_00::VKStruct_Base<VkPhysicalDeviceVulkan12Properties, EStructureType::PhysicalDevice_Vulkan_1_2_Properties>
+				struct Vulkan12 : Vault_0::VKStruct_Base<VkPhysicalDeviceVulkan12Properties, EStructureType::PhysicalDevice_Vulkan_1_2_Properties>
 				{
 					EType                           SType                                               ;
 					void*                           Next                                                ;
@@ -483,7 +483,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties2">Specification</a> 
 			 */
-			struct Properties2 : Vault_00::VKStruct_Base<VkPhysicalDeviceProperties2, EStructureType::PhysicalDevice_Properties_2>
+			struct Properties2 : Vault_0::VKStruct_Base<VkPhysicalDeviceProperties2, EStructureType::PhysicalDevice_Properties_2>
 			{
 				EType      SType     ;
 				void*      Next      ;
@@ -495,7 +495,7 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyProperties">Specification</a> 
 			*/
-			struct QueueFamilyProperties: Vault_00::VKStruct_Base<VkQueueFamilyProperties>
+			struct QueueFamilyProperties : Vault_0::VKStruct_Base<VkQueueFamilyProperties>
 			{
 				/**
 				* @brief Bitmask specifying capabilities of queues in a queue family.     
@@ -516,7 +516,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyProperties2">Specification</a> 
 			*/
-			struct QueueFamilyProperties2 : Vault_00::VKStruct_Base<VkQueueFamilyProperties2, EStructureType::QueueFamily_Properties_2>
+			struct QueueFamilyProperties2 : Vault_0::VKStruct_Base<VkQueueFamilyProperties2, EStructureType::QueueFamily_Properties_2>
 			{
 				EType                 SType     ;
 				void*                 Next      ;
@@ -528,7 +528,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyCheckpointPropertiesNV">Specification</a> 
 				*/
-				struct Checkpoint
+				struct Checkpoint : Vault_0::VKStruct_Base<VkQueueFamilyCheckpointPropertiesNV, EStructureType::QueueFamilyCheckpoint_Properties_NV>
 				{
 					using Pipeline_StageFlags = Bitmask<EPipelineStageFlag, VkPipelineStageFlags>;   // Not defined yet...
 
@@ -549,9 +549,20 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_device_extensions">Specification</a> 
 			*/
-			static inline EResult EnumerateExtensionProperties(Handle _deviceHandle, RoCStr _layerName, uint32* _numOfExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			static EResult EnumerateExtensionProperties(Handle _deviceHandle, RoCStr _layerName, uint32* _numOfExtensions, ExtensionProperties* _extensionPropertiesContainer)
 			{
 				return EResult(vkEnumerateDeviceExtensionProperties(_deviceHandle, _layerName, _numOfExtensions, _extensionPropertiesContainer->operator VkExtensionProperties*()));
+			}
+
+			/**
+			@brief Query supported features. Reports capabilities of a physical device.
+
+			@details
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFeatures">Specification</a> 
+			*/
+			static void GetFeatures(Handle _deviceHandle, Features& _featuresContainer)
+			{
+				vkGetPhysicalDeviceFeatures(_deviceHandle, _featuresContainer.operator VkPhysicalDeviceFeatures*());
 			}
 
 			/**
@@ -561,7 +572,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			 * \param _format
 			 * \param _properties
 			 */
-			static inline void GetFormatProperties(PhysicalDevice::Handle _physicalDevice, EFormat _format, FormatProperties& _properties)
+			static void GetFormatProperties(Handle _physicalDevice, EFormat _format, FormatProperties& _properties)
 			{
 				vkGetPhysicalDeviceFormatProperties(_physicalDevice, VkFormat(_format), _properties);
 			}
@@ -572,7 +583,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			 * \param _physicalDevice
 			 * \param _properties
 			 */
-			static inline void GetMemoryProperties(PhysicalDevice::Handle _physicalDevice, MemoryProperties& _properties)
+			static void GetMemoryProperties(Handle _physicalDevice, MemoryProperties& _properties)
 			{
 				vkGetPhysicalDeviceMemoryProperties(_physicalDevice, _properties);
 			}
@@ -582,7 +593,7 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties">Specification</a> 
 			*/
-			static inline void GetProperties(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Properties& _propertiesContainer)
+			static void GetProperties(Handle _deviceHandle, Properties& _propertiesContainer)
 			{
 				vkGetPhysicalDeviceProperties(_deviceHandle, _propertiesContainer.operator VkPhysicalDeviceProperties*());
 			}
@@ -593,24 +604,13 @@ A physical device usually represents a single complete implementation of Vulkan
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties2">Specification</a> 
 			 */
-			static inline void GetProperties2
+			static void GetProperties2
 			(
 				Handle       _physicalDevice,
 				Properties2& _properties
 			)
 			{
 				vkGetPhysicalDeviceProperties2(_physicalDevice, _properties);
-			}
-
-			/**
-			@brief Query supported features. Reports capabilities of a physical device.
-			
-			@details
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFeatures">Specification</a> 
-			*/
-			static void GetFeatures(PhysicalDevice::Handle _deviceHandle, PhysicalDevice::Features& _featuresContainer)
-			{
-				vkGetPhysicalDeviceFeatures(_deviceHandle, _featuresContainer.operator VkPhysicalDeviceFeatures*());
 			}
 
 			/**
@@ -672,82 +672,119 @@ A physical device usually represents a single complete implementation of Vulkan
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		using Vault_01::ExtensionProperties;
+		using Vault_1::ExtensionProperties;
 
 		/**
 		@brief Represents a physical device.
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 		*/
-		struct PhysicalDevice : Vault_01::PhysicalDevice
+		struct PhysicalDevice : Vault_1::PhysicalDevice
 		{
-			using Parent = Vault_01::PhysicalDevice;
+			using Parent = Vault_1::PhysicalDevice;
 
-			using List      = QueriedListing<PhysicalDevice::Handle>;
-			using GroupList = QueriedListing<PhysicalDevice::Group >;
+			using List      = std::vector<PhysicalDevice::Handle>;
+			using GroupList = std::vector<PhysicalDevice::Group>;
 
-			struct QueueFamilyProperties : Vault_01::PhysicalDevice::QueueFamilyProperties
+			struct Group : Parent::Group
 			{
-				/**
-				@brief Provides the number of available queue family  properties.
-				*/
-				static uint32 GetCount(Handle _deviceHandle)
+				Group()
 				{
-					uint32 result;
-
-					QueryQueueFamilyProperties(_deviceHandle, &result, nullptr);
-
-					return result;
-				}
-
-				/**
-				@brief Provides the queue families for the respective device.
-				*/
-				static void Get(Handle _deviceHandle, QueueFamilyProperties* _familyContainer)
-				{
-					uint32 numQueueFamilies;
-
-					QueryQueueFamilyProperties(_deviceHandle, &numQueueFamilies, nullptr);
-
-					QueryQueueFamilyProperties(_deviceHandle, &numQueueFamilies, _familyContainer);
+					SType               = STypeEnum;
+					Next                = nullptr  ;
 				}
 			};
 
-			/** 
-			@brief Provides the number of available extensions.
-			*/
-			static uint32 GetNumOfAvailableExtensions(Handle _deviceHandle)
+			struct PerformanceCounter : Parent::PerformanceCounter
 			{
-				uint32 numExtensions;
+				PerformanceCounter()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
 
-				EResult&& result = EnumerateExtensionProperties(_deviceHandle, nullptr, &numExtensions, nullptr);
+				struct Description : Parent::PerformanceCounter::Description
+				{
+					Description()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
 
-				if (result != EResult::Success) throw std::runtime_error("Failed to get number of extensions for a physical device.");
+				struct Properties : Parent::Properties
+				{
+					struct DeviceID : Parent::Properties::DeviceID
+					{
+						DeviceID()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
 
-				return numExtensions;
-			}
+					struct PCIBusInfo : Parent::Properties::PCIBusInfo
+					{
+						PCIBusInfo()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
 
-			/** 
-			@brief Provides the available extensions.
-			*/
-			static EResult GetAvailableExtensions(Handle _deviceHandle, ExtensionProperties* _extensionPropertiesContainer)
+					struct Vulkan11 : Parent::Properties::Vulkan11
+					{
+						Vulkan11()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
+
+					struct Vulkan12 : Parent::Properties::Vulkan12
+					{
+						Vulkan12()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
+				};
+
+				struct Properties2 : Parent::Properties2
+				{
+					Properties2()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+
+				struct QueueFamilyProperties2 : Parent::QueueFamilyProperties2
+				{
+					QueueFamilyProperties2()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+
+					struct Checkpoint : Parent::QueueFamilyProperties2::Checkpoint
+					{
+						Checkpoint()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
+				};
+			};
+
+			struct QueueFamilyProperties : Parent::QueueFamilyProperties
 			{
-				uint32 numExtensions;
+				using List = std::vector<QueueFamilyProperties>;
+			};
 
-				EResult&& result = EnumerateExtensionProperties(_deviceHandle, nullptr, &numExtensions, nullptr);
-
-				result = EnumerateExtensionProperties(_deviceHandle, nullptr, &numExtensions, _extensionPropertiesContainer);
-
-				return result;
-			}
-		};
-	}
-
-	namespace Vault_03
-	{
-		struct PhysicalDevice : public Vault_02::PhysicalDevice
-		{
 			static uint32 FindMemoryType(PhysicalDevice::Handle _device, uint32 _typeFilter, Memory::PropertyFlags _properties)
 			{
 				MemoryProperties memProperties;
@@ -757,9 +794,120 @@ A physical device usually represents a single complete implementation of Vulkan
 				for (DeviceSize index = 0; index < memProperties.TypeCount; index++)
 				{
 					if
-					(
+						(
 						_typeFilter & (1 << index) &&
 						(memProperties.Types[index].PropertyFlags & _properties) == _properties
+						)
+					{
+						return index;
+					}
+				}
+
+			#ifdef VT_Option__USE_STL_EXCEPTIONS
+				throw std::runtime_error("Failed to find suitable memory type!");
+			#endif
+			}
+
+			static ESampleCount GetMaxSampleCount_ColorAndDepth(PhysicalDevice::Handle _physicalDevice)
+			{
+				PhysicalDevice::Properties properties;
+
+				PhysicalDevice::GetProperties(_physicalDevice, properties);
+
+				SampleCountFlags counts
+				(
+					properties.LimitsSpec.FramebufferColorSampleCounts, 
+					properties.LimitsSpec.FramebufferDepthSampleCounts
+				);
+
+				if (counts.Has(ESampleCount::_64)) return ESampleCount::_64;
+				if (counts.Has(ESampleCount::_32)) return ESampleCount::_32;
+				if (counts.Has(ESampleCount::_16)) return ESampleCount::_16;
+				if (counts.Has(ESampleCount::_8 )) return ESampleCount::_8 ;
+				if (counts.Has(ESampleCount::_4 )) return ESampleCount::_4 ;
+				if (counts.Has(ESampleCount::_2 )) return ESampleCount::_2 ;
+
+				return ESampleCount::_1;
+			}
+
+			/**
+			* @brief Provides the queue families for the respective device.
+			* 
+			* \param _device
+			* \return 
+			*/
+			static QueueFamilyProperties::List GetAvailableQueueFamilies(Handle _device)
+			{
+				QueueFamilyProperties::List queryResult; uint32 count;
+
+				QueryQueueFamilyProperties(_device, &count, nullptr);
+
+				queryResult.resize(count);
+
+				QueryQueueFamilyProperties(_device, &count, queryResult.data());
+
+				return queryResult;
+			}
+
+			using ExtensionList = std::vector<ExtensionProperties>;
+
+			static EResult GetAvailableExtensions(Handle _device, RoCStr _layerName, ExtensionList& _extensionListing)
+			{
+				uint32 count;
+
+				EResult&& returnCode = EnumerateExtensionProperties(_device, _layerName, &count, nullptr);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				_extensionListing.resize(count);
+
+				returnCode = EnumerateExtensionProperties(_device, _layerName, &count, _extensionListing.data());
+
+				return returnCode;
+			}
+		};
+	}
+
+	namespace Vault_5
+	{
+		class PhysicalDevice : public Vault_2::PhysicalDevice
+		{
+		public:
+
+			using Parent = Vault_2::PhysicalDevice;
+			
+			using List = std::vector<PhysicalDevice>;
+
+			PhysicalDevice()
+			{
+				handle = NullHandle;
+
+				properties2 = Vault_2::PhysicalDevice::Properties2();
+			}
+
+			void AssignHandle(Handle _handle) 
+			{ 
+				handle = _handle; 
+
+				Parent::GetFeatures        (handle, features        );
+				Parent::GetMemoryProperties(handle, memoryProperties);
+				Parent::GetProperties      (handle, properties      );
+				Parent::GetProperties      (handle, properties      );
+				Parent::GetProperties2     (handle, properties2     );
+
+				queueFamilies = Parent::GetAvailableQueueFamilies(handle);
+			}
+
+			uint32 FindMemoryType(uint32 _typeFilter, Memory::PropertyFlags _properties) const
+			{
+				for (DeviceSize index = 0; index < memoryProperties.TypeCount; index++)
+				{
+					auto flags = memoryProperties.Types[index].PropertyFlags;
+
+					if
+					(
+						_typeFilter & (1 << index) &&
+						(flags & _properties) == _properties
 					)
 					{
 						return index;
@@ -770,22 +918,67 @@ A physical device usually represents a single complete implementation of Vulkan
 				throw std::runtime_error("Failed to find suitable memory type!");
 			#endif
 			}
-		};
-	}
 
-	namespace Vault_05
-	{
-		class PhysicalDevice : public Vault_01::PhysicalDevice
-		{
-		public:
-
-			using Parent = Vault_01::PhysicalDevice;
-
-			void AssignHandle(Handle _handle) { handle = _handle; }
-
-			EResult EnumerateExtensionProperties(RoCStr _layerName, uint32* _numOfExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			EResult GetAvailableExtensions(RoCStr _layerName, ExtensionList& _extensionListing) const
 			{
-				throw std::logic_error("Not Implemented");
+				return EResult(Parent::GetAvailableExtensions(handle, _layerName, _extensionListing));
+			}
+
+			const Features& GetFeatures() const
+			{
+				return features;
+			}
+
+			FormatProperties GetFormatProperties(EFormat _format) const
+			{
+				FormatProperties properties;
+
+				Parent::GetFormatProperties(handle, _format, properties);
+
+				return properties;
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			ESampleCount GetMaxSampleCount_ColorAndDepth() const
+			{
+				SampleCountFlags counts
+				(
+					properties.LimitsSpec.FramebufferColorSampleCounts,
+					properties.LimitsSpec.FramebufferDepthSampleCounts
+				);
+
+				if (counts.Has(ESampleCount::_64)) return ESampleCount::_64;
+				if (counts.Has(ESampleCount::_32)) return ESampleCount::_32;
+				if (counts.Has(ESampleCount::_16)) return ESampleCount::_16;
+				if (counts.Has(ESampleCount::_8 )) return ESampleCount::_8 ;
+				if (counts.Has(ESampleCount::_4 )) return ESampleCount::_4 ;
+				if (counts.Has(ESampleCount::_2 )) return ESampleCount::_2 ;
+
+				return ESampleCount::_1;
+			}
+
+			const MemoryProperties& GetMemoryProperties() const
+			{
+				return memoryProperties;
+			}
+
+			const Properties& GetProperties() const
+			{
+				return properties;
+			}
+
+			const Properties2& GetProperties2() const
+			{
+				return properties2;
+			}
+
+			const QueueFamilyProperties::List& GetAvailableQueueFamilies() const
+			{
+				return queueFamilies;
 			}
 
 		protected:
@@ -796,26 +989,17 @@ A physical device usually represents a single complete implementation of Vulkan
 			EDriverID   driverID;
 			EVendorID   vendorID;
 
-			//ConformanceVersion conformance;
+			Features features; 
+			Limits   limits  ; 
 
-			Features features;
-			Limits   limits  ;
+			MemoryProperties memoryProperties; 
 
-			PerformanceCounter perfCounter;
+			
 
-			Group group;
+			Vault_2::PhysicalDevice::Properties  properties ;
+			Properties2 properties2;
 
-			Properties               properties      ;
-			Properties2              properties2     ;
-			Properties::DeviceID     deviceID        ;
-			Properties::PCIBusInfo   pciBusInfo      ;
-			Properties::Vulkan11     vulk11Properties;
-			Properties::Vulkan12     vulk12Properites;
-
-			QueueFamilyProperties  queueFamily ;
-			QueueFamilyProperties2 queueFamily2;
-
-			SparseMemoryProperties sparseMemProps;
+			QueueFamilyProperties::List queueFamilies;
 		};
 	}
 }

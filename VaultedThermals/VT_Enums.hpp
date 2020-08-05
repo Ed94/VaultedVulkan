@@ -1320,6 +1320,17 @@
 			CPU            = VK_PHYSICAL_DEVICE_TYPE_CPU
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPointClippingBehavior">Specification</a>  */
+		enum class EPointClippingBehavior : uint32
+		{
+			AllClipPlanes      = VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES      , 
+			UserClipPlanesOnly = VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY, 
+
+			// Provided by VK_KHR_maintenance2
+			AllClipPlanes_KHR      = VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR      , 
+			UserClipPlanesOnly_KHR = VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR 
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlagBits">Specification</a>  */
 		enum class EQueryControlFlags : uint32
 		{
@@ -1352,17 +1363,6 @@
 			TessellationControlShaderPatches        = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT       ,
 			TessellationEvaluationShaderInvocations = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT,
 			ComputeShaderInvocations                = VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT 
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPointClippingBehavior">Specification</a>  */
-		enum class EPointClippingBehavior : uint32
-		{
-			AllClipPlanes      = VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES      , 
-			UserClipPlanesOnly = VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY, 
-
-			// Provided by VK_KHR_maintenance2
-			AllClipPlanes_KHR      = VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES_KHR      , 
-			UserClipPlanesOnly_KHR = VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY_KHR 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResolveModeFlagBits">Specification</a> */
@@ -1537,7 +1537,7 @@
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSharingMode">Specification</a>  */
 		enum class ESharingMode : uint32
 		{
-			Excusive   = VK_SHARING_MODE_EXCLUSIVE ,
+			Exclusive  = VK_SHARING_MODE_EXCLUSIVE ,
 			Concurrent = VK_SHARING_MODE_CONCURRENT
 		};
 

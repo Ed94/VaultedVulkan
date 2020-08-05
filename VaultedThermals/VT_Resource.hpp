@@ -41,7 +41,7 @@ can be multidimensional and may have associated metadata.
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		 * @brief A linear array of data.
@@ -69,7 +69,7 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateInfo">Specification</a>
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
@@ -81,7 +81,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCopy">Specification</a>  */
-			struct CopyInfo : Vault_00::VKStruct_Base<VkBufferCopy>
+			struct CopyInfo : Vault_0::VKStruct_Base<VkBufferCopy>
 			{
 				DeviceSize SourceOffset;
 				DeviceSize DestinationOffset;
@@ -91,7 +91,7 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferMemoryBarrier">Specification</a>
 			 */
-			struct Memory_Barrier : Vault_00::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
+			struct Memory_Barrier : Vault_0::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
 			{
 				      EType          SType              ;
 				const void*          Next               ;
@@ -199,7 +199,7 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a> .
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
 			{
 				      EType       SType  ;
 				const void*       Next   ;
@@ -255,14 +255,14 @@ can be multidimensional and may have associated metadata.
 			using ResetFlags = Bitmask<EUndefined, VkDescriptorPoolResetFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolSize">Specification</a>  */
-			struct Size : Vault_00::VKStruct_Base<VkDescriptorPoolSize>
+			struct Size : Vault_0::VKStruct_Base<VkDescriptorPoolSize>
 			{
 				EDescriptorType Type ;
 				uint32          Count;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
 			{
 					  EType       SType        ;
 				const void*       Next         ;
@@ -357,7 +357,7 @@ can be multidimensional and may have associated metadata.
 			using UsageFlags = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
@@ -377,7 +377,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceLayers">Specification</a>  */
-			struct SubresourceLayers : Vault_00::VKStruct_Base<VkImageSubresourceLayers>
+			struct SubresourceLayers : Vault_0::VKStruct_Base<VkImageSubresourceLayers>
 			{
 				AspectFlags AspectMask    ;
 				uint32      MipLevel      ;
@@ -386,7 +386,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceRange">Specification</a>  */
-			struct SubresourceRange : Vault_00::VKStruct_Base<VkImageSubresourceRange>
+			struct SubresourceRange : Vault_0::VKStruct_Base<VkImageSubresourceRange>
 			{
 				AspectFlags AspectMask    ;
 				uint32      BaseMipLevel  ;
@@ -396,7 +396,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageMemoryBarrier">Specification</a>  */
-			struct Memory_Barrier : Vault_00::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
+			struct Memory_Barrier : Vault_0::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
 			{
 				      EType            SType              ;
 				const void*            Next               ;
@@ -411,7 +411,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageBlit">Specification</a>  */
-			struct Blit : Vault_00::VKStruct_Base<VkImageBlit>
+			struct Blit : Vault_0::VKStruct_Base<VkImageBlit>
 			{
 				SubresourceLayers SrcSubresource;
 				Offset3D          SrcOffsets[2] ;
@@ -496,7 +496,7 @@ can be multidimensional and may have associated metadata.
 			using EViewType = EImageViewType;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a>  */
 				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
@@ -564,7 +564,7 @@ can be multidimensional and may have associated metadata.
 			using Handle = VkDescriptorSet;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a>  */
-			struct AllocateInfo : Vault_00::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
+			struct AllocateInfo : Vault_0::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
 			{
 				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
 
@@ -576,7 +576,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBufferInfo">Specification</a>  */
-			struct BufferInfo : Vault_00::VKStruct_Base<VkDescriptorBufferInfo>
+			struct BufferInfo : Vault_0::VKStruct_Base<VkDescriptorBufferInfo>
 			{
 				Buffer::Handle Buffer;
 				DeviceSize     Offset;
@@ -584,7 +584,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a>  */
-			struct Copy : Vault_00::VKStruct_Base<VkCopyDescriptorSet>
+			struct Copy : Vault_0::VKStruct_Base<VkCopyDescriptorSet>
 			{
 				      EType  SType          ;
 				const void*  Next           ;
@@ -598,7 +598,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a>  */
-			struct ImageInfo : Vault_00::VKStruct_Base<VkDescriptorImageInfo>
+			struct ImageInfo : Vault_0::VKStruct_Base<VkDescriptorImageInfo>
 			{
 				Sampler::Handle   Sampler    ;
 				ImageView::Handle ImageView  ;
@@ -606,7 +606,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a>  */
-			struct Write : Vault_00::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
+			struct Write : Vault_0::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
 			{
 				      EType               SType          ;
 				const void*               Next           ;
@@ -681,67 +681,61 @@ can be multidimensional and may have associated metadata.
 		};	
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		struct Buffer : Vault_01::Buffer
+		struct Buffer : Vault_1::Buffer
 		{
-			struct CreateInfo : public Vault_01::Buffer::CreateInfo
+			using Parent = Vault_1::Buffer;
+
+			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo() 
 				{
-					SType = STypeEnum;
-					Next = nullptr;
-					Size  = 0;
-					QueueFamilyIndexCount = 0;
+					SType                 = STypeEnum;
+					Next                  = nullptr  ;
+					Size                  = 0        ;
+					QueueFamilyIndexCount = 0        ;
 				}
 
 				CreateInfo(UsageFlags _usage, ESharingMode _sharingMode)
 				{
-					SType = STypeEnum;
-					Next = nullptr;
-					Size = 0;
-					Usage = _usage;
-					SharingMode = _sharingMode;
-					QueueFamilyIndexCount = 0;
+					SType                 = STypeEnum   ;
+					Next                  = nullptr     ;
+					Size                  = 0           ;
+					Usage                 = _usage      ;
+					SharingMode           = _sharingMode;
+					QueueFamilyIndexCount = 0           ;
 				}
 			};
 
-			
-		};
-	}
-
-	namespace Vault_03
-	{
-		struct Buffer : Vault_02::Buffer
-		{
 			static 
-			
+
 			#ifdef VT_Option__USE_STL_EXCEPTIONS
 				void
 			#else
 				EResult
 			#endif
 
-			Create
-			(
+				Create
+				(
 				Buffer::CreateInfo     _bufferInfo    ,
 				Memory::PropertyFlags  _propertyFlags , 
 				Buffer::Handle&        _buffer        , 
 				Memory::Handle&        _bufferMemory  ,
 				PhysicalDevice::Handle _physicalDevice,
 				LogicalDevice::Handle  _device
-			)
+				)
 			{
 			#ifndef VT_Option__USE_STL_EXCEPTIONS
 				EResult&& returnCode
-			#endif
+				#endif
 
 
-			#ifdef VT_Option__USE_STL_EXCEPTIONS
-				if (Vault_01::Buffer::Create(_device, _bufferInfo, nullptr, _buffer) != EResult::Success)
-					throw std::runtime_error("Failed to create vertex buffer!");
+				#ifdef VT_Option__USE_STL_EXCEPTIONS
+					if (Vault_1::Buffer::Create(_device, _bufferInfo, nullptr, _buffer) != EResult::Success)
+						throw std::runtime_error("Failed to create vertex buffer!");
 			#else
-				returnCode = Buffer::Create(_device, bufferInfo, nullptr, _buffer);
+					returnCode = Buffer::Create(_device, bufferInfo, nullptr, _buffer);
 
 				if (Vault_01::Buffer::Create(_device, _bufferInfo, nullptr, _buffer) != EResult::Success)
 					return returnCode;
@@ -754,7 +748,7 @@ can be multidimensional and may have associated metadata.
 				Memory::AllocateInfo allocationInfo{};
 
 				allocationInfo.AllocationSize  = memReq.Size;
-				allocationInfo.MemoryTypeIndex = Vault_03::PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
+				allocationInfo.MemoryTypeIndex = PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
 
 			#ifdef VT_Option__USE_STL_EXCEPTIONS
 				if (Memory::Allocate(_device, allocationInfo, nullptr, _bufferMemory) != EResult::Success)

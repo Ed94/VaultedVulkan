@@ -36,7 +36,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		 * @brief A queue of images that can be presented to a surface.
@@ -54,7 +54,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> .
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
 			{
 				using ECreateFlag = ESwapchainCreateFlag;
 
@@ -82,7 +82,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a>  */
-			struct PresentationInfo : Vault_00::VKStruct_Base<VkPresentInfoKHR, EStructureType::PresentInfo_KHR>
+			struct PresentationInfo : Vault_0::VKStruct_Base<VkPresentInfoKHR, EStructureType::PresentInfo_KHR>
 			{
 				      EType              SType             ;
 				const void*              Next              ;
@@ -201,11 +201,11 @@
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		using Vault_01::Image;
+		using Vault_1::Image;
 
-		struct SwapChain : Vault_01::SwapChain
+		struct SwapChain : Vault_1::SwapChain
 		{
 			/**
 			 * @brief Provides the number of presentable images with the swapchain.

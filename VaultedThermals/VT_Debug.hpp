@@ -36,7 +36,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   ///< TODO: Add comment on what this is for.
 
@@ -51,19 +51,19 @@
 		constexpr RoCStr Extension_DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME;
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a>  */
-		struct Label : Vault_00::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
+		struct Label : Vault_0::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
 		{
 				  EType   SType    ;
-			const void*   Extension;
+			const void*   Next;
 			const char*   Name     ;
 				  float32 Color[4] ;
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a>  */
-		struct ObjectInfo : Vault_00::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
+		struct ObjectInfo : Vault_0::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
 		{
 				  EType       SType    ;
-			const void*       Extension;
+			const void*       Next;
 				  EObjectType Type     ;
 				  uInt64      Handle   ;
 			const char*       Name     ;
@@ -79,12 +79,12 @@
 			using Handle = VkDebugUtilsMessengerEXT;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a>  */
-			struct CallbackData : Vault_00::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
+			struct CallbackData : Vault_0::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
 			{
 				using FlagsMask = Bitmask<EUndefined, Flags>;
 
 					  EType       SType               ;
-				const void*       Extension           ;
+				const void*       Next           ;
 					  FlagsMask   Flags               ;
 				const char*       MesssageIDName      ;
 					  sint32      MessageIDNumber     ;
@@ -100,12 +100,12 @@
 			using CallbackDelegate = VK_FPtr<Bool, MessageServerityFlags, MessageTypeFlags, const CallbackData, void* >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
 			{
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 					  EType                 SType       ;
-				const void*                 Extension   ;
+				const void*                 Next   ;
 					  CreateFlags           Flags       ;
 					  MessageServerityFlags Serverity   ;
 					  MessageTypeFlags      Type        ;
@@ -184,7 +184,7 @@
 		struct ValidationLayers
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
-			struct LayerProperties : Vault_00::VKStruct_Base<VkLayerProperties>
+			struct LayerProperties : Vault_0::VKStruct_Base<VkLayerProperties>
 			{
 				ExtensionNameStr LayerName;
 				uint32           SpecVersion;
@@ -200,9 +200,9 @@
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		struct ValidationLayers : public Vault_01::ValidationLayers
+		struct ValidationLayers : public Vault_1::ValidationLayers
 		{
 			static uint32 GetNumberOfLayers()
 			{

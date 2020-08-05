@@ -25,7 +25,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_00
+	namespace Vault_0
 	{
 		/** @struct VKStruct_Base
 
@@ -43,7 +43,7 @@
 			 * 
 			 * @todo Finish the proper enum...
 			 */
-			using EType= EStructureType;
+			using EType = EStructureType;
 
 			/** @brief Keeps track of the structure type enum for a native vulkan struct (If an enum does not exist Max_Enum is used instead) */
 			static constexpr EType STypeEnum = TemplateSpecifiedStype;

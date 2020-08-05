@@ -39,7 +39,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		 * @brief Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.
@@ -56,7 +56,7 @@
 			using CreateFlags = Bitmask<EFrameBufferCreateFlag, VkFramebufferCreateFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkFramebufferCreateInfo, EStructureType::Framebuffer_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkFramebufferCreateInfo, EStructureType::Framebuffer_CreateInfo>
 			{
 				using RenderPass_Handle = VkRenderPass;   // RenderPass::Handle not defined yet. (Defined later in the file)
 
@@ -129,7 +129,7 @@
 			using CreateFlags                = Bitmask<EUndefined                , VkRenderPassCreateFlags     >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a>  */
-			struct AttachmentDescription : Vault_00::VKStruct_Base<VkAttachmentDescription>
+			struct AttachmentDescription : Vault_0::VKStruct_Base<VkAttachmentDescription>
 			{
 				AttachmentDescriptionFlags Flags         ;
 				EFormat                    Format        ;
@@ -143,14 +143,14 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentReference">Specification</a>  */
-			struct AttachmentReference : Vault_00::VKStruct_Base<VkAttachmentReference>
+			struct AttachmentReference : Vault_0::VKStruct_Base<VkAttachmentReference>
 			{
 				uint32       Attachment;
 				EImageLayout Layout    ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassBeginInfo">Specification</a>  */
-			struct BeginInfo : Vault_00::VKStruct_Base<VkRenderPassBeginInfo, EStructureType::RenderPass_BeginInfo>
+			struct BeginInfo : Vault_0::VKStruct_Base<VkRenderPassBeginInfo, EStructureType::RenderPass_BeginInfo>
 			{
 				      EType               SType          ;
 				const void*               Next           ;
@@ -162,7 +162,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescription">Specification</a>  */
-			struct SubpassDescription : Vault_00::VKStruct_Base<VkSubpassDescription>
+			struct SubpassDescription : Vault_0::VKStruct_Base<VkSubpassDescription>
 			{
 				      SubpassDesriptionFlags Flags                  ;
 				      EPipelineBindPoint     PipelineBindPoint      ;
@@ -177,7 +177,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a>  */
-			struct SubpassDependency : Vault_00::VKStruct_Base<VkSubpassDependency>
+			struct SubpassDependency : Vault_0::VKStruct_Base<VkSubpassDependency>
 			{
 				uint32               SourceSubpass        ;
 				uint32               DestinationSubpass   ;
@@ -189,7 +189,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkRenderPassCreateInfo, EStructureType::RenderPass_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkRenderPassCreateInfo, EStructureType::RenderPass_CreateInfo>
 			{
 				      EType                  SType          ;
 				const void*                  Next           ;

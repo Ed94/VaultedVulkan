@@ -37,7 +37,7 @@
 	namespace VT
 #endif
 {
-	namespace Vault_01
+	namespace Vault_1
 	{
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-events">Specification</a> 
@@ -48,7 +48,7 @@
 			using Handle = VkEvent;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEventCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkEventCreateInfo, EStructureType::Event_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkEventCreateInfo, EStructureType::Event_CreateInfo>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkEventCreateFlags>;
 
@@ -157,7 +157,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateInfo">Specification</a> 
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkFenceCreateInfo, EStructureType::Fence_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkFenceCreateInfo, EStructureType::Fence_CreateInfo>
 			{
 				      EType       SType;
 				const void*       Next ;
@@ -167,7 +167,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventInfoEXT">Specification</a> 
 			*/
-			struct DeviceEventInfo : Vault_00::VKStruct_Base<VkDeviceEventInfoEXT, EStructureType::Device_EventInfo_EXT>
+			struct DeviceEventInfo : Vault_0::VKStruct_Base<VkDeviceEventInfoEXT, EStructureType::Device_EventInfo_EXT>
 			{
 				      EType            SType      ;
 				const void*            Next       ;
@@ -177,7 +177,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a> 
 			*/
-			struct DisplayEventInfo : Vault_00::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
+			struct DisplayEventInfo : Vault_0::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
 			{
 				      EType             SType       ;
 				const void*             Next        ;
@@ -187,7 +187,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a> 
 			*/
-			struct ExportableWin32 : Vault_00::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
+			struct ExportableWin32 : Vault_0::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
 			{
 				      EType                SType     ;
 				const void*                Next      ;
@@ -199,7 +199,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a> 
 			*/
-			struct GetPOSIX_FileDescriptorInfo : Vault_00::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
+			struct GetPOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
 			{
 				      EType                        SType     ;
 				const void*                        Next      ;
@@ -210,7 +210,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a> 
 			*/
-			struct GetWin32HandleInfo : Vault_00::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
+			struct GetWin32HandleInfo : Vault_0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
 			{
 				      EType                        SType     ;
 				const void*                        Next      ;
@@ -221,7 +221,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a>
 			 */
-			struct ImportFencePOSIX_FileDescriptorInfo : Vault_00::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
+			struct ImportFencePOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
 			{
 				      EType                        SType         ;
 				const void*                        Next          ;
@@ -234,7 +234,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceWin32HandleInfoKHR">Specification</a> 
 			 */
-			struct ImportFenceWin32HandleInfo : Vault_00::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
+			struct ImportFenceWin32HandleInfo : Vault_0::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
 			{
 				      EType                        SType     ;
 				const void*                        Next      ;
@@ -248,7 +248,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceCreateInfo">Specification</a> 
 			 */
-			struct ExportCreateInfo : Vault_00::VKStruct_Base<VkExportFenceCreateInfo, EStructureType::ExportFence_CreateInfo>
+			struct ExportCreateInfo : Vault_0::VKStruct_Base<VkExportFenceCreateInfo, EStructureType::ExportFence_CreateInfo>
 			{
 				      EType               SType      ;
 				const void*               Next       ;
@@ -472,7 +472,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreCreateInfo">Specification</a> 
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkSemaphoreCreateInfo, EStructureType::Semaphore_CreateInfo>
+			struct CreateInfo : Vault_0::VKStruct_Base<VkSemaphoreCreateInfo, EStructureType::Semaphore_CreateInfo>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkSemaphoreCreateFlags>;
 
@@ -484,7 +484,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreCreateInfo">Specification</a> 
 			 */
-			struct ExportCreateInfo : Vault_00::VKStruct_Base<VkExportSemaphoreCreateInfo, EStructureType::Export_Semaphore_CreateInfo_KHR>
+			struct ExportCreateInfo : Vault_0::VKStruct_Base<VkExportSemaphoreCreateInfo, EStructureType::Export_Semaphore_CreateInfo_KHR>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a>  */
 				using ExternalHandleTypeFlags = Bitmask<EExternalSemaphoreHandleTypeFlag, VkExternalSemaphoreHandleTypeFlags>;
@@ -494,7 +494,7 @@
 				      ExternalHandleTypeFlags HandleTypes;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a>  */
-				struct Win32HandleInfo : Vault_00::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
+				struct Win32HandleInfo : Vault_0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
 				{
 					      EType                SType     ;
 					const void*                Next      ;
@@ -505,7 +505,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a>  */
-			struct GetPOSIX_FileDescriptorInfo : Vault_00::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
+			struct GetPOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
 			{
 				      EType               SType     ;
 				const void*               Next      ;
@@ -514,7 +514,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a>  */
-			struct GetWin32HandleInfo : Vault_00::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
+			struct GetWin32HandleInfo : Vault_0::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
 			{
 				      EType               SType     ;
 				const void*               Next      ;
@@ -523,7 +523,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a>  */
-			struct ImportPOSIX_FileDescriptorInfo : Vault_00::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
+			struct ImportPOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
 			{
 				      EType               SType         ;
 				const void*               Next          ;
@@ -534,7 +534,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a>  */
-			struct ImportWin32HandleInfo : Vault_00::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
+			struct ImportWin32HandleInfo : Vault_0::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
 			{
 				      EType               SType     ;
 				const void*               Next      ;
@@ -546,7 +546,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a>  */
-			struct SignalInfo : Vault_00::VKStruct_Base<VkSemaphoreSignalInfo, EStructureType::Semaphore_SignalInfo>
+			struct SignalInfo : Vault_0::VKStruct_Base<VkSemaphoreSignalInfo, EStructureType::Semaphore_SignalInfo>
 			{
 				      EType  SType    ;
 				const void*  Next     ;
@@ -555,7 +555,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a>  */
-			struct TypeSpecifiedCreateInfo : Vault_00::VKStruct_Base<VkSemaphoreTypeCreateInfo, EStructureType::SemaphoreType_CreateInfo>
+			struct TypeSpecifiedCreateInfo : Vault_0::VKStruct_Base<VkSemaphoreTypeCreateInfo, EStructureType::SemaphoreType_CreateInfo>
 			{
 				      EType  SType        ;
 				const void*  Next         ;
@@ -564,7 +564,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a>  */
-			struct WaitInfo : Vault_00::VKStruct_Base<VkSemaphoreWaitInfo, EStructureType::Semaphore_WaitInfo>
+			struct WaitInfo : Vault_0::VKStruct_Base<VkSemaphoreWaitInfo, EStructureType::Semaphore_WaitInfo>
 			{
 				      EType     SType         ;
 				const void*     Next          ;
@@ -722,17 +722,9 @@
 		};
 	}
 
-	namespace Vault_02
+	namespace Vault_2
 	{
-		struct Fence : public Vault_01::Fence
-		{
-
-		};
-	}
-
-	namespace Vault_03
-	{
-		struct Fence : public Vault_02::Fence
+		struct Fence : public Vault_1::Fence
 		{
 
 		};
