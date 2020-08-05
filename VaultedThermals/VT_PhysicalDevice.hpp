@@ -684,10 +684,11 @@ A physical device usually represents a single complete implementation of Vulkan
 		{
 			using Parent = Vault_1::PhysicalDevice;
 
+			using ExtensionIdentifierList = std::vector< RoCStr>;
 			using List      = std::vector<PhysicalDevice::Handle>;
 			using GroupList = std::vector<PhysicalDevice::Group>;
 
-			struct Group : Parent::Group
+			struct Group : public Parent::Group
 			{
 				Group()
 				{
@@ -696,7 +697,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				}
 			};
 
-			struct PerformanceCounter : Parent::PerformanceCounter
+			struct PerformanceCounter : public Parent::PerformanceCounter
 			{
 				PerformanceCounter()
 				{
@@ -704,7 +705,7 @@ A physical device usually represents a single complete implementation of Vulkan
 					Next  = nullptr  ;
 				}
 
-				struct Description : Parent::PerformanceCounter::Description
+				struct Description : public Parent::PerformanceCounter::Description
 				{
 					Description()
 					{
@@ -712,78 +713,98 @@ A physical device usually represents a single complete implementation of Vulkan
 						Next  = nullptr  ;
 					}
 				};
+			};
 
-				struct Properties : Parent::Properties
+			struct Properties : public Parent::Properties
+			{
+				struct DeviceID : public Parent::Properties::DeviceID
 				{
-					struct DeviceID : Parent::Properties::DeviceID
-					{
-						DeviceID()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
-
-					struct PCIBusInfo : Parent::Properties::PCIBusInfo
-					{
-						PCIBusInfo()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
-
-					struct Vulkan11 : Parent::Properties::Vulkan11
-					{
-						Vulkan11()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
-
-					struct Vulkan12 : Parent::Properties::Vulkan12
-					{
-						Vulkan12()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
-				};
-
-				struct Properties2 : Parent::Properties2
-				{
-					Properties2()
+					DeviceID()
 					{
 						SType = STypeEnum;
 						Next  = nullptr  ;
 					}
 				};
 
-				struct QueueFamilyProperties2 : Parent::QueueFamilyProperties2
+				struct PCIBusInfo : public Parent::Properties::PCIBusInfo
 				{
-					QueueFamilyProperties2()
+					PCIBusInfo()
 					{
 						SType = STypeEnum;
 						Next  = nullptr  ;
 					}
+				};
 
-					struct Checkpoint : Parent::QueueFamilyProperties2::Checkpoint
+				struct Vulkan11 : public Parent::Properties::Vulkan11
+				{
+					Vulkan11()
 					{
-						Checkpoint()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+
+				struct Vulkan12 : public Parent::Properties::Vulkan12
+				{
+					Vulkan12()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
 				};
 			};
 
-			struct QueueFamilyProperties : Parent::QueueFamilyProperties
+			struct Properties2 : public Parent::Properties2
+			{
+				Properties2()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct QueueFamilyProperties2 : public Parent::QueueFamilyProperties2
+			{
+				QueueFamilyProperties2()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+
+				struct Checkpoint : public Parent::QueueFamilyProperties2::Checkpoint
+				{
+					Checkpoint()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct QueueFamilyProperties : public Parent::QueueFamilyProperties
 			{
 				using List = std::vector<QueueFamilyProperties>;
 			};
+
+			static bool CheckExtensionSupport(PhysicalDevice::Handle _handle, ExtensionIdentifierList _extensionsSpecified)
+			{
+				ExtensionList availableExtensions;
+
+				GetAvailableExtensions(_handle, nullptr, availableExtensions);
+
+				using ExtensionNameSet = std::set<std::string>;
+
+				ExtensionNameSet requiredExtensions(_extensionsSpecified.begin(), _extensionsSpecified.end());
+
+				for (const auto& extension : availableExtensions)
+				{
+					requiredExtensions.erase(extension.ExtensionName);
+				}
+
+				bool&& isSupported = requiredExtensions.empty();
+
+				return isSupported;
+			}
 
 			static uint32 FindMemoryType(PhysicalDevice::Handle _device, uint32 _typeFilter, Memory::PropertyFlags _properties)
 			{
@@ -881,8 +902,6 @@ A physical device usually represents a single complete implementation of Vulkan
 			PhysicalDevice()
 			{
 				handle = NullHandle;
-
-				properties2 = Vault_2::PhysicalDevice::Properties2();
 			}
 
 			void AssignHandle(Handle _handle) 
@@ -896,6 +915,26 @@ A physical device usually represents a single complete implementation of Vulkan
 				Parent::GetProperties2     (handle, properties2     );
 
 				queueFamilies = Parent::GetAvailableQueueFamilies(handle);
+			}
+
+			bool CheckExtensionSupport(ExtensionIdentifierList _extensionsSpecified)
+			{
+				ExtensionList availableExtensions;
+
+				GetAvailableExtensions(nullptr, availableExtensions);
+
+				using ExtensionNameSet = std::set<std::string>;
+
+				ExtensionNameSet requiredExtensions(_extensionsSpecified.begin(), _extensionsSpecified.end());
+
+				for (const auto& extension : availableExtensions)
+				{
+					requiredExtensions.erase(extension.ExtensionName);
+				}
+
+				bool&& isSupported = requiredExtensions.empty();
+
+				return isSupported;
 			}
 
 			uint32 FindMemoryType(uint32 _typeFilter, Memory::PropertyFlags _properties) const
@@ -994,9 +1033,7 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			MemoryProperties memoryProperties; 
 
-			
-
-			Vault_2::PhysicalDevice::Properties  properties ;
+			Properties  properties ;
 			Properties2 properties2;
 
 			QueueFamilyProperties::List queueFamilies;
