@@ -132,7 +132,7 @@
 			{
 				static FPtr_CreateMessenger delegate = nullptr;
 
-				if (delegate == nullptr) delegate = GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
+				if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
 
 				if (delegate != nullptr)
 				{
@@ -171,7 +171,7 @@
 
 				static FPtr_DestroyMessenger delegate = nullptr;
 				
-				if (delegate == nullptr) delegate = GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
+				if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
 
 				if (delegate != nullptr)
 				{

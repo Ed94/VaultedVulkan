@@ -49,7 +49,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigCreateInfoNV">Specification</a> 
 			*/
-			struct DiagnoisticsConfigCreateInfo : Vault_0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
+			struct DiagnosticsConfigCreateInfo : Vault_0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
 			{
 				using ConfigFlags = Bitmask<EDeviceDiagnosticConfigFlag, VkDeviceDiagnosticsConfigFlagsNV>;
 
@@ -221,9 +221,9 @@
 			static EResult Create
 			(
 				      PhysicalDevice::Handle       _physicalDevice,
-				const LogicalDevice::CreateInfo&   _createSpec    ,
+				const CreateInfo&                  _createSpec    ,
 				const Memory::AllocationCallbacks* _allocator     ,
-				      LogicalDevice::Handle&       _device
+				      Handle&                      _device
 			)
 			{
 				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
@@ -243,7 +243,7 @@
 			 * \param _handle
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _handle, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(Handle _handle, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroyDevice(_handle, _allocator->operator const VkAllocationCallbacks*());
 			}
@@ -254,7 +254,7 @@
 			 * \param _device
 			 * \return 
 			 */
-			static EResult WaitUntilIdle(LogicalDevice::Handle _device)
+			static EResult WaitUntilIdle(Handle _device)
 			{
 				return EResult(vkDeviceWaitIdle(_device));
 			}
@@ -273,7 +273,7 @@
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a> 
 			*/
-			inline typename std::enable_if
+			static typename std::enable_if
 			<
 			std::bool_constant
 			< 
@@ -281,7 +281,7 @@
 				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
 			>::value,
 
-			ReturnType>::type GetProcedureAddress(LogicalDevice::Handle& _appInstance, RoCStr _procedureName)
+			ReturnType>::type GetProcedureAddress(Handle& _appInstance, RoCStr _procedureName)
 			{
 				return reinterpret_cast<ReturnType>(vkGetDeviceProcAddr(_appInstance, _procedureName));
 			}
@@ -294,24 +294,183 @@
 		{
 			using Parent = Vault_1::LogicalDevice;
 
+			struct DiagnosticsConfigCreateInfo : public Parent::DiagnosticsConfigCreateInfo
+			{
+				DiagnosticsConfigCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
 			struct Queue : public Parent::Queue
 			{
-				
+				struct CreateInfo : public Parent::Queue::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct Queue2 : public Parent::Queue2
+			{
+				Queue2()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct GroupCreateInfo : public Parent::GroupCreateInfo
+			{
+				GroupCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct MemoryOverallocationCreateInfo : public Parent::MemoryOverallocationCreateInfo
+			{
+				MemoryOverallocationCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct PrivateDataCreateInfo : public Parent::PrivateDataCreateInfo
+			{
+				PrivateDataCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
 			};
 		};
 	}
 
 	namespace Vault_5
 	{
-		class LogicalDevice : public Vault_1::LogicalDevice
+		class LogicalDevice : public Vault_2::LogicalDevice
 		{
 		public:
-			using Parent = Vault_1::LogicalDevice;
+			using Parent = Vault_2::LogicalDevice;
 
+			struct Queue : public Parent::Queue
+			{
+				using Parent = Parent::Queue;
+
+				enum class EType
+				{
+					Unspecified ,
+					Graphics    ,
+					Presentation
+				};
+
+				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _createInfo)
+				{
+					logicalDevice = &_logicalDevice;
+					createInfo    = _createInfo    ;
+				}
+
+				uint32 GetFamilyIndex() const
+				{
+					return familyIndex;
+				}
+
+				Handle GetHandle() const
+				{
+					return handle;
+				}
+
+				void Retrieve()
+				{
+					Parent::Get(logicalDevice->GetHandle(), createInfo.QueueFamilyIndex, familyIndex, handle);
+				}
+
+				bool FamilySpecified()
+				{
+					return type != EType::Unspecified ? true : false;
+				}
+
+				void SpecifyFamily(uint32 _index, EType _type)
+				{
+					familyIndex = _index; 
+					
+					type = _type;
+				}
+				
+
+			protected:
+
+				Handle handle;
+
+				CreateInfo createInfo;
+
+				EType type;
+
+				uint32 familyIndex;
+
+				LogicalDevice* logicalDevice;
+			};
+
+			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, Memory::AllocationCallbacks* _allocator)
+			{
+				physicalDevice = &_physicalDevice;
+				createInfo     = _createInfo     ;
+				allocator      = _allocator      ;
+
+				return Parent::Create(physicalDevice->GetHandle(), createInfo, allocator, handle);
+			}
+
+			void Destroy() const
+			{
+				Parent::Destroy(handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult WaitUntilIdle() const
+			{
+				return Parent::WaitUntilIdle(handle);
+			}
+			
+			template<typename ReturnType>
+			typename std::enable_if
+			<
+			std::bool_constant
+			< 
+				std::is_pointer <                             ReturnType       >::value &&
+				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
+			>::value,
+			ReturnType>::type GetProcedureAddress(RoCStr _procedurename) const
+			{
+				return Parent::GetProcedureAddress<ReturnType>(handle, _procedurename);
+			}
 
 		protected:
 
 			Handle handle;
+
+			Memory::AllocationCallbacks* allocator     ;
+			CreateInfo                   createInfo    ;
+			PhysicalDevice*              physicalDevice;
 		};
 	}
 }

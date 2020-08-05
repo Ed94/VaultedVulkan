@@ -899,6 +899,8 @@ A physical device usually represents a single complete implementation of Vulkan
 			
 			using List = std::vector<PhysicalDevice>;
 
+			
+
 			PhysicalDevice()
 			{
 				handle = NullHandle;
@@ -1029,7 +1031,6 @@ A physical device usually represents a single complete implementation of Vulkan
 			EVendorID   vendorID;
 
 			Features features; 
-			Limits   limits  ; 
 
 			MemoryProperties memoryProperties; 
 

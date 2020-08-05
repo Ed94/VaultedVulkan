@@ -33,8 +33,6 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 	namespace VT
 #endif
 {
-#pragma region Application Instancing
-
 	namespace Vault_1
 	{
 		/**
@@ -225,6 +223,32 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			{
 				vkEnumeratePhysicalDeviceGroups(_instance, _groupCount, _groupProperties->operator VkPhysicalDeviceGroupProperties*());
 			}
+
+			template<typename ReturnType>
+			/**
+			Function pointers for all Vulkan commands can be obtained with this command.
+
+			vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. 
+			Typically, the loader library will export this command as a function symbol, 
+			so applications can link against the loader library, or load it dynamically 
+			and look up the symbol using platform-specific APIs.
+
+			Note: ReturnType is restricted to only function pointing types.
+
+			https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html
+			*/
+			static typename std::enable_if
+			<
+			std::bool_constant
+			< 
+				std::is_pointer <                             ReturnType       >::value &&
+				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
+			>::value,
+
+			ReturnType>::type GetProcedureAddress(AppInstance::Handle& _appInstance, RoCStr _procedureName)
+			{
+				return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_appInstance, _procedureName));
+			}
 		};
 	}
 
@@ -377,7 +401,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			/** 
 			@brief Provides the handles of all available physical devices.
 			*/
-			EResult GetAvailablePhysicalDevices(PhysicalDevice::List& _deviceListing)
+			EResult GetAvailablePhysicalDevices(PhysicalDevice::List& _deviceListing) const
 			{
 				uint32 count; std::vector<PhysicalDevice::Handle> handleList;
 
@@ -405,7 +429,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 * \param _groupListing
 			 * \return 
 			 */
-			EResult GetAvailablePhysicalDeviceGroups(PhysicalDevice::GroupList& _groupListing)
+			EResult GetAvailablePhysicalDeviceGroups(PhysicalDevice::GroupList& _groupListing) const
 			{
 				uint32 count;
 
@@ -460,9 +484,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 					std::is_function<typename std::remove_pointer<ReturnType>::type>::value
 				>::value,
 
-			ReturnType>::type GetProcedureAddress(RoCStr _procedureName)
+			ReturnType>::type GetProcedureAddress(RoCStr _procedureName) const
 			{
-				return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
+				return Parent::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
 			}
 
 		protected:
@@ -476,47 +500,4 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			EResult returnCodeReference;
 		};
 	}
-
-#pragma endregion Application Instancing
-
-
-#pragma region Command Function Pointers
-		
-	/*
-	Vulkan commands are not necessarily exposed by static linking on a platform. 
-	Commands to query function pointers for Vulkan commands are described below.
-
-	https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization-functionpointers
-	*/
-
-	namespace Vault_1
-	{
-		template<typename ReturnType>
-		/**
-		Function pointers for all Vulkan commands can be obtained with this command.
-
-		vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. 
-		Typically, the loader library will export this command as a function symbol, 
-		so applications can link against the loader library, or load it dynamically 
-		and look up the symbol using platform-specific APIs.
-
-		Note: ReturnType is restricted to only function pointing types.
-
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a> 
-		*/
-		inline typename std::enable_if
-		<
-			std::bool_constant
-			< 
-				std::is_pointer <                             ReturnType       >::value &&
-				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
-			>::value,
-
-		ReturnType>::type GetProcedureAddress(AppInstance::Handle& _appInstance, RoCStr _procedureName)
-		{
-			return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_appInstance, _procedureName));
-		};
-	}
-
-#pragma endregion Command Function Pointers
 }
