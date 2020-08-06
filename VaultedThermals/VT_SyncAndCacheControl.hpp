@@ -70,13 +70,47 @@
 			 */
 			static EResult Create
 			(
+				      LogicalDevice::Handle _device    ,
+				const Event::CreateInfo&    _createInfo,
+				      Handle&               _event
+			)
+			{
+				return EResult(vkCreateEvent(_device, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_event));
+			}
+
+			/**
+			 * @brief.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateEvent">Specification</a> 
+			 * 
+			 * \param _device
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _event
+			 * \return 
+			 */
+			static EResult Create
+			(
 				      LogicalDevice::Handle        _device    ,
 				const Event::CreateInfo&           _createInfo,
 				const Memory::AllocationCallbacks* _allocator ,
-				      Handle*                      _event
+				      Handle&                      _event
 			)
 			{
-				return EResult(vkCreateEvent(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), _event));
+				return EResult(vkCreateEvent(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_event));
+			}
+
+			/**
+			 * @brief 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyEvent">Specification</a> 
+			 * 
+			 * \param _device
+			 * \param _event
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _device, Handle _event)
+			{
+				vkDestroyEvent(_device, _event, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -174,7 +208,7 @@
 				      EDeviceEventType DeviceEvent;
 			};
 
-			/**
+/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a> 
 			*/
 			struct DisplayEventInfo : Vault_0::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
@@ -201,9 +235,9 @@
 			*/
 			struct GetPOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
 			{
-				      EType                        SType     ;
-				const void*                        Next      ;
-				      Handle                       Fence     ;
+				      EType                   SType     ;
+				const void*                   Next      ;
+				      Handle                  Fence     ;
 					  EExternalHandleTypeFlag HandleType;
 			};
 
@@ -212,9 +246,9 @@
 			*/
 			struct GetWin32HandleInfo : Vault_0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
 			{
-				      EType                        SType     ;
-				const void*                        Next      ;
-				      Handle                       Fence     ;
+				      EType                   SType     ;
+				const void*                   Next      ;
+				      Handle                  Fence     ;
 					  EExternalHandleTypeFlag HandleType;
 			};
 
@@ -255,6 +289,24 @@
 				      ExternalHandleFlags HandleTypes;
 			};
 
+/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a> 
+			 * 
+			 * \param _logicalDevice
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _fence
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle        _logicalDevice,
+				const CreateInfo&                  _createInfo   ,
+				      Handle&                      _fence
+			)
+			{
+				return EResult(vkCreateFence(_logicalDevice, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_fence));
+			}
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a> 
@@ -283,10 +335,22 @@
 			 * \param _fence
 			 * \param _allocator
 			 */
+			static void Destroy(LogicalDevice::Handle _logicalDevice, Handle _fence)
+			{
+				vkDestroyFence(_logicalDevice, _fence, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFence">Specification</a> 
+			 * 
+			 * \param _logicalDevice
+			 * \param _fence
+			 * \param _allocator
+			 */
 			static void Destroy
 			(
 				      LogicalDevice::Handle        _logicalDevice,
-				      Fence::Handle                _fence        ,
+				      Handle                       _fence        ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
@@ -300,7 +364,7 @@
 			 * \param _fence
 			 * \return 
 			 */
-			static EResult GetStatus(LogicalDevice::Handle _logicalDevice, Fence::Handle _fence)
+			static EResult GetStatus(LogicalDevice::Handle _logicalDevice, Handle _fence)
 			{
 				return EResult(vkGetFenceStatus(_logicalDevice, _fence));
 			}
@@ -313,10 +377,10 @@
 			(
 				      LogicalDevice::Handle _device            ,
 				const GetWin32HandleInfo&   _getWin32HandleInfo,
-				      HANDLE*               _handle
+				      HANDLE&               _winHandle
 			)
 			{
-				return EResult(vkGetFenceWin32HandleKHR(_device, _getWin32HandleInfo, _handle));
+				return EResult(vkGetFenceWin32HandleKHR(_device, _getWin32HandleInfo, &_winHandle));
 			}
 
 			/**
@@ -382,11 +446,51 @@
 			(
 				      LogicalDevice::Handle        _device         ,
 				const DeviceEventInfo&             _deviceEventInfo,
+				      Handle&                      _fence
+			)
+			{
+				return EResult(vkRegisterDeviceEventEXT(_device, _deviceEventInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_fence));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDeviceEventEXT">Specification</a> 
+			 * 
+			 * \param device
+			 * \param pDeviceEventInfo
+			 * \param pAllocator
+			 * \param pFence
+			 * \return 
+			 */
+			static EResult RegisterDeviceEvent
+			(
+				      LogicalDevice::Handle        _device         ,
+				const DeviceEventInfo&             _deviceEventInfo,
 				const Memory::AllocationCallbacks* _allocator      ,
 				      Handle&                      _fence
 			)
 			{
 				return EResult(vkRegisterDeviceEventEXT(_device, _deviceEventInfo, _allocator->operator const VkAllocationCallbacks*(), &_fence));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a> 
+			 * 
+			 * \param device
+			 * \param display
+			 * \param pDisplayEventInfo
+			 * \param pAllocator
+			 * \param pFence
+			 * \return 
+			 */
+			static EResult RegisterDisplayEvent
+			(
+				      LogicalDevice::Handle        _device          ,
+				      Display::Handle              _display         ,
+				const DisplayEventInfo&            _displayEventInfo,
+				      Handle&                      _fence
+			)
+			{
+				return EResult(vkRegisterDisplayEventEXT(_device, _display, _displayEventInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_fence));
 			}
 
 			/**
@@ -419,7 +523,7 @@
 			 * \param _fenceCount
 			 * \return 
 			 */
-			static EResult Reset(LogicalDevice::Handle _logicalDevice, Fence::Handle* _fences, uint32 _fenceCount)
+			static EResult Reset(LogicalDevice::Handle _logicalDevice, Handle* _fences, uint32 _fenceCount)
 			{
 				return EResult(vkResetFences(_logicalDevice, _fenceCount, _fences));
 			}
@@ -441,7 +545,7 @@
 			(
 				      LogicalDevice::Handle _device    ,
 				      uint32                _fenceCount,
-				const Fence::Handle*        _fences    ,
+				const Handle*               _fences    ,
 				      Bool                  _waitAll   ,
 				      uInt64                _timeout
 			)
@@ -449,7 +553,6 @@
 				return EResult(vkWaitForFences(_device, _fenceCount, _fences, _waitAll, _timeout));
 			}
 		};
-
 
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-semaphores">Specification</a> 
@@ -660,10 +763,10 @@
 			(
 				      LogicalDevice::Handle _device ,
 				const GetWin32HandleInfo&   _getInfo,
-				      HANDLE*               _handle
+				      HANDLE&               _handle
 			)
 			{
-				return EResult(vkGetSemaphoreWin32HandleKHR(_device, _getInfo, _handle));
+				return EResult(vkGetSemaphoreWin32HandleKHR(_device, _getInfo, &_handle));
 			}
 
 			/**
@@ -724,14 +827,456 @@
 
 	namespace Vault_2
 	{
+		struct Event : public Vault_1::Event
+		{
+			using Parent = Vault_1::Event;
+
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+		};
+
 		struct Fence : public Vault_1::Fence
 		{
+			using Parent = Vault_1::Fence;
+			
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
 
+			struct DeviceEventInfo : Parent::DeviceEventInfo
+			{
+				DeviceEventInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct DisplayEventInfo : Parent::DisplayEventInfo
+			{
+				DisplayEventInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct ExportableWin32 : Parent::ExportableWin32
+			{
+				ExportableWin32()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct GetPOSIX_FileDescriptorInfo : Parent::GetPOSIX_FileDescriptorInfo
+			{
+				GetPOSIX_FileDescriptorInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct GetWin32HandleInfo : Parent::GetWin32HandleInfo
+			{
+				GetWin32HandleInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct ImportFencePOSIX_FileDescriptorInfo : Parent::ImportFencePOSIX_FileDescriptorInfo
+			{
+				ImportFencePOSIX_FileDescriptorInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct ImportFenceWin32HandleInfo : Parent::ImportFenceWin32HandleInfo
+			{
+				ImportFenceWin32HandleInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct ExportCreateInfo : Parent::ExportCreateInfo
+			{
+				ExportCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+		};
+
+		struct Semaphore : public Vault_1::Semaphore
+		{
+			using Parent = Vault_1::Semaphore;
+
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct ExportCreateInfo : Parent::ExportCreateInfo
+			{
+				ExportCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+
+				struct Win32HandleInfo : Parent::ExportCreateInfo::Win32HandleInfo
+				{
+					Win32HandleInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct GetPOSIX_FileDescriptorInfo : Parent::GetPOSIX_FileDescriptorInfo
+			{
+				GetPOSIX_FileDescriptorInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct GetWin32HandleInfo : Parent::GetWin32HandleInfo
+			{
+				GetWin32HandleInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct ImportPOSIX_FileDescriptorInfo : Parent::ImportPOSIX_FileDescriptorInfo
+			{
+				ImportPOSIX_FileDescriptorInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct ImportWin32HandleInfo : Parent::ImportWin32HandleInfo
+			{
+				ImportWin32HandleInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct SignalInfo : Parent::SignalInfo
+			{
+				SignalInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct TypeSpecifiedCreateInfo : Parent::TypeSpecifiedCreateInfo
+			{
+				TypeSpecifiedCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct WaitInfo : Parent::WaitInfo
+			{
+				WaitInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
 		};
 	}
 
 	namespace Vault_4
 	{
+		class Event : public Vault_1::Event
+		{
+		public:
+			using Parent = Vault_1::Event;
 
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult GetStatus()
+			{
+				return Parent::GetStatus(device->GetHandle(), handle);
+			}
+
+			EResult Reset()
+			{
+				return Parent::Reset(device->GetHandle(), handle);
+			}
+
+			EResult Set()
+			{
+				return Parent::Set(device->GetHandle(), handle);
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+		};
+
+		class Fence : public Vault_1::Fence
+		{
+		public:
+			using Parent = Vault_1::Fence;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			const LogicalDevice& GetDevice() const
+			{
+				return *device;
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult GetStatus()
+			{
+				return Parent::GetStatus(device->GetHandle(), handle);
+			}
+
+			EResult GetWin32Handle(const GetWin32HandleInfo& _win32Info, HANDLE& _winHandle)
+			{
+				return Parent::GetWin32Handle(device->GetHandle(), _win32Info, _winHandle);
+			}
+
+			EResult GetPOSIX_FileDescriptor(const GetPOSIX_FileDescriptorInfo& _fdInfo, int* _fileDescriptor)
+			{
+				return Parent::GetPOSIX_FileDescriptor(device->GetHandle(), _fdInfo, _fileDescriptor);
+			}
+
+			EResult ImportFence_POSIX_FileDescriptor(const ImportFencePOSIX_FileDescriptorInfo& _importInfo)
+			{
+				return Parent::ImportFence_POSIX_FileDescriptor(device->GetHandle(), _importInfo);
+			}
+
+			EResult ImportFenceWin32Handle(const ImportFenceWin32HandleInfo& _importInfo)
+			{
+				return Parent::ImportFenceWin32Handle(device->GetHandle(), _importInfo);
+			}
+
+			EResult RegisterDeviceEvent(const DeviceEventInfo _eventInfo)
+			{
+				return Parent::RegisterDeviceEvent(device->GetHandle(), _eventInfo, allocator, handle);
+			}
+
+			EResult RegisterDisplayEvent(Display::Handle _display, const DisplayEventInfo& _eventInfo)
+			{
+				return Parent::RegisterDisplayEvent(device->GetHandle(), _display, _eventInfo, allocator, handle);
+			}
+
+			EResult Reset()
+			{
+				return Parent::Reset(device->GetHandle(), &handle, 1);
+			}
+
+			static EResult Reset(std::vector<Fence> _fences)
+			{
+				auto& device = _fences[0].GetDevice();
+
+				std::vector<Fence::Handle> handles;
+
+				for (auto fence : _fences) handles.push_back(fence.GetHandle());
+
+				return Parent::Reset(device.GetHandle(), handles.data(), _fences.size());
+			}
+
+			EResult WaitFor(uInt64 _timeout)
+			{
+				return Parent::WaitForFences(device->GetHandle(), 1, &handle, false, _timeout);
+			}
+
+			static EResult WaitForFence(std::vector<Fence> _fences, bool _waitForAll, uInt64 _timeout)
+			{
+				auto& device = _fences[0].GetDevice();
+
+				std::vector<Fence::Handle> handles;
+
+				for (auto fence : _fences) handles.push_back(fence.GetHandle());
+
+				return Parent::WaitForFences(device.GetHandle(), _fences.size(), handles.data(), _waitForAll, _timeout);
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+		};
+
+		class Semaphore : public Vault_1::Semaphore
+		{
+		public:
+			using Parent = Vault_1::Semaphore;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			EResult GetCounterValue(uInt64& _value)
+			{
+				return Parent::GetCounterValue(device->GetHandle(), handle, _value);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult GetPOSIX_FileDescriptor(const GetPOSIX_FileDescriptorInfo& _getInfo, int* _fileDescriptor)
+			{
+				return Parent::GetPOSIX_FileDescriptor(device->GetHandle(), _getInfo, _fileDescriptor);
+			}
+
+			EResult GetWin32Handle(const GetWin32HandleInfo& _getInfo, HANDLE& _winHandle)
+			{
+				return Parent::GetWin32Handle(device->GetHandle(), _getInfo, _winHandle);
+			}
+
+			EResult ImportPOSIX_FileDescriptor(const ImportPOSIX_FileDescriptorInfo& _importPOSIX_Info)
+			{
+				return Parent::ImportPOSIX_FileDescriptor(device->GetHandle(), _importPOSIX_Info);
+			}
+
+			EResult ImportWin32Handle(const ImportWin32HandleInfo& _importHandleInfo)
+			{
+				return Parent::ImportWin32Handle(device->GetHandle(), _importHandleInfo);
+			}
+
+			EResult Signal(const SignalInfo& _info)
+			{
+				return Parent::Signal(device->GetHandle(), _info);
+			}
+
+			EResult WaitFor(const WaitInfo& _info, uInt64 _timeout)
+			{
+				return Parent::WaitFor(device->GetHandle(), _info, _timeout);
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+		};
 	}
 }
