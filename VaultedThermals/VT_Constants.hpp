@@ -26,15 +26,6 @@
 	namespace VT
 #endif
 {
-	namespace Vault_0
-	{
-	#ifdef VT_Option__Use_STL_Exceptions
-		constexpr bool UseSTL_Exceptions = true;
-	#else
-		constexpr bool UseSTL_exceptions = false;
-	#endif
-	}
-
 	namespace Corridors
 	{
 		/**

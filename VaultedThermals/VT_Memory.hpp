@@ -59,6 +59,27 @@ Contains the full definition of the intended memory structure.
 			(
 				      LogicalDevice::Handle _device      ,
 				const AllocateInfo&         _allocateInfo,
+				      Handle&               _memory
+			)
+			{
+				return EResult(vkAllocateMemory(_device, _allocateInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_memory) );
+			}
+
+			/**
+			* @brief.
+			* 
+			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateMemory">Specification</a> 
+			* 
+			* \param _device
+			* \param _allocateInfo
+			* \param _allocator
+			* \param _memory
+			* \return 
+			*/
+			static EResult Allocate
+			(
+				      LogicalDevice::Handle _device      ,
+				const AllocateInfo&         _allocateInfo,
 				const AllocationCallbacks*  _allocator   ,
 				      Handle&               _memory
 			)
@@ -74,10 +95,23 @@ Contains the full definition of the intended memory structure.
 			* \param _allocator
 			* \return 
 			*/
+			static void Free(LogicalDevice::Handle _device, Handle _memory)
+			{
+				vkFreeMemory(_device, _memory, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
+			* 
+			* \param _device
+			* \param _memory
+			* \param _allocator
+			* \return 
+			*/
 			static void Free
 			(
 				      LogicalDevice::Handle _device   ,
-				      Memory::Handle        _memory   ,
+				      Handle                _memory   ,
 				const AllocationCallbacks*  _allocator
 			)
 			{
@@ -183,15 +217,24 @@ Contains the full definition of the intended memory structure.
 	{
 		class Memory : public Vault_2::Memory
 		{
+		public:
+
 			using Parent = Vault_2::Memory;
 
-		public:
+			EResult Allocate(LogicalDevice& _devce, AllocateInfo& _allocateInfo)
+			{
+				device    = &_devce                 ;
+				info      = _allocateInfo           ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Allocate(device->GetHandle(), info, allocator, handle);
+			}
 
 			EResult Allocate(LogicalDevice& _devce, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				device       = &_devce      ;
-				info = _allocateInfo;
-				allocator    = _allocator   ;
+				device    = &_devce      ;
+				info      = _allocateInfo;
+				allocator = _allocator   ;
 
 				return Parent::Allocate(device->GetHandle(), info, allocator, handle);
 			}

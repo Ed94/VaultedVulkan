@@ -93,15 +93,15 @@ can be multidimensional and may have associated metadata.
 			 */
 			struct Memory_Barrier : Vault_0::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
 			{
-				      EType          SType              ;
-				const void*          Next               ;
-				      AccessFlags    SrcAccessMask      ;
-				      AccessFlags    DstAccessMask      ;
-				      uint32         SrcQueueFamilyIndex;
-				      uint32         DstQueueFamilyIndex;
-				      Buffer::Handle Buffer             ;
-				      DeviceSize     Offset             ;
-				      DeviceSize     Size               ;
+				      EType       SType              ;
+				const void*       Next               ;
+				      AccessFlags SrcAccessMask      ;
+				      AccessFlags DstAccessMask      ;
+				      uint32      SrcQueueFamilyIndex;
+				      uint32      DstQueueFamilyIndex;
+				      Handle      Buffer             ;
+				      DeviceSize  Offset             ;
+				      DeviceSize  Size               ;
 			};
 
 			/**
@@ -119,7 +119,7 @@ can be multidimensional and may have associated metadata.
 			static EResult BindMemory
 			(
 				LogicalDevice::Handle _device      ,
-				Buffer::Handle        _buffer      ,
+				Handle                _buffer      ,
 				Memory::Handle        _memory      ,
 				DeviceSize            _memoryOffset
 			)
@@ -139,7 +139,24 @@ can be multidimensional and may have associated metadata.
 			 * \param _buffer
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Buffer::Handle& _buffer)
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Handle& _buffer)
+			{
+				return EResult(vkCreateBuffer(_deviceHandle, _createInfo.operator const VkBufferCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_buffer));
+			}
+
+			/**
+			 * @brief Create a new buffer object.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBuffer">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _buffer
+			 * \return 
+			 */
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _buffer)
 			{
 				return EResult(vkCreateBuffer(_deviceHandle, _createInfo.operator const VkBufferCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_buffer));
 			}
@@ -155,7 +172,23 @@ can be multidimensional and may have associated metadata.
 			 * \param _allocator
 			 * \return 
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Buffer::Handle _buffer, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _buffer)
+			{
+				vkDestroyBuffer(_deviceHandle, _buffer, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief Destroy a buffer object.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyBuffer">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _buffer
+			 * \param _allocator
+			 * \return 
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _buffer, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroyBuffer(_deviceHandle, _buffer, _allocator->operator const VkAllocationCallbacks*());
 			}
@@ -170,7 +203,7 @@ can be multidimensional and may have associated metadata.
 			static void GetMemoryRequirements
 			(
 				LogicalDevice::Handle _device             ,
-				Buffer::Handle        _buffer             ,
+				Handle                _buffer             ,
 				Memory::Requirements& _memoryRequirements
 			)
 			{
@@ -201,13 +234,13 @@ can be multidimensional and may have associated metadata.
 			 */
 			struct CreateInfo : Vault_0::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
 			{
-				      EType       SType  ;
-				const void*       Next   ;
-				      CreateFlags Flags  ;
-				      Buffer      VBuffer;
-				      EFormat     Format ;
-				      DeviceSize  Offset ;
-				      DeviceSize  Range  ;
+				      EType          SType  ;
+				const void*          Next   ;
+				      CreateFlags    Flags  ;
+				      Buffer::Handle VBuffer;
+				      EFormat        Format ;
+				      DeviceSize     Offset ;
+				      DeviceSize     Range  ;
 			};
 
 			/**
@@ -222,7 +255,24 @@ can be multidimensional and may have associated metadata.
 			 * \param _bufferView
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _creationSpec, const Memory::AllocationCallbacks* _allocator, BufferView::Handle& _bufferView)
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _creationSpec, Handle& _bufferView)
+			{
+				return EResult(vkCreateBufferView(_deviceHandle, _creationSpec.operator const VkBufferViewCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_bufferView));
+			}
+
+			/**
+			 * @brief Create a new buffer view object.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBufferView">Specification</a> .
+			 * 
+			 * \param _deviceHandle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _bufferView
+			 * \return 
+			 */
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _creationSpec, const Memory::AllocationCallbacks* _allocator, Handle& _bufferView)
 			{
 				return EResult(vkCreateBufferView(_deviceHandle, _creationSpec.operator const VkBufferViewCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_bufferView));
 			}
@@ -237,7 +287,22 @@ can be multidimensional and may have associated metadata.
 			 * \param _bufferView
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, BufferView::Handle _bufferView, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _bufferView)
+			{
+				vkDestroyBufferView(_deviceHandle, _bufferView, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief Destroy a buffer view object.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _bufferView
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _bufferView, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroyBufferView(_deviceHandle, _bufferView, _allocator->operator const VkAllocationCallbacks*());
 			}
@@ -283,6 +348,25 @@ can be multidimensional and may have associated metadata.
 			 */
 			static EResult Create
 			(
+					  LogicalDevice::Handle _device        ,
+				const CreateInfo&           _createInfo    ,
+					  Handle&               _descriptorPool
+			)
+			{
+				return EResult(vkCreateDescriptorPool(_device, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorPool">Specification</a>
+			 * 
+			 * \param _device
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _descriptorPool
+			 * \return 
+			 */
+			static EResult Create
+			(
 					  LogicalDevice::Handle         _device        ,
 				const CreateInfo&                   _createInfo    ,
 				const Memory::AllocationCallbacks*  _allocator     ,
@@ -290,6 +374,18 @@ can be multidimensional and may have associated metadata.
 			)
 			{
 				return EResult(vkCreateDescriptorPool(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorPool">Specification</a> 
+			 * 
+			 * \param _device
+			 * \param _descriptorPool
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _device, Handle _descriptorPool)
+			{
+				vkDestroyDescriptorPool(_device, _descriptorPool, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -319,9 +415,9 @@ can be multidimensional and may have associated metadata.
 			 */
 			static EResult Reset
 			(
-				LogicalDevice::Handle _device,
+				LogicalDevice::Handle _device        ,
 				Handle                _descriptorPool,
-				ResetFlags&            _flags
+				ResetFlags&           _flags
 			)
 			{
 				return EResult(vkResetDescriptorPool(_device, _descriptorPool, _flags));
@@ -406,7 +502,7 @@ can be multidimensional and may have associated metadata.
 				      EImageLayout     NewLayout          ;
 				      uint32           SrcQueueFamilyIndex;
 				      uint32           DstQueueFamilyIndex;
-				      Image::Handle    Image              ;
+				      Handle           Image              ;
 				      SubresourceRange SubresourceRange   ;
 			};
 
@@ -450,9 +546,39 @@ can be multidimensional and may have associated metadata.
 			 * \param _imageHandle
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Image::Handle& _imageHandle)
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Handle& _imageHandle)
+			{
+				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_imageHandle));
+			}
+
+			/**  
+			 * @brief  Create an image object.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImage">Specification</a>.
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _imageHandle
+			 * \return 
+			 */
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _imageHandle)
 			{
 				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_imageHandle));
+			}
+
+			/** 
+			 * @brief Destroy an image object.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImage">Specification</a>.
+			 * 
+			 * \param _deviceHandle
+			 * \param _image
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _image)
+			{
+				vkDestroyImage(_deviceHandle, _image, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/** 
@@ -510,6 +636,28 @@ can be multidimensional and may have associated metadata.
 				      ComponentMapping        Components      ;
 				      Image::SubresourceRange SubresourceRange;
 			};
+
+			/**
+			 * @brief Create an image view object.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImageView">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _imageView
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _creationSpec,
+				      Handle&                      _imageView
+			)
+			{
+				return EResult(vkCreateImageView(_deviceHandle, _creationSpec, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_imageView));
+			}
 
 			/**
 			 * @brief Create an image view object.
@@ -719,8 +867,6 @@ can be multidimensional and may have associated metadata.
 				}
 			};
 
-
-			static typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::
 			/**
 			 * @brief Will create a buffer and immediately bind it to allocated memory made just for it.
 			 * 
@@ -734,12 +880,72 @@ can be multidimensional and may have associated metadata.
 			 * \param _allcator
 			 * \return 
 			 */
-			type CreateAndBind
+			static Vault_0::ShouldUse_EResult CreateAndBind
 			(
 				PhysicalDevice::Handle _physicalDevice    ,
 				LogicalDevice::Handle  _device            ,
-				Buffer::CreateInfo     _bufferInfo        ,
-				Buffer::Handle&        _buffer            , 
+				CreateInfo             _bufferInfo        ,
+				Handle&                _buffer            , 
+				Memory::PropertyFlags  _propertyFlags     , 
+				Memory::Handle&        _bufferMemory      
+			)
+			{
+			#ifndef VT_Option__Use_STL_Exceptions
+				EResult&& returnCode
+			#endif
+
+
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (Vault_1::Buffer::Create(_device, _bufferInfo, Memory::DefaultAllocator, _buffer) != EResult::Success)
+					throw std::runtime_error("Failed to create vertex buffer!");
+			#else
+				returnCode = Buffer::Create(_device, bufferInfo, _allcator, _buffer);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+			#endif
+
+				Memory::Requirements memReq;
+
+				Buffer::GetMemoryRequirements(_device, _buffer, memReq);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize  = memReq.Size;
+				allocationInfo.MemoryTypeIndex = PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
+
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (Memory::Allocate(_device, allocationInfo, Memory::DefaultAllocator, _bufferMemory) != EResult::Success)
+					throw std::runtime_error("Failed to allocate vertex buffer memory!");
+			#else
+				returnCode = Memory::Allocate(_device, allocationInfo, _allcator, _bufferMemory);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+			#endif
+
+				Buffer::BindMemory(_device, _buffer, _bufferMemory, Memory::ZeroOffset);
+			}
+
+			/**
+			 * @brief Will create a buffer and immediately bind it to allocated memory made just for it.
+			 * 
+			 * \param _bufferInfo
+			 * \param _propertyFlags
+			 * \param _buffer
+			 * \param _bufferMemory
+			 * \param _bufferMemoryOffset
+			 * \param _physicalDevice
+			 * \param _device
+			 * \param _allcator
+			 * \return 
+			 */
+			static Vault_0::ShouldUse_EResult CreateAndBind
+			(
+				PhysicalDevice::Handle _physicalDevice    ,
+				LogicalDevice::Handle  _device            ,
+				CreateInfo             _bufferInfo        ,
+				Handle&                _buffer            , 
 				Memory::PropertyFlags  _propertyFlags     , 
 				Memory::Handle&        _bufferMemory      ,
 				Memory::AllocationCallbacks* _allcator
@@ -897,11 +1103,25 @@ can be multidimensional and may have associated metadata.
 				return Parent::BindMemory(device->GetHandle(), handle, memory->GetHandle(), memoryOffset);
 			}
 
+			EResult Create(LogicalDevice& _device, CreateInfo& _createInfo)
+			{
+				device    = &_device                ;
+				info      = _createInfo             ;
+				allocator = Memory::DefaultAllocator;
+
+				EResult&& returnCode = Parent::Parent::Create(device->GetHandle(), info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
+				
+				return returnCode;
+			}
+
 			EResult Create(LogicalDevice& _device, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				device     = &_device    ;
-				info = _createInfo ;
-				allocator  = _allocator  ;
+				device    = &_device    ;
+				info      = _createInfo ;
+				allocator = _allocator  ;
 
 				EResult&& returnCode = Parent::Parent::Create(device->GetHandle(), info, allocator, handle);
 
@@ -914,11 +1134,60 @@ can be multidimensional and may have associated metadata.
 			typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::
 			type CreateAndBind
 			(
-				PhysicalDevice _physicalDevice, 
-				LogicalDevice& _device, 
-				CreateInfo& _info, 
-				Memory::PropertyFlags _memoryFlags,
-				Memory& _memory,
+				PhysicalDevice        _physicalDevice, 
+				LogicalDevice&        _device        ,  
+				CreateInfo&           _info          ,  
+				Memory::PropertyFlags _memoryFlags   ,
+				Memory&               _memory
+			)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = Memory::DefaultAllocator;
+
+			#ifndef VT_Option__Use_STL_Exceptions
+				EResult&& returnCode
+			#endif
+
+
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (Parent::Create(device->GetHandle(), info, allocator, handle) != EResult::Success)
+					throw std::runtime_error("Failed to create buffer!");
+			#else
+				returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+			#endif
+
+				Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+				allocationInfo.MemoryTypeIndex = _physicalDevice.FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (_memory.Allocate(*device, allocationInfo, allocator) != EResult::Success)
+					throw std::runtime_error("Failed to allocate  memory!");
+			#else
+				returnCode = _memory.Allocate(*device, allocationInfo, allocator);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+			#endif
+
+				BindMemory(_memory, Memory::ZeroOffset);
+			}
+
+			typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::
+			type CreateAndBind
+			(
+				      PhysicalDevice               _physicalDevice, 
+				      LogicalDevice&               _device        , 
+				      CreateInfo&                  _info          , 
+				      Memory::PropertyFlags        _memoryFlags   ,
+				      Memory&                      _memory        ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
@@ -998,6 +1267,15 @@ can be multidimensional and may have associated metadata.
 		public:
 			using Parent = Vault_2::BufferView;
 
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device                ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
 			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device  ;
@@ -1027,6 +1305,15 @@ can be multidimensional and may have associated metadata.
 		{
 		public:
 			using Parent = Vault_2::DescriptorPool;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device                ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
@@ -1068,12 +1355,34 @@ can be multidimensional and may have associated metadata.
 		public:
 			using Parent = Vault_2::Image;
 
+
+			void Assign(LogicalDevice _device, Handle _handle)
+			{
+				device = &_device;
+
+				handle = _handle;
+			}
+
 			EResult BindMemory(Memory& _memory, DeviceSize _memoryOffset)
 			{
 				memory       = &_memory     ;
 				memoryOffset = _memoryOffset;
 
 				return Parent::BindMemory(device->GetHandle(), handle, memory->GetHandle(), memoryOffset);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device                ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				EResult&& returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
+
+				return returnCode;
 			}
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
@@ -1127,10 +1436,19 @@ can be multidimensional and may have associated metadata.
 		public:
 			using Parent = Vault_2::ImageView;
 
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device                ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
 			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device = &_device;
-				info = _info;
+				device    = &_device ;
+				info      = _info    ;
 				allocator = allocator;
 
 				return Parent::Create(device->GetHandle(), info, allocator, handle);

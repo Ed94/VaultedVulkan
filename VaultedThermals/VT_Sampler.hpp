@@ -82,6 +82,27 @@
              */
             static EResult Create
             (
+				      LogicalDevice::Handle _device    ,
+				const CreateInfo&           _createInfo,
+				      Handle&               _sampler
+            )
+            {
+                return EResult(vkCreateSampler(_device, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_sampler));
+            }
+
+            /**
+             * @brief.
+             * 
+             * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSampler">Specification</a> 
+             * 
+             * \param _device
+             * \param _createInfo
+             * \param _allocator
+             * \param _sampler
+             * \return 
+             */
+            static EResult Create
+            (
 				      LogicalDevice::Handle        _device    ,
 				const CreateInfo&                  _createInfo,
 				const Memory::AllocationCallbacks* _allocator ,
@@ -89,6 +110,21 @@
             )
             {
                 return EResult(vkCreateSampler(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_sampler));
+            }
+
+            /**
+             * @brief.
+             * 
+             * @details
+             * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySampler">Specification</a> 
+             * 
+             * \param _device
+             * \param _sampler
+             * \param _allocator
+             */
+            static void Destroy(LogicalDevice::Handle _device , Handle _sampler)
+            {
+                vkDestroySampler(_device, _sampler, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
             }
 
             /**
@@ -124,7 +160,7 @@
                 CreateInfo()
                 {
                     SType = STypeEnum;
-                    Next = nullptr;
+                    Next  = nullptr  ;
                 }
             };
         };
@@ -137,6 +173,15 @@
         public:
 
             using Parent = Vault_2::Sampler;
+
+            EResult Create(LogicalDevice& _device, CreateInfo& info)
+            {
+                device    = &_device                ;
+                info      = info                    ;
+                allocator = Memory::DefaultAllocator;
+
+                return Parent::Create(device->GetHandle(), info, allocator, handle);
+            }
 
             EResult Create(LogicalDevice& _device, CreateInfo& info, const Memory::AllocationCallbacks* _allocator)
             {

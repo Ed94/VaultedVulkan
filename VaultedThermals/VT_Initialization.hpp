@@ -148,7 +148,15 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				};
 			};
 
-			
+			/**
+			@brief Create a new Vulkan application instance.
+
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a> 
+			*/
+			static EResult Create(const CreateInfo& _appSpec, Handle& _handleContainer)
+			{
+				return EResult(vkCreateInstance( _appSpec, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_handleContainer));
+			}
 
 			/**
 			@brief Create a new Vulkan application instance.
@@ -157,9 +165,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			*/
 			static EResult Create
 			(
-				const AppInstance::CreateInfo&     _appSpec        ,
+				const CreateInfo&                  _appSpec        ,
 				const Memory::AllocationCallbacks* _customAllocator,
-				      AppInstance::Handle&         _handleContainer
+				      Handle&                      _handleContainer
 			)
 			{
 				return EResult(vkCreateInstance( _appSpec, _customAllocator->operator const VkAllocationCallbacks*(), &_handleContainer));
@@ -170,11 +178,17 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
 			*/
-			static void Destroy
-			(
-				      AppInstance::Handle          _instance ,
-				const Memory::AllocationCallbacks* _callbacks
-			)
+			static void Destroy(Handle _instance)
+			{
+				vkDestroyInstance(_instance, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			@brief Destroy an application instance of Vulkan.
+
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
+			*/
+			static void Destroy(Handle _instance , const Memory::AllocationCallbacks* _callbacks)
 			{
 				vkDestroyInstance(_instance, _callbacks->operator const VkAllocationCallbacks*());
 			}
@@ -203,7 +217,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 			*/
-			static EResult QueryPhysicalDeviceListing(AppInstance::Handle _instance, uint32* _numDevices, PhysicalDevice::Handle* _deviceListing)
+			static EResult QueryPhysicalDeviceListing(Handle _instance, uint32* _numDevices, PhysicalDevice::Handle* _deviceListing)
 			{
 				return EResult(vkEnumeratePhysicalDevices(_instance, _numDevices, _deviceListing));
 			}
@@ -245,7 +259,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
 			>::value,
 
-			ReturnType>::type GetProcedureAddress(AppInstance::Handle& _appInstance, RoCStr _procedureName)
+			ReturnType>::type GetProcedureAddress(Handle& _appInstance, RoCStr _procedureName)
 			{
 				return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_appInstance, _procedureName));
 			}
@@ -297,10 +311,14 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			/** 
 			@brief Provides the handles of all available physical devices.
+
+			@todo Make the device listing container type specifiable using an interface.
 			*/
-			static EResult GetAvailablePhysicalDevices(Handle _instance, PhysicalDevice::List& _deviceListing)
+			static EResult GetAvailablePhysicalDevices(Handle _instance, std::vector<PhysicalDevice::Handle>& _deviceListing)
 			{
-				uint32 count;
+				uint32 count; 
+				
+				//auto casted = reinterpret_cast<Vault_0::IDynamicArray<PhysicalDevice::Handle>*>(_deviceListing);
 
 				EResult&& returnCode = QueryPhysicalDeviceListing(_instance, &count, nullptr);
 
@@ -316,11 +334,13 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			/**
 			 * @brief Provides a list of the device groups present in the system.
 			 * 
+			 * @todo Make the group listing container type specifiable using an interface.
+			 * 
 			 * \param _instance
 			 * \param _groupListing
 			 * \return 
 			 */
-			static EResult GetAvailablePhysicalDeviceGroups(Handle _instance, PhysicalDevice::GroupList& _groupListing)
+			static EResult GetAvailablePhysicalDeviceGroups(Handle _instance, std::vector<PhysicalDevice::Group>& _groupListing)
 			{
 				uint32 count;
 
@@ -366,12 +386,12 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec)
 			{
 				appInfo      = _appInfo     ;
-				info = _creationSpec;
+				info         = _creationSpec;
 				allocator    = nullptr      ;
 
 				if (_creationSpec.AppInfo != &appInfo) _creationSpec.AppInfo = &appInfo;
 
-				return Vault_1::AppInstance::Create(info, allocator, handle);
+				return Parent::Create(info, allocator, handle);
 			}
 
 			/**
@@ -387,7 +407,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				info = _creationSpec;
 				allocator    = _allocator   ;
 
-				return Vault_1::AppInstance::Create(info, allocator, handle);
+				return Parent::Create(info, allocator, handle);
 			}
 
 			/**
@@ -395,24 +415,26 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 */
 			void Destroy()
 			{
-				Vault_1::AppInstance::Destroy(handle, allocator);
+				Parent::Destroy(handle, allocator);
 			}
 
 			/** 
 			@brief Provides the handles of all available physical devices.
+
+			@todo Make the device listing container type specifiable using an interface.
 			*/
-			EResult GetAvailablePhysicalDevices(PhysicalDevice::List& _deviceListing) const
+			EResult GetAvailablePhysicalDevices(std::vector<PhysicalDevice>& _deviceListing) const
 			{
 				uint32 count; std::vector<PhysicalDevice::Handle> handleList;
 
-				EResult&& returnCode = Parent::QueryPhysicalDeviceListing(handle, &count, nullptr);
+				EResult&& returnCode = QueryPhysicalDeviceListing(handle, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				handleList    .resize(count);
 				_deviceListing.resize(count);
 
-				returnCode = Parent::QueryPhysicalDeviceListing(handle, &count, handleList.data());
+				returnCode = QueryPhysicalDeviceListing(handle, &count, handleList.data());
 				
 				for (DeviceSize index = 0; index < count; index++)
 				{
@@ -425,11 +447,13 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			/**
 			 * @brief Provides a list of the device groups present in the system.
 			 * 
+			 * @todo Make the group listing container type specifiable using an interface.
+			 * 
 			 * \param _instance
 			 * \param _groupListing
 			 * \return 
 			 */
-			EResult GetAvailablePhysicalDeviceGroups(PhysicalDevice::GroupList& _groupListing) const
+			EResult GetAvailablePhysicalDeviceGroups(std::vector<PhysicalDevice::Group>& _groupListing) const
 			{
 				uint32 count;
 

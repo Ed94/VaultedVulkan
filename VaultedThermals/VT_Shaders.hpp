@@ -82,10 +82,32 @@
 			 */
 			static EResult Create
 			(
+				      LogicalDevice::Handle _deviceHandle,
+				const CreateInfo&           _creationSpec,
+				      Handle&               _shaderModule
+			)
+			{
+				return EResult(vkCreateShaderModule(_deviceHandle, _creationSpec.operator const VkShaderModuleCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_shaderModule));
+			}
+
+			/**
+			 * @brief Create a sher module.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateShaderModule">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _shaderModule
+			 * \return 
+			 */
+			static EResult Create
+			(
 				      LogicalDevice::Handle        _deviceHandle,
 				const CreateInfo&                  _creationSpec,
 				const Memory::AllocationCallbacks* _allocator   ,
-				      ShaderModule::Handle&        _shaderModule
+				      Handle&                      _shaderModule
 			)
 			{
 				return EResult(vkCreateShaderModule(_deviceHandle, _creationSpec.operator const VkShaderModuleCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_shaderModule));
@@ -101,7 +123,22 @@
 			 * \param _moduleHandle
 			 * \param _allocator
 			 */
-			static void Destory(LogicalDevice::Handle _deviceHandle, ShaderModule::Handle _moduleHandle, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _moduleHandle)
+			{
+				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief Destroy a shader module.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyShaderModule">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _moduleHandle
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _moduleHandle, const Memory::AllocationCallbacks* _allocator)
 			{
 				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator->operator const VkAllocationCallbacks*());
 			}
@@ -119,9 +156,9 @@
 				CreateInfo()
 				{
 					SType    = STypeEnum;
-					Next     = nullptr;
-					CodeSize = 0;
-					Code     = nullptr;
+					Next     = nullptr  ;
+					CodeSize = 0        ;
+					Code     = nullptr  ;
 				}
 
 				CreateInfo(RoCStr _code, DataSize _codeSize)
@@ -147,6 +184,19 @@
 
 			EResult Create
 			(
+				LogicalDevice& _device,
+				CreateInfo&    _info  
+			)
+			{
+				device    = &_device                ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Vault_1::ShaderModule::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			EResult Create
+			(
 				      LogicalDevice&               _device   ,
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
@@ -156,12 +206,17 @@
 				info      = _info     ;
 				allocator = _allocator;
 
-				Vault_1::ShaderModule::Create(device->GetHandle(), info, allocator, handle);
+				return Vault_1::ShaderModule::Create(device->GetHandle(), info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destory(device->GetHandle(), handle, allocator);
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
 			}
 
 		protected:

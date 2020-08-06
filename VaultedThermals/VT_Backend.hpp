@@ -27,6 +27,35 @@
 {
 	namespace Vault_0
 	{
+		#ifdef VT_Option__Use_STL_Exceptions
+			constexpr bool UseSTL_Exceptions = true;
+		#else
+			constexpr bool UseSTL_exceptions = false;
+		#endif
+
+		/** @brief Determines whether to return an result code for a function based on if STL exceptions are enabled. */
+		using ShouldUse_EResult = typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::type;
+
+		template<typename Type>
+		/**
+		 * @brief A custom dynamic container from the default can be used with specific functionality in the library.
+		 * 
+		 * @details Have a container that supports the following functions (They are equivalent to those used in std::vector)
+		 */
+		class IDynamicArray
+		{
+		public:
+			~IDynamicArray() {};
+
+			virtual void resize(DataSize _size) = NULL;
+
+			virtual Type data() = NULL;
+
+			virtual DataSize size() = NULL;
+
+			virtual Type at(DataSize _index) = NULL;
+		};
+
 		/** @struct VKStruct_Base
 
 			@brief Base struct for wrapping Vulkan native C API Structs.

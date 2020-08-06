@@ -47,7 +47,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			static constexpr DeviceSize MaxNameSize        = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
 			static constexpr DeviceSize MaxDeviceGroupSize = VK_MAX_DEVICE_GROUP_SIZE;
 
-			using Handle       = VkPhysicalDevice          ;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevice">Specification</a> 
+			using Handle = VkPhysicalDevice;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevice">Specification</a> 
 			
 
 			using NameStr = char[MaxNameSize];
@@ -684,10 +684,6 @@ A physical device usually represents a single complete implementation of Vulkan
 		{
 			using Parent = Vault_1::PhysicalDevice;
 
-			using ExtensionIdentifierList = std::vector< RoCStr>;
-			using List      = std::vector<PhysicalDevice::Handle>;
-			using GroupList = std::vector<PhysicalDevice::Group>;
-
 			struct Group : public Parent::Group
 			{
 				Group()
@@ -786,7 +782,12 @@ A physical device usually represents a single complete implementation of Vulkan
 				};
 			};
 
-			static bool CheckExtensionSupport(PhysicalDevice::Handle _handle, ExtensionIdentifierList _extensionsSpecified)
+			/**
+			 * @brief Checks to see if the specified extensions are supported by the physical device.
+			 * 
+			 * @todo make the extensions specified container generic using an interface.
+			 */
+			static bool CheckExtensionSupport(Handle _handle, std::vector<RoCStr> _extensionsSpecified)
 			{
 				ExtensionList availableExtensions;
 
@@ -806,7 +807,7 @@ A physical device usually represents a single complete implementation of Vulkan
 				return isSupported;
 			}
 
-			static uint32 FindMemoryType(PhysicalDevice::Handle _device, uint32 _typeFilter, Memory::PropertyFlags _properties)
+			static uint32 FindMemoryType(Handle _device, uint32 _typeFilter, Memory::PropertyFlags _properties)
 			{
 				MemoryProperties memProperties;
 
@@ -829,11 +830,11 @@ A physical device usually represents a single complete implementation of Vulkan
 			#endif
 			}
 
-			static ESampleCount GetMaxSampleCount_ColorAndDepth(PhysicalDevice::Handle _physicalDevice)
+			static ESampleCount GetMaxSampleCount_ColorAndDepth(Handle _physicalDevice)
 			{
-				PhysicalDevice::Properties properties;
+				Properties properties;
 
-				PhysicalDevice::GetProperties(_physicalDevice, properties);
+				GetProperties(_physicalDevice, properties);
 
 				SampleCountFlags counts
 				(
@@ -897,8 +898,6 @@ A physical device usually represents a single complete implementation of Vulkan
 
 			using Parent = Vault_2::PhysicalDevice;
 			
-			using List = std::vector<PhysicalDevice>;
-
 			PhysicalDevice()
 			{
 				handle = NullHandle;
@@ -917,7 +916,12 @@ A physical device usually represents a single complete implementation of Vulkan
 				queueFamilies = Parent::GetAvailableQueueFamilies(handle);
 			}
 
-			bool CheckExtensionSupport(ExtensionIdentifierList _extensionsSpecified)
+			/**
+			 * @todo make the extensions specified container generic using an interface.
+			 * 
+			 * \param _handle
+			 */
+			bool CheckExtensionSupport(std::vector<RoCStr> _extensionsSpecified)
 			{
 				ExtensionList availableExtensions;
 

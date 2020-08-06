@@ -85,10 +85,32 @@
 			 */
 			static EResult Create
 			(
+				      LogicalDevice::Handle _deviceHanle ,
+				const CreateInfo&           _creationSpec,
+				      Handle&               _framebuffer
+			)
+			{
+				return EResult(vkCreateFramebuffer(_deviceHanle, _creationSpec.operator const VkFramebufferCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_framebuffer));
+			}
+
+			/**
+			 * @brief Creates a framebuffer.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFramebuffer">Specification</a> 
+			 * 
+			 * \param _deviceHanle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _framebuffer
+			 * \return 
+			 */
+			static EResult Create
+			(
 				      LogicalDevice::Handle        _deviceHanle ,
 				const CreateInfo&                  _creationSpec,
 				const Memory::AllocationCallbacks* _allocator   ,
-				      Framebuffer::Handle&         _framebuffer
+				      Handle&                      _framebuffer
 			)
 			{
 				return EResult(vkCreateFramebuffer(_deviceHanle, _creationSpec.operator const VkFramebufferCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_framebuffer));
@@ -104,12 +126,26 @@
 			 * \param _framebuffer
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Framebuffer::Handle _framebuffer, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _framebuffer)
+			{
+				vkDestroyFramebuffer(_deviceHandle, _framebuffer, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief Destroy a framebuffer.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFramebuffer">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _framebuffer
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _framebuffer, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroyFramebuffer(_deviceHandle, _framebuffer, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
-
 
 		/**
 		 * @brief A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.
@@ -216,10 +252,32 @@
 			 */
 			static EResult Create
 			(
+				      LogicalDevice::Handle _deviceHandle,
+				const CreateInfo&           _createInfo  ,
+				      Handle&               _renderPass
+			)
+			{
+				return EResult(vkCreateRenderPass(_deviceHandle, _createInfo.operator const VkRenderPassCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_renderPass));
+			}
+
+			/**
+			 * @brief Create a render pass.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#renderpass-creation">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _renderPass
+			 * \return 
+			 */
+			static EResult Create
+			(
 				      LogicalDevice::Handle        _deviceHandle,
 				const CreateInfo&                  _createInfo  ,
 				const Memory::AllocationCallbacks* _allocator   ,
-				      RenderPass::Handle&          _renderPass
+				      Handle&                      _renderPass
 			)
 			{
 				return EResult(vkCreateRenderPass(_deviceHandle, _createInfo.operator const VkRenderPassCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_renderPass));
@@ -235,11 +293,156 @@
 			 * \param _renderPass
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, RenderPass::Handle _renderPass, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _renderPass)
+			{
+				vkDestroyRenderPass(_deviceHandle, _renderPass, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief Destroy a render pass.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyRenderPass">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _renderPass
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _renderPass, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroyRenderPass(_deviceHandle, _renderPass, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
+	}
 
+	namespace Vault_2
+	{
+		struct Framebuffer : public Vault_1::Framebuffer
+		{
+			using Parent = Vault_1::Framebuffer;
+
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+		};
+
+		struct RenderPass : public Vault_1::RenderPass
+		{
+			using Parent = Vault_1::RenderPass;
+
+			struct BeginInfo : Parent::BeginInfo
+			{
+				BeginInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next = nullptr;
+				}
+			};
+		};
+	}
+
+	namespace Vault_4
+	{
+		class Framebuffer : public Vault_2::Framebuffer
+		{
+		public:
+			using Parent = Vault_2::Framebuffer;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device                ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+		protected:
+
+			Handle handle;
+
+			CreateInfo info;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			LogicalDevice* device;
+		};
+
+		class RenderPass : public Vault_2::RenderPass
+		{
+		public:
+			using Parent = Vault_2::RenderPass;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device                ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+		};
 	}
 }

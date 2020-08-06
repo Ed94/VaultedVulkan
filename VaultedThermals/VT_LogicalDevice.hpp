@@ -222,11 +222,52 @@
 			(
 				      PhysicalDevice::Handle       _physicalDevice,
 				const CreateInfo&                  _createSpec    ,
+				      Handle&                      _device
+			)
+			{
+				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_device));
+			}
+
+			/**
+			 * @brief A logical device is created as a connection to a physical device.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDevice">Specification</a> 
+			 * 
+			 * \param _physicalDevice
+			 * \param _createSpec
+			 * \param _allocator
+			 * \param _device
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      PhysicalDevice::Handle       _physicalDevice,
+				const CreateInfo&                  _createSpec    ,
 				const Memory::AllocationCallbacks* _allocator     ,
 				      Handle&                      _device
 			)
 			{
 				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
+			}
+
+			/**
+			 * @brief Destroy a logical device.
+			 * 
+			 * @details
+			 * To ensure that no work is active on the device, vkDeviceWaitIdle can be used to gate the destruction of the device. 
+			 * Prior to destroying a device, an application is responsible for destroying/freeing any Vulkan objects that were created 
+			 * using that device as the first parameter of the corresponding vkCreate* or vkAllocate* command.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDevice">Specification</a> 
+			 * 
+			 * \param _handle
+			 * \param _allocator
+			 */
+			static void Destroy(Handle _handle)
+			{
+				vkDestroyDevice(_handle, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -383,7 +424,7 @@
 				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _createInfo)
 				{
 					logicalDevice = &_logicalDevice;
-					info    = _createInfo    ;
+					info          = _createInfo    ;
 				}
 
 				uint32 GetFamilyIndex() const
@@ -432,10 +473,19 @@
 				LogicalDevice* logicalDevice;
 			};
 
+			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo)
+			{
+				physicalDevice = &_physicalDevice        ;
+				info           = _createInfo             ;
+				allocator      = Memory::DefaultAllocator;
+
+				return Parent::Create(physicalDevice->GetHandle(), info, allocator, handle);
+			}
+
 			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				physicalDevice = &_physicalDevice;
-				info     = _createInfo     ;
+				info           = _createInfo     ;
 				allocator      = _allocator      ;
 
 				return Parent::Create(physicalDevice->GetHandle(), info, allocator, handle);
@@ -477,7 +527,7 @@
 
 			PhysicalDevice* physicalDevice;
 
-			const Memory::AllocationCallbacks* allocator     ;
+			const Memory::AllocationCallbacks* allocator;
 		};
 	}
 }

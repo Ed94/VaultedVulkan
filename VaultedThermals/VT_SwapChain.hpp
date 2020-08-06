@@ -248,4 +248,25 @@
 			}
 		};
 	}
+
+	namespace Vault_4
+	{
+		inline EResult Temp_GetImages(LogicalDevice& _device, Vault_2::SwapChain::Handle _handle, std::vector<Image>& _images)
+		{
+			auto count = Vault_2::SwapChain::GetImageCount(_device.GetHandle(), _handle);
+
+			std::vector<Vault_2::Image::Handle> images; images.resize(count);
+
+			EResult&& returnCode = Vault_2::SwapChain::GetImages(_device.GetHandle(), _handle, images.data());
+
+			_images.resize(count);
+
+			for (size_t index = 0; index < count; index++)
+			{
+				_images[index].Assign(_device, images[index]);
+			}
+
+			return returnCode;
+		}
+	}
 }
