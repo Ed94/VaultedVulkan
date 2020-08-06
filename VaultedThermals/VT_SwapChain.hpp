@@ -49,8 +49,6 @@
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a>  */
 			using Handle = VkSwapchainKHR;
 
-			static constexpr Handle NullHandle = Handle(EHandle::Null);
-
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> .
 			 */
@@ -216,7 +214,7 @@
 			{
 				uint32 numImages;
 
-				EResult&& result = QueryImages(_deviceHandle, _swapChain, numImages, nullptr);
+				EResult result = QueryImages(_deviceHandle, _swapChain, numImages, nullptr);
 
 				if (result != EResult::Success) std::runtime_error("Failed to get number of presentable images...");
 
@@ -240,7 +238,7 @@
 			{
 				uint32 numImages = GetImageCount(_deviceHandle, _swapChain);
 
-				EResult&& result = QueryImages(_deviceHandle, _swapChain, numImages, _images);
+				EResult result = QueryImages(_deviceHandle, _swapChain, numImages, _images);
 
 				if (result != EResult::Success) std::runtime_error("Failed to get number of presentable images...");
 
@@ -257,7 +255,7 @@
 
 			std::vector<Vault_2::Image::Handle> images; images.resize(count);
 
-			EResult&& returnCode = Vault_2::SwapChain::GetImages(_device.GetHandle(), _handle, images.data());
+			EResult returnCode = Vault_2::SwapChain::GetImages(_device.GetHandle(), _handle, images.data());
 
 			_images.resize(count);
 

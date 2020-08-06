@@ -14,7 +14,6 @@ Vault_3
 Vault_4
 Vault_5
 Vault_6
-Vault_7
 
 
 Important: Higher numbered vaults may require a lower level vault to be opened. 
@@ -29,8 +28,8 @@ Note: Vaults 3 and 7 must be opened before use (see macro definitions for openin
 This is due to their implementation making use of static or dynamic object allocations. 
 If the vaults are not properly opened all that will exist within them is a namespace called: Vault_Closed.
 
-Vault 4 Open Macro: #define VT_Vault_3_Open
-Vault 8 Open Macro: #define VT_Vault_7_Open
+Vault 3 Open Macro: #define VT_Vault_3_Open
+Vault 6 Open Macro: #define VT_Vault_6_Open
 */
 
 
@@ -100,24 +99,29 @@ Vault 8 Open Macro: #define VT_Vault_7_Open
 
 	/** @namespace Vault_4
 		
-		@brief Object-oriented wrapping
+		@brief Object-Oriented wrapping
 	*/
 	namespace Vault_4 { using namespace Corridors; }
 
 	/** @namespace Vault_5
 
+		@brief Object-Oriented: Repetitive functionality wrapping 
 	*/
 	namespace Vault_5 { using namespace Corridors; }
 
 	/** @namespace Vault_6
+
+		@brief Full setup providing procedure implementation.
+
+		@details (Will have its own device references, queues, layers, etc.)
 	*/
-	namespace Vault_7
+	namespace Vault_6
 	{ 
-	#ifndef VT_Vault_7_Open
+	#ifndef VT_Vault_6_Open
 		namespace Vault_Closed {}
 	#endif
 
-	#ifdef VT_Vault_7_Open
+	#ifdef VT_Vault_6_Open
 		using namespace Corridors;
 	#endif
 	}

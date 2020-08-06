@@ -178,8 +178,6 @@
 
 			using EExternalHandleTypeFlag = EExternalFenceHandleTypeFlag;
 
-			static constexpr Handle NullHandle = Handle(EHandle::Null);
-
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a> 
 			 */

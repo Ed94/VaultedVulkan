@@ -289,7 +289,7 @@
 			{
 				uint32 numFormats;
 
-				EResult&& result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, nullptr);
+				EResult result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, nullptr);
 
 				if (result != EResult::Success) throw std::runtime_error("Failed to get number of available formats...");
 
@@ -308,7 +308,7 @@
 			{
 				uint32 numFormats = GetNumOf_AvailableFormats(_deviceHandle, _surfaceHandle);
 
-				EResult&& result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, _formatsContainer);
+				EResult result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, _formatsContainer);
 
 				if (result != EResult::Success) throw std::runtime_error("Failed to get available formats...");
 

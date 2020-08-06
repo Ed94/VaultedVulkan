@@ -891,7 +891,7 @@ can be multidimensional and may have associated metadata.
 			)
 			{
 			#ifndef VT_Option__Use_STL_Exceptions
-				EResult&& returnCode
+				EResult returnCode
 			#endif
 
 
@@ -952,7 +952,7 @@ can be multidimensional and may have associated metadata.
 			)
 			{
 			#ifndef VT_Option__Use_STL_Exceptions
-				EResult&& returnCode
+				EResult returnCode
 			#endif
 
 
@@ -1109,7 +1109,7 @@ can be multidimensional and may have associated metadata.
 				info      = _createInfo             ;
 				allocator = Memory::DefaultAllocator;
 
-				EResult&& returnCode = Parent::Parent::Create(device->GetHandle(), info, allocator, handle);
+				EResult returnCode = Parent::Parent::Create(device->GetHandle(), info, allocator, handle);
 
 				if (returnCode == EResult::Success)
 					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
@@ -1123,7 +1123,7 @@ can be multidimensional and may have associated metadata.
 				info      = _createInfo ;
 				allocator = _allocator  ;
 
-				EResult&& returnCode = Parent::Parent::Create(device->GetHandle(), info, allocator, handle);
+				EResult returnCode = Parent::Parent::Create(device->GetHandle(), info, allocator, handle);
 
 				if (returnCode == EResult::Success)
 					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
@@ -1146,7 +1146,7 @@ can be multidimensional and may have associated metadata.
 				allocator = Memory::DefaultAllocator;
 
 			#ifndef VT_Option__Use_STL_Exceptions
-				EResult&& returnCode
+				EResult returnCode
 			#endif
 
 
@@ -1196,7 +1196,7 @@ can be multidimensional and may have associated metadata.
 				allocator = _allocator;
 
 			#ifndef VT_Option__Use_STL_Exceptions
-				EResult&& returnCode
+				EResult returnCode
 			#endif
 
 
@@ -1377,7 +1377,7 @@ can be multidimensional and may have associated metadata.
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				EResult&& returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
+				EResult returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
 
 				if (returnCode == EResult::Success)
 					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
@@ -1391,7 +1391,7 @@ can be multidimensional and may have associated metadata.
 				info      = _info     ;
 				allocator = _allocator;
 
-				EResult&& returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
+				EResult returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
 
 				if (returnCode == EResult::Success)
 					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);

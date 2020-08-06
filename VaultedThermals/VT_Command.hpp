@@ -845,7 +845,7 @@
 				submitInfo.CommandBufferCount = 1              ;
 				submitInfo.CommandBuffers     = &_commandBuffer;
 
-				SubmitToQueue(_queue, 1, &submitInfo, Fence::NullHandle);
+				SubmitToQueue(_queue, 1, &submitInfo, Null<Fence::Handle>);
 
 				LogicalDevice::Queue::WaitUntilIdle(_queue);
 

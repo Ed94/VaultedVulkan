@@ -102,11 +102,48 @@
 				(
 					      LogicalDevice::Handle  _deviceHandle ,
 					const CreateInfo&            _createInfo   ,
-					const VkAllocationCallbacks* _allocator    ,
 					      Cache::Handle&         _pipelineCache
 				)
 				{
-					return EResult(vkCreatePipelineCache(_deviceHandle, _createInfo.operator const VkPipelineCacheCreateInfo*(), _allocator, &_pipelineCache));
+					return EResult(vkCreatePipelineCache(_deviceHandle, _createInfo.operator const VkPipelineCacheCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_pipelineCache));
+				}
+
+				/**
+				 * @brief Create a pipeline cache.
+				 * 
+				 * @details
+				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineCache">Specification</a>
+				 * 
+				 * \param _deviceHandle
+				 * \param _createInfo
+				 * \param _allocator
+				 * \param _pipelineCache
+				 * \return 
+				 */
+				static EResult Create
+				(
+					      LogicalDevice::Handle        _deviceHandle ,
+					const CreateInfo&                  _createInfo   ,
+					const Memory::AllocationCallbacks* _allocator    ,
+					      Cache::Handle&               _pipelineCache
+				)
+				{
+					return EResult(vkCreatePipelineCache(_deviceHandle, _createInfo.operator const VkPipelineCacheCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_pipelineCache));
+				}
+
+				/**
+				 * @brief Destroy a pipeline cache.
+				 * 
+				 * @details
+				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipelineCache">Specification</a> 
+				 * 
+				 * \param _deviceHandle
+				 * \param _cache
+				 * \param _allocator
+				 */
+				static void Destroy(LogicalDevice::Handle _deviceHandle, Cache::Handle _cache)
+				{
+					vkDestroyPipelineCache(_deviceHandle, _cache, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 				}
 
 				/**
@@ -285,21 +322,41 @@
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutSupport">Specification</a>  */
 					struct Support : Vault_0::VKStruct_Base<VkDescriptorSetLayoutSupport, EStructureType::Descriptor_SetLayoutSupport>
 					{
+						EType SType    ;
+						void* Next     ;
+						Bool  Supported;
+
 						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetVariableDescriptorCountLayoutSupport">Specification</a>  */
 						struct SetVariableCount : Vault_0::VKStruct_Base
 							<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
 						{
-							EType  sType           ;
+							EType  SType           ;
 							void*  Next            ;
 							uint32 MaxVariableCount;
 						};
-
-						EType SType    ;
-						void* Next     ;
-						Bool  Supported;
 					};
 
-					
+					/**
+					 * @brief Create a descriptor set layout.
+					 * 
+					 * @details
+					 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorSetLayout">Specification</a> 
+					 * 
+					 * \param _deviceHandle
+					 * \param _createInfo
+					 * \param _allocator
+					 * \param _setLayout
+					 * \return 
+					 */
+					static EResult Create
+					(
+						      LogicalDevice::Handle _deviceHandle,
+						const CreateInfo&           _createInfo  ,
+						      Handle&               _setLayout
+					)
+					{
+						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo.operator const VkDescriptorSetLayoutCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_setLayout));
+					}
 
 					/**
 					 * @brief Create a descriptor set layout.
@@ -322,6 +379,21 @@
 					)
 					{
 						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo.operator const VkDescriptorSetLayoutCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_setLayout));
+					}
+
+					/**
+					 * @brief Destroy a descriptor set layout.
+					 * 
+					 * @details
+					 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorSetLayout">Specification</a> 
+					 * 
+					 * \param _deviceHandle
+					 * \param _descriptorSet
+					 * \param _allocator
+					 */
+					static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _descriptorSet)
+					{
+						vkDestroyDescriptorSetLayout(_deviceHandle, _descriptorSet, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 					}
 
 					/**
@@ -384,10 +456,32 @@
 				 */
 				static EResult Create
 				(
-					      LogicalDevice::Handle         _deviceHandle  ,
-					const Pipeline::Layout::CreateInfo& _creationSpec  ,
-					const Memory::AllocationCallbacks*  _allocator     ,
-					      Pipeline::Layout::Handle&     _pipelineLayout
+					      LogicalDevice::Handle _deviceHandle  ,
+					const CreateInfo&           _creationSpec  ,
+					      Handle&               _pipelineLayout
+				)
+				{
+					return EResult(vkCreatePipelineLayout(_deviceHandle, _creationSpec.operator const VkPipelineLayoutCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_pipelineLayout));
+				}
+
+				/**
+				 * @brief Create a pipeline layout.
+				 * 
+				 * @details
+				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineLayout">Specification</a> 
+				 * 
+				 * \param _deviceHandle
+				 * \param _creationSpec
+				 * \param _allocator
+				 * \param _pipelineLayout
+				 * \return 
+				 */
+				static EResult Create
+				(
+					      LogicalDevice::Handle        _deviceHandle  ,
+					const CreateInfo&                  _creationSpec  ,
+					const Memory::AllocationCallbacks* _allocator     ,
+					      Handle&                      _pipelineLayout
 				)
 				{
 					return EResult(vkCreatePipelineLayout(_deviceHandle, _creationSpec.operator const VkPipelineLayoutCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_pipelineLayout));
@@ -403,10 +497,25 @@
 				 * \param _pipelineLayout
 				 * \param _allocator
 				 */
+				static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipelineLayout)
+				{
+					vkDestroyPipelineLayout(_deviceHandle, _pipelineLayout, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+				}
+
+				/**
+				 * @brief Destroy a pipeline layout.
+				 * 
+				 * @details
+				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipelineLayout">Specification</a> 
+				 * 
+				 * \param _deviceHandle
+				 * \param _pipelineLayout
+				 * \param _allocator
+				 */
 				static void Destroy
 				(
 					      LogicalDevice::Handle        _deviceHandle  ,
-					      Pipeline::Layout::Handle     _pipelineLayout,
+					      Handle                       _pipelineLayout,
 					const Memory::AllocationCallbacks* _allocator
 				)
 				{
@@ -626,12 +735,37 @@
 					      LogicalDevice::Handle        _deviceHandle   ,
 					      Cache::Handle                _cache          ,
 					      uint32                       _createInfoCount,
-					const CreateInfo&                  _createInfos    ,
-					const Memory::AllocationCallbacks* _allocator      ,
-					      Handle&                      _pipelines
+					const CreateInfo*                  _createInfos    ,
+					      Handle*                      _pipelines
 				)
 				{
-					return EResult(vkCreateComputePipelines(_deviceHandle, _cache, _createInfoCount, _createInfos.operator const VkComputePipelineCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_pipelines));
+					return EResult(vkCreateComputePipelines(_deviceHandle, _cache, _createInfoCount, _createInfos->operator const VkComputePipelineCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), _pipelines));
+				}
+
+				/**
+				 * @brief Create a compute pipeline.
+				 * 
+				 * @details <a href="linkURL">Specification</a> 
+				 * 
+				 * \param _deviceHandle
+				 * \param _cache
+				 * \param _createInfoCount
+				 * \param _createInfos
+				 * \param _allocator
+				 * \param _pipelines
+				 * \return 
+				 */
+				static EResult Create
+				(
+					      LogicalDevice::Handle        _deviceHandle   ,
+					      Cache::Handle                _cache          ,
+					      uint32                       _createInfoCount,
+					const CreateInfo*                  _createInfos    ,
+					const Memory::AllocationCallbacks* _allocator      ,
+					      Handle*                      _pipelines
+				)
+				{
+					return EResult(vkCreateComputePipelines(_deviceHandle, _cache, _createInfoCount, _createInfos->operator const VkComputePipelineCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), _pipelines));
 				}
 			};
 
@@ -682,13 +816,57 @@
 				 * of shader groups is allowing the device to bind different pipeline state using Device-Generated Commands.
 				 * 
 				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines">Specification</a> 
-				 * 
-				 * @todo Implement.
 				 */
-				struct ShaderGroup
+				struct ShaderGroup 
 				{
-						
+					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsShaderGroupCreateInfoNV">Specification</a>  */
+					struct CreateInfo : Vault_0::VKStruct_Base<VkGraphicsShaderGroupCreateInfoNV, EStructureType::GraphicsShaderGroup_CreateInfo_NV>
+					{
+						      EType                          SType            ;
+						const void*                          Next             ;
+						      uint32                         StageCount       ;
+						const ShaderStage::CreateInfo*       Stages           ;
+						const VertexInputState::CreateInfo*  VertexInputState ;
+						const TessellationState::CreateInfo* TessellationState;
+					};
+
+					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineShaderGroupsCreateInfoNV">Specification</a>  */
+					struct MultipleCreateInfo : Vault_0::VKStruct_Base<VkGraphicsPipelineShaderGroupsCreateInfoNV, EStructureType::GraphicsPipeline_ShaderGroups_CreateInfo_NV>
+					{
+						      EType             SType;
+						const void*             Next;
+						      uint32            GroupCount;
+						const CreateInfo*       Groups;
+						      uint32            PipelineCount;
+						const Pipeline::Handle* Pipelines;
+					};
 				};
+
+				/**
+				 * @brief Create a graphics pipeline.
+				 * 
+				 * @details
+				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateGraphicsPipelines">Specification</a> 
+				 * 
+				 * \param _deviceHandle
+				 * \param _pipelineCache
+				 * \param _createInfoCount
+				 * \param _createInfos
+				 * \param _allocator
+				 * \param _pipelines
+				 * \return 
+				 */
+				static EResult Create
+				(
+					      LogicalDevice::Handle _deviceHandle   ,
+					      Cache::Handle         _pipelineCache  ,
+					      uint32                _createInfoCount,
+					const CreateInfo*           _createInfos    ,
+					      Handle*               _pipelines
+				)
+				{
+					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos->operator const VkGraphicsPipelineCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), _pipelines));
+				}
 
 				/**
 				 * @brief Create a graphics pipeline.
@@ -709,14 +887,29 @@
 					      LogicalDevice::Handle        _deviceHandle   ,
 					      Cache::Handle                _pipelineCache  ,
 					      uint32                       _createInfoCount,
-					const CreateInfo&                  _createInfos    ,
+					const CreateInfo*                  _createInfos    ,
 					const Memory::AllocationCallbacks* _allocator      ,
-					      Handle&                      _pipelines
+					      Handle*                      _pipelines
 				)
 				{
-					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos.operator const VkGraphicsPipelineCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_pipelines));
+					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos->operator const VkGraphicsPipelineCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), _pipelines));
 				}
 			};
+
+			/**
+			 * @brief Destroy a pipeline object.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipeline">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _pipeline
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipeline)
+			{
+				vkDestroyPipeline(_deviceHandle, _pipeline, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
 
 			/**
 			 * @brief Destroy a pipeline object.
@@ -732,6 +925,718 @@
 			{
 				vkDestroyPipeline(_deviceHandle, _pipeline, _allocator->operator const VkAllocationCallbacks*());
 			}
+		};
+	}
+
+	namespace Vault_2
+	{
+		struct Pipeline : public Vault_1::Pipeline
+		{
+			using Parent = Vault_1::Pipeline;
+
+			struct Cache : public Parent::Cache
+			{
+				struct CreateInfo : public Parent::Cache::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct ColorBlendState : public Parent::ColorBlendState
+			{
+				struct CreateInfo : public Parent::ColorBlendState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct DepthStencilState : public Parent::DepthStencilState
+			{
+				struct CreateInfo : public Parent::DepthStencilState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+			
+			struct DynamicState : public Parent::DynamicState
+			{
+				struct CreateInfo : public Parent::DynamicState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct InputAssemblyState : public Parent::InputAssemblyState
+			{
+				struct CreateInfo : public Parent::InputAssemblyState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct Layout : public Parent::Layout
+			{
+				struct DescriptorSet : public Parent::Layout::DescriptorSet
+				{
+					struct Binding : public Parent::Layout::DescriptorSet::Binding
+					{
+						struct FlagsCreateInfo : public Parent::Layout::DescriptorSet::Binding::FlagsCreateInfo
+						{
+							FlagsCreateInfo()
+							{
+								SType = STypeEnum;
+								Next  = nullptr  ;
+							}
+						};
+					};
+
+					struct CreateInfo : public Parent::Layout::DescriptorSet::CreateInfo
+					{
+						CreateInfo()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
+
+					struct Support : public Parent::Layout::DescriptorSet::Support
+					{
+						Support()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+
+						struct SetVariableCount : public Parent::Layout::DescriptorSet::Support::SetVariableCount
+						{
+							SetVariableCount()
+							{
+								SType = STypeEnum;
+								Next  = nullptr  ;
+							}
+						};
+					};
+				};
+
+				struct CreateInfo : public Parent::Layout::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct MultiSampleState : public Parent::MultisampleState
+			{
+				struct CreateInfo : public Parent::MultisampleState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct RasterizationState : public Parent::RasterizationState
+			{
+				struct CreateInfo : public Parent::RasterizationState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct ShaderStage : public Parent::ShaderStage
+			{
+				struct CreateInfo : public Parent::ShaderStage::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct TessellationState : public Parent::TessellationState
+			{
+				struct CreateInfo : public Parent::TessellationState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct VertexInputState : public Parent::VertexInputState
+			{
+				struct CreateInfo : public Parent::VertexInputState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct ViewportState : public Parent::ViewportState
+			{
+				struct CreateInfo : public Parent::ViewportState::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct Compute : public Parent::Compute
+			{
+				struct CreateInfo : public Parent::Compute::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct Graphics : public Parent::Graphics::CreateInfo
+			{
+				struct CreateInfo : public Parent::Graphics::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+
+				struct ShaderGroup : public Parent::Graphics::ShaderGroup
+				{
+					struct CreateInfo : public Parent::Graphics::ShaderGroup::CreateInfo
+					{
+						CreateInfo()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
+
+					struct MultipleCreateInfo : public Parent::Graphics::ShaderGroup::MultipleCreateInfo
+					{
+						MultipleCreateInfo()
+						{
+							SType = STypeEnum;
+							Next  = nullptr  ;
+						}
+					};
+				};
+			};
+		};
+	}
+
+	namespace Vault_4
+	{
+		class Pipeline : public Vault_2::Pipeline
+		{
+		public:
+			using Parent = Vault_2::Pipeline;
+
+			class Cache : public Parent::Cache
+			{
+			public:
+				using Parent =  Parent::Cache;
+
+				EResult Create
+				(
+					LogicalDevice& _device,
+					CreateInfo&    _info  
+				)
+				{
+					device    = &_device                ;
+					info      = _info                   ;
+					allocator = Memory::DefaultAllocator;
+
+					return Parent::Create(device->GetHandle(), info, allocator, handle);
+				}
+
+				EResult Create
+				(
+					      LogicalDevice&               _device   ,
+					      CreateInfo&                  _info     ,
+					const Memory::AllocationCallbacks* _allocator
+				)
+				{
+					device    = &_device  ;
+					info      = _info     ;
+					allocator = _allocator;
+
+					return Parent::Create(device->GetHandle(), info, allocator, handle);
+				}
+
+				void Destroy()
+				{
+					Parent::Destroy(device->GetHandle(), handle, allocator);
+				}
+
+				const Handle& GetHandle() const
+				{
+					return handle;
+				}
+
+			protected:
+
+				Handle handle;
+
+				const Memory::AllocationCallbacks* allocator;
+				
+				CreateInfo info;
+
+				LogicalDevice* device;
+			};
+
+			class Layout : public Parent::Layout
+			{
+			public:
+				using Parent = Parent::Layout;
+
+				class DescriptorSet : public Parent::DescriptorSet
+				{
+				public:
+					using Parent = Parent::DescriptorSet;
+
+					void Assign(LogicalDevice& _device, CreateInfo& _info)
+					{
+						device    = &_device                ;
+						info      = _info                   ;
+						allocator = Memory::DefaultAllocator;
+
+						Parent::GetSupport(device->GetHandle(), info, support);
+					}
+
+					void Assign
+					(
+						      LogicalDevice&               _device   ,
+						      CreateInfo&                  _info     ,
+						const Memory::AllocationCallbacks* _allocator
+					)
+					{
+						device    = &_device  ;
+						info      = _info     ;
+						allocator = _allocator;
+
+						Parent::GetSupport(device->GetHandle(), info, support);
+					}
+
+					EResult Create()
+					{
+						return Parent::Create(device->GetHandle(), info, allocator, handle);
+					}
+
+					void Destroy()
+					{
+						Parent::Destroy(device->GetHandle(), handle, allocator);
+					}
+
+					const Handle& GetHandle() const
+					{
+						return handle;
+					}
+
+					const Support& GetSupport() const
+					{
+						return support;
+					}
+
+				protected:
+
+					Handle handle;
+
+					const Memory::AllocationCallbacks* allocator;
+
+					CreateInfo info;
+
+					LogicalDevice* device;
+
+					Support support;
+				};
+
+				EResult Create
+				(
+					LogicalDevice& _device,
+					CreateInfo&    _info  
+				)
+				{
+					device    = &_device                ;
+					info      = _info                   ;
+					allocator = Memory::DefaultAllocator;
+
+					return Parent::Create(device->GetHandle(), info, allocator, handle);
+				}
+
+				EResult Create
+				(
+					      LogicalDevice&               _device   ,
+					      CreateInfo&                  _info     ,
+					const Memory::AllocationCallbacks* _allocator
+				)
+				{
+					device    = &_device  ;
+					info      = _info     ;
+					allocator = _allocator;
+
+					return Parent::Create(device->GetHandle(), info, allocator, handle);
+				}
+
+				void Destroy()
+				{
+					Parent::Destroy(device->GetHandle(), handle, allocator);
+				}
+
+				Handle GetHandle() const
+				{
+					return handle;
+				}
+
+			protected:
+
+				Handle handle;
+
+				const Memory::AllocationCallbacks* allocator;
+
+				CreateInfo info;
+
+				LogicalDevice* device;
+			};
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle);
+			}
+
+		protected:
+
+			Handle handle;
+
+			Cache* cache;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			LogicalDevice* device;
+		};
+
+		class ComputePipeline : public Pipeline
+		{
+		public:
+
+			using CreateInfo = Parent::Compute::CreateInfo;
+
+			void Assign
+			(
+				      LogicalDevice&               _device   ,
+				      Cache*                       _cache    ,
+				      CreateInfo&                  _info     ,
+				const Memory::AllocationCallbacks* _allocator,
+				      Handle                       _handle
+			)
+			{
+				handle    = _handle   ;
+				allocator = _allocator;
+				cache     =  _cache   ;
+				device    = &_device  ;
+				info      = _info     ;	
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device;
+				cache     = nullptr ;
+				info      = _info   ;
+				allocator = Memory::DefaultAllocator;
+
+				if (cache != nullptr)
+				{
+					return Parent::Parent::Compute::Create
+					(
+						device->GetHandle(),
+						cache ->GetHandle(),
+						1                  ,
+						&info              ,
+						allocator          ,
+						&handle
+					);
+				}
+				else
+				{
+					return Parent::Parent::Compute::Create
+					(
+						device->GetHandle(),
+						Null<Cache::Handle>,
+						1                  ,
+						&info              ,
+						allocator          ,
+						&handle
+					);
+				}
+			}
+
+			EResult Create(LogicalDevice& _device, Cache& _cache, CreateInfo& _info)
+			{
+				device    = &_device;
+				cache     = &_cache ;
+				info      = _info   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Parent::Compute::Create
+				(
+					device->GetHandle(),
+					cache ->GetHandle(),
+					1                  ,
+					&info              ,
+					allocator          ,
+					&handle
+				);
+			}
+
+			EResult Create
+			(
+				      LogicalDevice&               _device   , 
+				      Cache&                       _cache    , 
+				      CreateInfo&                  _info     ,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				device    = &_device  ;
+				cache     = &_cache   ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Parent::Compute::Create
+				(
+					device->GetHandle(),
+					cache ->GetHandle(),
+					1                  ,
+					&info              ,
+					allocator          ,
+					&handle
+				);
+			}
+
+			static EResult Create
+			(
+				      LogicalDevice&                 _device         ,
+				      Cache*                         _cache          ,
+				      uint32                         _createInfoCount,
+				      CreateInfo*                    _createInfos    ,
+				const Memory::AllocationCallbacks*   _allocator      ,
+				      std::vector<ComputePipeline>& _pipelines
+			)
+			{
+				_pipelines.resize(_createInfoCount);
+
+				Handle* handles;
+
+				EResult returnCode = 
+					Parent::Parent::Compute::Create
+					(
+						_device.GetHandle(),
+						_cache->GetHandle(),
+						_createInfoCount   ,
+						_createInfos       ,
+						_allocator         ,
+						handles
+					);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				int index = 0;
+
+				for (auto pipeline : _pipelines)
+				{
+					pipeline.Assign(_device, _cache, _createInfos[index++], _allocator, handles[index]);
+				}
+
+				return returnCode;
+			}
+
+		protected:
+
+			CreateInfo info;
+		};
+
+		class GraphicsPipeline : public Pipeline
+		{
+		public:
+			using CreateInfo = Parent::Graphics::CreateInfo;
+
+			void Assign
+			(
+				      LogicalDevice&               _device   ,
+				      Cache*                       _cache    ,
+				      CreateInfo&                  _info     ,
+				const Memory::AllocationCallbacks* _allocator,
+				      Handle                       _handle
+			)
+			{
+				handle    = _handle   ;
+				allocator = _allocator;
+				cache     = _cache    ;
+				device    = &_device  ;
+				info      = _info     ;	
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = &_device;
+				cache     = nullptr ;
+				info      = _info   ;
+				allocator = Memory::DefaultAllocator;
+
+				if (cache != nullptr)
+				{
+					return Parent::Parent::Graphics::Create
+					(
+						device->GetHandle(),
+						cache ->GetHandle(),
+						1                  ,
+						&info              ,
+						allocator          ,
+						&handle
+					);
+				}
+				else
+				{
+					return Parent::Parent::Graphics::Create
+					(
+						device->GetHandle(),
+						Null<Cache::Handle>,
+						1                  ,
+						&info              ,
+						allocator          ,
+						&handle
+					);
+				}
+			}
+
+			EResult Create(LogicalDevice& _device, Cache& _cache, CreateInfo& _info)
+			{
+				device    = &_device;
+				cache     = &_cache ;
+				info      = _info   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Parent::Graphics::Create
+				(
+					device->GetHandle(),
+					cache ->GetHandle(),
+					1                  ,
+					&info              ,
+					allocator          ,
+					&handle
+				);
+			}
+
+			EResult Create
+			(
+				      LogicalDevice&               _device   , 
+				      Cache&                       _cache    , 
+				      CreateInfo&                  _info     ,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				device    = &_device  ;
+				cache     = &_cache   ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Parent::Graphics::Create
+				(
+					device->GetHandle(),
+					cache ->GetHandle(),
+					1                  ,
+					&info              ,
+					allocator          ,
+					&handle
+				);
+			}
+
+			static EResult Create
+			(
+				      LogicalDevice&                 _device         ,
+				      Cache*                         _cache          ,
+				      uint32                         _createInfoCount,
+				      CreateInfo*                    _createInfos    ,
+				const Memory::AllocationCallbacks*   _allocator      ,
+				      std::vector<GraphicsPipeline>& _pipelines
+			)
+			{
+				_pipelines.resize(_createInfoCount);
+
+				Handle* handles;
+
+				EResult returnCode = 
+					Parent::Parent::Graphics::Create
+					(
+						_device.GetHandle(),
+						_cache->GetHandle(),
+						_createInfoCount   ,
+						_createInfos       ,
+						_allocator         ,
+						handles
+					);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				int index = 0;
+
+				for (auto pipeline : _pipelines)
+				{
+					pipeline.Assign(_device, _cache, _createInfos[index++], _allocator, handles[index]);
+				}
+
+				return returnCode;
+			}
+
+		protected:
+
+			CreateInfo info;
 		};
 	}
 }

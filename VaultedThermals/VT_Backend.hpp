@@ -33,6 +33,18 @@
 			constexpr bool UseSTL_exceptions = false;
 		#endif
 
+		#ifdef VT_Option__Use_Inline_Hinting
+			#define VT_InlineSpecifier inline
+		#elif VT_Option__Use_Forced_Inlining
+			#ifdef _WIN32
+				#define VT_InlineSpecifier __forceinline
+			#else
+				#define VT_InlineSpecifier 
+			#endif
+		#else
+			#define VT_InlineSpecifier 
+		#endif
+
 		/** @brief Determines whether to return an result code for a function based on if STL exceptions are enabled. */
 		using ShouldUse_EResult = typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::type;
 

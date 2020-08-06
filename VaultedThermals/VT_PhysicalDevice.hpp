@@ -44,21 +44,18 @@ A physical device usually represents a single complete implementation of Vulkan
 		{
 			using Memory = Vault_0::Memory;
 
-			static constexpr DeviceSize MaxNameSize        = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
-			static constexpr DeviceSize MaxDeviceGroupSize = VK_MAX_DEVICE_GROUP_SIZE;
-
 			using Handle = VkPhysicalDevice;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevice">Specification</a> 
-			
 
-			using NameStr = char[MaxNameSize];
+			static constexpr DeviceSize MaxNameSize        = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
+			static constexpr DeviceSize MaxDeviceGroupSize = VK_MAX_DEVICE_GROUP_SIZE        ;
 
 			static constexpr DeviceSize MaxDriverNameSize = VK_MAX_DRIVER_NAME_SIZE;
 			static constexpr DeviceSize MaxDriverInfoSize = VK_MAX_DRIVER_INFO_SIZE;
 
+			using NameStr = char[MaxNameSize];
+
 			using DriverNameStr = char[MaxDriverNameSize];
 			using DriverInfoStr = char[MaxDriverInfoSize];
-
-			static constexpr Handle NullHandle = Handle(EHandle::Null);
 
 		    using EDeviceType = EPhysicalDeviceType;	
 
@@ -802,7 +799,7 @@ A physical device usually represents a single complete implementation of Vulkan
 					requiredExtensions.erase(extension.ExtensionName);
 				}
 
-				bool&& isSupported = requiredExtensions.empty();
+				bool isSupported = requiredExtensions.empty();
 
 				return isSupported;
 			}
@@ -877,7 +874,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			{
 				uint32 count;
 
-				EResult&& returnCode = EnumerateExtensionProperties(_device, _layerName, &count, nullptr);
+				EResult returnCode = EnumerateExtensionProperties(_device, _layerName, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
@@ -900,7 +897,7 @@ A physical device usually represents a single complete implementation of Vulkan
 			
 			PhysicalDevice()
 			{
-				handle = NullHandle;
+				handle = Null<Handle>;
 			}
 
 			void AssignHandle(Handle _handle) 
@@ -936,7 +933,7 @@ A physical device usually represents a single complete implementation of Vulkan
 					requiredExtensions.erase(extension.ExtensionName);
 				}
 
-				bool&& isSupported = requiredExtensions.empty();
+				bool isSupported = requiredExtensions.empty();
 
 				return isSupported;
 			}

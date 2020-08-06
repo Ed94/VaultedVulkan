@@ -320,7 +320,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				
 				//auto casted = reinterpret_cast<Vault_0::IDynamicArray<PhysicalDevice::Handle>*>(_deviceListing);
 
-				EResult&& returnCode = QueryPhysicalDeviceListing(_instance, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceListing(_instance, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
@@ -344,7 +344,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			{
 				uint32 count;
 
-				EResult&& returnCode = QueryPhysicalDeviceGroups(_instance, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceGroups(_instance, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
@@ -427,7 +427,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			{
 				uint32 count; std::vector<PhysicalDevice::Handle> handleList;
 
-				EResult&& returnCode = QueryPhysicalDeviceListing(handle, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceListing(handle, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
@@ -457,7 +457,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			{
 				uint32 count;
 
-				EResult&& returnCode = QueryPhysicalDeviceGroups(handle, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceGroups(handle, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
