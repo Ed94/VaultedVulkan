@@ -383,7 +383,7 @@
 				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _createInfo)
 				{
 					logicalDevice = &_logicalDevice;
-					createInfo    = _createInfo    ;
+					info    = _createInfo    ;
 				}
 
 				uint32 GetFamilyIndex() const
@@ -398,7 +398,7 @@
 
 				void Retrieve()
 				{
-					Parent::Get(logicalDevice->GetHandle(), createInfo.QueueFamilyIndex, familyIndex, handle);
+					Parent::Get(logicalDevice->GetHandle(), info.QueueFamilyIndex, familyIndex, handle);
 				}
 
 				bool FamilySpecified()
@@ -423,7 +423,7 @@
 
 				Handle handle;
 
-				CreateInfo createInfo;
+				CreateInfo info;
 
 				EType type;
 
@@ -432,13 +432,13 @@
 				LogicalDevice* logicalDevice;
 			};
 
-			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, Memory::AllocationCallbacks* _allocator)
+			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				physicalDevice = &_physicalDevice;
-				createInfo     = _createInfo     ;
+				info     = _createInfo     ;
 				allocator      = _allocator      ;
 
-				return Parent::Create(physicalDevice->GetHandle(), createInfo, allocator, handle);
+				return Parent::Create(physicalDevice->GetHandle(), info, allocator, handle);
 			}
 
 			void Destroy() const
@@ -473,9 +473,11 @@
 
 			Handle handle;
 
-			Memory::AllocationCallbacks* allocator     ;
-			CreateInfo                   createInfo    ;
-			PhysicalDevice*              physicalDevice;
+			CreateInfo info;
+
+			PhysicalDevice* physicalDevice;
+
+			const Memory::AllocationCallbacks* allocator     ;
 		};
 	}
 }

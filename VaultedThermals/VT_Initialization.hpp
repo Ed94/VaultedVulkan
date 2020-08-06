@@ -172,8 +172,8 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			*/
 			static void Destroy
 			(
-				AppInstance::Handle          _instance ,
-				Memory::AllocationCallbacks* _callbacks
+				      AppInstance::Handle          _instance ,
+				const Memory::AllocationCallbacks* _callbacks
 			)
 			{
 				vkDestroyInstance(_instance, _callbacks->operator const VkAllocationCallbacks*());
@@ -366,12 +366,12 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec)
 			{
 				appInfo      = _appInfo     ;
-				creationSpec = _creationSpec;
+				info = _creationSpec;
 				allocator    = nullptr      ;
 
 				if (_creationSpec.AppInfo != &appInfo) _creationSpec.AppInfo = &appInfo;
 
-				return Vault_1::AppInstance::Create(creationSpec, allocator, handle);
+				return Vault_1::AppInstance::Create(info, allocator, handle);
 			}
 
 			/**
@@ -381,13 +381,13 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 * \param _creationSpec
 			 * \param _allocator
 			 */
-			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec, Memory::AllocationCallbacks* _allocator)
+			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec, const Memory::AllocationCallbacks* _allocator)
 			{
 				appInfo      = _appInfo     ;
-				creationSpec = _creationSpec;
+				info = _creationSpec;
 				allocator    = _allocator   ;
 
-				return Vault_1::AppInstance::Create(creationSpec, allocator, handle);
+				return Vault_1::AppInstance::Create(info, allocator, handle);
 			}
 
 			/**
@@ -456,9 +456,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 */
 			uint32 GetVersion()
 			{
-				if (version == 0) returnCodeReference = Parent::GetVersion(version);
+				if (version == 0) returnCodeRef = Parent::GetVersion(version);
 
-				returnCodeReference = EResult::Success;
+				returnCodeRef = EResult::Success;
 
 				return version;
 			}
@@ -496,13 +496,14 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 		protected:
 
-			Handle                       handle      ;
-			AppInfo                      appInfo     ;   
-			CreateInfo                   creationSpec;
-			Memory::AllocationCallbacks* allocator   ;
-			uint32                       version     ;
+			Handle     handle      ;
+			AppInfo    appInfo     ;   
+			CreateInfo info;
+			uint32     version     ;
 
-			EResult returnCodeReference;
+			const Memory::AllocationCallbacks* allocator;
+
+			EResult returnCodeRef;
 		};
 	}
 }

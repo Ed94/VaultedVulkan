@@ -187,13 +187,13 @@ Contains the full definition of the intended memory structure.
 
 		public:
 
-			EResult Allocate(LogicalDevice& _devce, AllocateInfo& _allocateInfo, Memory::AllocationCallbacks* _allocator)
+			EResult Allocate(LogicalDevice& _devce, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				device       = &_devce      ;
-				allocateInfo = _allocateInfo;
+				info = _allocateInfo;
 				allocator    = _allocator   ;
 
-				return Parent::Allocate(device->GetHandle(), allocateInfo, allocator, handle);
+				return Parent::Allocate(device->GetHandle(), info, allocator, handle);
 			}
 
 			void Free()
@@ -233,9 +233,9 @@ Contains the full definition of the intended memory structure.
 
 			Handle handle;
 
-			AllocateInfo allocateInfo;
+			AllocateInfo info;
 
-			AllocationCallbacks* allocator;
+			const AllocationCallbacks* allocator;
 
 			LogicalDevice* device;
 		};

@@ -729,4 +729,9 @@
 
 		};
 	}
+
+	namespace Vault_4
+	{
+
+	}
 }

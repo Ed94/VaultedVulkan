@@ -203,8 +203,6 @@
 
 	namespace Vault_2
 	{
-		using Vault_1::Image;
-
 		struct SwapChain : Vault_1::SwapChain
 		{
 			/**

@@ -138,13 +138,13 @@
 
             using Parent = Vault_2::Sampler;
 
-            EResult Create(LogicalDevice& _device, CreateInfo& _createInfo, Memory::AllocationCallbacks* _allocator)
+            EResult Create(LogicalDevice& _device, CreateInfo& info, const Memory::AllocationCallbacks* _allocator)
             {
-                device     = &_device;
-                createInfo = _createInfo;
-                allocator  = _allocator;
+                device    = &_device  ;
+                info      = info      ;
+                allocator = _allocator;
 
-                return Parent::Create(device->GetHandle(), createInfo, allocator, handle);
+                return Parent::Create(device->GetHandle(), info, allocator, handle);
             }
 
             void Destroy()
@@ -166,9 +166,9 @@
 
             Handle handle;
 
-            CreateInfo createInfo;
+            CreateInfo info;
 
-            Memory::AllocationCallbacks* allocator;
+            const Memory::AllocationCallbacks* allocator;
 
             LogicalDevice* device;
         };

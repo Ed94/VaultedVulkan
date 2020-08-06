@@ -123,30 +123,56 @@
 					CodeSize = 0;
 					Code     = nullptr;
 				}
-			};
 
-			static ShaderModule::Handle Create(LogicalDevice::Handle _device, RoCStr _code, DataSize _codeSize)
-			{
-				using SPIR_V::Bytecode;
-
-				ShaderModule::CreateInfo creationSpec{};
-
-				creationSpec.Code     = RCast<const Bytecode>(_code);
-				creationSpec.CodeSize = _codeSize                   ;
-
-				ShaderModule::Handle createdModule;
-
-				EResult&& creationResult = Parent::Create(_device, creationSpec, nullptr, createdModule);
-
-			#ifdef VT_Option__Use_STL_Exceptions
-				if (creationResult != EResult::Success)
+				CreateInfo(RoCStr _code, DataSize _codeSize)
 				{
-					throw std::runtime_error("Failed to create TriShader module!");
-				}
-			#endif
+					using SPIR_V::Bytecode;
 
-				return createdModule;
+					SType    = STypeEnum;
+					Next     = nullptr  ;
+					CodeSize = _codeSize;
+					Code     = reinterpret_cast<const Bytecode*>(_code);
+				}
+			};
+		};
+	}
+
+	namespace Vault_4
+	{
+		class ShaderModule : public Vault_2::ShaderModule
+		{
+		public:
+			
+			using Parent = Vault_2::ShaderModule;
+
+			EResult Create
+			(
+				      LogicalDevice&               _device   ,
+				      CreateInfo&                  _info     ,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				Vault_1::ShaderModule::Create(device->GetHandle(), info, allocator, handle);
 			}
+
+			void Destroy()
+			{
+				Parent::Destory(device->GetHandle(), handle, allocator);
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
 		};
 	}
 }

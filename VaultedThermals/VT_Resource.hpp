@@ -301,9 +301,9 @@ can be multidimensional and may have associated metadata.
 			 */
 			static void Destroy
 			(
-				LogicalDevice::Handle               _device,
-				Handle                              _descriptorPool,
-				const Memory::AllocationCallbacks*  _allocator
+				      LogicalDevice::Handle        _device,
+				      Handle                       _descriptorPool,
+				const Memory::AllocationCallbacks* _allocator
 			)
 			{
 				vkDestroyDescriptorPool(_device, _descriptorPool, _allocator->operator const VkAllocationCallbacks*());
@@ -321,7 +321,7 @@ can be multidimensional and may have associated metadata.
 			(
 				LogicalDevice::Handle _device,
 				Handle                _descriptorPool,
-				ResetFlags            _flags
+				ResetFlags&            _flags
 			)
 			{
 				return EResult(vkResetDescriptorPool(_device, _descriptorPool, _flags));
@@ -653,6 +653,7 @@ can be multidimensional and may have associated metadata.
 				      DescriptorPool::Handle _descriptorPool    ,
 				      uint32                 _descriptorSetCount,
 				const Handle*                _descriptorSets
+
 			)
 			{
 				return EResult(vkFreeDescriptorSets(_device, _descriptorPool, _descriptorSetCount, _descriptorSets));
@@ -784,7 +785,99 @@ can be multidimensional and may have associated metadata.
 
 		struct BufferView : public Vault_1::BufferView
 		{
+			using Parent = Vault_1::BufferView;
 
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+		};
+
+		struct DescriptorPool : public Vault_1::DescriptorPool
+		{
+			using Parent = Vault_1::DescriptorPool;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+		};
+
+		struct Image : public Vault_1::Image
+		{
+			using Parent = Vault_1::Image;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct Memory_Barrier : public Parent::Memory_Barrier
+			{
+				Memory_Barrier()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+		};
+
+		struct ImageView : public Vault_1::ImageView
+		{
+			using Parent = Vault_1::ImageView;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+		};
+
+		struct DescriptorSet : public Vault_1::DescriptorSet
+		{
+			using Parent = Vault_1::DescriptorSet;
+
+			struct AllocateInfo : public Parent::AllocateInfo
+			{
+				AllocateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct Copy : public Parent::Copy
+			{
+				Copy()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct Write : public Parent::Write
+			{
+				Write()
+				{
+					SType = STypeEnum;
+					Next  = nullptr;
+				}
+			};
 		};
 	}
 
@@ -804,7 +897,7 @@ can be multidimensional and may have associated metadata.
 				return Parent::BindMemory(device->GetHandle(), handle, memory->GetHandle(), memoryOffset);
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _createInfo, Memory::AllocationCallbacks* _allocator)
+			EResult Create(LogicalDevice& _device, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				device     = &_device    ;
 				info = _createInfo ;
@@ -826,11 +919,11 @@ can be multidimensional and may have associated metadata.
 				CreateInfo& _info, 
 				Memory::PropertyFlags _memoryFlags,
 				Memory& _memory,
-				Memory::AllocationCallbacks* _allocator
+				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device     = &_device   ;
-				info = _info;
+				device    = &_device  ;
+				info      = _info     ;
 				allocator = _allocator;
 
 			#ifndef VT_Option__Use_STL_Exceptions
@@ -887,8 +980,6 @@ can be multidimensional and may have associated metadata.
 		protected:
 			Handle handle;
 
-			Memory::AllocationCallbacks* allocator;
-
 			CreateInfo info;
 
 			LogicalDevice* device;
@@ -898,6 +989,220 @@ can be multidimensional and may have associated metadata.
 			DeviceSize memoryOffset;
 
 			Memory::Requirements memoryRequirements;
+
+			const Memory::AllocationCallbacks* allocator;
+		};
+
+		class BufferView : public Vault_2::BufferView
+		{
+		public:
+			using Parent = Vault_2::BufferView;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+		protected:
+
+			Handle handle;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+
+			const Memory::AllocationCallbacks* allocator;
+		};
+
+		class DescriptorPool : public Vault_2::DescriptorPool
+		{
+		public:
+			using Parent = Vault_2::DescriptorPool;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult Reset(ResetFlags& _flags)
+			{
+				return Parent::Reset(device->GetHandle(), handle, _flags);
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+		};
+
+		class Image : public Vault_2::Image
+		{
+		public:
+			using Parent = Vault_2::Image;
+
+			EResult BindMemory(Memory& _memory, DeviceSize _memoryOffset)
+			{
+				memory       = &_memory     ;
+				memoryOffset = _memoryOffset;
+
+				return Parent::BindMemory(device->GetHandle(), handle, memory->GetHandle(), memoryOffset);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				EResult&& returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
+
+				return returnCode;
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			const Memory::Requirements& GetMemoryRequirements() const
+			{
+				return memoryRequirements;
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			Memory* memory;
+
+			DeviceSize memoryOffset;
+
+			Memory::Requirements memoryRequirements;
+
+			LogicalDevice* device;
+		};
+
+		class ImageView : public Vault_2::ImageView
+		{
+		public:
+			using Parent = Vault_2::ImageView;
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device = &_device;
+				info = _info;
+				allocator = allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+		protected:	
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+		};
+
+		class DescriptorSet : public Vault_2::DescriptorSet
+		{
+		public:
+			using Parent = Vault_2::DescriptorSet;
+			
+			EResult Allocate(LogicalDevice& _device, AllocateInfo& _info)
+			{
+				device = &_device;
+				info   = _info   ;
+
+				return Parent::Allocate(device->GetHandle(), info, handles);
+			}
+
+			EResult Free()
+			{
+				return Parent::Free(device->GetHandle(), info.DescriptorPool, info.DescriptorSetCount, handles);
+			}
+
+			const Handle* GetHandles() const
+			{
+				return handles;
+			}
+
+			uint32 GetCount() const
+			{
+				return info.DescriptorSetCount;
+			}
+
+			void Update
+			(
+				      uint32                _descriptorWriteCount,
+				const Write*                _descriptorWrites    ,
+				      uint32                _descriptorCopyCount ,
+				const Copy*                 _descriptorCopies
+			)
+			{
+				Parent::Update(device->GetHandle(), _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
+			}
+
+		protected:
+
+			Handle* handles;
+
+			AllocateInfo info;
+
+			LogicalDevice* device;
 		};
 	}
 }
