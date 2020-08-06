@@ -42,6 +42,8 @@ Contains the full definition of the intended memory structure.
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
 			using Handle = VkDeviceMemory;
 
+			static constexpr DeviceSize ZeroOffset = 0;
+
 			/**
 			* @brief.
 			* 
@@ -168,7 +170,7 @@ Contains the full definition of the intended memory structure.
 			{
 				VoidPtr gpuAddressing;
 
-				Map(_device, _memory, _offset, _size, _flags, gpuAddressing);
+				Map(_device, _memory, _offset, _size, _flags, gpuAddressing);   ///< @todo Add exception handling for this / return code...
 
 					memcpy(gpuAddressing, _data, _size);
 
@@ -177,18 +179,65 @@ Contains the full definition of the intended memory structure.
 		};
 	}
 
-	namespace Vault_5
+	namespace Vault_4
 	{
-		class Memory : public Vault_1::Memory
+		class Memory : public Vault_2::Memory
 		{
+			using Parent = Vault_2::Memory;
+
 		public:
 
+			EResult Allocate(LogicalDevice& _devce, AllocateInfo& _allocateInfo, Memory::AllocationCallbacks* _allocator)
+			{
+				device       = &_devce      ;
+				allocateInfo = _allocateInfo;
+				allocator    = _allocator   ;
+
+				return Parent::Allocate(device->GetHandle(), allocateInfo, allocator, handle);
+			}
+
+			void Free()
+			{
+				Parent::Free(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult Map
+			(
+				DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data
+			)
+			{
+				return Parent::Map(device->GetHandle(), handle, _offset, _size, _flags, _data);
+			}
+
+			void Unmap()
+			{
+				Parent::Unmap(device->GetHandle(), handle);
+			}
+
+			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
+			{
+				Parent::WriteToGPU(device->GetHandle(), handle, _offset, _size, _flags, _data);
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
 
 		protected:
 
 			Handle handle;
 
-			LogicalDevice& assignedDevice;
+			AllocateInfo allocateInfo;
+
+			AllocationCallbacks* allocator;
+
+			LogicalDevice* device;
 		};
 	}
 }

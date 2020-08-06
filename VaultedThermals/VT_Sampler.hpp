@@ -112,4 +112,65 @@
             }
 		};
 	}
+
+    namespace Vault_2
+    {
+        struct Sampler : public Vault_1::Sampler
+        {
+            using Parent = Vault_1::Sampler;
+
+            struct CreateInfo : public Parent::CreateInfo
+            {
+                CreateInfo()
+                {
+                    SType = STypeEnum;
+                    Next = nullptr;
+                }
+            };
+        };
+    }
+
+    namespace Vault_4
+    {
+        class Sampler : public Vault_2::Sampler
+        {
+        public:
+
+            using Parent = Vault_2::Sampler;
+
+            EResult Create(LogicalDevice& _device, CreateInfo& _createInfo, Memory::AllocationCallbacks* _allocator)
+            {
+                device     = &_device;
+                createInfo = _createInfo;
+                allocator  = _allocator;
+
+                return Parent::Create(device->GetHandle(), createInfo, allocator, handle);
+            }
+
+            void Destroy()
+            {
+                Parent::Destroy(device->GetHandle(), handle, allocator);
+            }
+
+            Handle GetHandle() const
+            {
+                return handle;
+            }
+
+            operator Handle() const
+            {
+                return handle;
+            }
+
+        protected:
+
+            Handle handle;
+
+            CreateInfo createInfo;
+
+            Memory::AllocationCallbacks* allocator;
+
+            LogicalDevice* device;
+        };
+    }
 }

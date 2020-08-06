@@ -692,8 +692,8 @@ A physical device usually represents a single complete implementation of Vulkan
 			{
 				Group()
 				{
-					SType               = STypeEnum;
-					Next                = nullptr  ;
+					SType = STypeEnum;
+					Next  = nullptr  ;
 				}
 			};
 
@@ -763,6 +763,11 @@ A physical device usually represents a single complete implementation of Vulkan
 				}
 			};
 
+			struct QueueFamilyProperties : public Parent::QueueFamilyProperties
+			{
+				using List = std::vector<QueueFamilyProperties>;
+			};
+
 			struct QueueFamilyProperties2 : public Parent::QueueFamilyProperties2
 			{
 				QueueFamilyProperties2()
@@ -779,11 +784,6 @@ A physical device usually represents a single complete implementation of Vulkan
 						Next  = nullptr  ;
 					}
 				};
-			};
-
-			struct QueueFamilyProperties : public Parent::QueueFamilyProperties
-			{
-				using List = std::vector<QueueFamilyProperties>;
 			};
 
 			static bool CheckExtensionSupport(PhysicalDevice::Handle _handle, ExtensionIdentifierList _extensionsSpecified)
@@ -824,7 +824,7 @@ A physical device usually represents a single complete implementation of Vulkan
 					}
 				}
 
-			#ifdef VT_Option__USE_STL_EXCEPTIONS
+			#ifdef VT_Option__Use_STL_Exceptions
 				throw std::runtime_error("Failed to find suitable memory type!");
 			#endif
 			}
@@ -889,7 +889,7 @@ A physical device usually represents a single complete implementation of Vulkan
 		};
 	}
 
-	namespace Vault_5
+	namespace Vault_4
 	{
 		class PhysicalDevice : public Vault_2::PhysicalDevice
 		{
@@ -898,8 +898,6 @@ A physical device usually represents a single complete implementation of Vulkan
 			using Parent = Vault_2::PhysicalDevice;
 			
 			using List = std::vector<PhysicalDevice>;
-
-			
 
 			PhysicalDevice()
 			{
@@ -955,7 +953,7 @@ A physical device usually represents a single complete implementation of Vulkan
 					}
 				}
 
-			#ifdef VT_Option__USE_STL_EXCEPTIONS
+			#ifdef VT_Option__Use_STL_Exceptions
 				throw std::runtime_error("Failed to find suitable memory type!");
 			#endif
 			}
@@ -1020,6 +1018,11 @@ A physical device usually represents a single complete implementation of Vulkan
 			const QueueFamilyProperties::List& GetAvailableQueueFamilies() const
 			{
 				return queueFamilies;
+			}
+
+			operator Handle() const
+			{
+				return handle;
 			}
 
 		protected:

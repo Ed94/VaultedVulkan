@@ -138,7 +138,7 @@
 
 				EResult&& creationResult = Parent::Create(_device, creationSpec, nullptr, createdModule);
 
-			#ifdef VT_Option__USE_STL_EXCEPTIONS
+			#ifdef VT_Option__Use_STL_Exceptions
 				if (creationResult != EResult::Success)
 				{
 					throw std::runtime_error("Failed to create TriShader module!");

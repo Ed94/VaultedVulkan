@@ -708,36 +708,54 @@ can be multidimensional and may have associated metadata.
 				}
 			};
 
-			static 
+			struct Memory_Barrier : Parent::Memory_Barrier
+			{
+				Memory_Barrier()
+				{
+					SType = STypeEnum;
 
-			#ifdef VT_Option__USE_STL_EXCEPTIONS
-				void
-			#else
-				EResult
+					Next = nullptr;
+				}
+			};
+
+
+			static typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::
+			/**
+			 * @brief Will create a buffer and immediately bind it to allocated memory made just for it.
+			 * 
+			 * \param _bufferInfo
+			 * \param _propertyFlags
+			 * \param _buffer
+			 * \param _bufferMemory
+			 * \param _bufferMemoryOffset
+			 * \param _physicalDevice
+			 * \param _device
+			 * \param _allcator
+			 * \return 
+			 */
+			type CreateAndBind
+			(
+				PhysicalDevice::Handle _physicalDevice    ,
+				LogicalDevice::Handle  _device            ,
+				Buffer::CreateInfo     _bufferInfo        ,
+				Buffer::Handle&        _buffer            , 
+				Memory::PropertyFlags  _propertyFlags     , 
+				Memory::Handle&        _bufferMemory      ,
+				Memory::AllocationCallbacks* _allcator
+			)
+			{
+			#ifndef VT_Option__Use_STL_Exceptions
+				EResult&& returnCode
 			#endif
 
-				Create
-				(
-				Buffer::CreateInfo     _bufferInfo    ,
-				Memory::PropertyFlags  _propertyFlags , 
-				Buffer::Handle&        _buffer        , 
-				Memory::Handle&        _bufferMemory  ,
-				PhysicalDevice::Handle _physicalDevice,
-				LogicalDevice::Handle  _device
-				)
-			{
-			#ifndef VT_Option__USE_STL_EXCEPTIONS
-				EResult&& returnCode
-				#endif
 
-
-				#ifdef VT_Option__USE_STL_EXCEPTIONS
-					if (Vault_1::Buffer::Create(_device, _bufferInfo, nullptr, _buffer) != EResult::Success)
-						throw std::runtime_error("Failed to create vertex buffer!");
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (Vault_1::Buffer::Create(_device, _bufferInfo, _allcator, _buffer) != EResult::Success)
+					throw std::runtime_error("Failed to create vertex buffer!");
 			#else
-					returnCode = Buffer::Create(_device, bufferInfo, nullptr, _buffer);
+				returnCode = Buffer::Create(_device, bufferInfo, _allcator, _buffer);
 
-				if (Vault_01::Buffer::Create(_device, _bufferInfo, nullptr, _buffer) != EResult::Success)
+				if (returnCode != EResult::Success)
 					return returnCode;
 			#endif
 
@@ -750,18 +768,136 @@ can be multidimensional and may have associated metadata.
 				allocationInfo.AllocationSize  = memReq.Size;
 				allocationInfo.MemoryTypeIndex = PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
 
-			#ifdef VT_Option__USE_STL_EXCEPTIONS
-				if (Memory::Allocate(_device, allocationInfo, nullptr, _bufferMemory) != EResult::Success)
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (Memory::Allocate(_device, allocationInfo, _allcator, _bufferMemory) != EResult::Success)
 					throw std::runtime_error("Failed to allocate vertex buffer memory!");
 			#else
-				returnCode = Memory::Allocate(_device, allocationInfo, nullptr, _bufferMemory);
+				returnCode = Memory::Allocate(_device, allocationInfo, _allcator, _bufferMemory);
 
-				if (Memory::Allocate(_device, allocationInfo, nullptr, _bufferMemory) != EResult::Success)
+				if (returnCode != EResult::Success)
 					return returnCode;
 			#endif
 
-				Buffer::BindMemory(_device, _buffer, _bufferMemory, 0);
+				Buffer::BindMemory(_device, _buffer, _bufferMemory, Memory::ZeroOffset);
 			}
+		};
+
+		struct BufferView : public Vault_1::BufferView
+		{
+
+		};
+	}
+
+	namespace Vault_4
+	{
+		class Buffer : public Vault_2::Buffer
+		{
+		public:
+
+			using Parent = Vault_2::Buffer;
+
+			EResult BindMemory(Memory& _memory, DeviceSize _memoryOffset)
+			{
+				memory       = &_memory     ;
+				memoryOffset = _memoryOffset;
+
+				return Parent::BindMemory(device->GetHandle(), handle, memory->GetHandle(), memoryOffset);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _createInfo, Memory::AllocationCallbacks* _allocator)
+			{
+				device     = &_device    ;
+				info = _createInfo ;
+				allocator  = _allocator  ;
+
+				EResult&& returnCode = Parent::Parent::Create(device->GetHandle(), info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
+				
+				return returnCode;
+			}
+
+			typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::
+			type CreateAndBind
+			(
+				PhysicalDevice _physicalDevice, 
+				LogicalDevice& _device, 
+				CreateInfo& _info, 
+				Memory::PropertyFlags _memoryFlags,
+				Memory& _memory,
+				Memory::AllocationCallbacks* _allocator
+			)
+			{
+				device     = &_device   ;
+				info = _info;
+				allocator = _allocator;
+
+			#ifndef VT_Option__Use_STL_Exceptions
+				EResult&& returnCode
+			#endif
+
+
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (Parent::Create(device->GetHandle(), info, allocator, handle) != EResult::Success)
+					throw std::runtime_error("Failed to create buffer!");
+			#else
+				returnCode = Parent::Create(device->GetHandle(), info, allocator, handle);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+			#endif
+
+				Parent::GetMemoryRequirements(device->GetHandle(), handle, memoryRequirements);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+				allocationInfo.MemoryTypeIndex = _physicalDevice.FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+			#ifdef VT_Option__Use_STL_Exceptions
+				if (_memory.Allocate(*device, allocationInfo, allocator) != EResult::Success)
+					throw std::runtime_error("Failed to allocate  memory!");
+			#else
+				returnCode = _memory.Allocate(*device, allocationInfo, allocator);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+			#endif
+
+				BindMemory(_memory, Memory::ZeroOffset);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			const Memory::Requirements& GetMemoryRequirements() const
+			{
+				return memoryRequirements;
+			}
+			
+
+		protected:
+			Handle handle;
+
+			Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice* device;
+
+			Memory* memory;
+
+			DeviceSize memoryOffset;
+
+			Memory::Requirements memoryRequirements;
 		};
 	}
 }

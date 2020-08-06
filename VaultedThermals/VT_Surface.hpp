@@ -264,6 +264,20 @@
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
 		struct Surface : Vault_1::Surface
 		{
+			static bool CheckForPresentationSupport
+			(
+				PhysicalDevice::Handle _physicalDevice,
+				Surface::Handle _surface,
+				uint32 _queueIndex
+			)
+			{
+				Bool presentationSupport = EBool::False;
+
+				Surface::CheckPhysicalDeviceSupport(_physicalDevice, _queueIndex, _surface, presentationSupport);
+
+				return presentationSupport;
+			}
+
 			/**
 			 * @brief Provides the number of available surface formats.
 			 * 

@@ -337,7 +337,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 		};
 	}
 
-	namespace Vault_5
+	namespace Vault_4
 	{
 		/**
 		@brief An object that manages the represented application process state within the GPU.
@@ -487,6 +487,11 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			ReturnType>::type GetProcedureAddress(RoCStr _procedureName) const
 			{
 				return Parent::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
+			}
+
+			operator Handle() const
+			{
+				return handle;
 			}
 
 		protected:

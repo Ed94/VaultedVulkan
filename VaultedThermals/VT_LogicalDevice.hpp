@@ -362,7 +362,7 @@
 		};
 	}
 
-	namespace Vault_5
+	namespace Vault_4
 	{
 		class LogicalDevice : public Vault_2::LogicalDevice
 		{
@@ -411,6 +411,11 @@
 					familyIndex = _index; 
 					
 					type = _type;
+				}
+
+				operator Handle() const
+				{
+					return handle;
 				}
 				
 

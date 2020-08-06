@@ -84,6 +84,8 @@ Had to make this as there are definitions used by both application instance and 
 				FPtr_InternalFreeNotification       InternalFree      ;
 			};
 
+			static constexpr AllocationCallbacks* DefaultAllocator = nullptr;
+
 			/**
 			 * @brief Global memory barriers apply to memory accesses involving all memory objects that exist at the time of its execution..
 			 * 
