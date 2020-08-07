@@ -15,11 +15,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
     namespace Corridors
     {
@@ -1508,7 +1504,7 @@
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlagBits">Specification</a>  */
-		enum class EShaderStageFlag : uint32_t
+		enum class EShaderStageFlag : uint32
 		{
 			Vertex                 = VK_SHADER_STAGE_VERTEX_BIT                 ,
 			TessellationControl    = VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT   ,

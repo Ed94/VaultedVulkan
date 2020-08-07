@@ -48,13 +48,9 @@ specified, why this is required.
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_0
+	namespace V0
 	{
 		/** @enum EOS_Platform
 			@brief Enum specifies operating system platform.

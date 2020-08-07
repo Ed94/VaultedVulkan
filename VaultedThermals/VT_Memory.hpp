@@ -14,14 +14,15 @@ Contains the full definition of the intended memory structure.
 #pragma once
 
 
-// VT#include "VT_Vaults.hpp"
+// VT
+#include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -29,15 +30,11 @@ Contains the full definition of the intended memory structure.
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
-		struct Memory : public Vault_0::Memory
+		struct Memory : public V0::Memory
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
 			using Handle = VkDeviceMemory;
@@ -59,45 +56,11 @@ Contains the full definition of the intended memory structure.
 			(
 				      LogicalDevice::Handle _device      ,
 				const AllocateInfo&         _allocateInfo,
-				      Handle&               _memory
-			)
-			{
-				return EResult(vkAllocateMemory(_device, _allocateInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_memory) );
-			}
-
-			/**
-			* @brief.
-			* 
-			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateMemory">Specification</a> 
-			* 
-			* \param _device
-			* \param _allocateInfo
-			* \param _allocator
-			* \param _memory
-			* \return 
-			*/
-			static EResult Allocate
-			(
-				      LogicalDevice::Handle _device      ,
-				const AllocateInfo&         _allocateInfo,
 				const AllocationCallbacks*  _allocator   ,
 				      Handle&               _memory
 			)
 			{
 				return EResult(vkAllocateMemory(_device, _allocateInfo, _allocator->operator const VkAllocationCallbacks*(), &_memory) );
-			}
-
-			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
-			* 
-			* \param _device
-			* \param _memory
-			* \param _allocator
-			* \return 
-			*/
-			static void Free(LogicalDevice::Handle _device, Handle _memory)
-			{
-				vkFreeMemory(_device, _memory, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -155,11 +118,11 @@ Contains the full definition of the intended memory structure.
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct Memory : public Vault_1::Memory
+		struct Memory : public V1::Memory
 		{
-			using Parent = Vault_1::Memory;
+			using Parent = V1::Memory;
 
 			struct AllocateInfo : public Parent::AllocateInfo
 			{
@@ -180,6 +143,42 @@ Contains the full definition of the intended memory structure.
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			* @brief.
+			* 
+			* \param _device
+			* \param _allocateInfo
+			* \param _allocator
+			* \param _memory
+			* \return 
+			*/
+			static EResult Allocate
+			(
+				      LogicalDevice::Handle _device      ,
+				const AllocateInfo&         _allocateInfo,
+				      Handle&               _memory
+			)
+			{
+				return EResult(vkAllocateMemory(_device, _allocateInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_memory) );
+			}
+
+			using Parent::Allocate;
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
+			* 
+			* \param _device
+			* \param _memory
+			* \param _allocator
+			* \return 
+			*/
+			static void Free(LogicalDevice::Handle _device, Handle _memory)
+			{
+				vkFreeMemory(_device, _memory, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			using Parent::Free;
 
 			/**
 			 * @brief Writes to GPU memory by mapping to device memory specified by a 
@@ -213,26 +212,26 @@ Contains the full definition of the intended memory structure.
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
-		class Memory : public Vault_2::Memory
+		class Memory : public V2::Memory
 		{
 		public:
 
-			using Parent = Vault_2::Memory;
+			using Parent = V2::Memory;
 
-			EResult Allocate(LogicalDevice& _devce, AllocateInfo& _allocateInfo)
+			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo)
 			{
-				device    = &_devce                 ;
+				device    = &_device                ;
 				info      = _allocateInfo           ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Allocate(device->GetHandle(), info, allocator, handle);
+				return Parent::Allocate(device->GetHandle(), info, handle);
 			}
 
-			EResult Allocate(LogicalDevice& _devce, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = &_devce      ;
+				device    = &_device     ;
 				info      = _allocateInfo;
 				allocator = _allocator   ;
 
@@ -244,7 +243,7 @@ Contains the full definition of the intended memory structure.
 				Parent::Free(device->GetHandle(), handle, allocator);
 			}
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}
@@ -265,11 +264,6 @@ Contains the full definition of the intended memory structure.
 			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
 				Parent::WriteToGPU(device->GetHandle(), handle, _offset, _size, _flags, _data);
-			}
-
-			operator Handle() const
-			{
-				return handle;
 			}
 
 		protected:

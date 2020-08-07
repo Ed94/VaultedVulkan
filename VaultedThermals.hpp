@@ -7,6 +7,7 @@ VaultedThermals Include Interface
 The library single include header.
 
 If you want to use the short namespace: #define VT_Option__Use_Short_Namespace
+Short Namespace: VT
 */
 
 
@@ -128,7 +129,7 @@ If you want to use the short namespace: #define VT_Option__Use_Short_Namespace
 #include "VaultedThermals/VT_Backend.hpp"
 #include "VaultedThermals/VT_Types.hpp"
 #include "VaultedThermals/VT_Constants.hpp"
-#include "VaultedThermals/VT_Memory_Corridors.hpp"
+#include "VaultedThermals/VT_Memory_Backend.hpp"
 #include "VaultedThermals/VT_PhysicalDevice.hpp"
 #include "VaultedThermals/VT_Initialization.hpp"
 #include "VaultedThermals/VT_LogicalDevice.hpp"

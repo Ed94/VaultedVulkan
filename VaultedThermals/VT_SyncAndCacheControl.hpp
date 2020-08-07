@@ -21,7 +21,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -31,13 +31,9 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-events">Specification</a> 
@@ -48,7 +44,7 @@
 			using Handle = VkEvent;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEventCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkEventCreateInfo, EStructureType::Event_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkEventCreateInfo, EStructureType::Event_CreateInfo>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkEventCreateFlags>;
 
@@ -70,27 +66,6 @@
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle _device    ,
-				const Event::CreateInfo&    _createInfo,
-				      Handle&               _event
-			)
-			{
-				return EResult(vkCreateEvent(_device, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_event));
-			}
-
-			/**
-			 * @brief.
-			 * 
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateEvent">Specification</a> 
-			 * 
-			 * \param _device
-			 * \param _createInfo
-			 * \param _allocator
-			 * \param _event
-			 * \return 
-			 */
-			static EResult Create
-			(
 				      LogicalDevice::Handle        _device    ,
 				const Event::CreateInfo&           _createInfo,
 				const Memory::AllocationCallbacks* _allocator ,
@@ -98,19 +73,6 @@
 			)
 			{
 				return EResult(vkCreateEvent(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_event));
-			}
-
-			/**
-			 * @brief 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyEvent">Specification</a> 
-			 * 
-			 * \param _device
-			 * \param _event
-			 * \param _allocator
-			 */
-			static void Destroy(LogicalDevice::Handle _device, Handle _event)
-			{
-				vkDestroyEvent(_device, _event, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -189,7 +151,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateInfo">Specification</a> 
 			 */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkFenceCreateInfo, EStructureType::Fence_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkFenceCreateInfo, EStructureType::Fence_CreateInfo>
 			{
 				      EType       SType;
 				const void*       Next ;
@@ -199,7 +161,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventInfoEXT">Specification</a> 
 			*/
-			struct DeviceEventInfo : Vault_0::VKStruct_Base<VkDeviceEventInfoEXT, EStructureType::Device_EventInfo_EXT>
+			struct DeviceEventInfo : V0::VKStruct_Base<VkDeviceEventInfoEXT, EStructureType::Device_EventInfo_EXT>
 			{
 				      EType            SType      ;
 				const void*            Next       ;
@@ -209,7 +171,7 @@
 /**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a> 
 			*/
-			struct DisplayEventInfo : Vault_0::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
+			struct DisplayEventInfo : V0::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
 			{
 				      EType             SType       ;
 				const void*             Next        ;
@@ -219,7 +181,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a> 
 			*/
-			struct ExportableWin32 : Vault_0::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
+			struct ExportableWin32 : V0::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
 			{
 				      EType                SType     ;
 				const void*                Next      ;
@@ -231,7 +193,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a> 
 			*/
-			struct GetPOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
+			struct GetPOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
 			{
 				      EType                   SType     ;
 				const void*                   Next      ;
@@ -242,7 +204,7 @@
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a> 
 			*/
-			struct GetWin32HandleInfo : Vault_0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
+			struct GetWin32HandleInfo : V0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
 			{
 				      EType                   SType     ;
 				const void*                   Next      ;
@@ -253,7 +215,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a>
 			 */
-			struct ImportFencePOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
+			struct ImportFencePOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
 			{
 				      EType                        SType         ;
 				const void*                        Next          ;
@@ -266,7 +228,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceWin32HandleInfoKHR">Specification</a> 
 			 */
-			struct ImportFenceWin32HandleInfo : Vault_0::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
+			struct ImportFenceWin32HandleInfo : V0::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
 			{
 				      EType                        SType     ;
 				const void*                        Next      ;
@@ -280,31 +242,12 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceCreateInfo">Specification</a> 
 			 */
-			struct ExportCreateInfo : Vault_0::VKStruct_Base<VkExportFenceCreateInfo, EStructureType::ExportFence_CreateInfo>
+			struct ExportCreateInfo : V0::VKStruct_Base<VkExportFenceCreateInfo, EStructureType::ExportFence_CreateInfo>
 			{
 				      EType               SType      ;
 				const void*               Next       ;
 				      ExternalHandleFlags HandleTypes;
 			};
-
-/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a> 
-			 * 
-			 * \param _logicalDevice
-			 * \param _createInfo
-			 * \param _allocator
-			 * \param _fence
-			 * \return 
-			 */
-			static EResult Create
-			(
-				      LogicalDevice::Handle        _logicalDevice,
-				const CreateInfo&                  _createInfo   ,
-				      Handle&                      _fence
-			)
-			{
-				return EResult(vkCreateFence(_logicalDevice, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_fence));
-			}
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a> 
@@ -324,18 +267,6 @@
 			)
 			{
 				return EResult(vkCreateFence(_logicalDevice, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_fence));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFence">Specification</a> 
-			 * 
-			 * \param _logicalDevice
-			 * \param _fence
-			 * \param _allocator
-			 */
-			static void Destroy(LogicalDevice::Handle _logicalDevice, Handle _fence)
-			{
-				vkDestroyFence(_logicalDevice, _fence, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -444,51 +375,11 @@
 			(
 				      LogicalDevice::Handle        _device         ,
 				const DeviceEventInfo&             _deviceEventInfo,
-				      Handle&                      _fence
-			)
-			{
-				return EResult(vkRegisterDeviceEventEXT(_device, _deviceEventInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_fence));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDeviceEventEXT">Specification</a> 
-			 * 
-			 * \param device
-			 * \param pDeviceEventInfo
-			 * \param pAllocator
-			 * \param pFence
-			 * \return 
-			 */
-			static EResult RegisterDeviceEvent
-			(
-				      LogicalDevice::Handle        _device         ,
-				const DeviceEventInfo&             _deviceEventInfo,
 				const Memory::AllocationCallbacks* _allocator      ,
 				      Handle&                      _fence
 			)
 			{
 				return EResult(vkRegisterDeviceEventEXT(_device, _deviceEventInfo, _allocator->operator const VkAllocationCallbacks*(), &_fence));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a> 
-			 * 
-			 * \param device
-			 * \param display
-			 * \param pDisplayEventInfo
-			 * \param pAllocator
-			 * \param pFence
-			 * \return 
-			 */
-			static EResult RegisterDisplayEvent
-			(
-				      LogicalDevice::Handle        _device          ,
-				      Display::Handle              _display         ,
-				const DisplayEventInfo&            _displayEventInfo,
-				      Handle&                      _fence
-			)
-			{
-				return EResult(vkRegisterDisplayEventEXT(_device, _display, _displayEventInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_fence));
 			}
 
 			/**
@@ -573,7 +464,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreCreateInfo">Specification</a> 
 			 */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkSemaphoreCreateInfo, EStructureType::Semaphore_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkSemaphoreCreateInfo, EStructureType::Semaphore_CreateInfo>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkSemaphoreCreateFlags>;
 
@@ -585,7 +476,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreCreateInfo">Specification</a> 
 			 */
-			struct ExportCreateInfo : Vault_0::VKStruct_Base<VkExportSemaphoreCreateInfo, EStructureType::Export_Semaphore_CreateInfo_KHR>
+			struct ExportCreateInfo : V0::VKStruct_Base<VkExportSemaphoreCreateInfo, EStructureType::Export_Semaphore_CreateInfo_KHR>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a>  */
 				using ExternalHandleTypeFlags = Bitmask<EExternalSemaphoreHandleTypeFlag, VkExternalSemaphoreHandleTypeFlags>;
@@ -595,7 +486,7 @@
 				      ExternalHandleTypeFlags HandleTypes;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a>  */
-				struct Win32HandleInfo : Vault_0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
+				struct Win32HandleInfo : V0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
 				{
 					      EType                SType     ;
 					const void*                Next      ;
@@ -606,7 +497,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a>  */
-			struct GetPOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
+			struct GetPOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
 			{
 				      EType               SType     ;
 				const void*               Next      ;
@@ -615,7 +506,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a>  */
-			struct GetWin32HandleInfo : Vault_0::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
+			struct GetWin32HandleInfo : V0::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
 			{
 				      EType               SType     ;
 				const void*               Next      ;
@@ -624,7 +515,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a>  */
-			struct ImportPOSIX_FileDescriptorInfo : Vault_0::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
+			struct ImportPOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
 			{
 				      EType               SType         ;
 				const void*               Next          ;
@@ -635,7 +526,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a>  */
-			struct ImportWin32HandleInfo : Vault_0::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
+			struct ImportWin32HandleInfo : V0::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
 			{
 				      EType               SType     ;
 				const void*               Next      ;
@@ -647,7 +538,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a>  */
-			struct SignalInfo : Vault_0::VKStruct_Base<VkSemaphoreSignalInfo, EStructureType::Semaphore_SignalInfo>
+			struct SignalInfo : V0::VKStruct_Base<VkSemaphoreSignalInfo, EStructureType::Semaphore_SignalInfo>
 			{
 				      EType  SType    ;
 				const void*  Next     ;
@@ -656,7 +547,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a>  */
-			struct TypeSpecifiedCreateInfo : Vault_0::VKStruct_Base<VkSemaphoreTypeCreateInfo, EStructureType::SemaphoreType_CreateInfo>
+			struct TypeSpecifiedCreateInfo : V0::VKStruct_Base<VkSemaphoreTypeCreateInfo, EStructureType::SemaphoreType_CreateInfo>
 			{
 				      EType  SType        ;
 				const void*  Next         ;
@@ -665,7 +556,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a>  */
-			struct WaitInfo : Vault_0::VKStruct_Base<VkSemaphoreWaitInfo, EStructureType::Semaphore_WaitInfo>
+			struct WaitInfo : V0::VKStruct_Base<VkSemaphoreWaitInfo, EStructureType::Semaphore_WaitInfo>
 			{
 				      EType     SType         ;
 				const void*     Next          ;
@@ -823,11 +714,11 @@
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct Event : public Vault_1::Event
+		struct Event : public V1::Event
 		{
-			using Parent = Vault_1::Event;
+			using Parent = V1::Event;
 
 			struct CreateInfo : Parent::CreateInfo
 			{
@@ -837,11 +728,46 @@
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			 * @brief.
+			 * 
+			 * \param _device
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _event
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle _device    ,
+				const Event::CreateInfo&    _createInfo,
+				      Handle&               _event
+			)
+			{
+				return Parent::Create(_device, _createInfo, Memory::DefaultAllocator, _event);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * @brief 
+
+			 * \param _device
+			 * \param _event
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _device, Handle _event)
+			{
+				Parent::Destroy(_device, _event, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
 		};
 
-		struct Fence : public Vault_1::Fence
+		struct Fence : public V1::Fence
 		{
-			using Parent = Vault_1::Fence;
+			using Parent = V1::Fence;
 			
 			struct CreateInfo : Parent::CreateInfo
 			{
@@ -923,11 +849,87 @@
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			 * @brief 
+			 * 
+			 * \param _logicalDevice
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _fence
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle        _logicalDevice,
+				const CreateInfo&                  _createInfo   ,
+				      Handle&                      _fence
+			)
+			{
+				return Parent::Create(_logicalDevice, _createInfo, Memory::DefaultAllocator, _fence);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * @brief 
+			 * 
+			 * \param _logicalDevice
+			 * \param _fence
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _logicalDevice, Handle _fence)
+			{
+				Parent::Destroy(_logicalDevice, _fence, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+
+			/**
+			 * 
+			 * \param device
+			 * \param pDeviceEventInfo
+			 * \param pAllocator
+			 * \param pFence
+			 * \return 
+			 */
+			static EResult RegisterDeviceEvent
+			(
+				      LogicalDevice::Handle        _device         ,
+				const DeviceEventInfo&             _deviceEventInfo,
+				      Handle&                      _fence
+			)
+			{
+				return Parent::RegisterDeviceEvent(_device, _deviceEventInfo, Memory::DefaultAllocator, _fence);
+			}
+
+			using Parent::RegisterDeviceEvent;
+
+			/**
+			 * \param device
+			 * \param display
+			 * \param pDisplayEventInfo
+			 * \param pAllocator
+			 * \param pFence
+			 * \return 
+			 */
+			static EResult RegisterDisplayEvent
+			(
+				      LogicalDevice::Handle        _device          ,
+				      Display::Handle              _display         ,
+				const DisplayEventInfo&            _displayEventInfo,
+				      Handle&                      _fence
+			)
+			{
+				return Parent::RegisterDisplayEvent(_device, _display, _displayEventInfo, Memory::DefaultAllocator, _fence);
+			}
+
+			using Parent::RegisterDisplayEvent;
 		};
 
-		struct Semaphore : public Vault_1::Semaphore
+		struct Semaphore : public V1::Semaphore
 		{
-			using Parent = Vault_1::Semaphore;
+			using Parent = V1::Semaphore;
 
 			struct CreateInfo : Parent::CreateInfo
 			{
@@ -1018,15 +1020,38 @@
 					Next  = nullptr  ;
 				}
 			};
+
+			static EResult Create
+			(
+				      LogicalDevice::Handle _device    ,
+				const CreateInfo&           _createInfo,
+				      Handle&               _semaphore
+			)
+			{
+				return Parent::Create(_device, _createInfo, Memory::DefaultAllocator, _semaphore);
+			}
+
+			using Parent::Create;
+
+			static void Destroy
+			(
+				LogicalDevice::Handle _device   ,
+				Handle                _semaphore
+			)
+			{
+				Parent::Destroy(_device, _semaphore, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
-		class Event : public Vault_1::Event
+		class Event : public V2::Event
 		{
 		public:
-			using Parent = Vault_1::Event;
+			using Parent = V2::Event;
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info)
 			{
@@ -1034,7 +1059,7 @@
 				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device->GetHandle(), info, handle);
 			}
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
@@ -1051,7 +1076,7 @@
 				Parent::Destroy(device->GetHandle(), handle, allocator);
 			}
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}
@@ -1082,10 +1107,10 @@
 			LogicalDevice* device;
 		};
 
-		class Fence : public Vault_1::Fence
+		class Fence : public V2::Fence
 		{
 		public:
-			using Parent = Vault_1::Fence;
+			using Parent = V2::Fence;
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info)
 			{
@@ -1093,7 +1118,7 @@
 				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device->GetHandle(), info, handle);
 			}
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
@@ -1115,7 +1140,7 @@
 				return *device;
 			}
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}
@@ -1198,10 +1223,10 @@
 			LogicalDevice* device;
 		};
 
-		class Semaphore : public Vault_1::Semaphore
+		class Semaphore : public V2::Semaphore
 		{
 		public:
-			using Parent = Vault_1::Semaphore;
+			using Parent = V2::Semaphore;
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info)
 			{
@@ -1209,7 +1234,7 @@
 				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device->GetHandle(), info, handle);
 			}
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
@@ -1231,7 +1256,7 @@
 				return Parent::GetCounterValue(device->GetHandle(), handle, _value);
 			}
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}

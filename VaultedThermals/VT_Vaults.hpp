@@ -7,13 +7,13 @@
 
 Vaults (Designator):
 MagmaChamber
-Vault_0
-Vault_1
-Vault_2
-Vault_3
-Vault_4
-Vault_5
-Vault_6
+V0
+V1
+V2
+V3
+V4
+V5
+V6
 
 
 Important: Higher numbered vaults may require a lower level vault to be opened. 
@@ -30,6 +30,9 @@ If the vaults are not properly opened all that will exist within them is a names
 
 Vault 3 Open Macro: #define VT_Vault_3_Open
 Vault 6 Open Macro: #define VT_Vault_6_Open
+
+If VT_Option__Use_Short_Namespace is defined, short vault namespace will be used.
+Short namespace: V#, where # is the vault number. (Exception: Corridors, Vault_MagmaChamber)
 */
 
 
@@ -39,10 +42,16 @@ Vault 6 Open Macro: #define VT_Vault_6_Open
 
 
 #ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
+
+	#define VT_Namespace namespace VaultedThermals
+
 #else
-	namespace VT
+
+	#define VT_Namespace namespace VT
+
 #endif
+
+VT_Namespace
 {
 	/** @namespace Corridors
 
@@ -66,19 +75,19 @@ Vault 6 Open Macro: #define VT_Vault_6_Open
 
 		@details For now only abstracts away OS Platform details and basic meta-structure definitions.
 	*/
-	namespace Vault_0 { using namespace Corridors; }
+	namespace V0 { using namespace Corridors; }
 
 	/** @namespace Vault_1
 	*
 	*	@brief 1:1 Wrapping of Vulkan API
 	*/
-	namespace Vault_1 { using namespace Corridors; }
+	namespace V1 { using namespace Corridors; }
 
 	/** @namespace Vault_2
 
 		@brief Repetitive functionality wrapping.
 	*/
-	namespace Vault_2 { using namespace Corridors; }
+	namespace V2 { using namespace Corridors; }
 
 	/** @namespace Vault_3
 
@@ -86,7 +95,7 @@ Vault 6 Open Macro: #define VT_Vault_6_Open
 
 		@details (Will have its own device references, queues, layers, etc.)
 	*/
-	namespace Vault_3 
+	namespace V3
 	{
 	#ifndef VT_Vault_3_Open
 		namespace Vault_Closed {}
@@ -101,13 +110,13 @@ Vault 6 Open Macro: #define VT_Vault_6_Open
 		
 		@brief Object-Oriented wrapping
 	*/
-	namespace Vault_4 { using namespace Corridors; }
+	namespace V4 { using namespace Corridors; }
 
 	/** @namespace Vault_5
 
 		@brief Object-Oriented: Repetitive functionality wrapping 
 	*/
-	namespace Vault_5 { using namespace Corridors; }
+	namespace V5 { using namespace Corridors; }
 
 	/** @namespace Vault_6
 
@@ -115,7 +124,7 @@ Vault 6 Open Macro: #define VT_Vault_6_Open
 
 		@details (Will have its own device references, queues, layers, etc.)
 	*/
-	namespace Vault_6
+	namespace V6
 	{ 
 	#ifndef VT_Vault_6_Open
 		namespace Vault_Closed {}

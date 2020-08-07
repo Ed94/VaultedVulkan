@@ -17,19 +17,15 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
 		/**
 		 * @brief Represent logical connections to physical devices. 
@@ -39,7 +35,7 @@
 		 */
 		struct LogicalDevice
 		{
-			using Memory = Vault_0::Memory;
+			using Memory = V0::Memory;
 
 			using Handle = VkDevice;   ///< Opaque handle to a device object.  
 
@@ -49,7 +45,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigCreateInfoNV">Specification</a> 
 			*/
-			struct DiagnosticsConfigCreateInfo : Vault_0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
+			struct DiagnosticsConfigCreateInfo : V0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
 			{
 				using ConfigFlags = Bitmask<EDeviceDiagnosticConfigFlag, VkDeviceDiagnosticsConfigFlagsNV>;
 
@@ -74,10 +70,14 @@
 			{
 				using Handle = VkQueue;   ///< Opaque handle to a queue object
 
+				using SubmitInfo = VkSubmitInfo;   ///< Proper structure is defined later. (See VT_Command.hpp)
+
+				using Fence_Handle = VkFence;
+
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateInfo">Specification</a> 
 				 */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
 				{
 					using ECreateFlag = ELogicalDeviceQueueCreateFlag                 ;
 					using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
@@ -104,9 +104,29 @@
 				* \param _queueIndex
 				* \param _queueReturn
 				*/
-				static void Get(LogicalDevice::Handle _handle, uint32 _queueFamilyIndex, uint32 _queueIndex, Handle& _queueReturn)
+				static void Get(LogicalDevice::Handle _device, uint32 _queueFamilyIndex, uint32 _queueIndex, Handle& _queueReturn)
 				{
-					vkGetDeviceQueue(_handle, _queueFamilyIndex, _queueIndex, &_queueReturn);
+					vkGetDeviceQueue(_device, _queueFamilyIndex, _queueIndex, &_queueReturn);
+				}
+
+				/**
+				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueSubmit">Specification</a> 
+				 *
+				 * \param _queue
+				 * \param _submitCount
+				 * \param _submissions
+				 * \param _fence
+				 * \return 
+				 */
+				static EResult SubmitToQueue
+				(
+							LogicalDevice::Queue::Handle _queue      ,
+							uint32                       _submitCount,
+					  const SubmitInfo*                  _submissions,
+					        Fence_Handle                 _fence
+				)
+				{
+					return EResult(vkQueueSubmit(_queue, _submitCount, _submissions, _fence));
 				}
 
 				/**
@@ -127,7 +147,7 @@
 			* 
 			* @todo Implement.
 			*/
-			struct Queue2 : Vault_0::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
+			struct Queue2 : V0::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a>  */
 				using CreateFlags = Bitmask<EDeviceQueueCreateFlag ,VkDeviceQueueCreateFlags>;
@@ -159,7 +179,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupDeviceCreateInfo">Specification</a> 
 			*/
-			struct GroupCreateInfo : Vault_0::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
+			struct GroupCreateInfo : V0::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
 			{
 				      EType   SType              ;
 				const void*   Next               ;
@@ -171,7 +191,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemoryOverallocationCreateInfoAMD">Specification</a> 
 			*/
-			struct MemoryOverallocationCreateInfo : Vault_0::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
+			struct MemoryOverallocationCreateInfo : V0::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
 			{
 				      EType                            SType                 ;
 				const void*                            Next                  ;
@@ -182,7 +202,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevicePrivateDataCreateInfoEXT">Specification</a> 
 			*/
-			struct PrivateDataCreateInfo : Vault_0::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
+			struct PrivateDataCreateInfo : V0::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
 			{
 				      EType  SType                      ;
 				const void*  Next                       ;
@@ -192,7 +212,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceCreateInfo">Specification</a> 
 			 */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
 			{
 					  EType                     SType                ;
 				const void*                     Next                 ;
@@ -221,35 +241,15 @@
 			static EResult Create
 			(
 				      PhysicalDevice::Handle       _physicalDevice,
-				const CreateInfo&                  _createSpec    ,
-				      Handle&                      _device
-			)
-			{
-				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_device));
-			}
-
-			/**
-			 * @brief A logical device is created as a connection to a physical device.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDevice">Specification</a> 
-			 * 
-			 * \param _physicalDevice
-			 * \param _createSpec
-			 * \param _allocator
-			 * \param _device
-			 * \return 
-			 */
-			static EResult Create
-			(
-				      PhysicalDevice::Handle       _physicalDevice,
-				const CreateInfo&                  _createSpec    ,
+				const CreateInfo&                  _info          ,
 				const Memory::AllocationCallbacks* _allocator     ,
 				      Handle&                      _device
 			)
 			{
-				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
+				return EResult(vkCreateDevice(_physicalDevice, _info.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
 			}
+
+			
 
 			/**
 			 * @brief Destroy a logical device.
@@ -265,28 +265,9 @@
 			 * \param _handle
 			 * \param _allocator
 			 */
-			static void Destroy(Handle _handle)
+			static void Destroy(Handle _device, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyDevice(_handle, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			 * @brief Destroy a logical device.
-			 * 
-			 * @details
-			 * To ensure that no work is active on the device, vkDeviceWaitIdle can be used to gate the destruction of the device. 
-			 * Prior to destroying a device, an application is responsible for destroying/freeing any Vulkan objects that were created 
-			 * using that device as the first parameter of the corresponding vkCreate* or vkAllocate* command.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDevice">Specification</a> 
-			 * 
-			 * \param _handle
-			 * \param _allocator
-			 */
-			static void Destroy(Handle _handle, const Memory::AllocationCallbacks* _allocator)
-			{
-				vkDestroyDevice(_handle, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyDevice(_device, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -329,11 +310,11 @@
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct LogicalDevice : public Vault_1::LogicalDevice
+		struct LogicalDevice : public V1::LogicalDevice
 		{
-			using Parent = Vault_1::LogicalDevice;
+			using Parent = V1::LogicalDevice;
 
 			struct DiagnosticsConfigCreateInfo : public Parent::DiagnosticsConfigCreateInfo
 			{
@@ -400,15 +381,49 @@
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			 * @brief A logical device is created as a connection to a physical device. (Uses default allocator)
+			 * 
+			 * \param _physicalDevice
+			 * \param _createSpec
+			 * \param _allocator
+			 * \param _device
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      PhysicalDevice::Handle _physicalDevice,
+				const CreateInfo&            _createSpec    ,
+				      Handle&                _device
+			)
+			{
+				return Create(_physicalDevice, _createSpec, Memory::DefaultAllocator, _device);
+			}
+
+			using Parent::Create;
+
+			/**
+			* @brief Destroy a logical device. (Uses default allocator)
+			* 
+			* \param _handle
+			* \param _allocator
+			*/
+			static void Destroy(Handle _device)
+			{
+				vkDestroyDevice(_device, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			using Parent::Destroy;
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
-		class LogicalDevice : public Vault_2::LogicalDevice
+		class LogicalDevice : public V2::LogicalDevice
 		{
 		public:
-			using Parent = Vault_2::LogicalDevice;
+			using Parent = V2::LogicalDevice;
 
 			struct Queue : public Parent::Queue
 			{
@@ -421,10 +436,10 @@
 					Presentation
 				};
 
-				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _createInfo)
+				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info)
 				{
 					logicalDevice = &_logicalDevice;
-					info          = _createInfo    ;
+					info          = _info          ;
 				}
 
 				uint32 GetFamilyIndex() const
@@ -450,8 +465,17 @@
 				void SpecifyFamily(uint32 _index, EType _type)
 				{
 					familyIndex = _index; 
-					
-					type = _type;
+					type        = _type ;
+				}
+
+				EResult SubmitToQueue(uint32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence)
+				{
+					return Parent::SubmitToQueue(handle, _submitCount, _submissions, _fence);
+				}
+
+				EResult WaitUntilIdle()
+				{
+					return Parent::WaitUntilIdle(handle);
 				}
 
 				operator Handle() const
@@ -479,7 +503,7 @@
 				info           = _createInfo             ;
 				allocator      = Memory::DefaultAllocator;
 
-				return Parent::Create(physicalDevice->GetHandle(), info, allocator, handle);
+				return Parent::Create(physicalDevice->GetHandle(), info, handle);
 			}
 
 			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
@@ -496,7 +520,7 @@
 				Parent::Destroy(handle, allocator);
 			}
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}

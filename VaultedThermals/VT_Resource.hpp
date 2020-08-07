@@ -26,7 +26,7 @@ can be multidimensional and may have associated metadata.
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -35,13 +35,9 @@ can be multidimensional and may have associated metadata.
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
 		/**
 		 * @brief A linear array of data.
@@ -69,7 +65,7 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateInfo">Specification</a>
 			 */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
@@ -81,7 +77,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCopy">Specification</a>  */
-			struct CopyInfo : Vault_0::VKStruct_Base<VkBufferCopy>
+			struct CopyInfo : V0::VKStruct_Base<VkBufferCopy>
 			{
 				DeviceSize SourceOffset;
 				DeviceSize DestinationOffset;
@@ -91,7 +87,7 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferMemoryBarrier">Specification</a>
 			 */
-			struct Memory_Barrier : Vault_0::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
+			struct Memory_Barrier : V0::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
 			{
 				      EType       SType              ;
 				const void*       Next               ;
@@ -139,27 +135,12 @@ can be multidimensional and may have associated metadata.
 			 * \param _buffer
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Handle& _buffer)
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _buffer)
 			{
-				return EResult(vkCreateBuffer(_deviceHandle, _createInfo.operator const VkBufferCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_buffer));
+				return EResult(vkCreateBuffer(_device, _createInfo.operator const VkBufferCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_buffer));
 			}
 
-			/**
-			 * @brief Create a new buffer object.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBuffer">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _createInfo
-			 * \param _allocator
-			 * \param _buffer
-			 * \return 
-			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _buffer)
-			{
-				return EResult(vkCreateBuffer(_deviceHandle, _createInfo.operator const VkBufferCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_buffer));
-			}
+			
 
 			/**
 			 * @brief Destroy a buffer object.
@@ -172,25 +153,9 @@ can be multidimensional and may have associated metadata.
 			 * \param _allocator
 			 * \return 
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _buffer)
+			static void Destroy(LogicalDevice::Handle _device, Handle _buffer, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyBuffer(_deviceHandle, _buffer, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			 * @brief Destroy a buffer object.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyBuffer">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _buffer
-			 * \param _allocator
-			 * \return 
-			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _buffer, const Memory::AllocationCallbacks* _allocator)
-			{
-				vkDestroyBuffer(_deviceHandle, _buffer, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyBuffer(_device, _buffer, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -232,7 +197,7 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a> .
 			 */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
 			{
 				      EType          SType  ;
 				const void*          Next   ;
@@ -255,26 +220,9 @@ can be multidimensional and may have associated metadata.
 			 * \param _bufferView
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _creationSpec, Handle& _bufferView)
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _info, const Memory::AllocationCallbacks* _allocator, Handle& _bufferView)
 			{
-				return EResult(vkCreateBufferView(_deviceHandle, _creationSpec.operator const VkBufferViewCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_bufferView));
-			}
-
-			/**
-			 * @brief Create a new buffer view object.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBufferView">Specification</a> .
-			 * 
-			 * \param _deviceHandle
-			 * \param _creationSpec
-			 * \param _allocator
-			 * \param _bufferView
-			 * \return 
-			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _creationSpec, const Memory::AllocationCallbacks* _allocator, Handle& _bufferView)
-			{
-				return EResult(vkCreateBufferView(_deviceHandle, _creationSpec.operator const VkBufferViewCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_bufferView));
+				return EResult(vkCreateBufferView(_device, _info.operator const VkBufferViewCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_bufferView));
 			}
 
 			/**
@@ -287,24 +235,9 @@ can be multidimensional and may have associated metadata.
 			 * \param _bufferView
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _bufferView)
+			static void Destroy(LogicalDevice::Handle _device, Handle _bufferView, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyBufferView(_deviceHandle, _bufferView, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			 * @brief Destroy a buffer view object.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _bufferView
-			 * \param _allocator
-			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _bufferView, const Memory::AllocationCallbacks* _allocator)
-			{
-				vkDestroyBufferView(_deviceHandle, _bufferView, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyBufferView(_device, _bufferView, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
 
@@ -320,14 +253,14 @@ can be multidimensional and may have associated metadata.
 			using ResetFlags = Bitmask<EUndefined, VkDescriptorPoolResetFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolSize">Specification</a>  */
-			struct Size : Vault_0::VKStruct_Base<VkDescriptorPoolSize>
+			struct Size : V0::VKStruct_Base<VkDescriptorPoolSize>
 			{
 				EDescriptorType Type ;
 				uint32          Count;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
 			{
 					  EType       SType        ;
 				const void*       Next         ;
@@ -348,25 +281,6 @@ can be multidimensional and may have associated metadata.
 			 */
 			static EResult Create
 			(
-					  LogicalDevice::Handle _device        ,
-				const CreateInfo&           _createInfo    ,
-					  Handle&               _descriptorPool
-			)
-			{
-				return EResult(vkCreateDescriptorPool(_device, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorPool">Specification</a>
-			 * 
-			 * \param _device
-			 * \param _createInfo
-			 * \param _allocator
-			 * \param _descriptorPool
-			 * \return 
-			 */
-			static EResult Create
-			(
 					  LogicalDevice::Handle         _device        ,
 				const CreateInfo&                   _createInfo    ,
 				const Memory::AllocationCallbacks*  _allocator     ,
@@ -374,18 +288,6 @@ can be multidimensional and may have associated metadata.
 			)
 			{
 				return EResult(vkCreateDescriptorPool(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorPool">Specification</a> 
-			 * 
-			 * \param _device
-			 * \param _descriptorPool
-			 * \param _allocator
-			 */
-			static void Destroy(LogicalDevice::Handle _device, Handle _descriptorPool)
-			{
-				vkDestroyDescriptorPool(_device, _descriptorPool, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -453,7 +355,7 @@ can be multidimensional and may have associated metadata.
 			using UsageFlags = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
@@ -473,7 +375,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceLayers">Specification</a>  */
-			struct SubresourceLayers : Vault_0::VKStruct_Base<VkImageSubresourceLayers>
+			struct SubresourceLayers : V0::VKStruct_Base<VkImageSubresourceLayers>
 			{
 				AspectFlags AspectMask    ;
 				uint32      MipLevel      ;
@@ -482,7 +384,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceRange">Specification</a>  */
-			struct SubresourceRange : Vault_0::VKStruct_Base<VkImageSubresourceRange>
+			struct SubresourceRange : V0::VKStruct_Base<VkImageSubresourceRange>
 			{
 				AspectFlags AspectMask    ;
 				uint32      BaseMipLevel  ;
@@ -492,7 +394,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageMemoryBarrier">Specification</a>  */
-			struct Memory_Barrier : Vault_0::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
+			struct Memory_Barrier : V0::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
 			{
 				      EType            SType              ;
 				const void*            Next               ;
@@ -507,7 +409,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageBlit">Specification</a>  */
-			struct Blit : Vault_0::VKStruct_Base<VkImageBlit>
+			struct Blit : V0::VKStruct_Base<VkImageBlit>
 			{
 				SubresourceLayers SrcSubresource;
 				Offset3D          SrcOffsets[2] ;
@@ -546,39 +448,9 @@ can be multidimensional and may have associated metadata.
 			 * \param _imageHandle
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Handle& _imageHandle)
-			{
-				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_imageHandle));
-			}
-
-			/**  
-			 * @brief  Create an image object.
-			 * 
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImage">Specification</a>.
-			 * 
-			 * \param _deviceHandle
-			 * \param _createInfo
-			 * \param _allocator
-			 * \param _imageHandle
-			 * \return 
-			 */
 			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _imageHandle)
 			{
 				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_imageHandle));
-			}
-
-			/** 
-			 * @brief Destroy an image object.
-			 * 
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImage">Specification</a>.
-			 * 
-			 * \param _deviceHandle
-			 * \param _image
-			 * \param _allocator
-			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _image)
-			{
-				vkDestroyImage(_deviceHandle, _image, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 			}
 
 			/** 
@@ -622,7 +494,7 @@ can be multidimensional and may have associated metadata.
 			using EViewType = EImageViewType;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a>  */
 				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
@@ -637,27 +509,7 @@ can be multidimensional and may have associated metadata.
 				      Image::SubresourceRange SubresourceRange;
 			};
 
-			/**
-			 * @brief Create an image view object.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImageView">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _creationSpec
-			 * \param _allocator
-			 * \param _imageView
-			 * \return 
-			 */
-			static EResult Create
-			(
-				      LogicalDevice::Handle        _deviceHandle,
-				const CreateInfo&                  _creationSpec,
-				      Handle&                      _imageView
-			)
-			{
-				return EResult(vkCreateImageView(_deviceHandle, _creationSpec, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_imageView));
-			}
+			
 
 			/**
 			 * @brief Create an image view object.
@@ -712,7 +564,7 @@ can be multidimensional and may have associated metadata.
 			using Handle = VkDescriptorSet;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a>  */
-			struct AllocateInfo : Vault_0::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
+			struct AllocateInfo : V0::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
 			{
 				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
 
@@ -724,7 +576,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBufferInfo">Specification</a>  */
-			struct BufferInfo : Vault_0::VKStruct_Base<VkDescriptorBufferInfo>
+			struct BufferInfo : V0::VKStruct_Base<VkDescriptorBufferInfo>
 			{
 				Buffer::Handle Buffer;
 				DeviceSize     Offset;
@@ -732,7 +584,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a>  */
-			struct Copy : Vault_0::VKStruct_Base<VkCopyDescriptorSet>
+			struct Copy : V0::VKStruct_Base<VkCopyDescriptorSet>
 			{
 				      EType  SType          ;
 				const void*  Next           ;
@@ -746,7 +598,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a>  */
-			struct ImageInfo : Vault_0::VKStruct_Base<VkDescriptorImageInfo>
+			struct ImageInfo : V0::VKStruct_Base<VkDescriptorImageInfo>
 			{
 				Sampler::Handle   Sampler    ;
 				ImageView::Handle ImageView  ;
@@ -754,7 +606,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a>  */
-			struct Write : Vault_0::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
+			struct Write : V0::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
 			{
 				      EType               SType          ;
 				const void*               Next           ;
@@ -830,11 +682,11 @@ can be multidimensional and may have associated metadata.
 		};	
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct Buffer : Vault_1::Buffer
+		struct Buffer : V1::Buffer
 		{
-			using Parent = Vault_1::Buffer;
+			using Parent = V1::Buffer;
 
 			struct CreateInfo : public Parent::CreateInfo
 			{
@@ -868,6 +720,37 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/**
+			 * @brief Create a new buffer object. (Default allocator)
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _buffer
+			 * \return 
+			 */
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _createInfo, Handle& _buffer)
+			{
+				return Parent::Create(_device, _createInfo, Memory::DefaultAllocator, _buffer);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * @brief Destroy a buffer object. (Default allocator)
+
+			 * \param _deviceHandle
+			 * \param _buffer
+			 * \param _allocator
+			 * \return 
+			 */
+			static void Destroy(LogicalDevice::Handle _device, Handle _buffer)
+			{
+				Parent::Destroy(_device, _buffer, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+
+			/**
 			 * @brief Will create a buffer and immediately bind it to allocated memory made just for it.
 			 * 
 			 * \param _bufferInfo
@@ -880,13 +763,13 @@ can be multidimensional and may have associated metadata.
 			 * \param _allcator
 			 * \return 
 			 */
-			static Vault_0::ShouldUse_EResult CreateAndBind
+			static V0::ShouldUse_EResult CreateAndBind
 			(
-				PhysicalDevice::Handle _physicalDevice    ,
-				LogicalDevice::Handle  _device            ,
-				CreateInfo             _bufferInfo        ,
-				Handle&                _buffer            , 
-				Memory::PropertyFlags  _propertyFlags     , 
+				PhysicalDevice::Handle _physicalDevice,
+				LogicalDevice::Handle  _device        ,
+				CreateInfo             _bufferInfo    ,
+				Handle&                _buffer        , 
+				Memory::PropertyFlags  _propertyFlags , 
 				Memory::Handle&        _bufferMemory      
 			)
 			{
@@ -896,7 +779,7 @@ can be multidimensional and may have associated metadata.
 
 
 			#ifdef VT_Option__Use_STL_Exceptions
-				if (Vault_1::Buffer::Create(_device, _bufferInfo, Memory::DefaultAllocator, _buffer) != EResult::Success)
+				if (Buffer::Create(_device, _bufferInfo, Memory::DefaultAllocator, _buffer) != EResult::Success)
 					throw std::runtime_error("Failed to create vertex buffer!");
 			#else
 				returnCode = Buffer::Create(_device, bufferInfo, _allcator, _buffer);
@@ -940,14 +823,14 @@ can be multidimensional and may have associated metadata.
 			 * \param _allcator
 			 * \return 
 			 */
-			static Vault_0::ShouldUse_EResult CreateAndBind
+			static V0::ShouldUse_EResult CreateAndBind
 			(
-				PhysicalDevice::Handle _physicalDevice    ,
-				LogicalDevice::Handle  _device            ,
-				CreateInfo             _bufferInfo        ,
-				Handle&                _buffer            , 
-				Memory::PropertyFlags  _propertyFlags     , 
-				Memory::Handle&        _bufferMemory      ,
+				PhysicalDevice::Handle       _physicalDevice,
+				LogicalDevice::Handle        _device        ,
+				CreateInfo                   _bufferInfo    ,
+				Handle&                      _buffer        , 
+				Memory::PropertyFlags        _propertyFlags , 
+				Memory::Handle&              _bufferMemory  ,
 				Memory::AllocationCallbacks* _allcator
 			)
 			{
@@ -957,7 +840,7 @@ can be multidimensional and may have associated metadata.
 
 
 			#ifdef VT_Option__Use_STL_Exceptions
-				if (Vault_1::Buffer::Create(_device, _bufferInfo, _allcator, _buffer) != EResult::Success)
+				if (Buffer::Create(_device, _bufferInfo, _allcator, _buffer) != EResult::Success)
 					throw std::runtime_error("Failed to create vertex buffer!");
 			#else
 				returnCode = Buffer::Create(_device, bufferInfo, _allcator, _buffer);
@@ -989,9 +872,9 @@ can be multidimensional and may have associated metadata.
 			}
 		};
 
-		struct BufferView : public Vault_1::BufferView
+		struct BufferView : public V1::BufferView
 		{
-			using Parent = Vault_1::BufferView;
+			using Parent = V1::BufferView;
 
 			struct CreateInfo : public Parent::CreateInfo
 			{
@@ -1001,11 +884,41 @@ can be multidimensional and may have associated metadata.
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			* @brief Create a new buffer view object.
+			* 
+			* \param _deviceHandle
+			* \param _creationSpec
+			* \param _allocator
+			* \param _bufferView
+			* \return 
+			*/
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _info, Handle& _bufferView)
+			{
+				return Parent::Create(_device, _info, Memory::DefaultAllocator, _bufferView);
+			}
+
+			using Parent::Create;
+
+			/**
+			* @brief Destroy a buffer view object.
+			* 
+			* \param _deviceHandle
+			* \param _bufferView
+			* \param _allocator
+			*/
+			static void Destroy(LogicalDevice::Handle _device, Handle _bufferView)
+			{
+				Parent::Destroy(_device, _bufferView, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
 		};
 
-		struct DescriptorPool : public Vault_1::DescriptorPool
+		struct DescriptorPool : public V1::DescriptorPool
 		{
-			using Parent = Vault_1::DescriptorPool;
+			using Parent = V1::DescriptorPool;
 
 			struct CreateInfo : public Parent::CreateInfo
 			{
@@ -1015,11 +928,42 @@ can be multidimensional and may have associated metadata.
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			 * \param _device
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _descriptorPool
+			 * \return 
+			 */
+			static EResult Create
+			(
+					  LogicalDevice::Handle _device        ,
+				const CreateInfo&           _createInfo    ,
+					  Handle&               _descriptorPool
+			)
+			{
+				return Parent::Create(_device, _createInfo, Memory::DefaultAllocator, _descriptorPool);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * \param _device
+			 * \param _descriptorPool
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _device, Handle _descriptorPool)
+			{
+				Parent::Destroy(_device, _descriptorPool, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
 		};
 
-		struct Image : public Vault_1::Image
+		struct Image : public V1::Image
 		{
-			using Parent = Vault_1::Image;
+			using Parent = V1::Image;
 
 			struct CreateInfo : public Parent::CreateInfo
 			{
@@ -1038,11 +982,41 @@ can be multidimensional and may have associated metadata.
 					Next  = nullptr  ;
 				}
 			};
+
+			/**  
+			 * @brief  Create an image object.
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _imageHandle
+			 * \return 
+			 */
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Handle& _imageHandle)
+			{
+				return Parent::Create(_deviceHandle, _createInfo, Memory::DefaultAllocator, _imageHandle);
+			}
+
+			using Parent::Create;
+
+			/** 
+			 * @brief Destroy an image object.
+			 * 
+			 * \param _deviceHandle
+			 * \param _image
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _image)
+			{
+				Parent::Destroy(_deviceHandle, _image, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
 		};
 
-		struct ImageView : public Vault_1::ImageView
+		struct ImageView : public V1::ImageView
 		{
-			using Parent = Vault_1::ImageView;
+			using Parent = V1::ImageView;
 
 			struct CreateInfo : public Parent::CreateInfo
 			{
@@ -1052,11 +1026,50 @@ can be multidimensional and may have associated metadata.
 					Next  = nullptr  ;
 				}
 			};
+
+			/**
+			 * @brief Create an image view object.
+			 * 
+			 * \param _deviceHandle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _imageView
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _creationSpec,
+				      Handle&                      _imageView
+			)
+			{
+				return Parent::Create(_deviceHandle, _creationSpec, Memory::DefaultAllocator, _imageView);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * @brief Destroy an image view.
+			 * 
+			 * \param _deviceHandle
+			 * \param _imageView
+			 * \param _allocator
+			 */
+			static void Destroy
+			(
+				LogicalDevice::Handle _deviceHandle,
+				Handle                _imageView   
+			)
+			{
+				return Parent::Destroy(_deviceHandle, _imageView, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
 		};
 
-		struct DescriptorSet : public Vault_1::DescriptorSet
+		struct DescriptorSet : public V1::DescriptorSet
 		{
-			using Parent = Vault_1::DescriptorSet;
+			using Parent = V1::DescriptorSet;
 
 			struct AllocateInfo : public Parent::AllocateInfo
 			{
@@ -1087,13 +1100,13 @@ can be multidimensional and may have associated metadata.
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
-		class Buffer : public Vault_2::Buffer
+		class Buffer : public V2::Buffer
 		{
 		public:
 
-			using Parent = Vault_2::Buffer;
+			using Parent = V2::Buffer;
 
 			EResult BindMemory(Memory& _memory, DeviceSize _memoryOffset)
 			{
@@ -1131,10 +1144,10 @@ can be multidimensional and may have associated metadata.
 				return returnCode;
 			}
 
-			typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::
+			typename std::conditional<V0::UseSTL_Exceptions, void, EResult>::
 			type CreateAndBind
 			(
-				PhysicalDevice        _physicalDevice, 
+				PhysicalDevice&       _physicalDevice, 
 				LogicalDevice&        _device        ,  
 				CreateInfo&           _info          ,  
 				Memory::PropertyFlags _memoryFlags   ,
@@ -1180,7 +1193,7 @@ can be multidimensional and may have associated metadata.
 				BindMemory(_memory, Memory::ZeroOffset);
 			}
 
-			typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::
+			typename std::conditional<V0::UseSTL_Exceptions, void, EResult>::
 			type CreateAndBind
 			(
 				      PhysicalDevice               _physicalDevice, 
@@ -1262,10 +1275,10 @@ can be multidimensional and may have associated metadata.
 			const Memory::AllocationCallbacks* allocator;
 		};
 
-		class BufferView : public Vault_2::BufferView
+		class BufferView : public V2::BufferView
 		{
 		public:
-			using Parent = Vault_2::BufferView;
+			using Parent = V2::BufferView;
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info)
 			{
@@ -1301,10 +1314,10 @@ can be multidimensional and may have associated metadata.
 			const Memory::AllocationCallbacks* allocator;
 		};
 
-		class DescriptorPool : public Vault_2::DescriptorPool
+		class DescriptorPool : public V2::DescriptorPool
 		{
 		public:
-			using Parent = Vault_2::DescriptorPool;
+			using Parent = V2::DescriptorPool;
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info)
 			{
@@ -1350,10 +1363,10 @@ can be multidimensional and may have associated metadata.
 			LogicalDevice* device;
 		};
 
-		class Image : public Vault_2::Image
+		class Image : public V2::Image
 		{
 		public:
-			using Parent = Vault_2::Image;
+			using Parent = V2::Image;
 
 
 			void Assign(LogicalDevice _device, Handle _handle)
@@ -1431,10 +1444,10 @@ can be multidimensional and may have associated metadata.
 			LogicalDevice* device;
 		};
 
-		class ImageView : public Vault_2::ImageView
+		class ImageView : public V2::ImageView
 		{
 		public:
-			using Parent = Vault_2::ImageView;
+			using Parent = V2::ImageView;
 
 			EResult Create(LogicalDevice& _device, CreateInfo& _info)
 			{
@@ -1475,32 +1488,42 @@ can be multidimensional and may have associated metadata.
 			LogicalDevice* device;
 		};
 
-		class DescriptorSet : public Vault_2::DescriptorSet
+		class DescriptorSet : public V2::DescriptorSet
 		{
 		public:
-			using Parent = Vault_2::DescriptorSet;
-			
-			EResult Allocate(LogicalDevice& _device, AllocateInfo& _info)
+			using Parent = V2::DescriptorSet;
+
+			void Assign(LogicalDevice& _device, AllocateInfo& _info, Handle _handle)
 			{
 				device = &_device;
 				info   = _info   ;
+				handle = _handle ;
+			}
+			
+			static EResult Allocate(LogicalDevice& _device, AllocateInfo& _info, std::vector<DescriptorSet>& _sets)
+			{
+				_sets.resize(_info.DescriptorSetCount); std::vector<Handle> handles(_info.DescriptorSetCount);
 
-				return Parent::Allocate(device->GetHandle(), info, handles);
+				EResult returnCode =  Parent::Allocate(_device.GetHandle(), _info, handles.data());
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				for (DeviceSize index = 0; index < _info.DescriptorSetCount; index++)
+				{
+					_sets[index].Assign(_device, _info, handles[index]);
+				}
+
+				return returnCode;
 			}
 
-			EResult Free()
+			static EResult Free(LogicalDevice& _device, AllocateInfo& _info, Handle* _handles)
 			{
-				return Parent::Free(device->GetHandle(), info.DescriptorPool, info.DescriptorSetCount, handles);
+				return Parent::Free(_device.GetHandle(), _info.DescriptorPool, _info.DescriptorSetCount, _handles);
 			}
 
-			const Handle* GetHandles() const
+			const Handle& GetHandle() const
 			{
-				return handles;
-			}
-
-			uint32 GetCount() const
-			{
-				return info.DescriptorSetCount;
+				return handle;
 			}
 
 			void Update
@@ -1516,7 +1539,7 @@ can be multidimensional and may have associated metadata.
 
 		protected:
 
-			Handle* handles;
+			Handle handle;
 
 			AllocateInfo info;
 

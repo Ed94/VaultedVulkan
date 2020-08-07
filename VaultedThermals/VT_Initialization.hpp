@@ -22,18 +22,14 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
 		/**
 		 * @brief Construct an API version number.
@@ -63,7 +59,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 		*/
 		struct AppInstance
 		{
-			using Memory = Vault_0::Memory;
+			using Memory = V0::Memory;
 
 			/**
 			 * @brief Opaque handle to an instance object.
@@ -86,7 +82,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkApplicationInfo">Application Info Specification</a> 
 			*/
-			struct AppInfo : Vault_0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::ApplicationInformation>
+			struct AppInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::ApplicationInformation>
 			{
 				      EType        SType        ;
 				const void*        Next         ;
@@ -102,7 +98,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateInfo">Create Info Specification</a> 
 			*/
-			struct CreateInfo : Vault_0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
 			{
 				      EType                SType                ;
 				const void*                Next                 ;
@@ -121,7 +117,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
 				*/
-				struct Features : Vault_0::VKStruct_Base<VkValidationFeaturesEXT, EStructureType::ValidationFeatures_EXT>
+				struct Features : V0::VKStruct_Base<VkValidationFeaturesEXT, EStructureType::ValidationFeatures_EXT>
 				{
 					      EType                     SType                         ;
 					const void*                     Next                          ;
@@ -139,7 +135,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				* 
 				* @todo Implement.
 				*/
-				struct Flags : Vault_0::VKStruct_Base<VkValidationFlagsEXT, EStructureType::ValidationFlags_EXT>
+				struct Flags : V0::VKStruct_Base<VkValidationFlagsEXT, EStructureType::ValidationFlags_EXT>
 				{
 					      EType             SType                       ;
 					const void*             Next                        ;
@@ -153,24 +149,14 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a> 
 			*/
-			static EResult Create(const CreateInfo& _appSpec, Handle& _handleContainer)
-			{
-				return EResult(vkCreateInstance( _appSpec, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_handleContainer));
-			}
-
-			/**
-			@brief Create a new Vulkan application instance.
-
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a> 
-			*/
 			static EResult Create
 			(
-				const CreateInfo&                  _appSpec        ,
-				const Memory::AllocationCallbacks* _customAllocator,
-				      Handle&                      _handleContainer
+				const CreateInfo&                  _info     ,
+				const Memory::AllocationCallbacks* _allocator,
+				      Handle&                      _handle
 			)
 			{
-				return EResult(vkCreateInstance( _appSpec, _customAllocator->operator const VkAllocationCallbacks*(), &_handleContainer));
+				return EResult(vkCreateInstance( _info, _allocator->operator const VkAllocationCallbacks*(), &_handle));
 			}
 
 			/**
@@ -178,19 +164,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
 			*/
-			static void Destroy(Handle _instance)
+			static void Destroy(Handle _handle , const Memory::AllocationCallbacks* _callbacks)
 			{
-				vkDestroyInstance(_instance, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			@brief Destroy an application instance of Vulkan.
-
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
-			*/
-			static void Destroy(Handle _instance , const Memory::AllocationCallbacks* _callbacks)
-			{
-				vkDestroyInstance(_instance, _callbacks->operator const VkAllocationCallbacks*());
+				vkDestroyInstance(_handle, _callbacks->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -217,9 +193,9 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 			*/
-			static EResult QueryPhysicalDeviceListing(Handle _instance, uint32* _numDevices, PhysicalDevice::Handle* _deviceListing)
+			static EResult QueryPhysicalDeviceListing(Handle _handle, uint32* _numDevices, PhysicalDevice::Handle* _deviceListing)
 			{
-				return EResult(vkEnumeratePhysicalDevices(_instance, _numDevices, _deviceListing));
+				return EResult(vkEnumeratePhysicalDevices(_handle, _numDevices, _deviceListing));
 			}
 
 			/**
@@ -230,12 +206,12 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			*/
 			static EResult QueryPhysicalDeviceGroups
 			(
-				Handle                 _instance       ,
-				uint32*                _groupCount     ,
+				Handle                 _handle         ,
+				uint32*                _numGroups      ,
 				PhysicalDevice::Group* _groupProperties
 			)
 			{
-				vkEnumeratePhysicalDeviceGroups(_instance, _groupCount, _groupProperties->operator VkPhysicalDeviceGroupProperties*());
+				vkEnumeratePhysicalDeviceGroups(_handle, _numGroups, _groupProperties->operator VkPhysicalDeviceGroupProperties*());
 			}
 
 			template<typename ReturnType>
@@ -259,18 +235,18 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
 			>::value,
 
-			ReturnType>::type GetProcedureAddress(Handle& _appInstance, RoCStr _procedureName)
+			ReturnType>::type GetProcedureAddress(Handle& _handle, RoCStr _procedureName)
 			{
-				return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_appInstance, _procedureName));
+				return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_handle, _procedureName));
 			}
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct AppInstance : public Vault_1::AppInstance
+		struct AppInstance : public V1::AppInstance
 		{
-			using Parent = Vault_1::AppInstance;
+			using Parent = V1::AppInstance;
 
 			struct AppInfo : public Parent::AppInfo
 			{
@@ -309,24 +285,44 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				};
 			};
 
+			/**
+			@brief Create a new Vulkan application instance. (Use default allocator)
+			*/
+			static EResult Create(const CreateInfo& _info, Handle& _handle)
+			{
+				return Parent::Create(_info, Memory::DefaultAllocator, _handle);
+			}
+			
+			using Parent::Create;
+
+			/**
+			@brief Destroy an application instance of Vulkan. (Use Default allocator)
+			*/
+			static void Destroy(Handle _handle)
+			{
+				Parent::Destroy(_handle, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+
 			/** 
 			@brief Provides the handles of all available physical devices.
 
 			@todo Make the device listing container type specifiable using an interface.
 			*/
-			static EResult GetAvailablePhysicalDevices(Handle _instance, std::vector<PhysicalDevice::Handle>& _deviceListing)
+			static EResult GetAvailablePhysicalDevices(Handle _handle, std::vector<PhysicalDevice::Handle>& _deviceListing)
 			{
 				uint32 count; 
 				
 				//auto casted = reinterpret_cast<Vault_0::IDynamicArray<PhysicalDevice::Handle>*>(_deviceListing);
 
-				EResult returnCode = QueryPhysicalDeviceListing(_instance, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceListing(_handle, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				_deviceListing.resize(count);
 
-				returnCode = QueryPhysicalDeviceListing(_instance, &count, _deviceListing.data());
+				returnCode = QueryPhysicalDeviceListing(_handle, &count, _deviceListing.data());
 
 				return returnCode;
 			}
@@ -340,24 +336,24 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 * \param _groupListing
 			 * \return 
 			 */
-			static EResult GetAvailablePhysicalDeviceGroups(Handle _instance, std::vector<PhysicalDevice::Group>& _groupListing)
+			static EResult GetAvailablePhysicalDeviceGroups(Handle _handle, std::vector<PhysicalDevice::Group>& _groupListing)
 			{
 				uint32 count;
 
-				EResult returnCode = QueryPhysicalDeviceGroups(_instance, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceGroups(_handle, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				_groupListing.resize(count);
 
-				returnCode = QueryPhysicalDeviceGroups(_instance, &count, _groupListing.data());
+				returnCode = QueryPhysicalDeviceGroups(_handle, &count, _groupListing.data());
 
 				return returnCode;
 			}
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
 		/**
 		@brief An object that manages the represented application process state within the GPU.
@@ -372,10 +368,10 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 		Note: This class is a singleton. There should really not be more than one app instance per process...
 		*/
-		class AppInstance : public Vault_2::AppInstance
+		class AppInstance : public V2::AppInstance
 		{
 		public:
-			using Parent = Vault_2::AppInstance;
+			using Parent = V2::AppInstance;
 
 			/**
 			 * @brief Create an application instance.
@@ -383,15 +379,19 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 * \param _appInfo
 			 * \param _creationSpec
 			 */
-			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec)
+			EResult Create(AppInstance::AppInfo& _appInfo, AppInstance::CreateInfo& _createinfo)
 			{
-				appInfo      = _appInfo     ;
-				info         = _creationSpec;
-				allocator    = nullptr      ;
+				appInfo      = _appInfo   ;
+				createInfo   = _createinfo;
+				allocator    = nullptr    ;
 
-				if (_creationSpec.AppInfo != &appInfo) _creationSpec.AppInfo = &appInfo;
+				if (createInfo.AppInfo != &appInfo) createInfo.AppInfo = &appInfo;
 
-				return Parent::Create(info, allocator, handle);
+				EResult returnCode = Parent::GetVersion(version);
+
+				if (returnCode != EResult::Success) returnCode;
+
+				return Parent::Create(createInfo, handle);
 			}
 
 			/**
@@ -401,13 +401,17 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 * \param _creationSpec
 			 * \param _allocator
 			 */
-			EResult Create(AppInstance::AppInfo _appInfo, AppInstance::CreateInfo _creationSpec, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(AppInstance::AppInfo& _appInfo, AppInstance::CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				appInfo      = _appInfo     ;
-				info = _creationSpec;
-				allocator    = _allocator   ;
+				appInfo    = _appInfo   ;
+				createInfo = _createInfo;
+				allocator  = _allocator ;
 
-				return Parent::Create(info, allocator, handle);
+				EResult returnCode = Parent::GetVersion(version);
+
+				if (returnCode != EResult::Success) returnCode;
+
+				return Parent::Create(createInfo, allocator, handle);
 			}
 
 			/**
@@ -468,7 +472,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 				return returnCode;
 			}
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}
@@ -480,10 +484,6 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 			 */
 			uint32 GetVersion()
 			{
-				if (version == 0) returnCodeRef = Parent::GetVersion(version);
-
-				returnCodeRef = EResult::Success;
-
 				return version;
 			}
 
@@ -510,20 +510,15 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 			ReturnType>::type GetProcedureAddress(RoCStr _procedureName) const
 			{
-				return Parent::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
-			}
-
-			operator Handle() const
-			{
-				return handle;
+				return V1::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
 			}
 
 		protected:
 
-			Handle     handle      ;
-			AppInfo    appInfo     ;   
-			CreateInfo info;
-			uint32     version     ;
+			Handle     handle    ;
+			AppInfo    appInfo   ;   
+			CreateInfo createInfo;
+			uint32     version   ;
 
 			const Memory::AllocationCallbacks* allocator;
 

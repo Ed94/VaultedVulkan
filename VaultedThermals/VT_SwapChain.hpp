@@ -19,7 +19,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -30,13 +30,9 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
 		/**
 		 * @brief A queue of images that can be presented to a surface.
@@ -52,7 +48,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> .
 			 */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
+			struct CreateInfo : V0::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
 			{
 				using ECreateFlag = ESwapchainCreateFlag;
 
@@ -80,7 +76,7 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a>  */
-			struct PresentationInfo : Vault_0::VKStruct_Base<VkPresentInfoKHR, EStructureType::PresentInfo_KHR>
+			struct PresentationInfo : V0::VKStruct_Base<VkPresentInfoKHR, EStructureType::PresentInfo_KHR>
 			{
 				      EType              SType             ;
 				const void*              Next              ;
@@ -199,10 +195,31 @@
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct SwapChain : Vault_1::SwapChain
+		struct SwapChain : V1::SwapChain
 		{
+			using Parent = V1::SwapChain;
+			
+			static EResult Create
+			(
+				      LogicalDevice::Handle        _deviceHandle         ,
+				const SwapChain::CreateInfo&       _creationSpecification,
+				      SwapChain::Handle&           _swapChain
+			)
+			{
+				Parent::Create(_deviceHandle, _creationSpecification, Memory::DefaultAllocator, _swapChain);
+			}
+
+			using Parent::Create;
+
+			static void Destroy(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChainToDestroy)
+			{
+				Parent::Destroy(_deviceHandle, _swapChainToDestroy, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+
 			/**
 			 * @brief Provides the number of presentable images with the swapchain.
 			 * 
@@ -247,15 +264,22 @@
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
-		inline EResult Temp_GetImages(LogicalDevice& _device, Vault_2::SwapChain::Handle _handle, std::vector<Image>& _images)
+		class SwapChain : public V2::SwapChain
 		{
-			auto count = Vault_2::SwapChain::GetImageCount(_device.GetHandle(), _handle);
+		public:
+		protected:
+		};
 
-			std::vector<Vault_2::Image::Handle> images; images.resize(count);
 
-			EResult returnCode = Vault_2::SwapChain::GetImages(_device.GetHandle(), _handle, images.data());
+		inline EResult Temp_GetImages(LogicalDevice& _device, V2::SwapChain::Handle _handle, std::vector<Image>& _images)
+		{
+			auto count = V2::SwapChain::GetImageCount(_device.GetHandle(), _handle);
+
+			std::vector<V2::Image::Handle> images; images.resize(count);
+
+			EResult returnCode = V2::SwapChain::GetImages(_device.GetHandle(), _handle, images.data());
 
 			_images.resize(count);
 

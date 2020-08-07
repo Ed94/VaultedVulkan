@@ -26,16 +26,9 @@ Had to make this as there are definitions used by both application instance and 
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	/**
-	 * @todo Should this stay?.
-	 */
-	namespace Vault_0
+	namespace V0
 	{
 		/**
 		* @brief General memory definitions.
@@ -65,7 +58,7 @@ Had to make this as there are definitions used by both application instance and 
 
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryAllocateInfo">Specification</a>  */
-			struct AllocateInfo : Vault_0::VKStruct_Base<VkMemoryAllocateInfo, EStructureType::MemoryAllocateInfo>
+			struct AllocateInfo : V0::VKStruct_Base<VkMemoryAllocateInfo, EStructureType::MemoryAllocateInfo>
 			{
 				      EType      SType          ;
 				const void*      Next           ;
@@ -74,7 +67,7 @@ Had to make this as there are definitions used by both application instance and 
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAllocationCallbacks">Specification</a> */
-			struct AllocationCallbacks : Vault_0::VKStruct_Base<VkAllocationCallbacks>
+			struct AllocationCallbacks : V0::VKStruct_Base<VkAllocationCallbacks>
 			{
 				void*                               UserData          ;
 				FPtr_Allocation                     Allocation        ;
@@ -91,7 +84,7 @@ Had to make this as there are definitions used by both application instance and 
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryBarrier">Specification</a> 
 			 */
-			struct Barrier : Vault_0::VKStruct_Base<VkMemoryBarrier, EStructureType::Memory_Barrier>
+			struct Barrier : V0::VKStruct_Base<VkMemoryBarrier, EStructureType::Memory_Barrier>
 			{
 				      EType       SType        ;
 				const void*       Next         ;
@@ -102,7 +95,7 @@ Had to make this as there are definitions used by both application instance and 
 			/**
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeap">Specification</a> 
 			 */
-			struct Heap : Vault_0::VKStruct_Base<VkMemoryHeap>
+			struct Heap : V0::VKStruct_Base<VkMemoryHeap>
 			{
 				DeviceSize Size ;
 				HeapFlags  Flags;
@@ -111,7 +104,7 @@ Had to make this as there are definitions used by both application instance and 
 			/**
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryRequirements">Specification</a> 
 			 */
-			struct Requirements : Vault_0::VKStruct_Base<VkMemoryRequirements>
+			struct Requirements : V0::VKStruct_Base<VkMemoryRequirements>
 			{
 				DeviceSize Size          ;
 				DeviceSize Alignment     ;
@@ -121,7 +114,7 @@ Had to make this as there are definitions used by both application instance and 
 			/**
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryType ">Specification</a> 
 			 */
-			struct Type : Vault_0::VKStruct_Base<VkMemoryType>
+			struct Type : V0::VKStruct_Base<VkMemoryType>
 			{
 				PropertyFlags PropertyFlags;
 				uint32        HeapIndex    ;

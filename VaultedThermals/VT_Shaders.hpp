@@ -21,7 +21,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -32,13 +32,9 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
 		/**
 		 * @brief 
@@ -59,7 +55,7 @@
 			using CreateFlags = Bitmask<EUndefined, Flags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
 			{
 				      EType             SType    ;
 				const void*             Next     ;
@@ -67,28 +63,6 @@
 				      DataSize          CodeSize ;
 				const SPIR_V::Bytecode* Code     ;
 			};
-
-			/**
-			 * @brief Create a sher module.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateShaderModule">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _creationSpec
-			 * \param _allocator
-			 * \param _shaderModule
-			 * \return 
-			 */
-			static EResult Create
-			(
-				      LogicalDevice::Handle _deviceHandle,
-				const CreateInfo&           _creationSpec,
-				      Handle&               _shaderModule
-			)
-			{
-				return EResult(vkCreateShaderModule(_deviceHandle, _creationSpec.operator const VkShaderModuleCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_shaderModule));
-			}
 
 			/**
 			 * @brief Create a sher module.
@@ -123,21 +97,6 @@
 			 * \param _moduleHandle
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _moduleHandle)
-			{
-				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			 * @brief Destroy a shader module.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyShaderModule">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _moduleHandle
-			 * \param _allocator
-			 */
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _moduleHandle, const Memory::AllocationCallbacks* _allocator)
 			{
 				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator->operator const VkAllocationCallbacks*());
@@ -145,11 +104,11 @@
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct ShaderModule : public Vault_1::ShaderModule
+		struct ShaderModule : public V1::ShaderModule
 		{
-			using Parent = Vault_1::ShaderModule;
+			using Parent = V1::ShaderModule;
 
 			struct CreateInfo : public Parent::CreateInfo
 			{
@@ -171,16 +130,55 @@
 					Code     = reinterpret_cast<const Bytecode*>(_code);
 				}
 			};
+
+			/**
+			 * @brief Create a sher module.
+			 * 
+			 * @details
+			 * 
+			 * \param _deviceHandle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _shaderModule
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle _deviceHandle,
+				const CreateInfo&           _creationSpec,
+				      Handle&               _shaderModule
+			)
+			{
+				return Parent::Create(_deviceHandle, _creationSpec, Memory::DefaultAllocator, _shaderModule);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * @brief Destroy a shader module.
+			 * 
+			 * @details
+			 * 
+			 * \param _deviceHandle
+			 * \param _moduleHandle
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _moduleHandle)
+			{
+				Parent::Destroy(_deviceHandle, _moduleHandle, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
-		class ShaderModule : public Vault_2::ShaderModule
+		class ShaderModule : public V2::ShaderModule
 		{
 		public:
 			
-			using Parent = Vault_2::ShaderModule;
+			using Parent = V2::ShaderModule;
 
 			EResult Create
 			(
@@ -192,7 +190,7 @@
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Vault_1::ShaderModule::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device->GetHandle(), info, handle);
 			}
 
 			EResult Create
@@ -206,7 +204,7 @@
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Vault_1::ShaderModule::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
 			}
 
 			void Destroy()
@@ -214,7 +212,7 @@
 				Parent::Destroy(device->GetHandle(), handle, allocator);
 			}
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}

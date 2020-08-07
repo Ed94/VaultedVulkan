@@ -20,7 +20,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -33,21 +33,17 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_0
+	namespace V0
 	{
-		using Vault_1::Image;
-
 		/**
 		 * @brief Cross-Platform set of definitions for a Surface.
 		 */
 		struct Surface_PlatformAgnostic
 		{
+			using Image = V1::Image;
+
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceKHR">Specification</a>  */
 			using Handle = VkSurfaceKHR;   ///< Opaque handle to a surface object.
 
@@ -64,7 +60,7 @@
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceCapabilitiesKHR">Specification</a> 
 			 */
-			struct Capabilities : VKStruct_Base<VkSurfaceCapabilitiesKHR>
+			struct Capabilities : V0::VKStruct_Base<VkSurfaceCapabilitiesKHR>
 			{
 				uint32              MinImageCount          ;
 				uint32              MaxImageCount          ;
@@ -83,7 +79,7 @@
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceFormatKHR">Specification</a> 
 			 */
-			struct Format : VKStruct_Base<VkSurfaceFormatKHR>
+			struct Format : V0::VKStruct_Base<VkSurfaceFormatKHR>
 			{
 				EFormat     Format    ;
 				EColorSpace ColorSpace;
@@ -96,12 +92,12 @@
 
 		/** @brief Defines a Surface's extended definitions for Windows. */
 		template<>
-		struct Surface_Maker<EOS_Platform::Windows> : Surface_PlatformAgnostic
+		struct Surface_Maker<EOS_Platform::Windows> : public Surface_PlatformAgnostic
 		{
 			//static constexpr EStructureType CreateInfoType = EStructureType::Win32_Surface_CreateInfo_KHR;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a> */
-			struct CreateInfo : VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
+			struct CreateInfo : V0::VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
 
@@ -142,7 +138,7 @@
 			 */
 			static EResult Create
 			(
-				      Vault_1::AppInstance::Handle _appHandle    ,
+				      V1::AppInstance::Handle      _appHandle    ,
 				      CreateInfo&                  _createInfo   ,
 				const Memory::AllocationCallbacks* _allocator    ,
 				      Handle&                      _surfaceHandle
@@ -156,10 +152,10 @@
 		using Surface = Surface_Maker<OS_Platform>;
 	}
 
-	namespace Vault_1
+	namespace V1
 	{
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
-		struct Surface : Vault_0::Surface
+		struct Surface : public V0::Surface
 		{
 			/**
 			 * @brief Destroy a VkSurfaceKHR object.
@@ -190,9 +186,9 @@
 			 */
 			static EResult CheckPhysicalDeviceSupport
 			(
-				Vault_1::PhysicalDevice::Handle _physDeviceHandle,
-				uint32                          _queueFamilyIndex,
-				Surface::Handle                 _surfaceHandle   ,
+				V1::PhysicalDevice::Handle _physDeviceHandle,
+				uint32                     _queueFamilyIndex,
+				Surface::Handle            _surfaceHandle   ,
 				Bool& _checkResult
 			)
 			{
@@ -259,11 +255,22 @@
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
-		struct Surface : Vault_1::Surface
+		struct Surface : public  V1::Surface
 		{
+			using Parent = V1::Surface;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
 			static bool CheckForPresentationSupport
 			(
 				PhysicalDevice::Handle _physicalDevice,
@@ -278,22 +285,21 @@
 				return presentationSupport;
 			}
 
-			/**
-			 * @brief Provides the number of available surface formats.
-			 * 
-			 * \param _deviceHandle
-			 * \param _surfaceHandle
-			 * \return 
-			 */
-			static uint32 GetNumOf_AvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
+			static EResult Create
+			(
+				AppInstance::Handle _appHandle    ,
+				CreateInfo&         _createInfo   ,
+				Handle&             _surfaceHandle
+			)
 			{
-				uint32 numFormats;
+				return Parent::Create(_appHandle, _createInfo, Memory::DefaultAllocator, _surfaceHandle);
+			}
 
-				EResult result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, nullptr);
+			using Parent::Create;
 
-				if (result != EResult::Success) throw std::runtime_error("Failed to get number of available formats...");
-
-				return numFormats;
+			static void Destroy(AppInstance::Handle _appHandle, Surface::Handle _surfaceHandle)
+			{
+				Parent::Destroy(_appHandle, _surfaceHandle, Memory::DefaultAllocator);
 			}
 
 			/**
@@ -304,33 +310,19 @@
 			 * \param _formatsContainer
 			 * \return 
 			 */
-			static EResult GetAvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, Surface::Format* _formatsContainer)
+			static EResult GetAvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, std::vector<Surface::Format>& _formatsContainer)
 			{
-				uint32 numFormats = GetNumOf_AvailableFormats(_deviceHandle, _surfaceHandle);
+				uint32 numFormats; 
+				
+				EResult result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, nullptr);
 
-				EResult result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, _formatsContainer);
+				if (result != EResult::Success) return result;
 
-				if (result != EResult::Success) throw std::runtime_error("Failed to get available formats...");
+				_formatsContainer.resize(numFormats);
+
+				result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, _formatsContainer.data());
 
 				return result;
-			}
-
-			/**
-			 * @brief Provides the number of supported presentation modes.
-			 * 
-			 * \param _deviceHandle
-			 * \param _surfaceHandle
-			 * \return 
-			 */
-			static uint32 GetNumOf_SupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle)
-			{
-				uint32 numPresentationModes;
-
-				EResult result =  QuerySupportedPresentationModes(_deviceHandle, _surfaceHandle, numPresentationModes, nullptr);
-
-				if (result != EResult::Success) throw std::runtime_error("Failed to get number of supported presentation modes...");
-
-				return numPresentationModes;
 			}
 
 			/**
@@ -341,16 +333,39 @@
 			 * \param _presentationModesContainer
 			 * \return 
 			 */
-			static EResult GetSupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, EPresentationMode* _presentationModesContainer)
+			static EResult GetSupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, std::vector<EPresentationMode>& _presentationModesContainer)
 			{
-				uint32 numPresentationModes = GetNumOf_SupportedPresentationModes(_deviceHandle, _surfaceHandle);
-
-				EResult result = QuerySupportedPresentationModes(_deviceHandle, _surfaceHandle, numPresentationModes, _presentationModesContainer);
+				uint32 numPresentationModes; 
 				
-				if (result != EResult::Success) throw std::runtime_error("Failed to get supported presentation modes...");
+				EResult result = QuerySupportedPresentationModes(_deviceHandle, _surfaceHandle, numPresentationModes, nullptr);
 
+				if (result != EResult::Success) return result;
+
+				_presentationModesContainer.resize(numPresentationModes);
+
+				result = QuerySupportedPresentationModes(_deviceHandle, _surfaceHandle, numPresentationModes, _presentationModesContainer.data());
+				
 				return result;
 			}
+		};
+	}
+
+	namespace V4
+	{
+		class Surface : public V2::Surface
+		{
+		public:
+			using Parent = V2::Surface;
+
+		protected:
+
+			AppInstance* app;
+
+			CreateInfo info;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			Handle handle;
 		};
 	}
 }

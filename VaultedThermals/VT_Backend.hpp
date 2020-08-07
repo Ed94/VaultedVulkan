@@ -18,14 +18,9 @@
 #include "VT_Enums.hpp"
 
 
-
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_0
+	namespace V0
 	{
 		#ifdef VT_Option__Use_STL_Exceptions
 			constexpr bool UseSTL_Exceptions = true;
@@ -46,13 +41,15 @@
 		#endif
 
 		/** @brief Determines whether to return an result code for a function based on if STL exceptions are enabled. */
-		using ShouldUse_EResult = typename std::conditional<Vault_0::UseSTL_Exceptions, void, EResult>::type;
+		using ShouldUse_EResult = typename std::conditional<V0::UseSTL_Exceptions, void, EResult>::type;
 
 		template<typename Type>
 		/**
 		 * @brief A custom dynamic container from the default can be used with specific functionality in the library.
 		 * 
 		 * @details Have a container that supports the following functions (They are equivalent to those used in std::vector)
+		 * 
+		 * @todo Add support?
 		 */
 		class IDynamicArray
 		{

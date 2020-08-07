@@ -16,7 +16,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -24,13 +24,9 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
         /**
          * @brief.
@@ -47,7 +43,7 @@
             using AddressMode = ESamplerAddressMode;
 
             /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_0::VKStruct_Base<VkSamplerCreateInfo, EStructureType::Sampler_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkSamplerCreateInfo, EStructureType::Sampler_CreateInfo>
 			{
                       EType             SType                  ;
                 const void*             Next                   ;
@@ -82,27 +78,6 @@
              */
             static EResult Create
             (
-				      LogicalDevice::Handle _device    ,
-				const CreateInfo&           _createInfo,
-				      Handle&               _sampler
-            )
-            {
-                return EResult(vkCreateSampler(_device, _createInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_sampler));
-            }
-
-            /**
-             * @brief.
-             * 
-             * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSampler">Specification</a> 
-             * 
-             * \param _device
-             * \param _createInfo
-             * \param _allocator
-             * \param _sampler
-             * \return 
-             */
-            static EResult Create
-            (
 				      LogicalDevice::Handle        _device    ,
 				const CreateInfo&                  _createInfo,
 				const Memory::AllocationCallbacks* _allocator ,
@@ -110,21 +85,6 @@
             )
             {
                 return EResult(vkCreateSampler(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_sampler));
-            }
-
-            /**
-             * @brief.
-             * 
-             * @details
-             * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySampler">Specification</a> 
-             * 
-             * \param _device
-             * \param _sampler
-             * \param _allocator
-             */
-            static void Destroy(LogicalDevice::Handle _device , Handle _sampler)
-            {
-                vkDestroySampler(_device, _sampler, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
             }
 
             /**
@@ -149,11 +109,11 @@
 		};
 	}
 
-    namespace Vault_2
+    namespace V2
     {
-        struct Sampler : public Vault_1::Sampler
+        struct Sampler : public V1::Sampler
         {
-            using Parent = Vault_1::Sampler;
+            using Parent = V1::Sampler;
 
             struct CreateInfo : public Parent::CreateInfo
             {
@@ -163,16 +123,54 @@
                     Next  = nullptr  ;
                 }
             };
+
+            /**
+             * @brief.
+
+             * \param _device
+             * \param _createInfo
+             * \param _allocator
+             * \param _sampler
+             * \return 
+             */
+            static EResult Create
+            (
+				      LogicalDevice::Handle _device    ,
+				const CreateInfo&           _createInfo,
+				      Handle&               _sampler
+            )
+            {
+                return Parent::Create(_device, _createInfo, Memory::DefaultAllocator, _sampler);
+            }
+
+            using Parent::Create;
+
+            /**
+             * @brief.
+             * 
+             * @details
+             * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySampler">Specification</a> 
+             * 
+             * \param _device
+             * \param _sampler
+             * \param _allocator
+             */
+            static void Destroy(LogicalDevice::Handle _device , Handle _sampler)
+            {
+                Parent::Destroy(_device, _sampler, Memory::DefaultAllocator);
+            }
+
+            using Parent::Destroy;
         };
     }
 
-    namespace Vault_4
+    namespace V4
     {
-        class Sampler : public Vault_2::Sampler
+        class Sampler : public V2::Sampler
         {
         public:
 
-            using Parent = Vault_2::Sampler;
+            using Parent = V2::Sampler;
 
             EResult Create(LogicalDevice& _device, CreateInfo& info)
             {
@@ -197,12 +195,7 @@
                 Parent::Destroy(device->GetHandle(), handle, allocator);
             }
 
-            Handle GetHandle() const
-            {
-                return handle;
-            }
-
-            operator Handle() const
+            const Handle& GetHandle() const
             {
                 return handle;
             }

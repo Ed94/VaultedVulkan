@@ -21,7 +21,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -33,13 +33,9 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_1
+	namespace V1
 	{
 		/**
 		 * @brief A monolithic object describing the entire graphics, raytracing, or compute pipeline.
@@ -77,7 +73,7 @@
 				using CreateFlags = Bitmask<EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineCacheCreateInfo, EStructureType::Pipeline_Cache_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineCacheCreateInfo, EStructureType::Pipeline_Cache_CreateInfo>
 				{
 					      EType       SType          ;
 					const void*       Next           ;
@@ -85,28 +81,6 @@
 					      DataSize    InitialDataSize;
 					const void*       InitialData    ;
 				};
-
-				/**
-				 * @brief Create a pipeline cache.
-				 * 
-				 * @details
-				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineCache">Specification</a>
-				 * 
-				 * \param _deviceHandle
-				 * \param _createInfo
-				 * \param _allocator
-				 * \param _pipelineCache
-				 * \return 
-				 */
-				static EResult Create
-				(
-					      LogicalDevice::Handle  _deviceHandle ,
-					const CreateInfo&            _createInfo   ,
-					      Cache::Handle&         _pipelineCache
-				)
-				{
-					return EResult(vkCreatePipelineCache(_deviceHandle, _createInfo.operator const VkPipelineCacheCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_pipelineCache));
-				}
 
 				/**
 				 * @brief Create a pipeline cache.
@@ -141,21 +115,6 @@
 				 * \param _cache
 				 * \param _allocator
 				 */
-				static void Destroy(LogicalDevice::Handle _deviceHandle, Cache::Handle _cache)
-				{
-					vkDestroyPipelineCache(_deviceHandle, _cache, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-				}
-
-				/**
-				 * @brief Destroy a pipeline cache.
-				 * 
-				 * @details
-				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipelineCache">Specification</a> 
-				 * 
-				 * \param _deviceHandle
-				 * \param _cache
-				 * \param _allocator
-				 */
 				static void Destroy(LogicalDevice::Handle _deviceHandle, Cache::Handle _cache, const Memory::AllocationCallbacks* _allocator)
 				{
 					vkDestroyPipelineCache(_deviceHandle, _cache, _allocator->operator const VkAllocationCallbacks*());
@@ -166,7 +125,7 @@
 			struct ColorBlendState
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendAttachmentState">Specification</a>  */
-				struct AttachmentState : Vault_0::VKStruct_Base<VkPipelineColorBlendAttachmentState, EStructureType::Pipeline_ColorBlendAdvancedState_CreateInfo_EXT>
+				struct AttachmentState : V0::VKStruct_Base<VkPipelineColorBlendAttachmentState, EStructureType::Pipeline_ColorBlendAdvancedState_CreateInfo_EXT>
 				{
 					Bool                EnableBlend                 ;
 					EBlendFactor        Source_ColorBlendFactor     ;
@@ -181,7 +140,7 @@
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineColorBlendStateCreateInfo, EStructureType::Pipeline_ColorBlendState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineColorBlendStateCreateInfo, EStructureType::Pipeline_ColorBlendState_CreateInfo>
 				{
 					      EType            SType                ;
 					const void*            Next                 ;
@@ -201,7 +160,7 @@
 				using CreateFlags = Bitmask<EUndefined, VkPipelineDepthStencilStateCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo, EStructureType::Pipeline_DepthStencilState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo, EStructureType::Pipeline_DepthStencilState_CreateInfo>
 				{
 					      EType                 SType                ;			   
 					const void*                 Next                 ;
@@ -224,7 +183,7 @@
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDynamicStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineDynamicStateCreateInfo, EStructureType::Pipeline_DynamicState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineDynamicStateCreateInfo, EStructureType::Pipeline_DynamicState_CreateInfo>
 				{
 					      EType          SType     ;
 					const void*          Next      ;
@@ -240,7 +199,7 @@
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineInputAssemblyStateCreateInfo, EStructureType::Pipeline_InputAssemblyState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineInputAssemblyStateCreateInfo, EStructureType::Pipeline_InputAssemblyState_CreateInfo>
 				{
 						  EType              SType                 ;
 					const void*              Next                  ;
@@ -262,7 +221,7 @@
 				using Handle = VkPipelineLayout;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPushConstantRange">Specification</a>  */
-				struct PushConstantRange : Vault_0::VKStruct_Base<VkPushConstantRange>
+				struct PushConstantRange : V0::VKStruct_Base<VkPushConstantRange>
 				{
 					ShaderStageFlags StageFlags;
 					uint32           Offset    ;
@@ -286,7 +245,7 @@
 					using Handle = VkDescriptorSetLayout;
 
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBinding">Specification</a>  */
-					struct Binding : Vault_0::VKStruct_Base<VkDescriptorSetLayoutBinding>
+					struct Binding : V0::VKStruct_Base<VkDescriptorSetLayoutBinding>
 					{
 						      uint32           BindingID        ;
 						      EDescriptorType  Type             ;
@@ -298,7 +257,7 @@
 						using CreateFlags = Bitmask<EDescriptorBindingFlag ,VkDescriptorBindingFlags>;
 
 						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a>  */
-						struct FlagsCreateInfo : Vault_0::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
+						struct FlagsCreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
 						{
 								   EType       SType       ;
 							const void*        Next        ;
@@ -310,7 +269,7 @@
 					using CreateFlags = Bitmask<EDescriptorSetLayoutCreateFlag, Flags>;
 
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateInfo">Specification</a>  */
-					struct CreateInfo : Vault_0::VKStruct_Base<VkDescriptorSetLayoutCreateInfo, EStructureType::Descriptor_SetLayout_CreateInfo>
+					struct CreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutCreateInfo, EStructureType::Descriptor_SetLayout_CreateInfo>
 					{
 						      EType       SType       ;
 						const void*       Next   ;
@@ -320,43 +279,20 @@
 					};
 
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutSupport">Specification</a>  */
-					struct Support : Vault_0::VKStruct_Base<VkDescriptorSetLayoutSupport, EStructureType::Descriptor_SetLayoutSupport>
+					struct Support : V0::VKStruct_Base<VkDescriptorSetLayoutSupport, EStructureType::Descriptor_SetLayoutSupport>
 					{
 						EType SType    ;
 						void* Next     ;
 						Bool  Supported;
 
 						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetVariableDescriptorCountLayoutSupport">Specification</a>  */
-						struct SetVariableCount : Vault_0::VKStruct_Base
-							<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
+						struct SetVariableCount : V0::VKStruct_Base<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
 						{
 							EType  SType           ;
 							void*  Next            ;
 							uint32 MaxVariableCount;
 						};
 					};
-
-					/**
-					 * @brief Create a descriptor set layout.
-					 * 
-					 * @details
-					 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorSetLayout">Specification</a> 
-					 * 
-					 * \param _deviceHandle
-					 * \param _createInfo
-					 * \param _allocator
-					 * \param _setLayout
-					 * \return 
-					 */
-					static EResult Create
-					(
-						      LogicalDevice::Handle _deviceHandle,
-						const CreateInfo&           _createInfo  ,
-						      Handle&               _setLayout
-					)
-					{
-						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo.operator const VkDescriptorSetLayoutCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_setLayout));
-					}
 
 					/**
 					 * @brief Create a descriptor set layout.
@@ -379,21 +315,6 @@
 					)
 					{
 						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo.operator const VkDescriptorSetLayoutCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_setLayout));
-					}
-
-					/**
-					 * @brief Destroy a descriptor set layout.
-					 * 
-					 * @details
-					 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorSetLayout">Specification</a> 
-					 * 
-					 * \param _deviceHandle
-					 * \param _descriptorSet
-					 * \param _allocator
-					 */
-					static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _descriptorSet)
-					{
-						vkDestroyDescriptorSetLayout(_deviceHandle, _descriptorSet, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
 					}
 
 					/**
@@ -431,7 +352,7 @@
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineLayoutCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineLayoutCreateInfo, EStructureType::Pipeline_Layout_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineLayoutCreateInfo, EStructureType::Pipeline_Layout_CreateInfo>
 				{
 					      EType                  SType                 ;
 					const void*                  Next                  ;
@@ -441,28 +362,6 @@
 					      uint32                 PushConstantRangeCount;
 					const PushConstantRange*     PushConstantRanges    ;
 				};
-
-				/**
-				 * @brief Create a pipeline layout.
-				 * 
-				 * @details
-				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineLayout">Specification</a> 
-				 * 
-				 * \param _deviceHandle
-				 * \param _creationSpec
-				 * \param _allocator
-				 * \param _pipelineLayout
-				 * \return 
-				 */
-				static EResult Create
-				(
-					      LogicalDevice::Handle _deviceHandle  ,
-					const CreateInfo&           _creationSpec  ,
-					      Handle&               _pipelineLayout
-				)
-				{
-					return EResult(vkCreatePipelineLayout(_deviceHandle, _creationSpec.operator const VkPipelineLayoutCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_pipelineLayout));
-				}
 
 				/**
 				 * @brief Create a pipeline layout.
@@ -497,21 +396,6 @@
 				 * \param _pipelineLayout
 				 * \param _allocator
 				 */
-				static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipelineLayout)
-				{
-					vkDestroyPipelineLayout(_deviceHandle, _pipelineLayout, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-				}
-
-				/**
-				 * @brief Destroy a pipeline layout.
-				 * 
-				 * @details
-				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipelineLayout">Specification</a> 
-				 * 
-				 * \param _deviceHandle
-				 * \param _pipelineLayout
-				 * \param _allocator
-				 */
 				static void Destroy
 				(
 					      LogicalDevice::Handle        _deviceHandle  ,
@@ -532,7 +416,7 @@
 				using SampleMask = VkSampleMask;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineMultisampleStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineMultisampleStateCreateInfo, EStructureType::Pipeline_MultisampleState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineMultisampleStateCreateInfo, EStructureType::Pipeline_MultisampleState_CreateInfo>
 				{
 					      EType        SType                ;
 					const void*        Next                 ;
@@ -555,7 +439,7 @@
 				using CullModeFlags = Bitmask<ECullModeFlag, VkCullModeFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineRasterizationStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineRasterizationStateCreateInfo, EStructureType::Pipeline_RasterizationState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineRasterizationStateCreateInfo, EStructureType::Pipeline_RasterizationState_CreateInfo>
 				{
 						  EType         SType                  ;
 					const void*         Next                   ;
@@ -585,7 +469,7 @@
 			struct Specialization
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationMapEntry">Specification</a>  */
-				struct MapEntry : Vault_0::VKStruct_Base<VkSpecializationMapEntry>
+				struct MapEntry : V0::VKStruct_Base<VkSpecializationMapEntry>
 				{
 					uint32   ConstantID;
 					uint32   Offset    ;
@@ -593,7 +477,7 @@
 				};
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationInfo">Specification</a>  */
-				struct Info : Vault_0::VKStruct_Base<VkSpecializationInfo>
+				struct Info : V0::VKStruct_Base<VkSpecializationInfo>
 				{
 					      uint32    MapEntryCount;
 					const MapEntry* MapEntires   ;
@@ -611,7 +495,7 @@
 				using CreateFlags = Bitmask<EPipelineShaderStageCreateFlag, VkShaderStageFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineShaderStageCreateInfo , EStructureType::Pipeline_ShaderStage_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineShaderStageCreateInfo , EStructureType::Pipeline_ShaderStage_CreateInfo>
 				{
 						  EType                 SType         ;
 					const void*                 Next          ;
@@ -630,7 +514,7 @@
 				using CreateFlags = Bitmask<EUndefined, VkPipelineTessellationStateCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineTessellationStateCreateInfo, EStructureType::Pipeline_TessellationState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineTessellationStateCreateInfo, EStructureType::Pipeline_TessellationState_CreateInfo>
 				{
 					      EType       SType             ;
 					const void*       Next              ;
@@ -647,7 +531,7 @@
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputAttributeDescription">Specification</a>  */
-				struct AttributeDescription : Vault_0::VKStruct_Base<VkVertexInputAttributeDescription>
+				struct AttributeDescription : V0::VKStruct_Base<VkVertexInputAttributeDescription>
 				{
 					uint32  Location;
 					uint32  Binding ;
@@ -656,7 +540,7 @@
 				};
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputBindingDescription">Specification</a>  */
-				struct BindingDescription : Vault_0::VKStruct_Base<VkVertexInputBindingDescription>
+				struct BindingDescription : V0::VKStruct_Base<VkVertexInputBindingDescription>
 				{
 					uint32           Binding  ;
 					uint32           Stride   ;
@@ -664,7 +548,7 @@
 				};
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineVertexInputStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineVertexInputStateCreateInfo, EStructureType::Pipeline_VertexInputState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineVertexInputStateCreateInfo, EStructureType::Pipeline_VertexInputState_CreateInfo>
 				{
 						  EType                 SType                        ;
 					const void*                 Next                         ;
@@ -682,7 +566,7 @@
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineViewportStateCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkPipelineViewportStateCreateInfo, EStructureType::Pipeline_ViewportState_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkPipelineViewportStateCreateInfo, EStructureType::Pipeline_ViewportState_CreateInfo>
 				{
 						  EType       SType        ;
 					const void*       Next         ;
@@ -706,7 +590,7 @@
 				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkComputePipelineCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkComputePipelineCreateInfo, EStructureType::ComputePipeline_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkComputePipelineCreateInfo, EStructureType::ComputePipeline_CreateInfo>
 				{
 					      EType                   SType             ;
 					const void*                   Next              ;
@@ -716,31 +600,6 @@
 					      Pipeline::Handle        BasePipelineHandle;
 					      sint32                  BasePipelineIndex ;
 				};
-
-				/**
-				 * @brief Create a compute pipeline.
-				 * 
-				 * @details <a href="linkURL">Specification</a> 
-				 * 
-				 * \param _deviceHandle
-				 * \param _cache
-				 * \param _createInfoCount
-				 * \param _createInfos
-				 * \param _allocator
-				 * \param _pipelines
-				 * \return 
-				 */
-				static EResult Create
-				(
-					      LogicalDevice::Handle        _deviceHandle   ,
-					      Cache::Handle                _cache          ,
-					      uint32                       _createInfoCount,
-					const CreateInfo*                  _createInfos    ,
-					      Handle*                      _pipelines
-				)
-				{
-					return EResult(vkCreateComputePipelines(_deviceHandle, _cache, _createInfoCount, _createInfos->operator const VkComputePipelineCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), _pipelines));
-				}
 
 				/**
 				 * @brief Create a compute pipeline.
@@ -781,7 +640,7 @@
 				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineCreateInfo">Specification</a>  */
-				struct CreateInfo : Vault_0::VKStruct_Base<VkGraphicsPipelineCreateInfo, EStructureType::GraphicsPipeline_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkGraphicsPipelineCreateInfo, EStructureType::GraphicsPipeline_CreateInfo>
 				{
 					using RenderPass_Handle = VkRenderPass;   // RenderPass::Handle not defined yet. (Defined in VT_RenderPass.hpp)
 
@@ -808,7 +667,7 @@
 
 				/**
 				 * @brief Graphics pipelines can contain multiple shader groups that can be bound individually. \
-				 * Each shader group behaves as if it was a pipeline using the shader group’s state.
+				 * Each shader group behaves as if it was a pipeline using the shader groups state.
 				 * 
 				 * @details
 				 *  When the pipeline is bound by regular means, it behaves as if the state of group 0 is active, 
@@ -820,7 +679,7 @@
 				struct ShaderGroup 
 				{
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsShaderGroupCreateInfoNV">Specification</a>  */
-					struct CreateInfo : Vault_0::VKStruct_Base<VkGraphicsShaderGroupCreateInfoNV, EStructureType::GraphicsShaderGroup_CreateInfo_NV>
+					struct CreateInfo : V0::VKStruct_Base<VkGraphicsShaderGroupCreateInfoNV, EStructureType::GraphicsShaderGroup_CreateInfo_NV>
 					{
 						      EType                          SType            ;
 						const void*                          Next             ;
@@ -831,7 +690,7 @@
 					};
 
 					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineShaderGroupsCreateInfoNV">Specification</a>  */
-					struct MultipleCreateInfo : Vault_0::VKStruct_Base<VkGraphicsPipelineShaderGroupsCreateInfoNV, EStructureType::GraphicsPipeline_ShaderGroups_CreateInfo_NV>
+					struct MultipleCreateInfo : V0::VKStruct_Base<VkGraphicsPipelineShaderGroupsCreateInfoNV, EStructureType::GraphicsPipeline_ShaderGroups_CreateInfo_NV>
 					{
 						      EType             SType;
 						const void*             Next;
@@ -841,32 +700,6 @@
 						const Pipeline::Handle* Pipelines;
 					};
 				};
-
-				/**
-				 * @brief Create a graphics pipeline.
-				 * 
-				 * @details
-				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateGraphicsPipelines">Specification</a> 
-				 * 
-				 * \param _deviceHandle
-				 * \param _pipelineCache
-				 * \param _createInfoCount
-				 * \param _createInfos
-				 * \param _allocator
-				 * \param _pipelines
-				 * \return 
-				 */
-				static EResult Create
-				(
-					      LogicalDevice::Handle _deviceHandle   ,
-					      Cache::Handle         _pipelineCache  ,
-					      uint32                _createInfoCount,
-					const CreateInfo*           _createInfos    ,
-					      Handle*               _pipelines
-				)
-				{
-					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos->operator const VkGraphicsPipelineCreateInfo*(), Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), _pipelines));
-				}
 
 				/**
 				 * @brief Create a graphics pipeline.
@@ -906,21 +739,6 @@
 			 * \param _pipeline
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipeline)
-			{
-				vkDestroyPipeline(_deviceHandle, _pipeline, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			 * @brief Destroy a pipeline object.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipeline">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _pipeline
-			 * \param _allocator
-			 */
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipeline, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroyPipeline(_deviceHandle, _pipeline, _allocator->operator const VkAllocationCallbacks*());
@@ -928,14 +746,16 @@
 		};
 	}
 
-	namespace Vault_2
+	namespace V2
 	{
-		struct Pipeline : public Vault_1::Pipeline
+		struct Pipeline : public V1::Pipeline
 		{
-			using Parent = Vault_1::Pipeline;
+			using Parent = V1::Pipeline;
 
 			struct Cache : public Parent::Cache
 			{
+				using Parent = Parent::Cache;
+
 				struct CreateInfo : public Parent::Cache::CreateInfo
 				{
 					CreateInfo()
@@ -944,6 +764,44 @@
 						Next  = nullptr  ;
 					}
 				};
+
+				/**
+				* @brief Create a pipeline cache.
+				* 
+				* @details
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineCache">Specification</a>
+				* 
+				* \param _deviceHandle
+				* \param _createInfo
+				* \param _pipelineCache
+				* \return 
+				*/
+				static EResult Create
+				(
+					LogicalDevice::Handle  _deviceHandle ,
+					const CreateInfo&      _createInfo   ,
+					Cache::Handle&         _pipelineCache
+				)
+				{
+					return Parent::Create(_deviceHandle, _createInfo, Memory::DefaultAllocator, _pipelineCache);
+				}
+
+				using Parent::Create;
+
+				/**
+				 * @brief Destroy a pipeline cache.
+				 * 
+				 * @details
+
+				 * \param _deviceHandle
+				 * \param _cache
+				 */
+				static void Destroy(LogicalDevice::Handle _deviceHandle, Cache::Handle _cache)
+				{
+					Parent::Destroy(_deviceHandle, _cache, Memory::DefaultAllocator);
+				}
+
+				using Parent::Destroy;
 			};
 
 			struct ColorBlendState : public Parent::ColorBlendState
@@ -996,11 +854,15 @@
 
 			struct Layout : public Parent::Layout
 			{
-				struct DescriptorSet : public Parent::Layout::DescriptorSet
+				using Parent = Parent::Layout;
+
+				struct DescriptorSet : public Parent::DescriptorSet
 				{
-					struct Binding : public Parent::Layout::DescriptorSet::Binding
+					using Parent = Parent::DescriptorSet;
+
+					struct Binding : public Parent::Binding
 					{
-						struct FlagsCreateInfo : public Parent::Layout::DescriptorSet::Binding::FlagsCreateInfo
+						struct FlagsCreateInfo : public Parent::Binding::FlagsCreateInfo
 						{
 							FlagsCreateInfo()
 							{
@@ -1010,7 +872,7 @@
 						};
 					};
 
-					struct CreateInfo : public Parent::Layout::DescriptorSet::CreateInfo
+					struct CreateInfo : public Parent::CreateInfo
 					{
 						CreateInfo()
 						{
@@ -1019,7 +881,7 @@
 						}
 					};
 
-					struct Support : public Parent::Layout::DescriptorSet::Support
+					struct Support : public Parent::Support
 					{
 						Support()
 						{
@@ -1027,7 +889,7 @@
 							Next  = nullptr  ;
 						}
 
-						struct SetVariableCount : public Parent::Layout::DescriptorSet::Support::SetVariableCount
+						struct SetVariableCount : public Parent::Support::SetVariableCount
 						{
 							SetVariableCount()
 							{
@@ -1036,6 +898,43 @@
 							}
 						};
 					};
+
+					/**
+					 * @brief Create a descriptor set layout.
+					 * 
+					 * @details
+					 * 
+					 * \param _deviceHandle
+					 * \param _createInfo
+					 * \param _setLayout
+					 * \return 
+					 */
+					static EResult Create
+					(
+						      LogicalDevice::Handle _deviceHandle,
+						const CreateInfo&           _createInfo  ,
+						      Handle&               _setLayout
+					)
+					{
+						return Parent::Create(_deviceHandle, _createInfo, Memory::DefaultAllocator, _setLayout);
+					}
+
+					using Parent::Create;
+
+					/**
+					 * @brief Destroy a descriptor set layout.
+					 * 
+					 * @details
+					 * 
+					 * \param _deviceHandle
+					 * \param _descriptorSet
+					 */
+					static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _descriptorSet)
+					{
+						Parent::Destroy(_deviceHandle, _descriptorSet, Memory::DefaultAllocator);
+					}
+
+					using Parent::Destroy;
 				};
 
 				struct CreateInfo : public Parent::Layout::CreateInfo
@@ -1046,6 +945,43 @@
 						Next  = nullptr  ;
 					}
 				};
+
+				/**
+				* @brief Create a pipeline layout.
+				* 
+				* @details
+				* 
+				* \param _deviceHandle
+				* \param _creationSpec
+				* \param _pipelineLayout
+				* \return 
+				*/
+				static EResult Create
+				(
+						  LogicalDevice::Handle _deviceHandle  ,
+					const CreateInfo&           _creationSpec  ,
+						  Handle&               _pipelineLayout
+				)
+				{
+					return Parent::Create(_deviceHandle, _creationSpec, Memory::DefaultAllocator, _pipelineLayout);
+				}
+
+				using Parent::Create;
+
+				/**
+				 * @brief Destroy a pipeline layout.
+				 * 
+				 * @details
+				 * 
+				 * \param _deviceHandle
+				 * \param _pipelineLayout
+				 */
+				static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipelineLayout)
+				{
+					Parent::Destroy(_deviceHandle, _pipelineLayout, Memory::DefaultAllocator);
+				}
+
+				using Parent::Destroy;
 			};
 
 			struct MultiSampleState : public Parent::MultisampleState
@@ -1122,6 +1058,8 @@
 
 			struct Compute : public Parent::Compute
 			{
+				using Parent = Parent::Compute;
+
 				struct CreateInfo : public Parent::Compute::CreateInfo
 				{
 					CreateInfo()
@@ -1130,10 +1068,40 @@
 						Next  = nullptr  ;
 					}
 				};
+
+				/**
+				 * @brief Create a compute pipeline.
+				 * 
+				 * @details 
+				 * 
+				 * \param _deviceHandle
+				 * \param _cache
+				 * \param _createInfoCount
+				 * \param _createInfos
+				 * \param _pipelines
+				 * \return 
+				 */
+				static EResult Create
+				(
+					      LogicalDevice::Handle        _deviceHandle   ,
+					      Cache::Handle                _cache          ,
+					      uint32                       _createInfoCount,
+					const CreateInfo*                  _createInfos    ,
+					      Handle*                      _pipelines
+				)
+				{
+					return Parent::Create(_deviceHandle, _cache, _createInfoCount, _createInfos, Memory::DefaultAllocator, _pipelines);
+				}
+
+				using Parent::Create;
+
+
 			};
 
-			struct Graphics : public Parent::Graphics::CreateInfo
+			struct Graphics : public Parent::Graphics
 			{
+				using Parent = Parent::Graphics;
+
 				struct CreateInfo : public Parent::Graphics::CreateInfo
 				{
 					CreateInfo()
@@ -1163,21 +1131,60 @@
 						}
 					};
 				};
+
+				/**
+				 * @brief Create a graphics pipeline.
+				 * 
+				 * @details
+				 * 
+				 * \param _deviceHandle
+				 * \param _pipelineCache
+				 * \param _createInfoCount
+				 * \param _createInfos
+				 * \param _pipelines
+				 * \return 
+				 */
+				static EResult Create
+				(
+					      LogicalDevice::Handle _deviceHandle   ,
+					      Cache::Handle         _pipelineCache  ,
+					      uint32                _createInfoCount,
+					const CreateInfo*           _createInfos    ,
+					      Handle*               _pipelines
+				)
+				{
+					return Parent::Create(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos, Memory::DefaultAllocator, _pipelines);
+				}
+
+				using Parent::Create;
 			};
+
+			/**
+			 * @brief Destroy a pipeline object.
+			 * 
+			 * @details
+			 * 
+			 * \param _deviceHandle
+			 * \param _pipeline
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipeline)
+			{
+				Parent::Destroy(_deviceHandle, _pipeline, Memory::DefaultAllocator);
+			}
 		};
 	}
 
-	namespace Vault_4
+	namespace V4
 	{
-		class Pipeline : public Vault_2::Pipeline
+		class Pipeline : public V2::Pipeline
 		{
 		public:
-			using Parent = Vault_2::Pipeline;
+			using Parent = V2::Pipeline;
 
 			class Cache : public Parent::Cache
 			{
 			public:
-				using Parent =  Parent::Cache;
+				using Parent = V2::Pipeline::Cache;
 
 				EResult Create
 				(
@@ -1230,12 +1237,12 @@
 			class Layout : public Parent::Layout
 			{
 			public:
-				using Parent = Parent::Layout;
+				using Parent = V2::Pipeline::Layout;
 
 				class DescriptorSet : public Parent::DescriptorSet
 				{
 				public:
-					using Parent = Parent::DescriptorSet;
+					using Parent = V2::Pipeline::Layout::DescriptorSet;
 
 					void Assign(LogicalDevice& _device, CreateInfo& _info)
 					{
@@ -1341,7 +1348,7 @@
 				LogicalDevice* device;
 			};
 
-			Handle GetHandle() const
+			const Handle& GetHandle() const
 			{
 				return handle;
 			}
