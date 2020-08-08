@@ -450,10 +450,10 @@ VT_Namespace
 					Presentation
 				};
 
-				void Assign(LogicalDevice::Handle _logicalDevice, CreateInfo& _info)
+				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info)
 				{
-					device = _logicalDevice;
-					info   = _info         ;
+					device = &_logicalDevice;
+					info   = _info          ;
 				}
 
 				uint32 GetFamilyIndex() const
@@ -468,7 +468,7 @@ VT_Namespace
 
 				void Retrieve()
 				{
-					Parent::Get(device, info.QueueFamilyIndex, familyIndex, handle);
+					Parent::Get(*device, info.QueueFamilyIndex, familyIndex, handle);
 				}
 
 				bool FamilySpecified() const
@@ -517,7 +517,7 @@ VT_Namespace
 
 				uint32 familyIndex;
 
-				LogicalDevice::Handle device;
+				LogicalDevice* device;
 			};
 
 			EResult Create(PhysicalDevice::Handle _physicalDevice, CreateInfo& _createInfo)

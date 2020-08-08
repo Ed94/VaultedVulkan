@@ -195,6 +195,11 @@ VT_Namespace
                 Parent::Destroy(device, handle, allocator);
             }
 
+            const Handle& GetHandle() const
+            {
+                return handle;
+            }
+
 			operator Handle()
 			{
 				return handle;

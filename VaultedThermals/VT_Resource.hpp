@@ -1148,6 +1148,8 @@ VT_Namespace
 
 				if (returnCode != EResult::Success) return returnCode;
 
+				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+
 				Memory::AllocateInfo allocationInfo{};
 
 				allocationInfo.AllocationSize = memoryRequirements.Size;
@@ -1178,8 +1180,7 @@ VT_Namespace
 
 				EResult returnCode = Parent::Create(device, info, allocator, handle);
 
-				if (returnCode != EResult::Success)
-					return returnCode;
+				if (returnCode != EResult::Success) return returnCode;
 
 				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
 

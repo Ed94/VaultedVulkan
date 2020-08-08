@@ -949,6 +949,19 @@ VT_Namespace
 				return EResult(Parent::GetAvailableExtensions(handle, _layerName, _extensionListing));
 			}
 
+			std::vector<QueueFamilyProperties> GetAvailableQueueFamilies()
+			{
+				std::vector<QueueFamilyProperties> queryResult; uint32 count;
+
+				QueryQueueFamilyProperties(&count, nullptr);
+
+				queryResult.resize(count);
+
+				QueryQueueFamilyProperties(&count, queryResult.data());
+
+				return queryResult;
+			}
+
 			const Features& GetFeatures() const
 			{
 				return features;

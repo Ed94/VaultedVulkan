@@ -733,6 +733,8 @@ VT_Namespace
 		struct CommandPool : public V1::CommandPool
 		{
 			using Parent = V1::CommandPool;
+
+			using CommandBuffer = V1::CommandBuffer;
 			
 			struct AllocateInfo : public Parent::AllocateInfo
 			{
@@ -1083,228 +1085,13 @@ VT_Namespace
 
 	namespace V4
 	{
-		class CommandPool : public V2::CommandPool
-		{
-		public:
-			using Parent = V2::CommandPool;
-
-			EResult Allocate(AllocateInfo& _info, CommandBuffer _buffer)
-			{
-				CommandBuffer::Handle handle;
-
-				EResult returnCode = Parent::Allocate(device, _info, &handle);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				_buffer.Assign(device, _info, handle);
-
-				return returnCode;
-			}
-
-			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _handles)
-			{
-				EResult returnCode = Parent::Allocate(device, _info, _handles);
-
-				return returnCode;
-			}
-
-			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _handles)
-			{
-				AllocateInfo info; 
-
-				info.Level       = _level; 
-				info.Pool        = handle; 
-				info.BufferCount = _count;
-
-				EResult returnCode = Parent::Allocate(device, info, _handles);
-
-				return returnCode;
-			}
-
-			EResult Allocate
-			(
-				ECommandBufferLevel                 _level         ,
-				uint32                              _count         ,
-				std::vector<CommandBuffer>&         _commandBuffers,
-				std::vector<CommandBuffer::Handle>& _handles
-			)
-			{
-				AllocateInfo info; 
-				
-				info.Level       = _level; 
-				info.Pool        = handle; 
-				info.BufferCount = _count;
-
-				_commandBuffers.resize(_count); _handles.resize(_count);
-
-				EResult returnCode = Parent::Allocate(device, info, _handles.data());
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				for (DeviceSize index = 0; index < _count; index++)
-				{
-					_commandBuffers[index].Assign(device, info, _handles[index]);
-				}
-
-				return returnCode;
-			}
-
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
-			{
-				device    = _device                 ;
-				info      = _info                   ;
-				allocator = Memory::DefaultAllocator;
-
-				return Parent::Create(device, info, handle);	
-			}
-
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
-			{
-				device    = _device   ;
-				info      = _info     ;
-				allocator = _allocator;
-
-				return Parent::Create(device, info, allocator, handle);	
-			}
-
-			void Destroy()
-			{
-				Parent::Destroy(device, handle, allocator);
-			}
-
-			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
-			{
-				Parent::Free(device, handle, _bufferCount, _commandBuffers);
-			}
-
-			void Free
-			(
-				const AllocateInfo&          _info          ,
-				const CommandBuffer::Handle* _commandBuffers
-			)
-			{
-				Parent::Free(device, handle, _info.BufferCount, _commandBuffers);	
-			}
-
-			void Free(CommandBuffer& _commandBuffer)
-			{
-				Parent::Free(device, handle, 1, &_commandBuffer.GetHandle());
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
-
-			EResult Reset(ResetFlags _flags)
-			{
-				Parent::Reset(device, handle, _flags);
-			}
-
-			EResult Trim(TrimFlags _flags)
-			{
-				Parent::Trim(device, handle, _flags);
-			}
-
-			operator Handle()
-			{
-				return handle;
-			}
-
-			operator Handle() const
-			{
-				return handle;
-			}
-
-			operator const Handle&() const
-			{
-				return handle;
-			}
-
-		#pragma region SingleTimeCommands
-
-			/**
-			 * @brief.
-			 */
-			CommandBuffer BeginSingleTimeCommands()
-			{
-				AllocateInfo allocationInfo{};
-
-				allocationInfo.Level       = ECommandBufferLevel::Primary;
-				allocationInfo.Pool        = handle                      ;
-				allocationInfo.BufferCount = 1                           ;
-
-				CommandBuffer commandBuffer;
-
-				Allocate(allocationInfo, commandBuffer);
-
-				CommandBuffer::BeginInfo beginInfo{};
-
-				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
-
-				commandBuffer.BeginRecord(beginInfo);
-
-				return commandBuffer;
-			}
-
-			/**
-			 * @brief.
-			 */
-			void EndSingleTimeCommands
-			(
-				CommandBuffer&        _commandBuffer, 
-				LogicalDevice::Queue& _queue
-			)
-			{
-				_commandBuffer.EndRecord();
-
-				CommandBuffer::SubmitInfo submitInfo{};
-
-				submitInfo.CommandBufferCount = 1                          ;
-				submitInfo.CommandBuffers     = &_commandBuffer.GetHandle();
-
-				_queue.SubmitToQueue(1, submitInfo, Null<Fence::Handle>);
-
-				_queue.WaitUntilIdle();
-
-				Free(_commandBuffer);
-			}
-
-			void CopyBuffer
-			(
-				Buffer&               _sourceBuffer     , 
-				Buffer&               _destinationBuffer, 
-				Buffer::CopyInfo&     _regionInfo       ,
-				LogicalDevice::Queue& _queue
-			)
-			{
-				CommandBuffer commandBuffer = BeginSingleTimeCommands();
-
-				commandBuffer.CopyBuffer(_sourceBuffer, _destinationBuffer, 1, &_regionInfo);
-
-				EndSingleTimeCommands(commandBuffer, _queue);
-			}
-
-		#pragma endregion SingleTimeCommands
-
-		protected:
-
-			Handle handle;
-
-			const Memory::AllocationCallbacks* allocator;
-
-			CreateInfo info;
-
-			LogicalDevice::Handle device;
-		};
-
 		class CommandBuffer : public V2::CommandBuffer
 		{
 		public:
 
 			using Parent = V2::CommandBuffer;
 
-			using AllocateInfo = CommandPool::AllocateInfo;
+			using AllocateInfo = V2::CommandPool::AllocateInfo;
 
 			const AllocateInfo& GetAllocateInfo() const
 			{
@@ -1677,6 +1464,223 @@ VT_Namespace
 			Handle handle;
 
 			AllocateInfo info;
+
+			LogicalDevice::Handle device;
+		};
+
+		class CommandPool : public V2::CommandPool
+		{
+		public:
+			using Parent = V2::CommandPool;
+
+			using CommandBuffer = V4::CommandBuffer;
+
+			EResult Allocate(AllocateInfo& _info, CommandBuffer& _buffer)
+			{
+				CommandBuffer::Handle handle;
+
+				EResult returnCode = Parent::Allocate(device, _info, &handle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				_buffer.Assign(device, _info, handle);
+
+				return returnCode;
+			}
+
+			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _handles)
+			{
+				EResult returnCode = Parent::Allocate(device, _info, _handles);
+
+				return returnCode;
+			}
+
+			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _handles)
+			{
+				AllocateInfo info; 
+
+				info.Level       = _level; 
+				info.Pool        = handle; 
+				info.BufferCount = _count;
+
+				EResult returnCode = Parent::Allocate(device, info, _handles);
+
+				return returnCode;
+			}
+
+			EResult Allocate
+			(
+				ECommandBufferLevel                 _level         ,
+				uint32                              _count         ,
+				std::vector<CommandBuffer>&         _commandBuffers,
+				std::vector<CommandBuffer::Handle>& _handles
+			)
+			{
+				AllocateInfo info; 
+				
+				info.Level       = _level; 
+				info.Pool        = handle; 
+				info.BufferCount = _count;
+
+				_commandBuffers.resize(_count); _handles.resize(_count);
+
+				EResult returnCode = Parent::Allocate(device, info, _handles.data());
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				for (DeviceSize index = 0; index < _count; index++)
+				{
+					_commandBuffers[index].Assign(device, info, _handles[index]);
+				}
+
+				return returnCode;
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			{
+				device    = _device                 ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device, info, handle);	
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = _device   ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device, info, allocator, handle);	
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device, handle, allocator);
+			}
+
+			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
+			{
+				Parent::Free(device, handle, _bufferCount, _commandBuffers);
+			}
+
+			void Free
+			(
+				const AllocateInfo&          _info          ,
+				const CommandBuffer::Handle* _commandBuffers
+			)
+			{
+				Parent::Free(device, handle, _info.BufferCount, _commandBuffers);	
+			}
+
+			void Free(CommandBuffer& _commandBuffer)
+			{
+				Parent::Free(device, handle, 1, &_commandBuffer.GetHandle());
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult Reset(ResetFlags _flags)
+			{
+				Parent::Reset(device, handle, _flags);
+			}
+
+			EResult Trim(TrimFlags _flags)
+			{
+				Parent::Trim(device, handle, _flags);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle&() const
+			{
+				return handle;
+			}
+
+		#pragma region SingleTimeCommands
+
+			/**
+			 * @brief.
+			 */
+			CommandBuffer BeginSingleTimeCommands()
+			{
+				AllocateInfo allocationInfo{};
+
+				allocationInfo.Level       = ECommandBufferLevel::Primary;
+				allocationInfo.Pool        = handle                      ;
+				allocationInfo.BufferCount = 1                           ;
+
+				CommandBuffer commandBuffer;
+
+				Allocate(allocationInfo, commandBuffer);
+
+				CommandBuffer::BeginInfo beginInfo{};
+
+				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
+
+				commandBuffer.BeginRecord(beginInfo);
+
+				return commandBuffer;
+			}
+
+			/**
+			 * @brief.
+			 */
+			void EndSingleTimeCommands
+			(
+				CommandBuffer&        _commandBuffer, 
+				LogicalDevice::Queue& _queue
+			)
+			{
+				_commandBuffer.EndRecord();
+
+				CommandBuffer::SubmitInfo submitInfo{};
+
+				submitInfo.CommandBufferCount = 1                          ;
+				submitInfo.CommandBuffers     = &_commandBuffer.GetHandle();
+
+				_queue.SubmitToQueue(1, submitInfo, Null<Fence::Handle>);
+
+				_queue.WaitUntilIdle();
+
+				Free(_commandBuffer);
+			}
+
+			void CopyBuffer
+			(
+				Buffer&               _sourceBuffer     , 
+				Buffer&               _destinationBuffer, 
+				Buffer::CopyInfo&     _regionInfo       ,
+				LogicalDevice::Queue& _queue
+			)
+			{
+				CommandBuffer commandBuffer = BeginSingleTimeCommands();
+
+				commandBuffer.CopyBuffer(_sourceBuffer, _destinationBuffer, 1, &_regionInfo);
+
+				EndSingleTimeCommands(commandBuffer, _queue);
+			}
+
+		#pragma endregion SingleTimeCommands
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
 
 			LogicalDevice::Handle device;
 		};
