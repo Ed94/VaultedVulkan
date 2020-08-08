@@ -653,7 +653,6 @@ VT_Namespace
 				      DescriptorPool::Handle _descriptorPool    ,
 				      uint32                 _descriptorSetCount,
 				const Handle*                _descriptorSets
-
 			)
 			{
 				return EResult(vkFreeDescriptorSets(_device, _descriptorPool, _descriptorSetCount, _descriptorSets));
@@ -1097,6 +1096,18 @@ VT_Namespace
 					Next  = nullptr;
 				}
 			};
+
+			static EResult Free
+			(
+				      LogicalDevice::Handle _device,
+				const AllocateInfo&   _info,
+				const Handle*         _descriptorSets
+			)
+			{
+				Parent::Free(_device, _info.DescriptorPool, _info.DescriptorSetCount, _descriptorSets);
+			}
+
+			using Parent::Free;
 		};
 	}
 
@@ -1493,37 +1504,49 @@ VT_Namespace
 		public:
 			using Parent = V2::DescriptorSet;
 
-			void Assign(LogicalDevice& _device, AllocateInfo& _info, Handle _handle)
+			void Assign(LogicalDevice& _device, AllocateInfo& _info, Handle _handle, DeviceSize _index)
 			{
-				device = &_device;
-				info   = _info   ;
-				handle = _handle ;
+				device = &_device ;
+				info   = _info    ;
+				handle = &_handle ;
+				index  = _index   ;
 			}
 			
-			static EResult Allocate(LogicalDevice& _device, AllocateInfo& _info, std::vector<DescriptorSet>& _sets)
+			static EResult Allocate
+			(
+				LogicalDevice& _device, 
+				AllocateInfo& _info, 
+				std::vector<DescriptorSet>& _sets,
+				std::vector<Handle>& _handles
+			)
 			{
-				_sets.resize(_info.DescriptorSetCount); std::vector<Handle> handles(_info.DescriptorSetCount);
+				_sets.resize(_info.DescriptorSetCount); _handles.resize(_info.DescriptorSetCount);
 
-				EResult returnCode =  Parent::Allocate(_device.GetHandle(), _info, handles.data());
+				EResult returnCode =  Parent::Allocate(_device.GetHandle(), _info, _handles.data());
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				for (DeviceSize index = 0; index < _info.DescriptorSetCount; index++)
 				{
-					_sets[index].Assign(_device, _info, handles[index]);
+					_sets[index].Assign(_device, _info, _handles[index], index);
 				}
 
 				return returnCode;
 			}
 
-			static EResult Free(LogicalDevice& _device, AllocateInfo& _info, Handle* _handles)
+			EResult Free()
 			{
-				return Parent::Free(_device.GetHandle(), _info.DescriptorPool, _info.DescriptorSetCount, _handles);
+				return Parent::Free(device->GetHandle(), info, handle - index);	
+			}
+
+			const Handle* GetHandles() const
+			{
+				return handle - index;
 			}
 
 			const Handle& GetHandle() const
 			{
-				return handle;
+				return *handle;
 			}
 
 			void Update
@@ -1539,9 +1562,11 @@ VT_Namespace
 
 		protected:
 
-			Handle handle;
+			Handle* handle;
 
 			AllocateInfo info;
+
+			DeviceSize index;
 
 			LogicalDevice* device;
 		};

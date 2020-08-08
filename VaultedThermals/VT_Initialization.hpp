@@ -29,7 +29,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 VT_Namespace
 {
-	namespace V1
+	namespace Corridors
 	{
 		/**
 		 * @brief Construct an API version number.
@@ -45,7 +45,10 @@ VT_Namespace
 		{
 			return VK_MAKE_VERSION(_major, _minor, _patch);
 		}
-		
+	}
+
+	namespace V1
+	{
 		/**
 		@brief An object that manages the represented application process state within the GPU.
 
@@ -510,7 +513,7 @@ VT_Namespace
 
 			ReturnType>::type GetProcedureAddress(RoCStr _procedureName) const
 			{
-				return V1::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
+				return Parent::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
 			}
 
 		protected:

@@ -189,32 +189,158 @@ VT_Namespace
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  */
-			static EResult QueryAvailableLayers(uint32* _numContainer, LayerProperties* _propertiesContainer)
+			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
 			{
-				return EResult(vkEnumerateInstanceLayerProperties(_numContainer, (VkLayerProperties*)(_propertiesContainer)));
+				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, _propertiesContainer->operator VkLayerProperties*()));
 			}
 		};
 	}
 
 	namespace V2
 	{
-		struct ValidationLayers : public V1::ValidationLayers
+		using V1::CallbackDataFlags;
+		using V1::FPtr_CreateMessenger;
+		using V1::MessageServerityFlags;
+		using V1::MessageTypeFlags;
+		using V1::Extension_DebugUtility;
+
+		struct Label : V1::Label
 		{
-			static uint32 GetNumberOfLayers()
+			Label()
 			{
-				uint32 layerCount;
-
-				vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
-
-				return layerCount;
-			}
-
-			static EResult GetAvailableLayers(LayerProperties* _container)
-			{
-				uint32 layerCount = GetNumberOfLayers();
-
-				return EResult(vkEnumerateInstanceLayerProperties(&layerCount, (VkLayerProperties*)(_container)));
+				SType = STypeEnum;
+				Next  = nullptr  ;
 			}
 		};
+
+		struct ObjectInfo : V1::ObjectInfo
+		{
+			ObjectInfo()
+			{
+				SType = STypeEnum;
+				Next  = nullptr  ;
+			}
+		};
+
+		struct DebugMessenger : public V1::DebugMessenger
+		{
+			using Parent = V1::DebugMessenger;
+
+			struct CallbackData : Parent::CallbackData
+			{
+				CallbackData()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			static EResult Create
+			(
+				      AppInstance::Handle          _appInstance,
+				const DebugMessenger::CreateInfo&  _createSpec ,
+				      DebugMessenger::Handle&      _messenger
+			)
+			{
+				return Parent::Create(_appInstance, _createSpec, Memory::DefaultAllocator,_messenger);
+			}
+
+			using Parent::Create;
+
+			static void Destroy
+			(
+				      AppInstance::Handle          _appInstance,
+				      DebugMessenger::Handle       _messenger  
+			)
+			{
+				Parent::Destroy(_appInstance, _messenger, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+		};
+
+		struct ValidationLayers : public V1::ValidationLayers
+		{
+			static EResult GetAvailableLayers(std::vector<LayerProperties>& _container)
+			{
+				uint32 layerCount;
+				
+				EResult result = QueryAvailableLayers(layerCount, nullptr);
+
+				if (result != EResult::Success) return result;
+
+				return QueryAvailableLayers(layerCount, _container.data());
+			}
+		};
+	}
+
+	namespace V4
+	{
+		using V2::CallbackDataFlags;
+		using V2::FPtr_CreateMessenger;
+		using V2::MessageServerityFlags;
+		using V2::MessageTypeFlags;
+		using V2::Extension_DebugUtility;
+
+		class DebugMessenger : public V2::DebugMessenger
+		{
+		public:
+
+			using Parent = V2::DebugMessenger;
+
+
+			EResult Create
+			(
+				      AppInstance& _appInstance,
+				const CreateInfo&  _createSpec 
+			)
+			{
+				app       = &_appInstance;
+				info      = _createSpec  ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(app->GetHandle(), _createSpec, handle);
+			}
+
+			EResult Create
+			(
+					  AppInstance&                 _appInstance,
+				const CreateInfo&                  _createSpec ,
+				const Memory::AllocationCallbacks* _allocator  
+			)
+			{
+				app       = &_appInstance;
+				info      = _createSpec  ;
+				allocator = _allocator   ;
+
+				return Parent::Create(app->GetHandle(), _createSpec, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(app->GetHandle(), handle, allocator);
+			}
+
+		protected:
+
+			AppInstance* app;
+
+			CreateInfo info;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			Handle handle;
+		};
+
+		using V2::ValidationLayers;
 	}
 }

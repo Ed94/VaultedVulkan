@@ -70,6 +70,8 @@ VT_Namespace
 			{
 				using Handle = VkQueue;   ///< Opaque handle to a queue object
 
+				using PresentationInfo = VkPresentInfoKHR;   ///< Proper structure is defined later. (See VT_Swapchain.hpp)
+
 				using SubmitInfo = VkSubmitInfo;   ///< Proper structure is defined later. (See VT_Command.hpp)
 
 				using Fence_Handle = VkFence;
@@ -107,6 +109,20 @@ VT_Namespace
 				static void Get(LogicalDevice::Handle _device, uint32 _queueFamilyIndex, uint32 _queueIndex, Handle& _queueReturn)
 				{
 					vkGetDeviceQueue(_device, _queueFamilyIndex, _queueIndex, &_queueReturn);
+				}
+
+				/**
+				* @brief.
+				* 
+				* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueuePresentKHR">Specification</a> 
+				* 
+				* \param _queue
+				* \param _presentation
+				* \return 
+				*/
+				static EResult QueuePresentation(LogicalDevice::Queue::Handle _queue, const PresentationInfo& _presentation)
+				{
+					return EResult(vkQueuePresentKHR(_queue, &_presentation));
 				}
 
 				/**
@@ -460,6 +476,11 @@ VT_Namespace
 				bool FamilySpecified()
 				{
 					return type != EType::Unspecified ? true : false;
+				}
+
+				EResult QueuePresentation(const PresentationInfo& _presentationInfo)
+				{
+					return Parent::QueuePresentation(handle, _presentationInfo);
 				}
 
 				void SpecifyFamily(uint32 _index, EType _type)

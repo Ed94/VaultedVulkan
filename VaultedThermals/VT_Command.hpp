@@ -1025,7 +1025,7 @@ VT_Namespace
 				std::vector<Handle>& _handles
 			)
 			{
-				_commandBuffers.resize(_info.BufferCount); std::vector<Handle> _handles(_info.BufferCount);
+				_commandBuffers.resize(_info.BufferCount); _handles.resize(_info.BufferCount);
 
 				EResult returnCode = Parent::Allocate(_device.GetHandle(), _info, _handles.data());
 
@@ -1109,6 +1109,23 @@ VT_Namespace
 			)
 			{
 				Parent::Parent::CopyBuffer(*handle, _sourceBuffer.GetHandle(), _destinationBuffer.GetHandle(), _regionCount, _regions);
+			}
+
+			static void CopyBuffer
+			(
+				Buffer               _sourceBuffer     , 
+				Buffer _destinationBuffer, 
+				Buffer::CopyInfo& _regionInfo       ,
+				LogicalDevice& _device           ,
+				CommandPool& _pool             ,
+				LogicalDevice::Queue& _queue
+			)
+			{
+				CommandBuffer commandBuffer; commandBuffer.BeginSingleTimeCommands(_device, _pool);
+
+				commandBuffer.CopyBuffer(_sourceBuffer, _destinationBuffer, 1, &_regionInfo);
+
+				commandBuffer.EndSingleTimeCommands(_queue);
 			}
 
 			void CopyBufferToImage

@@ -271,20 +271,6 @@ VT_Namespace
 				}
 			};
 
-			static bool CheckForPresentationSupport
-			(
-				PhysicalDevice::Handle _physicalDevice,
-				Surface::Handle _surface,
-				uint32 _queueIndex
-			)
-			{
-				Bool presentationSupport = EBool::False;
-
-				Surface::CheckPhysicalDeviceSupport(_physicalDevice, _queueIndex, _surface, presentationSupport);
-
-				return presentationSupport;
-			}
-
 			static EResult Create
 			(
 				AppInstance::Handle _appHandle    ,
@@ -301,6 +287,8 @@ VT_Namespace
 			{
 				Parent::Destroy(_appHandle, _surfaceHandle, Memory::DefaultAllocator);
 			}
+
+			using Parent::Destroy;
 
 			/**
 			 * @brief Provides the available surface formats.
@@ -355,7 +343,70 @@ VT_Namespace
 		class Surface : public V2::Surface
 		{
 		public:
+
 			using Parent = V2::Surface;
+
+			EResult Create
+			(
+				AppInstance& _appHandle ,
+				CreateInfo&  _createInfo
+			)
+			{
+				app = &_appHandle;
+				info = _createInfo;
+				allocator = Memory::DefaultAllocator;
+				
+				return Parent::Create(app->GetHandle(), info, handle);
+			}
+
+			EResult Create
+			(
+				      AppInstance&                 _appHandle ,
+				      CreateInfo&                  _createInfo,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				app = &_appHandle;
+				info = _createInfo;
+				allocator = _allocator;
+				
+				return Parent::Create(app->GetHandle(), info, allocator, handle);
+			}
+
+			EResult CheckPhysicalDeviceSupport
+			(
+				PhysicalDevice& _physDevice      ,
+				uint32          _queueFamilyIndex,
+				Bool&           _checkResult
+			)
+			{
+				return Parent::CheckPhysicalDeviceSupport(_physDevice.GetHandle(), _queueFamilyIndex, handle, _checkResult);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(app->GetHandle(), handle);
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult GetAvailableFormats(PhysicalDevice& _deviceHandle, std::vector<Surface::Format>& _formatsContainer)
+			{
+				return Parent::GetAvailableFormats(_deviceHandle.GetHandle(), handle, _formatsContainer);
+			}
+
+			EResult GetPhysicalDeviceCapabilities(PhysicalDevice& _device, Capabilities& _result)
+			{
+				return Parent::GetPhysicalDeviceCapabilities(_device.GetHandle(), handle, _result);
+			}
+
+			EResult GetSupportedPresentationModes(PhysicalDevice& _deviceHandle, std::vector<EPresentationMode>& _presentationModesContainer)
+			{
+				return Parent::GetSupportedPresentationModes(_deviceHandle.GetHandle(), handle, _presentationModesContainer);
+			}
 
 		protected:
 

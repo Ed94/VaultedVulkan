@@ -83,7 +83,7 @@ VT_Namespace
 				      uint32             WaitSemaphoreCount;
 				const Semaphore::Handle* WaitSemaphores    ;
 				      uint32             SwapchainCount    ;
-				const SwapChain::Handle* Swapchains        ;
+				const Handle*            Swapchains        ;
 				const uint32*            ImageIndices      ;
 				      EResult*           Results           ;
 			};
@@ -104,7 +104,7 @@ VT_Namespace
 			static EResult AcquireNextImage
 			(
 				LogicalDevice::Handle _device    ,
-				SwapChain::Handle     _swapchain ,
+				Handle                _swapchain ,
 				uInt64                _timeout   ,
 				Semaphore::Handle     _semaphore ,
 				Fence::Handle         _fence     ,
@@ -131,13 +131,13 @@ VT_Namespace
 			 */
 			static EResult Create
 			(
-				      LogicalDevice::Handle        _deviceHandle         ,
-				const SwapChain::CreateInfo&       _creationSpecification,
-				const Memory::AllocationCallbacks* _allocator            ,
-				      SwapChain::Handle&           _swapChain
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _info        ,
+				const Memory::AllocationCallbacks* _allocator   ,
+				      Handle&                      _swapChain
 			)
 			{
-				return EResult(vkCreateSwapchainKHR(_deviceHandle, _creationSpecification, _allocator->operator const VkAllocationCallbacks*(), &_swapChain));
+				return EResult(vkCreateSwapchainKHR(_deviceHandle, _info, _allocator->operator const VkAllocationCallbacks*(), &_swapChain));
 			};
 
 			/**
@@ -153,7 +153,7 @@ VT_Namespace
 			 * \param _swapChainToDestroy
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChainToDestroy, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _swapChainToDestroy, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, _allocator->operator const VkAllocationCallbacks*());
 			}
@@ -174,23 +174,9 @@ VT_Namespace
 			 * \param _images
 			 * \return 
 			 */
-			static EResult QueryImages(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChain, uint32& _numImages, Image::Handle* _imagesContainer)
+			static EResult QueryImages(LogicalDevice::Handle _deviceHandle, Handle _swapChain, uint32& _numImages, Image::Handle* _imagesContainer)
 			{
 				return EResult(vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &_numImages, _imagesContainer));
-			}
-
-			/**
-			 * @brief.
-			 * 
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueuePresentKHR">Specification</a> 
-			 * 
-			 * \param _queue
-			 * \param _presentation
-			 * \return 
-			 */
-			static EResult QueuePresentation(LogicalDevice::Queue::Handle _queue, const PresentationInfo& _presentation)
-			{
-				return EResult(vkQueuePresentKHR(_queue, _presentation));
 			}
 		};
 	}
@@ -203,40 +189,22 @@ VT_Namespace
 			
 			static EResult Create
 			(
-				      LogicalDevice::Handle        _deviceHandle         ,
-				const SwapChain::CreateInfo&       _creationSpecification,
-				      SwapChain::Handle&           _swapChain
+				      LogicalDevice::Handle _deviceHandle,
+				const CreateInfo&           _info        ,
+				      Handle&               _swapChain
 			)
 			{
-				Parent::Create(_deviceHandle, _creationSpecification, Memory::DefaultAllocator, _swapChain);
+				return Parent::Create(_deviceHandle, _info, Memory::DefaultAllocator, _swapChain);
 			}
 
 			using Parent::Create;
 
-			static void Destroy(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChainToDestroy)
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _swapChainToDestroy)
 			{
 				Parent::Destroy(_deviceHandle, _swapChainToDestroy, Memory::DefaultAllocator);
 			}
 
 			using Parent::Destroy;
-
-			/**
-			 * @brief Provides the number of presentable images with the swapchain.
-			 * 
-			 * \param _deviceHandle
-			 * \param _swapChain
-			 * \return 
-			 */
-			static uint32 GetImageCount(LogicalDevice::Handle _deviceHandle, SwapChain::Handle _swapChain)
-			{
-				uint32 numImages;
-
-				EResult result = QueryImages(_deviceHandle, _swapChain, numImages, nullptr);
-
-				if (result != EResult::Success) std::runtime_error("Failed to get number of presentable images...");
-
-				return numImages;
-			}
 
 			/**
 			 * @brief Provides all presentable images with the swapchain.
@@ -248,16 +216,20 @@ VT_Namespace
 			 */
 			static EResult GetImages
 			(
-				LogicalDevice::Handle _deviceHandle,
-				SwapChain::Handle     _swapChain   ,
-				Image::Handle*        _images
+				LogicalDevice::Handle       _deviceHandle,
+				Handle                      _swapChain   ,
+				std::vector<Image::Handle>* _images
 			)
 			{
-				uint32 numImages = GetImageCount(_deviceHandle, _swapChain);
+				uint32 numImages;
 
-				EResult result = QueryImages(_deviceHandle, _swapChain, numImages, _images);
+				EResult result = QueryImages(_deviceHandle, _swapChain, numImages, nullptr);
 
-				if (result != EResult::Success) std::runtime_error("Failed to get number of presentable images...");
+				if (result != EResult::Success) return result;
+
+				_images->resize(numImages);
+					
+				result = QueryImages(_deviceHandle, _swapChain, numImages, _images->data());
 
 				return result;
 			}
@@ -269,26 +241,91 @@ VT_Namespace
 		class SwapChain : public V2::SwapChain
 		{
 		public:
-		protected:
-		};
 
+			using Parent = V2::SwapChain;
 
-		inline EResult Temp_GetImages(LogicalDevice& _device, V2::SwapChain::Handle _handle, std::vector<Image>& _images)
-		{
-			auto count = V2::SwapChain::GetImageCount(_device.GetHandle(), _handle);
-
-			std::vector<V2::Image::Handle> images; images.resize(count);
-
-			EResult returnCode = V2::SwapChain::GetImages(_device.GetHandle(), _handle, images.data());
-
-			_images.resize(count);
-
-			for (size_t index = 0; index < count; index++)
+			EResult AcquireNextImage
+			(
+				uInt64                _timeout   ,
+				Semaphore::Handle     _semaphore ,
+				Fence::Handle         _fence     ,
+				uint32&               _imageIndex
+			)
 			{
-				_images[index].Assign(_device, images[index]);
+				return Parent::AcquireNextImage(device->GetHandle(), handle, _timeout, _semaphore, _fence, _imageIndex);
 			}
 
-			return returnCode;
-		}
+			EResult Create
+			(
+				      LogicalDevice&               _deviceHandle,
+				const CreateInfo&                  _info        
+			)
+			{
+				device    = &_deviceHandle;
+				info      = _info;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device->GetHandle(), info, handle);
+			}
+
+			EResult Create
+			(
+				      LogicalDevice&               _deviceHandle,
+				const CreateInfo&                  _info        ,
+				const Memory::AllocationCallbacks* _allocator   
+			)
+			{
+				device    = &_deviceHandle;
+				info      = _info;
+				allocator = _allocator;
+
+				return Parent::Create(device->GetHandle(), info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device->GetHandle(), handle);
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult GetImages(std::vector<Image>& _images)
+			{
+				uint32 numImages;
+
+				EResult result = QueryImages(numImages, nullptr);
+
+				if (result != EResult::Success) return result;
+
+				_images.resize(numImages);	std::vector<Image::Handle> handles(numImages);
+
+				result = QueryImages(numImages, handles.data());
+
+				for (DeviceSize index = 0; index < numImages; index++)
+				{
+					_images[index].Assign(*device, handles[index]);
+				}
+
+				return result;
+			}
+
+			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
+			{
+				return Parent::QueryImages(device->GetHandle(), handle, _numImages, _imagesContainer);
+			}
+
+		protected:
+
+			Handle handle;
+
+			CreateInfo info;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			LogicalDevice* device;
+		};
 	}
 }
