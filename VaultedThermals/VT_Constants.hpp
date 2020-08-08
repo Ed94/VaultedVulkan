@@ -20,18 +20,15 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
 	namespace Corridors
 	{
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_NULL_HANDLE">Specification</a> .
 		 */
-		constexpr void* NullHandle = VK_NULL_HANDLE;
+		template<typename HandleType>
+		constexpr HandleType Null = VK_NULL_HANDLE;
 
 		constexpr DeviceSize MaxMemoryHeaps = VK_MAX_MEMORY_HEAPS;
 		constexpr DeviceSize MaxMemoryTypes = VK_MAX_MEMORY_TYPES;

@@ -18,11 +18,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
 #pragma region Common Object Types
 
@@ -51,7 +47,7 @@
 		* @details
 		* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseInStructure.html">Specification</a> 
 		*/
-		struct Base_InStructure : Vault_00::VKStruct_Base<VkBaseInStructure>
+		struct Base_InStructure : V0::VKStruct_Base<VkBaseInStructure>
 		{
 			      EType             SType;
 			const Base_InStructure* Next ;
@@ -63,7 +59,7 @@
 		* @details
 		* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseOutStructure.html">Specification</a> 
 		*/
-		struct Base_OutStructure : Vault_00::VKStruct_Base<VkBaseOutStructure>
+		struct Base_OutStructure : V0::VKStruct_Base<VkBaseOutStructure>
 		{
 			      EType              SType;
 			const Base_OutStructure* Next ;
@@ -81,7 +77,7 @@
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets">Offsets Specification</a>
 		@link 
 		*/
-		struct Offset2D : Vault_00::VKStruct_Base<VkOffset2D>
+		struct Offset2D : V0::VKStruct_Base<VkOffset2D>
 		{
 			sint32 X;
 			sint32 Y;
@@ -98,7 +94,7 @@
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets">Offsets Specification</a>
 		*/
-		struct Offset3D : Vault_00::VKStruct_Base<VkOffset3D>
+		struct Offset3D : V0::VKStruct_Base<VkOffset3D>
 		{
 			sint32 X;
 			sint32 Y;
@@ -116,7 +112,7 @@
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html">Extent-2D Specification</a>
 		*/
-		struct Extent2D : Vault_00::VKStruct_Base<VkExtent2D>
+		struct Extent2D : V0::VKStruct_Base<VkExtent2D>
 		{
 			uint32 Width ;
 			uint32 Height;
@@ -134,7 +130,7 @@
 		@link 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html">Extent-3D Specification</a>
 		*/
-		struct Extent3D : Vault_00::VKStruct_Base<VkExtent3D>
+		struct Extent3D : V0::VKStruct_Base<VkExtent3D>
 		{
 			uint32 Width ;
 			uint32 Height;
@@ -150,7 +146,7 @@
 
 		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_rectangles
 		*/
-		struct Rect2D : Vault_00::VKStruct_Base<VkRect2D>
+		struct Rect2D : V0::VKStruct_Base<VkRect2D>
 		{
 			Offset2D Offset;
 			Extent2D Extent;
@@ -307,7 +303,7 @@
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentMapping.html">Component Mapping Specification</a> 
 		*/
-		struct ComponentMapping : Vault_00::VKStruct_Base<VkComponentMapping>
+		struct ComponentMapping : V0::VKStruct_Base<VkComponentMapping>
 		{
 			EComponentSwizzle R;
 			EComponentSwizzle G;
@@ -316,7 +312,7 @@
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkConformanceVersion">Specification</a>  */
-		struct ConformanceVersion : Vault_00::VKStruct_Base<VkConformanceVersion>
+		struct ConformanceVersion : V0::VKStruct_Base<VkConformanceVersion>
 		{
 			uInt8 Major   ;
 			uInt8 Minor   ;
@@ -330,14 +326,14 @@
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
 		*/
-		struct ExtensionProperties : Vault_00::VKStruct_Base<VkExtensionProperties>
+		struct ExtensionProperties : V0::VKStruct_Base<VkExtensionProperties>
 		{
 			ExtensionNameStr ExtensionName;
 			uint32           SpecVersion  ;
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
-		struct FormatProperties : Vault_00::VKStruct_Base<VkFormatProperties>
+		struct FormatProperties : V0::VKStruct_Base<VkFormatProperties>
 		{
 			FormatFeatureFlags    LinearTilingFeatures;
 			FormatFeatureFlags    OptimalTilingFeatures;
@@ -345,7 +341,7 @@
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOpState">Specification</a>  */
-		struct StencilOperationState : Vault_00::VKStruct_Base<VkStencilOpState>
+		struct StencilOperationState : V0::VKStruct_Base<VkStencilOpState>
 		{
 			EStencilOperation FailOp;
 			EStencilOperation FassOp;
@@ -361,7 +357,7 @@
 
 		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkViewport">Specification</a> 
 		 */
-		struct Viewport : Vault_00::VKStruct_Base<VkViewport>
+		struct Viewport : V0::VKStruct_Base<VkViewport>
 		{
 			float32 X       , Y       ;
 			float32 Width   , Height  ;
@@ -379,37 +375,11 @@
 		{
 			using Handle = VkDisplayKHR;
 		};
-
-		/**
-		* @brief Rudimentary array referenced by pointer and size kept track of with integer.
-		*/
-		template<typename Type>
-		struct QueriedListing
-		{
-			std::vector<Type> Vector;
-			uint32            Count ;
-		};
-	}
-
-	namespace Vault_02
-	{
-		struct Base_InStructure : public Corridors::Base_InStructure
-		{
-			using Parent = Corridors::Base_InStructure;
-
-			Base_InStructure() { SType = STypeEnum; }
-		};
-
-		struct Base_OutStructure : public Corridors::Base_OutStructure
-		{
-			using Parent = Corridors::Base_OutStructure;
-
-			Base_OutStructure() { SType = STypeEnum; }
-		};
 	}
 
 	namespace SPIR_V
 	{
 		using Bytecode = Corridors::uint32;   ///< Word size of a SPIR-V instruction.
 	}
+
 }

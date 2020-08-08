@@ -17,19 +17,15 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_01
+	namespace V1
 	{
 		/**
 		 * @brief Represent logical connections to physical devices. 
@@ -39,7 +35,7 @@
 		 */
 		struct LogicalDevice
 		{
-			using Memory = Vault_00::Memory;
+			using Memory = V0::Memory;
 
 			using Handle = VkDevice;   ///< Opaque handle to a device object.  
 
@@ -49,7 +45,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigCreateInfoNV">Specification</a> 
 			*/
-			struct DiagnoisticsConfigCreateInfo : Vault_00::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
+			struct DiagnosticsConfigCreateInfo : V0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
 			{
 				using ConfigFlags = Bitmask<EDeviceDiagnosticConfigFlag, VkDeviceDiagnosticsConfigFlagsNV>;
 
@@ -74,10 +70,16 @@
 			{
 				using Handle = VkQueue;   ///< Opaque handle to a queue object
 
+				using PresentationInfo = VkPresentInfoKHR;   ///< Proper structure is defined later. (See VT_Swapchain.hpp)
+
+				using SubmitInfo = VkSubmitInfo;   ///< Proper structure is defined later. (See VT_Command.hpp)
+
+				using Fence_Handle = VkFence;
+
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateInfo">Specification</a> 
 				 */
-				struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
+				struct CreateInfo : V0::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
 				{
 					using ECreateFlag = ELogicalDeviceQueueCreateFlag                 ;
 					using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
@@ -104,9 +106,43 @@
 				* \param _queueIndex
 				* \param _queueReturn
 				*/
-				static void Get(LogicalDevice::Handle _handle, uint32 _queueFamilyIndex, uint32 _queueIndex, Handle& _queueReturn)
+				static void Get(LogicalDevice::Handle _device, uint32 _queueFamilyIndex, uint32 _queueIndex, Handle& _queueReturn)
 				{
-					vkGetDeviceQueue(_handle, _queueFamilyIndex, _queueIndex, &_queueReturn);
+					vkGetDeviceQueue(_device, _queueFamilyIndex, _queueIndex, &_queueReturn);
+				}
+
+				/**
+				* @brief.
+				* 
+				* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueuePresentKHR">Specification</a> 
+				* 
+				* \param _queue
+				* \param _presentation
+				* \return 
+				*/
+				static EResult QueuePresentation(LogicalDevice::Queue::Handle _queue, const PresentationInfo& _presentation)
+				{
+					return EResult(vkQueuePresentKHR(_queue, &_presentation));
+				}
+
+				/**
+				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueSubmit">Specification</a> 
+				 *
+				 * \param _queue
+				 * \param _submitCount
+				 * \param _submissions
+				 * \param _fence
+				 * \return 
+				 */
+				static EResult SubmitToQueue
+				(
+							LogicalDevice::Queue::Handle _queue      ,
+							uint32                       _submitCount,
+					  const SubmitInfo*                  _submissions,
+					        Fence_Handle                 _fence
+				)
+				{
+					return EResult(vkQueueSubmit(_queue, _submitCount, _submissions, _fence));
 				}
 
 				/**
@@ -127,7 +163,7 @@
 			* 
 			* @todo Implement.
 			*/
-			struct Queue2 : Vault_00::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
+			struct Queue2 : V0::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a>  */
 				using CreateFlags = Bitmask<EDeviceQueueCreateFlag ,VkDeviceQueueCreateFlags>;
@@ -159,7 +195,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupDeviceCreateInfo">Specification</a> 
 			*/
-			struct GroupCreateInfo : Vault_00::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
+			struct GroupCreateInfo : V0::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
 			{
 				      EType   SType              ;
 				const void*   Next               ;
@@ -171,7 +207,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemoryOverallocationCreateInfoAMD">Specification</a> 
 			*/
-			struct MemoryOverallocationCreateInfo : Vault_00::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
+			struct MemoryOverallocationCreateInfo : V0::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
 			{
 				      EType                            SType                 ;
 				const void*                            Next                  ;
@@ -182,7 +218,7 @@
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevicePrivateDataCreateInfoEXT">Specification</a> 
 			*/
-			struct PrivateDataCreateInfo : Vault_00::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
+			struct PrivateDataCreateInfo : V0::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
 			{
 				      EType  SType                      ;
 				const void*  Next                       ;
@@ -192,7 +228,7 @@
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceCreateInfo">Specification</a> 
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
 			{
 					  EType                     SType                ;
 				const void*                     Next                 ;
@@ -221,12 +257,12 @@
 			static EResult Create
 			(
 				      PhysicalDevice::Handle       _physicalDevice,
-				const LogicalDevice::CreateInfo&   _createSpec    ,
+				const CreateInfo&                  _info          ,
 				const Memory::AllocationCallbacks* _allocator     ,
-				      LogicalDevice::Handle&       _device
+				      Handle&                      _device
 			)
 			{
-				return EResult(vkCreateDevice(_physicalDevice, _createSpec.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
+				return EResult(vkCreateDevice(_physicalDevice, _info.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
 			}
 
 			/**
@@ -243,9 +279,9 @@
 			 * \param _handle
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _handle, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(Handle _device, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyDevice(_handle, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyDevice(_device, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -254,7 +290,7 @@
 			 * \param _device
 			 * \return 
 			 */
-			static EResult WaitUntilIdle(LogicalDevice::Handle _device)
+			static EResult WaitUntilIdle(Handle _device)
 			{
 				return EResult(vkDeviceWaitIdle(_device));
 			}
@@ -273,7 +309,7 @@
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a> 
 			*/
-			inline typename std::enable_if
+			static typename std::enable_if
 			<
 			std::bool_constant
 			< 
@@ -281,31 +317,279 @@
 				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
 			>::value,
 
-			ReturnType>::type GetProcedureAddress(LogicalDevice::Handle& _appInstance, RoCStr _procedureName)
+			ReturnType>::type GetProcedureAddress(Handle& _appInstance, RoCStr _procedureName)
 			{
 				return reinterpret_cast<ReturnType>(vkGetDeviceProcAddr(_appInstance, _procedureName));
 			}
 		};
 	}
 
-	namespace Vault_02
+	namespace V2
 	{
-		using Vault_01::LogicalDevice;
+		struct LogicalDevice : public V1::LogicalDevice
+		{
+			using Parent = V1::LogicalDevice;
+
+			struct DiagnosticsConfigCreateInfo : public Parent::DiagnosticsConfigCreateInfo
+			{
+				DiagnosticsConfigCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct Queue : public Parent::Queue
+			{
+				struct CreateInfo : public Parent::Queue::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
+			};
+
+			struct Queue2 : public Parent::Queue2
+			{
+				Queue2()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct GroupCreateInfo : public Parent::GroupCreateInfo
+			{
+				GroupCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct MemoryOverallocationCreateInfo : public Parent::MemoryOverallocationCreateInfo
+			{
+				MemoryOverallocationCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct PrivateDataCreateInfo : public Parent::PrivateDataCreateInfo
+			{
+				PrivateDataCreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			/**
+			 * @brief A logical device is created as a connection to a physical device. (Uses default allocator)
+			 * 
+			 * \param _physicalDevice
+			 * \param _createSpec
+			 * \param _allocator
+			 * \param _device
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      PhysicalDevice::Handle _physicalDevice,
+				const CreateInfo&            _createSpec    ,
+				      Handle&                _device
+			)
+			{
+				return Create(_physicalDevice, _createSpec, Memory::DefaultAllocator, _device);
+			}
+
+			using Parent::Create;
+
+			/**
+			* @brief Destroy a logical device. (Uses default allocator)
+			* 
+			* \param _handle
+			* \param _allocator
+			*/
+			static void Destroy(Handle _device)
+			{
+				vkDestroyDevice(_device, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			using Parent::Destroy;
+		};
 	}
 
-	namespace Vault_05
+	namespace V4
 	{
-		class LogicalDevice : public Vault_01::LogicalDevice
+		class LogicalDevice : public V2::LogicalDevice
 		{
 		public:
-			using Parent = Vault_01::LogicalDevice;
+			using Parent = V2::LogicalDevice;
 
+			struct Queue : public Parent::Queue
+			{
+				using Parent = Parent::Queue;
+
+				enum class EType
+				{
+					Unspecified ,
+					Graphics    ,
+					Presentation
+				};
+
+				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info)
+				{
+					device = &_logicalDevice;
+					info   = _info          ;
+				}
+
+				uint32 GetFamilyIndex() const
+				{
+					return familyIndex;
+				}
+
+				Handle GetHandle() const
+				{
+					return handle;
+				}
+
+				void Retrieve()
+				{
+					Parent::Get(*device, info.QueueFamilyIndex, familyIndex, handle);
+				}
+
+				bool FamilySpecified() const
+				{
+					return type != EType::Unspecified ? true : false;
+				}
+
+				EResult QueuePresentation(const PresentationInfo& _presentationInfo)
+				{
+					return Parent::QueuePresentation(handle, _presentationInfo);
+				}
+
+				void SpecifyFamily(uint32 _index, EType _type)
+				{
+					familyIndex = _index; 
+					type        = _type ;
+				}
+
+				EResult SubmitToQueue(uint32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence)
+				{
+					return Parent::SubmitToQueue(handle, _submitCount, _submissions, _fence);
+				}
+
+				EResult WaitUntilIdle() const
+				{
+					return Parent::WaitUntilIdle(handle);
+				}
+
+				operator Handle() const
+				{
+					return handle;
+				}
+
+				operator const Handle&() const
+				{
+					return handle;
+				}
+				
+			protected:
+
+				Handle handle;
+
+				CreateInfo info;
+
+				EType type;
+
+				uint32 familyIndex;
+
+				LogicalDevice* device;
+			};
+
+			EResult Create(PhysicalDevice::Handle _physicalDevice, CreateInfo& _createInfo)
+			{
+				physicalDevice = _physicalDevice;
+				info           = _createInfo             ;
+				allocator      = Memory::DefaultAllocator;
+
+				return Parent::Create(physicalDevice, info, handle);
+			}
+
+			EResult Create(PhysicalDevice::Handle _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			{
+				physicalDevice = _physicalDevice;
+				info           = _createInfo    ;
+				allocator      = _allocator     ;
+
+				return Parent::Create(physicalDevice, info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(handle, allocator);
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult WaitUntilIdle() const
+			{
+				return Parent::WaitUntilIdle(handle);
+			}
+			
+			template<typename ReturnType>
+			typename std::enable_if
+			<
+			std::bool_constant
+			< 
+				std::is_pointer <                             ReturnType       >::value &&
+				std::is_function<typename std::remove_pointer<ReturnType>::type>::value
+			>::value,
+			ReturnType>::type GetProcedureAddress(RoCStr _procedurename) const
+			{
+				return Parent::GetProcedureAddress<ReturnType>(handle, _procedurename);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
 
 		protected:
 
 			Handle handle;
 
+			CreateInfo info;
 
+			PhysicalDevice::Handle physicalDevice;
+
+			const Memory::AllocationCallbacks* allocator;
 		};
 	}
 }

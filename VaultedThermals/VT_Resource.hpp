@@ -26,7 +26,7 @@ can be multidimensional and may have associated metadata.
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -35,13 +35,9 @@ can be multidimensional and may have associated metadata.
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_01
+	namespace V1
 	{
 		/**
 		 * @brief A linear array of data.
@@ -69,19 +65,19 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateInfo">Specification</a>
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
 				      CreateFlags  Flags                ;
 					  DeviceSize   Size                 ;
-					  UsageFlags   Usuage               ;
+					  UsageFlags   Usage                ;
 				      ESharingMode SharingMode          ;
 					  uint32       QueueFamilyIndexCount;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCopy">Specification</a>  */
-			struct CopyInfo : Vault_00::VKStruct_Base<VkBufferCopy>
+			struct CopyInfo : V0::VKStruct_Base<VkBufferCopy>
 			{
 				DeviceSize SourceOffset;
 				DeviceSize DestinationOffset;
@@ -91,17 +87,17 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferMemoryBarrier">Specification</a>
 			 */
-			struct Memory_Barrier : Vault_00::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
+			struct Memory_Barrier : V0::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
 			{
-				      EType          SType              ;
-				const void*          Next               ;
-				      AccessFlags    SrcAccessMask      ;
-				      AccessFlags    DstAccessMask      ;
-				      uint32         SrcQueueFamilyIndex;
-				      uint32         DstQueueFamilyIndex;
-				      Buffer::Handle Buffer             ;
-				      DeviceSize     Offset             ;
-				      DeviceSize     Size               ;
+				      EType       SType              ;
+				const void*       Next               ;
+				      AccessFlags SrcAccessMask      ;
+				      AccessFlags DstAccessMask      ;
+				      uint32      SrcQueueFamilyIndex;
+				      uint32      DstQueueFamilyIndex;
+				      Handle      Buffer             ;
+				      DeviceSize  Offset             ;
+				      DeviceSize  Size               ;
 			};
 
 			/**
@@ -119,7 +115,7 @@ can be multidimensional and may have associated metadata.
 			static EResult BindMemory
 			(
 				LogicalDevice::Handle _device      ,
-				Buffer::Handle        _buffer      ,
+				Handle                _buffer      ,
 				Memory::Handle        _memory      ,
 				DeviceSize            _memoryOffset
 			)
@@ -139,10 +135,12 @@ can be multidimensional and may have associated metadata.
 			 * \param _buffer
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Buffer::Handle& _buffer)
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _buffer)
 			{
-				return EResult(vkCreateBuffer(_deviceHandle, _createInfo.operator const VkBufferCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_buffer));
+				return EResult(vkCreateBuffer(_device, _createInfo.operator const VkBufferCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_buffer));
 			}
+
+			
 
 			/**
 			 * @brief Destroy a buffer object.
@@ -155,9 +153,9 @@ can be multidimensional and may have associated metadata.
 			 * \param _allocator
 			 * \return 
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, Buffer::Handle _buffer, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _device, Handle _buffer, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyBuffer(_deviceHandle, _buffer, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyBuffer(_device, _buffer, _allocator->operator const VkAllocationCallbacks*());
 			}
 
 			/**
@@ -170,7 +168,7 @@ can be multidimensional and may have associated metadata.
 			static void GetMemoryRequirements
 			(
 				LogicalDevice::Handle _device             ,
-				Buffer::Handle        _buffer             ,
+				Handle                _buffer             ,
 				Memory::Requirements& _memoryRequirements
 			)
 			{
@@ -199,15 +197,15 @@ can be multidimensional and may have associated metadata.
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a> .
 			 */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
 			{
-				      EType       SType  ;
-				const void*       Next   ;
-				      CreateFlags Flags  ;
-				      Buffer      VBuffer;
-				      EFormat     Format ;
-				      DeviceSize  Offset ;
-				      DeviceSize  Range  ;
+				      EType          SType  ;
+				const void*          Next   ;
+				      CreateFlags    Flags  ;
+				      Buffer::Handle VBuffer;
+				      EFormat        Format ;
+				      DeviceSize     Offset ;
+				      DeviceSize     Range  ;
 			};
 
 			/**
@@ -222,9 +220,9 @@ can be multidimensional and may have associated metadata.
 			 * \param _bufferView
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _creationSpec, const Memory::AllocationCallbacks* _allocator, BufferView::Handle& _bufferView)
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _info, const Memory::AllocationCallbacks* _allocator, Handle& _bufferView)
 			{
-				return EResult(vkCreateBufferView(_deviceHandle, _creationSpec.operator const VkBufferViewCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_bufferView));
+				return EResult(vkCreateBufferView(_device, _info.operator const VkBufferViewCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_bufferView));
 			}
 
 			/**
@@ -237,94 +235,9 @@ can be multidimensional and may have associated metadata.
 			 * \param _bufferView
 			 * \param _allocator
 			 */
-			static void Destroy(LogicalDevice::Handle _deviceHandle, BufferView::Handle _bufferView, const Memory::AllocationCallbacks* _allocator)
+			static void Destroy(LogicalDevice::Handle _device, Handle _bufferView, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyBufferView(_deviceHandle, _bufferView, _allocator->operator const VkAllocationCallbacks*());
-			}
-		};
-
-		struct DescriptorPool
-		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPool">Specification</a>  */
-			using Handle = VkDescriptorPool;
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlags">Specification</a>  */
-			using CreateFlags = Bitmask<EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags>;
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolResetFlags">Specification</a>  */
-			using ResetFlags = Bitmask<EUndefined, VkDescriptorPoolResetFlags>;
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolSize">Specification</a>  */
-			struct Size : Vault_00::VKStruct_Base<VkDescriptorPoolSize>
-			{
-				EDescriptorType Type ;
-				uint32          Count;
-			};
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
-			{
-					  EType       SType        ;
-				const void*       Next         ;
-					  CreateFlags Flags        ;
-					  uint32      MaxSets      ;
-					  uint32      PoolSizeCount;
-				const Size*       PoolSizes    ;
-			};
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorPool">Specification</a>
-			 * 
-			 * \param _device
-			 * \param _createInfo
-			 * \param _allocator
-			 * \param _descriptorPool
-			 * \return 
-			 */
-			static EResult Create
-			(
-					  LogicalDevice::Handle         _device        ,
-				const CreateInfo&                   _createInfo    ,
-				const Memory::AllocationCallbacks*  _allocator     ,
-					  Handle&                       _descriptorPool
-			)
-			{
-				return EResult(vkCreateDescriptorPool(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorPool">Specification</a> 
-			 * 
-			 * \param _device
-			 * \param _descriptorPool
-			 * \param _allocator
-			 */
-			static void Destroy
-			(
-				LogicalDevice::Handle               _device,
-				Handle                              _descriptorPool,
-				const Memory::AllocationCallbacks*  _allocator
-			)
-			{
-				vkDestroyDescriptorPool(_device, _descriptorPool, _allocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetDescriptorPool">Specification</a> 
-			 * 
-			 * \param _device
-			 * \param _descriptorPool
-			 * \param _flags
-			 * \return 
-			 */
-			static EResult Reset
-			(
-				LogicalDevice::Handle _device,
-				Handle                _descriptorPool,
-				ResetFlags            _flags
-			)
-			{
-				return EResult(vkResetDescriptorPool(_device, _descriptorPool, _flags));
+				vkDestroyBufferView(_device, _bufferView, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
 
@@ -357,7 +270,7 @@ can be multidimensional and may have associated metadata.
 			using UsageFlags = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
 			{
 				      EType        SType                ;
 				const void*        Next                 ;
@@ -377,7 +290,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceLayers">Specification</a>  */
-			struct SubresourceLayers : Vault_00::VKStruct_Base<VkImageSubresourceLayers>
+			struct SubresourceLayers : V0::VKStruct_Base<VkImageSubresourceLayers>
 			{
 				AspectFlags AspectMask    ;
 				uint32      MipLevel      ;
@@ -386,7 +299,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceRange">Specification</a>  */
-			struct SubresourceRange : Vault_00::VKStruct_Base<VkImageSubresourceRange>
+			struct SubresourceRange : V0::VKStruct_Base<VkImageSubresourceRange>
 			{
 				AspectFlags AspectMask    ;
 				uint32      BaseMipLevel  ;
@@ -396,7 +309,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageMemoryBarrier">Specification</a>  */
-			struct Memory_Barrier : Vault_00::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
+			struct Memory_Barrier : V0::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
 			{
 				      EType            SType              ;
 				const void*            Next               ;
@@ -406,12 +319,12 @@ can be multidimensional and may have associated metadata.
 				      EImageLayout     NewLayout          ;
 				      uint32           SrcQueueFamilyIndex;
 				      uint32           DstQueueFamilyIndex;
-				      Image::Handle    Image              ;
+				      Handle           Image              ;
 				      SubresourceRange SubresourceRange   ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageBlit">Specification</a>  */
-			struct Blit : Vault_00::VKStruct_Base<VkImageBlit>
+			struct Blit : V0::VKStruct_Base<VkImageBlit>
 			{
 				SubresourceLayers SrcSubresource;
 				Offset3D          SrcOffsets[2] ;
@@ -450,7 +363,7 @@ can be multidimensional and may have associated metadata.
 			 * \param _imageHandle
 			 * \return 
 			 */
-			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Image::Handle& _imageHandle)
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _imageHandle)
 			{
 				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_imageHandle));
 			}
@@ -496,7 +409,7 @@ can be multidimensional and may have associated metadata.
 			using EViewType = EImageViewType;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
+			struct CreateInfo : V0::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a>  */
 				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
@@ -510,6 +423,8 @@ can be multidimensional and may have associated metadata.
 				      ComponentMapping        Components      ;
 				      Image::SubresourceRange SubresourceRange;
 			};
+
+			
 
 			/**
 			 * @brief Create an image view object.
@@ -563,20 +478,10 @@ can be multidimensional and may have associated metadata.
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSet">Specification</a>  */
 			using Handle = VkDescriptorSet;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a>  */
-			struct AllocateInfo : Vault_00::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
-			{
-				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
-
-					  EType                              SType             ;
-				const void*                              Next              ;
-					  DescriptorPool::Handle             DescriptorPool    ;
-					  uint32                             DescriptorSetCount;
-				const PipelineLayoutDescriptorSetHandle* SetLayouts        ;
-			};
+			
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBufferInfo">Specification</a>  */
-			struct BufferInfo : Vault_00::VKStruct_Base<VkDescriptorBufferInfo>
+			struct BufferInfo : V0::VKStruct_Base<VkDescriptorBufferInfo>
 			{
 				Buffer::Handle Buffer;
 				DeviceSize     Offset;
@@ -584,7 +489,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a>  */
-			struct Copy : Vault_00::VKStruct_Base<VkCopyDescriptorSet>
+			struct Copy : V0::VKStruct_Base<VkCopyDescriptorSet>
 			{
 				      EType  SType          ;
 				const void*  Next           ;
@@ -598,7 +503,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a>  */
-			struct ImageInfo : Vault_00::VKStruct_Base<VkDescriptorImageInfo>
+			struct ImageInfo : V0::VKStruct_Base<VkDescriptorImageInfo>
 			{
 				Sampler::Handle   Sampler    ;
 				ImageView::Handle ImageView  ;
@@ -606,7 +511,7 @@ can be multidimensional and may have associated metadata.
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a>  */
-			struct Write : Vault_00::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
+			struct Write : V0::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
 			{
 				      EType               SType          ;
 				const void*               Next           ;
@@ -619,44 +524,6 @@ can be multidimensional and may have associated metadata.
 				const BufferInfo*         BufferInfo     ;
 				const BufferView::Handle* TexelBufferView;
 			};
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateDescriptorSets">Specification</a> 
-			 * 
-			 * \param _device
-			 * \param _allocateInfo
-			 * \param _descriptorSets
-			 * \return 
-			 */
-			static EResult Allocate
-			(
-					  LogicalDevice::Handle _device        ,
-				const AllocateInfo&         _allocateInfo  ,
-					  Handle*               _descriptorSets
-			)
-			{
-				return EResult(vkAllocateDescriptorSets(_device, _allocateInfo, _descriptorSets));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeDescriptorSets">Specification</a> 
-			 * 
-			 * \param _device
-			 * \param _descriptorPool
-			 * \param _descriptorSetCount
-			 * \param _descriptorSets
-			 * \return 
-			 */
-			static EResult Free
-			(
-				      LogicalDevice::Handle  _device            ,
-				      DescriptorPool::Handle _descriptorPool    ,
-				      uint32                 _descriptorSetCount,
-				const Handle*                _descriptorSets
-			)
-			{
-				return EResult(vkFreeDescriptorSets(_device, _descriptorPool, _descriptorSetCount, _descriptorSets));
-			}
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUpdateDescriptorSets">Specification</a> .
@@ -679,5 +546,1061 @@ can be multidimensional and may have associated metadata.
 				vkUpdateDescriptorSets(_device, _descriptorWriteCount, _descriptorWrites->operator const VkWriteDescriptorSet*(), _descriptorCopyCount, _descriptorCopies->operator const VkCopyDescriptorSet*());
 			}
 		};	
+
+		struct DescriptorPool
+		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPool">Specification</a>  */
+			using Handle = VkDescriptorPool;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlags">Specification</a>  */
+			using CreateFlags = Bitmask<EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags>;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolResetFlags">Specification</a>  */
+			using ResetFlags = Bitmask<EUndefined, VkDescriptorPoolResetFlags>;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a>  */
+			struct AllocateInfo : V0::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
+			{
+				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
+
+					  EType                              SType             ;
+				const void*                              Next              ;
+					  Handle                             DescriptorPool    ;
+					  uint32                             DescriptorSetCount;
+				const PipelineLayoutDescriptorSetHandle* SetLayouts        ;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolSize">Specification</a>  */
+			struct Size : V0::VKStruct_Base<VkDescriptorPoolSize>
+			{
+				EDescriptorType Type ;
+				uint32          Count;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a>  */
+			struct CreateInfo : V0::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
+			{
+					  EType       SType        ;
+				const void*       Next         ;
+					  CreateFlags Flags        ;
+					  uint32      MaxSets      ;
+					  uint32      PoolSizeCount;
+				const Size*       PoolSizes    ;
+			};
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateDescriptorSets">Specification</a> 
+			 * 
+			 * \param _device
+			 * \param _allocateInfo
+			 * \param _descriptorSets
+			 * \return 
+			 */
+			static EResult Allocate
+			(
+					  LogicalDevice::Handle  _device        ,
+				const AllocateInfo&          _allocateInfo  ,
+					  DescriptorSet::Handle* _descriptorSets
+			)
+			{
+				return EResult(vkAllocateDescriptorSets(_device, _allocateInfo, _descriptorSets));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorPool">Specification</a>
+			 * 
+			 * \param _device
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _descriptorPool
+			 * \return 
+			 */
+			static EResult Create
+			(
+					  LogicalDevice::Handle         _device        ,
+				const CreateInfo&                   _createInfo    ,
+				const Memory::AllocationCallbacks*  _allocator     ,
+					  Handle&                       _descriptorPool
+			)
+			{
+				return EResult(vkCreateDescriptorPool(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorPool">Specification</a> 
+			 * 
+			 * \param _device
+			 * \param _descriptorPool
+			 * \param _allocator
+			 */
+			static void Destroy
+			(
+				      LogicalDevice::Handle        _device,
+				      Handle                       _descriptorPool,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				vkDestroyDescriptorPool(_device, _descriptorPool, _allocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeDescriptorSets">Specification</a> 
+			 * 
+			 * \param _device
+			 * \param _descriptorPool
+			 * \param _descriptorSetCount
+			 * \param _descriptorSets
+			 * \return 
+			 */
+			static EResult Free
+			(
+				      LogicalDevice::Handle  _device            ,
+				      Handle                 _descriptorPool    ,
+				      uint32                 _descriptorSetCount,
+				const DescriptorSet::Handle* _descriptorSets
+			)
+			{
+				return EResult(vkFreeDescriptorSets(_device, _descriptorPool, _descriptorSetCount, _descriptorSets));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetDescriptorPool">Specification</a> 
+			 * 
+			 * \param _device
+			 * \param _descriptorPool
+			 * \param _flags
+			 * \return 
+			 */
+			static EResult Reset
+			(
+				LogicalDevice::Handle _device        ,
+				Handle                _descriptorPool,
+				ResetFlags&           _flags
+			)
+			{
+				return EResult(vkResetDescriptorPool(_device, _descriptorPool, _flags));
+			}
+		};
+	}
+
+	namespace V2
+	{
+		struct Buffer : V1::Buffer
+		{
+			using Parent = V1::Buffer;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo() 
+				{
+					SType                 = STypeEnum;
+					Next                  = nullptr  ;
+					Size                  = 0        ;
+					QueueFamilyIndexCount = 0        ;
+				}
+
+				CreateInfo(UsageFlags _usage, ESharingMode _sharingMode)
+				{
+					SType                 = STypeEnum   ;
+					Next                  = nullptr     ;
+					Size                  = 0           ;
+					Usage                 = _usage      ;
+					SharingMode           = _sharingMode;
+					QueueFamilyIndexCount = 0           ;
+				}
+			};
+
+			struct Memory_Barrier : Parent::Memory_Barrier
+			{
+				Memory_Barrier()
+				{
+					SType = STypeEnum;
+
+					Next = nullptr;
+				}
+			};
+
+			/**
+			 * @brief Create a new buffer object. (Default allocator)
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _buffer
+			 * \return 
+			 */
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _createInfo, Handle& _buffer)
+			{
+				return Parent::Create(_device, _createInfo, Memory::DefaultAllocator, _buffer);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * @brief Destroy a buffer object. (Default allocator)
+
+			 * \param _deviceHandle
+			 * \param _buffer
+			 * \param _allocator
+			 * \return 
+			 */
+			static void Destroy(LogicalDevice::Handle _device, Handle _buffer)
+			{
+				Parent::Destroy(_device, _buffer, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+
+			/**
+			 * @brief Will create a buffer and immediately bind it to allocated memory made just for it.
+			 * 
+			 * \param _bufferInfo
+			 * \param _propertyFlags
+			 * \param _buffer
+			 * \param _bufferMemory
+			 * \param _bufferMemoryOffset
+			 * \param _physicalDevice
+			 * \param _device
+			 * \param _allcator
+			 * \return 
+			 */
+			static EResult CreateAndBind
+			(
+				PhysicalDevice::Handle _physicalDevice,
+				LogicalDevice::Handle  _device        ,
+				CreateInfo             _bufferInfo    ,
+				Handle&                _buffer        , 
+				Memory::PropertyFlags  _propertyFlags , 
+				Memory::Handle&        _bufferMemory      
+			)
+			{
+				EResult returnCode = Buffer::Create(_device, _bufferInfo, Memory::DefaultAllocator, _buffer);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+
+				Memory::Requirements memReq;
+
+				Buffer::GetMemoryRequirements(_device, _buffer, memReq);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize  = memReq.Size;
+				allocationInfo.MemoryTypeIndex = PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
+
+				returnCode = Memory::Allocate(_device, allocationInfo, Memory::DefaultAllocator, _bufferMemory);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+
+				Buffer::BindMemory(_device, _buffer, _bufferMemory, Memory::ZeroOffset);
+
+				return returnCode;
+			}
+
+			/**
+			 * @brief Will create a buffer and immediately bind it to allocated memory made just for it.
+			 * 
+			 * \param _bufferInfo
+			 * \param _propertyFlags
+			 * \param _buffer
+			 * \param _bufferMemory
+			 * \param _bufferMemoryOffset
+			 * \param _physicalDevice
+			 * \param _device
+			 * \param _allcator
+			 * \return 
+			 */
+			static EResult CreateAndBind
+			(
+				PhysicalDevice::Handle       _physicalDevice,
+				LogicalDevice::Handle        _device        ,
+				CreateInfo                   _bufferInfo    ,
+				Handle&                      _buffer        , 
+				Memory::PropertyFlags        _propertyFlags , 
+				Memory::Handle&              _bufferMemory  ,
+				Memory::AllocationCallbacks* _allcator
+			)
+			{
+				EResult returnCode = Buffer::Create(_device, _bufferInfo, _allcator, _buffer);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				Memory::Requirements memReq;
+
+				Buffer::GetMemoryRequirements(_device, _buffer, memReq);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize  = memReq.Size;
+				allocationInfo.MemoryTypeIndex = PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
+
+				returnCode = Memory::Allocate(_device, allocationInfo, _allcator, _bufferMemory);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				Buffer::BindMemory(_device, _buffer, _bufferMemory, Memory::ZeroOffset);
+
+				return returnCode;
+			}
+		};
+
+		struct BufferView : public V1::BufferView
+		{
+			using Parent = V1::BufferView;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			/**
+			* @brief Create a new buffer view object.
+			* 
+			* \param _deviceHandle
+			* \param _creationSpec
+			* \param _allocator
+			* \param _bufferView
+			* \return 
+			*/
+			static EResult Create(LogicalDevice::Handle _device, const CreateInfo& _info, Handle& _bufferView)
+			{
+				return Parent::Create(_device, _info, Memory::DefaultAllocator, _bufferView);
+			}
+
+			using Parent::Create;
+
+			/**
+			* @brief Destroy a buffer view object.
+			* 
+			* \param _deviceHandle
+			* \param _bufferView
+			* \param _allocator
+			*/
+			static void Destroy(LogicalDevice::Handle _device, Handle _bufferView)
+			{
+				Parent::Destroy(_device, _bufferView, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+		};
+
+		struct Image : public V1::Image
+		{
+			using Parent = V1::Image;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct Memory_Barrier : public Parent::Memory_Barrier
+			{
+				Memory_Barrier()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			/**  
+			 * @brief  Create an image object.
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _imageHandle
+			 * \return 
+			 */
+			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Handle& _imageHandle)
+			{
+				return Parent::Create(_deviceHandle, _createInfo, Memory::DefaultAllocator, _imageHandle);
+			}
+
+			using Parent::Create;
+
+			/** 
+			 * @brief Destroy an image object.
+			 * 
+			 * \param _deviceHandle
+			 * \param _image
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _image)
+			{
+				Parent::Destroy(_deviceHandle, _image, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+		};
+
+		struct ImageView : public V1::ImageView
+		{
+			using Parent = V1::ImageView;
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			/**
+			 * @brief Create an image view object.
+			 * 
+			 * \param _deviceHandle
+			 * \param _creationSpec
+			 * \param _allocator
+			 * \param _imageView
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _creationSpec,
+				      Handle&                      _imageView
+			)
+			{
+				return Parent::Create(_deviceHandle, _creationSpec, Memory::DefaultAllocator, _imageView);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * @brief Destroy an image view.
+			 * 
+			 * \param _deviceHandle
+			 * \param _imageView
+			 * \param _allocator
+			 */
+			static void Destroy
+			(
+				LogicalDevice::Handle _deviceHandle,
+				Handle                _imageView   
+			)
+			{
+				return Parent::Destroy(_deviceHandle, _imageView, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+		};
+
+		struct DescriptorSet : public V1::DescriptorSet
+		{
+			using Parent = V1::DescriptorSet;
+
+			struct Copy : public Parent::Copy
+			{
+				Copy()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct Write : public Parent::Write
+			{
+				Write()
+				{
+					SType = STypeEnum;
+					Next  = nullptr;
+				}
+			};
+
+			
+		};
+
+		struct DescriptorPool : public V1::DescriptorPool
+		{
+			using Parent = V1::DescriptorPool;
+
+			struct AllocateInfo : public Parent::AllocateInfo
+			{
+				AllocateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct CreateInfo : public Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			/**
+			 * \param _device
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _descriptorPool
+			 * \return 
+			 */
+			static EResult Create
+			(
+					  LogicalDevice::Handle _device        ,
+				const CreateInfo&           _createInfo    ,
+					  Handle&               _descriptorPool
+			)
+			{
+				return Parent::Create(_device, _createInfo, Memory::DefaultAllocator, _descriptorPool);
+			}
+
+			using Parent::Create;
+
+			/**
+			 * \param _device
+			 * \param _descriptorPool
+			 * \param _allocator
+			 */
+			static void Destroy(LogicalDevice::Handle _device, Handle _descriptorPool)
+			{
+				Parent::Destroy(_device, _descriptorPool, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+
+			static EResult Free
+			(
+				      LogicalDevice::Handle  _device,
+				const AllocateInfo&          _info,
+				const DescriptorSet::Handle* _descriptorSets
+			)
+			{
+				Parent::Free(_device, _info.DescriptorPool, _info.DescriptorSetCount, _descriptorSets);
+			}
+
+			using Parent::Free;
+		};
+	}
+
+	namespace V4
+	{
+		class Buffer : public V2::Buffer
+		{
+		public:
+
+			using Parent = V2::Buffer;
+
+			EResult BindMemory(Memory::Handle _memory, DeviceSize _memoryOffset)
+			{
+				memory       = _memory      ;
+				memoryOffset = _memoryOffset;
+
+				return Parent::BindMemory(device, handle, memory, memoryOffset);
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _createInfo)
+			{
+				device    = _device                 ;
+				info      = _createInfo             ;
+				allocator = Memory::DefaultAllocator;
+
+				EResult returnCode = Parent::Parent::Create(device, info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+				
+				return returnCode;
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    =  _device    ;
+				info      = _createInfo ;
+				allocator = _allocator  ;
+
+				EResult returnCode = Parent::Parent::Create(device, info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+				
+				return returnCode;
+			}
+
+			EResult CreateAndBind
+			(
+				PhysicalDevice&        _physicalDevice, 
+				LogicalDevice::Handle  _device        ,  
+				CreateInfo&            _info          ,  
+				Memory::PropertyFlags  _memoryFlags   ,
+				Memory&                _memory
+			)
+			{
+				device    = _device   ;
+				info      = _info     ;
+				allocator = Memory::DefaultAllocator;
+
+				EResult returnCode = Parent::Create(device, info, allocator, handle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+				allocationInfo.MemoryTypeIndex = _physicalDevice.FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+
+				return returnCode;
+			}
+
+			EResult CreateAndBind
+			(
+				      PhysicalDevice&              _physicalDevice, 
+				      LogicalDevice::Handle        _device        , 
+				      CreateInfo&                  _info          , 
+				      Memory::PropertyFlags        _memoryFlags   ,
+				      Memory&                      _memory        ,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				device    = _device   ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				EResult returnCode = Parent::Create(device, info, allocator, handle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+				allocationInfo.MemoryTypeIndex = _physicalDevice.FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+
+				return returnCode;
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device, handle, allocator);
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			const Memory::Requirements& GetMemoryRequirements() const
+			{
+				return memoryRequirements;
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+			
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
+		protected:
+
+			Handle handle;
+
+			CreateInfo info;
+
+			LogicalDevice::Handle device;
+
+			Memory::Handle memory;
+
+			DeviceSize memoryOffset;
+
+			Memory::Requirements memoryRequirements;
+
+			const Memory::AllocationCallbacks* allocator;
+		};
+
+		class BufferView : public V2::BufferView
+		{
+		public:
+			using Parent = V2::BufferView;
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			{
+				device    = _device                 ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device, info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = _device   ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device, info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device, handle, allocator);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
+		protected:
+
+			Handle handle;
+
+			CreateInfo info;
+
+			LogicalDevice::Handle device;
+
+			const Memory::AllocationCallbacks* allocator;
+		};
+
+		class Image : public V2::Image
+		{
+		public:
+			using Parent = V2::Image;
+
+
+			void Assign(LogicalDevice::Handle _device, Handle _handle)
+			{
+				device = _device;
+				handle = _handle;
+			}
+
+			EResult BindMemory(Memory::Handle _memory, DeviceSize _memoryOffset)
+			{
+				memory       = _memory      ;
+				memoryOffset = _memoryOffset;
+
+				return Parent::BindMemory(device, handle, memory, memoryOffset);
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			{
+				device    = _device                 ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				EResult returnCode = Parent::Create(device, info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+
+				return returnCode;
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = _device   ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				EResult returnCode = Parent::Create(device, info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+
+				return returnCode;
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device, handle, allocator);
+			}
+
+			Handle GetHandle() const
+			{
+				return handle;
+			}
+
+			const Memory::Requirements& GetMemoryRequirements() const
+			{
+				return memoryRequirements;
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			Memory::Handle memory;
+
+			DeviceSize memoryOffset;
+
+			Memory::Requirements memoryRequirements;
+
+			LogicalDevice::Handle device;
+		};
+
+		class ImageView : public V2::ImageView
+		{
+		public:
+			using Parent = V2::ImageView;
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			{
+				device    = _device                 ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device, info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = _device  ;
+				info      = _info    ;
+				allocator = allocator;
+
+				return Parent::Create(device, info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device, handle, allocator);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
+		protected:	
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice::Handle device;
+		};
+
+		class DescriptorSet : public V2::DescriptorSet
+		{
+		public:
+			using Parent = V2::DescriptorSet;
+
+			void Assign(LogicalDevice::Handle& _device, Handle _handle)
+			{
+				device = _device;
+				handle = _handle;
+			}
+			
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			void Update
+			(
+				      uint32                _descriptorWriteCount,
+				const Write*                _descriptorWrites    ,
+				      uint32                _descriptorCopyCount ,
+				const Copy*                 _descriptorCopies
+			)
+			{
+				Parent::Update(device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
+		protected:
+
+			Handle handle;
+
+			LogicalDevice::Handle device;
+		};
+
+		class DescriptorPool : public V2::DescriptorPool
+		{
+		public:
+			using Parent = V2::DescriptorPool;
+
+
+			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
+			{
+				return Parent::Allocate(device, _info, _handlesContainer);
+			}
+
+			EResult Allocate
+			(
+				AllocateInfo&                       _info   ,
+				std::vector<DescriptorSet>&         _sets   ,
+				std::vector<DescriptorSet::Handle>& _handles
+			)
+			{
+				_sets.resize(_info.DescriptorSetCount); _handles.resize(_info.DescriptorSetCount);
+
+				EResult returnCode = Parent::Allocate(device, _info, _handles.data());
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				for (DeviceSize index = 0; index < _info.DescriptorSetCount; index++)
+				{
+					_sets[index].Assign(device, _handles[index]);
+				}
+
+				return returnCode;
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			{
+				device    = _device.GetHandle()     ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device, info, allocator, handle);
+			}
+
+			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = _device.GetHandle();
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device, info, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(device, handle, allocator);
+			}
+
+			EResult Free(uint32 _count, DescriptorSet::Handle* _handles)
+			{
+				return Parent::Free(device, handle, _count, _handles);
+			}
+
+			EResult Free(std::vector<DescriptorSet::Handle> _handles)
+			{
+				return Parent::Free(device, handle, _handles.size(), _handles.data());
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult Reset(ResetFlags& _flags)
+			{
+				return Parent::Reset(device, handle, _flags);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
+		protected:
+
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			CreateInfo info;
+
+			LogicalDevice::Handle device;
+		};
 	}
 }

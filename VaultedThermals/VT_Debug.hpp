@@ -13,7 +13,7 @@
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -30,13 +30,9 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_01
+	namespace V1
 	{
 		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   ///< TODO: Add comment on what this is for.
 
@@ -51,19 +47,19 @@
 		constexpr RoCStr Extension_DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME;
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a>  */
-		struct Label : Vault_00::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
+		struct Label : V0::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
 		{
 				  EType   SType    ;
-			const void*   Extension;
+			const void*   Next;
 			const char*   Name     ;
 				  float32 Color[4] ;
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a>  */
-		struct ObjectInfo : Vault_00::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
+		struct ObjectInfo : V0::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
 		{
 				  EType       SType    ;
-			const void*       Extension;
+			const void*       Next;
 				  EObjectType Type     ;
 				  uInt64      Handle   ;
 			const char*       Name     ;
@@ -79,12 +75,12 @@
 			using Handle = VkDebugUtilsMessengerEXT;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a>  */
-			struct CallbackData : Vault_00::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
+			struct CallbackData : V0::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
 			{
 				using FlagsMask = Bitmask<EUndefined, Flags>;
 
 					  EType       SType               ;
-				const void*       Extension           ;
+				const void*       Next           ;
 					  FlagsMask   Flags               ;
 				const char*       MesssageIDName      ;
 					  sint32      MessageIDNumber     ;
@@ -100,12 +96,12 @@
 			using CallbackDelegate = VK_FPtr<Bool, MessageServerityFlags, MessageTypeFlags, const CallbackData, void* >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a>  */
-			struct CreateInfo : Vault_00::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
+			struct CreateInfo : V0::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
 			{
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 					  EType                 SType       ;
-				const void*                 Extension   ;
+				const void*                 Next   ;
 					  CreateFlags           Flags       ;
 					  MessageServerityFlags Serverity   ;
 					  MessageTypeFlags      Type        ;
@@ -132,7 +128,7 @@
 			{
 				static FPtr_CreateMessenger delegate = nullptr;
 
-				if (delegate == nullptr) delegate = GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
+				if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
 
 				if (delegate != nullptr)
 				{
@@ -171,7 +167,7 @@
 
 				static FPtr_DestroyMessenger delegate = nullptr;
 				
-				if (delegate == nullptr) delegate = GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
+				if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
 
 				if (delegate != nullptr)
 				{
@@ -184,7 +180,7 @@
 		struct ValidationLayers
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
-			struct LayerProperties : Vault_00::VKStruct_Base<VkLayerProperties>
+			struct LayerProperties : V0::VKStruct_Base<VkLayerProperties>
 			{
 				ExtensionNameStr LayerName;
 				uint32           SpecVersion;
@@ -193,32 +189,177 @@
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  */
-			static EResult QueryAvailableLayers(uint32* _numContainer, LayerProperties* _propertiesContainer)
+			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
 			{
-				return EResult(vkEnumerateInstanceLayerProperties(_numContainer, (VkLayerProperties*)(_propertiesContainer)));
+				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, _propertiesContainer->operator VkLayerProperties*()));
 			}
 		};
 	}
 
-	namespace Vault_02
+	namespace V2
 	{
-		struct ValidationLayers : public Vault_01::ValidationLayers
+		using V1::CallbackDataFlags;
+		using V1::FPtr_CreateMessenger;
+		using V1::MessageServerityFlags;
+		using V1::MessageTypeFlags;
+		using V1::Extension_DebugUtility;
+
+		struct Label : V1::Label
 		{
-			static uint32 GetNumberOfLayers()
+			Label()
 			{
-				uint32 layerCount;
-
-				vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
-
-				return layerCount;
-			}
-
-			static EResult GetAvailableLayers(LayerProperties* _container)
-			{
-				uint32 layerCount = GetNumberOfLayers();
-
-				return EResult(vkEnumerateInstanceLayerProperties(&layerCount, (VkLayerProperties*)(_container)));
+				SType = STypeEnum;
+				Next  = nullptr  ;
 			}
 		};
+
+		struct ObjectInfo : V1::ObjectInfo
+		{
+			ObjectInfo()
+			{
+				SType = STypeEnum;
+				Next  = nullptr  ;
+			}
+		};
+
+		struct DebugMessenger : public V1::DebugMessenger
+		{
+			using Parent = V1::DebugMessenger;
+
+			struct CallbackData : Parent::CallbackData
+			{
+				CallbackData()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			static EResult Create
+			(
+				      AppInstance::Handle          _appInstance,
+				const DebugMessenger::CreateInfo&  _createSpec ,
+				      DebugMessenger::Handle&      _messenger
+			)
+			{
+				return Parent::Create(_appInstance, _createSpec, Memory::DefaultAllocator,_messenger);
+			}
+
+			using Parent::Create;
+
+			static void Destroy
+			(
+				      AppInstance::Handle          _appInstance,
+				      DebugMessenger::Handle       _messenger  
+			)
+			{
+				Parent::Destroy(_appInstance, _messenger, Memory::DefaultAllocator);
+			}
+
+			using Parent::Destroy;
+		};
+
+		struct ValidationLayers : public V1::ValidationLayers
+		{
+			static EResult GetAvailableLayers(std::vector<LayerProperties>& _container)
+			{
+				uint32 layerCount;
+				
+				EResult result = QueryAvailableLayers(layerCount, nullptr);
+
+				if (result != EResult::Success) return result;
+
+				_container.resize(layerCount);
+
+				result = QueryAvailableLayers(layerCount, _container.data());
+
+				return result;
+			}
+		};
+	}
+
+	namespace V4
+	{
+		using V2::CallbackDataFlags;
+		using V2::FPtr_CreateMessenger;
+		using V2::MessageServerityFlags;
+		using V2::MessageTypeFlags;
+		using V2::Extension_DebugUtility;
+
+		class DebugMessenger : public V2::DebugMessenger
+		{
+		public:
+
+			using Parent = V2::DebugMessenger;
+
+
+			EResult Create
+			(
+				      AppInstance::Handle _appInstance,
+				const CreateInfo&         _createSpec 
+			)
+			{
+				app       = _appInstance ;
+				info      = _createSpec  ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(app, _createSpec, handle);
+			}
+
+			EResult Create
+			(
+					  AppInstance::Handle          _appInstance,
+				const CreateInfo&                  _createSpec ,
+				const Memory::AllocationCallbacks* _allocator  
+			)
+			{
+				app       = _appInstance ;
+				info      = _createSpec  ;
+				allocator = _allocator   ;
+
+				return Parent::Create(app, _createSpec, allocator, handle);
+			}
+
+			void Destroy()
+			{
+				Parent::Destroy(app, handle, allocator);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
+		protected:
+
+			AppInstance::Handle app;
+
+			CreateInfo info;
+
+			const Memory::AllocationCallbacks* allocator;
+
+			Handle handle;
+		};
+
+		using V2::ValidationLayers;
 	}
 }

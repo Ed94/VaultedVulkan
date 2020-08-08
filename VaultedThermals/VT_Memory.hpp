@@ -14,14 +14,15 @@ Contains the full definition of the intended memory structure.
 #pragma once
 
 
-// VT#include "VT_Vaults.hpp"
+// VT
+#include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
 #include "VT_Types.hpp"
 #include "VT_Constants.hpp"
-#include "VT_Memory_Corridors.hpp"
+#include "VT_Memory_Backend.hpp"
 #include "VT_PhysicalDevice.hpp"
 #include "VT_Initialization.hpp"
 #include "VT_LogicalDevice.hpp"
@@ -29,18 +30,16 @@ Contains the full definition of the intended memory structure.
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
-	namespace VaultedThermals
-#else
-	namespace VT
-#endif
+VT_Namespace
 {
-	namespace Vault_01
+	namespace V1
 	{
-		struct Memory : public Vault_00::Memory
+		struct Memory : public V0::Memory
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
 			using Handle = VkDeviceMemory;
+
+			static constexpr DeviceSize ZeroOffset = 0;
 
 			/**
 			* @brief.
@@ -74,9 +73,9 @@ Contains the full definition of the intended memory structure.
 			*/
 			static void Free
 			(
-				      LogicalDevice::Handle _device,
-				      Memory::Handle _memory,
-				const AllocationCallbacks* _allocator
+				      LogicalDevice::Handle _device   ,
+				      Handle                _memory   ,
+				const AllocationCallbacks*  _allocator
 			)
 			{
 				vkFreeMemory(_device, _memory, _allocator->operator const VkAllocationCallbacks*());
@@ -119,40 +118,178 @@ Contains the full definition of the intended memory structure.
 		};
 	}
 
-	namespace Vault_02
+	namespace V2
 	{
-		struct Memory : public Vault_01::Memory
+		struct Memory : public V1::Memory
 		{
-			using Parent = Vault_01::Memory;
+			using Parent = V1::Memory;
 
-			struct AllocateInfo : public Vault_01::Memory::AllocateInfo
+			struct AllocateInfo : public Parent::AllocateInfo
 			{
-				using Parent = Vault_01::Memory::AllocateInfo;
-
-				AllocateInfo() { SType = STypeEnum; }
+				AllocateInfo() 
+				{ 
+					SType           = STypeEnum; 
+					Next            = nullptr  ;
+					AllocationSize  = 0        ;
+					MemoryTypeIndex = 0        ;
+				}
 			};
 
-			struct Barrier : public Vault_01::Memory::Barrier
+			struct Barrier : public Parent::Barrier
 			{
-				using Parent = Vault_01::Memory::Barrier;
-
-				Barrier() { SType = STypeEnum; }
+				Barrier() 
+				{ 
+					SType = STypeEnum; 
+					Next  = nullptr  ;
+				}
 			};
+
+			/**
+			* @brief.
+			* 
+			* \param _device
+			* \param _allocateInfo
+			* \param _allocator
+			* \param _memory
+			* \return 
+			*/
+			static EResult Allocate
+			(
+				      LogicalDevice::Handle _device      ,
+				const AllocateInfo&         _allocateInfo,
+				      Handle&               _memory
+			)
+			{
+				return EResult(vkAllocateMemory(_device, _allocateInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_memory) );
+			}
+
+			using Parent::Allocate;
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
+			* 
+			* \param _device
+			* \param _memory
+			* \param _allocator
+			* \return 
+			*/
+			static void Free(LogicalDevice::Handle _device, Handle _memory)
+			{
+				vkFreeMemory(_device, _memory, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+			}
+
+			using Parent::Free;
+
+			/**
+			 * @brief Writes to GPU memory by mapping to device memory specified by a 
+			 * handle and then using memcpy to copy data specified in _data.
+			 * 
+			 * \param _device
+			 * \param _memory
+			 * \param _offset
+			 * \param _size
+			 * \param _flags
+			 * \param _data
+			 */
+			static void WriteToGPU
+			(
+				LogicalDevice::Handle _device,
+				Handle                _memory,
+				DeviceSize            _offset,
+				DeviceSize            _size  ,
+				MapFlags              _flags ,
+				VoidPtr&              _data
+			)
+			{
+				VoidPtr gpuAddressing;
+
+				Map(_device, _memory, _offset, _size, _flags, gpuAddressing);   ///< @todo Add exception handling for this / return code...
+
+					memcpy(gpuAddressing, _data, _size);
+
+				Unmap(_device, _memory);
+			}
 		};
 	}
 
-	namespace Vault_05
+	namespace V4
 	{
-		class Memory : public Vault_01::Memory
+		class Memory : public V2::Memory
 		{
 		public:
 
+			using Parent = V2::Memory;
+
+			EResult Allocate(LogicalDevice::Handle _device, AllocateInfo& _allocateInfo)
+			{
+				device    = _device                 ;
+				info      = _allocateInfo           ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Allocate(device, info, handle);
+			}
+
+			EResult Allocate(LogicalDevice::Handle _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = _device      ;
+				info      = _allocateInfo;
+				allocator = _allocator   ;
+
+				return Parent::Allocate(device, info, allocator, handle);
+			}
+
+			void Free()
+			{
+				Parent::Free(device, handle, allocator);
+			}
+
+			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			EResult Map
+			(
+				DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data
+			)
+			{
+				return Parent::Map(device, handle, _offset, _size, _flags, _data);
+			}
+
+			void Unmap()
+			{
+				Parent::Unmap(device, handle);
+			}
+
+			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
+			{
+				Parent::WriteToGPU(device, handle, _offset, _size, _flags, _data);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
 
 		protected:
 
 			Handle handle;
 
-			LogicalDevice& assignedDevice;
+			AllocateInfo info;
+
+			const AllocationCallbacks* allocator;
+
+			LogicalDevice::Handle device;
 		};
 	}
 }
