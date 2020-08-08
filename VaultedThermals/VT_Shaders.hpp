@@ -180,39 +180,50 @@ VT_Namespace
 			
 			using Parent = V2::ShaderModule;
 
-			EResult Create
-			(
-				LogicalDevice& _device,
-				CreateInfo&    _info  
-			)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
 			{
-				device    = &_device                ;
+				device    =  _device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, handle);
+				return Parent::Create(device, info, handle);
 			}
 
 			EResult Create
 			(
-				      LogicalDevice&               _device   ,
+				      LogicalDevice::Handle        _device   ,
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device->GetHandle(), handle, allocator);
+				Parent::Destroy(device, handle, allocator);
 			}
 
 			const Handle& GetHandle() const
+			{
+				return handle;
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
 			{
 				return handle;
 			}
@@ -225,7 +236,7 @@ VT_Namespace
 
 			CreateInfo info;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 	}
 }

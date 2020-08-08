@@ -430,18 +430,18 @@ VT_Namespace
 
 			@todo Make the device listing container type specifiable using an interface.
 			*/
-			EResult GetAvailablePhysicalDevices(std::vector<PhysicalDevice>& _deviceListing) const
+			EResult GetAvailablePhysicalDevices(std::vector<PhysicalDevice>& _deviceListing) const 
 			{
 				uint32 count; std::vector<PhysicalDevice::Handle> handleList;
 
-				EResult returnCode = QueryPhysicalDeviceListing(handle, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceListing(&count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				handleList    .resize(count);
 				_deviceListing.resize(count);
 
-				returnCode = QueryPhysicalDeviceListing(handle, &count, handleList.data());
+				returnCode = QueryPhysicalDeviceListing(&count, handleList.data());
 				
 				for (DeviceSize index = 0; index < count; index++)
 				{
@@ -464,20 +464,20 @@ VT_Namespace
 			{
 				uint32 count;
 
-				EResult returnCode = QueryPhysicalDeviceGroups(handle, &count, nullptr);
+				EResult returnCode = QueryPhysicalDeviceGroups(&count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				_groupListing.resize(count);
 
-				returnCode = QueryPhysicalDeviceGroups(handle, &count, _groupListing.data());
+				returnCode = QueryPhysicalDeviceGroups(&count, _groupListing.data());
 
 				return returnCode;
 			}
 
 			const Handle& GetHandle() const
-			{
-				return handle;
+			{ 
+				return handle; 
 			}
 
 			/**
@@ -485,7 +485,7 @@ VT_Namespace
 			 * 
 			 * \return 
 			 */
-			uint32 GetVersion()
+			uint32 GetVersion() const
 			{
 				return version;
 			}
@@ -516,6 +516,31 @@ VT_Namespace
 				return Parent::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
 			}
 
+			EResult QueryPhysicalDeviceListing(uint32* _numDevices, PhysicalDevice::Handle* _deviceListing) const
+			{
+				return Parent::QueryPhysicalDeviceListing(handle, _numDevices, _deviceListing);
+			}
+
+			EResult QueryPhysicalDeviceGroups(uint32* _numGroups, PhysicalDevice::Group* _groupProperties) const
+			{
+				return Parent::QueryPhysicalDeviceGroups(handle, _numGroups, _groupProperties);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
 		protected:
 
 			Handle     handle    ;
@@ -524,8 +549,6 @@ VT_Namespace
 			uint32     version   ;
 
 			const Memory::AllocationCallbacks* allocator;
-
-			EResult returnCodeRef;
 		};
 	}
 }

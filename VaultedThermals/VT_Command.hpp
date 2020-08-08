@@ -40,106 +40,6 @@ VT_Namespace
 	namespace V1
 	{
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a> 
-		 */
-		struct CommandPool
-		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPool">Specification</a>  */
-			using Handle = VkCommandPool;
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlags">Specification</a>  */
-			using CreateFlgas = Bitmask<ECommandPoolCreateFlag, VkCommandPoolCreateFlags>;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlags">Specification</a>  */
-			using ResetFlags  = Bitmask<ECommandPoolResetFlags, VkCommandPoolResetFlags >;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a>  */
-			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a>  */
-			struct CreateInfo : V0::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
-			{
-				      EType       SType           ;
-				const void*       Next            ;
-				      CreateFlgas Flags           ;
-				      uint32      QueueFamilyIndex;
-			};
-
-			/**
-			 * @brief Create a command pool.
-			 * 
-			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateCommandPool">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _createInfo
-			 * \param _allocator
-			 * \param _commandPool
-			 * \return 
-			 */
-			static EResult Create
-			(
-				      LogicalDevice::Handle        _deviceHandle,
-				const CreateInfo&                  _createInfo  ,
-				const Memory::AllocationCallbacks* _allocator   ,
-				      Handle&                      _commandPool
-			)
-			{
-				return EResult(vkCreateCommandPool(_deviceHandle, (const VkCommandPoolCreateInfo*)(&_createInfo), _allocator->operator const VkAllocationCallbacks*(), &_commandPool));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _commandPool
-			 * \param _allocator
-			 */
-			static void Destroy
-			(
-				      LogicalDevice::Handle        _deviceHandle,
-				      Handle                       _commandPool ,
-				const Memory::AllocationCallbacks* _allocator
-			)
-			{
-				vkDestroyCommandPool(_deviceHandle, _commandPool, _allocator->operator const VkAllocationCallbacks*());
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetCommandPool">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _commandPool
-			 * \param _flags
-			 */
-			static EResult Reset
-			(
-				LogicalDevice::Handle _deviceHandle,
-				Handle                _commandPool ,
-				ResetFlags            _flags
-			)
-			{
-				return EResult(vkResetCommandPool(_deviceHandle, _commandPool, _flags));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkTrimCommandPool">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _commandPool
-			 * \param _flags
-			 */
-			static void Trim
-			(
-				LogicalDevice::Handle _deviceHandle,
-				Handle                _commandPool ,
-				TrimFlags             _flags
-			)
-			{
-				vkTrimCommandPool(_deviceHandle, _commandPool, _flags);	
-			}
-		};
-
-
-		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
 		 */
 		struct CommandBuffer
@@ -158,17 +58,7 @@ VT_Namespace
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferUsageFlags">Specification</a>  */
 			using UsageFlags                  = Bitmask<ECommandBufferUsageFlag    , VkCommandBufferUsageFlags    >;
 
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> .
-			 */
-			struct AllocateInfo : V0::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
-			{
-				      EType               SType      ;
-				const void*               Next       ;
-				      CommandPool::Handle Pool       ;
-					  EBufferLevel        Level      ;
-				      uint32              BufferCount;
-			};
+			
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a>  */
 			struct BufferImageRegion : V0::VKStruct_Base<VkBufferImageCopy>
@@ -333,23 +223,7 @@ VT_Namespace
 				      uint32 DeviceMask;
 			};
 
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateCommandBuffers">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _allocateInfo
-			 * \param _commandBuffers
-			 * \return 
-			 */
-			static EResult Allocate
-			(
-				      LogicalDevice::Handle _deviceHandle  ,
-				const AllocateInfo&         _allocateInfo  ,
-				      Handle*               _commandBuffers
-			)
-			{
-				return EResult(vkAllocateCommandBuffers(_deviceHandle, _allocateInfo.operator const VkCommandBufferAllocateInfo*(), _commandBuffers));
-			}
+			
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBeginCommandBuffer">Specification</a> 
@@ -373,7 +247,7 @@ VT_Namespace
 			 */
 			static void BeginRenderPass
 			(
-				      CommandBuffer::Handle  _commandBuffer,
+				      Handle                 _commandBuffer,
 				const RenderPass::BeginInfo& _beginInfo    ,
 				      ESubpassContents       _contents
 			)
@@ -387,7 +261,7 @@ VT_Namespace
 			 */
 			static void BindDescriptorSets
 			(
-				      CommandBuffer::Handle    _commandBuffer     ,
+				      Handle                   _commandBuffer     ,
 				      EPipelineBindPoint       _pipelineBindPoint ,
 				      Pipeline::Layout::Handle _layout            ,
 				      uint32                   _firstSet          ,
@@ -415,10 +289,10 @@ VT_Namespace
 			 */
 			static void BindIndexBuffer
 			(
-				CommandBuffer::Handle _commandBuffer,
-				Buffer::Handle        _buffer       ,
-				DeviceSize            _offset       ,
-				EIndexType            _indexType
+				Handle         _commandBuffer,
+				Buffer::Handle _buffer       ,
+				DeviceSize     _offset       ,
+				EIndexType     _indexType
 			)
 			{
 				vkCmdBindIndexBuffer(_commandBuffer, _buffer, _offset, VkIndexType(_indexType));
@@ -449,9 +323,9 @@ VT_Namespace
 			 */
 			static void BindPipeline
 			(
-				CommandBuffer::Handle _commandBuffer    ,
-				EPipelineBindPoint    _pipelineBindPoint,
-				Pipeline::Handle      _pipeline
+				Handle             _commandBuffer    ,
+				EPipelineBindPoint _pipelineBindPoint,
+				Pipeline::Handle   _pipeline
 			)
 			{
 				vkCmdBindPipeline(_commandBuffer, VkPipelineBindPoint(_pipelineBindPoint), _pipeline);
@@ -467,14 +341,14 @@ VT_Namespace
 			 */
 			static void BlitImage
 			(
-				      CommandBuffer::Handle _commandBuffer,
-				      Image::Handle         _srcImage,
-				      EImageLayout          _srcImageLayout,
-				      Image::Handle         _dstImage,
-				      EImageLayout          _dstImageLayout,
-				      uint32                _regionCount,
-				const Image::Blit*          _regions,
-				      EFilter               _filter
+				      Handle        _commandBuffer,
+				      Image::Handle _srcImage,
+				      EImageLayout  _srcImageLayout,
+				      Image::Handle _dstImage,
+				      EImageLayout  _dstImageLayout,
+				      uint32        _regionCount,
+				const Image::Blit*  _regions,
+				      EFilter       _filter
 			)
 			{
 				vkCmdBlitImage
@@ -497,11 +371,11 @@ VT_Namespace
 			 */
 			static void CopyBuffer
 			(
-				      CommandBuffer::Handle _commandBuffer    ,
-				      Buffer::Handle        _sourceBuffer     ,
-				      Buffer::Handle        _destinationBuffer,
-				      uint32                _regionCount      ,
-				const Buffer::CopyInfo*     _regions
+				      Handle            _commandBuffer    ,
+				      Buffer::Handle    _sourceBuffer     ,
+				      Buffer::Handle    _destinationBuffer,
+				      uint32            _regionCount      ,
+				const Buffer::CopyInfo* _regions
 			)
 			{
 				vkCmdCopyBuffer(_commandBuffer, _sourceBuffer, _destinationBuffer, _regionCount, _regions->operator const VkBufferCopy*());
@@ -528,11 +402,11 @@ VT_Namespace
 			 */
 			static void Draw
 			(
-				CommandBuffer::Handle _commandBuffer,
-				uint32                _firstVertex  ,
-				uint32                _vertexCount  , 
-				uint32                _firstInstance,
-				uint32                _instanceCount
+				Handle _commandBuffer,
+				uint32 _firstVertex  ,
+				uint32 _vertexCount  , 
+				uint32 _firstInstance,
+				uint32 _instanceCount
 			)
 			{
 				vkCmdDraw(_commandBuffer, _vertexCount, _instanceCount, _firstVertex, _firstInstance);
@@ -543,12 +417,12 @@ VT_Namespace
 			 */
 			static void DrawIndexed
 			(
-				CommandBuffer::Handle _commandBuffer,
-				uint32                _indexCount   ,
-				uint32                _instanceCount,
-				uint32                _firstIndex   ,
-				sint32                _vertexOffset ,
-				uint32                _firstInstance
+				Handle _commandBuffer,
+				uint32 _indexCount   ,
+				uint32 _instanceCount,
+				uint32 _firstIndex   ,
+				sint32 _vertexOffset ,
+				uint32 _firstInstance
 			)
 			{
 				vkCmdDrawIndexed(_commandBuffer, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
@@ -568,7 +442,7 @@ VT_Namespace
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdEndRenderPass">Specification</a> .
 			 */
-			static void EndRenderPass(CommandBuffer::Handle _commandBuffer)
+			static void EndRenderPass(Handle _commandBuffer)
 			{
 				vkCmdEndRenderPass(_commandBuffer);
 			}
@@ -588,25 +462,6 @@ VT_Namespace
 			)
 			{
 				vkCmdExecuteCommands(_primaryCommandBuffer, _secondaryBufferCount, _secondaryBuffers);
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeCommandBuffers">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _commandPool
-			 * \param _bufferCount
-			 * \param _commandBuffers
-			 */
-			static void Free
-			(
-				      LogicalDevice::Handle _deviceHandle  ,
-				      CommandPool::Handle   _commandPool   ,
-				      uint32                _bufferCount   ,
-				const Handle*               _commandBuffers
-			)
-			{
-				vkFreeCommandBuffers(_deviceHandle, _commandPool, _bufferCount, _commandBuffers);
 			}
 
 			/**
@@ -723,6 +578,154 @@ VT_Namespace
 				);
 			}
 		};
+
+		/**
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a> 
+		 */
+		struct CommandPool
+		{
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPool">Specification</a>  */
+			using Handle = VkCommandPool;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlags">Specification</a>  */
+			using CreateFlgas = Bitmask<ECommandPoolCreateFlag, VkCommandPoolCreateFlags>;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlags">Specification</a>  */
+			using ResetFlags  = Bitmask<ECommandPoolResetFlags, VkCommandPoolResetFlags >;
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a>  */
+			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> .
+			 */
+			struct AllocateInfo : V0::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
+			{
+				      EType               SType      ;
+				const void*               Next       ;
+				      Handle              Pool       ;
+					  ECommandBufferLevel Level      ;
+				      uint32              BufferCount;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a>  */
+			struct CreateInfo : V0::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
+			{
+				      EType       SType           ;
+				const void*       Next            ;
+				      CreateFlgas Flags           ;
+				      uint32      QueueFamilyIndex;
+			};
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateCommandBuffers">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _allocateInfo
+			 * \param _commandBuffers
+			 * \return 
+			 */
+			static EResult Allocate
+			(
+				      LogicalDevice::Handle  _deviceHandle  ,
+				const AllocateInfo&          _allocateInfo  ,
+				      CommandBuffer::Handle* _commandBuffers
+			)
+			{
+				return EResult(vkAllocateCommandBuffers(_deviceHandle, _allocateInfo.operator const VkCommandBufferAllocateInfo*(), _commandBuffers));
+			}
+
+			/**
+			 * @brief Create a command pool.
+			 * 
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateCommandPool">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _createInfo
+			 * \param _allocator
+			 * \param _commandPool
+			 * \return 
+			 */
+			static EResult Create
+			(
+				      LogicalDevice::Handle        _deviceHandle,
+				const CreateInfo&                  _createInfo  ,
+				const Memory::AllocationCallbacks* _allocator   ,
+				      Handle&                      _commandPool
+			)
+			{
+				return EResult(vkCreateCommandPool(_deviceHandle, (const VkCommandPoolCreateInfo*)(&_createInfo), _allocator->operator const VkAllocationCallbacks*(), &_commandPool));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _commandPool
+			 * \param _allocator
+			 */
+			static void Destroy
+			(
+				      LogicalDevice::Handle        _deviceHandle,
+				      Handle                       _commandPool ,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				vkDestroyCommandPool(_deviceHandle, _commandPool, _allocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeCommandBuffers">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _commandPool
+			 * \param _bufferCount
+			 * \param _commandBuffers
+			 */
+			static void Free
+			(
+				      LogicalDevice::Handle _deviceHandle   ,
+				      Handle                 _commandPool   ,
+				      uint32                 _bufferCount   ,
+				const CommandBuffer::Handle* _commandBuffers
+			)
+			{
+				vkFreeCommandBuffers(_deviceHandle, _commandPool, _bufferCount, _commandBuffers);
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetCommandPool">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _commandPool
+			 * \param _flags
+			 */
+			static EResult Reset
+			(
+				LogicalDevice::Handle _deviceHandle,
+				Handle                _commandPool ,
+				ResetFlags            _flags
+			)
+			{
+				return EResult(vkResetCommandPool(_deviceHandle, _commandPool, _flags));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkTrimCommandPool">Specification</a> 
+			 * 
+			 * \param _deviceHandle
+			 * \param _commandPool
+			 * \param _flags
+			 */
+			static void Trim
+			(
+				LogicalDevice::Handle _deviceHandle,
+				Handle                _commandPool ,
+				TrimFlags             _flags
+			)
+			{
+				vkTrimCommandPool(_deviceHandle, _commandPool, _flags);	
+			}
+		};
 	}
 
 	namespace V2
@@ -730,6 +733,15 @@ VT_Namespace
 		struct CommandPool : public V1::CommandPool
 		{
 			using Parent = V1::CommandPool;
+			
+			struct AllocateInfo : public Parent::AllocateInfo
+			{
+				AllocateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
 
 			struct CreateInfo : Parent::CreateInfo
 			{
@@ -762,20 +774,76 @@ VT_Namespace
 			}
 
 			using Parent::Destroy;
+
+			static void Free
+			(
+				      LogicalDevice::Handle  _device        ,
+				const AllocateInfo&          _info          ,
+				const CommandBuffer::Handle* _commandBuffers
+			)
+			{
+				Parent::Free(_device, _info.Pool, _info.BufferCount, _commandBuffers);	
+			}
+
+			using Parent::Free;
+
+		#pragma region SingleTimeCommands
+
+			/**
+			 * @brief.
+			 */
+			static CommandBuffer::Handle BeginSingleTimeCommands(LogicalDevice::Handle _device, CommandPool::Handle _commandPool)
+			{
+				AllocateInfo allocationInfo{};
+
+				allocationInfo.Level       = ECommandBufferLevel::Primary;
+				allocationInfo.Pool        = _commandPool                ;
+				allocationInfo.BufferCount = 1                           ;
+
+				CommandBuffer::Handle commandBuffer;
+
+				Allocate(_device, allocationInfo, &commandBuffer);
+
+				CommandBuffer::BeginInfo beginInfo{};
+
+				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
+
+				CommandBuffer::BeginRecord(commandBuffer, beginInfo);
+
+				return commandBuffer;
+			}
+
+			/**
+			 * @brief.
+			 */
+			static void EndSingleTimeCommands
+			(
+				CommandBuffer       ::Handle _commandBuffer, 
+				CommandPool         ::Handle _commandPool  , 
+				LogicalDevice       ::Handle _device       , 
+				LogicalDevice::Queue::Handle _queue
+			)
+			{
+				CommandBuffer::EndRecord(_commandBuffer);
+
+				CommandBuffer::SubmitInfo submitInfo{};
+
+				submitInfo.CommandBufferCount = 1              ;
+				submitInfo.CommandBuffers     = &_commandBuffer;
+
+				LogicalDevice::Queue::SubmitToQueue(_queue, 1, submitInfo, Null<Fence::Handle>);
+
+				LogicalDevice::Queue::WaitUntilIdle(_queue);
+
+				Parent::Free(_device, _commandPool, 1, &_commandBuffer);
+			}
+
+		#pragma endregion SingleTimeCommands	
 		};
 
 		struct CommandBuffer : public V1::CommandBuffer
 		{
 			using Parent = V1::CommandBuffer;
-
-			struct AllocateInfo : public Parent::AllocateInfo
-			{
-				AllocateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
 
 			struct InheritanceWindow : public Parent::InheritanceWindow
 			{
@@ -812,6 +880,7 @@ VT_Namespace
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
+					InheritanceInfo = nullptr;
 				}
 			};
 
@@ -823,6 +892,13 @@ VT_Namespace
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
+					WaitSemaphoreCount = 0;
+					WaitSemaphores = nullptr;
+					WaitDstStageMask = nullptr; 
+					CommandBufferCount = 0;
+					CommandBuffers = 0;
+					SignalSemaphoreCount = 0;
+					SignalSemaphores = nullptr;
 				}
 
 				struct TimelineSemaphore : public Parent
@@ -844,59 +920,6 @@ VT_Namespace
 				};
 			};
 
-		#pragma region SingleTimeCommands
-
-			/**
-			 * @brief.
-			 */
-			static Handle BeginSingleTimeCommands(LogicalDevice::Handle _device, CommandPool::Handle _commandPool)
-			{
-				AllocateInfo allocationInfo{};
-
-				allocationInfo.Level       = ECommandBufferLevel::Primary;
-				allocationInfo.Pool        = _commandPool                ;
-				allocationInfo.BufferCount = 1                           ;
-
-				Handle commandBuffer;
-
-				Allocate(_device, allocationInfo, &commandBuffer);
-
-				BeginInfo beginInfo{};
-
-				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
-
-				BeginRecord(commandBuffer, beginInfo);
-
-				return commandBuffer;
-			}
-
-			/**
-			 * @brief.
-			 */
-			static void EndSingleTimeCommands
-			(
-				CommandBuffer       ::Handle _commandBuffer, 
-				CommandPool         ::Handle _commandPool  , 
-				LogicalDevice       ::Handle _device       , 
-				LogicalDevice::Queue::Handle _queue
-			)
-			{
-				EndRecord(_commandBuffer);
-
-				SubmitInfo submitInfo{};
-
-				submitInfo.CommandBufferCount = 1              ;
-				submitInfo.CommandBuffers     = &_commandBuffer;
-
-				LogicalDevice::Queue::SubmitToQueue(_queue, 1, submitInfo, Null<Fence::Handle>);
-
-				LogicalDevice::Queue::WaitUntilIdle(_queue);
-
-				Parent::Free(_device, _commandPool, 1, &_commandBuffer);
-			}
-
-		#pragma endregion SingleTimeCommands
-
 			/** @brief  */
 			static void CopyBuffer
 			(
@@ -908,22 +931,153 @@ VT_Namespace
 				LogicalDevice::Queue::Handle _queue
 			)
 			{
-				Handle commandBuffer = BeginSingleTimeCommands(_device, _pool);
+				Handle commandBuffer = CommandPool::BeginSingleTimeCommands(_device, _pool);
 
 				Parent::CopyBuffer(commandBuffer, _sourceBuffer, _destinationBuffer, 1, &_regionInfo);
 
-				EndSingleTimeCommands(commandBuffer, _pool, _device, _queue);
-			}
+				CommandPool::EndSingleTimeCommands(commandBuffer, _pool, _device, _queue);
+			}	
 
-			static void Free
+			using Parent::CopyBuffer;
+
+			static void SubmitPipelineBarrier
 			(
-				      LogicalDevice::Handle _device        ,
-				const AllocateInfo&         _info          ,
-				const Handle*               _commandBuffers
+				      Handle                  _commandBuffer           ,
+				      Pipeline::StageFlags    _sourceStageMask         ,
+				      Pipeline::StageFlags    _destinationStageMask    ,
+				      DependencyFlags         _dependencyFlags         ,
+				      uint32                  _memoryBarrierCount      ,
+				const Memory::Barrier*        _memoryBarriers          
 			)
 			{
-				Parent::Free(_device, _info.Pool, _info.BufferCount, _commandBuffers);	
+				Parent::SubmitPipelineBarrier
+				(
+					_commandBuffer,
+					_sourceStageMask,
+					_destinationStageMask,
+					_dependencyFlags,
+					_memoryBarrierCount,
+					_memoryBarriers,
+					0, nullptr,
+					0, nullptr
+				);
 			}
+
+			static void SubmitPipelineBarrier
+			(
+				      Handle                  _commandBuffer           ,
+				      Pipeline::StageFlags    _sourceStageMask         ,
+				      Pipeline::StageFlags    _destinationStageMask    ,
+				      DependencyFlags         _dependencyFlags         ,
+				      uint32                  _bufferMemoryBarrierCount,
+				const Buffer::Memory_Barrier* _bufferMemoryBarriers    
+			)
+			{
+				Parent::SubmitPipelineBarrier
+				(
+					_commandBuffer,
+					_sourceStageMask,
+					_destinationStageMask,
+					_dependencyFlags,
+					0, nullptr,
+					_bufferMemoryBarrierCount,
+					_bufferMemoryBarriers,
+					0, nullptr
+				);
+			}
+
+			static void SubmitPipelineBarrier
+			(
+				      Handle                  _commandBuffer           ,
+				      Pipeline::StageFlags    _sourceStageMask         ,
+				      Pipeline::StageFlags    _destinationStageMask    ,
+				      DependencyFlags         _dependencyFlags         ,
+				      uint32                  _imageMemoryBarrierCount ,
+				const Image::Memory_Barrier*  _imageMemoryBarriers
+			)
+			{
+				Parent::SubmitPipelineBarrier
+				(
+					_commandBuffer,
+					_sourceStageMask,
+					_destinationStageMask,
+					_dependencyFlags,
+					0, nullptr,
+					0, nullptr,
+					_imageMemoryBarrierCount,
+					_imageMemoryBarriers
+				);
+			}
+
+			using Parent::SubmitPipelineBarrier;
+
+			static EResult WaitForEvents
+			(
+				      Handle               _commandBuffer,
+				      uint32               _eventCount,
+				const Event::Handle*       _events,
+				      Pipeline::StageFlags _srcStageMask,
+				      Pipeline::StageFlags _dstStageMask,
+				      uint32               _memoryBarrierCount,
+				const Memory::Barrier*     _memoryBarriers
+			)
+			{
+				Parent::WaitForEvents
+				(
+					_commandBuffer,
+					_eventCount, _events,
+					_srcStageMask, _dstStageMask,
+					_memoryBarrierCount, _memoryBarriers,
+					0, nullptr, 
+					0, nullptr
+				);
+			}
+
+			static EResult WaitForEvents
+			(
+				      Handle                  _commandBuffer,
+				      uint32                  _eventCount,
+				const Event::Handle*          _events,
+				      Pipeline::StageFlags    _srcStageMask,
+				      Pipeline::StageFlags    _dstStageMask,
+				      uint32                  _bufferMemoryBarrierCount,
+				const Buffer::Memory_Barrier* _bufferMemoryBarriers
+			)
+			{
+				Parent::WaitForEvents
+				(
+					_commandBuffer,
+					_eventCount, _events,
+					_srcStageMask, _dstStageMask,
+					0, nullptr,
+					_bufferMemoryBarrierCount, _bufferMemoryBarriers,
+					0, nullptr
+				);
+			}
+
+			static EResult WaitForEvents
+			(
+				      Handle                 _commandBuffer,
+				      uint32                 _eventCount,
+				const Event::Handle*         _events,
+				      Pipeline::StageFlags   _srcStageMask,
+				      Pipeline::StageFlags   _dstStageMask,
+				      uint32                 _imageMemoryBarrierCount,
+				const Image::Memory_Barrier* _imageMemoryBarriers
+			)
+			{
+				Parent::WaitForEvents
+				(
+					_commandBuffer,
+					_eventCount, _events,
+					_srcStageMask, _dstStageMask,
+					0, nullptr,
+					0, nullptr,
+					_imageMemoryBarrierCount, _imageMemoryBarriers
+				);
+			}
+
+			using Parent::WaitForEvents;
 		};
 	}
 
@@ -934,27 +1088,107 @@ VT_Namespace
 		public:
 			using Parent = V2::CommandPool;
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			EResult Allocate(AllocateInfo& _info, CommandBuffer _buffer)
 			{
-				device    = &_device;
-				info      = _info   ;
-				allocator = nullptr ;
+				CommandBuffer::Handle handle;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);	
+				EResult returnCode = Parent::Allocate(device, _info, &handle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				_buffer.Assign(device, _info, handle);
+
+				return returnCode;
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _handles)
 			{
-				device    = &_device;
-				info      = _info   ;
-				allocator = nullptr ;
+				EResult returnCode = Parent::Allocate(device, _info, _handles);
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);	
+				return returnCode;
+			}
+
+			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _handles)
+			{
+				AllocateInfo info; 
+
+				info.Level       = _level; 
+				info.Pool        = handle; 
+				info.BufferCount = _count;
+
+				EResult returnCode = Parent::Allocate(device, info, _handles);
+
+				return returnCode;
+			}
+
+			EResult Allocate
+			(
+				ECommandBufferLevel                 _level         ,
+				uint32                              _count         ,
+				std::vector<CommandBuffer>&         _commandBuffers,
+				std::vector<CommandBuffer::Handle>& _handles
+			)
+			{
+				AllocateInfo info; 
+				
+				info.Level       = _level; 
+				info.Pool        = handle; 
+				info.BufferCount = _count;
+
+				_commandBuffers.resize(_count); _handles.resize(_count);
+
+				EResult returnCode = Parent::Allocate(device, info, _handles.data());
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				for (DeviceSize index = 0; index < _count; index++)
+				{
+					_commandBuffers[index].Assign(device, info, _handles[index]);
+				}
+
+				return returnCode;
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			{
+				device    = _device                 ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(device, info, handle);	
+			}
+
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			{
+				device    = _device   ;
+				info      = _info     ;
+				allocator = _allocator;
+
+				return Parent::Create(device, info, allocator, handle);	
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device->GetHandle(), handle, allocator);
+				Parent::Destroy(device, handle, allocator);
+			}
+
+			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
+			{
+				Parent::Free(device, handle, _bufferCount, _commandBuffers);
+			}
+
+			void Free
+			(
+				const AllocateInfo&          _info          ,
+				const CommandBuffer::Handle* _commandBuffers
+			)
+			{
+				Parent::Free(device, handle, _info.BufferCount, _commandBuffers);	
+			}
+
+			void Free(CommandBuffer& _commandBuffer)
+			{
+				Parent::Free(device, handle, 1, &_commandBuffer.GetHandle());
 			}
 
 			const Handle& GetHandle() const
@@ -964,13 +1198,94 @@ VT_Namespace
 
 			EResult Reset(ResetFlags _flags)
 			{
-				Parent::Reset(device->GetHandle(), handle, _flags);
+				Parent::Reset(device, handle, _flags);
 			}
 
 			EResult Trim(TrimFlags _flags)
 			{
-				Parent::Trim(device->GetHandle(), handle, _flags);
+				Parent::Trim(device, handle, _flags);
 			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle&() const
+			{
+				return handle;
+			}
+
+		#pragma region SingleTimeCommands
+
+			/**
+			 * @brief.
+			 */
+			CommandBuffer BeginSingleTimeCommands()
+			{
+				AllocateInfo allocationInfo{};
+
+				allocationInfo.Level       = ECommandBufferLevel::Primary;
+				allocationInfo.Pool        = handle                      ;
+				allocationInfo.BufferCount = 1                           ;
+
+				CommandBuffer commandBuffer;
+
+				Allocate(allocationInfo, commandBuffer);
+
+				CommandBuffer::BeginInfo beginInfo{};
+
+				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
+
+				commandBuffer.BeginRecord(beginInfo);
+
+				return commandBuffer;
+			}
+
+			/**
+			 * @brief.
+			 */
+			void EndSingleTimeCommands
+			(
+				CommandBuffer&        _commandBuffer, 
+				LogicalDevice::Queue& _queue
+			)
+			{
+				_commandBuffer.EndRecord();
+
+				CommandBuffer::SubmitInfo submitInfo{};
+
+				submitInfo.CommandBufferCount = 1                          ;
+				submitInfo.CommandBuffers     = &_commandBuffer.GetHandle();
+
+				_queue.SubmitToQueue(1, submitInfo, Null<Fence::Handle>);
+
+				_queue.WaitUntilIdle();
+
+				Free(_commandBuffer);
+			}
+
+			void CopyBuffer
+			(
+				Buffer&               _sourceBuffer     , 
+				Buffer&               _destinationBuffer, 
+				Buffer::CopyInfo&     _regionInfo       ,
+				LogicalDevice::Queue& _queue
+			)
+			{
+				CommandBuffer commandBuffer = BeginSingleTimeCommands();
+
+				commandBuffer.CopyBuffer(_sourceBuffer, _destinationBuffer, 1, &_regionInfo);
+
+				EndSingleTimeCommands(commandBuffer, _queue);
+			}
+
+		#pragma endregion SingleTimeCommands
 
 		protected:
 
@@ -980,7 +1295,7 @@ VT_Namespace
 
 			CreateInfo info;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 
 		class CommandBuffer : public V2::CommandBuffer
@@ -989,15 +1304,7 @@ VT_Namespace
 
 			using Parent = V2::CommandBuffer;
 
-			const DataSize& GetIndex() const
-			{
-				return index;
-			}
-
-			Handle* GetHandles() const
-			{
-				return (Handle*)(handle - index);
-			}
+			using AllocateInfo = CommandPool::AllocateInfo;
 
 			const AllocateInfo& GetAllocateInfo() const
 			{
@@ -1006,47 +1313,24 @@ VT_Namespace
 
 			const Handle& GetHandle() const
 			{
-				return *handle;
+				return handle;
 			}
 
-			void Assign(LogicalDevice& _device, AllocateInfo& _info, Handle& _handle, DeviceSize _index)
+			void Assign(LogicalDevice::Handle _device, AllocateInfo& _info, Handle& _handle)
 			{
-				device = &_device ;
+				device = _device  ;
 				info   = _info    ;
-				handle = &_handle ;
-				index  = _index   ;
-			}
-
-			static EResult Allocate
-			(
-				LogicalDevice& _device, 
-				AllocateInfo& _info, 
-				std::vector<CommandBuffer>& _commandBuffers,
-				std::vector<Handle>& _handles
-			)
-			{
-				_commandBuffers.resize(_info.BufferCount); _handles.resize(_info.BufferCount);
-
-				EResult returnCode = Parent::Allocate(_device.GetHandle(), _info, _handles.data());
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				for (DeviceSize index = 0; index < _info.BufferCount; index++)
-				{
-					_commandBuffers[index].Assign(_device, _info, _handles[index], index);
-				}
-
-				return returnCode;
+				handle = _handle  ;
 			}
 
 			EResult BeginRecord(const BeginInfo& _info)
 			{
-				return Parent::BeginRecord(*handle, _info);
+				return Parent::BeginRecord(handle, _info);
 			}
 
 			void BeginRenderPass(const RenderPass::BeginInfo& _info, ESubpassContents _contents)
 			{
-				Parent::BeginRenderPass(*handle, _info, _contents);
+				Parent::BeginRenderPass(handle, _info, _contents);
 			}
 
 			void BindDescriptorSets
@@ -1058,7 +1342,7 @@ VT_Namespace
 				const DescriptorSet::Handle* _descriptorSets
 			)
 			{
-				Parent::BindDescriptorSets(*handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, 0, nullptr);
+				Parent::BindDescriptorSets(handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, 0, nullptr);
 			}
 
 			void BindDescriptorSets
@@ -1072,72 +1356,55 @@ VT_Namespace
 				const uint32*                _dynamicOffsets
 			)
 			{
-				Parent::BindDescriptorSets(*handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, _dynamicOffsetCount, _dynamicOffsets);
+				Parent::BindDescriptorSets(handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, _dynamicOffsetCount, _dynamicOffsets);
 			}
 
 			void BindIndexBuffer(Buffer& _buffer, DeviceSize _offset, EIndexType _type)
 			{
-				Parent::BindIndexBuffer(*handle, _buffer.GetHandle(), _offset, _type);
+				Parent::BindIndexBuffer(handle, _buffer.GetHandle(), _offset, _type);
 			}
 
 			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers)
 			{
-				Parent::BindVertexBuffers(*handle, _firstBinding, _bindingCount, _buffers, 0);
+				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, 0);
 			}
 
 			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers, const DeviceSize* _offsets)
 			{
-				Parent::BindVertexBuffers(*handle, _firstBinding, _bindingCount, _buffers, _offsets);
+				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, _offsets);
 			}
 
 			void BindPipeline(EPipelineBindPoint _bindPoint, Pipeline& _pipeline)
 			{
-				Parent::BindPipeline(*handle, _bindPoint, _pipeline.GetHandle());
+				Parent::BindPipeline(handle, _bindPoint, _pipeline.GetHandle());
 			}
 
 			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, uint32 _regionCount, const Image::Blit* _regions, EFilter _filter)
 			{
-				Parent::BlitImage(*handle, _src.GetHandle(), _srcLayout, _dst.GetHandle(), _dstLayout, _regionCount, _regions, _filter);
+				Parent::BlitImage(handle, _src.GetHandle(), _srcLayout, _dst.GetHandle(), _dstLayout, _regionCount, _regions, _filter);
 			}
 
 			void CopyBuffer
 			(
-				Buffer& _sourceBuffer,
-				Buffer& _destinationBuffer,
-				uint32                _regionCount,
-				const Buffer::CopyInfo* _regions
+				      Buffer&                 _sourceBuffer     ,
+				      Buffer&                 _destinationBuffer,
+				      uint32                  _regionCount      ,
+				const Buffer::CopyInfo*       _regions
 			)
 			{
-				Parent::Parent::CopyBuffer(*handle, _sourceBuffer.GetHandle(), _destinationBuffer.GetHandle(), _regionCount, _regions);
-			}
-
-			static void CopyBuffer
-			(
-				Buffer               _sourceBuffer     , 
-				Buffer _destinationBuffer, 
-				Buffer::CopyInfo& _regionInfo       ,
-				LogicalDevice& _device           ,
-				CommandPool& _pool             ,
-				LogicalDevice::Queue& _queue
-			)
-			{
-				CommandBuffer commandBuffer; commandBuffer.BeginSingleTimeCommands(_device, _pool);
-
-				commandBuffer.CopyBuffer(_sourceBuffer, _destinationBuffer, 1, &_regionInfo);
-
-				commandBuffer.EndSingleTimeCommands(_queue);
+				Parent::Parent::CopyBuffer(handle, _sourceBuffer.GetHandle(), _destinationBuffer.GetHandle(), _regionCount, _regions);
 			}
 
 			void CopyBufferToImage
 			(
-				Buffer       _srcBuffer     ,
-				Image        _dstImage      ,
-				EImageLayout _dstImageLayout,
-				uint32		 _regionCount   ,
+				      Buffer&            _srcBuffer     ,
+				      Image&             _dstImage      ,
+				      EImageLayout       _dstImageLayout,
+				      uint32		     _regionCount   ,
 				const BufferImageRegion* _regions
 			)
 			{
-				Parent::CopyBufferToImage(*handle, _srcBuffer.GetHandle(), _dstImage.GetHandle(), _dstImageLayout, _regionCount, _regions);
+				Parent::CopyBufferToImage(handle, _srcBuffer.GetHandle(), _dstImage.GetHandle(), _dstImageLayout, _regionCount, _regions);
 			}
 
 			void Draw
@@ -1148,7 +1415,7 @@ VT_Namespace
 				uint32 _instanceCount
 			)
 			{
-				Parent::Draw(*handle, _firstVertex, _vertexCount, _firstInstance, _instanceCount);
+				Parent::Draw(handle, _firstVertex, _vertexCount, _firstInstance, _instanceCount);
 			}
 
 			void DrawIndexed
@@ -1160,17 +1427,17 @@ VT_Namespace
 				uint32 _firstInstance
 			)
 			{
-				Parent::DrawIndexed(*handle, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
+				Parent::DrawIndexed(handle, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
 			}
 
 			EResult EndRecord()
 			{
-				return Parent::EndRecord(*handle);
+				return Parent::EndRecord(handle);
 			}
 
 			void EndRenderPass()
 			{
-				Parent::EndRenderPass(*handle);
+				Parent::EndRenderPass(handle);
 			}
 
 			void Execute
@@ -1179,17 +1446,12 @@ VT_Namespace
 				const Handle* _secondaryBuffers
 			)
 			{
-				Parent::Execute(*handle, _secondaryBufferCount, _secondaryBuffers);
-			}
-
-			void Free()
-			{
-				Parent::Free(device->GetHandle(), info, handle - index);	
+				Parent::Execute(handle, _secondaryBufferCount, _secondaryBuffers);
 			}
 
 			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask)
 			{
-				Parent::ResetEvent(*handle, _event.GetHandle(), _stageMask);
+				Parent::ResetEvent(handle, _event.GetHandle(), _stageMask);
 			}
 
 		#pragma region SubmitPipelineBarrier_OO
@@ -1205,16 +1467,12 @@ VT_Namespace
 			{
 				Parent::SubmitPipelineBarrier
 				(
-					*handle, 
+					handle, 
 					_sourceStageMask, 
 					_destinationStageMask, 
 					_dependencyFlags, 
 					_memoryBarrierCount, 
-					_memoryBarriers,
-					0,
-					nullptr,
-					0,
-					nullptr
+					_memoryBarriers
 				);
 			}
 
@@ -1229,16 +1487,12 @@ VT_Namespace
 			{
 				Parent::SubmitPipelineBarrier
 				(
-					*handle, 
+					handle, 
 					_sourceStageMask, 
 					_destinationStageMask, 
 					_dependencyFlags, 
-					0, 
-					nullptr, 
 					_bufferMemoryBarrierCount, 
-					_bufferMemoryBarriers, 
-					0,
-					nullptr
+					_bufferMemoryBarriers
 				);
 			}
 
@@ -1253,14 +1507,10 @@ VT_Namespace
 			{
 				Parent::SubmitPipelineBarrier
 				(
-					*handle, 
+					handle, 
 					_sourceStageMask, 
 					_destinationStageMask, 
 					_dependencyFlags, 
-					0, 
-					nullptr, 
-					0, 
-					nullptr, 
 					_imageMemoryBarrierCount,
 					_imageMemoryBarriers
 				);
@@ -1281,7 +1531,7 @@ VT_Namespace
 			{
 				Parent::SubmitPipelineBarrier
 				(
-					*handle, 
+					handle, 
 					_sourceStageMask, 
 					_destinationStageMask, 
 					_dependencyFlags, 
@@ -1298,12 +1548,12 @@ VT_Namespace
 
 			void SetDeviceMask(uint32 _deviceMask)
 			{
-				Parent::SetDeviceMask(*handle, _deviceMask);
+				Parent::SetDeviceMask(handle, _deviceMask);
 			}
 
 			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask)
 			{
-				Parent::SetEvent(*handle, _event.GetHandle(), _stageMask);
+				Parent::SetEvent(handle, _event.GetHandle(), _stageMask);
 			}
 
 		#pragma region WaitForEvents_OO
@@ -1320,17 +1570,13 @@ VT_Namespace
 			{
 				Parent::WaitForEvents
 				(
-					*handle, 
+					handle, 
 					_eventCount, 
 					_events, 
 					_srcStageMask, 
 					_dstStageMask, 
 					_memoryBarrierCount, 
-					_memoryBarriers, 
-					0, 
-					nullptr,
-					0,
-					nullptr
+					_memoryBarriers
 				);
 			}
 
@@ -1346,17 +1592,13 @@ VT_Namespace
 			{
 				Parent::WaitForEvents
 				(
-					*handle, 
+					handle, 
 					_eventCount, 
 					_events, 
 					_srcStageMask, 
 					_dstStageMask, 
-					0, 
-					nullptr, 
 					_bufferMemoryBarrierCount, 
-					_bufferMemoryBarriers,
-					0,
-					nullptr
+					_bufferMemoryBarriers
 				);
 			}
 
@@ -1373,15 +1615,11 @@ VT_Namespace
 			{
 				Parent::WaitForEvents
 				(
-					*handle, 
+					handle, 
 					_eventCount, 
 					_events, 
 					_srcStageMask, 
 					_dstStageMask, 
-					0, 
-					nullptr, 
-					0, 
-					nullptr,
 					_imageMemoryBarrierCount,
 					_imageMemoryBarriers
 				);
@@ -1403,7 +1641,7 @@ VT_Namespace
 			{
 				Parent::WaitForEvents
 				(
-					*handle, 
+					handle, 
 					_eventCount, 
 					_events, 
 					_srcStageMask, 
@@ -1419,62 +1657,28 @@ VT_Namespace
 
 		#pragma endregion WaitForEvents_OO
 
-		#pragma region SingleTimeCommands
-
-			/**
-			 * @brief.
-			 */
-			void BeginSingleTimeCommands(LogicalDevice& _device, CommandPool& _commandPool)
+			operator Handle()
 			{
-				device = &_device;
-
-				AllocateInfo allocationInfo{};
-
-				allocationInfo.Level       = ECommandBufferLevel::Primary;
-				allocationInfo.Pool        = _commandPool.GetHandle()    ;
-				allocationInfo.BufferCount = 1                           ;
-
-				Parent::Allocate(device->GetHandle(), allocationInfo, handle);
-
-				index = 0;
-
-				BeginInfo beginInfo{};
-
-				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
-
-				BeginRecord(beginInfo);
+				return handle;
 			}
 
-			/**
-			 * @brief.
-			 */
-			void EndSingleTimeCommands(LogicalDevice::Queue& _queue)
+			operator Handle() const
 			{
-				EndRecord();
-
-				SubmitInfo submitInfo{};
-
-				submitInfo.CommandBufferCount = 1      ;
-				submitInfo.CommandBuffers     = handle ;
-
-				_queue.SubmitToQueue(1, submitInfo, Null<Fence::Handle>);
-
-				_queue.WaitUntilIdle();
-
-				Parent::Free(device->GetHandle(), info, handle - index);
+				return handle;
 			}
 
-		#pragma endregion SingleTimeCommands
+			operator const Handle&() const
+			{
+				return handle;
+			}
 
 		protected:
 
-			Handle* handle;
-
-			DeviceSize index;
+			Handle handle;
 
 			AllocateInfo info;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 	}
 }

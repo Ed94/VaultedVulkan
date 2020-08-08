@@ -278,7 +278,11 @@ VT_Namespace
 
 				if (result != EResult::Success) return result;
 
-				return QueryAvailableLayers(layerCount, _container.data());
+				_container.resize(layerCount);
+
+				result = QueryAvailableLayers(layerCount, _container.data());
+
+				return result;
 			}
 		};
 	}
@@ -300,39 +304,54 @@ VT_Namespace
 
 			EResult Create
 			(
-				      AppInstance& _appInstance,
-				const CreateInfo&  _createSpec 
+				      AppInstance::Handle _appInstance,
+				const CreateInfo&         _createSpec 
 			)
 			{
-				app       = &_appInstance;
+				app       = _appInstance ;
 				info      = _createSpec  ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(app->GetHandle(), _createSpec, handle);
+				return Parent::Create(app, _createSpec, handle);
 			}
 
 			EResult Create
 			(
-					  AppInstance&                 _appInstance,
+					  AppInstance::Handle          _appInstance,
 				const CreateInfo&                  _createSpec ,
 				const Memory::AllocationCallbacks* _allocator  
 			)
 			{
-				app       = &_appInstance;
+				app       = _appInstance ;
 				info      = _createSpec  ;
 				allocator = _allocator   ;
 
-				return Parent::Create(app->GetHandle(), _createSpec, allocator, handle);
+				return Parent::Create(app, _createSpec, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(app->GetHandle(), handle, allocator);
+				Parent::Destroy(app, handle, allocator);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
 			}
 
 		protected:
 
-			AppInstance* app;
+			AppInstance::Handle app;
 
 			CreateInfo info;
 

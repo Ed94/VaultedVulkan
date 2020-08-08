@@ -265,8 +265,6 @@ VT_Namespace
 				return EResult(vkCreateDevice(_physicalDevice, _info.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
 			}
 
-			
-
 			/**
 			 * @brief Destroy a logical device.
 			 * 
@@ -452,10 +450,10 @@ VT_Namespace
 					Presentation
 				};
 
-				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info)
+				void Assign(LogicalDevice::Handle _logicalDevice, CreateInfo& _info)
 				{
-					logicalDevice = &_logicalDevice;
-					info          = _info          ;
+					device = _logicalDevice;
+					info   = _info         ;
 				}
 
 				uint32 GetFamilyIndex() const
@@ -470,10 +468,10 @@ VT_Namespace
 
 				void Retrieve()
 				{
-					Parent::Get(logicalDevice->GetHandle(), info.QueueFamilyIndex, familyIndex, handle);
+					Parent::Get(device, info.QueueFamilyIndex, familyIndex, handle);
 				}
 
-				bool FamilySpecified()
+				bool FamilySpecified() const
 				{
 					return type != EType::Unspecified ? true : false;
 				}
@@ -494,7 +492,7 @@ VT_Namespace
 					return Parent::SubmitToQueue(handle, _submitCount, _submissions, _fence);
 				}
 
-				EResult WaitUntilIdle()
+				EResult WaitUntilIdle() const
 				{
 					return Parent::WaitUntilIdle(handle);
 				}
@@ -503,8 +501,12 @@ VT_Namespace
 				{
 					return handle;
 				}
-				
 
+				operator const Handle&() const
+				{
+					return handle;
+				}
+				
 			protected:
 
 				Handle handle;
@@ -515,28 +517,28 @@ VT_Namespace
 
 				uint32 familyIndex;
 
-				LogicalDevice* logicalDevice;
+				LogicalDevice::Handle device;
 			};
 
-			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo)
+			EResult Create(PhysicalDevice::Handle _physicalDevice, CreateInfo& _createInfo)
 			{
-				physicalDevice = &_physicalDevice        ;
+				physicalDevice = _physicalDevice;
 				info           = _createInfo             ;
 				allocator      = Memory::DefaultAllocator;
 
-				return Parent::Create(physicalDevice->GetHandle(), info, handle);
+				return Parent::Create(physicalDevice, info, handle);
 			}
 
-			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(PhysicalDevice::Handle _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				physicalDevice = &_physicalDevice;
-				info           = _createInfo     ;
-				allocator      = _allocator      ;
+				physicalDevice = _physicalDevice;
+				info           = _createInfo    ;
+				allocator      = _allocator     ;
 
-				return Parent::Create(physicalDevice->GetHandle(), info, allocator, handle);
+				return Parent::Create(physicalDevice, info, allocator, handle);
 			}
 
-			void Destroy() const
+			void Destroy()
 			{
 				Parent::Destroy(handle, allocator);
 			}
@@ -564,13 +566,28 @@ VT_Namespace
 				return Parent::GetProcedureAddress<ReturnType>(handle, _procedurename);
 			}
 
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
+
 		protected:
 
 			Handle handle;
 
 			CreateInfo info;
 
-			PhysicalDevice* physicalDevice;
+			PhysicalDevice::Handle physicalDevice;
 
 			const Memory::AllocationCallbacks* allocator;
 		};

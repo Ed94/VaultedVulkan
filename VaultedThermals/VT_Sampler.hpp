@@ -172,33 +172,43 @@ VT_Namespace
 
             using Parent = V2::Sampler;
 
-            EResult Create(LogicalDevice& _device, CreateInfo& info)
+            EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
             {
-                device    = &_device                ;
-                info      = info                    ;
+                device    = _device;
+                info      = _info                   ;
                 allocator = Memory::DefaultAllocator;
 
-                return Parent::Create(device->GetHandle(), info, allocator, handle);
+                return Parent::Create(device, info, allocator, handle);
             }
 
-            EResult Create(LogicalDevice& _device, CreateInfo& info, const Memory::AllocationCallbacks* _allocator)
+            EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
             {
-                device    = &_device  ;
-                info      = info      ;
+                device    = _device;
+                info      = _info  ;
                 allocator = _allocator;
 
-                return Parent::Create(device->GetHandle(), info, allocator, handle);
+                return Parent::Create(device, info, allocator, handle);
             }
 
             void Destroy()
             {
-                Parent::Destroy(device->GetHandle(), handle, allocator);
+                Parent::Destroy(device, handle, allocator);
             }
 
-            const Handle& GetHandle() const
-            {
-                return handle;
-            }
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
+			}
 
         protected:
 
@@ -208,7 +218,7 @@ VT_Namespace
 
             const Memory::AllocationCallbacks* allocator;
 
-            LogicalDevice* device;
+            LogicalDevice::Handle device;
         };
     }
 }

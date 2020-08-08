@@ -1053,27 +1053,27 @@ VT_Namespace
 		public:
 			using Parent = V2::Event;
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, handle);
+				return Parent::Create(device, info, handle);
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device->GetHandle(), handle, allocator);
+				Parent::Destroy(device, handle, allocator);
 			}
 
 			const Handle& GetHandle() const
@@ -1083,17 +1083,32 @@ VT_Namespace
 
 			EResult GetStatus()
 			{
-				return Parent::GetStatus(device->GetHandle(), handle);
+				return Parent::GetStatus(device, handle);
 			}
 
 			EResult Reset()
 			{
-				return Parent::Reset(device->GetHandle(), handle);
+				return Parent::Reset(device, handle);
 			}
 
 			EResult Set()
 			{
-				return Parent::Set(device->GetHandle(), handle);
+				return Parent::Set(device, handle);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
 			}
 
 		protected:
@@ -1104,7 +1119,7 @@ VT_Namespace
 
 			CreateInfo info;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 
 		class Fence : public V2::Fence
@@ -1112,32 +1127,32 @@ VT_Namespace
 		public:
 			using Parent = V2::Fence;
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, handle);
+				return Parent::Create(device, info, handle);
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device->GetHandle(), handle, allocator);
+				Parent::Destroy(device, handle, allocator);
 			}
 
-			const LogicalDevice& GetDevice() const
+			LogicalDevice::Handle GetDeviceHandle() const
 			{
-				return *device;
+				return device;
 			}
 
 			const Handle& GetHandle() const
@@ -1147,69 +1162,84 @@ VT_Namespace
 
 			EResult GetStatus()
 			{
-				return Parent::GetStatus(device->GetHandle(), handle);
+				return Parent::GetStatus(device, handle);
 			}
 
 			EResult GetWin32Handle(const GetWin32HandleInfo& _win32Info, HANDLE& _winHandle)
 			{
-				return Parent::GetWin32Handle(device->GetHandle(), _win32Info, _winHandle);
+				return Parent::GetWin32Handle(device, _win32Info, _winHandle);
 			}
 
 			EResult GetPOSIX_FileDescriptor(const GetPOSIX_FileDescriptorInfo& _fdInfo, int* _fileDescriptor)
 			{
-				return Parent::GetPOSIX_FileDescriptor(device->GetHandle(), _fdInfo, _fileDescriptor);
+				return Parent::GetPOSIX_FileDescriptor(device, _fdInfo, _fileDescriptor);
 			}
 
 			EResult ImportFence_POSIX_FileDescriptor(const ImportFencePOSIX_FileDescriptorInfo& _importInfo)
 			{
-				return Parent::ImportFence_POSIX_FileDescriptor(device->GetHandle(), _importInfo);
+				return Parent::ImportFence_POSIX_FileDescriptor(device, _importInfo);
 			}
 
 			EResult ImportFenceWin32Handle(const ImportFenceWin32HandleInfo& _importInfo)
 			{
-				return Parent::ImportFenceWin32Handle(device->GetHandle(), _importInfo);
+				return Parent::ImportFenceWin32Handle(device, _importInfo);
 			}
 
 			EResult RegisterDeviceEvent(const DeviceEventInfo _eventInfo)
 			{
-				return Parent::RegisterDeviceEvent(device->GetHandle(), _eventInfo, allocator, handle);
+				return Parent::RegisterDeviceEvent(device, _eventInfo, allocator, handle);
 			}
 
 			EResult RegisterDisplayEvent(Display::Handle _display, const DisplayEventInfo& _eventInfo)
 			{
-				return Parent::RegisterDisplayEvent(device->GetHandle(), _display, _eventInfo, allocator, handle);
+				return Parent::RegisterDisplayEvent(device, _display, _eventInfo, allocator, handle);
 			}
 
 			EResult Reset()
 			{
-				return Parent::Reset(device->GetHandle(), &handle, 1);
+				return Parent::Reset(device, &handle, 1);
 			}
 
 			static EResult Reset(std::vector<Fence> _fences)
 			{
-				auto& device = _fences[0].GetDevice();
+				auto device = _fences[0].GetDeviceHandle();
 
 				std::vector<Fence::Handle> handles;
 
 				for (auto fence : _fences) handles.push_back(fence.GetHandle());
 
-				return Parent::Reset(device.GetHandle(), handles.data(), _fences.size());
+				return Parent::Reset(device, handles.data(), _fences.size());
 			}
 
 			EResult WaitFor(uInt64 _timeout)
 			{
-				return Parent::WaitForFences(device->GetHandle(), 1, &handle, false, _timeout);
+				return Parent::WaitForFences(device, 1, &handle, false, _timeout);
 			}
 
 			static EResult WaitForFence(std::vector<Fence> _fences, bool _waitForAll, uInt64 _timeout)
 			{
-				auto& device = _fences[0].GetDevice();
+				auto device = _fences[0].GetDeviceHandle();
 
 				std::vector<Fence::Handle> handles;
 
 				for (auto fence : _fences) handles.push_back(fence.GetHandle());
 
-				return Parent::WaitForFences(device.GetHandle(), _fences.size(), handles.data(), _waitForAll, _timeout);
+				return Parent::WaitForFences(device, _fences.size(), handles.data(), _waitForAll, _timeout);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
 			}
 
 		protected:
@@ -1220,7 +1250,7 @@ VT_Namespace
 
 			CreateInfo info;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 
 		class Semaphore : public V2::Semaphore
@@ -1228,32 +1258,32 @@ VT_Namespace
 		public:
 			using Parent = V2::Semaphore;
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
 			{
-				device    = &_device  ;
+				device    =  _device  ;
 				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, handle);
+				return Parent::Create(device, info, handle);
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device->GetHandle(), handle, allocator);
+				Parent::Destroy(device, handle, allocator);
 			}
 
 			EResult GetCounterValue(uInt64& _value)
 			{
-				return Parent::GetCounterValue(device->GetHandle(), handle, _value);
+				return Parent::GetCounterValue(device, handle, _value);
 			}
 
 			const Handle& GetHandle() const
@@ -1263,32 +1293,47 @@ VT_Namespace
 
 			EResult GetPOSIX_FileDescriptor(const GetPOSIX_FileDescriptorInfo& _getInfo, int* _fileDescriptor)
 			{
-				return Parent::GetPOSIX_FileDescriptor(device->GetHandle(), _getInfo, _fileDescriptor);
+				return Parent::GetPOSIX_FileDescriptor(device, _getInfo, _fileDescriptor);
 			}
 
 			EResult GetWin32Handle(const GetWin32HandleInfo& _getInfo, HANDLE& _winHandle)
 			{
-				return Parent::GetWin32Handle(device->GetHandle(), _getInfo, _winHandle);
+				return Parent::GetWin32Handle(device, _getInfo, _winHandle);
 			}
 
 			EResult ImportPOSIX_FileDescriptor(const ImportPOSIX_FileDescriptorInfo& _importPOSIX_Info)
 			{
-				return Parent::ImportPOSIX_FileDescriptor(device->GetHandle(), _importPOSIX_Info);
+				return Parent::ImportPOSIX_FileDescriptor(device, _importPOSIX_Info);
 			}
 
 			EResult ImportWin32Handle(const ImportWin32HandleInfo& _importHandleInfo)
 			{
-				return Parent::ImportWin32Handle(device->GetHandle(), _importHandleInfo);
+				return Parent::ImportWin32Handle(device, _importHandleInfo);
 			}
 
 			EResult Signal(const SignalInfo& _info)
 			{
-				return Parent::Signal(device->GetHandle(), _info);
+				return Parent::Signal(device, _info);
 			}
 
 			EResult WaitFor(const WaitInfo& _info, uInt64 _timeout)
 			{
-				return Parent::WaitFor(device->GetHandle(), _info, _timeout);
+				return Parent::WaitFor(device, _info, _timeout);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
 			}
 
 		protected:
@@ -1299,7 +1344,7 @@ VT_Namespace
 
 			CreateInfo info;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 	}
 }

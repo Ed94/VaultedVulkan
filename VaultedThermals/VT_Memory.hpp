@@ -220,27 +220,27 @@ VT_Namespace
 
 			using Parent = V2::Memory;
 
-			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo)
+			EResult Allocate(LogicalDevice::Handle _device, AllocateInfo& _allocateInfo)
 			{
-				device    = &_device                ;
+				device    = _device                 ;
 				info      = _allocateInfo           ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Allocate(device->GetHandle(), info, handle);
+				return Parent::Allocate(device, info, handle);
 			}
 
-			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Allocate(LogicalDevice::Handle _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = &_device     ;
+				device    = _device      ;
 				info      = _allocateInfo;
 				allocator = _allocator   ;
 
-				return Parent::Allocate(device->GetHandle(), info, allocator, handle);
+				return Parent::Allocate(device, info, allocator, handle);
 			}
 
 			void Free()
 			{
-				Parent::Free(device->GetHandle(), handle, allocator);
+				Parent::Free(device, handle, allocator);
 			}
 
 			const Handle& GetHandle() const
@@ -253,17 +253,32 @@ VT_Namespace
 				DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data
 			)
 			{
-				return Parent::Map(device->GetHandle(), handle, _offset, _size, _flags, _data);
+				return Parent::Map(device, handle, _offset, _size, _flags, _data);
 			}
 
 			void Unmap()
 			{
-				Parent::Unmap(device->GetHandle(), handle);
+				Parent::Unmap(device, handle);
 			}
 
 			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
-				Parent::WriteToGPU(device->GetHandle(), handle, _offset, _size, _flags, _data);
+				Parent::WriteToGPU(device, handle, _offset, _size, _flags, _data);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
 			}
 
 		protected:
@@ -274,7 +289,7 @@ VT_Namespace
 
 			const AllocationCallbacks* allocator;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 	}
 }

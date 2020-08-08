@@ -186,6 +186,24 @@ VT_Namespace
 		struct SwapChain : V1::SwapChain
 		{
 			using Parent = V1::SwapChain;
+
+			struct CreateInfo : Parent::CreateInfo
+			{
+				CreateInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
+
+			struct PresentationInfo : Parent::PresentationInfo
+			{
+				PresentationInfo()
+				{
+					SType = STypeEnum;
+					Next  = nullptr  ;
+				}
+			};
 			
 			static EResult Create
 			(
@@ -252,39 +270,39 @@ VT_Namespace
 				uint32&               _imageIndex
 			)
 			{
-				return Parent::AcquireNextImage(device->GetHandle(), handle, _timeout, _semaphore, _fence, _imageIndex);
+				return Parent::AcquireNextImage(device, handle, _timeout, _semaphore, _fence, _imageIndex);
 			}
 
 			EResult Create
 			(
-				      LogicalDevice&               _deviceHandle,
-				const CreateInfo&                  _info        
+				      LogicalDevice::Handle _deviceHandle,
+				const CreateInfo&           _info        
 			)
 			{
-				device    = &_deviceHandle;
-				info      = _info;
+				device    = _deviceHandle;
+				info      = _info        ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device->GetHandle(), info, handle);
+				return Parent::Create(device, info, handle);
 			}
 
 			EResult Create
 			(
-				      LogicalDevice&               _deviceHandle,
+				      LogicalDevice::Handle        _deviceHandle,
 				const CreateInfo&                  _info        ,
 				const Memory::AllocationCallbacks* _allocator   
 			)
 			{
-				device    = &_deviceHandle;
-				info      = _info;
-				allocator = _allocator;
+				device    = _deviceHandle;
+				info      = _info        ;
+				allocator = _allocator   ;
 
-				return Parent::Create(device->GetHandle(), info, allocator, handle);
+				return Parent::Create(device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device->GetHandle(), handle);
+				Parent::Destroy(device, handle);
 			}
 
 			const Handle& GetHandle() const
@@ -306,7 +324,7 @@ VT_Namespace
 
 				for (DeviceSize index = 0; index < numImages; index++)
 				{
-					_images[index].Assign(*device, handles[index]);
+					_images[index].Assign(device, handles[index]);
 				}
 
 				return result;
@@ -314,7 +332,22 @@ VT_Namespace
 
 			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
 			{
-				return Parent::QueryImages(device->GetHandle(), handle, _numImages, _imagesContainer);
+				return Parent::QueryImages(device, handle, _numImages, _imagesContainer);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
 			}
 
 		protected:
@@ -325,7 +358,7 @@ VT_Namespace
 
 			const Memory::AllocationCallbacks* allocator;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 	}
 }

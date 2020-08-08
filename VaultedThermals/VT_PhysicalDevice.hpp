@@ -531,22 +531,6 @@ VT_Namespace
 			};
 
 			/**
-			@brief Device extensions add new device-level functionality to the API, outside of the core specification.
-
-			@details
-			Query the extensions available to a given physical device.
-
-			When pLayerName parameter is NULL, only extensions provided by the Vulkan implementation or by implicitly enabled layers are returned. 
-			When pLayerName is the name of a layer, the device extensions provided by that layer are returned.
-
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_device_extensions">Specification</a> 
-			*/
-			static EResult EnumerateExtensionProperties(Handle _handle, RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
-			{
-				return EResult(vkEnumerateDeviceExtensionProperties(_handle, _layerName, _numExtensions, _extensionPropertiesContainer->operator VkExtensionProperties*()));
-			}
-
-			/**
 			@brief Query supported features. Reports capabilities of a physical device.
 
 			@details
@@ -606,6 +590,22 @@ VT_Namespace
 			}
 
 			/**
+			@brief Device extensions add new device-level functionality to the API, outside of the core specification.
+
+			@details
+			Query the extensions available to a given physical device.
+
+			When pLayerName parameter is NULL, only extensions provided by the Vulkan implementation or by implicitly enabled layers are returned. 
+			When pLayerName is the name of a layer, the device extensions provided by that layer are returned.
+
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_device_extensions">Specification</a> 
+			*/
+			static EResult QueryExtensionProperties(Handle _handle, RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			{
+				return EResult(vkEnumerateDeviceExtensionProperties(_handle, _layerName, _numExtensions, _extensionPropertiesContainer->operator VkExtensionProperties*()));
+			}
+
+			/**
 			@brief Query properties of queues available on a physical device. Reports properties of the queues of the specified physical device.
 
 			@details
@@ -616,9 +616,9 @@ VT_Namespace
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceQueueFamilyProperties">Specification</a> 
 			*/
-			static void QueryQueueFamilyProperties(Handle _handle, uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamily)
+			static void QueryQueueFamilyProperties(Handle _handle, uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies)
 			{
-				vkGetPhysicalDeviceQueueFamilyProperties(_handle, _numQueueFamilies, _queueFamily->operator VkQueueFamilyProperties*());
+				vkGetPhysicalDeviceQueueFamilyProperties(_handle, _numQueueFamilies, _queueFamilies->operator VkQueueFamilyProperties*());
 			}	
 
 			/**
@@ -750,11 +750,6 @@ VT_Namespace
 				}
 			};
 
-			struct QueueFamilyProperties : public Parent::QueueFamilyProperties
-			{
-				using List = std::vector<QueueFamilyProperties>;
-			};
-
 			struct QueueFamilyProperties2 : public Parent::QueueFamilyProperties2
 			{
 				QueueFamilyProperties2()
@@ -780,7 +775,7 @@ VT_Namespace
 			 */
 			static bool CheckExtensionSupport(Handle _handle, std::vector<RoCStr> _extensionsSpecified)
 			{
-				ExtensionList availableExtensions;
+				std::vector<ExtensionProperties> availableExtensions;
 
 				GetAvailableExtensions(_handle, nullptr, availableExtensions);
 
@@ -849,9 +844,9 @@ VT_Namespace
 			* \param _device
 			* \return 
 			*/
-			static QueueFamilyProperties::List GetAvailableQueueFamilies(Handle _handle)
+			static std::vector<QueueFamilyProperties> GetAvailableQueueFamilies(Handle _handle)
 			{
-				QueueFamilyProperties::List queryResult; uint32 count;
+				std::vector<QueueFamilyProperties> queryResult; uint32 count;
 
 				QueryQueueFamilyProperties(_handle, &count, nullptr);
 
@@ -862,19 +857,17 @@ VT_Namespace
 				return queryResult;
 			}
 
-			using ExtensionList = std::vector<ExtensionProperties>;
-
-			static EResult GetAvailableExtensions(Handle _handle, RoCStr _layerName, ExtensionList& _extensionListing)
+			static EResult GetAvailableExtensions(Handle _handle, RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing)
 			{
 				uint32 count;
 
-				EResult returnCode = EnumerateExtensionProperties(_handle, _layerName, &count, nullptr);
+				EResult returnCode = QueryExtensionProperties(_handle, _layerName, &count, nullptr);
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				_extensionListing.resize(count);
 
-				returnCode = EnumerateExtensionProperties(_handle, _layerName, &count, _extensionListing.data());
+				returnCode = QueryExtensionProperties(_handle, _layerName, &count, _extensionListing.data());
 
 				return returnCode;
 			}
@@ -903,8 +896,6 @@ VT_Namespace
 				Parent::GetProperties      (handle, properties      );
 				Parent::GetProperties      (handle, properties      );
 				Parent::GetProperties2     (handle, properties2     );
-
-				queueFamilies = Parent::GetAvailableQueueFamilies(handle);
 			}
 
 			/**
@@ -912,9 +903,9 @@ VT_Namespace
 			 * 
 			 * \param _handle
 			 */
-			bool CheckExtensionSupport(std::vector<RoCStr> _extensionsSpecified)
+			bool CheckExtensionSupport(std::vector<RoCStr> _extensionsSpecified) const
 			{
-				ExtensionList availableExtensions;
+				std::vector<ExtensionProperties> availableExtensions;
 
 				GetAvailableExtensions(nullptr, availableExtensions);
 
@@ -953,14 +944,9 @@ VT_Namespace
 			#endif
 			}
 
-			EResult GetAvailableExtensions(RoCStr _layerName, ExtensionList& _extensionListing) const
+			EResult GetAvailableExtensions(RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing) const
 			{
 				return EResult(Parent::GetAvailableExtensions(handle, _layerName, _extensionListing));
-			}
-
-			const QueueFamilyProperties::List& GetAvailableQueueFamilies() const
-			{
-				return queueFamilies;
 			}
 
 			const Features& GetFeatures() const
@@ -1015,6 +1001,47 @@ VT_Namespace
 				return properties2;
 			}
 
+			EResult QueryExtensionProperties(RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			{
+				return Parent::QueryExtensionProperties(handle, _layerName, _numExtensions, _extensionPropertiesContainer);
+			}
+
+			void QueryQueueFamilyProperties(uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies)
+			{
+				return Parent::QueryQueueFamilyProperties(handle, _numQueueFamilies, _queueFamilies);
+			}
+
+			void QueryQueueFamilyProperties2(uint32* _numProperties, QueueFamilyProperties2* _properties) const
+			{
+				return Parent::QueryQueueFamilyProperties2(handle, _numProperties, _properties);
+			}
+
+			EResult QueryPerfomranceQueryCounters
+			(
+				uint32                           _queueFamilyIndex   ,
+				uint32*                          _numCounters        ,
+				PerformanceCounter*              _counters           ,
+				PerformanceCounter::Description* _counterDescriptions
+			) const
+			{
+				return Parent::QueryPerfomranceQueryCounters(handle, _queueFamilyIndex, _numCounters, _counters, _counterDescriptions);
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle&() const
+			{
+				return handle;
+			}
+
 		protected:
 
 			Handle handle;
@@ -1029,8 +1056,6 @@ VT_Namespace
 
 			Properties  properties ;
 			Properties2 properties2;
-
-			QueueFamilyProperties::List queueFamilies;
 		};
 	}
 }

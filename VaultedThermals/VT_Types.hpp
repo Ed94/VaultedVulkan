@@ -381,4 +381,5 @@ VT_Namespace
 	{
 		using Bytecode = Corridors::uint32;   ///< Word size of a SPIR-V instruction.
 	}
+
 }

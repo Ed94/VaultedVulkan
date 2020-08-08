@@ -824,6 +824,9 @@ VT_Namespace
 					{
 						SType = STypeEnum;
 						Next  = nullptr  ;
+						
+						MinDepthBounds = 0;
+						MaxDepthBounds = 0;
 					}
 				};
 			};
@@ -1016,6 +1019,9 @@ VT_Namespace
 					{
 						SType = STypeEnum;
 						Next  = nullptr  ;
+						Module = Null<ShaderModule::Handle>;
+						Name = nullptr;
+						Specialization = nullptr;
 					}
 				};
 			};
@@ -1104,10 +1110,28 @@ VT_Namespace
 
 				struct CreateInfo : public Parent::Graphics::CreateInfo
 				{
-					CreateInfo()
+					CreateInfo() 
 					{
 						SType = STypeEnum;
 						Next  = nullptr  ;
+						StageCount = 0;
+
+						Stages = nullptr;
+						VertexInputState = nullptr;
+						InputAssemblyState = nullptr;
+						TessellationState = nullptr;
+						ViewportState = nullptr;
+						RasterizationState = nullptr;
+						MultisampleState = nullptr;
+						DepthStencilState = nullptr;
+						ColorBlendState = nullptr;
+						DynamicState = nullptr;
+						Layout = Null<Layout::Handle>;
+						RenderPass = Null<RenderPass_Handle>;
+						Subpass = 0;
+						BasePipelineHandle = Null<Pipeline::Handle>;
+						BasePipelineIndex = 0;
+
 					}
 				};
 
@@ -1188,37 +1212,52 @@ VT_Namespace
 
 				EResult Create
 				(
-					LogicalDevice& _device,
-					CreateInfo&    _info  
+					LogicalDevice::Handle _device,
+					CreateInfo&           _info  
 				)
 				{
-					device    = &_device                ;
+					device    = _device                 ;
 					info      = _info                   ;
 					allocator = Memory::DefaultAllocator;
 
-					return Parent::Create(device->GetHandle(), info, allocator, handle);
+					return Parent::Create(device, info, allocator, handle);
 				}
 
 				EResult Create
 				(
-					      LogicalDevice&               _device   ,
+					      LogicalDevice::Handle        _device   ,
 					      CreateInfo&                  _info     ,
 					const Memory::AllocationCallbacks* _allocator
 				)
 				{
-					device    = &_device  ;
+					device    = _device   ;
 					info      = _info     ;
 					allocator = _allocator;
 
-					return Parent::Create(device->GetHandle(), info, allocator, handle);
+					return Parent::Create(device, info, allocator, handle);
 				}
 
 				void Destroy()
 				{
-					Parent::Destroy(device->GetHandle(), handle, allocator);
+					Parent::Destroy(device, handle, allocator);
 				}
 
 				const Handle& GetHandle() const
+				{
+					return handle;
+				}
+
+				operator Handle()
+				{
+					return handle;
+				}
+
+				operator Handle() const
+				{
+					return handle;
+				}
+
+				operator const Handle& () const
 				{
 					return handle;
 				}
@@ -1231,7 +1270,7 @@ VT_Namespace
 				
 				CreateInfo info;
 
-				LogicalDevice* device;
+				LogicalDevice::Handle device;
 			};
 
 			class Layout : public Parent::Layout
@@ -1244,37 +1283,37 @@ VT_Namespace
 				public:
 					using Parent = V2::Pipeline::Layout::DescriptorSet;
 
-					void Assign(LogicalDevice& _device, CreateInfo& _info)
+					void Assign(LogicalDevice::Handle _device, CreateInfo& _info)
 					{
-						device    = &_device                ;
+						device    = _device                 ;
 						info      = _info                   ;
 						allocator = Memory::DefaultAllocator;
 
-						Parent::GetSupport(device->GetHandle(), info, support);
+						Parent::GetSupport(device, info, support);
 					}
 
 					void Assign
 					(
-						      LogicalDevice&               _device   ,
+						      LogicalDevice::Handle        _device   ,
 						      CreateInfo&                  _info     ,
 						const Memory::AllocationCallbacks* _allocator
 					)
 					{
-						device    = &_device  ;
+						device    = _device   ;
 						info      = _info     ;
 						allocator = _allocator;
 
-						Parent::GetSupport(device->GetHandle(), info, support);
+						Parent::GetSupport(device, info, support);
 					}
 
 					EResult Create()
 					{
-						return Parent::Create(device->GetHandle(), info, allocator, handle);
+						return Parent::Create(device, info, allocator, handle);
 					}
 
 					void Destroy()
 					{
-						Parent::Destroy(device->GetHandle(), handle, allocator);
+						Parent::Destroy(device, handle, allocator);
 					}
 
 					const Handle& GetHandle() const
@@ -1287,6 +1326,21 @@ VT_Namespace
 						return support;
 					}
 
+					operator Handle()
+					{
+						return handle;
+					}
+
+					operator Handle() const
+					{
+						return handle;
+					}
+
+					operator const Handle& () const
+					{
+						return handle;
+					}
+
 				protected:
 
 					Handle handle;
@@ -1295,44 +1349,59 @@ VT_Namespace
 
 					CreateInfo info;
 
-					LogicalDevice* device;
+					LogicalDevice::Handle device;
 
 					Support support;
 				};
 
 				EResult Create
 				(
-					LogicalDevice& _device,
-					CreateInfo&    _info  
+					LogicalDevice::Handle _device,
+					CreateInfo&           _info  
 				)
 				{
-					device    = &_device                ;
+					device    = _device                 ;
 					info      = _info                   ;
 					allocator = Memory::DefaultAllocator;
 
-					return Parent::Create(device->GetHandle(), info, allocator, handle);
+					return Parent::Create(device, info, allocator, handle);
 				}
 
 				EResult Create
 				(
-					      LogicalDevice&               _device   ,
+					      LogicalDevice::Handle        _device   ,
 					      CreateInfo&                  _info     ,
 					const Memory::AllocationCallbacks* _allocator
 				)
 				{
-					device    = &_device  ;
+					device    = _device   ;
 					info      = _info     ;
 					allocator = _allocator;
 
-					return Parent::Create(device->GetHandle(), info, allocator, handle);
+					return Parent::Create(device, info, allocator, handle);
 				}
 
 				void Destroy()
 				{
-					Parent::Destroy(device->GetHandle(), handle, allocator);
+					Parent::Destroy(device, handle, allocator);
 				}
 
 				Handle GetHandle() const
+				{
+					return handle;
+				}
+
+				operator Handle()
+				{
+					return handle;
+				}
+
+				operator Handle() const
+				{
+					return handle;
+				}
+
+				operator const Handle& () const
 				{
 					return handle;
 				}
@@ -1345,17 +1414,32 @@ VT_Namespace
 
 				CreateInfo info;
 
-				LogicalDevice* device;
+				LogicalDevice::Handle device;
 			};
+
+			void Destroy()
+			{
+				Parent::Destroy(device, handle);
+			}
 
 			const Handle& GetHandle() const
 			{
 				return handle;
 			}
 
-			void Destroy()
+			operator Handle()
 			{
-				Parent::Destroy(device->GetHandle(), handle);
+				return handle;
+			}
+
+			operator Handle() const
+			{
+				return handle;
+			}
+
+			operator const Handle& () const
+			{
+				return handle;
 			}
 
 		protected:
@@ -1366,7 +1450,7 @@ VT_Namespace
 
 			const Memory::AllocationCallbacks* allocator;
 
-			LogicalDevice* device;
+			LogicalDevice::Handle device;
 		};
 
 		class ComputePipeline : public Pipeline
@@ -1377,7 +1461,7 @@ VT_Namespace
 
 			void Assign
 			(
-				      LogicalDevice&               _device   ,
+				      LogicalDevice::Handle&       _device   ,
 				      Cache*                       _cache    ,
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator,
@@ -1387,13 +1471,13 @@ VT_Namespace
 				handle    = _handle   ;
 				allocator = _allocator;
 				cache     =  _cache   ;
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;	
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
 			{
-				device    = &_device;
+				device    = _device ;
 				cache     = nullptr ;
 				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
@@ -1402,7 +1486,7 @@ VT_Namespace
 				{
 					return Parent::Parent::Compute::Create
 					(
-						device->GetHandle(),
+						device,
 						cache ->GetHandle(),
 						1                  ,
 						&info              ,
@@ -1414,7 +1498,7 @@ VT_Namespace
 				{
 					return Parent::Parent::Compute::Create
 					(
-						device->GetHandle(),
+						device,
 						Null<Cache::Handle>,
 						1                  ,
 						&info              ,
@@ -1424,16 +1508,16 @@ VT_Namespace
 				}
 			}
 
-			EResult Create(LogicalDevice& _device, Cache& _cache, CreateInfo& _info)
+			EResult Create(LogicalDevice::Handle _device, Cache& _cache, CreateInfo& _info)
 			{
-				device    = &_device;
+				device    = _device ;
 				cache     = &_cache ;
 				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Compute::Create
 				(
-					device->GetHandle(),
+					device,
 					cache ->GetHandle(),
 					1                  ,
 					&info              ,
@@ -1444,20 +1528,20 @@ VT_Namespace
 
 			EResult Create
 			(
-				      LogicalDevice&               _device   , 
+				      LogicalDevice::Handle        _device   , 
 				      Cache&                       _cache    , 
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				cache     = &_cache   ;
 				info      = _info     ;
 				allocator = _allocator;
 
 				return Parent::Parent::Compute::Create
 				(
-					device->GetHandle(),
+					device             ,
 					cache ->GetHandle(),
 					1                  ,
 					&info              ,
@@ -1468,7 +1552,7 @@ VT_Namespace
 
 			static EResult Create
 			(
-				      LogicalDevice&                 _device         ,
+				      LogicalDevice::Handle          _device         ,
 				      Cache*                         _cache          ,
 				      uint32                         _createInfoCount,
 				      CreateInfo*                    _createInfos    ,
@@ -1483,7 +1567,7 @@ VT_Namespace
 				EResult returnCode = 
 					Parent::Parent::Compute::Create
 					(
-						_device.GetHandle(),
+						_device,
 						_cache->GetHandle(),
 						_createInfoCount   ,
 						_createInfos       ,
@@ -1515,7 +1599,7 @@ VT_Namespace
 
 			void Assign
 			(
-				      LogicalDevice&               _device   ,
+				      LogicalDevice::Handle        _device   ,
 				      Cache*                       _cache    ,
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator,
@@ -1525,13 +1609,13 @@ VT_Namespace
 				handle    = _handle   ;
 				allocator = _allocator;
 				cache     = _cache    ;
-				device    = &_device  ;
+				device    = _device   ;
 				info      = _info     ;	
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
 			{
-				device    = &_device;
+				device    = _device ;
 				cache     = nullptr ;
 				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
@@ -1540,7 +1624,7 @@ VT_Namespace
 				{
 					return Parent::Parent::Graphics::Create
 					(
-						device->GetHandle(),
+						device,
 						cache ->GetHandle(),
 						1                  ,
 						&info              ,
@@ -1552,7 +1636,7 @@ VT_Namespace
 				{
 					return Parent::Parent::Graphics::Create
 					(
-						device->GetHandle(),
+						device,
 						Null<Cache::Handle>,
 						1                  ,
 						&info              ,
@@ -1562,16 +1646,16 @@ VT_Namespace
 				}
 			}
 
-			EResult Create(LogicalDevice& _device, Cache& _cache, CreateInfo& _info)
+			EResult Create(LogicalDevice::Handle _device, Cache& _cache, CreateInfo& _info)
 			{
-				device    = &_device;
+				device    = _device ;
 				cache     = &_cache ;
 				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Graphics::Create
 				(
-					device->GetHandle(),
+					device,
 					cache ->GetHandle(),
 					1                  ,
 					&info              ,
@@ -1582,20 +1666,20 @@ VT_Namespace
 
 			EResult Create
 			(
-				      LogicalDevice&               _device   , 
+				      LogicalDevice::Handle        _device   , 
 				      Cache&                       _cache    , 
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device    = &_device  ;
+				device    = _device   ;
 				cache     = &_cache   ;
 				info      = _info     ;
 				allocator = _allocator;
 
 				return Parent::Parent::Graphics::Create
 				(
-					device->GetHandle(),
+					device,
 					cache ->GetHandle(),
 					1                  ,
 					&info              ,
@@ -1606,7 +1690,7 @@ VT_Namespace
 
 			static EResult Create
 			(
-				      LogicalDevice&                 _device         ,
+				      LogicalDevice::Handle          _device         ,
 				      Cache*                         _cache          ,
 				      uint32                         _createInfoCount,
 				      CreateInfo*                    _createInfos    ,
@@ -1621,7 +1705,7 @@ VT_Namespace
 				EResult returnCode = 
 					Parent::Parent::Graphics::Create
 					(
-						_device.GetHandle(),
+						_device,
 						_cache->GetHandle(),
 						_createInfoCount   ,
 						_createInfos       ,
