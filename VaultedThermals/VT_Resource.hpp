@@ -35,7 +35,11 @@ can be multidimensional and may have associated metadata.
 
 
 
-VT_Namespace
+#ifndef VT_Option__Use_Short_Namespace
+namespace VaultedThermals
+#else
+namespace VT
+#endif
 {
 	namespace V1
 	{

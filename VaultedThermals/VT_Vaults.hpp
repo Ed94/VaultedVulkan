@@ -42,16 +42,10 @@ Short namespace: V#, where # is the vault number. (Exception: Corridors, Vault_M
 
 
 #ifndef VT_Option__Use_Short_Namespace
-
-	#define VT_Namespace namespace VaultedThermals
-
+namespace VaultedThermals
 #else
-
-	#define VT_Namespace namespace VT
-
+namespace VT
 #endif
-
-VT_Namespace
 {
 	/** @namespace Corridors
 
