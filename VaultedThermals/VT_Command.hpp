@@ -1589,7 +1589,7 @@ namespace VT
 
 			EResult Reset(ResetFlags _flags)
 			{
-				Parent::Reset(device, handle, _flags);
+				return Parent::Reset(device, handle, _flags);
 			}
 
 			EResult Trim(TrimFlags _flags)

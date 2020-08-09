@@ -412,7 +412,7 @@ namespace VT
 			};
 
 			/** @brief */
-			struct MultisampleState
+			struct MultiSampleState
 			{
 				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
 
@@ -658,7 +658,7 @@ namespace VT
 					const TessellationState::CreateInfo*  TessellationState ;
 					const ViewportState::CreateInfo*      ViewportState     ;
 					const RasterizationState::CreateInfo* RasterizationState;
-					const MultisampleState::CreateInfo*   MultisampleState  ;
+					const MultiSampleState::CreateInfo*   MultisampleState  ;
 					const DepthStencilState::CreateInfo*  DepthStencilState ;
 					const ColorBlendState::CreateInfo*    ColorBlendState   ;
 					const DynamicState::CreateInfo*       DynamicState      ;
@@ -991,9 +991,9 @@ namespace VT
 				using Parent::Destroy;
 			};
 
-			struct MultiSampleState : public Parent::MultisampleState
+			struct MultiSampleState : public Parent::MultiSampleState
 			{
-				struct CreateInfo : public Parent::MultisampleState::CreateInfo
+				struct CreateInfo : public Parent::MultiSampleState::CreateInfo
 				{
 					CreateInfo()
 					{

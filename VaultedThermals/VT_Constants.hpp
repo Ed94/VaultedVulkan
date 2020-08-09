@@ -41,5 +41,7 @@ namespace VT
 		constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
 
 		constexpr DeviceSize QueueFamily_Ignored = VK_QUEUE_FAMILY_IGNORED;
+
+		constexpr uint32 Subpass_External = VK_SUBPASS_EXTERNAL;
 	}
 }
