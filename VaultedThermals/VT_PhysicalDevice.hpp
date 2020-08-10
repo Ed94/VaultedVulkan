@@ -803,7 +803,7 @@ namespace VT
 
 				GetMemoryProperties(_handle, memProperties);
 
-				for (DeviceSize index = 0; index < memProperties.TypeCount; index++)
+				for (uint32 index = 0; index < memProperties.TypeCount; index++)
 				{
 					if
 						(
@@ -929,7 +929,7 @@ namespace VT
 
 			uint32 FindMemoryType(uint32 _typeFilter, Memory::PropertyFlags _properties) const
 			{
-				for (DeviceSize index = 0; index < memoryProperties.TypeCount; index++)
+				for (uint32 index = 0; index < memoryProperties.TypeCount; index++)
 				{
 					auto flags = memoryProperties.Types[index].PropertyFlags;
 
@@ -973,11 +973,11 @@ namespace VT
 
 			FormatProperties GetFormatProperties(EFormat _format) const
 			{
-				FormatProperties properties;
+				FormatProperties formatProperties;
 
-				Parent::GetFormatProperties(handle, _format, properties);
+				Parent::GetFormatProperties(handle, _format, formatProperties);
 
-				return properties;
+				return formatProperties;
 			}
 
 			Handle GetHandle() const

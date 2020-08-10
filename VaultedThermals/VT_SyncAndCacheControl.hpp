@@ -1212,7 +1212,7 @@ namespace VT
 
 				for (auto fence : _fences) handles.push_back(fence.GetHandle());
 
-				return Parent::Reset(device, handles.data(), _fences.size());
+				return Parent::Reset(device, handles.data(), static_cast<uint32>(_fences.size()));
 			}
 
 			EResult WaitFor(uInt64 _timeout)
@@ -1228,7 +1228,7 @@ namespace VT
 
 				for (auto fence : _fences) handles.push_back(fence.GetHandle());
 
-				return Parent::WaitForFences(device, _fences.size(), handles.data(), _waitForAll, _timeout);
+				return Parent::WaitForFences(device, static_cast<uint32>(_fences.size()), handles.data(), _waitForAll, _timeout);
 			}
 
 			operator Handle()

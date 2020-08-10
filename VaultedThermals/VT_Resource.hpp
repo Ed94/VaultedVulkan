@@ -1414,9 +1414,9 @@ namespace VT
 
 			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device  ;
-				info      = _info    ;
-				allocator = allocator;
+				device    = _device   ;
+				info      = _info     ;
+				allocator = _allocator;
 
 				return Parent::Create(device, info, allocator, handle);
 			}
@@ -1568,7 +1568,7 @@ namespace VT
 
 			EResult Free(std::vector<DescriptorSet::Handle> _handles)
 			{
-				return Parent::Free(device, handle, _handles.size(), _handles.data());
+				return Parent::Free(device, handle, static_cast<uint32>(_handles.size()), _handles.data());
 			}
 
 			const Handle& GetHandle() const

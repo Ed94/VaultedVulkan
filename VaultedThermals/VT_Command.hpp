@@ -1399,7 +1399,6 @@ namespace VT
 				const Event::Handle*          _events                  ,
 				      Pipeline::StageFlags    _srcStageMask            ,
 				      Pipeline::StageFlags    _dstStageMask            ,
-				      uint32                  _memoryBarrierCount      ,
 				      uint32                  _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
 			)
@@ -1481,13 +1480,13 @@ namespace VT
 
 			EResult Allocate(AllocateInfo& _info, CommandBuffer& _buffer)
 			{
-				CommandBuffer::Handle handle;
+				CommandBuffer::Handle bufferHandle;
 
-				EResult returnCode = Parent::Allocate(device, _info, &handle);
+				EResult returnCode = Parent::Allocate(device, _info, &bufferHandle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				_buffer.Assign(device, _info, handle);
+				_buffer.Assign(device, _info, bufferHandle);
 
 				return returnCode;
 			}
@@ -1501,13 +1500,13 @@ namespace VT
 
 			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _handles)
 			{
-				AllocateInfo info; 
+				AllocateInfo allocInfo; 
 
-				info.Level       = _level; 
-				info.Pool        = handle; 
-				info.BufferCount = _count;
+				allocInfo.Level       = _level; 
+				allocInfo.Pool        = handle; 
+				allocInfo.BufferCount = _count;
 
-				EResult returnCode = Parent::Allocate(device, info, _handles);
+				EResult returnCode = Parent::Allocate(device, allocInfo, _handles);
 
 				return returnCode;
 			}
@@ -1520,21 +1519,21 @@ namespace VT
 				std::vector<CommandBuffer::Handle>& _handles
 			)
 			{
-				AllocateInfo info; 
+				AllocateInfo allocInfo; 
 				
-				info.Level       = _level; 
-				info.Pool        = handle; 
-				info.BufferCount = _count;
+				allocInfo.Level       = _level; 
+				allocInfo.Pool        = handle; 
+				allocInfo.BufferCount = _count;
 
 				_commandBuffers.resize(_count); _handles.resize(_count);
 
-				EResult returnCode = Parent::Allocate(device, info, _handles.data());
+				EResult returnCode = Parent::Allocate(device, allocInfo, _handles.data());
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				for (DeviceSize index = 0; index < _count; index++)
 				{
-					_commandBuffers[index].Assign(device, info, _handles[index]);
+					_commandBuffers[index].Assign(device, allocInfo, _handles[index]);
 				}
 
 				return returnCode;

@@ -334,6 +334,11 @@ namespace VT
 				return result;
 			}
 
+			uint32 GetMinimumImageCount() const
+			{
+				return info.MinImageCount;
+			}
+
 			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
 			{
 				return Parent::QueryImages(device, handle, _numImages, _imagesContainer);
