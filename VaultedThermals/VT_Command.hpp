@@ -551,7 +551,7 @@ namespace VT
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a> 
 			 */
-			static EResult WaitForEvents
+			static void WaitForEvents
 			(
 				      Handle                  _commandBuffer           ,
 				      uint32                  _eventCount              ,
@@ -1017,7 +1017,7 @@ namespace VT
 
 			using Parent::SubmitPipelineBarrier;
 
-			static EResult WaitForEvents
+			static void WaitForEvents
 			(
 				      Handle               _commandBuffer,
 				      uint32               _eventCount,
@@ -1039,7 +1039,7 @@ namespace VT
 				);
 			}
 
-			static EResult WaitForEvents
+			static void WaitForEvents
 			(
 				      Handle                  _commandBuffer,
 				      uint32                  _eventCount,
@@ -1061,7 +1061,7 @@ namespace VT
 				);
 			}
 
-			static EResult WaitForEvents
+			static void WaitForEvents
 			(
 				      Handle                 _commandBuffer,
 				      uint32                 _eventCount,
@@ -1349,7 +1349,7 @@ namespace VT
 
 		#pragma region WaitForEvents_OO
 
-			EResult WaitForEvents
+			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
 				const Event::Handle*          _events                  ,
@@ -1371,7 +1371,7 @@ namespace VT
 				);
 			}
 
-			EResult WaitForEvents
+			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
 				const Event::Handle*          _events                  ,
@@ -1393,7 +1393,7 @@ namespace VT
 				);
 			}
 
-			EResult WaitForEvents
+			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
 				const Event::Handle*          _events                  ,
@@ -1415,7 +1415,7 @@ namespace VT
 				);
 			}
 
-			EResult WaitForEvents
+			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
 				const Event::Handle*          _events                  ,
@@ -1591,7 +1591,7 @@ namespace VT
 				return Parent::Reset(device, handle, _flags);
 			}
 
-			EResult Trim(TrimFlags _flags)
+			void Trim(TrimFlags _flags)
 			{
 				Parent::Trim(device, handle, _flags);
 			}

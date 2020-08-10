@@ -1486,30 +1486,15 @@ namespace VT
 				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
-				if (cache != nullptr)
-				{
-					return Parent::Parent::Compute::Create
-					(
-						device,
-						cache ->GetHandle(),
-						1                  ,
-						&info              ,
-						allocator          ,
-						&handle
-					);
-				}
-				else
-				{
-					return Parent::Parent::Compute::Create
-					(
-						device,
-						Null<Cache::Handle>,
-						1                  ,
-						&info              ,
-						allocator          ,
-						&handle
-					);
-				}
+				return Parent::Parent::Compute::Create
+				(
+					device,
+					Null<Cache::Handle>,
+					1,
+					&info,
+					allocator,
+					&handle
+				);
 			}
 
 			EResult Create(LogicalDevice::Handle _device, Cache& _cache, CreateInfo& _info)
@@ -1624,30 +1609,15 @@ namespace VT
 				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
-				if (cache != nullptr)
-				{
-					return Parent::Parent::Graphics::Create
-					(
-						device,
-						cache ->GetHandle(),
-						1                  ,
-						&info              ,
-						allocator          ,
-						&handle
-					);
-				}
-				else
-				{
-					return Parent::Parent::Graphics::Create
-					(
-						device,
-						Null<Cache::Handle>,
-						1                  ,
-						&info              ,
-						allocator          ,
-						&handle
-					);
-				}
+				return Parent::Parent::Graphics::Create
+				(
+					device,
+					Null<Cache::Handle>,
+					1                  ,
+					&info              ,
+					allocator          ,
+					&handle
+				);
 			}
 
 			EResult Create(LogicalDevice::Handle _device, Cache& _cache, CreateInfo& _info)

@@ -106,7 +106,7 @@ namespace VT
 			 */
 			static EResult GetStatus(LogicalDevice::Handle _device, Handle _event)
 			{
-				vkGetEventStatus(_device, _event);
+				return EResult(vkGetEventStatus(_device, _event));
 			}
 
 			/**
@@ -118,7 +118,7 @@ namespace VT
 			 */
 			static EResult Reset(LogicalDevice::Handle _device, Handle _event)
 			{
-				vkResetEvent(_device, _event);
+				return EResult(vkResetEvent(_device, _event));
 			}
 
 			/**
@@ -130,7 +130,7 @@ namespace VT
 			 */
 			static EResult Set(LogicalDevice::Handle _device, Handle _event)
 			{
-				vkSetEvent(_device, _event);
+				return EResult(vkSetEvent(_device, _event));
 			}
 		};
 

@@ -218,7 +218,7 @@ namespace VT
 				PhysicalDevice::Group* _groupProperties
 			)
 			{
-				vkEnumeratePhysicalDeviceGroups(_handle, _numGroups, _groupProperties->operator VkPhysicalDeviceGroupProperties*());
+				return EResult(vkEnumeratePhysicalDeviceGroups(_handle, _numGroups, _groupProperties->operator VkPhysicalDeviceGroupProperties*()));
 			}
 
 			template<typename ReturnType>
@@ -396,7 +396,7 @@ namespace VT
 
 				EResult returnCode = Parent::GetVersion(version);
 
-				if (returnCode != EResult::Success) returnCode;
+				if (returnCode != EResult::Success) return returnCode;
 
 				return Parent::Create(createInfo, handle);
 			}
@@ -416,7 +416,7 @@ namespace VT
 
 				EResult returnCode = Parent::GetVersion(version);
 
-				if (returnCode != EResult::Success) returnCode;
+				if (returnCode != EResult::Success) return returnCode;
 
 				return Parent::Create(createInfo, allocator, handle);
 			}

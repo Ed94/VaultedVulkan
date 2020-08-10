@@ -1084,7 +1084,7 @@ namespace VT
 				const DescriptorSet::Handle* _descriptorSets
 			)
 			{
-				Parent::Free(_device, _info.DescriptorPool, _info.DescriptorSetCount, _descriptorSets);
+				return Parent::Free(_device, _info.DescriptorPool, _info.DescriptorSetCount, _descriptorSets);
 			}
 
 			using Parent::Free;

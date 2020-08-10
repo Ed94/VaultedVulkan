@@ -656,14 +656,14 @@ namespace VT
 				PerformanceCounter::Description* _counterDescriptions
 			)
 			{
-				vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR
+				return EResult(vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR
 				(
 					_handle,
 					_queueFamilyIndex,
 					_numCounters,
 					_counters->operator VkPerformanceCounterKHR*(),
 					_counterDescriptions->operator VkPerformanceCounterDescriptionKHR*()
-				);
+				));
 			}
 		};
 	}
