@@ -358,7 +358,7 @@ namespace VT
 
 			static EResult GetAvailableLayersAndExtensions(std::vector<LayerAndExtensionProperties>& _layersAndExtensions)
 			{
-				std::vector<LayerProperties> layers; EResult result;
+				std::vector<LayerProperties> layers; EResult result = EResult::Incomplete;
 
 				GetAvailableLayers(layers);
 
@@ -372,6 +372,8 @@ namespace VT
 
 					if (result != EResult::Success) return result;
 				}
+
+				return result;
 			}
 
 			/** 
