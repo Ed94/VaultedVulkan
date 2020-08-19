@@ -65,8 +65,24 @@ namespace VT
 
 		struct Layer
 		{
-			static constexpr RoCStr LunarG_API_Dump         = "VK_LAYER_LUNARG_api_dump";
-			static constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation";
+			static constexpr RoCStr LunarG_API_Dump = "VK_LAYER_LUNARG_api_dump";
+
+			// Deprecated (Fallback 3)
+
+			static constexpr RoCStr LunarG_CoreValidation = "VK_LAYER_LUNARG_core_validation";
+
+			// Deprecated (Fallback 2)
+
+			static constexpr RoCStr LunarG_ParameterValidation = "VK_LAYER_LUNARG_parameter_validation";
+			static constexpr RoCStr LunarG_ObjectTracker       = "VK_LAYER_LUNARG_object_tracker"      ;
+			static constexpr RoCStr Google_Threading           = "VK_LAYER_GOOGLE_threading"           ;
+			static constexpr RoCStr Google_UniqueObjedcts      = "VK_LAYER_GOOGLE_unique_objects"      ;
+
+			// Meta Validation - Deprecated (Fallback 1)
+			static constexpr RoCStr LunarG_StandardValidation = "VK_LAYER_LUNARG_standard_validation";
+			
+			// Default
+			static constexpr RoCStr Khronos_Validation = "VK_LAYER_KHRONOS_validation";
 		};
 	}
 }
