@@ -1137,15 +1137,14 @@ namespace VT
 
 			EResult CreateAndBind
 			(
-				PhysicalDevice&        _physicalDevice, 
-				LogicalDevice::Handle  _device        ,  
-				CreateInfo&            _info          ,  
-				Memory::PropertyFlags  _memoryFlags   ,
-				Memory&                _memory
+				const LogicalDevice&        _device        ,  
+				      CreateInfo&           _info          ,  
+				      Memory::PropertyFlags _memoryFlags   ,
+				      Memory&               _memory
 			)
 			{
-				device    = _device   ;
-				info      = _info     ;
+				device    = _device.GetHandle()    ;
+				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
 				EResult returnCode = Parent::Create(device, info, allocator, handle);
@@ -1157,7 +1156,9 @@ namespace VT
 				Memory::AllocateInfo allocationInfo{};
 
 				allocationInfo.AllocationSize = memoryRequirements.Size;
-				allocationInfo.MemoryTypeIndex = _physicalDevice.FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				allocationInfo.MemoryTypeIndex = 
+					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
 
 				returnCode = _memory.Allocate(device, allocationInfo, allocator);
 
@@ -1170,17 +1171,16 @@ namespace VT
 
 			EResult CreateAndBind
 			(
-				      PhysicalDevice&              _physicalDevice, 
-				      LogicalDevice::Handle        _device        , 
+				const LogicalDevice&               _device        ,  
 				      CreateInfo&                  _info          , 
 				      Memory::PropertyFlags        _memoryFlags   ,
 				      Memory&                      _memory        ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device    = _device   ;
-				info      = _info     ;
-				allocator = _allocator;
+				device    = _device.GetHandle();
+				info      = _info              ;
+				allocator = _allocator         ;
 
 				EResult returnCode = Parent::Create(device, info, allocator, handle);
 
@@ -1191,7 +1191,9 @@ namespace VT
 				Memory::AllocateInfo allocationInfo{};
 
 				allocationInfo.AllocationSize = memoryRequirements.Size;
-				allocationInfo.MemoryTypeIndex = _physicalDevice.FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				allocationInfo.MemoryTypeIndex = 
+					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
 
 				returnCode = _memory.Allocate(device, allocationInfo, allocator);
 
@@ -1538,7 +1540,7 @@ namespace VT
 				return returnCode;
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
 				device    = _device.GetHandle()     ;
 				info      = _info                   ;
@@ -1547,7 +1549,7 @@ namespace VT
 				return Parent::Create(device, info, allocator, handle);
 			}
 
-			EResult Create(LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = _device.GetHandle();
 				info      = _info     ;

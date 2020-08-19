@@ -1262,7 +1262,7 @@ namespace VT
 		public:
 			using Parent = V2::Semaphore;
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice::Handle _device, CreateInfo& _info)
 			{
 				device    =  _device  ;
 				info      = _info     ;
@@ -1271,7 +1271,7 @@ namespace VT
 				return Parent::Create(device, info, handle);
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = _device   ;
 				info      = _info     ;

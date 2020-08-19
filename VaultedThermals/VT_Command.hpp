@@ -1642,8 +1642,8 @@ namespace VT
 			 */
 			void EndSingleTimeCommands
 			(
-				CommandBuffer&        _commandBuffer, 
-				LogicalDevice::Queue& _queue
+				      CommandBuffer&        _commandBuffer, 
+				const LogicalDevice::Queue& _queue
 			)
 			{
 				_commandBuffer.EndRecord();
@@ -1662,10 +1662,10 @@ namespace VT
 
 			void CopyBuffer
 			(
-				Buffer&               _sourceBuffer     , 
-				Buffer&               _destinationBuffer, 
-				Buffer::CopyInfo&     _regionInfo       ,
-				LogicalDevice::Queue& _queue
+				      Buffer&               _sourceBuffer     , 
+				      Buffer&               _destinationBuffer, 
+				      Buffer::CopyInfo&     _regionInfo       ,
+				const LogicalDevice::Queue& _queue
 			)
 			{
 				CommandBuffer commandBuffer = BeginSingleTimeCommands();

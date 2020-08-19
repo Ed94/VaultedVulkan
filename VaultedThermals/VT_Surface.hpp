@@ -98,7 +98,7 @@ namespace VT
 		template<>
 		struct Surface_Maker<EOS_Platform::Windows> : public Surface_PlatformAgnostic
 		{
-			//static constexpr EStructureType CreateInfoType = EStructureType::Win32_Surface_CreateInfo_KHR;
+			static constexpr RoCStr OSSurface = InstanceExt::Win32Surface;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a> */
 			struct CreateInfo : V0::VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
@@ -350,7 +350,7 @@ namespace VT
 
 			using Parent = V2::Surface;
 
-			void AssignPhysicalDevice(PhysicalDevice::Handle _physicalDevice)
+			void AssignPhysicalDevice(const PhysicalDevice::Handle _physicalDevice)
 			{
 				physicalDevice = _physicalDevice;
 			}

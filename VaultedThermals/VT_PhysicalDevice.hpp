@@ -773,6 +773,30 @@ namespace VT
 			};
 
 			/**
+			* @brief Checks to see if the specified extensions are supported by the physical device.
+			* 
+			* @todo make the extensions specified container generic using an interface.
+			*/
+			static bool CheckExtensionSupport(Handle _handle, RoCStr _extensionSpecified)
+			{
+				std::vector<ExtensionProperties> availableExtensions;
+
+				GetAvailableLayerExtensions(_handle, nullptr, availableExtensions);
+
+				bool isSupported = false;
+
+				for (const auto& extension : availableExtensions)
+				{
+					if (strcmp(extension.ExtensionName, _extensionSpecified) == 0)
+					{
+						isSupported = true;
+					}
+				}
+
+				return isSupported;
+			}
+
+			/**
 			 * @brief Checks to see if the specified extensions are supported by the physical device.
 			 * 
 			 * @todo make the extensions specified container generic using an interface.
@@ -781,7 +805,7 @@ namespace VT
 			{
 				std::vector<ExtensionProperties> availableExtensions;
 
-				GetAvailableExtensions(_handle, nullptr, availableExtensions);
+				GetAvailableLayerExtensions(_handle, nullptr, availableExtensions);
 
 				using ExtensionNameSet = std::set<std::string>;
 
@@ -820,26 +844,43 @@ namespace VT
 			#endif
 			}
 
-			static ESampleCount GetMaxSampleCount_ColorAndDepth(Handle _handle)
+			static EResult GetAvailableLayerExtensions(Handle _handle, RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing)
 			{
-				Properties properties;
+				uint32 count;
 
-				GetProperties(_handle, properties);
+				EResult returnCode = QueryExtensionProperties(_handle, _layerName, &count, nullptr);
 
-				SampleCountFlags counts
-				(
-					properties.LimitsSpec.FramebufferColorSampleCounts, 
-					properties.LimitsSpec.FramebufferDepthSampleCounts
-				);
+				if (returnCode != EResult::Success) return returnCode;
 
-				if (counts.Has(ESampleCount::_64)) return ESampleCount::_64;
-				if (counts.Has(ESampleCount::_32)) return ESampleCount::_32;
-				if (counts.Has(ESampleCount::_16)) return ESampleCount::_16;
-				if (counts.Has(ESampleCount::_8 )) return ESampleCount::_8 ;
-				if (counts.Has(ESampleCount::_4 )) return ESampleCount::_4 ;
-				if (counts.Has(ESampleCount::_2 )) return ESampleCount::_2 ;
+				_extensionListing.resize(count);
 
-				return ESampleCount::_1;
+				returnCode = QueryExtensionProperties(_handle, _layerName, &count, _extensionListing.data());
+
+				return returnCode;
+			}
+
+			/**
+			 * @brief Gets all extensions for the known layers that the physical device supports.
+			 * 
+			 * @details 
+			 * Note: The layers and extensions container must have the layer properties member of each element populated
+			 * by the application instance.
+			 * 
+			 * \param _layersAndExtensions
+			 * \return 
+			 */
+			static EResult GetAvailableLayersAndExtensions(Handle _handle, std::vector<LayerAndExtensionProperties>& _layersAndExtensions)
+			{
+				EResult result;
+
+				for (uint32 index = 0; index < _layersAndExtensions.size(); index++)
+				{
+					result = GetAvailableLayerExtensions(_handle, _layersAndExtensions[index].Layer.Name, _layersAndExtensions[index].Extensions);
+
+					if (result != EResult::Success) return result;
+				}
+
+				return result;
 			}
 
 			/**
@@ -861,19 +902,26 @@ namespace VT
 				return queryResult;
 			}
 
-			static EResult GetAvailableExtensions(Handle _handle, RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing)
+			static ESampleCount GetMaxSampleCount_ColorAndDepth(Handle _handle)
 			{
-				uint32 count;
+				Properties properties;
 
-				EResult returnCode = QueryExtensionProperties(_handle, _layerName, &count, nullptr);
+				GetProperties(_handle, properties);
 
-				if (returnCode != EResult::Success) return returnCode;
+				SampleCountFlags counts
+				(
+					properties.LimitsSpec.FramebufferColorSampleCounts, 
+					properties.LimitsSpec.FramebufferDepthSampleCounts
+				);
 
-				_extensionListing.resize(count);
+				if (counts.Has(ESampleCount::_64)) return ESampleCount::_64;
+				if (counts.Has(ESampleCount::_32)) return ESampleCount::_32;
+				if (counts.Has(ESampleCount::_16)) return ESampleCount::_16;
+				if (counts.Has(ESampleCount::_8 )) return ESampleCount::_8 ;
+				if (counts.Has(ESampleCount::_4 )) return ESampleCount::_4 ;
+				if (counts.Has(ESampleCount::_2 )) return ESampleCount::_2 ;
 
-				returnCode = QueryExtensionProperties(_handle, _layerName, &count, _extensionListing.data());
-
-				return returnCode;
+				return ESampleCount::_1;
 			}
 		};
 	}
@@ -900,6 +948,30 @@ namespace VT
 				Parent::GetProperties      (handle, properties      );
 				Parent::GetProperties      (handle, properties      );
 				Parent::GetProperties2     (handle, properties2     );
+			}
+
+			/**
+			* @brief Checks to see if the specified extensions are supported by the physical device.
+			* 
+			* @todo make the extensions specified container generic using an interface.
+			*/
+			bool CheckExtensionSupport(RoCStr _extensionSpecified)
+			{
+				std::vector<ExtensionProperties> availableExtensions;
+
+				GetAvailableExtensions(nullptr, availableExtensions);
+
+				bool isSupported = false;
+
+				for (const auto& extension : availableExtensions)
+				{
+					if (strcmp(extension.ExtensionName, _extensionSpecified) == 0)
+					{
+						isSupported = true;
+					}
+				}
+
+				return isSupported;
 			}
 
 			/**
@@ -950,7 +1022,7 @@ namespace VT
 
 			EResult GetAvailableExtensions(RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing) const
 			{
-				return EResult(Parent::GetAvailableExtensions(handle, _layerName, _extensionListing));
+				return EResult(Parent::GetAvailableLayerExtensions(handle, _layerName, _extensionListing));
 			}
 
 			std::vector<QueueFamilyProperties> GetAvailableQueueFamilies()

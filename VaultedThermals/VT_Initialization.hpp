@@ -190,6 +190,20 @@ namespace VT
 				return EResult(vkEnumerateInstanceVersion(&_versionContainer));
 			}
 
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  */
+			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
+			{
+				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, _propertiesContainer->operator VkLayerProperties * ()));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a> .
+			 */
+			static EResult QueryAvailableAppExtensions(RoCStr _layerName, uint32& _numProperties, ExtensionProperties* _propertiesContainer)
+			{
+				return EResult(vkEnumerateInstanceExtensionProperties(_layerName, &_numProperties, _propertiesContainer->operator VkExtensionProperties*()));
+			}
+
 			/**
 			@brief Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.
 
@@ -311,6 +325,54 @@ namespace VT
 			}
 
 			using Parent::Destroy;
+
+			static EResult GetAvailableLayers(std::vector<LayerProperties>& _container)
+			{
+				uint32 layerCount;
+
+				EResult result = QueryAvailableLayers(layerCount, nullptr);
+
+				if (result != EResult::Success) return result;
+
+				_container.resize(layerCount);
+
+				result = QueryAvailableLayers(layerCount, _container.data());
+
+				return result;
+			}
+
+			static EResult GetAvailableLayerExtensions(RoCStr _layerName, std::vector<ExtensionProperties>& _propertiesContainer)
+			{
+				uint32 layerCount;
+
+				EResult result = QueryAvailableAppExtensions(_layerName, layerCount, nullptr);
+
+				if (result != EResult::Success) return result;
+
+				_propertiesContainer.resize(layerCount);
+
+				result = QueryAvailableAppExtensions(_layerName, layerCount, _propertiesContainer.data());
+
+				return result;
+			}
+
+			static EResult GetAvailableLayersAndExtensions(std::vector<LayerAndExtensionProperties>& _layersAndExtensions)
+			{
+				std::vector<LayerProperties> layers; EResult result;
+
+				GetAvailableLayers(layers);
+
+				_layersAndExtensions.resize(layers.size());
+
+				for (uint32 index = 0; index < layers.size(); index++)
+				{
+					_layersAndExtensions[index].Layer = layers[index];
+
+					result = GetAvailableLayerExtensions(_layersAndExtensions[index].Layer.Name, _layersAndExtensions[index].Extensions);
+
+					if (result != EResult::Success) return result;
+				}
+			}
 
 			/** 
 			@brief Provides the handles of all available physical devices.

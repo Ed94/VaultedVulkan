@@ -344,6 +344,15 @@ namespace VT
 			FormatFeatureFlags    BufferFeatures;
 		};
 
+		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
+		struct LayerProperties : V0::VKStruct_Base<VkLayerProperties>
+		{
+			ExtensionNameStr Name                 ;
+			uint32           SpecVersion          ;
+			uint32           ImplementationVersion;
+			DescrptionStr    Descrption           ;
+		};
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOpState">Specification</a>  */
 		struct StencilOperationState : V0::VKStruct_Base<VkStencilOpState>
 		{
@@ -379,6 +388,25 @@ namespace VT
 		{
 			using Handle = VkDisplayKHR;
 		};
+	}
+
+	namespace V2
+	{
+		/**
+		* @brief Currently hard coded to use STL vector for extensions.
+		* 
+		* @todo Make the extensions container a template type with enforcement for IDynamicArray.
+		*/
+		struct LayerAndExtensionProperties
+		{
+			LayerProperties                  Layer     ;
+			std::vector<ExtensionProperties> Extensions;
+		};
+	}
+
+	namespace V4
+	{
+		using V2::LayerAndExtensionProperties;
 	}
 
 	namespace SPIR_V

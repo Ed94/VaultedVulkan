@@ -48,7 +48,7 @@ namespace VT
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  */
 		using MessageTypeFlags      = Bitmask<EDebugUtilities_MessageType    , VkDebugUtilsMessageTypeFlagsEXT>;
 
-		constexpr RoCStr Extension_DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME;
+		
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a>  */
 		struct Label : V0::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
@@ -179,25 +179,6 @@ namespace VT
 				}
 			}
 		}; 
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#extendingvulkan-layers">Specification</a>  */
-		struct ValidationLayers
-		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
-			struct LayerProperties : V0::VKStruct_Base<VkLayerProperties>
-			{
-				ExtensionNameStr LayerName;
-				uint32           SpecVersion;
-				uint32           ImplementationVersion;
-				DescrptionStr    Descrption;
-			};
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  */
-			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
-			{
-				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, _propertiesContainer->operator VkLayerProperties*()));
-			}
-		};
 	}
 
 	namespace V2
@@ -206,7 +187,6 @@ namespace VT
 		using V1::FPtr_CreateMessenger;
 		using V1::MessageServerityFlags;
 		using V1::MessageTypeFlags;
-		using V1::Extension_DebugUtility;
 
 		struct Label : V1::Label
 		{
@@ -272,23 +252,7 @@ namespace VT
 			using Parent::Destroy;
 		};
 
-		struct ValidationLayers : public V1::ValidationLayers
-		{
-			static EResult GetAvailableLayers(std::vector<LayerProperties>& _container)
-			{
-				uint32 layerCount;
-				
-				EResult result = QueryAvailableLayers(layerCount, nullptr);
-
-				if (result != EResult::Success) return result;
-
-				_container.resize(layerCount);
-
-				result = QueryAvailableLayers(layerCount, _container.data());
-
-				return result;
-			}
-		};
+		
 	}
 
 	namespace V4
@@ -297,7 +261,6 @@ namespace VT
 		using V2::FPtr_CreateMessenger;
 		using V2::MessageServerityFlags;
 		using V2::MessageTypeFlags;
-		using V2::Extension_DebugUtility;
 
 		class DebugMessenger : public V2::DebugMessenger
 		{
@@ -305,6 +268,33 @@ namespace VT
 
 			using Parent = V2::DebugMessenger;
 
+			void AssignInfo(const CreateInfo& _info)
+			{
+				info = _info;
+			}
+
+			EResult Create
+			(
+				AppInstance::Handle _appInstance
+			)
+			{
+				app       = _appInstance ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(app, info, handle);
+			}
+
+			EResult Create
+			(
+					  AppInstance::Handle          _appInstance,
+				const Memory::AllocationCallbacks* _allocator  
+			)
+			{
+				app       = _appInstance;
+				allocator = _allocator  ;
+
+				return Parent::Create(app, info, allocator, handle);
+			}
 
 			EResult Create
 			(
@@ -338,6 +328,11 @@ namespace VT
 				Parent::Destroy(app, handle, allocator);
 			}
 
+			const CreateInfo& GetInfo() const
+			{
+				return info;
+			}
+
 			operator Handle()
 			{
 				return handle;
@@ -363,7 +358,5 @@ namespace VT
 
 			Handle handle;
 		};
-
-		using V2::ValidationLayers;
 	}
 }

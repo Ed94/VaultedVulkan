@@ -82,6 +82,15 @@ namespace VT
 
 				/**
 				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateInfo">Specification</a> 
+				 * 
+				 * @details
+				 * 
+				 * A queue is allocated by the family, as in each queue allocated must have their index in the family tracked.
+				 * This means that the logical device is passed a queue's create info by the family with its specified index,
+				 * queue count from that family to be associated with the logical device, and the family's priority.
+				 * 
+				 * If a queue family is to be used for a specific task (transfer, etc), it is advantageous that that queue family 
+				 * have as little flags for other functionality as possible.
 				 */
 				struct CreateInfo : V0::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
 				{
@@ -447,51 +456,82 @@ namespace VT
 			{
 				using Parent = Parent::Queue;
 
-				enum class EType
-				{
-					Unspecified ,
-					Graphics    ,
-					Presentation
-				};
+				Queue() { assignment = EQueueFlag::MaxEnum; }
 
 				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info)
 				{
 					device = &_logicalDevice;
-					info   = _info          ;
+					info   = &_info         ;
+					//info   = _info         ;
+
+					queueIndex = 0;
+				}
+
+				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info, uint32 _queueIndex, EQueueFlag _type)
+				{
+					device = &_logicalDevice;
+					info   = &_info         ;
+					//info   = _info         ;
+
+					queueIndex = _queueIndex;
+
+					assignment = _type;
 				}
 
 				uint32 GetFamilyIndex() const
 				{
-					return familyIndex;
+					return info->QueueFamilyIndex;
 				}
 
-				Handle GetHandle() const
+				uint32 GetQueueIndex() const
+				{
+					return queueIndex;
+				}
+
+				const Handle& GetHandle() const
 				{
 					return handle;
 				}
 
+				const CreateInfo& GetInfo() const
+				{
+					return *info;
+				}
+
+				const EQueueFlag& GetType() const
+				{
+					return assignment;
+				}
+
 				void Retrieve()
 				{
-					Parent::Get(*device, info.QueueFamilyIndex, familyIndex, handle);
+					Parent::Get(*device, info->QueueFamilyIndex, queueIndex, handle);
 				}
 
 				bool FamilySpecified() const
 				{
-					return type != EType::Unspecified ? true : false;
+					return assignment != EQueueFlag::MaxEnum ? true : false;
 				}
 
-				EResult QueuePresentation(const PresentationInfo& _presentationInfo)
+				EResult QueuePresentation(const PresentationInfo& _presentationInfo) const
 				{
 					return Parent::QueuePresentation(handle, _presentationInfo);
 				}
 
-				void SpecifyFamily(uint32 _index, EType _type)
+				/**
+				 * 
+				 * @todo remove.
+				 * 
+				 * \param _index
+				 * \param _type
+				 */
+				void SpecifyFamily(uint32 _index, EQueueFlag _type)
 				{
-					familyIndex = _index; 
-					type        = _type ;
+					queueIndex = _index; 
+					assignment = _type ;
 				}
 
-				EResult SubmitToQueue(uint32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence)
+				EResult SubmitToQueue(uint32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence) const
 				{
 					return Parent::SubmitToQueue(handle, _submitCount, _submissions, _fence);
 				}
@@ -520,31 +560,53 @@ namespace VT
 
 				Handle handle;
 
-				CreateInfo info;
+				//CreateInfo* info;   // TODO Change to this
+				CreateInfo* info;   
 
-				EType type;
-
-				uint32 familyIndex;
+				EQueueFlag assignment;
 
 				LogicalDevice* device;
+
+				uint32 queueIndex;
 			};
 
-			EResult Create(PhysicalDevice::Handle _physicalDevice, CreateInfo& _createInfo)
+			void AssignPhysicalDevice(PhysicalDevice& _physicalDevice)
 			{
-				physicalDevice = _physicalDevice;
+				physicalDevice = &_physicalDevice;
+			}
+
+			EResult Create(CreateInfo& _createInfo)
+			{
 				info           = _createInfo             ;
 				allocator      = Memory::DefaultAllocator;
 
-				return Parent::Create(physicalDevice, info, handle);
+				return Parent::Create(*physicalDevice, info, handle);
 			}
 
-			EResult Create(PhysicalDevice::Handle _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				physicalDevice = _physicalDevice;
-				info           = _createInfo    ;
-				allocator      = _allocator     ;
+				info           = _createInfo     ;
+				allocator      = _allocator      ;
 
-				return Parent::Create(physicalDevice, info, allocator, handle);
+				return Parent::Create(*physicalDevice, info, allocator, handle);
+			}
+
+			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo)
+			{
+				physicalDevice = &_physicalDevice        ;
+				info           = _createInfo             ;
+				allocator      = Memory::DefaultAllocator;
+
+				return Parent::Create(*physicalDevice, info, handle);
+			}
+
+			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			{
+				physicalDevice = &_physicalDevice;
+				info           = _createInfo     ;
+				allocator      = _allocator      ;
+
+				return Parent::Create(*physicalDevice, info, allocator, handle);
 			}
 
 			void Destroy()
@@ -555,6 +617,11 @@ namespace VT
 			const Handle& GetHandle() const
 			{
 				return handle;
+			}
+
+			const PhysicalDevice& GetPhysicalDevice() const
+			{
+				return *physicalDevice;
 			}
 
 			EResult WaitUntilIdle() const
@@ -596,7 +663,7 @@ namespace VT
 
 			CreateInfo info;
 
-			PhysicalDevice::Handle physicalDevice;
+			PhysicalDevice* physicalDevice;
 
 			const Memory::AllocationCallbacks* allocator;
 		};

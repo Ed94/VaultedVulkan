@@ -37,11 +37,36 @@ namespace VT
 		constexpr DeviceSize MaxMemoryHeaps = VK_MAX_MEMORY_HEAPS;
 		constexpr DeviceSize MaxMemoryTypes = VK_MAX_MEMORY_TYPES;
 
-		constexpr RoCStr Swapchain_ExtensionName = VK_KHR_SWAPCHAIN_EXTENSION_NAME;
-		constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation"  ;
-
 		constexpr DeviceSize QueueFamily_Ignored = VK_QUEUE_FAMILY_IGNORED;
 
 		constexpr uint32 Subpass_External = VK_SUBPASS_EXTERNAL;
+
+		struct QueueMask
+		{
+			static constexpr uint32 ComputeAsync = 
+				uint32(EQueueFlag::Compute ) | 
+				uint32(EQueueFlag::Transfer) |
+				uint32(EQueueFlag::SparseBinding);
+
+			static constexpr uint32 TransferOnly = uint32(EQueueFlag::Transfer) | uint32(EQueueFlag::SparseBinding);
+		};
+
+		struct InstanceExt
+		{
+			static constexpr RoCStr DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME  ;
+			static constexpr RoCStr Surface      = VK_KHR_SURFACE_EXTENSION_NAME      ;
+			static constexpr RoCStr Win32Surface = VK_KHR_WIN32_SURFACE_EXTENSION_NAME;
+		};
+
+		struct DeviceExt
+		{
+			static constexpr RoCStr Swapchain = VK_KHR_SWAPCHAIN_EXTENSION_NAME;	
+		};
+
+		struct Layer
+		{
+			static constexpr RoCStr LunarG_API_Dump         = "VK_LAYER_LUNARG_api_dump";
+			static constexpr RoCStr ValidationLayer_Khronos = "VK_LAYER_KHRONOS_validation";
+		};
 	}
 }

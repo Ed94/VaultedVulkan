@@ -1346,7 +1346,8 @@ namespace VT
 			Compute       = VK_QUEUE_COMPUTE_BIT       ,
 			Transfer      = VK_QUEUE_TRANSFER_BIT      ,
 			SparseBinding = VK_QUEUE_SPARSE_BINDING_BIT,
-			Protected     = VK_QUEUE_PROTECTED_BIT
+			Protected     = VK_QUEUE_PROTECTED_BIT     ,
+			MaxEnum       = VK_QUEUE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlagBits">Specification</a>  */
