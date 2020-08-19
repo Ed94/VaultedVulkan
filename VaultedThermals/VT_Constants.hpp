@@ -65,7 +65,13 @@ namespace VT
 
 		struct Layer
 		{
-			static constexpr RoCStr LunarG_API_Dump = "VK_LAYER_LUNARG_api_dump";
+			// Utility
+
+			static constexpr RoCStr LunarG_API_Dump   = "VK_LAYER_LUNARG_api_dump";
+			static constexpr RoCStr LunarG_Monitor    = "VK_LAYER_LUNARG_monitor";   // Shows FPS on the window.
+			static constexpr RoCStr LunarG_Screenshot = "VK_LAYER_LUNARG_screenshot";
+
+			// Validation
 
 			// Deprecated (Fallback 3)
 
@@ -79,6 +85,7 @@ namespace VT
 			static constexpr RoCStr Google_UniqueObjedcts      = "VK_LAYER_GOOGLE_unique_objects"      ;
 
 			// Meta Validation - Deprecated (Fallback 1)
+
 			static constexpr RoCStr LunarG_StandardValidation = "VK_LAYER_LUNARG_standard_validation";
 			
 			// Default
