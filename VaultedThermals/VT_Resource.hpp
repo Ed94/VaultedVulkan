@@ -956,6 +956,11 @@ namespace VT
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
+
+					Components.R = Corridors::EComponentSwizzle::R;
+					Components.G = Corridors::EComponentSwizzle::G;
+					Components.B = Corridors::EComponentSwizzle::B;
+					Components.A = Corridors::EComponentSwizzle::A;
 				}
 			};
 

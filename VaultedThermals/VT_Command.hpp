@@ -1114,12 +1114,12 @@ namespace VT
 				handle = _handle  ;
 			}
 
-			EResult BeginRecord(const BeginInfo& _info)
+			EResult BeginRecord(const BeginInfo& _info) const
 			{
 				return Parent::BeginRecord(handle, _info);
 			}
 
-			void BeginRenderPass(const RenderPass::BeginInfo& _info, ESubpassContents _contents)
+			void BeginRenderPass(const RenderPass::BeginInfo& _info, ESubpassContents _contents) const
 			{
 				Parent::BeginRenderPass(handle, _info, _contents);
 			}
@@ -1131,7 +1131,7 @@ namespace VT
 				      uint32                 _firstSet          ,
 				      uint32                 _descritporSetCount,
 				const DescriptorSet::Handle* _descriptorSets
-			)
+			) const
 			{
 				Parent::BindDescriptorSets(handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, 0, nullptr);
 			}
@@ -1145,32 +1145,32 @@ namespace VT
 				const DescriptorSet::Handle* _descriptorSets    ,
 				      uint32                 _dynamicOffsetCount,
 				const uint32*                _dynamicOffsets
-			)
+			) const
 			{
 				Parent::BindDescriptorSets(handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, _dynamicOffsetCount, _dynamicOffsets);
 			}
 
-			void BindIndexBuffer(Buffer& _buffer, DeviceSize _offset, EIndexType _type)
+			void BindIndexBuffer(Buffer& _buffer, DeviceSize _offset, EIndexType _type) const
 			{
 				Parent::BindIndexBuffer(handle, _buffer.GetHandle(), _offset, _type);
 			}
 
-			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers)
+			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers) const
 			{
 				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, 0);
 			}
 
-			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers, const DeviceSize* _offsets)
+			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers, const DeviceSize* _offsets) const
 			{
 				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, _offsets);
 			}
 
-			void BindPipeline(EPipelineBindPoint _bindPoint, Pipeline& _pipeline)
+			void BindPipeline(EPipelineBindPoint _bindPoint, Pipeline& _pipeline) const
 			{
 				Parent::BindPipeline(handle, _bindPoint, _pipeline.GetHandle());
 			}
 
-			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, uint32 _regionCount, const Image::Blit* _regions, EFilter _filter)
+			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, uint32 _regionCount, const Image::Blit* _regions, EFilter _filter) const
 			{
 				Parent::BlitImage(handle, _src.GetHandle(), _srcLayout, _dst.GetHandle(), _dstLayout, _regionCount, _regions, _filter);
 			}
@@ -1181,7 +1181,7 @@ namespace VT
 				      Buffer&                 _destinationBuffer,
 				      uint32                  _regionCount      ,
 				const Buffer::CopyInfo*       _regions
-			)
+			) const
 			{
 				Parent::Parent::CopyBuffer(handle, _sourceBuffer.GetHandle(), _destinationBuffer.GetHandle(), _regionCount, _regions);
 			}
@@ -1193,7 +1193,7 @@ namespace VT
 				      EImageLayout       _dstImageLayout,
 				      uint32		     _regionCount   ,
 				const BufferImageRegion* _regions
-			)
+			) const
 			{
 				Parent::CopyBufferToImage(handle, _srcBuffer.GetHandle(), _dstImage.GetHandle(), _dstImageLayout, _regionCount, _regions);
 			}
@@ -1204,7 +1204,7 @@ namespace VT
 				uint32 _vertexCount  , 
 				uint32 _firstInstance,
 				uint32 _instanceCount
-			)
+			) const
 			{
 				Parent::Draw(handle, _firstVertex, _vertexCount, _firstInstance, _instanceCount);
 			}
@@ -1216,17 +1216,17 @@ namespace VT
 				uint32 _firstIndex   ,
 				sint32 _vertexOffset ,
 				uint32 _firstInstance
-			)
+			) const
 			{
 				Parent::DrawIndexed(handle, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
 			}
 
-			EResult EndRecord()
+			EResult EndRecord() const
 			{
 				return Parent::EndRecord(handle);
 			}
 
-			void EndRenderPass()
+			void EndRenderPass() const
 			{
 				Parent::EndRenderPass(handle);
 			}
@@ -1235,12 +1235,12 @@ namespace VT
 			(
 				      uint32   _secondaryBufferCount,
 				const Handle* _secondaryBuffers
-			)
+			) const
 			{
 				Parent::Execute(handle, _secondaryBufferCount, _secondaryBuffers);
 			}
 
-			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask)
+			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
 				Parent::ResetEvent(handle, _event.GetHandle(), _stageMask);
 			}
@@ -1254,7 +1254,7 @@ namespace VT
 				      DependencyFlags         _dependencyFlags         ,
 				      uint32                  _memoryBarrierCount      ,
 				const Memory::Barrier*        _memoryBarriers          
-			)
+			) const
 			{
 				Parent::SubmitPipelineBarrier
 				(
@@ -1274,7 +1274,7 @@ namespace VT
 				      DependencyFlags         _dependencyFlags         ,
 				      uint32                  _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    
-			)
+			) const
 			{
 				Parent::SubmitPipelineBarrier
 				(
@@ -1294,7 +1294,7 @@ namespace VT
 				      DependencyFlags         _dependencyFlags         ,
 				      uint32                  _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
-			)
+			) const
 			{
 				Parent::SubmitPipelineBarrier
 				(
@@ -1318,7 +1318,7 @@ namespace VT
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
 				      uint32                  _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
-			)
+			) const
 			{
 				Parent::SubmitPipelineBarrier
 				(
@@ -1337,12 +1337,12 @@ namespace VT
 
 		#pragma endregion SubmitPipelineBarrier_OO
 
-			void SetDeviceMask(uint32 _deviceMask)
+			void SetDeviceMask(uint32 _deviceMask) const
 			{
 				Parent::SetDeviceMask(handle, _deviceMask);
 			}
 
-			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask)
+			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
 				Parent::SetEvent(handle, _event.GetHandle(), _stageMask);
 			}
@@ -1357,7 +1357,7 @@ namespace VT
 				      Pipeline::StageFlags    _dstStageMask            ,
 				      uint32                  _memoryBarrierCount      ,
 				const Memory::Barrier*        _memoryBarriers          
-			)
+			) const
 			{
 				Parent::WaitForEvents
 				(
@@ -1379,7 +1379,7 @@ namespace VT
 				      Pipeline::StageFlags    _dstStageMask            ,
 				      uint32                  _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    
-			)
+			) const
 			{
 				Parent::WaitForEvents
 				(
@@ -1401,7 +1401,7 @@ namespace VT
 				      Pipeline::StageFlags    _dstStageMask            ,
 				      uint32                  _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
-			)
+			) const
 			{
 				Parent::WaitForEvents
 				(
@@ -1427,7 +1427,7 @@ namespace VT
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
 				      uint32                  _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
-			)
+			) const
 			{
 				Parent::WaitForEvents
 				(
@@ -1446,16 +1446,6 @@ namespace VT
 			}
 
 		#pragma endregion WaitForEvents_OO
-
-			operator Handle()
-			{
-				return handle;
-			}
-
-			operator Handle() const
-			{
-				return handle;
-			}
 
 			operator const Handle&() const
 			{

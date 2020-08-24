@@ -98,15 +98,15 @@ namespace VT
 		template<>
 		struct Surface_Maker<EOS_Platform::Windows> : public Surface_PlatformAgnostic
 		{
+			using OS_AppHandle    = PlatformTypes::OS_AppHandle   ;
+			using OS_WindowHandle = PlatformTypes::OS_WindowHandle;
+
 			static constexpr RoCStr OSSurface = InstanceExt::Win32Surface;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a> */
 			struct CreateInfo : V0::VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
-
-				using OS_AppHandle    = PlatformTypes::OS_AppHandle   ;
-				using OS_WindowHandle = PlatformTypes::OS_WindowHandle;
 
 				      EType           SType      ;
 				const void*           Next       ;
@@ -123,7 +123,7 @@ namespace VT
 			 * 
 			 * \return 
 			 */
-			static CreateInfo::OS_AppHandle GetOS_AppHandle()
+			static OS_AppHandle GetOS_AppHandle()
 			{
 				return GetModuleHandle(nullptr);
 			}
@@ -270,8 +270,9 @@ namespace VT
 			{
 				CreateInfo()
 				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
+					SType       = STypeEnum        ;
+					Next        = nullptr          ;
+					OSAppHandle = GetOS_AppHandle();
 				}
 			};
 
@@ -355,6 +356,17 @@ namespace VT
 				physicalDevice = _physicalDevice;
 			}
 
+			EResult Create(AppInstance::Handle _app, OS_WindowHandle _window)
+			{
+				CreateInfo geninfo {}; geninfo.OSWinHandle = _window;
+
+				app       = _app                    ;
+				info      = geninfo                 ;
+				allocator = Memory::DefaultAllocator;
+
+				return Parent::Create(app, info, handle);
+			}
+
 			EResult Create
 			(
 				AppInstance::Handle _appHandle ,
@@ -375,21 +387,20 @@ namespace VT
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				app = _appHandle;
-				info = _createInfo;
-				allocator = _allocator;
+				app       = _appHandle ;
+				info      = _createInfo;
+				allocator = _allocator ;
 				
 				return Parent::Create(app, info, allocator, handle);
 			}
 
 			EResult CheckPhysicalDeviceSupport
 			(
-				PhysicalDevice::Handle _physDevice      ,
-				uint32                 _queueFamilyIndex,
-				Bool&                  _checkResult
+				uint32 _queueFamilyIndex,
+				Bool&  _checkResult
 			)
 			{
-				return Parent::CheckPhysicalDeviceSupport(_physDevice, _queueFamilyIndex, handle, _checkResult);
+				return Parent::CheckPhysicalDeviceSupport(physicalDevice, _queueFamilyIndex, handle, _checkResult);
 			}
 
 			void Destroy()
@@ -402,7 +413,7 @@ namespace VT
 				return handle;
 			}
 
-			EResult GetAvailableFormats(std::vector<Surface::Format>& _formatsContainer)
+			EResult GetAvailableFormats(std::vector<Format>& _formatsContainer)
 			{
 				return Parent::GetAvailableFormats(physicalDevice, handle, _formatsContainer);
 			}

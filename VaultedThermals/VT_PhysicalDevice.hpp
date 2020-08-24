@@ -821,6 +821,44 @@ namespace VT
 				return isSupported;
 			}
 
+			static EResult FindSupportedFormat(Handle _handle, const std::vector<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format)
+			{
+				for (EFormat possibleFormat : _canidates)
+				{
+					FormatProperties formatProperties;
+
+					Parent::GetFormatProperties(_handle, possibleFormat, formatProperties);
+
+					switch (_tiling)
+					{
+						case EImageTiling::Linear:
+						{
+							if (formatProperties.LinearTilingFeatures.HasOrEither(_features))
+							{
+								_format = possibleFormat;
+
+								return EResult::Success;
+							}
+
+							break;
+						}
+						case EImageTiling::Optimal:
+						{
+							if (formatProperties.OptimalTilingFeatures.HasOrEither(_features))
+							{
+								_format = possibleFormat;
+
+								return EResult::Success;
+							}
+
+							break;
+						}
+					}
+				}
+
+				return EResult::Error_FormatNotSupported;
+			}
+
 			static uint32 FindMemoryType(Handle _handle, uint32 _typeFilter, Memory::PropertyFlags _properties)
 			{
 				MemoryProperties memProperties;
@@ -1020,6 +1058,11 @@ namespace VT
 			#endif
 			}
 
+			EResult FindSupportedFormat(const std::vector<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format) const
+			{
+				return Parent::FindSupportedFormat(handle, _canidates, _tiling, _features, _format);
+			}
+
 			EResult GetAvailableExtensions(RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing) const
 			{
 				return EResult(Parent::GetAvailableLayerExtensions(handle, _layerName, _extensionListing));
@@ -1114,16 +1157,6 @@ namespace VT
 			) const
 			{
 				return Parent::QueryPerfomranceQueryCounters(handle, _queueFamilyIndex, _numCounters, _counters, _counterDescriptions);
-			}
-
-			operator Handle()
-			{
-				return handle;
-			}
-
-			operator Handle() const
-			{
-				return handle;
 			}
 
 			operator const Handle&() const

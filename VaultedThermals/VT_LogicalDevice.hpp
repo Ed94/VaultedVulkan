@@ -541,16 +541,6 @@ namespace VT
 					return Parent::WaitUntilIdle(handle);
 				}
 
-				operator Handle()
-				{
-					return handle;
-				}
-
-				operator Handle() const
-				{
-					return handle;
-				}
-
 				operator const Handle&() const
 				{
 					return handle;
