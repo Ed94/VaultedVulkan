@@ -298,7 +298,7 @@ namespace VT
 		{
 			using Parent = V1::RenderPass;
 
-			struct BeginInfo : Parent::BeginInfo
+			struct BeginInfo : public Parent::BeginInfo
 			{
 				BeginInfo()
 				{
@@ -307,7 +307,7 @@ namespace VT
 				}
 			};
 
-			struct CreateInfo : Parent::CreateInfo
+			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
 				{
@@ -316,7 +316,11 @@ namespace VT
 				}
 			};
 
-			struct SubpassDescription : Parent::SubpassDescription
+			/*struct AttachmentDescription : public Parent::AttachmentDescription
+			{
+			};*/
+
+			struct SubpassDescription : public Parent::SubpassDescription
 			{
 				SubpassDescription()
 				{
@@ -436,6 +440,8 @@ namespace VT
 		public:
 			using Parent = V2::RenderPass;
 
+
+
 			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
 			{
 				device    = _device                 ;
@@ -459,17 +465,17 @@ namespace VT
 				Parent::Destroy(device, handle, allocator);
 			}
 
-			const Handle& GetHandle() const
+			uint32 GetAttachmentCount()
+			{
+				return info.AttachmentCount;
+			}
+
+			Handle GetHandle()
 			{
 				return handle;
 			}
 
 			operator Handle()
-			{
-				return handle;
-			}
-
-			operator Handle() const
 			{
 				return handle;
 			}

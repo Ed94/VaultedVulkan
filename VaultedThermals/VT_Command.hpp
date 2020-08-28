@@ -1591,11 +1591,6 @@ namespace VT
 				return handle;
 			}
 
-			operator Handle() const
-			{
-				return handle;
-			}
-
 			operator const Handle&() const
 			{
 				return handle;
@@ -1606,7 +1601,7 @@ namespace VT
 			/**
 			 * @brief.
 			 */
-			CommandBuffer BeginSingleTimeCommands()
+			CommandBuffer BeginSingleTimeCommands(EResult& _result)
 			{
 				AllocateInfo allocationInfo{};
 
@@ -1616,13 +1611,15 @@ namespace VT
 
 				CommandBuffer commandBuffer;
 
-				Allocate(allocationInfo, commandBuffer);
+				_result = Allocate(allocationInfo, commandBuffer);
+
+				if (_result != EResult::Success) return commandBuffer;
 
 				CommandBuffer::BeginInfo beginInfo{};
 
 				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
 
-				commandBuffer.BeginRecord(beginInfo);
+				_result = commandBuffer.BeginRecord(beginInfo);
 
 				return commandBuffer;
 			}
@@ -1630,27 +1627,37 @@ namespace VT
 			/**
 			 * @brief.
 			 */
-			void EndSingleTimeCommands
+			EResult EndSingleTimeCommands
 			(
 				      CommandBuffer&        _commandBuffer, 
 				const LogicalDevice::Queue& _queue
 			)
 			{
-				_commandBuffer.EndRecord();
+				EResult result = EResult::Incomplete;
+
+				result = _commandBuffer.EndRecord();
+
+				if (result != EResult::Success) return result;
 
 				CommandBuffer::SubmitInfo submitInfo{};
 
 				submitInfo.CommandBufferCount = 1                          ;
 				submitInfo.CommandBuffers     = &_commandBuffer.GetHandle();
 
-				_queue.SubmitToQueue(1, submitInfo, Null<Fence::Handle>);
+				result = _queue.SubmitToQueue(1, submitInfo, Null<Fence::Handle>);
 
-				_queue.WaitUntilIdle();
+				if (result != EResult::Success) return result;
+
+				result = _queue.WaitUntilIdle();
+
+				if (result != EResult::Success) return result;
 
 				Free(_commandBuffer);
+
+				return result;
 			}
 
-			void CopyBuffer
+			EResult CopyBuffer
 			(
 				      Buffer&               _sourceBuffer     , 
 				      Buffer&               _destinationBuffer, 
@@ -1658,11 +1665,17 @@ namespace VT
 				const LogicalDevice::Queue& _queue
 			)
 			{
-				CommandBuffer commandBuffer = BeginSingleTimeCommands();
+				EResult result;
+
+				CommandBuffer commandBuffer = BeginSingleTimeCommands(result);
+
+				if (result != EResult::Success) return result;
 
 				commandBuffer.CopyBuffer(_sourceBuffer, _destinationBuffer, 1, &_regionInfo);
 
-				EndSingleTimeCommands(commandBuffer, _queue);
+				result = EndSingleTimeCommands(commandBuffer, _queue);
+
+				return result;
 			}
 
 		#pragma endregion SingleTimeCommands

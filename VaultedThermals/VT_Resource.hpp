@@ -944,6 +944,97 @@ namespace VT
 			}
 
 			using Parent::Destroy;
+
+			/**
+			 * @brief Will create an image and immediately bind it to memory made just for it.
+			 * 
+			 * \param _physicalDevice
+			 * \param _device
+			 * \param _info
+			 * \param _image
+			 * \param _propertyFlags
+			 * \param _imageMemory
+			 * \return 
+			 */
+			static EResult CreateAndBind
+			(
+				PhysicalDevice::Handle _physicalDevice,
+				LogicalDevice::Handle  _device        ,
+				CreateInfo             _info          ,
+				Handle&                _image         , 
+				Memory::PropertyFlags  _propertyFlags , 
+				Memory::Handle&        _imageMemory      
+			)
+			{
+				EResult returnCode = Image::Create(_device, _info, _image);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+
+				Memory::Requirements memReq;
+
+				Image::GetMemoryRequirements(_device, _image, memReq);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize  = memReq.Size;
+				allocationInfo.MemoryTypeIndex = PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
+
+				returnCode = Memory::Allocate(_device, allocationInfo, _imageMemory);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+
+				Image::BindMemory(_device, _image, _imageMemory, Memory::ZeroOffset);
+
+				return returnCode;
+			}
+
+			/**
+			 * @brief Will create an image and immediately bind it to memory made just for it..
+			 * 
+			 * \param _physicalDevice
+			 * \param _device
+			 * \param _info
+			 * \param _image
+			 * \param _propertyFlags
+			 * \param _imageMemory
+			 * \return 
+			 */
+			static EResult CreateAndBind
+			(
+				PhysicalDevice::Handle       _physicalDevice,
+				LogicalDevice::Handle        _device        ,
+				CreateInfo                   _info          ,
+				Handle&                      _image         , 
+				Memory::PropertyFlags        _propertyFlags , 
+				Memory::Handle&              _imageMemory   ,
+				Memory::AllocationCallbacks* _allcator
+			)
+			{
+				EResult returnCode = Image::Create(_device, _info, _allcator, _image);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+
+				Memory::Requirements memReq;
+
+				Image::GetMemoryRequirements(_device, _image, memReq);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize  = memReq.Size;
+				allocationInfo.MemoryTypeIndex = PhysicalDevice::FindMemoryType(_physicalDevice, memReq.MemoryTypeBits, _propertyFlags);
+
+				returnCode = Memory::Allocate(_device, allocationInfo, _allcator, _imageMemory);
+
+				if (returnCode != EResult::Success)
+					return returnCode;
+
+				Image::BindMemory(_device, _image, _imageMemory, Memory::ZeroOffset);
+
+				return returnCode;
+			}
 		};
 
 		struct ImageView : public V1::ImageView
@@ -1358,6 +1449,75 @@ namespace VT
 				return returnCode;
 			}
 
+			EResult CreateAndBind
+			(
+				const LogicalDevice&        _device        ,  
+				      CreateInfo&           _info          ,  
+				      Memory::PropertyFlags _memoryFlags   ,
+				      Memory&               _memory
+			)
+			{
+				device    = _device.GetHandle()    ;
+				info      = _info                   ;
+				allocator = Memory::DefaultAllocator;
+
+				EResult returnCode = Parent::Create(device, info, allocator, handle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+
+				allocationInfo.MemoryTypeIndex = 
+					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+
+				return returnCode;
+			}
+
+			EResult CreateAndBind
+			(
+				const LogicalDevice&               _device        ,  
+				      CreateInfo&                  _info          , 
+				      Memory::PropertyFlags        _memoryFlags   ,
+				      Memory&                      _memory        ,
+				const Memory::AllocationCallbacks* _allocator
+			)
+			{
+				device    = _device.GetHandle();
+				info      = _info              ;
+				allocator = _allocator         ;
+
+				EResult returnCode = Parent::Create(device, info, allocator, handle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+
+				allocationInfo.MemoryTypeIndex = 
+					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+
+				return returnCode;
+			}
+
 			void Destroy()
 			{
 				Parent::Destroy(device, handle, allocator);
@@ -1434,16 +1594,6 @@ namespace VT
 			}
 
 			operator Handle()
-			{
-				return handle;
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
-
-			operator Handle() const
 			{
 				return handle;
 			}

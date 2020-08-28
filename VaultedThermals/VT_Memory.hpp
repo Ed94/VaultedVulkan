@@ -197,12 +197,12 @@ namespace VT
 			 */
 			static void WriteToGPU
 			(
-				LogicalDevice::Handle _device,
-				Handle                _memory,
-				DeviceSize            _offset,
-				DeviceSize            _size  ,
-				MapFlags              _flags ,
-				VoidPtr&              _data
+				      LogicalDevice::Handle _device,
+				      Handle                _memory,
+				      DeviceSize            _offset,
+				      DeviceSize            _size  ,
+				      MapFlags              _flags ,
+				const VoidPtr&              _data
 			)
 			{
 				VoidPtr gpuAddressing;
