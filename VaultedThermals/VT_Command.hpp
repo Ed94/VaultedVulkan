@@ -1471,7 +1471,7 @@ namespace VT
 		public:
 			using Parent = V2::CommandPool;
 
-			using CommandBuffer = V4::CommandBuffer;
+			using CommandBuffer = V3::CommandBuffer;
 
 			EResult Allocate(AllocateInfo& _info, CommandBuffer& _buffer)
 			{
