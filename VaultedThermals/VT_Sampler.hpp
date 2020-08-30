@@ -1,5 +1,5 @@
 /*
-@file VT_Samples.hpp
+@file VT_Sampler.hpp
 */
 
 

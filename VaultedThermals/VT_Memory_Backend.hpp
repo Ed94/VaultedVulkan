@@ -1,5 +1,5 @@
 /**
-@file VT_Memory_Corridors.hpp
+@file VT_Memory_Backend.hpp
 
 @brief Vaulted Thermals: Memory: Preliminary Definitions
 

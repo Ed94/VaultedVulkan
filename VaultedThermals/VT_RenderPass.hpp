@@ -29,6 +29,8 @@
 #include "VT_Memory.hpp"
 #include "VT_Sampler.hpp"
 #include "VT_Resource.hpp"
+#include "VT_SyncAndCacheControl.hpp"
+#include "VT_Shaders.hpp"
 #include "VT_Pipelines.hpp"
 
 
