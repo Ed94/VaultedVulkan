@@ -266,6 +266,39 @@ namespace VT
 		{
 			using Parent = V1::Surface;
 
+			struct Capabilities : public Parent::Capabilities
+			{
+				bool operator== (const Capabilities& _other)
+				{
+					return
+						MinImageCount           == _other.MinImageCount           &&
+						MaxImageCount           == _other.MaxImageCount           &&
+						CurrentExtent           == _other.CurrentExtent           &&
+						MinImageExtent          == _other.MinImageExtent          &&
+						MaxImageExtent          == _other.MaxImageExtent          &&
+						MaxImageArrayLayers     == _other.MaxImageArrayLayers     &&
+						SupportedTransforms     == _other.SupportedTransforms     &&
+						SupportedCompositeAlpha == _other.SupportedCompositeAlpha &&
+						SupportedUsageFlags     == _other.SupportedUsageFlags 
+						? true : false;
+				}
+
+				bool operator!= (const Capabilities& _other)
+				{
+					return
+						MinImageCount           == _other.MinImageCount           &&
+						MaxImageCount           == _other.MaxImageCount           &&
+						CurrentExtent           == _other.CurrentExtent           &&
+						MinImageExtent          == _other.MinImageExtent          &&
+						MaxImageExtent          == _other.MaxImageExtent          &&
+						MaxImageArrayLayers     == _other.MaxImageArrayLayers     &&
+						SupportedTransforms     == _other.SupportedTransforms     &&
+						SupportedCompositeAlpha == _other.SupportedCompositeAlpha &&
+						SupportedUsageFlags     == _other.SupportedUsageFlags 
+						? false : true;
+				}
+			};
+
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -413,17 +446,17 @@ namespace VT
 				return handle;
 			}
 
-			EResult GetAvailableFormats(std::vector<Format>& _formatsContainer)
+			EResult GetAvailableFormats(std::vector<Format>& _formatsContainer) const
 			{
 				return Parent::GetAvailableFormats(physicalDevice, handle, _formatsContainer);
 			}
 
-			EResult GetPhysicalDeviceCapabilities(Capabilities& _result)
+			EResult GetPhysicalDeviceCapabilities(Capabilities& _result) const
 			{
 				return Parent::GetPhysicalDeviceCapabilities(physicalDevice, handle, _result);
 			}
 
-			EResult GetSupportedPresentationModes(std::vector<EPresentationMode>& _presentationModesContainer)
+			EResult GetSupportedPresentationModes(std::vector<EPresentationMode>& _presentationModesContainer) const
 			{
 				return Parent::GetSupportedPresentationModes(physicalDevice, handle, _presentationModesContainer);
 			}

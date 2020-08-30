@@ -993,7 +993,7 @@ namespace VT
 			* 
 			* @todo make the extensions specified container generic using an interface.
 			*/
-			bool CheckExtensionSupport(RoCStr _extensionSpecified)
+			bool CheckExtensionSupport(RoCStr _extensionSpecified) const
 			{
 				std::vector<ExtensionProperties> availableExtensions;
 
@@ -1068,7 +1068,7 @@ namespace VT
 				return EResult(Parent::GetAvailableLayerExtensions(handle, _layerName, _extensionListing));
 			}
 
-			std::vector<QueueFamilyProperties> GetAvailableQueueFamilies()
+			std::vector<QueueFamilyProperties> GetAvailableQueueFamilies() const
 			{
 				std::vector<QueueFamilyProperties> queryResult; uint32 count;
 
@@ -1133,12 +1133,12 @@ namespace VT
 				return properties2;
 			}
 
-			EResult QueryExtensionProperties(RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			EResult QueryExtensionProperties(RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer) const
 			{
 				return Parent::QueryExtensionProperties(handle, _layerName, _numExtensions, _extensionPropertiesContainer);
 			}
 
-			void QueryQueueFamilyProperties(uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies)
+			void QueryQueueFamilyProperties(uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies) const
 			{
 				return Parent::QueryQueueFamilyProperties(handle, _numQueueFamilies, _queueFamilies);
 			}
@@ -1157,6 +1157,11 @@ namespace VT
 			) const
 			{
 				return Parent::QueryPerfomranceQueryCounters(handle, _queueFamilyIndex, _numCounters, _counters, _counterDescriptions);
+			}
+
+			operator Handle()
+			{
+				return handle;
 			}
 
 			operator const Handle&() const

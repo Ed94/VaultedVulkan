@@ -236,7 +236,7 @@ namespace VT
 			 * \param _flags
 			 * \return 
 			 */
-			static EResult BeginRecord(Handle _commandBuffer, const BeginInfo& _info)
+			static EResult BeginRecord(const Handle _commandBuffer, const BeginInfo& _info)
 			{
 				return EResult(vkBeginCommandBuffer(_commandBuffer, _info.operator const VkCommandBufferBeginInfo*()));
 			}
@@ -251,7 +251,7 @@ namespace VT
 			 */
 			static void BeginRenderPass
 			(
-				      Handle                 _commandBuffer,
+				const Handle                 _commandBuffer,
 				const RenderPass::BeginInfo& _beginInfo    ,
 				      ESubpassContents       _contents
 			)
@@ -884,8 +884,8 @@ namespace VT
 			{
 				BeginInfo()
 				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
+					SType           = STypeEnum;
+					Next            = nullptr  ;
 					InheritanceInfo = nullptr;
 				}
 			};
@@ -1107,9 +1107,9 @@ namespace VT
 				return handle;
 			}
 
-			void Assign(LogicalDevice::Handle _device, AllocateInfo& _info, Handle& _handle)
+			void Assign(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle)
 			{
-				device = _device  ;
+				device = &_device ;
 				info   = _info    ;
 				handle = _handle  ;
 			}
@@ -1447,6 +1447,11 @@ namespace VT
 
 		#pragma endregion WaitForEvents_OO
 
+			operator Handle()
+			{
+				return handle;
+			}
+
 			operator const Handle&() const
 			{
 				return handle;
@@ -1458,7 +1463,7 @@ namespace VT
 
 			AllocateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		class CommandPool : public V2::CommandPool
@@ -1472,18 +1477,18 @@ namespace VT
 			{
 				CommandBuffer::Handle bufferHandle;
 
-				EResult returnCode = Parent::Allocate(device, _info, &bufferHandle);
+				EResult returnCode = Parent::Allocate(*device, _info, &bufferHandle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				_buffer.Assign(device, _info, bufferHandle);
+				_buffer.Assign(*device, _info, bufferHandle);
 
 				return returnCode;
 			}
 
 			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _handles)
 			{
-				EResult returnCode = Parent::Allocate(device, _info, _handles);
+				EResult returnCode = Parent::Allocate(*device, _info, _handles);
 
 				return returnCode;
 			}
@@ -1496,7 +1501,7 @@ namespace VT
 				allocInfo.Pool        = handle; 
 				allocInfo.BufferCount = _count;
 
-				EResult returnCode = Parent::Allocate(device, allocInfo, _handles);
+				EResult returnCode = Parent::Allocate(*device, allocInfo, _handles);
 
 				return returnCode;
 			}
@@ -1517,44 +1522,44 @@ namespace VT
 
 				_commandBuffers.resize(_count); _handles.resize(_count);
 
-				EResult returnCode = Parent::Allocate(device, allocInfo, _handles.data());
+				EResult returnCode = Parent::Allocate(*device, allocInfo, _handles.data());
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				for (DeviceSize index = 0; index < _count; index++)
 				{
-					_commandBuffers[index].Assign(device, allocInfo, _handles[index]);
+					_commandBuffers[index].Assign(*device, allocInfo, _handles[index]);
 				}
 
 				return returnCode;
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    = _device                 ;
+				device    = &_device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, handle);	
+				return Parent::Create(*device, info, handle);	
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device   ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device, info, allocator, handle);	
+				return Parent::Create(*device, info, allocator, handle);	
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
 			{
-				Parent::Free(device, handle, _bufferCount, _commandBuffers);
+				Parent::Free(*device, handle, _bufferCount, _commandBuffers);
 			}
 
 			void Free
@@ -1563,12 +1568,12 @@ namespace VT
 				const CommandBuffer::Handle* _commandBuffers
 			)
 			{
-				Parent::Free(device, handle, _info.BufferCount, _commandBuffers);	
+				Parent::Free(*device, handle, _info.BufferCount, _commandBuffers);	
 			}
 
 			void Free(CommandBuffer& _commandBuffer)
 			{
-				Parent::Free(device, handle, 1, &_commandBuffer.GetHandle());
+				Parent::Free(*device, handle, 1, &_commandBuffer.GetHandle());
 			}
 
 			const Handle& GetHandle() const
@@ -1578,12 +1583,12 @@ namespace VT
 
 			EResult Reset(ResetFlags _flags)
 			{
-				return Parent::Reset(device, handle, _flags);
+				return Parent::Reset(*device, handle, _flags);
 			}
 
 			void Trim(TrimFlags _flags)
 			{
-				Parent::Trim(device, handle, _flags);
+				Parent::Trim(*device, handle, _flags);
 			}
 
 			operator Handle()
@@ -1663,7 +1668,7 @@ namespace VT
 				      Buffer&               _destinationBuffer, 
 				      Buffer::CopyInfo&     _regionInfo       ,
 				const LogicalDevice::Queue& _queue
-			)
+			) 
 			{
 				EResult result;
 
@@ -1688,7 +1693,7 @@ namespace VT
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 	}
 }

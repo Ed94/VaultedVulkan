@@ -458,7 +458,7 @@ namespace VT
 
 				Queue() { assignment = EQueueFlag::MaxEnum; }
 
-				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info)
+				void Assign(const LogicalDevice& _logicalDevice, CreateInfo& _info)
 				{
 					device = &_logicalDevice;
 					info   = &_info         ;
@@ -467,7 +467,7 @@ namespace VT
 					queueIndex = 0;
 				}
 
-				void Assign(LogicalDevice& _logicalDevice, CreateInfo& _info, uint32 _queueIndex, EQueueFlag _type)
+				void Assign(const LogicalDevice& _logicalDevice, CreateInfo& _info, uint32 _queueIndex, EQueueFlag _type)
 				{
 					device = &_logicalDevice;
 					info   = &_info         ;
@@ -555,12 +555,12 @@ namespace VT
 
 				EQueueFlag assignment;
 
-				LogicalDevice* device;
+				const LogicalDevice* device;
 
 				uint32 queueIndex;
 			};
 
-			void AssignPhysicalDevice(PhysicalDevice& _physicalDevice)
+			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice)
 			{
 				physicalDevice = &_physicalDevice;
 			}
@@ -581,7 +581,7 @@ namespace VT
 				return Parent::Create(*physicalDevice, info, allocator, handle);
 			}
 
-			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo)
+			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo)
 			{
 				physicalDevice = &_physicalDevice        ;
 				info           = _createInfo             ;
@@ -590,7 +590,7 @@ namespace VT
 				return Parent::Create(*physicalDevice, info, handle);
 			}
 
-			EResult Create(PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				physicalDevice = &_physicalDevice;
 				info           = _createInfo     ;
@@ -637,11 +637,6 @@ namespace VT
 				return handle;
 			}
 
-			operator Handle() const
-			{
-				return handle;
-			}
-
 			operator const Handle& () const
 			{
 				return handle;
@@ -653,7 +648,7 @@ namespace VT
 
 			CreateInfo info;
 
-			PhysicalDevice* physicalDevice;
+			const PhysicalDevice* physicalDevice;
 
 			const Memory::AllocationCallbacks* allocator;
 		};

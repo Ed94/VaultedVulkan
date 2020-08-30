@@ -1593,6 +1593,11 @@ namespace VT
 				Parent::Destroy(device, handle, allocator);
 			}
 
+			Handle GetHandle()
+			{
+				return handle;
+			}
+
 			operator Handle()
 			{
 				return handle;

@@ -1330,11 +1330,6 @@ namespace VT
 				return handle;
 			}
 
-			operator Handle() const
-			{
-				return handle;
-			}
-
 			operator const Handle& () const
 			{
 				return handle;

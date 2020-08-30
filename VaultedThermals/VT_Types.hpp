@@ -120,6 +120,15 @@ namespace VT
 		{
 			uint32 Width ;
 			uint32 Height;
+
+			bool operator== (const Extent2D& _other)
+			{
+				return
+
+					Width  == _other.Width &&
+					Height == _other.Height 
+					? true : false;
+			}
 		};
 
 		/** 

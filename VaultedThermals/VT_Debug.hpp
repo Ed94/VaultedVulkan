@@ -84,7 +84,7 @@ namespace VT
 				using FlagsMask = Bitmask<EUndefined, Flags>;
 
 					  EType       SType               ;
-				const void*       Next           ;
+				const void*       Next                ;
 					  FlagsMask   Flags               ;
 				const char*       MesssageIDName      ;
 					  sint32      MessageIDNumber     ;
@@ -105,7 +105,7 @@ namespace VT
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
 					  EType                 SType       ;
-				const void*                 Next   ;
+				const void*                 Next        ;
 					  CreateFlags           Flags       ;
 					  MessageServerityFlags Serverity   ;
 					  MessageTypeFlags      Type        ;
