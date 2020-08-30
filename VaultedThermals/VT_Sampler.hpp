@@ -168,7 +168,7 @@ namespace VT
         };
     }
 
-    namespace V4
+    namespace V3
     {
         class Sampler : public V2::Sampler
         {

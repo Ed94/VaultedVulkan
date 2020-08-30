@@ -20,6 +20,9 @@ Short Namespace: VT
  * @page LibraryOutline 
  * 
  * @section GuideSec Guide
+
+ NOTE: This is very outdated, please do not use this outline.
+
  * The libraries files are organized based on the Khronos Vulkan Specification manual:
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html">Vulkan Specification</a>
  *

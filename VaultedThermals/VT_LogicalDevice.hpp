@@ -445,7 +445,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class LogicalDevice : public V2::LogicalDevice
 		{

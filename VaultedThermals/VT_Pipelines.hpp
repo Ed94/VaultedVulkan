@@ -1202,7 +1202,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class Pipeline : public V2::Pipeline
 		{

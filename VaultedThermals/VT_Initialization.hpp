@@ -424,7 +424,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		/**
 		@brief An object that manages the represented application process state within the GPU.

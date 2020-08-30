@@ -97,6 +97,16 @@ namespace VT
 			*/
 			using VkType = VulkanType;   
 
+			/*operator VulkanType()
+			{
+				return *reinterpret_cast<VulkanType*>(this);
+			}*/
+
+			/*operator const VulkanType&()
+			{
+				return *reinterpret_cast<VulkanType*>(this);
+			}*/
+
 			operator VulkanType*()
 			{
 				return reinterpret_cast<VulkanType*>(this);

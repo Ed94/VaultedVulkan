@@ -255,7 +255,7 @@ namespace VT
 		
 	}
 
-	namespace V4
+	namespace V3
 	{
 		using V2::CallbackDataFlags;
 		using V2::FPtr_CreateMessenger;

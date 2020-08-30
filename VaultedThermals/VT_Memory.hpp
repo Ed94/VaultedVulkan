@@ -216,7 +216,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class Memory : public V2::Memory
 		{

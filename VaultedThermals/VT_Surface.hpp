@@ -376,7 +376,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class Surface : public V2::Surface
 		{

@@ -85,47 +85,13 @@ namespace VT
 
 	/** @namespace Vault_3
 
-		@brief Full setup providing procedure implementation.
-
-		@details (Will have its own device references, queues, layers, etc.)
+		@brief Object-Oriented wrapping
 	*/
-	namespace V3
-	{
-	#ifndef VT_Vault_3_Open
-		namespace Vault_Closed {}
-	#endif
-
-	#ifdef VT_Vault_3_Open
-		using namespace Corridors; 
-	#endif
-	}
+	namespace V3 { using namespace Corridors; }
 
 	/** @namespace Vault_4
 		
-		@brief Object-Oriented wrapping
+		@brief Object-Oriented bootstrapped backend
 	*/
 	namespace V4 { using namespace Corridors; }
-
-	/** @namespace Vault_5
-
-		@brief Object-Oriented: Repetitive functionality wrapping 
-	*/
-	namespace V5 { using namespace Corridors; }
-
-	/** @namespace Vault_6
-
-		@brief Full setup providing procedure implementation.
-
-		@details (Will have its own device references, queues, layers, etc.)
-	*/
-	namespace V6
-	{ 
-	#ifndef VT_Vault_6_Open
-		namespace Vault_Closed {}
-	#endif
-
-	#ifdef VT_Vault_6_Open
-		using namespace Corridors;
-	#endif
-	}
 }

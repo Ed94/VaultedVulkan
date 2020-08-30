@@ -964,7 +964,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class PhysicalDevice : public V2::PhysicalDevice
 		{

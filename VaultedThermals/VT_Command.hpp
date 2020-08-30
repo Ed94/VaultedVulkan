@@ -1087,7 +1087,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class CommandBuffer : public V2::CommandBuffer
 		{

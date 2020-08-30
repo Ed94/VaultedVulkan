@@ -176,7 +176,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class ShaderModule : public V2::ShaderModule
 		{

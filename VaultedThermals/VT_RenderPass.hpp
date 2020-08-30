@@ -374,7 +374,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class Framebuffer : public V2::Framebuffer
 		{

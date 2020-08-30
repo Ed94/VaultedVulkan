@@ -44,7 +44,7 @@ namespace VT
 		 * @details
 		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a> 
 		 */
-		struct SwapChain
+		struct Swapchain
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a>  */
 			using Handle = VkSwapchainKHR;
@@ -187,9 +187,9 @@ namespace VT
 
 	namespace V2
 	{
-		struct SwapChain : V1::SwapChain
+		struct Swapchain : V1::Swapchain
 		{
-			using Parent = V1::SwapChain;
+			using Parent = V1::Swapchain;
 
 			struct CreateInfo : Parent::CreateInfo
 			{
@@ -258,13 +258,13 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
-		class SwapChain : public V2::SwapChain
+		class Swapchain : public V2::Swapchain
 		{
 		public:
 
-			using Parent = V2::SwapChain;
+			using Parent = V2::Swapchain;
 
 			EResult AcquireNextImage
 			(

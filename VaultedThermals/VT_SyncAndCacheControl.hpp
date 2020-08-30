@@ -1050,7 +1050,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class Event : public V2::Event
 		{

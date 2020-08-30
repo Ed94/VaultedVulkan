@@ -1187,7 +1187,7 @@ namespace VT
 		};
 	}
 
-	namespace V4
+	namespace V3
 	{
 		class Buffer : public V2::Buffer
 		{
