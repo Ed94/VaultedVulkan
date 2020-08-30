@@ -36,7 +36,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -1509,10 +1509,10 @@ namespace VT
 
 			EResult Allocate
 			(
-				ECommandBufferLevel                 _level         ,
-				uint32                              _count         ,
-				std::vector<CommandBuffer>&         _commandBuffers,
-				std::vector<CommandBuffer::Handle>& _handles
+				ECommandBufferLevel                  _level         ,
+				uint32                               _count         ,
+				DynamicArray<CommandBuffer>&         _commandBuffers,
+				DynamicArray<CommandBuffer::Handle>& _handles
 			)
 			{
 				AllocateInfo allocInfo; 

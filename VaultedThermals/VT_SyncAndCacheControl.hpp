@@ -31,7 +31,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -1204,11 +1204,11 @@ namespace VT
 				return Parent::Reset(device, &handle, 1);
 			}
 
-			static EResult Reset(std::vector<Fence> _fences)
+			static EResult Reset(DynamicArray<Fence> _fences)
 			{
 				auto device = _fences[0].GetDeviceHandle();
 
-				std::vector<Fence::Handle> handles;
+				DynamicArray<Fence::Handle> handles;
 
 				for (auto fence : _fences) handles.push_back(fence.GetHandle());
 
@@ -1220,11 +1220,11 @@ namespace VT
 				return Parent::WaitForFences(device, 1, &handle, false, _timeout);
 			}
 
-			static EResult WaitForFence(std::vector<Fence> _fences, bool _waitForAll, uInt64 _timeout)
+			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, uInt64 _timeout)
 			{
 				auto device = _fences[0].GetDeviceHandle();
 
-				std::vector<Fence::Handle> handles;
+				DynamicArray<Fence::Handle> handles;
 
 				for (auto fence : _fences) handles.push_back(fence.GetHandle());
 

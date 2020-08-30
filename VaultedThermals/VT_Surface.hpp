@@ -35,7 +35,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -338,7 +338,12 @@ namespace VT
 			 * \param _formatsContainer
 			 * \return 
 			 */
-			static EResult GetAvailableFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, std::vector<Surface::Format>& _formatsContainer)
+			static EResult GetAvailableFormats
+			(
+				PhysicalDevice::Handle         _deviceHandle    , 
+				Surface::Handle                _surfaceHandle   , 
+				DynamicArray<Surface::Format>& _formatsContainer
+			)
 			{
 				uint32 numFormats; 
 				
@@ -361,7 +366,12 @@ namespace VT
 			 * \param _presentationModesContainer
 			 * \return 
 			 */
-			static EResult GetSupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, std::vector<EPresentationMode>& _presentationModesContainer)
+			static EResult GetSupportedPresentationModes
+			(
+				PhysicalDevice::Handle           _deviceHandle              , 
+				Surface::Handle                  _surfaceHandle             , 
+				DynamicArray<EPresentationMode>& _presentationModesContainer
+			)
 			{
 				uint32 numPresentationModes; 
 				
@@ -448,7 +458,7 @@ namespace VT
 				return handle;
 			}
 
-			EResult GetAvailableFormats(std::vector<Format>& _formatsContainer) const
+			EResult GetAvailableFormats(DynamicArray<Format>& _formatsContainer) const
 			{
 				return Parent::GetAvailableFormats(physicalDevice, handle, _formatsContainer);
 			}
@@ -458,7 +468,7 @@ namespace VT
 				return Parent::GetPhysicalDeviceCapabilities(physicalDevice, handle, _result);
 			}
 
-			EResult GetSupportedPresentationModes(std::vector<EPresentationMode>& _presentationModesContainer) const
+			EResult GetSupportedPresentationModes(DynamicArray<EPresentationMode>& _presentationModesContainer) const
 			{
 				return Parent::GetSupportedPresentationModes(physicalDevice, handle, _presentationModesContainer);
 			}

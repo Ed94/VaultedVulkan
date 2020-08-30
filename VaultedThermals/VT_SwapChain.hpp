@@ -35,7 +35,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -243,9 +243,9 @@ namespace VT
 			 */
 			static EResult GetImages
 			(
-				LogicalDevice::Handle       _deviceHandle,
-				Handle                      _swapChain   ,
-				std::vector<Image::Handle>* _images
+				LogicalDevice::Handle        _deviceHandle,
+				Handle                       _swapChain   ,
+				DynamicArray<Image::Handle>* _images
 			)
 			{
 				uint32 numImages;
@@ -319,7 +319,7 @@ namespace VT
 				return handle;
 			}
 
-			EResult GetImages(std::vector<Image>& _images)
+			EResult GetImages(DynamicArray<Image>& _images)
 			{
 				uint32 numImages;
 
@@ -327,7 +327,7 @@ namespace VT
 
 				if (result != EResult::Success) return result;
 
-				_images.resize(numImages);	std::vector<Image::Handle> handles(numImages);
+				_images.resize(numImages);	DynamicArray<Image::Handle> handles(numImages);
 
 				result = QueryImages(numImages, handles.data());
 

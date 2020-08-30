@@ -27,7 +27,7 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -326,7 +326,7 @@ namespace VT
 
 			using Parent::Destroy;
 
-			static EResult GetAvailableLayers(std::vector<LayerProperties>& _container)
+			static EResult GetAvailableLayers(DynamicArray<LayerProperties>& _container)
 			{
 				uint32 layerCount;
 
@@ -341,7 +341,7 @@ namespace VT
 				return result;
 			}
 
-			static EResult GetAvailableLayerExtensions(RoCStr _layerName, std::vector<ExtensionProperties>& _propertiesContainer)
+			static EResult GetAvailableLayerExtensions(RoCStr _layerName, DynamicArray<ExtensionProperties>& _propertiesContainer)
 			{
 				uint32 layerCount;
 
@@ -356,9 +356,9 @@ namespace VT
 				return result;
 			}
 
-			static EResult GetAvailableLayersAndExtensions(std::vector<LayerAndExtensionProperties>& _layersAndExtensions)
+			static EResult GetAvailableLayersAndExtensions(DynamicArray<LayerAndExtensionProperties>& _layersAndExtensions)
 			{
-				std::vector<LayerProperties> layers; EResult result = EResult::Incomplete;
+				DynamicArray<LayerProperties> layers; EResult result = EResult::Incomplete;
 
 				GetAvailableLayers(layers);
 
@@ -381,7 +381,7 @@ namespace VT
 
 			@todo Make the device listing container type specifiable using an interface.
 			*/
-			static EResult GetAvailablePhysicalDevices(Handle _handle, std::vector<PhysicalDevice::Handle>& _deviceListing)
+			static EResult GetAvailablePhysicalDevices(Handle _handle, DynamicArray<PhysicalDevice::Handle>& _deviceListing)
 			{
 				uint32 count; 
 				
@@ -407,7 +407,7 @@ namespace VT
 			 * \param _groupListing
 			 * \return 
 			 */
-			static EResult GetAvailablePhysicalDeviceGroups(Handle _handle, std::vector<PhysicalDevice::Group>& _groupListing)
+			static EResult GetAvailablePhysicalDeviceGroups(Handle _handle, DynamicArray<PhysicalDevice::Group>& _groupListing)
 			{
 				uint32 count;
 
@@ -498,9 +498,9 @@ namespace VT
 
 			@todo Make the device listing container type specifiable using an interface.
 			*/
-			EResult GetAvailablePhysicalDevices(std::vector<PhysicalDevice>& _deviceListing) const 
+			EResult GetAvailablePhysicalDevices(DynamicArray<PhysicalDevice>& _deviceListing) const 
 			{
-				uint32 count; std::vector<PhysicalDevice::Handle> handleList;
+				uint32 count; DynamicArray<PhysicalDevice::Handle> handleList;
 
 				EResult returnCode = QueryPhysicalDeviceListing(&count, nullptr);
 
@@ -528,7 +528,7 @@ namespace VT
 			 * \param _groupListing
 			 * \return 
 			 */
-			EResult GetAvailablePhysicalDeviceGroups(std::vector<PhysicalDevice::Group>& _groupListing) const
+			EResult GetAvailablePhysicalDeviceGroups(DynamicArray<PhysicalDevice::Group>& _groupListing) const
 			{
 				uint32 count;
 
@@ -617,6 +617,8 @@ namespace VT
 			uint32     version   ;
 
 			const Memory::AllocationCallbacks* allocator;
+
+
 		};
 	}
 }

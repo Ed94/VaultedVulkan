@@ -35,7 +35,7 @@ can be multidimensional and may have associated metadata.
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -1681,9 +1681,9 @@ namespace VT
 
 			EResult Allocate
 			(
-				AllocateInfo&                       _info   ,
-				std::vector<DescriptorSet>&         _sets   ,
-				std::vector<DescriptorSet::Handle>& _handles
+				AllocateInfo&                        _info   ,
+				DynamicArray<DescriptorSet>&         _sets   ,
+				DynamicArray<DescriptorSet::Handle>& _handles
 			)
 			{
 				_sets.resize(_info.DescriptorSetCount); _handles.resize(_info.DescriptorSetCount);
@@ -1728,7 +1728,7 @@ namespace VT
 				return Parent::Free(device, handle, _count, _handles);
 			}
 
-			EResult Free(std::vector<DescriptorSet::Handle> _handles)
+			EResult Free(DynamicArray<DescriptorSet::Handle> _handles)
 			{
 				return Parent::Free(device, handle, static_cast<uint32>(_handles.size()), _handles.data());
 			}

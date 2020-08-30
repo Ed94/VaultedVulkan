@@ -14,7 +14,6 @@
 #include <cstddef>
 #include <cstdint>
 #include <stdexcept>
-#include <vector>
 #include <typeinfo>
 
 // VT
@@ -23,7 +22,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -82,5 +81,34 @@ namespace VT
 		using CStrArray            = CStr*             ;
 		using RoCStrArray          = const char**      ;   ///< Readonly c-string array.
 		using RoSCtr_roArray_Array = const char* const*;   ///< Array of readonly array of readonly c-string.
+
+
+
+		/** 
+		* @brief Containers used for the library are defined here.
+		* 
+		* @details
+		* 
+		* If library user decides to implement their own containers they must define containers
+		* that function the same as the STL containers used here with the same names.
+		*/
+		#ifndef VT_Option__Use_Custom_Containers
+
+			#include <deque>
+			#include <vector>
+
+			template<class Type>
+			/**
+			 * @brief Typdef of std::deque.
+			 */
+			using Deque = std::deque<Type>;
+
+			template<class Type>
+			/**
+			 * @brief Typedef of std::vector.
+			 */
+			using DynamicArray = std::vector<Type>;
+
+		#endif
 	}
 }

@@ -18,7 +18,7 @@
 #include "VT_Enums.hpp"
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -60,15 +60,18 @@ namespace VT
 		public:
 			~IDynamicArray() {};
 
-			virtual void resize(DataSize _size) = NULL;
+			virtual Type at(DataSize _index) = NULL;
 
 			virtual Type data() = NULL;
 
-			virtual DataSize size() = NULL;
+			virtual void push_back() = NULL;
 
-			virtual Type at(DataSize _index) = NULL;
+			virtual void resize(DataSize _size) = NULL;
+
+			virtual DataSize size() = NULL;
 		};
 
+	
 		/** @struct VKStruct_Base
 
 			@brief Base struct for wrapping Vulkan native C API Structs.

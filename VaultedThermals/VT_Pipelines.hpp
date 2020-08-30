@@ -33,7 +33,7 @@
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -1546,7 +1546,7 @@ namespace VT
 				      uint32                         _createInfoCount,
 				      CreateInfo*                    _createInfos    ,
 				const Memory::AllocationCallbacks*   _allocator      ,
-				      std::vector<ComputePipeline>& _pipelines
+				      DynamicArray<ComputePipeline>& _pipelines
 			)
 			{
 				_pipelines.resize(_createInfoCount);
@@ -1664,12 +1664,12 @@ namespace VT
 
 			static EResult Create
 			(
-				      LogicalDevice::Handle          _device         ,
-				      Cache*                         _cache          ,
-				      uint32                         _createInfoCount,
-				      CreateInfo*                    _createInfos    ,
-				const Memory::AllocationCallbacks*   _allocator      ,
-				      std::vector<GraphicsPipeline>& _pipelines
+				      LogicalDevice::Handle           _device         ,
+				      Cache*                          _cache          ,
+				      uint32                          _createInfoCount,
+				      CreateInfo*                     _createInfos    ,
+				const Memory::AllocationCallbacks*    _allocator      ,
+				      DynamicArray<GraphicsPipeline>& _pipelines
 			)
 			{
 				_pipelines.resize(_createInfoCount);

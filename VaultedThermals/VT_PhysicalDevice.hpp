@@ -28,7 +28,7 @@ A physical device usually represents a single complete implementation of Vulkan
 
 
 
-#ifndef VT_Option__Use_Short_Namespace
+#ifdef VT_Option__Use_Long_Namespace
 namespace VaultedThermals
 #else
 namespace VT
@@ -779,7 +779,7 @@ namespace VT
 			*/
 			static bool CheckExtensionSupport(Handle _handle, RoCStr _extensionSpecified)
 			{
-				std::vector<ExtensionProperties> availableExtensions;
+				DynamicArray<ExtensionProperties> availableExtensions;
 
 				GetAvailableLayerExtensions(_handle, nullptr, availableExtensions);
 
@@ -801,9 +801,9 @@ namespace VT
 			 * 
 			 * @todo make the extensions specified container generic using an interface.
 			 */
-			static bool CheckExtensionSupport(Handle _handle, std::vector<RoCStr> _extensionsSpecified)
+			static bool CheckExtensionSupport(Handle _handle, DynamicArray<RoCStr> _extensionsSpecified)
 			{
-				std::vector<ExtensionProperties> availableExtensions;
+				DynamicArray<ExtensionProperties> availableExtensions;
 
 				GetAvailableLayerExtensions(_handle, nullptr, availableExtensions);
 
@@ -821,7 +821,7 @@ namespace VT
 				return isSupported;
 			}
 
-			static EResult FindSupportedFormat(Handle _handle, const std::vector<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format)
+			static EResult FindSupportedFormat(Handle _handle, const DynamicArray<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format)
 			{
 				for (EFormat possibleFormat : _canidates)
 				{
@@ -882,7 +882,7 @@ namespace VT
 			#endif
 			}
 
-			static EResult GetAvailableLayerExtensions(Handle _handle, RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing)
+			static EResult GetAvailableLayerExtensions(Handle _handle, RoCStr _layerName, DynamicArray<ExtensionProperties>& _extensionListing)
 			{
 				uint32 count;
 
@@ -907,7 +907,7 @@ namespace VT
 			 * \param _layersAndExtensions
 			 * \return 
 			 */
-			static EResult GetAvailableLayersAndExtensions(Handle _handle, std::vector<LayerAndExtensionProperties>& _layersAndExtensions)
+			static EResult GetAvailableLayersAndExtensions(Handle _handle, DynamicArray<LayerAndExtensionProperties>& _layersAndExtensions)
 			{
 				EResult result;
 
@@ -927,9 +927,9 @@ namespace VT
 			* \param _device
 			* \return 
 			*/
-			static std::vector<QueueFamilyProperties> GetAvailableQueueFamilies(Handle _handle)
+			static DynamicArray<QueueFamilyProperties> GetAvailableQueueFamilies(Handle _handle)
 			{
-				std::vector<QueueFamilyProperties> queryResult; uint32 count;
+				DynamicArray<QueueFamilyProperties> queryResult; uint32 count;
 
 				QueryQueueFamilyProperties(_handle, &count, nullptr);
 
@@ -995,7 +995,7 @@ namespace VT
 			*/
 			bool CheckExtensionSupport(RoCStr _extensionSpecified) const
 			{
-				std::vector<ExtensionProperties> availableExtensions;
+				DynamicArray<ExtensionProperties> availableExtensions;
 
 				GetAvailableExtensions(nullptr, availableExtensions);
 
@@ -1017,9 +1017,9 @@ namespace VT
 			 * 
 			 * \param _handle
 			 */
-			bool CheckExtensionSupport(std::vector<RoCStr> _extensionsSpecified) const
+			bool CheckExtensionSupport(DynamicArray<RoCStr> _extensionsSpecified) const
 			{
-				std::vector<ExtensionProperties> availableExtensions;
+				DynamicArray<ExtensionProperties> availableExtensions;
 
 				GetAvailableExtensions(nullptr, availableExtensions);
 
@@ -1058,19 +1058,19 @@ namespace VT
 			#endif
 			}
 
-			EResult FindSupportedFormat(const std::vector<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format) const
+			EResult FindSupportedFormat(const DynamicArray<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format) const
 			{
 				return Parent::FindSupportedFormat(handle, _canidates, _tiling, _features, _format);
 			}
 
-			EResult GetAvailableExtensions(RoCStr _layerName, std::vector<ExtensionProperties>& _extensionListing) const
+			EResult GetAvailableExtensions(RoCStr _layerName, DynamicArray<ExtensionProperties>& _extensionListing) const
 			{
 				return EResult(Parent::GetAvailableLayerExtensions(handle, _layerName, _extensionListing));
 			}
 
-			std::vector<QueueFamilyProperties> GetAvailableQueueFamilies() const
+			DynamicArray<QueueFamilyProperties> GetAvailableQueueFamilies() const
 			{
-				std::vector<QueueFamilyProperties> queryResult; uint32 count;
+				DynamicArray<QueueFamilyProperties> queryResult; uint32 count;
 
 				QueryQueueFamilyProperties(&count, nullptr);
 
