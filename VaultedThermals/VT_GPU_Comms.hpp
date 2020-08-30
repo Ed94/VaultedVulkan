@@ -43,6 +43,16 @@ namespace VT
 {
 	namespace V4
 	{
+	/**
+	 * While this option has been defined here, currently this bootstrapped backend only supports
+	 * engaging a single GPU...
+	 */
+	#ifndef VT_Option_AllowMultiGPUEngagement
+		constexpr bool EngageSingleGPU = true;
+	#else
+		constexpr bool EngageSingleGPU = false;
+	#endif
+
 		using V3::DebugMessenger             ;
 		using V3::LayerAndExtensionProperties;
 
@@ -77,27 +87,44 @@ namespace VT
 		using LogicalDeviceList = DynamicArray<LogicalDevice>;
 
 		
-
-		class GPU_Comms
+		namespace Backend
 		{
-		public:
+			template<bool>
+			class GPU_Comms_Maker;
 
+			template<>
+			class GPU_Comms_Maker<true /* Engage Single GPU */>
+			{
+			public:
 
-		private:
+				AppInstance::Handle GetAppHandle()
+				{
+					return app.GetHandle();
+				}
 
-			static constexpr bool engageSingleGPU = true;
+				const LogicalDevice& GetEngagedDevice()
+				{
+					return *engagedDevice;
+				}
 
-			static AppInstance app;
-			
-			static LayerAndExtensionList layersAndExtensions;
-			static std::deque<RoCStr>    desiredLayers      ;
-			static std::deque<RoCStr>    desiredExtensions  ;
-			static std::deque<RoCStr>    desriedDeviceExts  ;
+			private:
 
-			static V3::DebugMessenger messenger;
+				static AppInstance app;
 
-			static PhysicalDeviceList physicalGPUs;
-			static LogicalDeviceList  logicalGPUs ;
-		};
+				static LayerAndExtensionList layersAndExtensions;
+				static Deque<RoCStr>         desiredLayers;
+				static Deque<RoCStr>         desiredExtensions;
+				static Deque<RoCStr>         desriedDeviceExts;
+
+				static V3::DebugMessenger messenger;
+
+				static PhysicalDeviceList physicalGPUs;
+				static LogicalDeviceList  logicalGPUs;
+
+				static LogicalDevice* engagedDevice;
+			};
+		}
+
+		using GPU_Comms = Backend::GPU_Comms_Maker<EngageSingleGPU>;
 	}
 }

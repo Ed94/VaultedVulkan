@@ -16,10 +16,19 @@ namespace VT
 	{
 	#pragma region GPU_Comms
 
-		AppInstance           GPU_Comms::app                ;
+		AppInstance GPU_Comms::app;
+
 		LayerAndExtensionList GPU_Comms::layersAndExtensions;
-		std::deque<RoCStr>    GPU_Comms::desiredLayers      ;
-		std::deque<RoCStr>    GPU_Comms::desiredExtensions  ;
+		Deque<RoCStr>         GPU_Comms::desiredLayers      ;
+		Deque<RoCStr>         GPU_Comms::desiredExtensions  ;
+		Deque<RoCStr>         GPU_Comms::desriedDeviceExts  ;
+		
+		V3::DebugMessenger GPU_Comms::messenger;
+
+		PhysicalDeviceList GPU_Comms::physicalGPUs;
+		LogicalDeviceList  GPU_Comms::logicalGPUs;
+
+		LogicalDevice* GPU_Comms::engagedDevice;
 
 	#pragma endregion GPU_Comms
 	}

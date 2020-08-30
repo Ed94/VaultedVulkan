@@ -4,10 +4,37 @@
 @brief 
 VaultedThermals Include Interface
     
+
+
+// Optional Features:
+
 The library single include header.
 
-If you want to use the short namespace: #define VT_Option__Use_Short_Namespace
-Short Namespace: VT
+Long namespace: #define VT_Option__Use_Long_Namespace
+
+Inlining:
+VT_Option__Use_Inline_Hinting
+VT_Option__Use_Forced_Inlining
+
+STL Exceptions (Note: right now the library does not STL exceptions but may in the future...):
+VT_Option__Use_STL_Exceptions
+
+Defining your own containers:
+
+#define VT_Option__Use_Custom_Containers
+
+using Deque        = YourContainerHere
+using DynamicArray = YourCOntainerHere
+
+
+Vault 4 Use:
+
+In a cpp file, include VaultedThermals.hpp with the following way:
+
+#define VT_V4_Setup_Implementation
+#include "VaultedThermals.hpp
+
+This will drop into your project the necessary implementation for the instantiated 
 */
 
 
@@ -147,3 +174,5 @@ Short Namespace: VT
 #include "VaultedThermals/VT_Surface.hpp"
 #include "VaultedThermals/VT_SwapChain.hpp"
 #include "VaultedThermals/VT_Debug.hpp"
+#include "VaultedThermals/VT_GPU_Comms.hpp"
+#include "VaultedThermals/VT_GPU.hpp"
