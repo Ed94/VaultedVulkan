@@ -32,7 +32,6 @@ Define macro: VT_Vault_MagmaChamber_Open if you want this. [Note: Currently not 
 #ifndef VT_Option__Use_Long_Namespace
 /**
 @defgroup VaultedThermals
-@{
 
 @namespace VaultedThermals
 
@@ -55,6 +54,11 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
+	/**
+	@ingroup VaultedThermals
+	@{
+	*/
+
 	/** 
 	@defgroup Corridors
 	@{
@@ -137,8 +141,9 @@ namespace VaultedThermals
 	*/
 	namespace V4 { using namespace Corridors; }
 	/** @} */
+
+	/** @} */
 }
-/** @} */
 
 
 

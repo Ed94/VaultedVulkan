@@ -58,6 +58,11 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
+		/**
 		 * @brief Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.
 		 * 
 		 * @details
@@ -255,10 +260,17 @@ namespace VaultedThermals
 				vkDestroyRenderPass(_deviceHandle, _renderPass, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct Framebuffer : public V1::Framebuffer
 		{
 			using Parent = V1::Framebuffer;
@@ -388,10 +400,17 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup
+		@{
+		*/
+
 		class Framebuffer : public V2::Framebuffer
 		{
 		public:
@@ -511,5 +530,7 @@ namespace VaultedThermals
 
 			LogicalDevice::Handle device;
 		};
+
+		/** @} */
 	}
 }

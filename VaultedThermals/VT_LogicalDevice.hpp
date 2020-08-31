@@ -47,6 +47,11 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
+		/**
 		 * @brief Represent logical connections to physical devices. 
 		 * 
 		 * @details
@@ -350,10 +355,17 @@ namespace VaultedThermals
 				return reinterpret_cast<ReturnType>(vkGetDeviceProcAddr(_appInstance, _procedureName));
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct LogicalDevice : public V1::LogicalDevice
 		{
 			using Parent = V1::LogicalDevice;
@@ -458,10 +470,17 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup
+		@{
+		*/
+
 		class LogicalDevice : public V2::LogicalDevice
 		{
 		public:
@@ -667,5 +686,7 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 		};
+
+		/** @} */
 	}
 }

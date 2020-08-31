@@ -69,6 +69,11 @@ namespace VaultedThermals
 {
 	namespace V0
 	{
+		/**
+		@addtogroup Vault_0
+		@{
+		*/
+
 		/** @enum EOS_Platform
 			@brief Enum specifies operating system platform.
 		*/
@@ -113,8 +118,15 @@ namespace VaultedThermals
 		 * @brief A structure containing the types for the detected platform.
 		 */
 		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;
+
+		/** @} */
 	}
 
+
+	/**
+	@addtogroup Vault_0
+	@{
+	*/
 
 	// #TODO: De-macro the VT Calling convention enforcer to a visible definition.
 
@@ -185,4 +197,6 @@ namespace VaultedThermals
 		EnforceConvention(EnforcerID_Vulkan, _functionName) will wrap a function call with the proper calling conventions for the vulkan api.
 	 */
 	MakeConventionEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL)
+
+	/** @} */
 }

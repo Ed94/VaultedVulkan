@@ -176,10 +176,17 @@ namespace VaultedThermals
 
 		/** @brief Surface definition for the currently detected OS platform. */
 		using Surface = Surface_Maker<OS_Platform>;
+
+		/** @} */
 	}
 
 	namespace V1
 	{
+		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
 		struct Surface : public V0::Surface
 		{
@@ -279,10 +286,16 @@ namespace VaultedThermals
 				return EResult(vkGetPhysicalDeviceSurfacePresentModesKHR(_deviceHandle, _surfaceHandle, &_numPresentationModes, (VkPresentModeKHR*)(_presentationModesContainer)));
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		*/
+
 		/** @brief Surfaces hook onto a window to use as a rendering target. */
 		struct Surface : public  V1::Surface
 		{
@@ -406,10 +419,16 @@ namespace VaultedThermals
 				return result;
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		*/
+
 		class Surface : public V2::Surface
 		{
 		public:
@@ -525,5 +544,7 @@ namespace VaultedThermals
 
 			Handle handle;
 		};
+
+		/** @} */
 	}
 }

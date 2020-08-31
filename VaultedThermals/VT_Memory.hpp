@@ -51,6 +51,11 @@ namespace VaultedThermals
 {
 	namespace V1
 	{
+		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
 		struct Memory : public V0::Memory
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
@@ -133,10 +138,17 @@ namespace VaultedThermals
 				vkUnmapMemory(_device, _memory);
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct Memory : public V1::Memory
 		{
 			using Parent = V1::Memory;
@@ -227,10 +239,17 @@ namespace VaultedThermals
 				Unmap(_device, _memory);
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		class Memory : public V2::Memory
 		{
 		public:
@@ -308,5 +327,7 @@ namespace VaultedThermals
 
 			LogicalDevice::Handle device;
 		};
+
+		/** @} */
 	}
 }

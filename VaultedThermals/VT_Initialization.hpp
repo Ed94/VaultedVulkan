@@ -52,6 +52,11 @@ namespace VaultedThermals
 	namespace Corridors
 	{
 		/**
+		@addtogroup Corridors
+		@{
+		*/
+
+		/**
 		 * @brief Construct an API version number.
 		 * 
 		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_MAKE_VERSION">Specification</a> 
@@ -60,15 +65,24 @@ namespace VaultedThermals
 		 * \param _minor
 		 * \param _patch
 		 * \return 
+		 * 
+		 * @ingroup Extending_Vulkan
 		 */
 		inline uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
 		{
 			return VK_MAKE_VERSION(_major, _minor, _patch);
 		}
+
+		/** @} */
 	}
 
 	namespace V1
 	{
+		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
 		/**
 		@brief An object that manages the represented application process state within the GPU.
 
@@ -277,10 +291,17 @@ namespace VaultedThermals
 				return reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(_handle, _procedureName));
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct AppInstance : public V1::AppInstance
 		{
 			using Parent = V1::AppInstance;
@@ -438,10 +459,17 @@ namespace VaultedThermals
 				return returnCode;
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		/**
 		@brief An object that manages the represented application process state within the GPU.
 
@@ -634,5 +662,7 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 		};
+
+		/** @} */
 	}
 }

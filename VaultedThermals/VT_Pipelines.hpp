@@ -56,6 +56,11 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
+		/**
 		 * @brief A monolithic object describing the entire graphics, raytracing, or compute pipeline.
 		 * 
 		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines">Specification</a> 
@@ -762,10 +767,17 @@ namespace VaultedThermals
 				vkDestroyPipeline(_deviceHandle, _pipeline, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct Pipeline : public V1::Pipeline
 		{
 			using Parent = V1::Pipeline;
@@ -1213,10 +1225,17 @@ namespace VaultedThermals
 				Parent::Destroy(_deviceHandle, _pipeline, Memory::DefaultAllocator);
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		class Pipeline : public V2::Pipeline
 		{
 		public:
@@ -1716,5 +1735,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 		};
+
+		/** @} */
 	}
 }

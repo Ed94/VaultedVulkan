@@ -58,6 +58,10 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@addtogroup Vault_1
+		*/
+
+		/**
 		 * @brief A linear array of data.
 		 * 
 		 * @details
@@ -699,10 +703,17 @@ namespace VaultedThermals
 				return EResult(vkResetDescriptorPool(_device, _descriptorPool, _flags));
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct Buffer : V1::Buffer
 		{
 			using Parent = V1::Buffer;
@@ -1199,10 +1210,17 @@ namespace VaultedThermals
 
 			using Parent::Free;
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		class Buffer : public V2::Buffer
 		{
 		public:
@@ -1782,5 +1800,7 @@ namespace VaultedThermals
 
 			LogicalDevice::Handle device;
 		};
+
+		/** @} */
 	}
 }

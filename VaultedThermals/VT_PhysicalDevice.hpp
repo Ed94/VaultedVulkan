@@ -52,6 +52,11 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
+		/**
 		@brief Represents a physical device.
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
 		 */
@@ -681,10 +686,17 @@ namespace VaultedThermals
 				));
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		using V1::ExtensionProperties;
 
 		/**
@@ -977,10 +989,17 @@ namespace VaultedThermals
 				return ESampleCount::_1;
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		class PhysicalDevice : public V2::PhysicalDevice
 		{
 		public:
@@ -1199,5 +1218,7 @@ namespace VaultedThermals
 			Properties  properties ;
 			Properties2 properties2;
 		};
+
+		/** @} */
 	}
 }

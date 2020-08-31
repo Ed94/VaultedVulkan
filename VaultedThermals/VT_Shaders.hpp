@@ -55,6 +55,11 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
+		/**
 		 * @brief 
 		 * Shader modules contain shader code and one or more entry points. 
 		 * 
@@ -120,10 +125,17 @@ namespace VaultedThermals
 				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator->operator const VkAllocationCallbacks*());
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct ShaderModule : public V1::ShaderModule
 		{
 			using Parent = V1::ShaderModule;
@@ -188,10 +200,17 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		class ShaderModule : public V2::ShaderModule
 		{
 		public:
@@ -256,5 +275,7 @@ namespace VaultedThermals
 
 			LogicalDevice::Handle device;
 		};
+
+		/** @} */
 	}
 }

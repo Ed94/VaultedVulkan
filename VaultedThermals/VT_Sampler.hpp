@@ -48,6 +48,11 @@ namespace VaultedThermals
 {
 	namespace V1
 	{
+		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
         /**
          * @brief.
          */
@@ -127,10 +132,17 @@ namespace VaultedThermals
                 vkDestroySampler(_device, _sampler, _allocator->operator const VkAllocationCallbacks*());
             }
 		};
+
+		/** @} */
 	}
 
     namespace V2
     {
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
         struct Sampler : public V1::Sampler
         {
             using Parent = V1::Sampler;
@@ -182,10 +194,17 @@ namespace VaultedThermals
 
             using Parent::Destroy;
         };
+
+		/** @} */
     }
 
     namespace V3
     {
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
         class Sampler : public V2::Sampler
         {
         public:
@@ -245,5 +264,7 @@ namespace VaultedThermals
 
             LogicalDevice::Handle device;
         };
+
+		/** @} */
     }
 }

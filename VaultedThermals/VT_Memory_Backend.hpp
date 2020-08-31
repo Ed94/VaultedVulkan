@@ -49,6 +49,11 @@ namespace VaultedThermals
 	namespace V0
 	{
 		/**
+		@addtogroup Vault_0
+		@{
+		*/
+
+		/**
 		* @brief General memory definitions.
 		*/
 		struct Memory
@@ -138,5 +143,7 @@ namespace VaultedThermals
 				uint32        HeapIndex    ;
 			};
 		};
+
+		/** @} */
 	}
 }
