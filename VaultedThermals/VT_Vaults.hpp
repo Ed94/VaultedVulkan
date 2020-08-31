@@ -36,6 +36,9 @@ Define macro: VT_Vault_MagmaChamber_Open if you want this. [Note: Currently not 
 @brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
 
 @details For long namespace: #define VT_Option__Use_Long_Namespace
+
+@defgroup VaultedThermals
+@{
 */
 namespace VT
 #else
@@ -45,6 +48,9 @@ namespace VT
 @brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
 
 @details VT_Option__Use_Long_Namespace in use.
+
+@defgroup VaultedThermals
+@{
 */
 namespace VaultedThermals
 #endif
@@ -52,8 +58,12 @@ namespace VaultedThermals
 	/** @namespace Corridors
  
 	@brief Contains shared definitions between the vaults.
+
+	@defgroup Corridors
+	@{
 	*/
 	namespace Corridors {}
+	/** @} */
 
 	/** @namespace Vault_MagmaChamber
 
@@ -62,38 +72,63 @@ namespace VaultedThermals
 	@brief Meta-Loading Setup.
 
 	@details When the heat at the control gate isn't enough. 
+
+	@defgroup Vault_MagmaChamber
+	@{
 	*/
 	namespace Vault_MagmaChamber {}
+	/** @} */
 
 	/** @namespace Vault_0
 
 	@brief Backend vault for VaultedThermals
 
 	@details For now only abstracts away OS Platform details and basic meta-structure definitions.
+
+	@defgroup Vault_0
+	@{
 	*/
 	namespace V0 { using namespace Corridors; }
+	/** @} */
 
 	/** @namespace Vault_1
 
 	@brief 1:1 Wrapping of Vulkan API
+
+	@defgroup Vault_1
+	@{
 	*/
 	namespace V1 { using namespace Corridors; }
+	/** @} */
 
 	/** @namespace Vault_2
 
 	@brief Repetitive functionality wrapping.
+
+	@defgroup Vault_2
+	@{
 	*/
 	namespace V2 { using namespace Corridors; }
+	/** @} */
 
 	/** @namespace Vault_3
-
+	
 	@brief Object-Oriented wrapping
+	
+	@defgroup Vault_3
+	@{
 	*/
 	namespace V3 { using namespace Corridors; }
+	/** @} */
 
 	/** @namespace Vault_4
 
 	@brief Object-Oriented bootstrapped backend
+
+	@defgroup Vault_4
+	@{
 	*/
 	namespace V4 { using namespace Corridors; }
+	/** @} */
 }
+/** @} */

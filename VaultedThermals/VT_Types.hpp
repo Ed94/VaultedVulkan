@@ -52,11 +52,14 @@ namespace VaultedThermals
 	/** @namespace Corridors
 
 	@brief Contains shared definitions between the vaults.
+
+	@ingroup Corridors
 	*/
 	namespace Corridors
 	{
 		/** 
 		@addtogroup Common_Object_Types
+		@ingroup Corridors
 		@{
 		*/
 
