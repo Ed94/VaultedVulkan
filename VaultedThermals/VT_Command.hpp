@@ -63,6 +63,11 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@defgroup Vault_1
+		@{
+		*/
+
+		/**
 		 @brief 
 		 
 		 @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
@@ -751,6 +756,8 @@ namespace VaultedThermals
 				vkTrimCommandPool(_deviceHandle, _commandPool, _flags);	
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2

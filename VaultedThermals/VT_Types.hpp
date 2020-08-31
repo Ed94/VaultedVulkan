@@ -52,15 +52,16 @@ namespace VaultedThermals
 	/** @namespace Corridors
 
 	@brief Contains shared definitions between the vaults.
-
-	@ingroup Corridors
 	*/
 	namespace Corridors
 	{
 		/** 
-		@addtogroup Common_Object_Types
-		@ingroup Corridors
+		@addtogroup Corridors
 		@{
+		*/
+
+		/** 
+		@addtogroup Common_Object_Types
 		*/
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
@@ -192,15 +193,9 @@ namespace VaultedThermals
 		/**
 		* @}
 		*/
-	}
 
 #pragma endregion Common Object Types
 
-
-	// TODO: Needs sorting.
-
-	namespace Corridors
-	{
 		/**
 		@defgroup CommonStrings
 		 */
@@ -446,6 +441,8 @@ namespace VaultedThermals
 		{
 			using Handle = VkDisplayKHR;
 		};
+
+		/** @} */
 	}
 
 	/** @namespace Vault_2
@@ -454,6 +451,11 @@ namespace VaultedThermals
 	*/
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		/**
 		* @brief Currently hard coded to use STL vector for extensions.
 		* 
@@ -464,6 +466,8 @@ namespace VaultedThermals
 			LayerProperties                   Layer     ;
 			DynamicArray<ExtensionProperties> Extensions;
 		};
+
+		/** @} */
 	}
 
 	namespace V3

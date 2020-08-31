@@ -68,6 +68,11 @@ namespace VaultedThermals
 	*/
 	namespace V0
 	{
+		/** 
+		@addtogroup Vault_0
+		@{
+		*/
+
 		#ifdef VT_Option__Use_STL_Exceptions
 			/**
 			@brief STL Exceptions (Note: right now the library does not STL exceptions but may in the future...):
@@ -351,5 +356,7 @@ namespace VaultedThermals
 		private:
 			Representation mask;
 		};
+
+		/** @} */
 	}
 }

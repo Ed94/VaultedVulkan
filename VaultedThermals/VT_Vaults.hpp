@@ -31,62 +31,65 @@ Define macro: VT_Vault_MagmaChamber_Open if you want this. [Note: Currently not 
 
 #ifndef VT_Option__Use_Long_Namespace
 /**
+@defgroup VaultedThermals
+@{
+
 @namespace VaultedThermals
 
 @brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
 
 @details For long namespace: #define VT_Option__Use_Long_Namespace
-
-@defgroup VaultedThermals
-@{
 */
 namespace VT
 #else
 /**
+@defgroup VaultedThermals
+@{
+
 @namespace VaultedThermals
 
 @brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
 
 @details VT_Option__Use_Long_Namespace in use.
-
-@defgroup VaultedThermals
-@{
 */
 namespace VaultedThermals
 #endif
 {
-	/** @namespace Corridors
- 
-	@brief Contains shared definitions between the vaults.
-
+	/** 
 	@defgroup Corridors
 	@{
+	
+	@namespace Corridors
+ 
+	@brief Contains shared definitions between the vaults.
 	*/
 	namespace Corridors {}
 	/** @} */
 
-	/** @namespace Vault_MagmaChamber
+	/** 
+	@defgroup Vault_MagmaChamber
+	@{
+
+	@namespace Vault_MagmaChamber
 
 	@todo Look into possibly implementing with the Volk library.
 
 	@brief Meta-Loading Setup.
 
-	@details When the heat at the control gate isn't enough. 
-
-	@defgroup Vault_MagmaChamber
-	@{
+	@details When the heat at the control gate isn't enough.
 	*/
 	namespace Vault_MagmaChamber {}
 	/** @} */
 
-	/** @namespace Vault_0
+	/** 
+	@defgroup Vault_0
+	@{
+
+	@namespace Vault_0
 
 	@brief Backend vault for VaultedThermals
 
 	@details For now only abstracts away OS Platform details and basic meta-structure definitions.
-
-	@defgroup Vault_0
-	@{
 	*/
 	namespace V0 { using namespace Corridors; }
 	/** @} */
@@ -101,32 +104,35 @@ namespace VaultedThermals
 	namespace V1 { using namespace Corridors; }
 	/** @} */
 
-	/** @namespace Vault_2
-
-	@brief Repetitive functionality wrapping.
-
+	/** 
 	@defgroup Vault_2
 	@{
+
+	@namespace Vault_2
+
+	@brief Repetitive functionality wrapping.
 	*/
 	namespace V2 { using namespace Corridors; }
 	/** @} */
 
-	/** @namespace Vault_3
-	
-	@brief Object-Oriented wrapping
-	
+	/** 
 	@defgroup Vault_3
 	@{
+
+	@namespace Vault_3
+	
+	@brief Object-Oriented wrapping
 	*/
 	namespace V3 { using namespace Corridors; }
 	/** @} */
 
-	/** @namespace Vault_4
-
-	@brief Object-Oriented bootstrapped backend
-
+	/** 
 	@defgroup Vault_4
 	@{
+
+	@namespace Vault_4
+
+	@brief Object-Oriented bootstrapped backend
 	*/
 	namespace V4 { using namespace Corridors; }
 	/** @} */
