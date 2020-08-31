@@ -1,7 +1,3 @@
-/*****************************************************************//**
- * \file   VT_Types.hpp
- * \brief  Vaulted Thermals: Types
- *********************************************************************/
 /*!
 @file VT_Types.hpp
 
@@ -9,6 +5,7 @@
 
 @details
 */
+
 
 
 #pragma once
@@ -25,8 +22,22 @@
 
 
 #ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
 #else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
 namespace VaultedThermals
 #endif
 {
@@ -114,8 +125,8 @@ namespace VaultedThermals
 		{
 			sint32 X, Y, Z;
 
-			bool operator==(const Offset3D _other) { return X == _other.X && Y == _other.Y && Z == _other.Z ? true : false; }
-			bool operator!=(const Offset3D _other) { return X != _other.X && Y != _other.Y && Z != _other.Z ? true : false; }
+			bool operator==(const Offset3D& _other) { return X == _other.X && Y == _other.Y && Z == _other.Z ? true : false; }
+			bool operator!=(const Offset3D& _other) { return X != _other.X && Y != _other.Y && Z != _other.Z ? true : false; }
 		};
 
 		/** 
@@ -133,13 +144,8 @@ namespace VaultedThermals
 		{
 			uint32 Width, Height;
 
-			bool operator== (const Extent2D& _other)
-			{
-				return
-				Width  == _other.Width &&
-				Height == _other.Height 
-				? true : false;
-			}
+			bool operator==(const Extent2D _other) { return Width == _other.Width && Height == _other.Height ? true : false; }
+			bool operator!=(const Extent2D _other) { return Width != _other.Width && Height != _other.Height ? true : false; }
 		};
 
 		/** 
@@ -157,6 +163,9 @@ namespace VaultedThermals
 		struct Extent3D : V0::VKStruct_Base<VkExtent3D>
 		{
 			uint32 Width, Height, Depth;
+
+			bool operator==(const Extent3D& _other) { return Width == _other.Width && Height == _other.Height && Depth == _other.Depth ? true : false; }
+			bool operator!=(const Extent3D& _other) { return Width != _other.Width && Height != _other.Height && Depth == _other.Depth ? true : false; }
 		};
 
 		/** 
@@ -172,6 +181,9 @@ namespace VaultedThermals
 		{
 			Offset2D Offset;
 			Extent2D Extent;
+
+			bool operator==(const Rect2D& _other) { Offset == _other.Offset && Extent == _other.Extent ? true : false; }
+			bool operator!=(const Rect2D& _other) { Offset != _other.Offset && Extent != _other.Extent ? true : false; }
 		};
 
 		/**
@@ -207,11 +219,11 @@ namespace VaultedThermals
 
 
 		/**
-		@defgroup Flags & Bitmasks
+		@defgroup Flags and Bitmasks
 		*/
 
 		/**
-		@addtogroup Flags & Bitmasks (General)
+		@addtogroup Flags and Bitmasks
 		@{
 		*/
 
@@ -331,15 +343,20 @@ namespace VaultedThermals
 			EComponentSwizzle G;
 			EComponentSwizzle B;
 			EComponentSwizzle A;
+
+			bool operator==(const ComponentMapping& _other) { return R == _other.R && G == _other.G && B == _other.B && A == _other.A ? true : false; }
+			bool operator!=(const ComponentMapping& _other) { return R != _other.R && G != _other.G && B != _other.B && A != _other.A ? true : false; }
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkConformanceVersion">Specification</a>  */
 		struct ConformanceVersion : V0::VKStruct_Base<VkConformanceVersion>
 		{
-			uInt8 Major   ;
-			uInt8 Minor   ;
-			uInt8 Subminor;
-			uInt8 Patch   ;
+			uInt8 Major, Minor, Subminor, Patch;
+
+			bool operator==(const ConformanceVersion _other) 
+			{ return Major == _other.Major && Minor == _other.Minor && Subminor == _other.Subminor && Patch == _other.Patch ? true : false; }
+			bool operator!=(const ConformanceVersion _other) 
+			{ return Major != _other.Major && Minor != _other.Minor && Subminor != _other.Subminor && Patch != _other.Patch ? true : false; }
 		};
 
 		/** 
@@ -352,6 +369,8 @@ namespace VaultedThermals
 		{
 			ExtensionNameStr ExtensionName;
 			uint32           SpecVersion  ;
+
+			// #TODO: Should offer default operator== ? (With strcmp?)
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
@@ -375,7 +394,7 @@ namespace VaultedThermals
 		struct StencilOperationState : V0::VKStruct_Base<VkStencilOpState>
 		{
 			EStencilOperation FailOp     ;
-			EStencilOperation FassOp     ;
+			EStencilOperation PassOp     ;
 			EStencilOperation DepthFailOp;
 			ECompareOperation CompareOp  ;
 			uint32            CompareMask;
@@ -393,6 +412,24 @@ namespace VaultedThermals
 			float32 X       , Y       ;
 			float32 Width   , Height  ;
 			float32 MinDepth, MaxDepth;
+
+			bool operator== (const Viewport& _other) 
+			{
+				return
+				X        == _other.X        && Y        == _other.Y        &&
+				Width    == _other.Width    && Height   == _other.Height   &&
+				MinDepth == _other.MinDepth && MaxDepth == _other.MaxDepth
+				? true : false;
+			}
+
+			bool operator!= (const Viewport& _other) 
+			{
+				return
+					X        != _other.X        && Y        != _other.Y        &&
+					Width    != _other.Width    && Height   != _other.Height   &&
+					MinDepth != _other.MinDepth && MaxDepth != _other.MaxDepth
+					? true : false;
+			}
 		};
 
 		constexpr DeviceSize UUID_Size = VK_UUID_SIZE;

@@ -1,4 +1,4 @@
-/**
+/*!
 @file VT_Memory_Backend.hpp
 
 @brief Vaulted Thermals: Memory: Preliminary Definitions

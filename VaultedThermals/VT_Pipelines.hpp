@@ -1,4 +1,4 @@
-/**
+/*!
 @file VT_Pipelines.hpp
 
 @brief Vaulted Thermals: Pipelines

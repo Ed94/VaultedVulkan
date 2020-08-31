@@ -43,6 +43,10 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
+	/** @namespace Vault_4
+
+	@brief Object-Oriented bootstrapped backend
+	*/
 	namespace V4
 	{
 	#pragma region GPU_Comms

@@ -1,4 +1,4 @@
-/*
+/*!
 @file VT_SyncAndCacheControl
 
 @brief Vaulted Thermals: Synchronization and Cache Control
@@ -31,12 +31,30 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
+	/** @namespace Vault_1
+
+	@brief 1:1 Wrapping of Vulkan API
+	*/
 	namespace V1
 	{
 		/**

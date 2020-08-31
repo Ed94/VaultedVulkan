@@ -1,4 +1,4 @@
-/** 
+/*!
 @file VT_Constants.hpp
 
 @brief Vaulted Thermals: Constants
@@ -40,6 +40,12 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
+	/** @namespace Vault_0
+
+	@brief Backend vault for VaultedThermals
+
+	@details For now only abstracts away OS Platform details and basic meta-structure definitions.
+	*/
 	namespace Corridors
 	{
 		/**

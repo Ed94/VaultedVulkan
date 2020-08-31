@@ -1,4 +1,4 @@
-/**
+/*!
 @file VT_Memory.hpp
 
 @brief Vaulted Thermals: Memory

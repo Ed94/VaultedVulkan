@@ -60,6 +60,12 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
+	/** @namespace Vault_0
+
+	@brief Backend vault for VaultedThermals
+
+	@details For now only abstracts away OS Platform details and basic meta-structure definitions.
+	*/
 	namespace V0
 	{
 		#ifdef VT_Option__Use_STL_Exceptions

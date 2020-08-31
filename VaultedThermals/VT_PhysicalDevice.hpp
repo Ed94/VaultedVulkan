@@ -1,4 +1,5 @@
-/** @file VT_PhysicalDevice.hpp
+/*!
+@file VT_PhysicalDevice.hpp
 
 @brief VaultedThermals: Physical Device
 

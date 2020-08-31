@@ -1,4 +1,4 @@
-/** 
+/*!
 @file VT_LogicalDevice.hpp
 
 @brief Vaulted Thermals: Logical Device

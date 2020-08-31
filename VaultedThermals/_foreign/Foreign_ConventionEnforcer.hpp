@@ -1,5 +1,7 @@
-/*
-Convention Enforcer
+/*!
+@file Roreign_ConventionEnforcer.hpp
+
+@brief Convention Enforcer
 
 A macro tool for defining Enforcers for a template calling convention.
 

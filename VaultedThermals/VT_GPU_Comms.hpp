@@ -1,6 +1,9 @@
-/*
-Vaulted Thermals: GPU Communication
+/*!
+@file VT_GPU_Comms.hpp
 
+@brief Vaulted Thermals: GPU Communication
+
+@details
 */
 
 
@@ -35,12 +38,30 @@ Vaulted Thermals: GPU Communication
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
+	/** @namespace Vault_4
+
+	@brief Object-Oriented bootstrapped backend
+	*/
 	namespace V4
 	{
 	/**

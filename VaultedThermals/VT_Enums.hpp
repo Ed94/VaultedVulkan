@@ -1,4 +1,4 @@
-/**
+/*!
 @file VT_Enums.hpp
 
 @brief Vaulted Thermals: Enumerations

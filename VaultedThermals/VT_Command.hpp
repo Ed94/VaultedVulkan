@@ -1,4 +1,4 @@
-/**
+/*!
 @file VT_Command.hpp
 
 @brief Vaulted Thermals: Command Buffers
@@ -56,10 +56,16 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
+	/** @namespace Vault_1
+
+	@brief 1:1 Wrapping of Vulkan API
+	*/
 	namespace V1
 	{
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
+		 @brief 
+		 
+		 @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
 		 */
 		struct CommandBuffer
 		{
