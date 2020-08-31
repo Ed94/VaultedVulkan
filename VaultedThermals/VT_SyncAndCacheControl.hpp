@@ -1330,9 +1330,19 @@ namespace VT
 				return handle;
 			}
 
-			operator const Handle& () const
+			operator Handle*()
+			{
+				return &handle;
+			}
+
+			operator const Handle&() const
 			{
 				return handle;
+			}
+
+			operator const Handle*() const
+			{
+				return &handle;
 			}
 
 		protected:

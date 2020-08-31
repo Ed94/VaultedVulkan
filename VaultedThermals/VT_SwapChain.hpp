@@ -364,6 +364,11 @@ namespace VT
 				return handle;
 			}
 
+			bool operator== (const Swapchain& _other)
+			{
+				return handle == _other.handle;
+			}
+
 		protected:
 
 			Handle handle;

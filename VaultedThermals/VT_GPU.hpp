@@ -6,9 +6,7 @@
 
 
 
-#ifndef VT_V4_Setup_Implementation
-#define VT_V4_Setup_Implementation
-
+#ifdef VT_V4_Setup_Implementation
 
 namespace VT
 {
@@ -26,7 +24,7 @@ namespace VT
 		V3::DebugMessenger GPU_Comms::messenger;
 
 		PhysicalDeviceList GPU_Comms::physicalGPUs;
-		LogicalDeviceList  GPU_Comms::logicalGPUs;
+		LogicalDeviceList  GPU_Comms::logicalGPUs ;
 
 		LogicalDevice* GPU_Comms::engagedDevice;
 

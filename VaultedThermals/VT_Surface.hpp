@@ -488,6 +488,11 @@ namespace VT
 				return handle;
 			}
 
+			bool operator== (const Surface& _other)
+			{
+				return handle == _other.handle;
+			}
+
 		protected:
 
 			AppInstance::Handle app;

@@ -62,6 +62,8 @@ namespace VT
 		{
 		public:
 
+			
+
 		protected:
 
 		};
@@ -78,6 +80,11 @@ namespace VT
 		class LogicalDevice : public V3::LogicalDevice
 		{
 		public:
+
+			const PhysicalDevice& GetPhysicalDevice() const
+			{
+				return *static_cast<const PhysicalDevice*>(physicalDevice);
+			}
 
 		protected:
 
@@ -97,17 +104,36 @@ namespace VT
 			{
 			public:
 
-				AppInstance::Handle GetAppHandle()
+				// Initialization and Cease (Startup/Shutdown)
+
+				static void Initalize();
+
+				static void Cease();
+
+
+
+				static AppInstance::Handle GetAppHandle()
 				{
 					return app.GetHandle();
 				}
 
-				const LogicalDevice& GetEngagedDevice()
+				static const LogicalDevice& GetEngagedDevice()
 				{
 					return *engagedDevice;
 				}
 
+				static const PhysicalDevice& GetEngagedPhysicalGPU()
+				{
+					return engagedDevice->GetPhysicalDevice();
+				}
+
 			private:
+
+				static void AcquirePhysicalDevices();
+
+				static void EngageMostSuitableDevice();
+
+				static void GenerateLogicalDevices();
 
 				static AppInstance app;
 

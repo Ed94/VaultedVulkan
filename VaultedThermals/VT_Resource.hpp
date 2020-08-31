@@ -538,7 +538,7 @@ namespace VT
 			 * \param _descriptorCopyCount
 			 * \param _descriptorCopies
 			 */
-			static void Update
+			static void Render
 			(
 				      LogicalDevice::Handle _device              ,
 				      uint32                _descriptorWriteCount,
@@ -1635,7 +1635,7 @@ namespace VT
 				return handle;
 			}
 
-			void Update
+			void Render
 			(
 				      uint32                _descriptorWriteCount,
 				const Write*                _descriptorWrites    ,
@@ -1643,7 +1643,7 @@ namespace VT
 				const Copy*                 _descriptorCopies
 			)
 			{
-				Parent::Update(device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
+				Parent::Render(device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
 			}
 
 			operator Handle()
