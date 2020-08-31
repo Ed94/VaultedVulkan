@@ -37,6 +37,11 @@ namespace VaultedThermals
 {
     namespace Corridors
     {
+		/**
+		@addtogroup Corridors
+		@{
+		*/
+
 	#pragma region VT_Enums
 
 		/** 
@@ -2273,4 +2278,6 @@ namespace VaultedThermals
 		SpecifyBitmaskable(ESurfaceTransformFlag             );
 		SpecifyBitmaskable(ESwapchainCreateFlag              );
     }
+
+	/** @} */
 }

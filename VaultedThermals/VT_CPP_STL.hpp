@@ -46,6 +46,11 @@ namespace VaultedThermals
 	namespace Corridors
 	{
 		/**
+		@addtogroup Corridors
+		@{
+		*/
+
+		/**
 		 * @brief Vulkan's boolean type.
 		 * 
 		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBool32">Specification</a> 
@@ -125,5 +130,7 @@ namespace VaultedThermals
 			using DynamicArray = std::vector<Type>;
 
 		#endif
+
+		/** @} */
 	}
 }

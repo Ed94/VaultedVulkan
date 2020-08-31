@@ -56,6 +56,11 @@ namespace VaultedThermals
 {
 	namespace V1
 	{
+		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
 		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   ///< TODO: Add comment on what this is for.
 
 		/** @brief Pointer to the Create Debug Messenger Command. */ 
@@ -197,10 +202,17 @@ namespace VaultedThermals
 				}
 			}
 		}; 
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		using V1::CallbackDataFlags;
 		using V1::FPtr_CreateMessenger;
 		using V1::MessageServerityFlags;
@@ -270,11 +282,16 @@ namespace VaultedThermals
 			using Parent::Destroy;
 		};
 
-		
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup
+		@{
+		*/
+
 		using V2::CallbackDataFlags;
 		using V2::FPtr_CreateMessenger;
 		using V2::MessageServerityFlags;
@@ -376,5 +393,7 @@ namespace VaultedThermals
 
 			Handle handle;
 		};
+
+		/** @} */
 	}
 }

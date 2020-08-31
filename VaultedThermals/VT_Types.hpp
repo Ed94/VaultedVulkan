@@ -217,11 +217,11 @@ namespace VaultedThermals
 
 
 		/**
-		@defgroup Flags and Bitmasks
+		@defgroup Flags_and_Bitmasks
 		*/
 
 		/**
-		@addtogroup Flags and Bitmasks
+		@addtogroup Flags_and_Bitmasks
 		@{
 		*/
 
@@ -472,7 +472,14 @@ namespace VaultedThermals
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		using V2::LayerAndExtensionProperties;
+
+		/** @} */
 	}
 
 	namespace SPIR_V

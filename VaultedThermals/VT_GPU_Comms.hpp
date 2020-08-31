@@ -64,6 +64,11 @@ namespace VaultedThermals
 	*/
 	namespace V4
 	{
+		/**
+		@addtogroup Vault_4
+		@{
+		*/
+
 	/**
 	 * While this option has been defined here, currently this bootstrapped backend only supports
 	 * engaging a single GPU...
@@ -173,5 +178,7 @@ namespace VaultedThermals
 		}
 
 		using GPU_Comms = Backend::GPU_Comms_Maker<EngageSingleGPU>;
+
+		/** @} */
 	}
 }

@@ -49,6 +49,10 @@ namespace VaultedThermals
 	*/
 	namespace V4
 	{
+		/**
+		@addtogroup Vault_4
+		@{
+		*/
 	#pragma region GPU_Comms
 
 		AppInstance GPU_Comms::app;
@@ -66,6 +70,8 @@ namespace VaultedThermals
 		LogicalDevice* GPU_Comms::engagedDevice;
 
 	#pragma endregion GPU_Comms
+
+		/** @} */
 	}
 }
 

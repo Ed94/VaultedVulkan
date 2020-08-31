@@ -49,6 +49,11 @@ namespace VaultedThermals
 	namespace Corridors
 	{
 		/**
+		@addtogroup Corridors
+		@{
+		*/
+
+		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_NULL_HANDLE">Specification</a> .
 		 */
 		template<typename HandleType>
@@ -111,5 +116,7 @@ namespace VaultedThermals
 			// Default
 			static constexpr RoCStr Khronos_Validation = "VK_LAYER_KHRONOS_validation";
 		};
+
+		/** @} */
 	}
 }

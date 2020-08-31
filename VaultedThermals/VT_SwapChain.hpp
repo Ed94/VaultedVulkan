@@ -59,6 +59,11 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
+		@addtogroup Vault_1
+		@{
+		*/
+
+		/**
 		 * @brief A queue of images that can be presented to a surface.
 		 * 
 		 * @details
@@ -203,10 +208,17 @@ namespace VaultedThermals
 				return EResult(vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &_numImages, _imagesContainer));
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct Swapchain : V1::Swapchain
 		{
 			using Parent = V1::Swapchain;
@@ -276,10 +288,17 @@ namespace VaultedThermals
 				return result;
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup
+		@{
+		*/
+
 		class Swapchain : public V2::Swapchain
 		{
 		public:
@@ -394,5 +413,7 @@ namespace VaultedThermals
 
 			LogicalDevice::Handle device;
 		};
+
+		/** @} */
 	}
 }

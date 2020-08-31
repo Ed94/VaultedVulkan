@@ -762,6 +762,11 @@ namespace VaultedThermals
 
 	namespace V2
 	{
+		/** 
+		@addgroup Vault_2
+		@{
+		*/
+
 		struct CommandPool : public V1::CommandPool
 		{
 			using Parent = V1::CommandPool;
@@ -1113,10 +1118,17 @@ namespace VaultedThermals
 
 			using Parent::WaitForEvents;
 		};
+
+		/** @} */
 	}
 
 	namespace V3
 	{
+		/**
+		@defgroup Vault_3
+		@{
+		*/
+
 		class CommandBuffer : public V2::CommandBuffer
 		{
 		public:
@@ -1738,5 +1750,7 @@ namespace VaultedThermals
 
 			const LogicalDevice* device;
 		};
+
+		/** @} */
 	}
 }

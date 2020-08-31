@@ -59,6 +59,11 @@ namespace VaultedThermals
 	namespace V0
 	{
 		/**
+		@addtogroup Vault_0
+		@{
+		*/
+
+		/**
 		 * @brief Cross-Platform set of definitions for a Surface.
 		 */
 		struct Surface_PlatformAgnostic

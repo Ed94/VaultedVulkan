@@ -1,5 +1,5 @@
 /*!
-@file VT_SyncAndCacheControl
+@file VT_SyncAndCacheControl.hpp
 
 @brief Vaulted Thermals: Synchronization and Cache Control
 
@@ -57,6 +57,11 @@ namespace VaultedThermals
 	*/
 	namespace V1
 	{
+		/**
+		@addtogroup
+		@{
+		*/
+
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-events">Specification</a> 
 		 */
@@ -734,10 +739,17 @@ namespace VaultedThermals
 				return EResult(vkWaitSemaphores(_device, _waitInfo, _timeout));
 			}
 		};
+
+		/** @} */
 	}
 
 	namespace V2
 	{
+		/**
+		@addtogroup Vault_2
+		@{
+		*/
+
 		struct Event : public V1::Event
 		{
 			using Parent = V1::Event;
@@ -1066,10 +1078,17 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 		};
+
+		/** } */
 	}
 
 	namespace V3
 	{
+		/**
+		@addtogroup Vault_3
+		@{
+		*/
+
 		class Event : public V2::Event
 		{
 		public:
@@ -1373,5 +1392,7 @@ namespace VaultedThermals
 
 			LogicalDevice::Handle device;
 		};
+
+		/** @} */
 	}
 }
