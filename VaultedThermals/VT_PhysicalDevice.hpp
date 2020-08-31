@@ -28,10 +28,24 @@ A physical device usually represents a single complete implementation of Vulkan
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace V1
@@ -57,7 +71,7 @@ namespace VT
 			using DriverNameStr = char[MaxDriverNameSize];
 			using DriverInfoStr = char[MaxDriverInfoSize];
 
-		    using EDeviceType = EPhysicalDeviceType;	
+			using EDeviceType = EPhysicalDeviceType;	
 
 			/**
 			* @details
@@ -241,7 +255,7 @@ namespace VT
 				uint32           MaxFramebufferLayers                           ;
 				SampleCountFlags FramebufferColorSampleCounts                   ;
 				SampleCountFlags FramebufferDepthSampleCounts                   ;
-				SampleCountFlags FramebufferStencilSampleCounts                 ;			    
+				SampleCountFlags FramebufferStencilSampleCounts                 ;
 				SampleCountFlags FramebufferNoAttachmentsSampleCounts           ;
 				uint32           MaxColorAttachments                            ;
 				SampleCountFlags SampledImageColorSampleCounts                  ;
@@ -503,7 +517,7 @@ namespace VT
 				Flags    QueueFlags                 ;
 				uint32   QueueCount                 ;
 				uint32   TimestampValidBits         ;
-				Extent3D MinImageTransferGranularity;				
+				Extent3D MinImageTransferGranularity;
 			};
 
 			/**

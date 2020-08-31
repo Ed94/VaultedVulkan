@@ -1,10 +1,10 @@
-/*****************************************************************//**
- * @file   VT_Platform.hpp
- * @brief  Vaulted Thermals: Platform Specification
- * 
- * @details The Vulkan C-API header is included here and platform detection implementation is defined.
- *********************************************************************/
+/*!
+@file VT_Platform.hpp
 
+@brief Vaulted Thermals: Platform Specification
+
+@details The Vulkan C-API header is included here and platform detection implementation is defined.
+*/
 
 
 #pragma once
@@ -37,7 +37,6 @@ specified, why this is required.
 
 // Foreign Objects: These are helper functionality I defined but are not directly related to the Vaulted Thermals Library.
 // They are however needed by the Library in order to function.
-#include "_foreign/Foreign_Bitmask.hpp"
 #include "_foreign/Foreign_ConventionEnforcer.hpp"
 
 // VT
@@ -48,10 +47,24 @@ specified, why this is required.
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace V0

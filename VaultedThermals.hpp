@@ -1,10 +1,7 @@
-/** 
+/*!
 @file VaultedThermals.hpp
 
-@brief 
-VaultedThermals Include Interface
-    
-
+@brief VaultedThermals Include Interface
 
 // Optional Features:
 
@@ -34,7 +31,7 @@ In a cpp file, include VaultedThermals.hpp with the following way:
 #define VT_V4_Setup_Implementation
 #include "VaultedThermals.hpp
 
-This will drop into your project the necessary implementation for the instantiated 
+This will drop into your project the necessary implementation for the instantiated
 */
 
 
@@ -49,6 +46,7 @@ This will drop into your project the necessary implementation for the instantiat
  * @section GuideSec Guide
 
  NOTE: This is very outdated, please do not use this outline.
+ #TODO: Update this.
 
  * The libraries files are organized based on the Khronos Vulkan Specification manual:
  * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html">Vulkan Specification</a>

@@ -3,8 +3,7 @@
 
 @brief Vaulted Thermals: Memory
 
-@details
-Contains the full definition of the intended memory structure.
+@details Contains the full definition of the intended memory structure.
 
 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#memory">Specification</a>
 */
@@ -12,6 +11,7 @@ Contains the full definition of the intended memory structure.
 
 
 #pragma once
+
 
 
 // VT
@@ -29,11 +29,24 @@ Contains the full definition of the intended memory structure.
 
 
 
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace V1

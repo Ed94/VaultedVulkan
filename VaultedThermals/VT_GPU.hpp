@@ -1,3 +1,13 @@
+/*!
+@file VT_GPU.hpp
+
+@brief Vaulted Thermals: GPU Backend (Bootstrap)
+
+@details
+*/
+
+
+
 #pragma once
 
 
@@ -6,9 +16,32 @@
 
 
 
+/**
+@brief Implementation for V4 (must be dumped into a cpp file...)
+*/
 #ifdef VT_V4_Setup_Implementation
 
+
+
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
+#endif
 {
 	namespace V4
 	{
@@ -32,5 +65,6 @@ namespace VT
 	}
 }
 
-#endif
 
+
+#endif

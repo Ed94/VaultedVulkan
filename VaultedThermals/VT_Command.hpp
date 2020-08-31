@@ -36,10 +36,24 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace V1
@@ -132,12 +146,12 @@ namespace VT
 				      EType                 SType               ;
 				const void*                 Next                ;
 				      uint32                WaitSemaphoreCount  ;
-				const Semaphore::Handle*    WaitSemaphores      ;   
+				const Semaphore::Handle*    WaitSemaphores      ;
 				const Pipeline::StageFlags* WaitDstStageMask    ;
 				      uint32                CommandBufferCount  ;
 				const Handle*               CommandBuffers      ;
 				      uint32                SignalSemaphoreCount;
-				const Semaphore::Handle*    SignalSemaphores    ;   
+				const Semaphore::Handle*    SignalSemaphores    ;
 
 
 				/**
@@ -346,25 +360,25 @@ namespace VT
 			 */
 			static void BlitImage
 			(
-				      Handle        _commandBuffer,
-				      Image::Handle _srcImage,
+				      Handle        _commandBuffer ,
+				      Image::Handle _srcImage      ,
 				      EImageLayout  _srcImageLayout,
-				      Image::Handle _dstImage,
+				      Image::Handle _dstImage      ,
 				      EImageLayout  _dstImageLayout,
-				      uint32        _regionCount,
-				const Image::Blit*  _regions,
+				      uint32        _regionCount   ,
+				const Image::Blit*  _regions       ,
 				      EFilter       _filter
 			)
 			{
 				vkCmdBlitImage
 				(
-					_commandBuffer, 
-					_srcImage, 
-					VkImageLayout(_srcImageLayout), 
-					_dstImage, 
-					VkImageLayout(_dstImageLayout), 
-					_regionCount, 
-					_regions->operator const VkImageBlit*(), 
+					_commandBuffer                         ,
+					_srcImage                              ,
+					VkImageLayout(_srcImageLayout)         ,
+					_dstImage                              ,
+					VkImageLayout(_dstImageLayout)         ,
+					_regionCount                           ,
+					_regions->operator const VkImageBlit*(),
 					VkFilter(_filter)
 				);
 			}
@@ -395,7 +409,7 @@ namespace VT
 				      Buffer::Handle     _srcBuffer     ,
 				      Image::Handle      _dstImage      ,
 				      EImageLayout       _dstImageLayout,
-				      uint32			 _regionCount   ,
+				      uint32             _regionCount   ,
 				const BufferImageRegion* _regions
 			)
 			{
@@ -409,7 +423,7 @@ namespace VT
 			(
 				Handle _commandBuffer,
 				uint32 _firstVertex  ,
-				uint32 _vertexCount  , 
+				uint32 _vertexCount  ,
 				uint32 _firstInstance,
 				uint32 _instanceCount
 			)
@@ -513,15 +527,15 @@ namespace VT
 			{
 				vkCmdPipelineBarrier
 				(
-					_commandBuffer, 
-					_sourceStageMask, 
-					_destinationStageMask, 
-					_dependencyFlags, 
-					_memoryBarrierCount, 
-					_memoryBarriers->operator const VkMemoryBarrier*(), 
-					_bufferMemoryBarrierCount, 
-					_bufferMemoryBarriers->operator const VkBufferMemoryBarrier*(), 
-					_imageMemoryBarrierCount,
+					_commandBuffer                                                ,
+					_sourceStageMask                                              ,
+					_destinationStageMask                                         ,
+					_dependencyFlags                                              ,
+					_memoryBarrierCount                                           ,
+					_memoryBarriers->operator const VkMemoryBarrier*()            ,
+					_bufferMemoryBarrierCount                                     ,
+					_bufferMemoryBarriers->operator const VkBufferMemoryBarrier*(),
+					_imageMemoryBarrierCount                                      ,
 					_imageMemoryBarriers->operator const VkImageMemoryBarrier*()
 				);
 			}
@@ -569,14 +583,14 @@ namespace VT
 			{
 				vkCmdWaitEvents
 				(
-					_commandBuffer, 
-					_eventCount, 
-					_events, 
-					_srcStageMask, 
-					_dstStageMask, 
+					_commandBuffer,
+					_eventCount,
+					_events,
+					_srcStageMask,
+					_dstStageMask,
 					_memoryBarrierCount, 
-					_memoryBarriers->operator const VkMemoryBarrier*(), 
-					_bufferMemoryBarrierCount, 
+					_memoryBarriers->operator const VkMemoryBarrier*(),
+					_bufferMemoryBarrierCount,
 					_bufferMemoryBarriers->operator const VkBufferMemoryBarrier*(),
 					_imageMemoryBarrierCount,
 					_imageMemoryBarriers->operator const VkImageMemoryBarrier*()
@@ -607,7 +621,7 @@ namespace VT
 				      EType               SType      ;
 				const void*               Next       ;
 				      Handle              Pool       ;
-					  ECommandBufferLevel Level      ;
+				      ECommandBufferLevel Level      ;
 				      uint32              BufferCount;
 			};
 
@@ -897,15 +911,15 @@ namespace VT
 
 				SubmitInfo()
 				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-					WaitSemaphoreCount = 0;
-					WaitSemaphores = nullptr;
-					WaitDstStageMask = nullptr; 
-					CommandBufferCount = 0;
-					CommandBuffers = 0;
-					SignalSemaphoreCount = 0;
-					SignalSemaphores = nullptr;
+					SType                = STypeEnum;
+					Next                 = nullptr  ;
+					WaitSemaphoreCount   = 0        ;
+					WaitSemaphores       = nullptr  ;
+					WaitDstStageMask     = nullptr  ;
+					CommandBufferCount   = 0        ;
+					CommandBuffers       = 0        ;
+					SignalSemaphoreCount = 0        ;
+					SignalSemaphores     = nullptr  ;
 				}
 
 				struct TimelineSemaphore : public Parent
@@ -1513,8 +1527,8 @@ namespace VT
 			{
 				AllocateInfo allocInfo; 
 
-				allocInfo.Level       = _level; 
-				allocInfo.Pool        = handle; 
+				allocInfo.Level       = _level;
+				allocInfo.Pool        = handle;
 				allocInfo.BufferCount = _count;
 
 				EResult returnCode = Parent::Allocate(*device, allocInfo, _handles);
@@ -1532,8 +1546,8 @@ namespace VT
 			{
 				AllocateInfo allocInfo; 
 				
-				allocInfo.Level       = _level; 
-				allocInfo.Pool        = handle; 
+				allocInfo.Level       = _level;
+				allocInfo.Pool        = handle;
 				allocInfo.BufferCount = _count;
 
 				_commandBuffers.resize(_count); _handles.resize(_count);

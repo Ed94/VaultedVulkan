@@ -33,10 +33,24 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace V1
@@ -166,16 +180,16 @@ namespace VT
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a>  */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo, EStructureType::Pipeline_DepthStencilState_CreateInfo>
 				{
-					      EType                 SType                ;			   
+					      EType                 SType                ;
 					const void*                 Next                 ;
 					      CreateFlags           Flags                ;
 					      Bool                  DepthTestEnable      ;
 					      Bool                  DepthWriteEnable     ;
 					      ECompareOperation     DepthCompareOp       ;
  					      Bool                  DepthBoundsTestEnable;
-					      Bool                  StencilTestEnable    ;   
-						  StencilOperationState Front                ;
-						  StencilOperationState Back                 ;
+					      Bool                  StencilTestEnable    ;
+					      StencilOperationState Front                ;
+					      StencilOperationState Back                 ;
 					      float32               MinDepthBounds       ;
 					      float32               MaxDepthBounds       ;
 				};
@@ -205,11 +219,11 @@ namespace VT
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a>  */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineInputAssemblyStateCreateInfo, EStructureType::Pipeline_InputAssemblyState_CreateInfo>
 				{
-						  EType              SType                 ;
+					      EType              SType                 ;
 					const void*              Next                  ;
-						  CreateFlags        Flags                 ;
-						  EPrimitiveTopology Topology              ;
-						  Bool               PrimitiveRestartEnable;
+					      CreateFlags        Flags                 ;
+					      EPrimitiveTopology Topology              ;
+					      Bool               PrimitiveRestartEnable;
 				};
 			};
 
@@ -263,9 +277,9 @@ namespace VT
 						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a>  */
 						struct FlagsCreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
 						{
-								   EType       SType       ;
+							      EType       SType        ;
 							const void*        Next        ;
-								  uint32       BindingCount;
+							      uint32       BindingCount;
 							const CreateFlags* BindingFlags;
 						};
 					};
@@ -445,19 +459,19 @@ namespace VT
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineRasterizationStateCreateInfo">Specification</a>  */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineRasterizationStateCreateInfo, EStructureType::Pipeline_RasterizationState_CreateInfo>
 				{
-						  EType         SType                  ;
+					      EType         SType                  ;
 					const void*         Next                   ;
-						  CreateFlags   Flags                  ;
-						  Bool          EnableDepthClamp       ;
-						  Bool          EnableRasterizerDiscard;
-						  EPolygonMode  PolygonMode            ;
-						  CullModeFlags CullMode               ;
-						  EFrontFace    FrontFace              ;
-						  Bool          EnableDepthBias        ;
-						  float32       DepthBiasConstantFactor;
-						  float32       DepthBiasClamp         ;
-						  float32       DepthBiasSlopeFactor   ;
-						  float32       LineWidth              ;
+					      CreateFlags   Flags                  ;
+					      Bool          EnableDepthClamp       ;
+					      Bool          EnableRasterizerDiscard;
+					      EPolygonMode  PolygonMode            ;
+					      CullModeFlags CullMode               ;
+					      EFrontFace    FrontFace              ;
+					      Bool          EnableDepthBias        ;
+					      float32       DepthBiasConstantFactor;
+					      float32       DepthBiasClamp         ;
+					      float32       DepthBiasSlopeFactor   ;
+					      float32       LineWidth              ;
 				};
 			};
 
@@ -501,12 +515,12 @@ namespace VT
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateInfo">Specification</a>  */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineShaderStageCreateInfo , EStructureType::Pipeline_ShaderStage_CreateInfo>
 				{
-						  EType                 SType         ;
+					      EType                 SType         ;
 					const void*                 Next          ;
-						  CreateFlags           Flags         ;
-						  EShaderStageFlag      Stage         ;
-						  ShaderModule::Handle  Module        ;
-						  RoCStr                Name          ;
+					      CreateFlags           Flags         ;
+					      EShaderStageFlag      Stage         ;
+					      ShaderModule::Handle  Module        ;
+					      RoCStr                Name          ;
 					const Specialization::Info* Specialization;
 				};
 			};
@@ -554,12 +568,12 @@ namespace VT
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineVertexInputStateCreateInfo">Specification</a>  */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineVertexInputStateCreateInfo, EStructureType::Pipeline_VertexInputState_CreateInfo>
 				{
-						  EType                 SType                        ;
+					      EType                 SType                        ;
 					const void*                 Next                         ;
-						  CreateFlags           Flags                        ;
-						  uint32                VertexBindingDescriptionCount;
+					      CreateFlags           Flags                        ;
+					      uint32                VertexBindingDescriptionCount;
 					const BindingDescription*   BindingDescriptions          ;
-						  uint32                AttributeDescriptionCount    ;
+					      uint32                AttributeDescriptionCount    ;
 					const AttributeDescription* AttributeDescription         ;
 				};
 			};
@@ -572,12 +586,12 @@ namespace VT
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineViewportStateCreateInfo">Specification</a>  */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineViewportStateCreateInfo, EStructureType::Pipeline_ViewportState_CreateInfo>
 				{
-						  EType       SType        ;
+					      EType       SType        ;
 					const void*       Next         ;
 					      CreateFlags Flags        ;
-						  uint32      ViewportCount;
+					      uint32      ViewportCount;
 					const Viewport*   Viewports    ;
-						  uint32      ScissorCount ;
+					      uint32      ScissorCount ;
 					const Rect2D*     Scissors     ;
 				};
 			};
@@ -663,7 +677,7 @@ namespace VT
 					const ColorBlendState::CreateInfo*    ColorBlendState   ;
 					const DynamicState::CreateInfo*       DynamicState      ;
 					      Pipeline::Layout::Handle        Layout            ;
-						  RenderPass_Handle               RenderPass        ;
+					      RenderPass_Handle               RenderPass        ;
 					      uint32                          Subpass           ;
 					      Pipeline::Handle                BasePipelineHandle;
 					      sint32                          BasePipelineIndex ;
@@ -782,9 +796,9 @@ namespace VT
 				*/
 				static EResult Create
 				(
-					LogicalDevice::Handle  _deviceHandle ,
-					const CreateInfo&      _createInfo   ,
-					Cache::Handle&         _pipelineCache
+					      LogicalDevice::Handle  _deviceHandle ,
+					const CreateInfo&            _createInfo   ,
+					      Cache::Handle&         _pipelineCache
 				)
 				{
 					return Parent::Create(_deviceHandle, _createInfo, Memory::DefaultAllocator, _pipelineCache);
@@ -1116,8 +1130,8 @@ namespace VT
 				{
 					CreateInfo() 
 					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
+						SType      = STypeEnum;
+						Next       = nullptr  ;
 						StageCount = 0;
 
 						Stages = nullptr;
@@ -1135,7 +1149,6 @@ namespace VT
 						Subpass = 0;
 						BasePipelineHandle = Null<Pipeline::Handle>;
 						BasePipelineIndex = 0;
-
 					}
 				};
 
@@ -1476,7 +1489,7 @@ namespace VT
 				allocator = _allocator;
 				cache     =  _cache   ;
 				device    = _device   ;
-				info      = _info     ;	
+				info      = _info     ;
 			}
 
 			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)

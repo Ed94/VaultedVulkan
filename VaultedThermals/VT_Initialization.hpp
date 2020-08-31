@@ -1,11 +1,13 @@
-/** @file VT_Initialization.hpp
+/** 
+@file VT_Initialization.hpp
 
 @brief Vaulted Thermals: Initialization
 
-@details
-Before using Vulkan, an application must initialize it by loading the Vulkan commands, and creating a VkInstance object.
+@details Before using Vulkan, an application must initialize it by loading the Vulkan commands, and creating a VkInstance object.
 
-<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization">Initialization Specification</a> 
+<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#initialization">
+Initialization Specification
+</a> 
 */
 
 
@@ -27,10 +29,24 @@ Before using Vulkan, an application must initialize it by loading the Vulkan com
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace Corridors
@@ -612,13 +628,11 @@ namespace VT
 		protected:
 
 			Handle     handle    ;
-			AppInfo    appInfo   ;   
+			AppInfo    appInfo   ;
 			CreateInfo createInfo;
 			uint32     version   ;
 
 			const Memory::AllocationCallbacks* allocator;
-
-
 		};
 	}
 }

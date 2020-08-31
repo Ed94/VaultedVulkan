@@ -1,5 +1,9 @@
-/**
+/*!
+@file VT_Debug.hpp
 
+@brief Vaulted Thermals: Debug
+
+@details
 */
 
 #pragma once
@@ -30,10 +34,24 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace V1
@@ -48,24 +66,24 @@ namespace VT
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  */
 		using MessageTypeFlags      = Bitmask<EDebugUtilities_MessageType    , VkDebugUtilsMessageTypeFlagsEXT>;
 
-		
+
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a>  */
 		struct Label : V0::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
 		{
-				  EType   SType    ;
-			const void*   Next;
+			      EType   SType    ;
+			const void*   Next     ;
 			const char*   Name     ;
-				  float32 Color[4] ;
+			      float32 Color[4] ;
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a>  */
 		struct ObjectInfo : V0::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
 		{
-				  EType       SType    ;
-			const void*       Next;
-				  EObjectType Type     ;
-				  uInt64      Handle   ;
+			      EType       SType    ;
+			const void*       Next     ;
+			      EObjectType Type     ;
+			      uInt64      Handle   ;
 			const char*       Name     ;
 		};
 
@@ -83,17 +101,17 @@ namespace VT
 			{
 				using FlagsMask = Bitmask<EUndefined, Flags>;
 
-					  EType       SType               ;
+				      EType       SType               ;
 				const void*       Next                ;
-					  FlagsMask   Flags               ;
+				      FlagsMask   Flags               ;
 				const char*       MesssageIDName      ;
-					  sint32      MessageIDNumber     ;
+				      sint32      MessageIDNumber     ;
 				const char*       Message             ;
-					  uint32      QueueLabelCount     ;
+				      uint32      QueueLabelCount     ;
 				const Label*      QueueLabels         ;
-					  uint32      CMDBufferLabel_Count;
+				      uint32      CMDBufferLabel_Count;
 				const Label*      CMDBufferLabels     ;
-					  uint32      ObjectCount         ;
+				      uint32      ObjectCount         ;
 				const ObjectInfo* Objects             ;
 			};
 
@@ -104,13 +122,13 @@ namespace VT
 			{
 				using CreateFlags = Bitmask<EUndefined, Flags>;
 
-					  EType                 SType       ;
+				      EType                 SType       ;
 				const void*                 Next        ;
-					  CreateFlags           Flags       ;
-					  MessageServerityFlags Serverity   ;
-					  MessageTypeFlags      Type        ;
-					  CallbackDelegate      UserCallback;
-					  void*                 UserData    ;
+				      CreateFlags           Flags       ;
+				      MessageServerityFlags Serverity   ;
+				      MessageTypeFlags      Type        ;
+				      CallbackDelegate      UserCallback;
+				      void*                 UserData    ;
 			};
 
 			/**
@@ -124,10 +142,10 @@ namespace VT
 			 */
 			static EResult Create
 			(
-					  AppInstance::Handle          _appInstance,
+				      AppInstance::Handle          _appInstance,
 				const DebugMessenger::CreateInfo&  _createSpec ,
 				const Memory::AllocationCallbacks* _allocator  ,
-					  DebugMessenger::Handle&      _messenger
+				      DebugMessenger::Handle&      _messenger
 			)
 			{
 				static FPtr_CreateMessenger delegate = nullptr;
@@ -162,8 +180,8 @@ namespace VT
 			 */
 			static void Destroy
 			(
-					  AppInstance::Handle          _appInstance,
-					  DebugMessenger::Handle       _messenger  ,
+				      AppInstance::Handle          _appInstance,
+				      DebugMessenger::Handle       _messenger  ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
@@ -242,8 +260,8 @@ namespace VT
 
 			static void Destroy
 			(
-				      AppInstance::Handle          _appInstance,
-				      DebugMessenger::Handle       _messenger  
+				AppInstance::Handle          _appInstance,
+				DebugMessenger::Handle       _messenger  
 			)
 			{
 				Parent::Destroy(_appInstance, _messenger, Memory::DefaultAllocator);
@@ -311,7 +329,7 @@ namespace VT
 
 			EResult Create
 			(
-					  AppInstance::Handle          _appInstance,
+				      AppInstance::Handle          _appInstance,
 				const CreateInfo&                  _createSpec ,
 				const Memory::AllocationCallbacks* _allocator  
 			)

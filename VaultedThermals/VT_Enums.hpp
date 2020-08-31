@@ -15,10 +15,24 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
     namespace Corridors
@@ -1573,7 +1587,7 @@ namespace VT
 			Buffer_CreateInfo                                           = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO                                             ,
 			BufferView_CreateInfo                                       = VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO                                        ,
 			Image_CreateInfo                                            = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO                                              ,
-			ImageView_CreateInfo                                        = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO                                         ,  									     
+			ImageView_CreateInfo                                        = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO                                         ,
 			ShaderModule_CreateInfo                                     = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO                                      ,
 			Pipeline_Cache_CreateInfo                                   = VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO                                     ,
 			Pipeline_ShaderStage_CreateInfo                             = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO                              ,
@@ -1584,20 +1598,20 @@ namespace VT
 			Pipeline_RasterizationState_CreateInfo                      = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO                       ,
 			Pipeline_MultisampleState_CreateInfo                        = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO                         ,
 			Pipeline_DepthStencilState_CreateInfo                       = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO                       ,
-			Pipeline_ColorBlendState_CreateInfo                         = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO                         ,   					   
+			Pipeline_ColorBlendState_CreateInfo                         = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO                         ,
 			Pipeline_DynamicState_CreateInfo                            = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO                             ,
 			GraphicsPipeline_CreateInfo                                 = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO                                  ,
 			ComputePipeline_CreateInfo                                  = VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO                                   ,
 			Pipeline_Layout_CreateInfo                                  = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO                                    ,
 			Sampler_CreateInfo                                          = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO                                            ,
 			Descriptor_SetLayout_CreateInfo                             = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO                              ,
-			Descriptor_Pool_CreateInfo                                  = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO                                    ,     
+			Descriptor_Pool_CreateInfo                                  = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO                                    ,
 			Descriptor_SetAllocateInfo                                  = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO                                   ,
 			WriteDescriptor_Set                                         = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET                                           ,
 			CopyDescriptor_Set                                          = VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET                                            ,
 			Framebuffer_CreateInfo                                      = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO                                        ,
 			RenderPass_CreateInfo                                       = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO                                        ,
-			CommandPool_CreateInfo                                      = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO                                       ,    
+			CommandPool_CreateInfo                                      = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO                                       ,
 			CommandBuffer_AllocateInfo                                  = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO                                   ,
 			CommandBuffer_InheritanceInfo                               = VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO                                ,
 			CommandBuffer_BeginInfo                                     = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO                                      ,
@@ -1610,7 +1624,7 @@ namespace VT
 			PhysicalDevice_SubgroupProperties                           = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES                            ,
 			BindBuffer_MemoryInfo                                       = VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO                                        ,
 			BindImage_MemoryInfo                                        = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO                                         ,
-			PhysicalDevice_16Bit_StorageFeatures                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES                         ,      
+			PhysicalDevice_16Bit_StorageFeatures                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES                         ,
 			MemoryDedicatedRequirements                                 = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS                                  ,
 			MemoryDedicated_AllocateInfo                                = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO                                 ,
 			Memory_AllocateFlagsInfo                                    = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO                                     ,
@@ -1670,12 +1684,12 @@ namespace VT
 			PhysicalDevice_ExternalSemaphore_Info                       = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO                        ,
 			ExternalSemaphore_Properties                                = VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES                                  ,
 			PhysicalDevice_Maintence_3_Properties                       = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES                       ,
-			Descriptor_SetLayoutSupport                                 = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT                                  , 							    
-			PhysicalDevice_ShaderDrawParameters_Features                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES                ,   		     
+			Descriptor_SetLayoutSupport                                 = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT                                  ,
+			PhysicalDevice_ShaderDrawParameters_Features                = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES                ,
 			PhysicalDevice_Vulkan_1_1_Features                          = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES                            ,
 			PhysicalDevice_Vulkan_1_1_Properties                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES                          ,
 			PhysicalDevice_Vulkan_1_2_Features                          = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES                            ,
-			PhysicalDevice_Vulkan_1_2_Properties                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES                          ,   					    
+			PhysicalDevice_Vulkan_1_2_Properties                        = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES                          ,
 			ImageFormatList_CreateInfo                                  = VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO                                  ,
 			AttachmentDescription_2                                     = VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2                                       ,
 			AttachmentReference_2                                       = VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2                                         ,
@@ -1694,7 +1708,7 @@ namespace VT
 			PhysicalDevice_Descriptor_IndexingProperties                = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES                 ,
 			Descriptor_SetVariable_DescriptorCount_AllocateInfo         = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO         ,
 			Descriptor_SetVariable_Descriptor_CountLayoutSupport        = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT        ,
-			PhysicalDevice_DepthStencil_ResolveProperties               = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES               ,    
+			PhysicalDevice_DepthStencil_ResolveProperties               = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES               ,
 			SubpassDescription_DepthStencilResolve                      = VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE                      ,
 			PhysicalDevice_ScalarBlockLayoutFeatures                    = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES                   ,
 			ImageStencilUsage_CreateInfo                                = VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO                                ,
@@ -1702,9 +1716,9 @@ namespace VT
 			Sampler_ReductionMode_CreateInfo                            = VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO                             ,
 			PhysicalDevice_VulkanMemoryModelFeatures                    = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES                   ,
 			PhysicalDevice_ImagelessFramebufferFeatures                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES                 ,
-			FramebufferAttachments_CreateInfo                           = VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO                            ,   
+			FramebufferAttachments_CreateInfo                           = VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO                            ,
 			FramebufferAttachment_ImageInfo                             = VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO                              ,
-			RenderPassAttachment_BeginInfo                              = VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO                              , 
+			RenderPassAttachment_BeginInfo                              = VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO                              ,
 			PhysicalDevice_UniformBuffer_StandardLayoutFeatures         = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES        ,
 			PhysicalDevice_ShaderSubgroup_ExtendedTypesFeatures         = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES        ,
 			PhysicalDevice_SeparateDepthStencilLayout_Features          = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES        ,
@@ -1717,18 +1731,18 @@ namespace VT
 			TimelineSemaphore_SubmitInfo                                = VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO                                 ,
 			Semaphore_WaitInfo                                          = VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO                                            ,
 			Semaphore_SignalInfo                                        = VK_STRUCTURE_TYPE_SEMAPHORE_SIGNAL_INFO                                          ,
-			PhysicalDevice_BufferDeviceAddress_Features                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES                 ,      
+			PhysicalDevice_BufferDeviceAddress_Features                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES                 ,
 			BufferDeviceAddress_Info                                    = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO                                     ,
 			Buffer_OpaqueCaptureAddress_CreateInfo                      = VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO                      ,
 			Memory_OpaqueCaptureAddress_AllocateInfo                    = VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO                    ,
-			DeviceMemory_OpaqueCaptureAddress_Info                      = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO                      ,    
+			DeviceMemory_OpaqueCaptureAddress_Info                      = VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO                      ,
 			SwapChain_CreateInfo_KHR                                    = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR                                      ,
 			PresentInfo_KHR                                             = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR                                               ,
-			DeviceGroup_PrsentCapabilitties_KHR                         = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR                          ,    
+			DeviceGroup_PrsentCapabilitties_KHR                         = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR                          ,
 			ImageSwapChain_CreateInfo_KHR                               = VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR                                ,
 			BindImageMemory_SwapChain_Info_KHR                          = VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR                           ,
 			Acquire_NextImage_Info_KHR                                  = VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR                                    ,
-			DeviceGroup_PrsentInfo_KHR                                  = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR                                  ,    							   
+			DeviceGroup_PrsentInfo_KHR                                  = VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR                                  ,
 			DeviceGroup_SwapChain_CreateInfo_KHR                        = VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR                         ,
 			DisplayMode_CreateInfo_KHR                                  = VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR                                   ,
 			DisplaySurface_CreateInfo_KHR                               = VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR                                ,
@@ -1746,7 +1760,7 @@ namespace VT
 			DedicatedAllocationImage_CreateInfo_NV                      = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV                      ,
 			DedicatedAllocationBuffer_CreateInfo_NV                     = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV                     ,
 			DedicatedAllocationMemory_AllocateInfo_NV                   = VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV                   ,
-			PhysicalDevice_TransformFeedback_Features_EXT               = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT                ,   
+			PhysicalDevice_TransformFeedback_Features_EXT               = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT                ,
 			PhysicalDevice_TransformFeedback_Properties_EXT             = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT              ,
 			PipelineRasterizationStateStream_CrateInfo_EXT              = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT            ,
 			ImageView_HandleInfo_NVX                                    = VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX                                     ,
@@ -1754,7 +1768,7 @@ namespace VT
 			StreamDescriptorSurface_CreateInfo_GGP                      = VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP                      ,
 			PhysicalDevice_CornerSampledImage_Features_NV               = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV               ,
 			ExternalMemoryImage_CreateInfo_NV                           = VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV                           ,
-			ExportMemory_AllocateInfo_NV                                = VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV                                 ,   
+			ExportMemory_AllocateInfo_NV                                = VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV                                 ,
 			ImportMemory_Win32_HandleInfo_NV                            = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV                             ,
 			ExportMemory_Win32_HandleInfo_NV                            = VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV                             ,
 			Win32_KeyedMutex_AquireRelease_Info_NV                      = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV                      ,
@@ -1986,7 +2000,7 @@ namespace VT
 			PhysicalDevice_PipelineCreationCacheControl_Features_EXT    = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT   ,
 			PhysicalDevice_DiagnosticsConfig_Features_NV                = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV                 ,
 			DeviceDiagnosticsConfig_CreateInfo_NV                       = VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV                       ,
-			PhysicalDevice_VariablePointer_Features                     = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES                      , 
+			PhysicalDevice_VariablePointer_Features                     = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES                      ,
 			PhysicalDevice_ShaderDrawParameter_Features                 = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES                 ,
 			DebugReport_CreateInfo_EXT                                  = VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT                                   ,
 			RenderPass_Multiview_CreateInfo_KHR                         = VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR                          ,
@@ -2103,7 +2117,7 @@ namespace VT
 			PhysicalDevice_HostQuery_ResetFeatures_EXT                  = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT                  ,
 
 			// Not found... (1.2.141)
-			Device_PrivateData_CreateInfo_EXT = 1000295001,	   // VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO_EXT,
+			Device_PrivateData_CreateInfo_EXT = 1000295001,   // VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO_EXT,
 
 			Max_Enum                                                    = VK_STRUCTURE_TYPE_MAX_ENUM
 		};
@@ -2256,7 +2270,7 @@ namespace VT
 		SpecifyBitmaskable(ESemaphoreWaitFlag                );
 		SpecifyBitmaskable(EShaderStageFlag                  );
 		SpecifyBitmaskable(ESubpassDescriptionFlag           );
-		SpecifyBitmaskable(ESurfaceTransformFlag             );	
+		SpecifyBitmaskable(ESurfaceTransformFlag             );
 		SpecifyBitmaskable(ESwapchainCreateFlag              );
     }
 }

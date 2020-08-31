@@ -20,10 +20,24 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace Corridors
@@ -44,8 +58,8 @@ namespace VT
 		struct QueueMask
 		{
 			static constexpr uint32 ComputeAsync = 
-				uint32(EQueueFlag::Compute ) | 
-				uint32(EQueueFlag::Transfer) |
+				uint32(EQueueFlag::Compute      ) |
+				uint32(EQueueFlag::Transfer     ) |
 				uint32(EQueueFlag::SparseBinding);
 
 			static constexpr uint32 TransferOnly = uint32(EQueueFlag::Transfer) | uint32(EQueueFlag::SparseBinding);
@@ -67,8 +81,8 @@ namespace VT
 		{
 			// Utility
 
-			static constexpr RoCStr LunarG_API_Dump   = "VK_LAYER_LUNARG_api_dump";
-			static constexpr RoCStr LunarG_Monitor    = "VK_LAYER_LUNARG_monitor";   // Shows FPS on the window.
+			static constexpr RoCStr LunarG_API_Dump   = "VK_LAYER_LUNARG_api_dump"  ;
+			static constexpr RoCStr LunarG_Monitor    = "VK_LAYER_LUNARG_monitor"   ;   // Shows FPS on the most recently created window.
 			static constexpr RoCStr LunarG_Screenshot = "VK_LAYER_LUNARG_screenshot";
 
 			// Validation

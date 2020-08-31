@@ -1,4 +1,5 @@
-/** @file VT_LogicalDevice.hpp
+/** 
+@file VT_LogicalDevice.hpp
 
 @brief Vaulted Thermals: Logical Device
 */
@@ -23,10 +24,24 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details For long namespace: #define VT_Option__Use_Long_Namespace
+*/
 namespace VT
+#else
+/**
+@namespace VaultedThermals
+
+@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
+
+@details VT_Option__Use_Long_Namespace in use.
+*/
+namespace VaultedThermals
 #endif
 {
 	namespace V1
@@ -97,11 +112,11 @@ namespace VT
 					using ECreateFlag = ELogicalDeviceQueueCreateFlag                 ;
 					using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
 
-						  EType       SType           ;
+					      EType       SType           ;
 					const void*       Next            ;
-						  CreateFlags Flags           ;
-						  uint32      QueueFamilyIndex;
-						  uint32      QueueCount      ;
+					      CreateFlags Flags           ;
+					      uint32      QueueFamilyIndex;
+					      uint32      QueueCount      ;
 					const float*      QueuePriorities ;
 				};
 
@@ -149,10 +164,10 @@ namespace VT
 				 */
 				static EResult SubmitToQueue
 				(
-							LogicalDevice::Queue::Handle _queue      ,
-							uint32                       _submitCount,
-					  const SubmitInfo*                  _submissions,
-					        Fence_Handle                 _fence
+					      LogicalDevice::Queue::Handle _queue      ,
+					      uint32                       _submitCount,
+					const SubmitInfo*                  _submissions,
+					      Fence_Handle                 _fence
 				)
 				{
 					return EResult(vkQueueSubmit(_queue, _submitCount, _submissions, _fence));
@@ -243,14 +258,14 @@ namespace VT
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
 			{
-					  EType                     SType                ;
+				      EType                     SType                ;
 				const void*                     Next                 ;
-					  CreateFlags               Flags                ;
-					  uint32                    QueueCreateInfoCount ;
+				      CreateFlags               Flags                ;
+				      uint32                    QueueCreateInfoCount ;
 				const Queue::CreateInfo*        QueueCreateInfos     ;
-					  uint32                    EnabledLayerCount    ;
+				      uint32                    EnabledLayerCount    ;
 				      RoSCtr_roArray_Array      EnabledLayerNames    ;
-					  uint32                    EnabledExtensionCount;
+				      uint32                    EnabledExtensionCount;
 				      RoSCtr_roArray_Array      EnabledExtensionNames;
 				const PhysicalDevice::Features* EnabledFeatures      ;
 			};
@@ -551,7 +566,7 @@ namespace VT
 				Handle handle;
 
 				//CreateInfo* info;   // TODO Change to this
-				CreateInfo* info;   
+				CreateInfo* info;
 
 				EQueueFlag assignment;
 
@@ -567,16 +582,16 @@ namespace VT
 
 			EResult Create(CreateInfo& _createInfo)
 			{
-				info           = _createInfo             ;
-				allocator      = Memory::DefaultAllocator;
+				info      = _createInfo             ;
+				allocator = Memory::DefaultAllocator;
 
 				return Parent::Create(*physicalDevice, info, handle);
 			}
 
 			EResult Create(CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				info           = _createInfo     ;
-				allocator      = _allocator      ;
+				info      = _createInfo     ;
+				allocator = _allocator      ;
 
 				return Parent::Create(*physicalDevice, info, allocator, handle);
 			}

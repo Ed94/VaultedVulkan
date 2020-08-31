@@ -2,7 +2,13 @@
  * \file   VT_Types.hpp
  * \brief  Vaulted Thermals: Types
  *********************************************************************/
+/*!
+@file VT_Types.hpp
 
+@brief Vaulted Thermals: Types
+
+@details
+*/
 
 
 #pragma once
@@ -18,10 +24,10 @@
 
 
 
-#ifdef VT_Option__Use_Long_Namespace
-namespace VaultedThermals
-#else
+#ifndef VT_Option__Use_Long_Namespace
 namespace VT
+#else
+namespace VaultedThermals
 #endif
 {
 #pragma region Common Object Types
@@ -32,6 +38,10 @@ namespace VT
 	<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects">Common Object Types Specification</a>
 	*/
 
+	/** @namespace Corridors
+
+	@brief Contains shared definitions between the vaults.
+	*/
 	namespace Corridors
 	{
 		/** 
@@ -83,8 +93,10 @@ namespace VT
 		*/
 		struct Offset2D : V0::VKStruct_Base<VkOffset2D>
 		{
-			sint32 X;
-			sint32 Y;
+			sint32 X, Y;
+
+			bool operator==(const Offset2D _other) {  return X == _other.X && Y == _other.Y ? true : false; }
+			bool operator!=(const Offset2D _other) {  return X != _other.X && Y != _other.Y ? true : false; }
 		};
 
 		/** 
@@ -100,9 +112,10 @@ namespace VT
 		*/
 		struct Offset3D : V0::VKStruct_Base<VkOffset3D>
 		{
-			sint32 X;
-			sint32 Y;
-			sint32 Z;
+			sint32 X, Y, Z;
+
+			bool operator==(const Offset3D _other) { return X == _other.X && Y == _other.Y && Z == _other.Z ? true : false; }
+			bool operator!=(const Offset3D _other) { return X != _other.X && Y != _other.Y && Z != _other.Z ? true : false; }
 		};
 
 		/** 
@@ -118,16 +131,14 @@ namespace VT
 		*/
 		struct Extent2D : V0::VKStruct_Base<VkExtent2D>
 		{
-			uint32 Width ;
-			uint32 Height;
+			uint32 Width, Height;
 
 			bool operator== (const Extent2D& _other)
 			{
 				return
-
-					Width  == _other.Width &&
-					Height == _other.Height 
-					? true : false;
+				Width  == _other.Width &&
+				Height == _other.Height 
+				? true : false;
 			}
 		};
 
@@ -145,9 +156,7 @@ namespace VT
 		*/
 		struct Extent3D : V0::VKStruct_Base<VkExtent3D>
 		{
-			uint32 Width ;
-			uint32 Height;
-			uint32 Depth ;
+			uint32 Width, Height, Depth;
 		};
 
 		/** 
@@ -348,9 +357,9 @@ namespace VT
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
 		struct FormatProperties : V0::VKStruct_Base<VkFormatProperties>
 		{
-			FormatFeatureFlags    LinearTilingFeatures;
+			FormatFeatureFlags    LinearTilingFeatures ;
 			FormatFeatureFlags    OptimalTilingFeatures;
-			FormatFeatureFlags    BufferFeatures;
+			FormatFeatureFlags    BufferFeatures       ;
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
@@ -365,13 +374,13 @@ namespace VT
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOpState">Specification</a>  */
 		struct StencilOperationState : V0::VKStruct_Base<VkStencilOpState>
 		{
-			EStencilOperation FailOp;
-			EStencilOperation FassOp;
+			EStencilOperation FailOp     ;
+			EStencilOperation FassOp     ;
 			EStencilOperation DepthFailOp;
-			ECompareOperation CompareOp;
+			ECompareOperation CompareOp  ;
 			uint32            CompareMask;
-			uint32            WriteMask;
-			uint32            Reference;
+			uint32            WriteMask  ;
+			uint32            Reference  ;
 		};
 		
 		/**
@@ -399,6 +408,10 @@ namespace VT
 		};
 	}
 
+	/** @namespace Vault_2
+
+	@brief Repetitive functionality wrapping.
+	*/
 	namespace V2
 	{
 		/**
@@ -408,7 +421,7 @@ namespace VT
 		*/
 		struct LayerAndExtensionProperties
 		{
-			LayerProperties                  Layer     ;
+			LayerProperties                   Layer     ;
 			DynamicArray<ExtensionProperties> Extensions;
 		};
 	}
