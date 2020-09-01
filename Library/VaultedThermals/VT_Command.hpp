@@ -68,7 +68,7 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@addtogroup Command_Buffers
+		@addtogroup VKAPI_Command_Buffers
 		@{
 		*/
 

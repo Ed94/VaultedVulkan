@@ -35,9 +35,6 @@ specified, why this is required.
 
 #endif
 
-// Foreign Objects: These are helper functionality I defined but are not directly related to the Vaulted Thermals Library.
-// They are however needed by the Library in order to function.
-#include "_foreign/Foreign_ConventionEnforcer.hpp"
 
 // VT
 #include "VT_Vaults.hpp"

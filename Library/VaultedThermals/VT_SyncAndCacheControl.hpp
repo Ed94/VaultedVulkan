@@ -1079,7 +1079,7 @@ namespace VaultedThermals
 			using Parent::Destroy;
 		};
 
-		/** } */
+		/** @} */
 	}
 
 	namespace V3
