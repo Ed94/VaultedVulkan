@@ -1,0 +1,3 @@
+[submodule "cmake"]
+	path = cmake
+	url = https://github.com/tschuchortdev/cmake_git_clone

@@ -54,11 +54,6 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
-	/**
-	@ingroup VaultedThermals
-	@{
-	*/
-
 	/** 
 	@defgroup Corridors
 	@{
@@ -66,6 +61,8 @@ namespace VaultedThermals
 	@namespace Corridors
  
 	@brief Contains shared definitions between the vaults.
+
+	@ingroup VaultedThermals
 	*/
 	namespace Corridors {}
 	/** @} */
@@ -81,6 +78,8 @@ namespace VaultedThermals
 	@brief Meta-Loading Setup.
 
 	@details When the heat at the control gate isn't enough.
+
+	@ingroup VaultedThermals
 	*/
 	namespace Vault_MagmaChamber {}
 	/** @} */
@@ -94,6 +93,8 @@ namespace VaultedThermals
 	@brief Backend vault for VaultedThermals
 
 	@details For now only abstracts away OS Platform details and basic meta-structure definitions.
+
+	@ingroup VaultedThermals
 	*/
 	namespace V0 { using namespace Corridors; }
 	/** @} */
@@ -105,6 +106,8 @@ namespace VaultedThermals
 	@namespace Vault_1
 
 	@brief 1:1 Wrapping of Vulkan API
+
+	@ingroup VaultedThermals
 	*/
 	namespace V1 { using namespace Corridors; }
 	/** @} */
@@ -116,6 +119,8 @@ namespace VaultedThermals
 	@namespace Vault_2
 
 	@brief Repetitive functionality wrapping.
+
+	@ingroup VaultedThermals
 	*/
 	namespace V2 { using namespace Corridors; }
 	/** @} */
@@ -127,6 +132,8 @@ namespace VaultedThermals
 	@namespace Vault_3
 	
 	@brief Object-Oriented wrapping
+
+	@ingroup VaultedThermals
 	*/
 	namespace V3 { using namespace Corridors; }
 	/** @} */
@@ -138,10 +145,10 @@ namespace VaultedThermals
 	@namespace Vault_4
 
 	@brief Object-Oriented bootstrapped backend
+
+	@ingroup VaultedThermals
 	*/
 	namespace V4 { using namespace Corridors; }
-	/** @} */
-
 	/** @} */
 }
 
