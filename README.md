@@ -7,7 +7,7 @@ Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/inde
 ## Benefits:
 - Features a 1:1 wrap implementation of the Vulkan C-API (See Vault_01 implementation).
 - Full in source and doxygen documentation.
-- Ease of use functionality for boostrapping (See Vaults_02/3/4/5/6), but without the extra non-gpu API related clutter (Asset Loading, Camera, Entity, etc)
+- Ease of use functionality for boostrapping (See Vaults_02/3/4), but without the extra non-gpu API related clutter (Asset Loading, Camera, Entity, etc)
 - Leveled abstraction namspacing and optional implementation wrapped in macros to allow easy discretion of features desired.
 
 ## State
