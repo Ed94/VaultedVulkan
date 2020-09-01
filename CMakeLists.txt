@@ -36,10 +36,6 @@ set(LibFiles VaultedThermals)
  
 #add_library(VaultedThermals ${LibraryFiles})
 
-# CMAKE_GitClone ----------------------------------------------------------------------------------------
-
-include(cmake/gitclone/cmake/GitUtils.cmake)
-
 # Doxygen -----------------------------------------------------------------------------------------------
 
 find_package(Doxygen)
