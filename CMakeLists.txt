@@ -31,6 +31,10 @@ list(APPEND LibraryFiles ${Project_Library_Directory}/VaultedThermals.hpp)
  
 add_library(VaultedThermals ${LibraryFiles})
 
+# CMAKE_GitClone ---------------------------------------------------------------------------------------
+
+include(cmake/cmake/GitUtils.cmake)
+
 # Doxygen -----------------------------------------------------------------------------------------------
 
 find_package(Doxygen)
