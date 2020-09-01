@@ -68,7 +68,12 @@ namespace VaultedThermals
 		*/
 
 		/**
-		 @brief 
+		@addtogroup Command_Buffers
+		@{
+		*/
+
+		/**
+		 @brief Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.
 		 
 		 @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
 		 */
@@ -757,13 +762,20 @@ namespace VaultedThermals
 			}
 		};
 
-		/** @} */
+		/** @} */   // Command_Buffers
+
+		/** @} */	// Vault_1
 	}
 
 	namespace V2
 	{
 		/** 
-		@addgroup Vault_2
+		@addtogroup Vault_2
+		@{
+		*/
+
+		/**
+		@addtogroup Command_Buffers
 		@{
 		*/
 
@@ -1125,7 +1137,7 @@ namespace VaultedThermals
 	namespace V3
 	{
 		/**
-		@defgroup Vault_3
+		@addtogroup Vault_3
 		@{
 		*/
 
@@ -1751,6 +1763,8 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
-		/** @} */
+		/** @} */   // Command_Buffers
+
+		/** @} */	// Vault_3
 	}
 }

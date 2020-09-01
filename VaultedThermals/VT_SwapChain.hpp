@@ -295,7 +295,7 @@ namespace VaultedThermals
 	namespace V3
 	{
 		/**
-		@addtogroup
+		@addtogroup Vault_3
 		@{
 		*/
 
