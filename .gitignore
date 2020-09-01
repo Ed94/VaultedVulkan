@@ -358,3 +358,19 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+out/build/x64-Debug/.cmake/api/v1/query/client-MicrosoftVS/query.json
+out/build/x64-Debug/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdC/CMakeCCompilerId.c
+out/build/x64-Debug/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdC/CMakeCCompilerId.exe
+out/build/x64-Debug/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.cpp
+out/build/x64-Debug/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.exe
+*.cmake
+out/build/x64-Debug/CMakeFiles/3.17.20032601-MSVC_2/CMakeDetermineCompilerABI_C.bin
+out/build/x64-Debug/CMakeFiles/3.17.20032601-MSVC_2/CMakeDetermineCompilerABI_CXX.bin
+out/build/x64-Debug/CMakeFiles/ShowIncludes/foo.h
+out/build/x64-Debug/CMakeFiles/ShowIncludes/main.c
+out/build/x64-Debug/CMakeFiles/cmake.check_cache
+out/build/x64-Debug/CMakeCache.txt
+out/build/x64-Debug/CMakeDoxyfile.in
+out/build/x64-Debug/Doxyfile.out
+out/build/x64-Debug/VSInheritEnvironments.txt
+CMakeSettings.json
