@@ -83,7 +83,7 @@
             <dt>
               class <a href="class_v_t_1_1_v3_1_1_command_buffer.html" class="m-doc">VT::V3::CommandBuffer</a>
             </dt>
-            <dd><span></span></dd>
+            <dd></dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -118,7 +118,7 @@
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">CommandPool::<wbr />Handle</a> _pool,
               <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue.html#afdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue)</span>
             </dt>
-            <dd><br /></dd>
+            <dd>Uses a single-time command buffer to copy a buffer.</dd>
             <dt id="abf9024cc00cce939676fa8b797aa73b3">
               <span class="m-doc-wrap-bumper">static void <a href="#abf9024cc00cce939676fa8b797aa73b3" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> _commandBuffer,
               <a href="struct_v_t_1_1_v1_1_1_pipeline.html#ac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
@@ -127,7 +127,7 @@
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
               const <a href="struct_v_t_1_1_v2_1_1_memory_1_1_barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of SubmitPipelineBarrier where only a set of regular memory barriers are submitted.</dd>
             <dt id="a78ab8e1682249f5a0b05b6de29a8ef30">
               <span class="m-doc-wrap-bumper">static void <a href="#a78ab8e1682249f5a0b05b6de29a8ef30" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> _commandBuffer,
               <a href="struct_v_t_1_1_v1_1_1_pipeline.html#ac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
@@ -136,7 +136,7 @@
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
               const <a href="struct_v_t_1_1_v2_1_1_buffer_1_1_memory___barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version where only a set of buffer memory barriers are submitted.</dd>
             <dt id="a149a7032c5372f1eaf412c605710d522">
               <span class="m-doc-wrap-bumper">static void <a href="#a149a7032c5372f1eaf412c605710d522" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> _commandBuffer,
               <a href="struct_v_t_1_1_v1_1_1_pipeline.html#ac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
@@ -145,7 +145,7 @@
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
               const <a href="struct_v_t_1_1_v2_1_1_image_1_1_memory___barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of SubmitPipelineBarrier where only a set of image memory barriers are submitted.</dd>
             <dt id="a39e57d4c1768f0b2383bd22444b2f1b2">
               <span class="m-doc-wrap-bumper">static void <a href="#a39e57d4c1768f0b2383bd22444b2f1b2" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> _commandBuffer,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
@@ -155,7 +155,7 @@
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
               const <a href="struct_v_t_1_1_v2_1_1_memory_1_1_barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of WaitForEvents where only a set of memory barriers are waited on.</dd>
             <dt id="aaa6970d76067e80bc56532eafae2d925">
               <span class="m-doc-wrap-bumper">static void <a href="#aaa6970d76067e80bc56532eafae2d925" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> _commandBuffer,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
@@ -165,7 +165,7 @@
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
               const <a href="struct_v_t_1_1_v2_1_1_buffer_1_1_memory___barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of WaitForEvents where only a set of buffer memory barriers are waited on.</dd>
             <dt id="a1f6f751d605ee8291821a7c4a97d590c">
               <span class="m-doc-wrap-bumper">static void <a href="#a1f6f751d605ee8291821a7c4a97d590c" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> _commandBuffer,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
@@ -175,7 +175,7 @@
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
               const <a href="struct_v_t_1_1_v2_1_1_image_1_1_memory___barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of WaitForEvents where only a set of image memory barriers are waited on.</dd>
             <dt id="ae8b55b515275492257b4840579acb1c8">
               <span class="m-doc-wrap-bumper">static void <a href="#ae8b55b515275492257b4840579acb1c8" class="m-doc-self">CopyBuffer</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> _commandBuffer,
               <a href="struct_v_t_1_1_v1_1_1_buffer.html#a6c9a4b68427349a760f9a371985418a5" class="m-doc">Buffer::<wbr />Handle</a> _sourceBuffer,
@@ -257,7 +257,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.20 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.19 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

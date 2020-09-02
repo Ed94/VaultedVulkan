@@ -128,11 +128,11 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_command_pool.html" class="m-doc">VT::V1::CommandPool</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a></dd>
+            <dd>Command pools are opaque objects that command buffer memory is allocated from, and which allow the implementation to amortize the cost of resource creation across multiple command buffers. Command pools are externally synchronized, meaning that a command pool must not be used concurrently in multiple threads. That includes use via recording commands on any command buffers allocated from the pool, as well as operations that allocate, free, and reset command buffers or the pool itself.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_command_pool.html" class="m-doc">VT::V2::CommandPool</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Command pools are opaque objects that command buffer memory is allocated from, and which allow the implementation to amortize the cost of resource creation across multiple command buffers.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_command_buffer.html" class="m-doc">VT::V2::CommandBuffer</a>
             </dt>
@@ -140,11 +140,11 @@
             <dt>
               class <a href="class_v_t_1_1_v3_1_1_command_buffer.html" class="m-doc">VT::V3::CommandBuffer</a>
             </dt>
-            <dd><span></span></dd>
+            <dd></dd>
             <dt>
               class <a href="class_v_t_1_1_v3_1_1_command_pool.html" class="m-doc">VT::V3::CommandPool</a>
             </dt>
-            <dd><span></span></dd>
+            <dd></dd>
           </dl>
         </section>
         <section id="typedef-members">
@@ -188,12 +188,6 @@
               const BeginInfo&amp; _info) -&gt; EResult</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBeginCommandBuffer">Specification</a></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ga8a502cc015b2d98eaa77d53d7d84ca5e" class="m-doc">BeginRenderPass</a>(</span><span class="m-doc-wrap">const Handle _commandBuffer,
-              const RenderPass::BeginInfo&amp; _beginInfo,
-              ESubpassContents _contents)</span>
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBeginRenderPass">Specification</a></dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#gab307d32def56ce8796ce1a9eae02b299" class="m-doc">Execute</a>(</span><span class="m-doc-wrap">Handle _primaryCommandBuffer,
               uint32 _secondaryBufferCount,
@@ -326,15 +320,6 @@
                 </tr>
               </tbody>
             </table>
-          </div></section>
-          <section class="m-doc-details" id="ga8a502cc015b2d98eaa77d53d7d84ca5e"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8a502cc015b2d98eaa77d53d7d84ca5e" class="m-doc-self">BeginRenderPass</a>(</span><span class="m-doc-wrap">const Handle _commandBuffer,
-              const RenderPass::BeginInfo&amp; _beginInfo,
-              ESubpassContents _contents)</span></span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBeginRenderPass">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gab307d32def56ce8796ce1a9eae02b299"><div>
             <h3>
@@ -619,7 +604,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.20 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.19 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
