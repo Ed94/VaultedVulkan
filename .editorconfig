@@ -1,9 +1,0 @@
-root = true
-
-[*.hpp]
-indent_style = tab
-indent_size = 4
-
-[*.cpp]
-indent_style = tab
-indent_size = 4
