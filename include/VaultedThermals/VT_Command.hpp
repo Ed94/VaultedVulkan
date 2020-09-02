@@ -68,14 +68,11 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@addtogroup VKAPI_Command_Buffers
-		@{
-		*/
-
-		/**
 		 @brief Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.
 		 
 		 @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
+
+		 @ingroup VKAPI_Command_Buffers
 		 */
 		struct CommandBuffer
 		{
@@ -762,8 +759,6 @@ namespace VaultedThermals
 			}
 		};
 
-		/** @} */   // Command_Buffers
-
 		/** @} */	// Vault_1
 	}
 
@@ -775,10 +770,8 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@addtogroup Command_Buffers
-		@{
+		@ingroup VKAPI_Command_Buffers
 		*/
-
 		struct CommandPool : public V1::CommandPool
 		{
 			using Parent = V1::CommandPool;
@@ -1762,8 +1755,6 @@ namespace VaultedThermals
 
 			const LogicalDevice* device;
 		};
-
-		/** @} */   // Command_Buffers
 
 		/** @} */	// Vault_3
 	}
