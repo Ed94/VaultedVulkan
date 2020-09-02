@@ -37,6 +37,8 @@ This will drop into your project the necessary implementation for the instantiat
 
 #pragma once
 
+
+
 /**
 @mainpage VaultedThermals
 

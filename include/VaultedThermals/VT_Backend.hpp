@@ -41,31 +41,11 @@ struct Bitmaskable
 
 
 #ifndef VT_Option__Use_Long_Namespace
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details For long namespace: #define VT_Option__Use_Long_Namespace
-*/
 namespace VT
 #else
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details VT_Option__Use_Long_Namespace in use.
-*/
 namespace VaultedThermals
 #endif
 {
-	/** @namespace Vault_0
-
-	@brief Backend vault for VaultedThermals
-
-	@details For now only abstracts away OS Platform details and basic meta-structure definitions.
-	*/
 	namespace V0
 	{
 		/** 

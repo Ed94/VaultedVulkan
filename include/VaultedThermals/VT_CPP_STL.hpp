@@ -24,22 +24,8 @@
 
 
 #ifndef VT_Option__Use_Long_Namespace
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details For long namespace: #define VT_Option__Use_Long_Namespace
-*/
 namespace VT
 #else
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details VT_Option__Use_Long_Namespace in use.
-*/
 namespace VaultedThermals
 #endif
 {
@@ -51,10 +37,12 @@ namespace VaultedThermals
 		*/
 
 		/**
-		 * @brief Vulkan's boolean type.
-		 * 
-		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBool32">Specification</a> 
-		 */
+		@brief Vulkan's boolean type.
+		 
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBool32">Specification</a> 
+
+		@ingroup APISpec_Fundamentals
+		*/
 		using Bool = VkBool32;
 
 		// Integers

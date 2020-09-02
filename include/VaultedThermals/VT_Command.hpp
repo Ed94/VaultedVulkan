@@ -37,29 +37,11 @@
 
 
 #ifndef VT_Option__Use_Long_Namespace
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details For long namespace: #define VT_Option__Use_Long_Namespace
-*/
 namespace VT
 #else
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details VT_Option__Use_Long_Namespace in use.
-*/
 namespace VaultedThermals
 #endif
 {
-	/** @namespace Vault_1
-
-	@brief 1:1 Wrapping of Vulkan API
-	*/
 	namespace V1
 	{
 		/**
@@ -90,9 +72,8 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferUsageFlags">Specification</a> @ingroup APISpec_Command_Buffers */
 			using UsageFlags                  = Bitmask<ECommandBufferUsageFlag    , VkCommandBufferUsageFlags    >;
 
-			
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a> @ingroup APISpec_Copy_Commands */
 			struct BufferImageRegion : V0::VKStruct_Base<VkBufferImageCopy>
 			{
 				DeviceSize               BufferOffset     ;
@@ -103,9 +84,7 @@ namespace VaultedThermals
 				Extent3D                 ImageExtent      ;
 			};
 
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceInfoURL">Specification</a>
-			 */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceInfo">Specification</a> @ingroup APISpec_Command_Buffers */
 			struct InheritanceWindow : V0::VKStruct_Base<VkCommandBufferInheritanceInfo, EStructureType::CommandBuffer_InheritanceInfo>
 			{
 				      EType                       SType               ;
@@ -117,9 +96,12 @@ namespace VaultedThermals
 				      QueryControlFlags           QueryFlags          ;
 				      QueryPipelineStatisticFlags PipelineStatistics  ;
 
+
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceConditionalRenderingInfoEXT">Specification</a>
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceConditionalRenderingInfoEXT">Specification</a>
+				
+				@ingroup APISpec_Command_Buffers
+				*/
 				struct ConditionalRenderingInfo : V0::VKStruct_Base<VkCommandBufferInheritanceConditionalRenderingInfoEXT, EStructureType::CommandBuffer_Inheritance_ConditionalRendering_Info_EXT>
 				{
 					      EType SType ;
@@ -128,8 +110,10 @@ namespace VaultedThermals
 				};
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">Specification</a> 
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">Specification</a> 
+
+				@ingroup APISpec_Command_Buffers
+				*/
 				struct PassTransformInfo : V0::VKStruct_Base
 					<VkCommandBufferInheritanceRenderPassTransformInfoQCOM, EStructureType::CommandBufferInheritance_RenderPassTransform_Info_QCOM>
 				{
@@ -141,8 +125,10 @@ namespace VaultedThermals
 			};	
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferBeginInfo">Specification</a>
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferBeginInfo">Specification</a>
+
+			@ingroup APISpec_Command_Buffers
+			*/
 			struct BeginInfo : V0::VKStruct_Base<VkCommandBufferBeginInfo, EStructureType::CommandBuffer_BeginInfo>
 			{
 				      EType              SType          ;
@@ -152,8 +138,10 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a>
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a>
+			
+			@ingroup APISpec_Command_Buffers
+			*/
 			struct SubmitInfo : V0::VKStruct_Base<VkSubmitInfo, EStructureType::SubmitInfo>
 			{
 				      EType                 SType               ;
@@ -168,8 +156,10 @@ namespace VaultedThermals
 
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkTimelineSemaphoreSubmitInfo">Specification</a>
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkTimelineSemaphoreSubmitInfo">Specification</a>
+
+				@ingroup APISpec_Command_Buffers
+				*/
 				struct TimelineSemaphore : V0::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
 				{
 					      EType   SType                    ;
@@ -181,8 +171,10 @@ namespace VaultedThermals
 				};	
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a>	
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a>	
+
+				@ingroup APISpec_Command_Buffers
+				*/
 				struct D3D12Fence : V0::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
 				{
 					      EType   SType                     ;
@@ -194,8 +186,10 @@ namespace VaultedThermals
 				};
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32KeyedMutexAcquireReleaseInfoKHR">Specification</a> 
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32KeyedMutexAcquireReleaseInfoKHR">Specification</a> 
+
+				@ingroup APISpec_Command_Buffers
+				*/
 				struct Win32KeyedMutexAcquireRelease : V0::VKStruct_Base<VkWin32KeyedMutexAcquireReleaseInfoKHR>
 				{
 					      EType           SType          ;
@@ -210,8 +204,10 @@ namespace VaultedThermals
 				};
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkProtectedSubmitInfo">Specification</a> 
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkProtectedSubmitInfo">Specification</a> 
+
+				@ingoup APISpec_Command_Buffers
+				*/
 				struct Protected : V0::VKStruct_Base<VkProtectedSubmitInfo>
 				{
 					      EType SType          ;
@@ -220,8 +216,10 @@ namespace VaultedThermals
 				};
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupSubmitInfo">Specification</a>
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupSubmitInfo">Specification</a>
+
+				@ingroup APISpec_Command_Buffers
+				*/
 				struct DeviceGroup : V0::VKStruct_Base<VkDeviceGroupSubmitInfo>
 				{
 					      EType   SType                       ;
@@ -235,8 +233,10 @@ namespace VaultedThermals
 				};
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceQuerySubmitInfoKHR">Specification</a> 
-				 */
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceQuerySubmitInfoKHR">Specification</a>
+
+				@ingroup APISpec_Command_Buffers
+				*/
 				struct PerformanceQuery : V0::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
 				{
 					      EType  Type            ;
@@ -246,8 +246,10 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupCommandBufferBeginInfo">Specification</a> 
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupCommandBufferBeginInfo">Specification</a> 
+			
+			@ingroup APISpec_Command_Buffers
+			*/
 			struct DeviceGroupBeginInfo : V0::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
 			{
 				      EType  SType     ;
@@ -258,8 +260,10 @@ namespace VaultedThermals
 			
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBeginCommandBuffer">Specification</a> 
-			 * 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBeginCommandBuffer">Specification</a> 
+			
+			@ingroup APISpec_Command_Buffers
+
 			 * \param _commandBuffer
 			 * \param _flags
 			 * \return 
@@ -270,7 +274,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBeginRenderPass">Specification</a>.
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBeginRenderPass">Specification</a>
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
@@ -289,8 +295,10 @@ namespace VaultedThermals
 
 			
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindDescriptorSets">Specification</a> 
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindDescriptorSets">Specification</a> 
+
+			@ingroup APISpec_Resource_Descriptors
+			*/
 			static void BindDescriptorSets
 			(
 				      Handle                   _commandBuffer     ,
@@ -317,8 +325,10 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindIndexBuffer">Specification</a> 
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindIndexBuffer">Specification</a> 
+
+			@ingroup APISpec_Drawing_Commands
+			*/
 			static void BindIndexBuffer
 			(
 				Handle         _commandBuffer,
@@ -331,8 +341,10 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindVertexBuffers">Specification</a>.
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindVertexBuffers">Specification</a>
+
+			@ingroup APISpec_Fixed-Function_Vertex_Processing
+			*/
 			static void BindVertexBuffers
 			(
 				      Handle          _commandBuffer,
@@ -347,6 +359,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindPipeline">Specification</a>
+			 * 
+			 * @ingroup APISpec_Pipelines
 			 * 
 			 * \param commandBuffer
 			 * \param event
@@ -364,7 +378,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBlitImage">Specification</a> .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBlitImage">Specification</a>
+			 * 
+			 * @ingroup APISpec_Copy_Commands
 			 * 
 			 * \param commandBuffer
 			 * \param event
@@ -397,10 +413,10 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBuffer">Specification</a>
-			 * 
-			 * \return 
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBuffer">Specification</a>
+			 
+			@ingroup APISpec_Copy_Commands
+			*/
 			static void CopyBuffer
 			(
 				      Handle            _commandBuffer    ,
@@ -415,6 +431,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBufferToImage">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Copy_Commands
 			 */
 			static void CopyBufferToImage
 			(
@@ -431,6 +449,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdDraw">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Drawing_Commands
 			 */
 			static void Draw
 			(
@@ -446,6 +466,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdDrawIndexed">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Drawing_Commands
 			 */
 			static void DrawIndexed
 			(

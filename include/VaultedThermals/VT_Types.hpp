@@ -22,22 +22,8 @@
 
 
 #ifndef VT_Option__Use_Long_Namespace
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details For long namespace: #define VT_Option__Use_Long_Namespace
-*/
 namespace VT
 #else
-/**
-@namespace VaultedThermals
-
-@brief Main library namespace for Vaulted Thermals (Vulkan Wrapper)
-
-@details VT_Option__Use_Long_Namespace in use.
-*/
 namespace VaultedThermals
 #endif
 {
@@ -49,10 +35,6 @@ namespace VaultedThermals
 	<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects">Common Object Types Specification</a>
 	*/
 
-	/** @namespace Corridors
-
-	@brief Contains shared definitions between the vaults.
-	*/
 	namespace Corridors
 	{
 		/** 
@@ -62,6 +44,8 @@ namespace VaultedThermals
 
 		/** 
 		@addtogroup Common_Object_Types
+		@ingroup Corridors
+		@{
 		*/
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
@@ -202,6 +186,7 @@ namespace VaultedThermals
 
 		/**
 		@addtogroup CommonStrings
+		@ingroup Corridors
 		@{
 		 */
 
@@ -222,6 +207,7 @@ namespace VaultedThermals
 
 		/**
 		@addtogroup Flags_and_Bitmasks
+		@ingroup Corridors
 		@{
 		*/
 
@@ -277,6 +263,7 @@ namespace VaultedThermals
 
 		/**
 		@addtogroup Pointers
+		@ingroup Corridors
 		@{
 		*/
 
