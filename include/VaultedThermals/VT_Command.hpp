@@ -485,6 +485,8 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEndCommandBuffer">Specification</a> 
 			 * 
+			 * @ingroup https://www.alienbrain.com/
+			 * 
 			 * \param _commandBuffer
 			 * \return 
 			 */
@@ -495,6 +497,11 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdEndRenderPass">Specification</a> .
+			 * 
+			 * @ingroup APISpec_Render_Pass
+			 * 
+			 * @param _commandBuffer
+			 * @return
 			 */
 			static void EndRenderPass(Handle _commandBuffer)
 			{
@@ -502,7 +509,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdExecuteCommands">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdExecuteCommands">Specification</a>
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 * 
 			 * \param _primaryCommandBuffer
 			 * \param _secondaryBufferCount
@@ -521,6 +530,8 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetCommandBuffer">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Command_Buffers
+			 * 
 			 * \param _commandBuffer
 			 * \param _flags
 			 * \return 
@@ -532,6 +543,8 @@ namespace VaultedThermals
 
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdResetEvent">Specification</a> 
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
 			*/
 			static void ResetEvent
 			(
@@ -545,6 +558,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			static void SubmitPipelineBarrier
 			(
@@ -576,9 +591,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * 
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetDeviceMask">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 */
 			static void SetDeviceMask(Handle _commandBuffer, uint32 _deviceMask)
 			{
@@ -586,7 +601,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			static void SetEvent
 			(
@@ -599,7 +616,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			static void WaitForEvents
 			(
@@ -618,16 +637,16 @@ namespace VaultedThermals
 			{
 				vkCmdWaitEvents
 				(
-					_commandBuffer,
-					_eventCount,
-					_events,
-					_srcStageMask,
-					_dstStageMask,
-					_memoryBarrierCount, 
-					_memoryBarriers->operator const VkMemoryBarrier*(),
-					_bufferMemoryBarrierCount,
+					_commandBuffer                                                ,
+					_eventCount                                                   ,
+					_events                                                       ,
+					_srcStageMask                                                 ,
+					_dstStageMask                                                 ,
+					_memoryBarrierCount                                           , 
+					_memoryBarriers->operator const VkMemoryBarrier*()            ,
+					_bufferMemoryBarrierCount                                     ,
 					_bufferMemoryBarriers->operator const VkBufferMemoryBarrier*(),
-					_imageMemoryBarrierCount,
+					_imageMemoryBarrierCount                                      ,
 					_imageMemoryBarriers->operator const VkImageMemoryBarrier*()
 				);
 			}
@@ -640,18 +659,20 @@ namespace VaultedThermals
 		 */
 		struct CommandPool
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPool">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPool">Specification</a> @ingroup APISpec_Command_Buffers */
 			using Handle = VkCommandPool;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlags">Specification</a> @ingroup APISpec_Command_Buffers */
 			using CreateFlgas = Bitmask<ECommandPoolCreateFlag, VkCommandPoolCreateFlags>;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlags">Specification</a> @ingroup APISpec_Command_Buffers */
 			using ResetFlags  = Bitmask<ECommandPoolResetFlags, VkCommandPoolResetFlags >;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a> @ingroup APISpec_Command_Buffers */
 			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 */
 			struct AllocateInfo : V0::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
 			{
@@ -662,7 +683,11 @@ namespace VaultedThermals
 				      uint32              BufferCount;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a> 
+			
+			@ingroup APISpec_Command_Buffers 
+			*/
 			struct CreateInfo : V0::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
 			{
 				      EType       SType           ;
@@ -672,7 +697,9 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateCommandBuffers">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateCommandBuffers">Specification</a>
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 * 
 			 * \param _deviceHandle
 			 * \param _allocateInfo
@@ -693,7 +720,9 @@ namespace VaultedThermals
 			 * @brief Create a command pool.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateCommandPool">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateCommandPool">Specification</a>
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 * 
 			 * \param _deviceHandle
 			 * \param _createInfo
@@ -713,7 +742,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a>
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
@@ -730,7 +761,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeCommandBuffers">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeCommandBuffers">Specification</a>
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
@@ -751,6 +784,8 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetCommandPool">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Command_Buffers
+			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
 			 * \param _flags
@@ -767,6 +802,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkTrimCommandPool">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Command_Buffers
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool

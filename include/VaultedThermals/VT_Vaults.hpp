@@ -163,49 +163,49 @@ namespace VaultedThermals
 @defgroup APISpec_Introduction
 @ingroup API_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap2.html">Specification</a> 
+@brief Chapter 1: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap2.html">Specification</a> 
 */
 
 /**
 @defgroup APISpec_Fundamentals
 @ingroup API_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap3.html">Specification</a> 
+@brief Chapter 2: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap3.html">Specification</a> 
 */
 
 /**
 @defgroup APISpec_Initialization
 @ingroup API_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap4.html">Specification</a> 
+@brief Chapter 3: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap4.html">Specification</a> 
 */
 
 /**
 @defgroup APISpec_Devices_and_Queues
 @ingroup API_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap5.html">Specification</a> 
+@brief Chapter 4: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap5.html">Specification</a> 
 */
 
 /**
 @defgroup APISpec_Command_Buffers
 @ingroup API_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap6.html">Specification</a> 
+@brief Chapter 5: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap6.html">Specification</a> 
 */
 
 /**
 @defgroup APISpec_Synchronization_and_Cache_Control
 @ingroup API_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap7.html">Specification</a> 
+@brief Chapter 6: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap7.html">Specification</a> 
 */
 
 /**
 @defgroup APISpec_Render_Pass
 @ingroup API_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap8.html">Specification</a> 
+@brief Chapter 7: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap8.html">Specification</a> 
 */
 
 /**
@@ -377,7 +377,7 @@ namespace VaultedThermals
 */
 
 /**
-@defgroup VKAPI_Window_System_Integration_WSI
+@defgroup APISpec_Window_System_Integration_WSI
 @ingroup API_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap33.html">Specification</a> 

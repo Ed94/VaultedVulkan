@@ -432,10 +432,6 @@ namespace VaultedThermals
 		/** @} */
 	}
 
-	/** @namespace Vault_2
-
-	@brief Repetitive functionality wrapping.
-	*/
 	namespace V2
 	{
 		/**

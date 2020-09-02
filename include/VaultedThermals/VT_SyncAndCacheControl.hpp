@@ -37,10 +37,6 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
-	/** @namespace Vault_1
-
-	@brief 1:1 Wrapping of Vulkan API
-	*/
 	namespace V1
 	{
 		/**
