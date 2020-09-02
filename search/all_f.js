@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['rasterizationstate',['RasterizationState',['../structVT_1_1V1_1_1Pipeline_1_1RasterizationState.html',1,'VT::V1::Pipeline']]],
+  ['rasterizationstate',['RasterizationState',['../structVT_1_1V2_1_1Pipeline_1_1RasterizationState.html',1,'VT::V2::Pipeline']]],
+  ['rect2d',['Rect2D',['../structVT_1_1Corridors_1_1Rect2D.html',1,'VT::Corridors']]],
+  ['registerdeviceevent',['RegisterDeviceEvent',['../structVT_1_1V1_1_1Fence.html#aa0ef9356320f98ae86f4935d260ffae2',1,'VT::V1::Fence::RegisterDeviceEvent()'],['../structVT_1_1V2_1_1Fence.html#a22160052793c2c9bad4f69c0a37417f0',1,'VT::V2::Fence::RegisterDeviceEvent()']]],
+  ['registerdisplayevent',['RegisterDisplayEvent',['../structVT_1_1V1_1_1Fence.html#a35c95973d977041006ecabf04ae71736',1,'VT::V1::Fence::RegisterDisplayEvent()'],['../structVT_1_1V2_1_1Fence.html#ab37160a6a9aa7aa22436a21f032930e6',1,'VT::V2::Fence::RegisterDisplayEvent()']]],
+  ['render',['Render',['../structVT_1_1V1_1_1DescriptorSet.html#adc96c67f99f2e1ffecf000d7a9738f93',1,'VT::V1::DescriptorSet']]],
+  ['renderpass',['RenderPass',['../structVT_1_1V1_1_1RenderPass.html',1,'VT::V1']]],
+  ['renderpass',['RenderPass',['../structVT_1_1V2_1_1RenderPass.html',1,'VT::V2']]],
+  ['renderpass',['RenderPass',['../classVT_1_1V3_1_1RenderPass.html',1,'VT::V3']]],
+  ['requirements',['Requirements',['../structVT_1_1V0_1_1Memory_1_1Requirements.html',1,'VT::V0::Memory']]],
+  ['reset',['Reset',['../structVT_1_1V1_1_1CommandBuffer.html#ab5bbdfcc4f1efa168b545c997b98fb86',1,'VT::V1::CommandBuffer::Reset()'],['../structVT_1_1V1_1_1CommandPool.html#af9df12affe1910621f785afffd159b8d',1,'VT::V1::CommandPool::Reset()'],['../structVT_1_1V1_1_1DescriptorPool.html#afebd06df561438fc3078f18497334245',1,'VT::V1::DescriptorPool::Reset()'],['../structVT_1_1V1_1_1Event.html#ab8b12ce79069ecebfd26ee828f2fc8a2',1,'VT::V1::Event::Reset()'],['../structVT_1_1V1_1_1Fence.html#a84196032afe892f11dd2c556baa67569',1,'VT::V1::Fence::Reset()']]],
+  ['resetevent',['ResetEvent',['../structVT_1_1V1_1_1CommandBuffer.html#ac179562fa0c79066b25b7bd009258976',1,'VT::V1::CommandBuffer']]],
+  ['resetflags',['ResetFlags',['../structVT_1_1V1_1_1CommandBuffer.html#a42b040781abec8a161ea4888e29069fe',1,'VT::V1::CommandBuffer::ResetFlags()'],['../structVT_1_1V1_1_1CommandPool.html#a23a08edbfa7a2ffa406ad3b6a9219436',1,'VT::V1::CommandPool::ResetFlags()'],['../structVT_1_1V1_1_1DescriptorPool.html#a0aa25a213c9a60ced597acd854fc9702',1,'VT::V1::DescriptorPool::ResetFlags()']]],
+  ['resolvemodeflags',['ResolveModeFlags',['../group__Flags__and__Bitmasks.html#ga3c914d5a0d6026fe12caa3b70d6b75a8',1,'VT::Corridors']]],
+  ['robustbufferaccess',['RobustBufferAccess',['../structVT_1_1V1_1_1PhysicalDevice_1_1Features.html#ab7ae26e39fbd867c46b7c6fc3eb49973',1,'VT::V1::PhysicalDevice::Features']]],
+  ['rocstrarray',['RoCStrArray',['../group__Corridors.html#gacaee80aa443f9243bb06915380ccdafd',1,'VT::Corridors']]],
+  ['rosctr_5froarray_5farray',['RoSCtr_roArray_Array',['../group__Corridors.html#ga3ce571968e01295b3d78188f2eab69e2',1,'VT::Corridors']]]
+];
