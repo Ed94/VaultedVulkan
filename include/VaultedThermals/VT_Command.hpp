@@ -73,7 +73,12 @@ namespace VaultedThermals
 			using UsageFlags                  = Bitmask<ECommandBufferUsageFlag    , VkCommandBufferUsageFlags    >;
 
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a> @ingroup APISpec_Copy_Commands */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a> 
+			@ingroup APISpec_Copy_Commands 
+			
+			@todo #TODO: Make == and != operators
+			*/
 			struct BufferImageRegion : V0::VKStruct_Base<VkBufferImageCopy>
 			{
 				DeviceSize               BufferOffset     ;
@@ -84,7 +89,12 @@ namespace VaultedThermals
 				Extent3D                 ImageExtent      ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceInfo">Specification</a> @ingroup APISpec_Command_Buffers */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceInfo">Specification</a> 
+			@ingroup APISpec_Command_Buffers
+
+			@todo #TODO: Make == and != operators
+			*/
 			struct InheritanceWindow : V0::VKStruct_Base<VkCommandBufferInheritanceInfo, EStructureType::CommandBuffer_InheritanceInfo>
 			{
 				      EType                       SType               ;
@@ -107,12 +117,30 @@ namespace VaultedThermals
 					      EType SType ;
 					const void* Next  ;
 					      Bool  Enable;
+
+					bool operator== (const ConditionalRenderingInfo& _other)
+					{
+						return
+						Next   == _other.Next   &&
+						Enable == _other.Enable
+						? true : false;
+					}
+
+					bool operator!= (const ConditionalRenderingInfo& _other)
+					{
+						return
+						Next   != _other.Next   &&
+						Enable != _other.Enable
+						? true : false;
+					}
 				};
 
 				/**
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">Specification</a> 
 
 				@ingroup APISpec_Command_Buffers
+
+				@todo #TODO: Make == and != operators
 				*/
 				struct PassTransformInfo : V0::VKStruct_Base
 					<VkCommandBufferInheritanceRenderPassTransformInfoQCOM, EStructureType::CommandBufferInheritance_RenderPassTransform_Info_QCOM>
@@ -128,6 +156,8 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferBeginInfo">Specification</a>
 
 			@ingroup APISpec_Command_Buffers
+
+			@todo #TODO: Make == and != operators
 			*/
 			struct BeginInfo : V0::VKStruct_Base<VkCommandBufferBeginInfo, EStructureType::CommandBuffer_BeginInfo>
 			{
@@ -141,6 +171,8 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a>
 			
 			@ingroup APISpec_Command_Buffers
+
+			@todo #TODO: Make == and != operators
 			*/
 			struct SubmitInfo : V0::VKStruct_Base<VkSubmitInfo, EStructureType::SubmitInfo>
 			{
@@ -159,6 +191,8 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkTimelineSemaphoreSubmitInfo">Specification</a>
 
 				@ingroup APISpec_Command_Buffers
+
+				@todo #TODO: Make == and != operators
 				*/
 				struct TimelineSemaphore : V0::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
 				{
@@ -174,6 +208,8 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a>	
 
 				@ingroup APISpec_Command_Buffers
+
+				@todo #TODO: Make == and != operators
 				*/
 				struct D3D12Fence : V0::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
 				{
@@ -189,6 +225,8 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32KeyedMutexAcquireReleaseInfoKHR">Specification</a> 
 
 				@ingroup APISpec_Command_Buffers
+
+				@todo #TODO: Make == and != operators
 				*/
 				struct Win32KeyedMutexAcquireRelease : V0::VKStruct_Base<VkWin32KeyedMutexAcquireReleaseInfoKHR>
 				{
@@ -213,12 +251,17 @@ namespace VaultedThermals
 					      EType SType          ;
 					const void* Next           ;
 					      Bool  ProtectedSubmit;
+
+					bool operator== (const Protected& _other) { return Next == _other.Next && ProtectedSubmit == _other.ProtectedSubmit ? true : false; }
+					bool operator!= (const Protected& _other) { return Next != _other.Next && ProtectedSubmit != _other.ProtectedSubmit ? true : false; }
 				};
 
 				/**
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupSubmitInfo">Specification</a>
 
 				@ingroup APISpec_Command_Buffers
+
+				@todo #TODO: Make == and != operators
 				*/
 				struct DeviceGroup : V0::VKStruct_Base<VkDeviceGroupSubmitInfo>
 				{
@@ -236,6 +279,8 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceQuerySubmitInfoKHR">Specification</a>
 
 				@ingroup APISpec_Command_Buffers
+
+				@todo #TODO: Make == and != operators
 				*/
 				struct PerformanceQuery : V0::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
 				{
@@ -249,6 +294,8 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupCommandBufferBeginInfo">Specification</a> 
 			
 			@ingroup APISpec_Command_Buffers
+
+			@todo #TODO: Make == and != operators
 			*/
 			struct DeviceGroupBeginInfo : V0::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
 			{
@@ -257,7 +304,6 @@ namespace VaultedThermals
 				      uint32 DeviceMask;
 			};
 
-			
 
 			/**
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBeginCommandBuffer">Specification</a> 
@@ -276,7 +322,7 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBeginRenderPass">Specification</a>
 			 * 
-			 * @ingroup APISpec_Command_Buffers
+			 * @ingroup APISpec_Render_Pass
 			 * 
 			 * \param _deviceHandle
 			 * \param _commandPool
@@ -653,10 +699,18 @@ namespace VaultedThermals
 		};
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a>
-		 * 
-		 * @ingroup APISpec_Command_Buffers
-		 */
+		@brief 
+		Command pools are opaque objects that command buffer memory is allocated from, and
+        which allow the implementation to amortize the cost of resource creation across
+        multiple command buffers. Command pools are externally synchronized, meaning that a
+        command pool must not be used concurrently in multiple threads. That includes use
+        via recording commands on any command buffers allocated from the pool, as well as
+        operations that allocate, free, and reset command buffers or the pool itself.
+		
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a>
+		 
+		@ingroup APISpec_Command_Buffers
+		*/
 		struct CommandPool
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPool">Specification</a> @ingroup APISpec_Command_Buffers */
@@ -673,6 +727,8 @@ namespace VaultedThermals
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> 
 			 * 
 			 * @ingroup APISpec_Command_Buffers
+			 * 
+			@todo #TODO: Make == and != operators.
 			 */
 			struct AllocateInfo : V0::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
 			{
@@ -687,6 +743,8 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a> 
 			
 			@ingroup APISpec_Command_Buffers 
+
+			@todo #TODO: Make == and != operators.
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
 			{
@@ -831,6 +889,15 @@ namespace VaultedThermals
 		*/
 
 		/**
+		@brief 
+		Command pools are opaque objects that command buffer memory is allocated from,
+        and which allow the implementation to amortize the cost of resource creation across multiple command buffers. 
+		
+		@details
+		Command pools are externally synchronized, meaning that a command pool must not be used concurrently in multiple threads. 
+		That includes use via recording commands on any command buffers allocated from the pool, as well as operations that allocate, 
+		free, and reset command buffers or the pool itself.
+		 
 		@ingroup APISpec_Command_Buffers
 		*/
 		struct CommandPool : public V1::CommandPool
@@ -839,15 +906,29 @@ namespace VaultedThermals
 
 			using CommandBuffer = V1::CommandBuffer;
 			
+			/**
+			@brief Offers a default constructor of the struct.
+
+			@details
+			Default Constructor:
+			Pool is set to null handle.
+			The command buffer level is set to Primary.
+			*/
 			struct AllocateInfo : public Parent::AllocateInfo
 			{
 				AllocateInfo()
 				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
+					SType       = STypeEnum                   ;
+					Next        = nullptr                     ;
+					Pool        = Null<Handle>                ;
+					Level       = ECommandBufferLevel::Primary;
+					BufferCount = 1                           ;
 				}
 			};
 
+			/**
+			@brief Offers a default constructor of the struct.
+			*/
 			struct CreateInfo : Parent::CreateInfo
 			{
 				CreateInfo()
@@ -857,6 +938,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Uses the VulkanAPI's default allocator.
+			*/
 			static EResult Create
 			(
 				      LogicalDevice::Handle        _deviceHandle,
@@ -869,6 +953,9 @@ namespace VaultedThermals
 
 			using Parent::Create;
 
+			/**
+			@brief Uses the VulkanAPI's default allocator.
+			*/
 			static void Destroy
 			(
 				      LogicalDevice::Handle        _deviceHandle,
@@ -880,6 +967,9 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 
+			/**
+			@brief Allows for the passing of the allocate info to specify the pool and buffer count alternatively.
+			*/
 			static void Free
 			(
 				      LogicalDevice::Handle  _device        ,
@@ -895,15 +985,18 @@ namespace VaultedThermals
 		#pragma region SingleTimeCommands
 
 			/**
-			 * @brief.
+			 * @brief Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer. 
+			 * 
+			 * @details
+			 * The handle to the command buffer will be returned.
+			 * 
+			 * Expected to be used with the EndSingleTimeCommands function (defined below it).
 			 */
 			static CommandBuffer::Handle BeginSingleTimeCommands(LogicalDevice::Handle _device, CommandPool::Handle _commandPool)
 			{
 				AllocateInfo allocationInfo{};
 
-				allocationInfo.Level       = ECommandBufferLevel::Primary;
-				allocationInfo.Pool        = _commandPool                ;
-				allocationInfo.BufferCount = 1                           ;
+				allocationInfo.Pool = _commandPool;
 
 				CommandBuffer::Handle commandBuffer;
 
@@ -919,7 +1012,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief.
+			 * @brief Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.
+			 * 
+			 * @details
+			 * Will wait until the queue is idle that the commands were submitted to. Will also free the command buffer after completion.
+			 * 
+			 * Expected to be used with the BeginSingleTimeCommands function (defined above it).
 			 */
 			static void EndSingleTimeCommands
 			(
@@ -988,7 +1086,7 @@ namespace VaultedThermals
 				{
 					SType           = STypeEnum;
 					Next            = nullptr  ;
-					InheritanceInfo = nullptr;
+					InheritanceInfo = nullptr  ;
 				}
 			};
 
@@ -1028,7 +1126,7 @@ namespace VaultedThermals
 				};
 			};
 
-			/** @brief  */
+			/** @brief Uses a single-time command buffer to copy a buffer */
 			static void CopyBuffer
 			(
 				Buffer::Handle               _sourceBuffer     , 
@@ -1048,6 +1146,9 @@ namespace VaultedThermals
 
 			using Parent::CopyBuffer;
 
+			/**
+			@brief A version of SubmitPipelineBarrier where only a set of regular memory barriers are submitted.
+			*/
 			static void SubmitPipelineBarrier
 			(
 				      Handle                  _commandBuffer           ,
@@ -1071,6 +1172,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+			@brief A version where only a set of buffer memory barriers are submitted.
+			*/
 			static void SubmitPipelineBarrier
 			(
 				      Handle                  _commandBuffer           ,
@@ -1094,6 +1198,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+			@brief A version of SubmitPipelineBarrier where only a set of image memory barriers are submitted.
+			*/
 			static void SubmitPipelineBarrier
 			(
 				      Handle                  _commandBuffer           ,
@@ -1119,6 +1226,9 @@ namespace VaultedThermals
 
 			using Parent::SubmitPipelineBarrier;
 
+			/**
+			@brief A version of WaitForEvents where only a set of memory barriers are waited on.
+			*/
 			static void WaitForEvents
 			(
 				      Handle               _commandBuffer,
@@ -1141,6 +1251,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+			@brief A version of WaitForEvents where only a set of buffer memory barriers are waited on.
+			*/
 			static void WaitForEvents
 			(
 				      Handle                  _commandBuffer,
@@ -1163,6 +1276,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+			@brief A version of WaitForEvents where only a set of image memory barriers are waited on.
+			*/
 			static void WaitForEvents
 			(
 				      Handle                 _commandBuffer,
@@ -1200,6 +1316,8 @@ namespace VaultedThermals
 
 		/**
 		@ingroup APISpec_Command_Buffers
+
+		@todo #TODO: Needs documentation.
 		*/
 		class CommandBuffer : public V2::CommandBuffer
 		{
@@ -1208,16 +1326,6 @@ namespace VaultedThermals
 			using Parent = V2::CommandBuffer;
 
 			using AllocateInfo = V2::CommandPool::AllocateInfo;
-
-			const AllocateInfo& GetAllocateInfo() const
-			{
-				return info;
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
 
 			void Assign(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle)
 			{
@@ -1351,6 +1459,10 @@ namespace VaultedThermals
 			{
 				Parent::Execute(handle, _secondaryBufferCount, _secondaryBuffers);
 			}
+
+			const AllocateInfo& GetAllocateInfo() const { return info; }
+
+			const Handle& GetHandle() const { return handle; }
 
 			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
@@ -1595,6 +1707,8 @@ namespace VaultedThermals
 
 		/**
 		@ingroup APISpec_Command_Buffers
+
+		@todo #TODO: Add documentation.
 		*/
 		class CommandPool : public V2::CommandPool
 		{
@@ -1729,6 +1843,31 @@ namespace VaultedThermals
 			operator const Handle&() const
 			{
 				return handle;
+			}
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle*()
+			{
+				return &handle;
+			}
+
+			operator const Handle&() const
+			{
+				return handle;
+			}
+
+			operator const Handle*() const
+			{
+				return &handle;
+			}
+
+			bool operator== (const CommandPool& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		#pragma region SingleTimeCommands
