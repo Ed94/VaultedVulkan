@@ -1,25 +1,76 @@
-# CMAKE General -----------------------------------------------------------------------------------------
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-cmake_minimum_required (VERSION 3.8)
+# ---- Project ----
 
-# Project version is currently based on github commits until first release... (Placed in minor section)
-project ("VaultedThermals") #VERSION 0.108.0)
+# Note: update this to your new project's name and version
+project(
+  VaultedThermals
+  VERSION 1.0
+  LANGUAGES CXX
+)
 
-# C++ Configuration -------------------------------------------------------------------------------------
+# ---- Include guards ----
 
-# The library was developed in conjunction with an engine compiled in MSVC C++17. 
-#set(CMAKE_CXX_STANDARD 17)
+if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
+  message(
+    FATAL_ERROR
+      "In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
+  )
+endif()
 
-# Currently I am not aware if there is use of any features that require it to be at minimum C++17
-# so the standard will not be enforced.
-#set(CMAKE_CXX_STANDARD_REQUIRED False)	
+# ---- Add dependencies via CPM ----
+# see https://github.com/TheLartians/CPM.cmake for more info
 
-# Library Setup -----------------------------------------------------------------------------------------
+include(cmake/CPM.cmake)
 
-# Add the cmake folder so the FindSphinx module is found
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+# PackageProject.cmake will be used to make our target installable
+CPMAddPackage(
+  NAME PackageProject.cmake
+  GITHUB_REPOSITORY TheLartians/PackageProject.cmake
+  VERSION 1.3
+)
 
-add_subdirectory ("Library")
-add_subdirectory ("Doxygen")
+# ---- Add source files ----
 
-# Doxygen -----------------------------------------------------------------------------------------------
+# Note: globbing sources is considered bad practice as CMake's generators may not detect new files
+# automatically. Keep that in mind when changing files, or explicitly mention them here.
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
+# file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp")
+
+# ---- Create library ----
+
+# Note: for header-only libraries change all PUBLIC flags to INTERFACE and create an interface
+# target: add_library(Greeter INTERFACE) set_target_properties(Greeter PROPERTIES
+# INTERFACE_COMPILE_FEATURES cxx_std_17)
+
+#add_library(Greeter ${headers} ${sources})
+add_library(VaultedThermals INTERFACE ${headers})
+
+#set_target_properties(VaultedThermals PROPERTIES)
+
+# being a cross-platform target, we enforce standards conformance on MSVC
+target_compile_options(VaultedThermals INTERFACE "$<$<BOOL:${MSVC}>:/permissive->")
+
+# Link dependencies (if required) target_link_libraries(Greeter PUBLIC cxxopts)
+
+target_include_directories(
+  VaultedThermals INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+                 $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
+)
+
+# ---- Create an installable target ----
+# this allows users to install and find the library via `find_package()`.
+
+# the location where the project's version header will be placed should match the project's regular
+# header paths
+string(TOLOWER ${PROJECT_NAME}/version.h VERSION_HEADER_LOCATION)
+
+packageProject(
+  NAME ${PROJECT_NAME}
+  VERSION ${PROJECT_VERSION}
+  BINARY_DIR ${PROJECT_BINARY_DIR}
+  INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include
+  INCLUDE_DESTINATION include/${PROJECT_NAME}-${PROJECT_VERSION}
+  VERSION_HEADER "${VERSION_HEADER_LOCATION}"
+  DEPENDENCIES ""
+)
