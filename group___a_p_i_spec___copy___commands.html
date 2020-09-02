@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>APISpec_Copy_Commands module | Greeter</title>
+  <title>API_Specification &raquo; APISpec_Copy_Commands module | Greeter</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,8 +50,103 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
+          <span class="m-breadcrumb"><a href="group___a_p_i___specification.html">API_Specification</a> &raquo;</span>
           APISpec_Copy_Commands <span class="m-thin">module</span></h1>
         <p><a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap20.html">Specification</a></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_command_buffer_1_1_buffer_image_region.html" class="m-doc">VT::V1::CommandBuffer::BufferImageRegion</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a></dd>
+          </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga31a3eba903343ab1ef5246a7f21b5ef8" class="m-doc">BlitImage</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Image::Handle _srcImage,
+              EImageLayout _srcImageLayout,
+              Image::Handle _dstImage,
+              EImageLayout _dstImageLayout,
+              uint32 _regionCount,
+              const Image::Blit* _regions,
+              EFilter _filter)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBlitImage">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gae8b55b515275492257b4840579acb1c8" class="m-doc">CopyBuffer</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Buffer::Handle _sourceBuffer,
+              Buffer::Handle _destinationBuffer,
+              uint32 _regionCount,
+              const Buffer::CopyInfo* _regions)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBuffer">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gae1f19e4e2e856e93148c9f9413b0a52a" class="m-doc">CopyBufferToImage</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Buffer::Handle _srcBuffer,
+              Image::Handle _dstImage,
+              EImageLayout _dstImageLayout,
+              uint32 _regionCount,
+              const BufferImageRegion* _regions)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBufferToImage">Specification</a></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ga31a3eba903343ab1ef5246a7f21b5ef8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga31a3eba903343ab1ef5246a7f21b5ef8" class="m-doc-self">BlitImage</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Image::Handle _srcImage,
+              EImageLayout _srcImageLayout,
+              Image::Handle _dstImage,
+              EImageLayout _dstImageLayout,
+              uint32 _regionCount,
+              const Image::Blit* _regions,
+              EFilter _filter)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBlitImage">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gae8b55b515275492257b4840579acb1c8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae8b55b515275492257b4840579acb1c8" class="m-doc-self">CopyBuffer</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Buffer::Handle _sourceBuffer,
+              Buffer::Handle _destinationBuffer,
+              uint32 _regionCount,
+              const Buffer::CopyInfo* _regions)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBuffer">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gae1f19e4e2e856e93148c9f9413b0a52a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae1f19e4e2e856e93148c9f9413b0a52a" class="m-doc-self">CopyBufferToImage</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Buffer::Handle _srcBuffer,
+              Image::Handle _dstImage,
+              EImageLayout _dstImageLayout,
+              uint32 _regionCount,
+              const BufferImageRegion* _regions)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdCopyBufferToImage">Specification</a></p>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>
