@@ -270,11 +270,11 @@ namespace VaultedThermals
 	#pragma endregion VKStruct_Base
 
 		template
-			<
-			typename EnumType,
+		<
+			typename EnumType             ,
 			typename BitmaskRepresentation
-			>
-			struct Bitmask
+		>
+		struct Bitmask
 		{
 		private:
 			EnforceConstraint(Bitmaskable<EnumType>::specified, "EnumType must be of Bitmaskable type.");

@@ -72,22 +72,22 @@ namespace VaultedThermals
 		 
 		 @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers">Specification</a> 
 
-		 @ingroup VKAPI_Command_Buffers
+		 @ingroup APISpec_Command_Buffers
 		 */
 		struct CommandBuffer
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBuffer">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBuffer">Specification</a> @ingroup APISpec_Command_Buffers */
 			using Handle = VkCommandBuffer;
 
 			using EBufferLevel = ECommandBufferLevel;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlags">Specification</a> @ingroup APISpec_Queries */
 			using QueryControlFlags           = Bitmask<EQueryControlFlags         , VkQueryControlFlags          >;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlags">Specification</a> @ingroup APISpec_Queries */
 			using QueryPipelineStatisticFlags = Bitmask<EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags>;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlags">Specification</a> @ingroup APISpec_Command_Buffers */
 			using ResetFlags                  = Bitmask<ECommandBufferResetFlag    , VkCommandBufferResetFlags    >;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferUsageFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferUsageFlags">Specification</a> @ingroup APISpec_Command_Buffers */
 			using UsageFlags                  = Bitmask<ECommandBufferUsageFlag    , VkCommandBufferUsageFlags    >;
 
 			
@@ -612,7 +612,9 @@ namespace VaultedThermals
 		};
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a> 
+		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#commandbuffers-pools">Specification</a>
+		 * 
+		 * @ingroup APISpec_Command_Buffers
 		 */
 		struct CommandPool
 		{
@@ -770,7 +772,7 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@ingroup VKAPI_Command_Buffers
+		@ingroup APISpec_Command_Buffers
 		*/
 		struct CommandPool : public V1::CommandPool
 		{
@@ -885,6 +887,9 @@ namespace VaultedThermals
 		#pragma endregion SingleTimeCommands	
 		};
 
+		/**
+		@ingroup APISpec_Command_Buffers
+		*/
 		struct CommandBuffer : public V1::CommandBuffer
 		{
 			using Parent = V1::CommandBuffer;
@@ -1134,6 +1139,9 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@ingroup APISpec_Command_Buffers
+		*/
 		class CommandBuffer : public V2::CommandBuffer
 		{
 		public:
@@ -1526,6 +1534,9 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
+		/**
+		@ingroup APISpec_Command_Buffers
+		*/
 		class CommandPool : public V2::CommandPool
 		{
 		public:

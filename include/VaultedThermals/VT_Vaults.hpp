@@ -155,7 +155,7 @@ namespace VaultedThermals
 
 
 /**
-@defgroup VulkanAPI_Specification
+@defgroup API_Specification
 
 @brief The library organized based on the chapters of the Vulkan official specification.
 
@@ -164,296 +164,337 @@ namespace VaultedThermals
 */
 
 /**
-@defgroup VKAPI_Introduction
+@defgroup APISpec_Introduction
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap2.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Fundamentals
+@defgroup APISpec_Fundamentals
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap3.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Initialization
+@defgroup APISpec_Initialization
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap4.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Devices_and_Queues
+@defgroup APISpec_Devices_and_Queues
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap5.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Command_Buffers
+@defgroup APISpec_Command_Buffers
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap6.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Synchronization_and_Cache_Control
+@defgroup APISpec_Synchronization_and_Cache_Control
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap7.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Render_Pass
+@defgroup APISpec_Render_Pass
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap8.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Shaders
+@defgroup APISpec_Shaders
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap9.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Pipelines
+@defgroup APISpec_Pipelines
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap10.html">Specification</a>
 */
 
 /**
-@defgroup VKAPI_Memory_Allocation
+@defgroup APISpec_Memory_Allocation
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap11.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Resource_Creation
+@defgroup APISpec_Resource_Creation
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap12.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Samplers
+@defgroup APISpec_Samplers
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap13.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Resource_Descriptors
+@defgroup APISpec_Resource_Descriptors
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap14.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Shader_Interfaces
+@defgroup APISpec_Shader_Interfaces
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap15.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Image_Operations
+@defgroup APISpec_Image_Operations
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap16.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Fragment_Density_Map_Operations
+@defgroup APISpec_Fragment_Density_Map_Operations
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap17.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Queries
+@defgroup APISpec_Queries
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap18.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Clear_Commands
+@defgroup APISpec_Clear_Commands
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap19.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Copy_Commands
+@defgroup APISpec_Copy_Commands
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap20.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Drawing_Commands
+@defgroup APISpec_Drawing_Commands
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap21.html">Specification</a>
 */
 
 /**
-@defgroup VKAPI_Fixed-Function_Vertex_Processing
+@defgroup APISpec_Fixed-Function_Vertex_Processing
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap22.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Tessellation
+@defgroup APISpec_Tessellation
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap23.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Geometry_Shading
+@defgroup APISpec_Geometry_Shading
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap24.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Mesh_Shading
+@defgroup APISpec_Mesh_Shading
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap25.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Fixed-Function_Vertex_Post-Processing
+@defgroup APISpec_Fixed-Function_Vertex_Post-Processing
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap26.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Rasterization
+@defgroup APISpec_Rasterization
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap27.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Fragment_Operations
+@defgroup APISpec_Fragment_Operations
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap28.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_The_Framebuffer
+@defgroup APISpec_The_Framebuffer
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap29.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Dispatching_Commands
+@defgroup APISpec_Dispatching_Commands
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap30.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Device-Generated_Commands
+@defgroup APISpec_Device-Generated_Commands
 @ingroup VulkanAPI_Specification
 
 @brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap31.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Sparse_Resources
+@defgroup APISpec_Sparse_Resources
 @ingroup VulkanAPI_Specification
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap32.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/lastest/windows/chunked_spec/chap32.html">Specification</a> 
 */
 
 /**
 @defgroup VKAPI_Window_System_Integration_WSI
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap33.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap33.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Deferred_Host_Operations
+@defgroup APISpec_Deferred_Host_Operations
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap34.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap34.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Private_Data
+@defgroup APISpec_Private_Data
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap35.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap35.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Ray_Traversal
+@defgroup APISpec_Ray_Traversal
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap36.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap36.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Ray_Tracing
+@defgroup APISpec_Ray_Tracing
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap37.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap37.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Extending_Vulkan
+@defgroup APISpec_Extending_Vulkan
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap38.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap38.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Features
+@defgroup APISpec_Features
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap39.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap39.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Limits
+@defgroup APISpec_Limits
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap40.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap40.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Formats
+@defgroup APISpec_Formats
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap41.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap41.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Additional_Capabilities
+@defgroup APISpec_Additional_Capabilities
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap42.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap42.html">Specification</a> 
 */
 
 /**
-@defgroup VKAPI_Debugging
+@defgroup APISpec_Debugging
 @ingroup VulkanAPI_Specification
 
-@brief <a href="https://vulkan.lunarg.com/doc/sdk/1.2.148.1/windows/chunked_spec/chap43.html">Specification</a> 
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap43.html">Specification</a> 
 */
 
+/**
+@defgroup APISpec__Appendix-A__Vulkan-Environment_for_SPIR-V
+@ingroup VulkanAPI_Specification
+
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap44.html">Specification</a>  
+*/
+
+/**
+@defgroup APISpec__Appendix-B__Memory_Model
+@ingroup VulkanAPI_Specification
+
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap45.html">Specification</a> 
+*/
+
+/** 
+@defgroup APISpec__Appendix-C__Compressed_Image_Formats
+@ingroup VulkanAPI_Specification
+
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap46.html">Specification</a> 
+*/
+
+/**
+@defgroup APISpec__Appendix-D__Core_Revisions_-Informative-
+@ingroup VulkanAPI_Specification
+
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap47.html">Specification</a> 
+*/
+
+/** 
+@defgroup APISpec__Appendix-E__Layers_and_Extensions_-Informative-
+@ingroup VulkanAPI_Specification
+
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap48.html">Specification</a> 
+*/
+
+/**
+@defgroup APISpec__Appendix-F__API_Boilerplate
+@ingroup VulkanAPI_Specification
+
+@brief <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap49.html">Specification</a> 
+*/
 

@@ -53,26 +53,54 @@ namespace VaultedThermals
 		@{
 		*/
 
-		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_NULL_HANDLE">Specification</a> .
-		 */
 		template<typename HandleType>
+		/**
+		@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_NULL_HANDLE">Specification</a> 
+		 
+		@ingroup APISpec__Appendix-F__API_Boilerplate
+		*/
 		constexpr HandleType Null = VK_NULL_HANDLE;
 
+		/**
+		@brief Maximum number of heap elements in a physical device's memory properties.
+		*/
 		constexpr DeviceSize MaxMemoryHeaps = VK_MAX_MEMORY_HEAPS;
+
+		/**
+		@brief Maximum number of memory type elements in a physical device's memory properties.
+		*/
 		constexpr DeviceSize MaxMemoryTypes = VK_MAX_MEMORY_TYPES;
 
+		/**
+		@brief Used in resource synchronization and render pass commands. 
+
+		@todo #TODO: Make a better brief/detailed elaboration.
+		*/
 		constexpr DeviceSize QueueFamily_Ignored = VK_QUEUE_FAMILY_IGNORED;
 
+		/**
+		@brief Used in render pass subpass related functionality.
+
+		@todo #TODO : make a better brief/detailed elaboration.
+		*/
 		constexpr uint32 Subpass_External = VK_SUBPASS_EXTERNAL;
 
+		/**
+		@brief Ease of identification masks for identifying a type of queue family.
+		*/
 		struct QueueMask
 		{
+			/**
+			@brief Ease of identification mask for identifying a asynchronous compute queue family.
+			*/
 			static constexpr uint32 ComputeAsync = 
 				uint32(EQueueFlag::Compute      ) |
 				uint32(EQueueFlag::Transfer     ) |
-				uint32(EQueueFlag::SparseBinding);
+				uint32(EQueueFlag::SparseBinding)  ;
 
+			/**
+			@brief Ease of identification mask for identifying a transfer only queue family.
+			*/
 			static constexpr uint32 TransferOnly = uint32(EQueueFlag::Transfer) | uint32(EQueueFlag::SparseBinding);
 		};
 
@@ -114,6 +142,7 @@ namespace VaultedThermals
 			static constexpr RoCStr LunarG_StandardValidation = "VK_LAYER_LUNARG_standard_validation";
 			
 			// Default
+
 			static constexpr RoCStr Khronos_Validation = "VK_LAYER_KHRONOS_validation";
 		};
 
