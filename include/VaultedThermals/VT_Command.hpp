@@ -63,7 +63,7 @@ namespace VaultedThermals
 	namespace V1
 	{
 		/**
-		@defgroup Vault_1
+		@addtogroup Vault_1
 		@{
 		*/
 

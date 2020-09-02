@@ -91,6 +91,9 @@ namespace VaultedThermals
 		@details
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
+
+
+		@ingroup VKAPI_Initialization
 		
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a> 
 		*/
