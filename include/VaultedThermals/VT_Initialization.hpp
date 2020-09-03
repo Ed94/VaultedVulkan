@@ -78,10 +78,9 @@ namespace VaultedThermals
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
 
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a> 
 
 		@ingroup VKAPI_Initialization
-		
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a> 
 		*/
 		struct AppInstance
 		{
@@ -90,12 +89,19 @@ namespace VaultedThermals
 			/**
 			 * @brief Opaque handle to an instance object.
 			 * 
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a> 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a>
+			 * 
+			 * @ingroup VKAPI_Initialization
 			 */
 			using Handle = VkInstance;
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a>
+			 * @brief Reserved for future use...
+			 * 
+			 @details
+			 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a>
+
+			 @ingroup VKAPI_Initialization
 			 */
 			using CreateFlags = Bitmask<EUndefined, VkInstanceCreateFlags>;
 
@@ -105,8 +111,9 @@ namespace VaultedThermals
 			application that will run an instance.
 
 			@details
-			
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkApplicationInfo">Application Info Specification</a> 
+
+			@ingroup VKAPI_Initialization
 			*/
 			struct AppInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::ApplicationInformation>
 			{
@@ -122,7 +129,10 @@ namespace VaultedThermals
 			/**
 			@brief Structure specifying parameters of a newly created instance.
 
+			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateInfo">Create Info Specification</a> 
+
+			@ingroup VKAPI_Initialization
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
 			{
@@ -136,44 +146,47 @@ namespace VaultedThermals
 				      RoSCtr_roArray_Array EnabledExtensionNames;
 			};
 
-			struct Validation
+			/**
+			@brief Used when creating a Vulkan app instance and want to enable specific validation features. (Added to the Next chain).
+			 
+			@details
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
+				
+			@ingroup VKAPI_Initialization
+			*/
+			struct ValidationFeatures : V0::VKStruct_Base<VkValidationFeaturesEXT, EStructureType::ValidationFeatures_EXT>
 			{
-				/**
-				* @brief.
-				* @details
-				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
-				*/
-				struct Features : V0::VKStruct_Base<VkValidationFeaturesEXT, EStructureType::ValidationFeatures_EXT>
-				{
-					      EType                     SType                         ;
-					const void*                     Next                          ;
-					      uint32                    EnabledValidationFeatureCount ;
-					const EValidationFeatureEnable* EnabledValidationFeatures     ;
-					      uint32                    DisabledValidationFeatureCount;
-					const EValidationFeatureEnable* DisabledValidationFeatures    ;
-				};
+					  EType                     SType                         ;
+				const void*                     Next                          ;
+					  uint32                    EnabledValidationFeatureCount ;
+				const EValidationFeatureEnable* EnabledValidationFeatures     ;
+					  uint32                    DisabledValidationFeatureCount;
+				const EValidationFeatureEnable* DisabledValidationFeatures    ;
+			};
 
-				/**
-				* @brief.
-				* 
-				* @details
-				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFlagsEXT">Specification</a> 
-				* 
-				* @todo Implement.
-				*/
-				struct Flags : V0::VKStruct_Base<VkValidationFlagsEXT, EStructureType::ValidationFlags_EXT>
-				{
-					      EType             SType                       ;
-					const void*             Next                        ;
-					      uint32            DisabledValidationCheckCount;
-					const EValidationCheck* DisabledValidationChecks    ;
-				};
+			/**
+			@brief Used when creating a Vulkan app instance and want to disable validation checks.
+			 
+			@details
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFlagsEXT">Specification</a> 
+			 
+			@ingroup VKAPI_Initialization
+			*/
+			struct ValidationFlags : V0::VKStruct_Base<VkValidationFlagsEXT, EStructureType::ValidationFlags_EXT>
+			{
+					  EType             SType                       ;
+				const void*             Next                        ;
+					  uint32            DisabledValidationCheckCount;
+				const EValidationCheck* DisabledValidationChecks    ;
 			};
 
 			/**
 			@brief Create a new Vulkan application instance.
 
+			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a> 
+
+			@ingroup VKAPI_Initialization
 			*/
 			static EResult Create
 			(
@@ -188,7 +201,10 @@ namespace VaultedThermals
 			/**
 			@brief Destroy an application instance of Vulkan.
 
+			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
+
+			@ingroup VKAPI_Initialization
 			*/
 			static void Destroy(Handle _handle , const Memory::AllocationCallbacks* _callbacks)
 			{
@@ -201,6 +217,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceVersion">Specification</a> 
 			 * 
+			 * @ingroup VKAPI_Initialization
+			 * 
 			 * \param _versionContainer
 			 * \return 
 			 */
@@ -209,14 +227,26 @@ namespace VaultedThermals
 				return EResult(vkEnumerateInstanceVersion(&_versionContainer));
 			}
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  */
+			/** 
+			@brief Query the available layers.
+
+			@details
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  
+
+			@ingroup APISpec_Extending_Vulkan
+			*/
 			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
 			{
 				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, _propertiesContainer->operator VkLayerProperties * ()));
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a> .
+			 * @brief Query the available instance extensions.
+			 
+			 @details 
+			 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a>.
+			  
+			 @ingroup APISpec_Extending_Vulkan
 			 */
 			static EResult QueryAvailableAppExtensions(RoCStr _layerName, uint32& _numProperties, ExtensionProperties* _propertiesContainer)
 			{
@@ -232,6 +262,8 @@ namespace VaultedThermals
 			and on return the variable is overwritten with the number of handles actually written to pPhysicalDevices.
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
+
+			@ingroup APISpec_Devices_and_Queues
 			*/
 			static EResult QueryPhysicalDeviceListing(Handle _handle, uint32* _numDevices, PhysicalDevice::Handle* _deviceListing)
 			{
@@ -239,10 +271,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			* @brief 
+			* @brief Retrieve a list of physical device groups.
 			* 
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a> 
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			static EResult QueryPhysicalDeviceGroups
 			(
@@ -256,8 +290,11 @@ namespace VaultedThermals
 
 			template<typename ReturnType>
 			/**
+			
+			@brief
 			Function pointers for all Vulkan commands can be obtained with this command.
 
+			@details
 			vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. 
 			Typically, the loader library will export this command as a function symbol, 
 			so applications can link against the loader library, or load it dynamically 
@@ -265,7 +302,9 @@ namespace VaultedThermals
 
 			Note: ReturnType is restricted to only function pointing types.
 
-			https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a> 
+
+			@ingroup VKAPI_Initialization
 			*/
 			static typename std::enable_if
 			<
@@ -291,10 +330,24 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief An object that manages the represented application process state within the GPU.
+
+		@details
+		Other Name: Application State Container
+
+		Vulkan has no global state reference: 
+		Every application must keep track of their state using an instance object.
+
+		@ingroup VKAPI_Initialization
+		*/
 		struct AppInstance : public V1::AppInstance
 		{
 			using Parent = V1::AppInstance;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct AppInfo : public Parent::AppInfo
 			{
 				AppInfo() 
@@ -304,6 +357,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo() 
@@ -313,23 +369,26 @@ namespace VaultedThermals
 				}
 			};
 
-			struct Validation : public Parent::Validation
+			/**
+			@brief Offers a default constructor.
+			*/
+			struct ValidationFeatures : public Parent::ValidationFeatures
 			{
-				struct Features : public Parent::Validation::Features
-				{
-					Features() 
-					{ 
-						SType = STypeEnum; 
-					}
-				};
+				ValidationFeatures() 
+				{ 
+					SType = STypeEnum; 
+				}
+			};
 
-				struct Flags : public Parent::Validation::Flags
-				{
-					Flags() 
-					{ 
-						SType = STypeEnum; 
-					}
-				};
+			/**
+			@brief Offers a default constructor.
+			*/
+			struct ValidationFlags : public Parent::ValidationFlags
+			{
+				ValidationFlags() 
+				{ 
+					SType = STypeEnum; 
+				}
 			};
 
 			/**
@@ -352,6 +411,9 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 
+			/**
+			@brief Get available layers into a dynamic array. 
+			*/
 			static EResult GetAvailableLayers(DynamicArray<LayerProperties>& _container)
 			{
 				uint32 layerCount;
@@ -367,6 +429,9 @@ namespace VaultedThermals
 				return result;
 			}
 
+			/**
+			@brief Get available layer extensions into a dynamic array with the specified layer name.
+			*/
 			static EResult GetAvailableLayerExtensions(RoCStr _layerName, DynamicArray<ExtensionProperties>& _propertiesContainer)
 			{
 				uint32 layerCount;
@@ -382,6 +447,9 @@ namespace VaultedThermals
 				return result;
 			}
 
+			/**
+			Get the layers and their extensions in a dynamic array of the layer and extensions properties struct.
+			*/
 			static EResult GetAvailableLayersAndExtensions(DynamicArray<LayerAndExtensionProperties>& _layersAndExtensions)
 			{
 				DynamicArray<LayerProperties> layers; EResult result = EResult::Incomplete;
@@ -468,9 +536,7 @@ namespace VaultedThermals
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
 
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a> 
-
-		Note: This class is a singleton. There should really not be more than one app instance per process...
+		@ingroup VKAPI_Initialization
 		*/
 		class AppInstance : public V2::AppInstance
 		{
@@ -528,8 +594,6 @@ namespace VaultedThermals
 
 			/** 
 			@brief Provides the handles of all available physical devices.
-
-			@todo Make the device listing container type specifiable using an interface.
 			*/
 			EResult GetAvailablePhysicalDevices(DynamicArray<PhysicalDevice>& _deviceListing) const 
 			{
@@ -555,8 +619,6 @@ namespace VaultedThermals
 			/**
 			 * @brief Provides a list of the device groups present in the system.
 			 * 
-			 * @todo Make the group listing container type specifiable using an interface.
-			 * 
 			 * \param _instance
 			 * \param _groupListing
 			 * \return 
@@ -576,6 +638,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+			@brief Provides the app instance's handle.
+			*/
 			const Handle& GetHandle() const
 			{ 
 				return handle; 
@@ -583,8 +648,6 @@ namespace VaultedThermals
 
 			/**
 			 * @brief Get application version.
-			 * 
-			 * \return 
 			 */
 			uint32 GetVersion() const
 			{
@@ -617,11 +680,22 @@ namespace VaultedThermals
 				return Parent::GetProcedureAddress(handle, _procedureName);  // reinterpret_cast<ReturnType>(vkGetInstanceProcAddr(handle, _procedureName));
 			}
 
+			/**
+			@brief Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.
+
+			@details
+			If pPhysicalDevices is NULL, then the number of physical devices available is returned in pPhysicalDeviceCount. 
+			Otherwise, pPhysicalDeviceCount must point to a variable set by the user to the number of elements in the pPhysicalDevices array, 
+			and on return the variable is overwritten with the number of handles actually written to pPhysicalDevices.
+			*/
 			EResult QueryPhysicalDeviceListing(uint32* _numDevices, PhysicalDevice::Handle* _deviceListing) const
 			{
 				return Parent::QueryPhysicalDeviceListing(handle, _numDevices, _deviceListing);
 			}
 
+			/**
+			@brief Retrieve a list of physical device groups.
+			*/
 			EResult QueryPhysicalDeviceGroups(uint32* _numGroups, PhysicalDevice::Group* _groupProperties) const
 			{
 				return Parent::QueryPhysicalDeviceGroups(handle, _numGroups, _groupProperties);
@@ -632,14 +706,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle*()
+			{
+				return &handle;
+			}
+
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle& () const
+			operator const Handle*() const
 			{
-				return handle;
+				return &handle;
+			}
+
+			bool operator== (const AppInstance& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:

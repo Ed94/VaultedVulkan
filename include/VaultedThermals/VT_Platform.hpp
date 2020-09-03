@@ -177,5 +177,8 @@ namespace VaultedThermals
 	*/
 	MakeCallEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL)
 
+	#define EnforceVulkanCallingConvention(_FUNCTION) \
+	EnforceCallingConvention(CallEnforcerID_Vulkan, _FUNCTION)
+
 	/** @} */
 }
