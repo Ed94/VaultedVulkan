@@ -44,7 +44,7 @@ namespace VaultedThermals
 		Deque<RoCStr>         GPU_Comms::desiredExtensions  ;
 		Deque<RoCStr>         GPU_Comms::desriedDeviceExts  ;
 		
-		V3::DebugMessenger GPU_Comms::messenger;
+		V3::DebugUtils::Messenger GPU_Comms::messenger;
 
 		PhysicalDeviceList GPU_Comms::physicalGPUs;
 		LogicalDeviceList  GPU_Comms::logicalGPUs ;

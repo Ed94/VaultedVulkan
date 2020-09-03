@@ -70,8 +70,8 @@ namespace VaultedThermals
 
 		// Floats
 
-		using float32 =      float ;
-		using float64 =      double;
+		using float32 = float ;
+		using float64 = double;
 
 		// Data
 

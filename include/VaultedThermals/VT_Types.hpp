@@ -37,6 +37,8 @@ namespace VaultedThermals
 
 	namespace Corridors
 	{
+		using V0::Bitmask;
+
 		/** 
 		@addtogroup Corridors
 		@{

@@ -47,149 +47,226 @@ namespace VaultedThermals
 		@{
 		*/
 
-		using CallbackDataFlags = Bitmask<EUndefined , Flags>;   ///< TODO: Add comment on what this is for.
-
-		/** @brief Pointer to the Create Debug Messenger Command. */ 
-		using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a>  */
-		using MessageServerityFlags = Bitmask<EDebugUtilities_MessageSeverity, VkDebugUtilsMessageSeverityFlagsEXT>;
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  */
-		using MessageTypeFlags      = Bitmask<EDebugUtilities_MessageType    , VkDebugUtilsMessageTypeFlagsEXT>;
-
-
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a>  */
-		struct Label : V0::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
-		{
-			      EType   SType    ;
-			const void*   Next     ;
-			const char*   Name     ;
-			      float32 Color[4] ;
-		};
-
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a>  */
-		struct ObjectInfo : V0::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
-		{
-			      EType       SType    ;
-			const void*       Next     ;
-			      EObjectType Type     ;
-			      uInt64      Handle   ;
-			const char*       Name     ;
-		};
-
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a>
-		 */
-		struct DebugMessenger
+		@brief Debug Utilities: Flexible utilities for debugging an application.
+
+		@details
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a> 
+
+		@ingroup APISpec_Debugging
+		*/
+		struct DebugUtils
 		{
-		public:
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a>  */
-			using Handle = VkDebugUtilsMessengerEXT;
+			using EMessageServerity = EDebugUtils_MessageSeverity;
+			using EMessageType      = EDebugUtils_MessageType    ;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a>  */
-			struct CallbackData : V0::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a>  
+			@ingroup APISpec_Debugging 
+			*/
+			using MessageServerityFlags = Bitmask<EMessageServerity, VkDebugUtilsMessageSeverityFlagsEXT>;
+
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  
+			@ingorup APISpec_Debugging 
+			*/
+			using MessageTypeFlags = Bitmask<EMessageType , VkDebugUtilsMessageTypeFlagsEXT>;
+
+			/** 
+			@brief Pointer to the create debug messenger function.
+
+			@details
+			The create messenger function is not provided automatically from the Vulkan API and must be
+			retrieved with AppInstance's GetProcedureAddress function.
+
+			@ingroup APISpec_Debugging
+			*/ 
+			using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
+
+			/** 
+			@brief Used in conjunction with labeling queues, and commands.
+			
+			@details 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a> 
+			
+			@ingroup APISpec_Debugging
+			*/
+			struct Label : V0::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
 			{
-				using FlagsMask = Bitmask<EUndefined, Flags>;
-
-				      EType       SType               ;
-				const void*       Next                ;
-				      FlagsMask   Flags               ;
-				const char*       MesssageIDName      ;
-				      sint32      MessageIDNumber     ;
-				const char*       Message             ;
-				      uint32      QueueLabelCount     ;
-				const Label*      QueueLabels         ;
-				      uint32      CMDBufferLabel_Count;
-				const Label*      CMDBufferLabels     ;
-				      uint32      ObjectCount         ;
-				const ObjectInfo* Objects             ;
+					  EType   SType   ;
+				const void*   Next    ;
+				const char*   Name    ;
+					  float32 Color[4];
 			};
 
-			using CallbackDelegate = VK_FPtr<Bool, MessageServerityFlags, MessageTypeFlags, const CallbackData, void* >;
+			/** 
+			@brief Used for annotating objects with user defined information.
+			
+			@details
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a> 
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a>  */
-			struct CreateInfo : V0::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
+			@ingroup APISpec_Debugging 
+			*/
+			struct ObjectInfo : V0::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;
-
-				      EType                 SType       ;
-				const void*                 Next        ;
-				      CreateFlags           Flags       ;
-				      MessageServerityFlags Serverity   ;
-				      MessageTypeFlags      Type        ;
-				      CallbackDelegate      UserCallback;
-				      void*                 UserData    ;
+					  EType       SType ;
+				const void*       Next  ;
+					  EObjectType Type  ;
+					  uInt64      Handle;
+				const char*       Name  ;
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDebugUtilsMessengerEXT">Specification</a> 
-			 * 
-			 * \param _appInstance
-			 * \param _createSpec
-			 * \param _allocator
-			 * \param _messenger
-			 * \return 
-			 */
-			static EResult Create
-			(
-				      AppInstance::Handle          _appInstance,
-				const DebugMessenger::CreateInfo&  _createSpec ,
-				const Memory::AllocationCallbacks* _allocator  ,
-				      DebugMessenger::Handle&      _messenger
-			)
+			@brief 
+			Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information. 
+			Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior. 
+			 
+			@details 
+			The debug messenger will provide detailed feedback on the application's use
+            of Vulkan when events of interest occur. When an event of interest does
+            occur, the debug messenger will submit a debug message to the debug callback
+            that was provided during its creation. Additionally, the debug messenger is
+            responsible with filtering out debug messages that the callback is not
+            interested in and will only provide desired debug messages.
+
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a>
+			 
+			@ingroup APISpec_Debugging
+			*/
+			struct Messenger
 			{
-				static FPtr_CreateMessenger delegate = nullptr;
+			public:
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a> @ingroup APISpec_Debugging */
+				using Handle = VkDebugUtilsMessengerEXT;
 
-				if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
-
-				if (delegate != nullptr)
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a> @ingroup APISpec_Debugging */
+				struct CallbackData : V0::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
 				{
-					return EResult
-					(
-						delegate
-						(
-							_appInstance,
-							(const VkDebugUtilsMessengerCreateInfoEXT*)(&_createSpec),
-							(const VkAllocationCallbacks*             )( _allocator ),
-							(      VkDebugUtilsMessengerEXT*          )(&_messenger )
-						)
-					);
-				}
-				else
-				{
-					return EResult::Error_ExtensionNotPresent;
-				}
-			}
+					using FlagsMask = Bitmask<EUndefined, Flags>;
 
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDebugUtilsMessengerEXT">Specification</a> .
-			 * 
-			 * \param _appInstance
-			 * \param _messenger
-			 * \param _allocator
-			 */
-			static void Destroy
-			(
-				      AppInstance::Handle          _appInstance,
-				      DebugMessenger::Handle       _messenger  ,
-				const Memory::AllocationCallbacks* _allocator
-			)
-			{
-				using FPtr_DestroyMessenger = PFN_vkDestroyDebugUtilsMessengerEXT;
+						  EType       SType               ;
+					const void*       Next                ;
+						  FlagsMask   Flags               ;
+					const char*       MesssageIDName      ;
+						  sint32      MessageIDNumber     ;
+					const char*       Message             ;
+						  uint32      QueueLabelCount     ;
+					const Label*      QueueLabels         ;
+						  uint32      CMDBufferLabel_Count;
+					const Label*      CMDBufferLabels     ;
+						  uint32      ObjectCount         ;
+					const ObjectInfo* Objects             ;
+				};
 
-				static FPtr_DestroyMessenger delegate = nullptr;
+				/** 
+				@brief The prototype for the CreateInfo::UserCallback function implemented by the application.
+
+				@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkDebugUtilsMessengerCallbackEXT">Specification</a> 
 				
-				if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
-
-				if (delegate != nullptr)
+				@ingroup APISpec_Debugging
+				*/
+				struct CallbackDelegate
 				{
-					delegate(_appInstance, _messenger, _allocator->operator const VkAllocationCallbacks*());
-				}
-			}
-		}; 
+					using Delegate = PFN_vkDebugUtilsMessengerCallbackEXT;
 
-		/** @} */
+					template<typename FuncType>
+					void operator=(FuncType _function) 
+					{
+						Callback = reinterpret_cast<Delegate>(_function);
+					}
+
+					Delegate Callback;
+				};
+
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a>  */
+				struct CreateInfo : V0::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
+				{ 
+					using CreateFlags = Bitmask<EUndefined, Flags>;
+
+						  EType                 SType       ;
+					const void*                 Next        ;
+						  CreateFlags           Flags       ;
+						  MessageServerityFlags Serverity   ;
+						  MessageTypeFlags      Type        ;
+						  CallbackDelegate      UserCallback;
+						  void*                 UserData    ;
+				};
+
+				/**
+				 * @brief Creates a debug messenger. 
+				 
+				 @details
+				 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDebugUtilsMessengerEXT">Specification</a> 
+				 * 
+				 * \param _appInstance
+				 * \param _createSpec
+				 * \param _allocator
+				 * \param _messenger
+				 * \return 
+				 */
+				static EResult Create
+				(
+						  AppInstance::Handle          _appInstance,
+					const CreateInfo&                  _createSpec ,
+					const Memory::AllocationCallbacks* _allocator  ,
+						  Handle&                      _messenger
+				)
+				{
+					static FPtr_CreateMessenger delegate = nullptr;
+
+					if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
+
+					if (delegate != nullptr)
+					{
+						return EResult
+						(
+							delegate
+							(
+								_appInstance,
+								(const VkDebugUtilsMessengerCreateInfoEXT*)(&_createSpec),
+								(const VkAllocationCallbacks*             )( _allocator ),
+								(      VkDebugUtilsMessengerEXT*          )(&_messenger )
+							)
+						);
+					}
+					else
+					{
+						return EResult::Error_ExtensionNotPresent;
+					}
+				}
+
+				/**
+				 * @brief Destroys a debug messenger. 
+				 
+				 @details
+				 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDebugUtilsMessengerEXT">Specification</a> .
+				 * 
+				 * \param _appInstance
+				 * \param _messenger
+				 * \param _allocator
+				 */
+				static void Destroy
+				(
+						  AppInstance::Handle          _appInstance,
+						  Handle                       _messenger  ,
+					const Memory::AllocationCallbacks* _allocator
+				)
+				{
+					using FPtr_DestroyMessenger = PFN_vkDestroyDebugUtilsMessengerEXT;
+
+					static FPtr_DestroyMessenger delegate = nullptr;
+					
+					if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
+
+					if (delegate != nullptr)
+					{
+						delegate(_appInstance, _messenger, _allocator->operator const VkAllocationCallbacks*());
+					}
+				}
+			}; 
+
+			/** @} */
+		};
 	}
 
 	namespace V2
@@ -199,73 +276,97 @@ namespace VaultedThermals
 		@{
 		*/
 
-		using V1::CallbackDataFlags;
-		using V1::FPtr_CreateMessenger;
-		using V1::MessageServerityFlags;
-		using V1::MessageTypeFlags;
+		/**
+		@brief Debug Utilities: Flexible utilities for debugging an application.
 
-		struct Label : V1::Label
+		@ingroup APISpec_Debugging
+		*/
+		struct DebugUtils : public V1::DebugUtils 
 		{
-			Label()
-			{
-				SType = STypeEnum;
-				Next  = nullptr  ;
-			}
-		};
+			using Parent = V1::DebugUtils;
 
-		struct ObjectInfo : V1::ObjectInfo
-		{
-			ObjectInfo()
+			/**
+			@brief Offers a default constructor.
+			*/
+			struct Label : public Parent::Label
 			{
-				SType = STypeEnum;
-				Next  = nullptr  ;
-			}
-		};
-
-		struct DebugMessenger : public V1::DebugMessenger
-		{
-			using Parent = V1::DebugMessenger;
-
-			struct CallbackData : Parent::CallbackData
-			{
-				CallbackData()
+				Label()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
+					Name  = nullptr  ;
 				}
 			};
 
-			struct CreateInfo : Parent::CreateInfo
+			/**
+			@brief Offers a default constructor.
+			*/
+			struct ObjectInfo : public Parent::ObjectInfo
 			{
-				CreateInfo()
+				ObjectInfo()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
+					Name  = nullptr  ;
 				}
 			};
 
-			static EResult Create
-			(
-				      AppInstance::Handle          _appInstance,
-				const DebugMessenger::CreateInfo&  _createSpec ,
-				      DebugMessenger::Handle&      _messenger
-			)
+			/**
+			@brief Offers a default constructor.
+			*/
+			struct Messenger : public Parent::Messenger
 			{
-				return Parent::Create(_appInstance, _createSpec, Memory::DefaultAllocator,_messenger);
-			}
+				using Parent = Parent::Messenger;
 
-			using Parent::Create;
+				/**
+				
+				*/
+				struct CallbackData : Parent::CallbackData
+				{
+					CallbackData()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
 
-			static void Destroy
-			(
-				AppInstance::Handle          _appInstance,
-				DebugMessenger::Handle       _messenger  
-			)
-			{
-				Parent::Destroy(_appInstance, _messenger, Memory::DefaultAllocator);
-			}
+				/**
+				@brief Offers a default constructor.
+				*/
+				struct CreateInfo : Parent::CreateInfo
+				{
+					CreateInfo()
+					{
+						SType = STypeEnum;
+						Next  = nullptr  ;
+					}
+				};
 
-			using Parent::Destroy;
+				/**
+				@brief Create a debug messenger with the default memory allocator.
+				*/
+				static EResult Create
+				(
+						  AppInstance::Handle _appInstance,
+					const CreateInfo&         _createSpec ,
+						  Handle&             _messenger
+				)
+				{
+					return Parent::Create(_appInstance, _createSpec, Memory::DefaultAllocator,_messenger);
+				}
+
+				using Parent::Create;
+
+				/**
+				@brief Destroy a debug messenger that used the default memory allocator.
+				*/
+				static void Destroy(AppInstance::Handle _appInstance, Handle _messenger)
+				{
+					Parent::Destroy(_appInstance, _messenger, Memory::DefaultAllocator);
+				}
+
+				using Parent::Destroy;
+			};
 		};
 
 		/** @} */
@@ -278,106 +379,123 @@ namespace VaultedThermals
 		@{
 		*/
 
-		using V2::CallbackDataFlags;
-		using V2::FPtr_CreateMessenger;
-		using V2::MessageServerityFlags;
-		using V2::MessageTypeFlags;
+		/**
+		@brief
 
-		class DebugMessenger : public V2::DebugMessenger
+		@ingroup
+
+		@todo 
+		#TODO: Add documentation.
+		*/
+		class DebugUtils : public V2::DebugUtils 
 		{
 		public:
 
-			using Parent = V2::DebugMessenger;
+			using Parent = V2::DebugUtils;
 
-			void AssignInfo(const CreateInfo& _info)
+			class Messenger : public Parent::Messenger
 			{
-				info = _info;
-			}
+			public:
 
-			EResult Create
-			(
-				AppInstance::Handle _appInstance
-			)
-			{
-				app       = _appInstance ;
-				allocator = Memory::DefaultAllocator;
+				using Parent = V2::DebugUtils::Messenger;
 
-				return Parent::Create(app, info, handle);
-			}
+				void AssignInfo(const CreateInfo& _info)
+				{
+					info = _info;
+				}
 
-			EResult Create
-			(
-					  AppInstance::Handle          _appInstance,
-				const Memory::AllocationCallbacks* _allocator  
-			)
-			{
-				app       = _appInstance;
-				allocator = _allocator  ;
+				EResult Create(AppInstance::Handle _appInstance)
+				{
+					app       = _appInstance ;
+					allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(app, info, allocator, handle);
-			}
+					return Parent::Create(app, info, handle);
+				}
 
-			EResult Create
-			(
-				      AppInstance::Handle _appInstance,
-				const CreateInfo&         _createSpec 
-			)
-			{
-				app       = _appInstance ;
-				info      = _createSpec  ;
-				allocator = Memory::DefaultAllocator;
+				EResult Create
+				(
+						  AppInstance::Handle          _appInstance,
+					const Memory::AllocationCallbacks* _allocator  
+				)
+				{
+					app       = _appInstance;
+					allocator = _allocator  ;
 
-				return Parent::Create(app, _createSpec, handle);
-			}
+					return Parent::Create(app, info, allocator, handle);
+				}
 
-			EResult Create
-			(
-				      AppInstance::Handle          _appInstance,
-				const CreateInfo&                  _createSpec ,
-				const Memory::AllocationCallbacks* _allocator  
-			)
-			{
-				app       = _appInstance ;
-				info      = _createSpec  ;
-				allocator = _allocator   ;
+				EResult Create
+				(
+						  AppInstance::Handle _appInstance,
+					const CreateInfo&         _createSpec 
+				)
+				{
+					app       = _appInstance ;
+					info      = _createSpec  ;
+					allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(app, _createSpec, allocator, handle);
-			}
+					return Parent::Create(app, _createSpec, handle);
+				}
 
-			void Destroy()
-			{
-				Parent::Destroy(app, handle, allocator);
-			}
+				EResult Create
+				(
+						  AppInstance::Handle          _appInstance,
+					const CreateInfo&                  _createSpec ,
+					const Memory::AllocationCallbacks* _allocator  
+				)
+				{
+					app       = _appInstance ;
+					info      = _createSpec  ;
+					allocator = _allocator   ;
 
-			const CreateInfo& GetInfo() const
-			{
-				return info;
-			}
+					return Parent::Create(app, _createSpec, allocator, handle);
+				}
 
-			operator Handle()
-			{
-				return handle;
-			}
+				void Destroy()
+				{
+					Parent::Destroy(app, handle, allocator);
+				}
 
-			operator Handle() const
-			{
-				return handle;
-			}
+				const CreateInfo& GetInfo() const
+				{
+					return info;
+				}
 
-			operator const Handle& () const
-			{
-				return handle;
-			}
+				operator Handle()
+				{
+					return handle;
+				}
 
-		protected:
+				operator Handle*()
+				{
+					return &handle;
+				}
 
-			AppInstance::Handle app;
+				operator const Handle&() const
+				{
+					return handle;
+				}
 
-			CreateInfo info;
+				operator const Handle*() const
+				{
+					return &handle;
+				}
 
-			const Memory::AllocationCallbacks* allocator;
+				bool operator== (const Messenger& _other)
+				{
+					return handle == _other.handle;
+				}
 
-			Handle handle;
+			protected:
+
+				AppInstance::Handle app;
+
+				CreateInfo info;
+
+				const Memory::AllocationCallbacks* allocator;
+
+				Handle handle;
+			};
 		};
 
 		/** @} */

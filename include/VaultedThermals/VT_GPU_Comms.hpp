@@ -61,7 +61,7 @@ namespace VaultedThermals
 		constexpr bool EngageSingleGPU = false;
 	#endif
 
-		using V3::DebugMessenger             ;
+		using V3::DebugUtils;
 		using V3::LayerAndExtensionProperties;
 
 		using LayerAndExtensionList = DynamicArray<LayerAndExtensionProperties>;
@@ -150,7 +150,7 @@ namespace VaultedThermals
 				static Deque<RoCStr>         desiredExtensions;
 				static Deque<RoCStr>         desriedDeviceExts;
 
-				static V3::DebugMessenger messenger;
+				static V3::DebugUtils::Messenger messenger;
 
 				static PhysicalDeviceList physicalGPUs;
 				static LogicalDeviceList  logicalGPUs;

@@ -61,7 +61,7 @@ namespace VaultedThermals
 		/**
 		@brief Used in render pass subpass related functionality.
 
-		@todo #TODO : make a better brief/detailed elaboration.
+		@todo #TODO : Make a better brief/detailed elaboration.
 		*/
 		constexpr uint32 Subpass_External = VK_SUBPASS_EXTERNAL;
 
@@ -86,8 +86,19 @@ namespace VaultedThermals
 
 		struct InstanceExt
 		{
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME  ;
+
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr Surface      = VK_KHR_SURFACE_EXTENSION_NAME      ;
+
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr Win32Surface = VK_KHR_WIN32_SURFACE_EXTENSION_NAME;
 		};
 
@@ -100,29 +111,61 @@ namespace VaultedThermals
 		{
 			// Utility
 
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr LunarG_API_Dump   = "VK_LAYER_LUNARG_api_dump"  ;
+
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr LunarG_Monitor    = "VK_LAYER_LUNARG_monitor"   ;   // Shows FPS on the most recently created window.
+
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr LunarG_Screenshot = "VK_LAYER_LUNARG_screenshot";
 
 			// Validation
 
 			// Deprecated (Fallback 3)
 
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr LunarG_CoreValidation = "VK_LAYER_LUNARG_core_validation";
 
 			// Deprecated (Fallback 2)
 
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr LunarG_ParameterValidation = "VK_LAYER_LUNARG_parameter_validation";
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr LunarG_ObjectTracker       = "VK_LAYER_LUNARG_object_tracker"      ;
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr Google_Threading           = "VK_LAYER_GOOGLE_threading"           ;
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr Google_UniqueObjedcts      = "VK_LAYER_GOOGLE_unique_objects"      ;
 
 			// Meta Validation - Deprecated (Fallback 1)
 
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr LunarG_StandardValidation = "VK_LAYER_LUNARG_standard_validation";
 			
 			// Default
 
+			/**
+			@todo #TODO: Needs documentation
+			*/
 			static constexpr RoCStr Khronos_Validation = "VK_LAYER_KHRONOS_validation";
 		};
 

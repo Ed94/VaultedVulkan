@@ -26,14 +26,14 @@
 template<typename Enum>
 struct Bitmaskable
 {
-	static const bool specified = false;
+	static constexpr bool specified = false;
 };
 
 #define SpecifyBitmaskable(__ENUM)      \
 		template<>                              \
 		struct Bitmaskable<__ENUM>              \
 		{							            \
-			static const bool specified = true; \
+			static constexpr bool specified = true; \
 		};	
 
 #endif
@@ -257,7 +257,7 @@ namespace VaultedThermals
 		struct Bitmask
 		{
 		private:
-			EnforceConstraint(Bitmaskable<EnumType>::specified, "EnumType must be of Bitmaskable type.");
+			static_assert(Bitmaskable<EnumType>::specified, "EnumType must be of Bitmaskable type.");
 
 			using _ThisType = Bitmask<EnumType, BitmaskRepresentation>;
 

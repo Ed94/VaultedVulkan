@@ -15,6 +15,7 @@
 
 
 // VT
+
 #include "VT_Vaults.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
@@ -1045,12 +1046,17 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.
+
 		@ingroup APISpec_Command_Buffers
 		*/
 		struct CommandBuffer : public V1::CommandBuffer
 		{
 			using Parent = V1::CommandBuffer;
 
+			/**
+			@brief Offers a default constructor of the struct.
+			*/
 			struct InheritanceWindow : public Parent::InheritanceWindow
 			{
 				using Parent = Parent::InheritanceWindow;
@@ -1061,6 +1067,9 @@ namespace VaultedThermals
 					Next  = nullptr  ;
 				}
 
+				/**
+				@brief Offers a default constructor of the struct.
+				*/
 				struct ConditionalRenderingInfo : public Parent::ConditionalRenderingInfo
 				{
 					ConditionalRenderingInfo()
@@ -1070,6 +1079,9 @@ namespace VaultedThermals
 					}
 				};
 
+				/**
+				@brief Offers a default constructor of the struct.
+				*/
 				struct PassTransformInfo : public Parent::PassTransformInfo
 				{
 					PassTransformInfo()
@@ -1080,6 +1092,9 @@ namespace VaultedThermals
 				};
 			};
 
+			/**
+			@brief Offers a default constructor of the struct.
+			*/
 			struct BeginInfo : public Parent::BeginInfo
 			{
 				BeginInfo()
@@ -1090,6 +1105,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor of the struct.
+			*/
 			struct SubmitInfo : public Parent::SubmitInfo
 			{
 				using Parent = Parent::SubmitInfo;
@@ -1107,6 +1125,9 @@ namespace VaultedThermals
 					SignalSemaphores     = nullptr  ;
 				}
 
+				/**
+				@brief Offers a default constructor of the struct.
+				*/
 				struct TimelineSemaphore : public Parent
 				{
 					TimelineSemaphore()
@@ -1116,6 +1137,9 @@ namespace VaultedThermals
 					}
 				};
 
+				/**
+				@brief Offers a default constructor of the struct.
+				*/
 				struct D3D12Fence : public Parent
 				{
 					D3D12Fence()
@@ -1835,41 +1859,6 @@ namespace VaultedThermals
 				Parent::Trim(*device, handle, _flags);
 			}
 
-			operator Handle()
-			{
-				return handle;
-			}
-
-			operator const Handle&() const
-			{
-				return handle;
-			}
-
-			operator Handle()
-			{
-				return handle;
-			}
-
-			operator Handle*()
-			{
-				return &handle;
-			}
-
-			operator const Handle&() const
-			{
-				return handle;
-			}
-
-			operator const Handle*() const
-			{
-				return &handle;
-			}
-
-			bool operator== (const CommandPool& _other)
-			{
-				return handle == _other.handle;
-			}
-
 		#pragma region SingleTimeCommands
 
 			/**
@@ -1953,6 +1942,31 @@ namespace VaultedThermals
 			}
 
 		#pragma endregion SingleTimeCommands
+
+			operator Handle()
+			{
+				return handle;
+			}
+
+			operator Handle*()
+			{
+				return &handle;
+			}
+
+			operator const Handle&() const
+			{
+				return handle;
+			}
+
+			operator const Handle*() const
+			{
+				return &handle;
+			}
+
+			bool operator== (const CommandPool& _other)
+			{
+				return handle == _other.handle;
+			}
 
 		protected:
 
