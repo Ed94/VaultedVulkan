@@ -53,6 +53,57 @@
           <span class="m-breadcrumb"><a href="group___a_p_i___specification.html">API_Specification</a> &raquo;</span>
           APISpec_Devices_and_Queues <span class="m-thin">module</span></h1>
         <p>Chapter 4: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap5.html">Specification</a></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga5ee4cdb3dbddfac2c3551c661b917c4f" class="m-doc">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap">Handle _handle,
+              uint32* _numDevices,
+              PhysicalDevice::Handle* _deviceListing) -&gt; EResult</span>
+            </dt>
+            <dd>Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gae9ffba347efb3d2b52df8561f5afc1bb" class="m-doc">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap">Handle _handle,
+              uint32* _numGroups,
+              PhysicalDevice::Group* _groupProperties) -&gt; EResult</span>
+            </dt>
+            <dd>Retrieve a list of physical device groups.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ga5ee4cdb3dbddfac2c3551c661b917c4f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga5ee4cdb3dbddfac2c3551c661b917c4f" class="m-doc-self">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap">Handle _handle,
+              uint32* _numDevices,
+              PhysicalDevice::Handle* _deviceListing)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.</p>
+<p>If pPhysicalDevices is NULL, then the number of physical devices available is returned in pPhysicalDeviceCount. Otherwise, pPhysicalDeviceCount must point to a variable set by the user to the number of elements in the pPhysicalDevices array, and on return the variable is overwritten with the number of handles actually written to pPhysicalDevices.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gae9ffba347efb3d2b52df8561f5afc1bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae9ffba347efb3d2b52df8561f5afc1bb" class="m-doc-self">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap">Handle _handle,
+              uint32* _numGroups,
+              PhysicalDevice::Group* _groupProperties)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Retrieve a list of physical device groups.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a></p>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>

@@ -70,14 +70,14 @@
             </li>
           </ul>
         </div>
-<p>Other Name: Application State Container</p><p>Vulkan has no global state reference: Every application must keep track of their state using an instance object.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a></p><p>Note: This class is a singleton. There should really not be more than one app instance per process...</p>
+<p>Other Name: Application State Container</p><p>Vulkan has no global state reference: Every application must keep track of their state using an instance object.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_app_instance.html" class="m-doc">VT::V2::AppInstance</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>An object that manages the represented application process state within the GPU.</dd>
           </dl>
         </section>
         <section id="derived-classes">
@@ -105,12 +105,16 @@
               <span class="m-doc-wrap-bumper"><a href="#aa04a48eaff108e0ff657cd684a0a48a6" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aceaff0d8b8c07b71e83e755d434acf7f">
-              <span class="m-doc-wrap-bumper"><a href="#aceaff0d8b8c07b71e83e755d434acf7f" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">) const</span>
+            <dt id="aabd856ce8455ce043f83383e35aefb86">
+              <span class="m-doc-wrap-bumper"><a href="#aabd856ce8455ce043f83383e35aefb86" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
             <dt id="ae59fa37161b0ff2026165b66e01297ae">
               <span class="m-doc-wrap-bumper"><a href="#ae59fa37161b0ff2026165b66e01297ae" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a23be17d5e3c958073395fffa88d22bb7">
+              <span class="m-doc-wrap-bumper"><a href="#a23be17d5e3c958073395fffa88d22bb7" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -126,15 +130,15 @@
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a6d0012bd83e8bd72a4a5bc5b3a11881e" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInstance::<wbr />AppInfo</a>&amp; _appInfo,
               <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createInfo,
-              const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create an application instance.</dd>
             <dt id="a428b1f1231088987fcafabfc08636427">
               <span class="m-doc-wrap-bumper">void <a href="#a428b1f1231088987fcafabfc08636427" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Destroy an application instance.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a6000c92a3069104aabdd66559cdf0d56" class="m-doc">GetAvailablePhysicalDevices</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a>&gt;&amp; _deviceListing) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a6000c92a3069104aabdd66559cdf0d56">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6000c92a3069104aabdd66559cdf0d56" class="m-doc-self">GetAvailablePhysicalDevices</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a>&gt;&amp; _deviceListing) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Provides the handles of all available physical devices.</dd>
             <dt>
@@ -144,7 +148,7 @@
             <dt id="af4087c8e877d5bd6590310c6c178656e">
               <span class="m-doc-wrap-bumper">auto <a href="#af4087c8e877d5bd6590310c6c178656e" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a>&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the app instance&#x27;s handle.</dd>
             <dt id="ad1da5f68c55fd0337b23c98d2693ad06">
               <span class="m-doc-wrap-bumper">auto <a href="#ad1da5f68c55fd0337b23c98d2693ad06" class="m-doc-self">GetVersion</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a></span>
             </dt>
@@ -154,14 +158,18 @@
               <span class="m-doc-wrap-bumper">auto <a href="#aaa7f4c5784e4d5e718b77435041160b3" class="m-doc">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedureName) const -&gt; std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type</span>
             </dt>
             <dd></dd>
-            <dt id="af9eb35364696e1856fc5b53916cf412e">
-              <span class="m-doc-wrap-bumper">auto <a href="#af9eb35364696e1856fc5b53916cf412e" class="m-doc-self">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numDevices,
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af9eb35364696e1856fc5b53916cf412e" class="m-doc">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numDevices,
               <a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a>* _deviceListing) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.</dd>
             <dt id="a1698db05621c03bc8c6b4b858a92d9a1">
               <span class="m-doc-wrap-bumper">auto <a href="#a1698db05621c03bc8c6b4b858a92d9a1" class="m-doc-self">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numGroups,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>* _groupProperties) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Retrieve a list of physical device groups.</dd>
+            <dt id="ac116d3a586f173b116dbeee9fade6e66">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac116d3a586f173b116dbeee9fade6e66" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _other) -&gt; bool</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -174,11 +182,11 @@
             </dt>
             <dd><span></span></dd>
             <dt id="a6350ff8dbd05c3e06ed126a5311325a6">
-              AppInfo <a href="#a6350ff8dbd05c3e06ed126a5311325a6" class="m-doc-self">appInfo</a>
+              <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInfo</a> <a href="#a6350ff8dbd05c3e06ed126a5311325a6" class="m-doc-self">appInfo</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a1afed86d241f3173f6e1c15d0c7ce123">
-              <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">CreateInfo</a> <a href="#a1afed86d241f3173f6e1c15d0c7ce123" class="m-doc-self">createInfo</a>
+              CreateInfo <a href="#a1afed86d241f3173f6e1c15d0c7ce123" class="m-doc-self">createInfo</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a9d610d2580296dc6751cdf40bd22ac3b">
@@ -186,7 +194,7 @@
             </dt>
             <dd><span></span></dd>
             <dt id="a634e66a3d3c48e599213198cb871d05f">
-              const Memory::AllocationCallbacks* <a href="#a634e66a3d3c48e599213198cb871d05f" class="m-doc-self">allocator</a>
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* <a href="#a634e66a3d3c48e599213198cb871d05f" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -219,7 +227,7 @@
             <h3>
               <span class="m-doc-wrap-bumper"><a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d0012bd83e8bd72a4a5bc5b3a11881e" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInstance::<wbr />AppInfo</a>&amp; _appInfo,
               <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createInfo,
-              const Memory::AllocationCallbacks* _allocator)</span></span>
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
             <p>Create an application instance.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -242,13 +250,6 @@
               </tbody>
             </table>
           </div></section>
-          <section class="m-doc-details" id="a6000c92a3069104aabdd66559cdf0d56"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"><a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6000c92a3069104aabdd66559cdf0d56" class="m-doc-self">GetAvailablePhysicalDevices</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a>&gt;&amp; _deviceListing) const</span></span>
-            </h3>
-            <p>Provides the handles of all available physical devices.</p>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000036" class="m-doc">Todo</a></h4><p>Make the device listing container type specifiable using an interface.</p></aside>
-          </div></section>
           <section class="m-doc-details" id="aa0cabc35441391a32312786a6f4710d9"><div>
             <h3>
               <span class="m-doc-wrap-bumper"><a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa0cabc35441391a32312786a6f4710d9" class="m-doc-self">GetAvailablePhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>&gt;&amp; _groupListing) const</span></span>
@@ -265,7 +266,6 @@
                 </tr>
               </tbody>
             </table>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000037" class="m-doc">Todo</a></h4><p>Make the group listing container type specifiable using an interface.</p></aside>
           </div></section>
           <section class="m-doc-details" id="aaa7f4c5784e4d5e718b77435041160b3"><div>
             <h3>
@@ -275,6 +275,14 @@
               <span class="m-doc-wrap-bumper">std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaa7f4c5784e4d5e718b77435041160b3" class="m-doc-self">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedureName) const</span></span>
             </h3>
 <p>Function pointers for all Vulkan commands can be obtained with this command.</p><p>vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. Typically, the loader library will export this command as a function symbol, so applications can link against the loader library, or load it dynamically and look up the symbol using platform-specific APIs.</p><p>Note: ReturnType is restricted to only function pointing types.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html">https:/<wbr />/<wbr />www.khronos.org/<wbr />registry/<wbr />vulkan/<wbr />specs/<wbr />1.2-extensions/<wbr />man/<wbr />html/<wbr />vkGetInstanceProcAddr.html</a></p>
+          </div></section>
+          <section class="m-doc-details" id="af9eb35364696e1856fc5b53916cf412e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af9eb35364696e1856fc5b53916cf412e" class="m-doc-self">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numDevices,
+              <a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a>* _deviceListing) const</span></span>
+            </h3>
+            <p>Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.</p>
+<p>If pPhysicalDevices is NULL, then the number of physical devices available is returned in pPhysicalDeviceCount. Otherwise, pPhysicalDeviceCount must point to a variable set by the user to the number of elements in the pPhysicalDevices array, and on return the variable is overwritten with the number of handles actually written to pPhysicalDevices.</p>
           </div></section>
         </section>
       </div>

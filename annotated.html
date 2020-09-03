@@ -129,13 +129,8 @@
                     <ul class="m-doc">
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInfo</a> <span class="m-doc">A structure that specifies to the Vulkan driver information about an application that will run an instance.</span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc">Structure specifying parameters of a newly created instance.</span></li>
-                      <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation.html" class="m-doc">Validation</a> <span class="m-doc"><span></span></span>
-                        <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_1_1_features.html" class="m-doc">Features</a> <span class="m-doc"></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_1_1_flags.html" class="m-doc">Flags</a> <span class="m-doc"></span></li>
-                        </ul>
-                      </li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_features.html" class="m-doc">ValidationFeatures</a> <span class="m-doc">Used when creating a Vulkan app instance and want to enable specific validation features. (Added to the Next chain).</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_flags.html" class="m-doc">ValidationFlags</a> <span class="m-doc">Used when creating a Vulkan app instance and want to disable validation checks.</span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
@@ -194,7 +189,7 @@
                         <ul class="m-doc">
                           <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_callback_data.html" class="m-doc">CallbackData</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a></span></li>
                           <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_callback_delegate.html" class="m-doc">CallbackDelegate</a> <span class="m-doc">The prototype for the <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html#a4871059a4e226836f43d6042a060ee21" class="m-doc">CreateInfo::<wbr />UserCallback</a> function implemented by the application.</span></li>
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a><br /></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a></span></li>
                         </ul>
                       </li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_object_info.html" class="m-doc">ObjectInfo</a> <span class="m-doc">Used for annotating objects with user defined information.</span></li>
@@ -492,17 +487,12 @@
                 <a href="#" onclick="return toggle(this)">namespace</a> <a href="namespace_v_t_1_1_v2.html" class="m-doc">V2</a> <span class="m-doc"><span></span></span>
                 <ul class="m-doc">
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_app_instance.html" class="m-doc">AppInstance</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_app_instance.html" class="m-doc">AppInstance</a> <span class="m-doc">An object that manages the represented application process state within the GPU.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_validation.html" class="m-doc">Validation</a> <span class="m-doc"><span></span></span>
-                        <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_validation_1_1_features.html" class="m-doc">Features</a> <span class="m-doc"><span></span></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_validation_1_1_flags.html" class="m-doc">Flags</a> <span class="m-doc"><span></span></span></li>
-                        </ul>
-                      </li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_validation_features.html" class="m-doc">ValidationFeatures</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_app_instance_1_1_validation_flags.html" class="m-doc">ValidationFlags</a> <span class="m-doc">Offers a default constructor.</span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">

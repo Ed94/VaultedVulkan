@@ -74,7 +74,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_app_instance.html" class="m-doc">VT::V2::AppInstance</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>An object that manages the represented application process state within the GPU.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -89,9 +89,13 @@
             </dt>
             <dd>Structure specifying parameters of a newly created instance.</dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation.html" class="m-doc">Validation</a>
+              struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_features.html" class="m-doc">ValidationFeatures</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Used when creating a Vulkan app instance and want to enable specific validation features. (Added to the Next chain).</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_flags.html" class="m-doc">ValidationFlags</a>
+            </dt>
+            <dd>Used when creating a Vulkan app instance and want to disable validation checks.</dd>
             <dt id="a1476ba458837d0ead48f11d2f30f816e">
               using <a href="#a1476ba458837d0ead48f11d2f30f816e" class="m-doc-self">Memory</a> = <a href="struct_v_t_1_1_v0_1_1_memory.html" class="m-doc">V0::<wbr />Memory</a>
             </dt>
@@ -100,10 +104,10 @@
               using <a href="#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> = VkInstance
             </dt>
             <dd>Opaque handle to an instance object.</dd>
-            <dt id="a1628748da10e837b3d68ab669cbb6d69">
-              using <a href="#a1628748da10e837b3d68ab669cbb6d69" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, VkInstanceCreateFlags&gt;
+            <dt>
+              using <a href="#a1628748da10e837b3d68ab669cbb6d69" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, VkInstanceCreateFlags&gt;
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a></dd>
+            <dd>Reserved for future use...</dd>
           </dl>
         </section>
         <section id="pub-static-methods">
@@ -124,35 +128,35 @@
               <span class="m-doc-wrap-bumper">static auto <a href="#ae481e0c8f306e13a339969fc62186a3b" class="m-doc">GetVersion</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _versionContainer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query the version of application instance-level functionality supported by the implementation.</dd>
-            <dt id="a5bde90c5c600a46306bea63bd25fc925">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a5bde90c5c600a46306bea63bd25fc925" class="m-doc-self">QueryAvailableLayers</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numContainer,
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___extending___vulkan.html#ga5bde90c5c600a46306bea63bd25fc925" class="m-doc">QueryAvailableLayers</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numContainer,
               <a href="struct_v_t_1_1_corridors_1_1_layer_properties.html" class="m-doc">LayerProperties</a>* _propertiesContainer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a><br /></dd>
-            <dt id="a20807f88fcf490596d0d8ae14716d361">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a20807f88fcf490596d0d8ae14716d361" class="m-doc-self">QueryAvailableAppExtensions</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
+            <dd>Query the available layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___extending___vulkan.html#ga20807f88fcf490596d0d8ae14716d361" class="m-doc">QueryAvailableAppExtensions</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numProperties,
               <a href="struct_v_t_1_1_corridors_1_1_extension_properties.html" class="m-doc">ExtensionProperties</a>* _propertiesContainer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a> .</dd>
+            <dd>Query the available instance extensions.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a5ee4cdb3dbddfac2c3551c661b917c4f" class="m-doc">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___devices__and___queues.html#ga5ee4cdb3dbddfac2c3551c661b917c4f" class="m-doc">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numDevices,
               <a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a>* _deviceListing) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ae9ffba347efb3d2b52df8561f5afc1bb" class="m-doc">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___devices__and___queues.html#gae9ffba347efb3d2b52df8561f5afc1bb" class="m-doc">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numGroups,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>* _groupProperties) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd></dd>
+            <dd>Retrieve a list of physical device groups.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename ReturnType&gt;</div>
               <span class="m-doc-wrap-bumper">static auto <a href="#a28dcdd04271588afe7231b5d6a27bbea" class="m-doc">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a>&amp; _handle,
               <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedureName) -&gt; std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type</span>
             </dt>
-            <dd></dd>
+            <dd>Function pointers for all Vulkan commands can be obtained with this command.</dd>
           </dl>
         </section>
         <section>
@@ -163,6 +167,13 @@
             </h3>
             <p>Opaque handle to an instance object.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="a1628748da10e837b3d68ab669cbb6d69"><div>
+            <h3>
+              using VT::<wbr />V1::<wbr />AppInstance::<wbr /><a href="#a1628748da10e837b3d68ab669cbb6d69" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, VkInstanceCreateFlags&gt;
+            </h3>
+            <p>Reserved for future use...</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a></p>
           </div></section>
         </section>
         <section>
@@ -202,23 +213,6 @@
             </table>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceVersion">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="a5ee4cdb3dbddfac2c3551c661b917c4f"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ee4cdb3dbddfac2c3551c661b917c4f" class="m-doc-self">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numDevices,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a>* _deviceListing)</span></span>
-            </h3>
-            <p>Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.</p>
-<p>If pPhysicalDevices is NULL, then the number of physical devices available is returned in pPhysicalDeviceCount. Otherwise, pPhysicalDeviceCount must point to a variable set by the user to the number of elements in the pPhysicalDevices array, and on return the variable is overwritten with the number of handles actually written to pPhysicalDevices.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="ae9ffba347efb3d2b52df8561f5afc1bb"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae9ffba347efb3d2b52df8561f5afc1bb" class="m-doc-self">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numGroups,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>* _groupProperties)</span></span>
-            </h3>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a></p>
-          </div></section>
           <section class="m-doc-details" id="a28dcdd04271588afe7231b5d6a27bbea"><div>
             <h3>
               <div class="m-doc-template">
@@ -227,7 +221,8 @@
               <span class="m-doc-wrap-bumper">static std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type VT::<wbr />V1::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a28dcdd04271588afe7231b5d6a27bbea" class="m-doc-self">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a>&amp; _handle,
               <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedureName)</span></span>
             </h3>
-<p>Function pointers for all Vulkan commands can be obtained with this command.</p><p>vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. Typically, the loader library will export this command as a function symbol, so applications can link against the loader library, or load it dynamically and look up the symbol using platform-specific APIs.</p><p>Note: ReturnType is restricted to only function pointing types.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html">https:/<wbr />/<wbr />www.khronos.org/<wbr />registry/<wbr />vulkan/<wbr />specs/<wbr />1.2-extensions/<wbr />man/<wbr />html/<wbr />vkGetInstanceProcAddr.html</a></p>
+            <p>Function pointers for all Vulkan commands can be obtained with this command.</p>
+<p>vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. Typically, the loader library will export this command as a function symbol, so applications can link against the loader library, or load it dynamically and look up the symbol using platform-specific APIs.</p><p>Note: ReturnType is restricted to only function pointing types.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a></p>
           </div></section>
         </section>
       </div>

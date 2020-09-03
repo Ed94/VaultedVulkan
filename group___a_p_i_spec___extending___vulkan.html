@@ -53,6 +53,55 @@
           <span class="m-breadcrumb"><a href="group___a_p_i___specification.html">API_Specification</a> &raquo;</span>
           APISpec_Extending_Vulkan <span class="m-thin">module</span></h1>
         <p>Chapter 37: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap38.html">Specification</a></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga5bde90c5c600a46306bea63bd25fc925" class="m-doc">QueryAvailableLayers</a>(</span><span class="m-doc-wrap">uint32&amp; _numContainer,
+              LayerProperties* _propertiesContainer) -&gt; EResult</span>
+            </dt>
+            <dd>Query the available layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga20807f88fcf490596d0d8ae14716d361" class="m-doc">QueryAvailableAppExtensions</a>(</span><span class="m-doc-wrap">RoCStr _layerName,
+              uint32&amp; _numProperties,
+              ExtensionProperties* _propertiesContainer) -&gt; EResult</span>
+            </dt>
+            <dd>Query the available instance extensions.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ga5bde90c5c600a46306bea63bd25fc925"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga5bde90c5c600a46306bea63bd25fc925" class="m-doc-self">QueryAvailableLayers</a>(</span><span class="m-doc-wrap">uint32&amp; _numContainer,
+              LayerProperties* _propertiesContainer)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Query the available layers.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a><br /></p>
+          </div></section>
+          <section class="m-doc-details" id="ga20807f88fcf490596d0d8ae14716d361"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga20807f88fcf490596d0d8ae14716d361" class="m-doc-self">QueryAvailableAppExtensions</a>(</span><span class="m-doc-wrap">RoCStr _layerName,
+              uint32&amp; _numProperties,
+              ExtensionProperties* _propertiesContainer)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Query the available instance extensions.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a>.</p>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>
