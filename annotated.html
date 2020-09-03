@@ -51,6 +51,7 @@
       <div class="m-col-l-10 m-push-l-1">
         <h1>Classes</h2>
         <ul class="m-doc">
+          <li>namespace <a href="namespace_vaulted_thermals.html" class="m-doc">VaultedThermals</a> <span class="m-doc">Main library namespace for Vaulted Thermals (Vulkan Wrapper)</span></li>
           <li class="m-doc-collapsible">
             <a href="#" onclick="return toggle(this)">namespace</a> <a href="namespace_v_t.html" class="m-doc">VT</a> <span class="m-doc"><span></span></span>
             <ul class="m-doc">
@@ -185,10 +186,18 @@
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html" class="m-doc">DebugMessenger</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_debug_utils.html" class="m-doc">DebugUtils</a> <span class="m-doc">Debug Utilities: Flexible utilities for debugging an application.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_callback_data.html" class="m-doc">CallbackData</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a><br /></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a><br /></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_label.html" class="m-doc">Label</a> <span class="m-doc">Used in conjunction with labeling queues, and commands.</span></li>
+                      <li class="m-doc-collapsible collapsed">
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger.html" class="m-doc">Messenger</a> <span class="m-doc">Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information. Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.</span>
+                        <ul class="m-doc">
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_callback_data.html" class="m-doc">CallbackData</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_callback_delegate.html" class="m-doc">CallbackDelegate</a> <span class="m-doc">The prototype for the <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html#a4871059a4e226836f43d6042a060ee21" class="m-doc">CreateInfo::<wbr />UserCallback</a> function implemented by the application.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a><br /></span></li>
+                        </ul>
+                      </li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_object_info.html" class="m-doc">ObjectInfo</a> <span class="m-doc">Used for annotating objects with user defined information.</span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
@@ -250,7 +259,6 @@
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_image_view_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a><br /></span></li>
                     </ul>
                   </li>
-                  <li>struct <a href="struct_v_t_1_1_v1_1_1_label.html" class="m-doc">Label</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a><br /></span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_logical_device.html" class="m-doc">LogicalDevice</a> <span class="m-doc">Represent logical connections to physical devices.</span>
                     <ul class="m-doc">
@@ -269,7 +277,6 @@
                     </ul>
                   </li>
                   <li>struct <a href="struct_v_t_1_1_v1_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc"><span></span></span></li>
-                  <li>struct <a href="struct_v_t_1_1_v1_1_1_object_info.html" class="m-doc">ObjectInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a><br /></span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></span>
                     <ul class="m-doc">
@@ -512,21 +519,21 @@
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_command_buffer.html" class="m-doc">CommandBuffer</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_command_buffer.html" class="m-doc">CommandBuffer</a> <span class="m-doc">Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_begin_info.html" class="m-doc">BeginInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_begin_info.html" class="m-doc">BeginInfo</a> <span class="m-doc">Offers a default constructor of the struct.</span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_inheritance_window.html" class="m-doc">InheritanceWindow</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_inheritance_window.html" class="m-doc">InheritanceWindow</a> <span class="m-doc">Offers a default constructor of the struct.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_inheritance_window_1_1_conditional_rendering_info.html" class="m-doc">ConditionalRenderingInfo</a> <span class="m-doc"><span></span></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_inheritance_window_1_1_pass_transform_info.html" class="m-doc">PassTransformInfo</a> <span class="m-doc"><span></span></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_inheritance_window_1_1_conditional_rendering_info.html" class="m-doc">ConditionalRenderingInfo</a> <span class="m-doc">Offers a default constructor of the struct.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_inheritance_window_1_1_pass_transform_info.html" class="m-doc">PassTransformInfo</a> <span class="m-doc">Offers a default constructor of the struct.</span></li>
                         </ul>
                       </li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_submit_info.html" class="m-doc">SubmitInfo</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_submit_info.html" class="m-doc">SubmitInfo</a> <span class="m-doc">Offers a default constructor of the struct.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_submit_info_1_1_d3_d12_fence.html" class="m-doc">D3D12Fence</a> <span class="m-doc"><span></span></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_submit_info_1_1_timeline_semaphore.html" class="m-doc">TimelineSemaphore</a> <span class="m-doc"><span></span></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_submit_info_1_1_d3_d12_fence.html" class="m-doc">D3D12Fence</a> <span class="m-doc">Offers a default constructor of the struct.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_command_buffer_1_1_submit_info_1_1_timeline_semaphore.html" class="m-doc">TimelineSemaphore</a> <span class="m-doc">Offers a default constructor of the struct.</span></li>
                         </ul>
                       </li>
                     </ul>
@@ -539,10 +546,17 @@
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_debug_messenger.html" class="m-doc">DebugMessenger</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_debug_utils.html" class="m-doc">DebugUtils</a> <span class="m-doc">Debug Utilities: Flexible utilities for debugging an application.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_callback_data.html" class="m-doc">CallbackData</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_label.html" class="m-doc">Label</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li class="m-doc-collapsible collapsed">
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_messenger.html" class="m-doc">Messenger</a> <span class="m-doc">Offers a default constructor.</span>
+                        <ul class="m-doc">
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_messenger_1_1_callback_data.html" class="m-doc">CallbackData</a> <span class="m-doc"><span></span></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                        </ul>
+                      </li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_object_info.html" class="m-doc">ObjectInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
@@ -598,7 +612,6 @@
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_image_view_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><span></span></span></li>
                     </ul>
                   </li>
-                  <li>struct <a href="struct_v_t_1_1_v2_1_1_label.html" class="m-doc">Label</a> <span class="m-doc"><span></span></span></li>
                   <li>struct <a href="struct_v_t_1_1_v2_1_1_layer_and_extension_properties.html" class="m-doc">LayerAndExtensionProperties</a> <span class="m-doc">Currently hard coded to use STL vector for extensions.</span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_logical_device.html" class="m-doc">LogicalDevice</a> <span class="m-doc"><span></span></span>
@@ -624,7 +637,6 @@
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_memory_1_1_barrier.html" class="m-doc">Barrier</a> <span class="m-doc"><span></span></span></li>
                     </ul>
                   </li>
-                  <li>struct <a href="struct_v_t_1_1_v2_1_1_object_info.html" class="m-doc">ObjectInfo</a> <span class="m-doc"><span></span></span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device.</span>
                     <ul class="m-doc">
@@ -831,7 +843,12 @@
                   <li>class <a href="class_v_t_1_1_v3_1_1_command_buffer.html" class="m-doc">CommandBuffer</a> <span class="m-doc"></span></li>
                   <li>class <a href="class_v_t_1_1_v3_1_1_command_pool.html" class="m-doc">CommandPool</a> <span class="m-doc"></span></li>
                   <li>class <a href="class_v_t_1_1_v3_1_1_compute_pipeline.html" class="m-doc">ComputePipeline</a> <span class="m-doc"><span></span></span></li>
-                  <li>class <a href="class_v_t_1_1_v3_1_1_debug_messenger.html" class="m-doc">DebugMessenger</a> <span class="m-doc"><span></span></span></li>
+                  <li class="m-doc-collapsible collapsed">
+                    <a href="#" onclick="return toggle(this)">class</a> <a href="class_v_t_1_1_v3_1_1_debug_utils.html" class="m-doc">DebugUtils</a> <span class="m-doc"></span>
+                    <ul class="m-doc">
+                      <li>class <a href="class_v_t_1_1_v3_1_1_debug_utils_1_1_messenger.html" class="m-doc">Messenger</a> <span class="m-doc"><span></span></span></li>
+                    </ul>
+                  </li>
                   <li>class <a href="class_v_t_1_1_v3_1_1_descriptor_pool.html" class="m-doc">DescriptorPool</a> <span class="m-doc"><span></span></span></li>
                   <li>class <a href="class_v_t_1_1_v3_1_1_descriptor_set.html" class="m-doc">DescriptorSet</a> <span class="m-doc"><span></span></span></li>
                   <li>class <a href="class_v_t_1_1_v3_1_1_event.html" class="m-doc">Event</a> <span class="m-doc"><span></span></span></li>
@@ -884,7 +901,7 @@
                 </ul>
               </li>
               <li>namespace <a href="namespace_v_t_1_1_vault___magma_chamber.html" class="m-doc">Vault_MagmaChamber</a> <span class="m-doc"><span></span></span></li>
-              <li>struct <a href="struct_v_t_1_1_enforcement_set.html" class="m-doc">EnforcementSet</a> <span class="m-doc"><span></span></span></li>
+              <li>struct <a href="struct_v_t_1_1_call_enforcement_set.html" class="m-doc">CallEnforcementSet</a> <span class="m-doc"><span></span></span></li>
             </ul>
           </li>
           <li>struct <a href="struct_bitmaskable.html" class="m-doc">Bitmaskable</a> <span class="m-doc"><span></span></span></li>
@@ -951,7 +968,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.19 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.20 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

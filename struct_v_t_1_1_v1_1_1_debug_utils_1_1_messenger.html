@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V2::DebugMessenger struct | VaultedThermals</title>
+  <title>VT::V1::DebugUtils::Messenger struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,17 +50,16 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v2.html">V2</a>::<wbr/></span>DebugMessenger <span class="m-thin">struct</span>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v1_1_1_debug_utils.html">DebugUtils</a>::<wbr/></span>Messenger <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information. Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#derived-classes">Derived classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#pub-static-methods">Public static functions</a></li>
@@ -68,20 +67,16 @@
             </li>
           </ul>
         </div>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html" class="m-doc">VT::V1::DebugMessenger</a>
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a></dd>
-          </dl>
-        </section>
+<p>The debug messenger will provide detailed feedback on the application&#x27;s use of Vulkan when events of interest occur. When an event of interest does occur, the debug messenger will submit a debug message to the debug callback that was provided during its creation. Additionally, the debug messenger is responsible with filtering out debug messages that the callback is not interested in and will only provide desired debug messages.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a></p>
         <section id="derived-classes">
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
             <dt>
-              class <a href="class_v_t_1_1_v3_1_1_debug_messenger.html" class="m-doc">VT::V3::DebugMessenger</a>
+              struct <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_messenger.html" class="m-doc">VT::V2::DebugUtils::Messenger</a>
+            </dt>
+            <dd>Offers a default constructor.</dd>
+            <dt>
+              class <a href="class_v_t_1_1_v3_1_1_debug_utils_1_1_messenger.html" class="m-doc">VT::V3::DebugUtils::Messenger</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -90,58 +85,51 @@
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
             <dt>
-              struct <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_callback_data.html" class="m-doc">CallbackData</a>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_callback_data.html" class="m-doc">CallbackData</a>
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a></dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_callback_delegate.html" class="m-doc">CallbackDelegate</a>
             </dt>
-            <dd><span></span></dd>
-            <dt id="ac7db5ed90fda71afc2bb050010f84ecf">
-              using <a href="#ac7db5ed90fda71afc2bb050010f84ecf" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html" class="m-doc">V1::<wbr />DebugMessenger</a>
+            <dd>The prototype for the <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html#a4871059a4e226836f43d6042a060ee21" class="m-doc">CreateInfo::<wbr />UserCallback</a> function implemented by the application.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a><br /></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a> = VkDebugUtilsMessengerEXT
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a></dd>
           </dl>
         </section>
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
-            <dt id="a7195b8502e2d9b07b6be4ce78ada1197">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a7195b8502e2d9b07b6be4ce78ada1197" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              const <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_create_info.html" class="m-doc">DebugMessenger::<wbr />CreateInfo</a>&amp; _createSpec,
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html#abc3d10195dbd8f6525d7abd1113a04b6" class="m-doc">DebugMessenger::<wbr />Handle</a>&amp; _messenger) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ab3c9da130be2037d08e0585e801bef6d">
-              <span class="m-doc-wrap-bumper">static void <a href="#ab3c9da130be2037d08e0585e801bef6d" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html#abc3d10195dbd8f6525d7abd1113a04b6" class="m-doc">DebugMessenger::<wbr />Handle</a> _messenger)</span>
-            </dt>
-            <dd><span></span></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ac612d354913b27fa66bacce2cc4bf061" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              const <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_create_info.html" class="m-doc">DebugMessenger::<wbr />CreateInfo</a>&amp; _createSpec,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a9e44031d4cb522d4b86653df7c968d7c" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              const <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html#abc3d10195dbd8f6525d7abd1113a04b6" class="m-doc">DebugMessenger::<wbr />Handle</a>&amp; _messenger) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a>&amp; _messenger) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDebugUtilsMessengerEXT">Specification</a></dd>
+            <dd>Creates a debug messenger.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ae3e6a86a38aaed9975e0111420ddd63e" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html#abc3d10195dbd8f6525d7abd1113a04b6" class="m-doc">DebugMessenger::<wbr />Handle</a> _messenger,
+              <span class="m-doc-wrap-bumper">static void <a href="#a2b7f00d6557262d1e148f8d60c0c8bf3" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              <a href="group___a_p_i_spec___debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a> _messenger,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDebugUtilsMessengerEXT">Specification</a> .</dd>
+            <dd>Destroys a debug messenger.</dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="ac612d354913b27fa66bacce2cc4bf061"><div>
+          <section class="m-doc-details" id="a9e44031d4cb522d4b86653df7c968d7c"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />DebugMessenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac612d354913b27fa66bacce2cc4bf061" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              const <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_create_info.html" class="m-doc">DebugMessenger::<wbr />CreateInfo</a>&amp; _createSpec,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />DebugUtils::<wbr />Messenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e44031d4cb522d4b86653df7c968d7c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              const <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html#abc3d10195dbd8f6525d7abd1113a04b6" class="m-doc">DebugMessenger::<wbr />Handle</a>&amp; _messenger)</span></span>
+              <a href="group___a_p_i_spec___debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a>&amp; _messenger)</span></span>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDebugUtilsMessengerEXT">Specification</a></p>
+            <p>Creates a debug messenger.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -165,14 +153,15 @@
                 </tr>
               </tbody>
             </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDebugUtilsMessengerEXT">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ae3e6a86a38aaed9975e0111420ddd63e"><div>
+          <section class="m-doc-details" id="a2b7f00d6557262d1e148f8d60c0c8bf3"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />DebugMessenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae3e6a86a38aaed9975e0111420ddd63e" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html#abc3d10195dbd8f6525d7abd1113a04b6" class="m-doc">DebugMessenger::<wbr />Handle</a> _messenger,
+              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />DebugUtils::<wbr />Messenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2b7f00d6557262d1e148f8d60c0c8bf3" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              <a href="group___a_p_i_spec___debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a> _messenger,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDebugUtilsMessengerEXT">Specification</a> .</p>
+            <p>Destroys a debug messenger.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -192,6 +181,7 @@
                 </tr>
               </tbody>
             </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDebugUtilsMessengerEXT">Specification</a> .</p>
           </div></section>
         </section>
       </div>
@@ -238,7 +228,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.19 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.20 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

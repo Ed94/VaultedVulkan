@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V3::DebugMessenger class | VaultedThermals</title>
+  <title>VT::V3::DebugUtils::Messenger class | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,7 +50,7 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v3.html">V3</a>::<wbr/></span>DebugMessenger <span class="m-thin">class</span>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v3.html">V3</a>::<wbr/></span><span class="m-breadcrumb"><a href="class_v_t_1_1_v3_1_1_debug_utils.html">DebugUtils</a>::<wbr/></span>Messenger <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
         </h1>
         <p><span></span></p>
@@ -73,16 +73,16 @@
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
-              struct <a href="struct_v_t_1_1_v2_1_1_debug_messenger.html" class="m-doc">VT::V2::DebugMessenger</a>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger.html" class="m-doc">VT::V1::DebugUtils::Messenger</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information. Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.</dd>
           </dl>
         </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
-            <dt id="aac6ee327cbdcb2d6734adf09e01ad845">
-              using <a href="#aac6ee327cbdcb2d6734adf09e01ad845" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v2_1_1_debug_messenger.html" class="m-doc">V2::<wbr />DebugMessenger</a>
+            <dt id="a7c54df750776f900e241c9436a4c9324">
+              using <a href="#a7c54df750776f900e241c9436a4c9324" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_messenger.html" class="m-doc">V2::<wbr />DebugUtils::<wbr />Messenger</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -90,16 +90,20 @@
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
-            <dt id="a8dd789c0eb5829385672c22e38e9451c">
-              <span class="m-doc-wrap-bumper"><a href="#a8dd789c0eb5829385672c22e38e9451c" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="a77095c86b0c5cb4a0149c0644deace1d">
+              <span class="m-doc-wrap-bumper"><a href="#a77095c86b0c5cb4a0149c0644deace1d" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aeb3d59cdf6eb2f2281b421a7d2cbcaaa">
-              <span class="m-doc-wrap-bumper"><a href="#aeb3d59cdf6eb2f2281b421a7d2cbcaaa" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">) const</span>
+            <dt id="acbdf1be9bb3f0ebffc9f13f381e5b2b5">
+              <span class="m-doc-wrap-bumper"><a href="#acbdf1be9bb3f0ebffc9f13f381e5b2b5" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ae1301606a198d335532c52aeb2d8bdd9">
-              <span class="m-doc-wrap-bumper"><a href="#ae1301606a198d335532c52aeb2d8bdd9" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            <dt id="a74e851f97f88ac5b67cdb2eb09e4f99c">
+              <span class="m-doc-wrap-bumper"><a href="#a74e851f97f88ac5b67cdb2eb09e4f99c" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a75444e4f45114949c19b5c0065fcbaf8">
+              <span class="m-doc-wrap-bumper"><a href="#a75444e4f45114949c19b5c0065fcbaf8" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -107,36 +111,40 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a13899f8624e460c06046097bba3ac28b">
-              <span class="m-doc-wrap-bumper">void <a href="#a13899f8624e460c06046097bba3ac28b" class="m-doc-self">AssignInfo</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info)</span>
+            <dt id="a5cdf198d428a8b9a4e174fc1d368e933">
+              <span class="m-doc-wrap-bumper">void <a href="#a5cdf198d428a8b9a4e174fc1d368e933" class="m-doc-self">AssignInfo</a>(</span><span class="m-doc-wrap">const CreateInfo&amp; _info)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a6946eae93ca4e04e33b19078aea3f248">
-              <span class="m-doc-wrap-bumper">auto <a href="#a6946eae93ca4e04e33b19078aea3f248" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="ad5a8eb6862a9b49764853d677c6e3f93">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad5a8eb6862a9b49764853d677c6e3f93" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ac0622c144513f142388eeb53b4c66fd8">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac0622c144513f142388eeb53b4c66fd8" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+            <dt id="a47139bac51033ead75e4af68f93f5d62">
+              <span class="m-doc-wrap-bumper">auto <a href="#a47139bac51033ead75e4af68f93f5d62" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
               const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="adba48d08bba52101a76de5b33a50e9f3">
-              <span class="m-doc-wrap-bumper">auto <a href="#adba48d08bba52101a76de5b33a50e9f3" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              const <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createSpec) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a2e8089483608e4f7b48c0910ba2d2717">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2e8089483608e4f7b48c0910ba2d2717" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              const CreateInfo&amp; _createSpec) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a0812b702cfdb1f215e3a1fd4daa573b9">
-              <span class="m-doc-wrap-bumper">auto <a href="#a0812b702cfdb1f215e3a1fd4daa573b9" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              const <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
+            <dt id="a85ec8410b024b0c2208c23c1706b26ab">
+              <span class="m-doc-wrap-bumper">auto <a href="#a85ec8410b024b0c2208c23c1706b26ab" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              const CreateInfo&amp; _createSpec,
               const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aa55555ae737bc0bceea51fe3647aa73e">
-              <span class="m-doc-wrap-bumper">void <a href="#aa55555ae737bc0bceea51fe3647aa73e" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="a1c016f93dc6ad17d9fc784bb080c9e3e">
+              <span class="m-doc-wrap-bumper">void <a href="#a1c016f93dc6ad17d9fc784bb080c9e3e" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ad4aaadd3c8c336a99c5a239611801a8f">
-              <span class="m-doc-wrap-bumper">auto <a href="#ad4aaadd3c8c336a99c5a239611801a8f" class="m-doc-self">GetInfo</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp;</span>
+            <dt id="ad1d10dc5545f50f602ca429861f82924">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad1d10dc5545f50f602ca429861f82924" class="m-doc-self">GetInfo</a>(</span><span class="m-doc-wrap">) const -&gt; const CreateInfo&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="affd5356db5ef815efd195b8f30b4eaa1">
+              <span class="m-doc-wrap-bumper">auto <a href="#affd5356db5ef815efd195b8f30b4eaa1" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_debug_utils_1_1_messenger.html" class="m-doc">Messenger</a>&amp; _other) -&gt; bool</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -144,20 +152,20 @@
         <section id="pro-attribs">
           <h2><a href="#pro-attribs">Protected variables</a></h2>
           <dl class="m-doc">
-            <dt id="a088a131f58f6e01a1f03972c7a8dbf82">
-              <a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> <a href="#a088a131f58f6e01a1f03972c7a8dbf82" class="m-doc-self">app</a>
+            <dt id="a9b7323685c486520cf418ed6532a2238">
+              <a href="struct_v_t_1_1_v1_1_1_app_instance.html#aa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> <a href="#a9b7323685c486520cf418ed6532a2238" class="m-doc-self">app</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="afc5e7088dc01669963fe9b8aa2365ad0">
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_create_info.html" class="m-doc">CreateInfo</a> <a href="#afc5e7088dc01669963fe9b8aa2365ad0" class="m-doc-self">info</a>
+            <dt id="ac2213b28ab9494b5f1f3f5caf731cfba">
+              CreateInfo <a href="#ac2213b28ab9494b5f1f3f5caf731cfba" class="m-doc-self">info</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a72cec30937be3281ebc0287328cb1b87">
-              const Memory::AllocationCallbacks* <a href="#a72cec30937be3281ebc0287328cb1b87" class="m-doc-self">allocator</a>
+            <dt id="a47228ce340db670f6247592a6b5dc285">
+              const Memory::AllocationCallbacks* <a href="#a47228ce340db670f6247592a6b5dc285" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a274ffea262d8215ead693414e07d8b6c">
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html#abc3d10195dbd8f6525d7abd1113a04b6" class="m-doc">Handle</a> <a href="#a274ffea262d8215ead693414e07d8b6c" class="m-doc-self">handle</a>
+            <dt id="a906a1a0e02feaf2d0ad938cc23aa23af">
+              <a href="group___a_p_i_spec___debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a> <a href="#a906a1a0e02feaf2d0ad938cc23aa23af" class="m-doc-self">handle</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -206,7 +214,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.19 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.20 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

@@ -66,7 +66,6 @@
             </li>
           </ul>
         </div>
-<p>Namespace: <a href="namespace_v_t_1_1_v1.html" class="m-doc">V1</a></p>
         <section id="namespaces">
           <h2><a href="#namespaces">Namespaces</a></h2>
           <dl class="m-doc">
@@ -86,17 +85,21 @@
             </dt>
             <dd>Command pools are opaque objects that command buffer memory is allocated from, and which allow the implementation to amortize the cost of resource creation across multiple command buffers. Command pools are externally synchronized, meaning that a command pool must not be used concurrently in multiple threads. That includes use via recording commands on any command buffers allocated from the pool, as well as operations that allocate, free, and reset command buffers or the pool itself.</dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_label.html" class="m-doc">VT::V1::Label</a>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_label.html" class="m-doc">VT::V1::DebugUtils::Label</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a><br /></dd>
+            <dd>Used in conjunction with labeling queues, and commands.</dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_object_info.html" class="m-doc">VT::V1::ObjectInfo</a>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_object_info.html" class="m-doc">VT::V1::DebugUtils::ObjectInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsObjectNameInfoEXT">Specification</a><br /></dd>
+            <dd>Used for annotating objects with user defined information.</dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_debug_messenger.html" class="m-doc">VT::V1::DebugMessenger</a>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils_1_1_messenger.html" class="m-doc">VT::V1::DebugUtils::Messenger</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#debugging-debug-utils">Specification</a></dd>
+            <dd>Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information. Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_debug_utils.html" class="m-doc">VT::V1::DebugUtils</a>
+            </dt>
+            <dd>Debug Utilities: Flexible utilities for debugging an application.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_app_instance.html" class="m-doc">VT::V1::AppInstance</a>
             </dt>
@@ -147,52 +150,41 @@
           <h2><a href="#typedef-members">Typedefs</a></h2>
           <dl class="m-doc">
             <dt>
-              using <a href="#ga80303d010554dff4fb9b15820cb60efc" class="m-doc">CallbackDataFlags</a> = Bitmask&lt;EUndefined, Flags&gt;
+              using <a href="#gadfa276132f54a09834750a9feb49c24a" class="m-doc">EMessageServerity</a> = EDebugUtils_MessageSeverity
             </dt>
-            <dd>TODO: Add comment on what this is for.</dd>
+            <dd><span></span></dd>
             <dt>
-              using <a href="#gad1f8523537e06b9811d7780be4f2f044" class="m-doc">FPtr_CreateMessenger</a> = PFN_vkCreateDebugUtilsMessengerEXT
+              using <a href="#gac73bf2a162d453e6b4b8518942b0de7d" class="m-doc">EMessageType</a> = EDebugUtils_MessageType
             </dt>
-            <dd>Pointer to the Create Debug Messenger Command.</dd>
+            <dd><span></span></dd>
             <dt>
-              using <a href="#gae3a9bc9dd30b661f60590d4fd636cffa" class="m-doc">MessageServerityFlags</a> = Bitmask&lt;EDebugUtilities_MessageSeverity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
+              using <a href="#gab46a2b595b9ab4a96fba5c175a5df06b" class="m-doc">MessageTypeFlags</a> = Bitmask&lt;EMessageType, VkDebugUtilsMessageTypeFlagsEXT&gt;
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a><br /></dd>
-            <dt>
-              using <a href="#ga5815ed5f5a6edb68fa1f56a0c00d70b7" class="m-doc">MessageTypeFlags</a> = Bitmask&lt;EDebugUtilities_MessageType, VkDebugUtilsMessageTypeFlagsEXT&gt;
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a><br />@ingorup APISpec_Debugging</dd>
           </dl>
         </section>
         <section>
           <h2>Typedef documentation</h2>
-          <section class="m-doc-details" id="ga80303d010554dff4fb9b15820cb60efc"><div>
+          <section class="m-doc-details" id="gadfa276132f54a09834750a9feb49c24a"><div>
             <h3>
-              using <a href="#ga80303d010554dff4fb9b15820cb60efc" class="m-doc-self">CallbackDataFlags</a> = Bitmask&lt;EUndefined, Flags&gt;
+              using <a href="#gadfa276132f54a09834750a9feb49c24a" class="m-doc-self">EMessageServerity</a> = EDebugUtils_MessageSeverity
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
             </h3>
-            <p>TODO: Add comment on what this is for.</p>
+            <p><span></span></p>
           </div></section>
-          <section class="m-doc-details" id="gad1f8523537e06b9811d7780be4f2f044"><div>
+          <section class="m-doc-details" id="gac73bf2a162d453e6b4b8518942b0de7d"><div>
             <h3>
-              using <a href="#gad1f8523537e06b9811d7780be4f2f044" class="m-doc-self">FPtr_CreateMessenger</a> = PFN_vkCreateDebugUtilsMessengerEXT
+              using <a href="#gac73bf2a162d453e6b4b8518942b0de7d" class="m-doc-self">EMessageType</a> = EDebugUtils_MessageType
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
             </h3>
-            <p>Pointer to the Create Debug Messenger Command.</p>
+            <p><span></span></p>
           </div></section>
-          <section class="m-doc-details" id="gae3a9bc9dd30b661f60590d4fd636cffa"><div>
+          <section class="m-doc-details" id="gab46a2b595b9ab4a96fba5c175a5df06b"><div>
             <h3>
-              using <a href="#gae3a9bc9dd30b661f60590d4fd636cffa" class="m-doc-self">MessageServerityFlags</a> = Bitmask&lt;EDebugUtilities_MessageSeverity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
+              using <a href="#gab46a2b595b9ab4a96fba5c175a5df06b" class="m-doc-self">MessageTypeFlags</a> = Bitmask&lt;EMessageType, VkDebugUtilsMessageTypeFlagsEXT&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a><br /></p>
-          </div></section>
-          <section class="m-doc-details" id="ga5815ed5f5a6edb68fa1f56a0c00d70b7"><div>
-            <h3>
-              using <a href="#ga5815ed5f5a6edb68fa1f56a0c00d70b7" class="m-doc-self">MessageTypeFlags</a> = Bitmask&lt;EDebugUtilities_MessageType, VkDebugUtilsMessageTypeFlagsEXT&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a><br /></p>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a><br />@ingorup APISpec_Debugging</p>
           </div></section>
         </section>
       </div>
@@ -239,7 +231,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.19 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.20 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

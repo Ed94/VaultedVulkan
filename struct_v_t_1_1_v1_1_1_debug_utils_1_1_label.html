@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V1::DebugMessenger::CallbackData struct | VaultedThermals</title>
+  <title>VT::V1::DebugUtils::Label struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,10 +50,10 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v1_1_1_debug_messenger.html">DebugMessenger</a>::<wbr/></span>CallbackData <span class="m-thin">struct</span>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v1_1_1_debug_utils.html">DebugUtils</a>::<wbr/></span>Label <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
         </h1>
-        <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a><br /></p>
+        <p>Used in conjunction with labeling queues, and commands.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -62,18 +62,18 @@
               <ul>
                 <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#derived-classes">Derived classes</a></li>
-                <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsLabelEXT">Specification</a></p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
               <div class="m-doc-template">template&lt;typename VulkanType, <a href="group___corridors.html#gacd13528f982c0cebc4759562268d1f2e" class="m-doc">EStructureType</a> TemplateSpecifiedStype = EStructureType::Max_Enum&gt;</div>
-              struct <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT&gt;</a>
+              struct <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT&gt;</a>
             </dt>
             <dd>Base struct for wrapping Vulkan native C API Structs.</dd>
           </dl>
@@ -82,69 +82,28 @@
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
             <dt>
-              struct <a href="struct_v_t_1_1_v2_1_1_debug_messenger_1_1_callback_data.html" class="m-doc">VT::V2::DebugMessenger::CallbackData</a>
+              struct <a href="struct_v_t_1_1_v2_1_1_debug_utils_1_1_label.html" class="m-doc">VT::V2::DebugUtils::Label</a>
             </dt>
-            <dd><span></span></dd>
-          </dl>
-        </section>
-        <section id="pub-types">
-          <h2><a href="#pub-types">Public types</a></h2>
-          <dl class="m-doc">
-            <dt id="ad6b5e92dea3060a4e476e0629ab53196">
-              using <a href="#ad6b5e92dea3060a4e476e0629ab53196" class="m-doc-self">FlagsMask</a> = Bitmask&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, <a href="group___flags__and___bitmasks.html#ga3f56f691948d0b060a953c74460f359d" class="m-doc">Flags</a>&gt;
-            </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
           </dl>
         </section>
         <section id="pub-attribs">
           <h2><a href="#pub-attribs">Public variables</a></h2>
           <dl class="m-doc">
-            <dt id="adfca3ace828173ede032936c290c2b39">
-              <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html#abca8afcbf6bcf75281b832accad80565" class="m-doc">EType</a> <a href="#adfca3ace828173ede032936c290c2b39" class="m-doc-self">SType</a>
+            <dt id="a158a82c4e58f5169e1f3a22c0aac29bd">
+              <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html#abca8afcbf6bcf75281b832accad80565" class="m-doc">EType</a> <a href="#a158a82c4e58f5169e1f3a22c0aac29bd" class="m-doc-self">SType</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a973178650fbfb10c08709591b68ddca8">
-              const void* <a href="#a973178650fbfb10c08709591b68ddca8" class="m-doc-self">Next</a>
+            <dt id="aaa8ea312485a7fedb2d8347bbd24f8fe">
+              const void* <a href="#aaa8ea312485a7fedb2d8347bbd24f8fe" class="m-doc-self">Next</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="ac9308403c8ca819bc7b29b34608c3693">
-              <a href="struct_v_t_1_1_v1_1_1_debug_messenger_1_1_callback_data.html#ad6b5e92dea3060a4e476e0629ab53196" class="m-doc">FlagsMask</a> <a href="#ac9308403c8ca819bc7b29b34608c3693" class="m-doc-self">Flags</a>
+            <dt id="a7317b181241cb9d3307b8dc1645ed52a">
+              const char* <a href="#a7317b181241cb9d3307b8dc1645ed52a" class="m-doc-self">Name</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a9f4c849150517207b391f76a0daa5fbe">
-              const char* <a href="#a9f4c849150517207b391f76a0daa5fbe" class="m-doc-self">MesssageIDName</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="afa6bfaf71a0be03e86c502771b0fa901">
-              <a href="group___corridors.html#ga3e1c4de9ef31a9187b6c141d773df1b1" class="m-doc">sint32</a> <a href="#afa6bfaf71a0be03e86c502771b0fa901" class="m-doc-self">MessageIDNumber</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="abb0e98182bfc620a16c7e10e033317bf">
-              const char* <a href="#abb0e98182bfc620a16c7e10e033317bf" class="m-doc-self">Message</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ac171977a101ffe6136404e8c8da7ef23">
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> <a href="#ac171977a101ffe6136404e8c8da7ef23" class="m-doc-self">QueueLabelCount</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="aca4bcef40acfe57004a0923d1d59255d">
-              const <a href="struct_v_t_1_1_v1_1_1_label.html" class="m-doc">Label</a>* <a href="#aca4bcef40acfe57004a0923d1d59255d" class="m-doc-self">QueueLabels</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a3c46165862049d46ad38ef28fa658103">
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> <a href="#a3c46165862049d46ad38ef28fa658103" class="m-doc-self">CMDBufferLabel_Count</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="aa976061f2be0e00ab86fa0875371d2ec">
-              const <a href="struct_v_t_1_1_v1_1_1_label.html" class="m-doc">Label</a>* <a href="#aa976061f2be0e00ab86fa0875371d2ec" class="m-doc-self">CMDBufferLabels</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="af07c9d2ecb31d6eb03021be704c7bbe2">
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> <a href="#af07c9d2ecb31d6eb03021be704c7bbe2" class="m-doc-self">ObjectCount</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="aea92d3a2bb77e0cd0342d16c0370e1e1">
-              const <a href="struct_v_t_1_1_v1_1_1_object_info.html" class="m-doc">ObjectInfo</a>* <a href="#aea92d3a2bb77e0cd0342d16c0370e1e1" class="m-doc-self">Objects</a>
+            <dt id="af0d8f1750cc336d28d8dc0629a87d876">
+              <a href="group___corridors.html#gac1dc704973f55e86b17986d8dd809acc" class="m-doc">float32</a> <a href="#af0d8f1750cc336d28d8dc0629a87d876" class="m-doc-self">Color</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -193,7 +152,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.19 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.20 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
