@@ -42,17 +42,29 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief General memory structures and functionality for device memory.
+
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#memory">Specification</a> 
+
+		@ingroup APISpec_Memory_Allocation
+		*/
 		struct Memory : public V0::Memory
 		{
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemory">Specification</a>  */
 			using Handle = VkDeviceMemory;
 
+			/**
+			@brief Used to specify no offset when mapping memory.
+			*/
 			static constexpr DeviceSize ZeroOffset = 0;
 
 			/**
-			* @brief.
+			* @brief Allocate memory objects.
 			* 
-			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateMemory">Specification</a> 
+			* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateMemory">Specification</a>
+			* 
+			* @ingroup APISpec_Memory_Allocation
 			* 
 			* \param _device
 			* \param _allocateInfo
@@ -72,7 +84,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
+			* @brief Free a memory object.
+			*
+			* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a>
+			* 
+			* @ingroup APISpec_Memory_Allocation
 			* 
 			* \param _device
 			* \param _memory
@@ -90,7 +106,12 @@ namespace VaultedThermals
 			}
 
 			/** 
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkMapMemory">Specification</a>
+			* @brief Retrieve a host virtual address pointer to a region of a mappable memory object.
+			* 
+			* @details
+			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkMapMemory">Specification</a>
+			* 
+			* @ingroup APISpec_Memory_Allocation
 			* 
 			* \param _device
 			* \param _memory
@@ -114,7 +135,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUnmapMemory">Specification</a>
+			* @brief Unmap a memory object once host access to it is no longer needed by the application.
+			* 
+			* @details
+			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUnmapMemory">Specification</a> 
+			* 
+			* @ingroup APISpec_Memory_Allocation
 			* 
 			* \param _device
 			* \param _memory
@@ -135,10 +161,18 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief General memory structures and functionality for device memory.
+
+		@ingroup APISpec_Memory_Allocation
+		*/
 		struct Memory : public V1::Memory
 		{
 			using Parent = V1::Memory;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct AllocateInfo : public Parent::AllocateInfo
 			{
 				AllocateInfo() 
@@ -150,6 +184,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Barrier : public Parent::Barrier
 			{
 				Barrier() 
@@ -160,7 +197,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			* @brief.
+			* @brief Allocate memory objects using the default allocator.
 			* 
 			* \param _device
 			* \param _allocateInfo
@@ -181,7 +218,7 @@ namespace VaultedThermals
 			using Parent::Allocate;
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a> 
+			* @brief Free a memory object allocated using the defautl allcator.
 			* 
 			* \param _device
 			* \param _memory
@@ -236,33 +273,36 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@todo #TODO: Add documentation.
+		*/
 		class Memory : public V2::Memory
 		{
 		public:
 
 			using Parent = V2::Memory;
 
-			EResult Allocate(LogicalDevice::Handle _device, AllocateInfo& _allocateInfo)
+			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo)
 			{
-				device    = _device                 ;
+				device    = &_device                ;
 				info      = _allocateInfo           ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Allocate(device, info, handle);
+				return Parent::Allocate(*device, info, handle);
 			}
 
-			EResult Allocate(LogicalDevice::Handle _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device      ;
+				device    = &_device     ;
 				info      = _allocateInfo;
 				allocator = _allocator   ;
 
-				return Parent::Allocate(device, info, allocator, handle);
+				return Parent::Allocate(*device, info, allocator, handle);
 			}
 
 			void Free()
 			{
-				Parent::Free(device, handle, allocator);
+				Parent::Free(*device, handle, allocator);
 			}
 
 			const Handle& GetHandle() const
@@ -270,22 +310,19 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			EResult Map
-			(
-				DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data
-			)
+			EResult Map(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
-				return Parent::Map(device, handle, _offset, _size, _flags, _data);
+				return Parent::Map(*device, handle, _offset, _size, _flags, _data);
 			}
 
 			void Unmap()
 			{
-				Parent::Unmap(device, handle);
+				Parent::Unmap(*device, handle);
 			}
 
 			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
-				Parent::WriteToGPU(device, handle, _offset, _size, _flags, _data);
+				Parent::WriteToGPU(*device, handle, _offset, _size, _flags, _data);
 			}
 
 			operator Handle()
@@ -311,7 +348,7 @@ namespace VaultedThermals
 
 			const AllocationCallbacks* allocator;
 
-			LogicalDevice::Handle device;
+			LogicalDevice* device;
 		};
 
 		/** @} */

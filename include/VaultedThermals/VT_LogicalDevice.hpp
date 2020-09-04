@@ -42,18 +42,31 @@ namespace VaultedThermals
 		 * 
 		 * @details
 		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-devices">Specification</a> 
+		 * 
+		 * @ingroup APISpec_Devices_and_Queues
 		 */
 		struct LogicalDevice
 		{
 			using Memory = V0::Memory;
 
-			using Handle = VkDevice;   ///< Opaque handle to a device object.  
+			/**
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevice">Specification</a> 
+			 
+			@ingroup APISpec_Devices_and_Queues
+			*/
+			using Handle = VkDevice;
 
 			using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
 
 			/**
-			* @details
-			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigCreateInfoNV">Specification</a> 
+			@brief 
+			When using the Nsight™ Aftermath SDK, to configure how device crash dumps are created, add a VkDeviceDiagnosticsConfigCreateInfoNV structure 
+			to the pNext chain of the VkDeviceCreateInfo structure.
+			 
+			@details
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigCreateInfoNV">Specification</a> 
+			 
+			@ingroup APISpec_Devices_and_Queues
 			*/
 			struct DiagnosticsConfigCreateInfo : V0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
 			{
@@ -75,15 +88,45 @@ namespace VaultedThermals
 			 * though the order of this execution is dependent on a number of implicit and explicit ordering constraints.
 			 * 
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-queueoperation">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Devices_and_Queues
 			 */
 			struct Queue
 			{
-				using Handle = VkQueue;   ///< Opaque handle to a queue object
+				/**
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueue">Specification</a> 
 
-				using PresentationInfo = VkPresentInfoKHR;   ///< Proper structure is defined later. (See VT_Swapchain.hpp)
+				@ingroup APISpec_Devices_and_Queues
+				*/
+				using Handle = VkQueue;
 
-				using SubmitInfo = VkSubmitInfo;   ///< Proper structure is defined later. (See VT_Command.hpp)
+				using ECreateFlag = ELogicalDeviceQueueCreateFlag;
 
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a>  */
+				using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
+
+				/**
+				@brief Used to specify parameters for a presentation.
+
+				@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a> 
+
+				@ingroup APISpec_Window_System_Integration_WSI
+				*/
+				using PresentationInfo = VkPresentInfoKHR;
+
+				/**
+				@brief Specifies a command buffer submission batch
+
+				@details 
+				<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a> 
+
+				@ingroup APISpec_Command_Buffers
+				*/
+				using SubmitInfo = VkSubmitInfo;
+
+				/**
+				@brief Internal definition of a fence (not defined yet...)
+				*/
 				using Fence_Handle = VkFence;
 
 				/**
@@ -97,12 +140,11 @@ namespace VaultedThermals
 				 * 
 				 * If a queue family is to be used for a specific task (transfer, etc), it is advantageous that that queue family 
 				 * have as little flags for other functionality as possible.
+				 * 
+				 * @ingroup APISpec_Devices_and_Queues
 				 */
 				struct CreateInfo : V0::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
 				{
-					using ECreateFlag = ELogicalDeviceQueueCreateFlag                 ;
-					using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
-
 					      EType       SType           ;
 					const void*       Next            ;
 					      CreateFlags Flags           ;
@@ -118,7 +160,9 @@ namespace VaultedThermals
 				* vkGetDeviceQueue must only be used to get queues that were created with the flags parameter of VkDeviceQueueCreateInfo set to zero. 
 				* To get queues that were created with a non-zero flags parameter use vkGetDeviceQueue2.
 				* 
-				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetDeviceQueue">Specification</a> 
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetDeviceQueue">Specification</a>
+				* 
+				* @ingroup APISpec_Devices_and_Queues
 				* 
 				* \param _handle
 				* \param _queueFamilyIndex
@@ -131,9 +175,11 @@ namespace VaultedThermals
 				}
 
 				/**
-				* @brief.
+				* @brief Queue an image for presentation.
 				* 
 				* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueuePresentKHR">Specification</a> 
+				* 
+				* @ingroup APISpec_Window_System_Integration_WSI
 				* 
 				* \param _queue
 				* \param _presentation
@@ -145,7 +191,12 @@ namespace VaultedThermals
 				}
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueSubmit">Specification</a> 
+				@brief Submit command buffers to the queue.
+				 
+				@details
+				<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueSubmit">Specification</a>
+				  
+				@ingroup APISpec_Command_Buffers
 				 *
 				 * \param _queue
 				 * \param _submitCount
@@ -165,7 +216,11 @@ namespace VaultedThermals
 				}
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueWaitIdle">Specification</a> 
+				 * @brief To wait on the host for the completion of outstanding queue operations for a given queue.
+				 * 
+				 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueWaitIdle">Specification</a> 
+				 * 
+				 * @ingroup APISpec_Synchronization_and_Cache_Control
 				 * 
 				 * \param _queue
 				 * \return 
@@ -180,11 +235,13 @@ namespace VaultedThermals
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueInfo2">Specification</a> 
 			* 
-			* @todo Implement.
+			* @ingroup APISpec_Devices_and_Queues
+			* 
+			* @todo #TODO: Add a brief comment.
 			*/
 			struct Queue2 : V0::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a>  */
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a> @ingroup APISpec_Devices_and_Queues */
 				using CreateFlags = Bitmask<EDeviceQueueCreateFlag ,VkDeviceQueueCreateFlags>;
 
 				      EType       SType           ;
@@ -197,7 +254,7 @@ namespace VaultedThermals
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetDeviceQueue2">Specification</a> 
 				* 
-				* @todo Implement.
+				* @ingroup APISpec_Devices_and_Queues
 				*/
 				static void Get
 				(
@@ -213,6 +270,8 @@ namespace VaultedThermals
 			/**
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupDeviceCreateInfo">Specification</a> 
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			struct GroupCreateInfo : V0::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
 			{
@@ -225,6 +284,8 @@ namespace VaultedThermals
 			/**
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceMemoryOverallocationCreateInfoAMD">Specification</a> 
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			struct MemoryOverallocationCreateInfo : V0::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
 			{
@@ -234,8 +295,12 @@ namespace VaultedThermals
 			};
 
 			/**
+			* @brief Used to reserve private data storage slots.
+			* 
 			* @details
-			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevicePrivateDataCreateInfoEXT">Specification</a> 
+			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevicePrivateDataCreateInfoEXT">Specification</a>
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			struct PrivateDataCreateInfo : V0::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
 			{
@@ -246,6 +311,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceCreateInfo">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Devices_and_Queues
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
 			{
@@ -266,6 +333,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDevice">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Devices_and_Queues
 			 * 
 			 * \param _physicalDevice
 			 * \param _createSpec
@@ -295,6 +364,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDevice">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Devices_and_Queues
+			 * 
 			 * \param _handle
 			 * \param _allocator
 			 */
@@ -305,6 +376,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDeviceWaitIdle">Specification</a> .
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \return 
@@ -326,7 +399,9 @@ namespace VaultedThermals
 
 			Note: ReturnType is restricted to only function pointing types.
 
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a>
+
+			@ingroup APISpec_Initialization
 			*/
 			static typename std::enable_if
 			<
@@ -352,10 +427,20 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		* @brief Represent logical connections to physical devices. 
+		* 
+		* @details
+		* 
+		* @ingroup APISpec_Devices_and_Queues
+		*/
 		struct LogicalDevice : public V1::LogicalDevice
 		{
 			using Parent = V1::LogicalDevice;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct DiagnosticsConfigCreateInfo : public Parent::DiagnosticsConfigCreateInfo
 			{
 				DiagnosticsConfigCreateInfo()
@@ -365,6 +450,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Queue : public Parent::Queue
 			{
 				struct CreateInfo : public Parent::Queue::CreateInfo
@@ -377,6 +465,9 @@ namespace VaultedThermals
 				};
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Queue2 : public Parent::Queue2
 			{
 				Queue2()
@@ -386,6 +477,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct GroupCreateInfo : public Parent::GroupCreateInfo
 			{
 				GroupCreateInfo()
@@ -395,6 +489,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct MemoryOverallocationCreateInfo : public Parent::MemoryOverallocationCreateInfo
 			{
 				MemoryOverallocationCreateInfo()
@@ -404,6 +501,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.	
+			*/
 			struct PrivateDataCreateInfo : public Parent::PrivateDataCreateInfo
 			{
 				PrivateDataCreateInfo()
@@ -413,6 +513,7 @@ namespace VaultedThermals
 				}
 			};
 
+			/** @brief Offers a default constructor. */
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -467,6 +568,9 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@todo #TODO: Add documentation.
+		*/
 		class LogicalDevice : public V2::LogicalDevice
 		{
 		public:

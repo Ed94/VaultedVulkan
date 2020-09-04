@@ -80,7 +80,7 @@ namespace VaultedThermals
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Application Instance Specification</a> 
 
-		@ingroup VKAPI_Initialization
+		@ingroup APISpec_Initialization
 		*/
 		struct AppInstance
 		{
@@ -91,7 +91,7 @@ namespace VaultedThermals
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a>
 			 * 
-			 * @ingroup VKAPI_Initialization
+			 * @ingroup APISpec_Initialization
 			 */
 			using Handle = VkInstance;
 
@@ -101,7 +101,7 @@ namespace VaultedThermals
 			 @details
 			 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a>
 
-			 @ingroup VKAPI_Initialization
+			 @ingroup APISpec_Initialization
 			 */
 			using CreateFlags = Bitmask<EUndefined, VkInstanceCreateFlags>;
 
@@ -113,7 +113,7 @@ namespace VaultedThermals
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkApplicationInfo">Application Info Specification</a> 
 
-			@ingroup VKAPI_Initialization
+			@ingroup APISpec_Initialization
 			*/
 			struct AppInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::ApplicationInformation>
 			{
@@ -132,7 +132,7 @@ namespace VaultedThermals
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateInfo">Create Info Specification</a> 
 
-			@ingroup VKAPI_Initialization
+			@ingroup APISpec_Initialization
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
 			{
@@ -152,7 +152,7 @@ namespace VaultedThermals
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeaturesEXT">Specification</a> 
 				
-			@ingroup VKAPI_Initialization
+			@ingroup APISpec_Initialization
 			*/
 			struct ValidationFeatures : V0::VKStruct_Base<VkValidationFeaturesEXT, EStructureType::ValidationFeatures_EXT>
 			{
@@ -170,7 +170,7 @@ namespace VaultedThermals
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFlagsEXT">Specification</a> 
 			 
-			@ingroup VKAPI_Initialization
+			@ingroup APISpec_Initialization
 			*/
 			struct ValidationFlags : V0::VKStruct_Base<VkValidationFlagsEXT, EStructureType::ValidationFlags_EXT>
 			{
@@ -186,7 +186,7 @@ namespace VaultedThermals
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a> 
 
-			@ingroup VKAPI_Initialization
+			@ingroup APISpec_Initialization
 			*/
 			static EResult Create
 			(
@@ -204,7 +204,7 @@ namespace VaultedThermals
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
 
-			@ingroup VKAPI_Initialization
+			@ingroup APISpec_Initialization
 			*/
 			static void Destroy(Handle _handle , const Memory::AllocationCallbacks* _callbacks)
 			{
@@ -217,7 +217,7 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceVersion">Specification</a> 
 			 * 
-			 * @ingroup VKAPI_Initialization
+			 * @ingroup APISpec_Initialization
 			 * 
 			 * \param _versionContainer
 			 * \return 
@@ -304,7 +304,7 @@ namespace VaultedThermals
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a> 
 
-			@ingroup VKAPI_Initialization
+			@ingroup APISpec_Initialization
 			*/
 			static typename std::enable_if
 			<
@@ -339,7 +339,7 @@ namespace VaultedThermals
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
 
-		@ingroup VKAPI_Initialization
+		@ingroup APISpec_Initialization
 		*/
 		struct AppInstance : public V1::AppInstance
 		{
@@ -536,7 +536,7 @@ namespace VaultedThermals
 		Vulkan has no global state reference: 
 		Every application must keep track of their state using an instance object.
 
-		@ingroup VKAPI_Initialization
+		@ingroup APISpec_Initialization
 		*/
 		class AppInstance : public V2::AppInstance
 		{

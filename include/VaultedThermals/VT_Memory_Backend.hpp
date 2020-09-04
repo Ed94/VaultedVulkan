@@ -41,6 +41,10 @@ namespace VaultedThermals
 
 		/**
 		* @brief General memory definitions.
+		* 
+		* @details 
+		* 
+		* @ingroup APISpec_Memory_Allocation
 		*/
 		struct Memory
 		{
@@ -59,14 +63,40 @@ namespace VaultedThermals
 			*/
 			using PropertyFlags = Bitmask<EMemoryPropertyFlag, VkMemoryPropertyFlags>;
 
-			using FPtr_Allocation                     = PFN_vkAllocationFunction            ;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a> 
-			using FPtr_Reallocation                   = PFN_vkReallocationFunction          ;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkReallocationFunction">Specification</a> 
-			using FPtr_Free                           = PFN_vkFreeFunction                  ;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkFreeFunction">Specification</a> 
-			using FPtr_InternalAllocationNotification = PFN_vkInternalAllocationNotification;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a> 
-			using FPtr_InternalFreeNotification       = PFN_vkInternalFreeNotification      ;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalFreeNotification">Specification</a> 
+			/**
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a>  
+			@ingroup APISpec_Memory_Allocation
+			*/
+			using FPtr_Allocation                     = PFN_vkAllocationFunction            ;
+			/**
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkReallocationFunction">Specification</a>
+			@ingroup APISpec_Memory_Allocation
+			*/
+			using FPtr_Reallocation                   = PFN_vkReallocationFunction          ;
+			/**
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkFreeFunction">Specification</a> 
+			@ingroup APISpec_Memory_Allocation
+			*/
+			using FPtr_Free                           = PFN_vkFreeFunction                  ;
+			/**
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a> 	
+			@ingroup APISpec_Memory_Allocation
+			*/
+			using FPtr_InternalAllocationNotification = PFN_vkInternalAllocationNotification;
+			/**
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalFreeNotification">Specification</a> 
+			@ingroup APISpec_Memory_Allocation
+			*/
+			using FPtr_InternalFreeNotification       = PFN_vkInternalFreeNotification      ;
 
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryAllocateInfo">Specification</a>  */
+			/** 
+			@brief Structure describing parameters of the allocation.
+			
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryAllocateInfo">Specification</a>  
+
+			@ingroup APISpec_Memory_Allocation
+			*/
 			struct AllocateInfo : V0::VKStruct_Base<VkMemoryAllocateInfo, EStructureType::MemoryAllocateInfo>
 			{
 				      EType      SType          ;
@@ -75,7 +105,20 @@ namespace VaultedThermals
 				      uint32     MemoryTypeIndex;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAllocationCallbacks">Specification</a> */
+			/** 
+			@brief 
+			Vulkan provides applications the opportunity to perform host memory allocations on behalf of the Vulkan implementation. 
+			If this feature is not used, the implementation will perform its own memory allocations.
+			
+			@details 
+			Since most memory allocations are off the critical path, this is not meant as a performance feature. Rather, 
+			this can be useful for certain embedded systems, for debugging purposes (e.g. putting a guard page after all host allocations), 
+			or for memory allocation logging.
+			
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAllocationCallbacks">Specification</a> 
+
+			@ingroup APISpec_Memory_Allocation
+			*/
 			struct AllocationCallbacks : V0::VKStruct_Base<VkAllocationCallbacks>
 			{
 				void*                               UserData          ;
@@ -92,6 +135,8 @@ namespace VaultedThermals
 			 * @brief Global memory barriers apply to memory accesses involving all memory objects that exist at the time of its execution..
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryBarrier">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			struct Barrier : V0::VKStruct_Base<VkMemoryBarrier, EStructureType::Memory_Barrier>
 			{
@@ -102,8 +147,12 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeap">Specification</a> 
-			 */
+			* @biref Structure describing the memory heap from which memory can be allocated.
+			* 
+			* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeap">Specification</a> 
+			* 
+			* @ingroup APISpec_Memory_Allocation
+			*/
 			struct Heap : V0::VKStruct_Base<VkMemoryHeap>
 			{
 				DeviceSize Size ;
@@ -111,8 +160,12 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryRequirements">Specification</a> 
-			 */
+			* @brief Structure describing the memory requirements for a buffer or an image.
+			* 
+			* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryRequirements">Specification</a> 
+			* 
+			* @ingroup APISpec_Resource_Creation
+			*/
 			struct Requirements : V0::VKStruct_Base<VkMemoryRequirements>
 			{
 				DeviceSize Size          ;
@@ -121,8 +174,12 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryType ">Specification</a> 
-			 */
+			* @brief Structures describing the memory types that can be used to access memory allocated from the heaps specified by memoryHeaps.
+			* 
+			* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryType ">Specification</a> 
+			* 
+			* @ingroup APISpec_Memory_Allocation
+			*/
 			struct Type : V0::VKStruct_Base<VkMemoryType>
 			{
 				PropertyFlags PropertyFlags;
