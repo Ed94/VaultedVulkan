@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v2.html">V2</a>::<wbr/></span>Memory <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___memory_8hpp.html">&lt;VaultedThermals/VT_Memory.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>General memory structures and functionality for device memory.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -74,7 +74,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_memory.html" class="m-doc">VT::V1::Memory</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>General memory structures and functionality for device memory.</dd>
           </dl>
         </section>
         <section id="derived-classes">
@@ -83,7 +83,7 @@
             <dt>
               class <a href="class_v_t_1_1_v3_1_1_memory.html" class="m-doc">VT::V3::Memory</a>
             </dt>
-            <dd><span></span></dd>
+            <dd></dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -92,11 +92,11 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_memory_1_1_barrier.html" class="m-doc">Barrier</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt id="a52de1673891185017e8ece12b4669a30">
               using <a href="#a52de1673891185017e8ece12b4669a30" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v1_1_1_memory.html" class="m-doc">V1::<wbr />Memory</a>
             </dt>
@@ -107,18 +107,18 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a9bb3681c7871ec350813ecb0b9ff9393" class="m-doc">Allocate</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a9bb3681c7871ec350813ecb0b9ff9393" class="m-doc">Allocate</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a>&amp; _memory) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd></dd>
+            <dd>Allocate memory objects using the default allocator.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a984748d95094c10b9b72d28c902c3508" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void <a href="#a984748d95094c10b9b72d28c902c3508" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory)</span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a></dd>
+            <dd>Free a memory object allocated using the defautl allcator.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ac3505af7ec3ff446b591a4e8dc70f5b1" class="m-doc">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void <a href="#ac3505af7ec3ff446b591a4e8dc70f5b1" class="m-doc">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory,
               <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
@@ -127,28 +127,29 @@
             </dt>
             <dd>Writes to GPU memory by mapping to device memory specified by a handle and then using memcpy to copy data specified in _data.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#aa0b797cda20589fca7a3bcbc0e59eb14" class="m-doc">Allocate</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static auto <a href="#aa0b797cda20589fca7a3bcbc0e59eb14" class="m-doc">Allocate</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">AllocationCallbacks</a>* _allocator,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a>&amp; _memory) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd></dd>
+            <dd>Allocate memory objects.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ad0cb83d3410847ecabdfa48b75177656" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void <a href="#ad0cb83d3410847ecabdfa48b75177656" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">AllocationCallbacks</a>* _allocator)</span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a></dd>
+            <dd>Free a memory object.</dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
           <section class="m-doc-details" id="a9bb3681c7871ec350813ecb0b9ff9393"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9bb3681c7871ec350813ecb0b9ff9393" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9bb3681c7871ec350813ecb0b9ff9393" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a>&amp; _memory)</span></span>
             </h3>
+            <p>Allocate memory objects using the default allocator.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -171,10 +172,10 @@
           </div></section>
           <section class="m-doc-details" id="a984748d95094c10b9b72d28c902c3508"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a984748d95094c10b9b72d28c902c3508" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a984748d95094c10b9b72d28c902c3508" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory)</span></span>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a></p>
+            <p>Free a memory object allocated using the defautl allcator.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -193,7 +194,7 @@
           </div></section>
           <section class="m-doc-details" id="ac3505af7ec3ff446b591a4e8dc70f5b1"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3505af7ec3ff446b591a4e8dc70f5b1" class="m-doc-self">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3505af7ec3ff446b591a4e8dc70f5b1" class="m-doc-self">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory,
               <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
@@ -236,11 +237,12 @@
           </div></section>
           <section class="m-doc-details" id="aa0b797cda20589fca7a3bcbc0e59eb14"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa0b797cda20589fca7a3bcbc0e59eb14" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa0b797cda20589fca7a3bcbc0e59eb14" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">AllocationCallbacks</a>* _allocator,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a>&amp; _memory)</span></span>
             </h3>
+            <p>Allocate memory objects.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -268,11 +270,11 @@
           </div></section>
           <section class="m-doc-details" id="ad0cb83d3410847ecabdfa48b75177656"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0cb83d3410847ecabdfa48b75177656" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0cb83d3410847ecabdfa48b75177656" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="struct_v_t_1_1_v1_1_1_memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a></p>
+            <p>Free a memory object.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -292,6 +294,7 @@
                 </tr>
               </tbody>
             </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeMemory">Specification</a></p>
           </div></section>
         </section>
       </div>

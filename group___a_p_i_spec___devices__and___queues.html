@@ -59,11 +59,71 @@
             <li>
               Reference
               <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
                 <li><a href="#func-members">Functions</a></li>
               </ul>
             </li>
           </ul>
         </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue_1_1_create_info.html" class="m-doc">VT::V1::LogicalDevice::Queue::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue.html" class="m-doc">VT::V1::LogicalDevice::Queue</a>
+            </dt>
+            <dd>Queues handle different types of batched commands for the GPU to complete.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue2.html" class="m-doc">VT::V1::LogicalDevice::Queue2</a>
+            </dt>
+            <dd></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_group_create_info.html" class="m-doc">VT::V1::LogicalDevice::GroupCreateInfo</a>
+            </dt>
+            <dd></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_memory_overallocation_create_info.html" class="m-doc">VT::V1::LogicalDevice::MemoryOverallocationCreateInfo</a>
+            </dt>
+            <dd></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_private_data_create_info.html" class="m-doc">VT::V1::LogicalDevice::PrivateDataCreateInfo</a>
+            </dt>
+            <dd>Used to reserve private data storage slots.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_create_info.html" class="m-doc">VT::V1::LogicalDevice::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_logical_device.html" class="m-doc">VT::V1::LogicalDevice</a>
+            </dt>
+            <dd>Represent logical connections to physical devices.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v2_1_1_logical_device.html" class="m-doc">VT::V2::LogicalDevice</a>
+            </dt>
+            <dd>Represent logical connections to physical devices.</dd>
+          </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> = VkDevice
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevice">Specification</a></dd>
+            <dt>
+              using <a href="#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">Handle</a> = VkQueue
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueue">Specification</a></dd>
+            <dt>
+              using <a href="#gaebb5d22505c88fdbc20821cc61bed764" class="m-doc">CreateFlags</a> = Bitmask&lt;EDeviceQueueCreateFlag,VkDeviceQueueCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a></dd>
+          </dl>
+        </section>
         <section id="func-members">
           <h2><a href="#func-members">Functions</a></h2>
           <dl class="m-doc">
@@ -79,7 +139,56 @@
               PhysicalDevice::Group* _groupProperties) -&gt; EResult</span>
             </dt>
             <dd>Retrieve a list of physical device groups.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga8cb6e923fd707c14a5cabbb078dfe713" class="m-doc">Get</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              uint32 _queueFamilyIndex,
+              uint32 _queueIndex,
+              Handle&amp; _queueReturn)</span>
+            </dt>
+            <dd>Get a queue handle from a device.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gacd0d7ccb224acda1bcc273926a0c5814" class="m-doc">Get</a>(</span><span class="m-doc-wrap">Handle _device,
+              const Queue2* _queueInfo,
+              Queue::Handle* _queue)</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaac0ce8eef59e4836fca590ce03cb64cb" class="m-doc">Create</a>(</span><span class="m-doc-wrap">PhysicalDevice::Handle _physicalDevice,
+              const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _device) -&gt; EResult</span>
+            </dt>
+            <dd>A logical device is created as a connection to a physical device.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga32070b15633741526adfec4bdb9ef60c" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">Handle _device,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a logical device.</dd>
           </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="ga8b4b699ccf9c0ef21431d969fe734450"><div>
+            <h3>
+              using <a href="#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc-self">Handle</a> = VkDevice
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevice">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gafdfa16b9f3762340dc271d7aa1cf3f62"><div>
+            <h3>
+              using <a href="#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc-self">Handle</a> = VkQueue
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueue">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaebb5d22505c88fdbc20821cc61bed764"><div>
+            <h3>
+              using <a href="#gaebb5d22505c88fdbc20821cc61bed764" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EDeviceQueueCreateFlag,VkDeviceQueueCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a></p>
+          </div></section>
         </section>
         <section>
           <h2>Function documentation</h2>
@@ -102,6 +211,107 @@
             </h3>
             <p>Retrieve a list of physical device groups.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceGroups">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8cb6e923fd707c14a5cabbb078dfe713"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8cb6e923fd707c14a5cabbb078dfe713" class="m-doc-self">Get</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              uint32 _queueFamilyIndex,
+              uint32 _queueIndex,
+              Handle&amp; _queueReturn)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>Get a queue handle from a device.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_queueFamilyIndex</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_queueIndex</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_queueReturn</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p>vkGetDeviceQueue must only be used to get queues that were created with the flags parameter of VkDeviceQueueCreateInfo set to zero. To get queues that were created with a non-zero flags parameter use vkGetDeviceQueue2.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetDeviceQueue">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gacd0d7ccb224acda1bcc273926a0c5814"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gacd0d7ccb224acda1bcc273926a0c5814" class="m-doc-self">Get</a>(</span><span class="m-doc-wrap">Handle _device,
+              const Queue2* _queueInfo,
+              Queue::Handle* _queue)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetDeviceQueue2">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaac0ce8eef59e4836fca590ce03cb64cb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaac0ce8eef59e4836fca590ce03cb64cb" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">PhysicalDevice::Handle _physicalDevice,
+              const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _device)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>A logical device is created as a connection to a physical device.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_physicalDevice</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_info</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_device</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDevice">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga32070b15633741526adfec4bdb9ef60c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga32070b15633741526adfec4bdb9ef60c" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">Handle _device,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a logical device.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p>To ensure that no work is active on the device, vkDeviceWaitIdle can be used to gate the destruction of the device. Prior to destroying a device, an application is responsible for destroying/freeing any Vulkan objects that were created using that device as the first parameter of the corresponding vkCreate* or vkAllocate* command.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDevice">Specification</a></p>
           </div></section>
         </section>
       </div>

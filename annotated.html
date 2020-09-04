@@ -94,12 +94,12 @@
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc">General memory definitions.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryAllocateInfo">Specification</a><br /></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">AllocationCallbacks</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAllocationCallbacks">Specification</a></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a> <span class="m-doc">Structure describing parameters of the allocation.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">AllocationCallbacks</a> <span class="m-doc">Vulkan provides applications the opportunity to perform host memory allocations on behalf of the Vulkan implementation. If this feature is not used, the implementation will perform its own memory allocations.</span></li>
                       <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_barrier.html" class="m-doc">Barrier</a> <span class="m-doc">Global memory barriers apply to memory accesses involving all memory objects that exist at the time of its execution..</span></li>
                       <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_heap.html" class="m-doc">Heap</a> <span class="m-doc"></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_requirements.html" class="m-doc">Requirements</a> <span class="m-doc"></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_type.html" class="m-doc">Type</a> <span class="m-doc"></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_requirements.html" class="m-doc">Requirements</a> <span class="m-doc">Structure describing the memory requirements for a buffer or an image.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_type.html" class="m-doc">Type</a> <span class="m-doc">Structures describing the memory types that can be used to access memory allocated from the heaps specified by memoryHeaps.</span></li>
                     </ul>
                   </li>
                   <li>struct <a href="struct_v_t_1_1_v0_1_1_platform_types___maker.html" class="m-doc">PlatformTypes_Maker</a> <span class="m-doc">Defines maker of platform struct that defines operating system types.</span></li>
@@ -258,10 +258,9 @@
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_logical_device.html" class="m-doc">LogicalDevice</a> <span class="m-doc">Represent logical connections to physical devices.</span>
                     <ul class="m-doc">
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceCreateInfo">Specification</a></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_diagnostics_config_create_info.html" class="m-doc">DiagnosticsConfigCreateInfo</a> <span class="m-doc"></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_group_create_info.html" class="m-doc">GroupCreateInfo</a> <span class="m-doc"></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_memory_overallocation_create_info.html" class="m-doc">MemoryOverallocationCreateInfo</a> <span class="m-doc"></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_private_data_create_info.html" class="m-doc">PrivateDataCreateInfo</a> <span class="m-doc"></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_private_data_create_info.html" class="m-doc">PrivateDataCreateInfo</a> <span class="m-doc">Used to reserve private data storage slots.</span></li>
                       <li class="m-doc-collapsible collapsed">
                         <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue.html" class="m-doc">Queue</a> <span class="m-doc">Queues handle different types of batched commands for the GPU to complete.</span>
                         <ul class="m-doc">
@@ -271,7 +270,7 @@
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue2.html" class="m-doc">Queue2</a> <span class="m-doc"></span></li>
                     </ul>
                   </li>
-                  <li>struct <a href="struct_v_t_1_1_v1_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc"><span></span></span></li>
+                  <li>struct <a href="struct_v_t_1_1_v1_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc">General memory structures and functionality for device memory.</span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></span>
                     <ul class="m-doc">
@@ -604,27 +603,27 @@
                   </li>
                   <li>struct <a href="struct_v_t_1_1_v2_1_1_layer_and_extension_properties.html" class="m-doc">LayerAndExtensionProperties</a> <span class="m-doc">Currently hard coded to use STL vector for extensions.</span></li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_logical_device.html" class="m-doc">LogicalDevice</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_logical_device.html" class="m-doc">LogicalDevice</a> <span class="m-doc">Represent logical connections to physical devices.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_diagnostics_config_create_info.html" class="m-doc">DiagnosticsConfigCreateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_group_create_info.html" class="m-doc">GroupCreateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_memory_overallocation_create_info.html" class="m-doc">MemoryOverallocationCreateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_private_data_create_info.html" class="m-doc">PrivateDataCreateInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_diagnostics_config_create_info.html" class="m-doc">DiagnosticsConfigCreateInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_group_create_info.html" class="m-doc">GroupCreateInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_memory_overallocation_create_info.html" class="m-doc">MemoryOverallocationCreateInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_private_data_create_info.html" class="m-doc">PrivateDataCreateInfo</a> <span class="m-doc">Offers a default constructor.<br /></span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_queue.html" class="m-doc">Queue</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_queue.html" class="m-doc">Queue</a> <span class="m-doc">Offers a default constructor.</span>
                         <ul class="m-doc">
                           <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_queue_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><span></span></span></li>
                         </ul>
                       </li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_queue2.html" class="m-doc">Queue2</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_logical_device_1_1_queue2.html" class="m-doc">Queue2</a> <span class="m-doc">Offers a default constructor.</span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc">General memory structures and functionality for device memory.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_memory_1_1_barrier.html" class="m-doc">Barrier</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_memory_1_1_barrier.html" class="m-doc">Barrier</a> <span class="m-doc">Offers a default constructor.</span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
@@ -848,12 +847,12 @@
                   <li>class <a href="class_v_t_1_1_v3_1_1_image.html" class="m-doc">Image</a> <span class="m-doc"><span></span></span></li>
                   <li>class <a href="class_v_t_1_1_v3_1_1_image_view.html" class="m-doc">ImageView</a> <span class="m-doc"><span></span></span></li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">class</a> <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">class</a> <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a> <span class="m-doc"></span>
                     <ul class="m-doc">
                       <li>struct <a href="struct_v_t_1_1_v3_1_1_logical_device_1_1_queue.html" class="m-doc">Queue</a> <span class="m-doc"><span></span></span></li>
                     </ul>
                   </li>
-                  <li>class <a href="class_v_t_1_1_v3_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc"><span></span></span></li>
+                  <li>class <a href="class_v_t_1_1_v3_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc"></span></li>
                   <li>class <a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a> <span class="m-doc"><span></span></span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">class</a> <a href="class_v_t_1_1_v3_1_1_pipeline.html" class="m-doc">Pipeline</a> <span class="m-doc"><span></span></span>

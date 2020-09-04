@@ -59,11 +59,21 @@
             <li>
               Reference
               <ul>
+                <li><a href="#nested-classes">Classes</a></li>
                 <li><a href="#func-members">Functions</a></li>
               </ul>
             </li>
           </ul>
         </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_barrier.html" class="m-doc">VT::V0::Memory::Barrier</a>
+            </dt>
+            <dd>Global memory barriers apply to memory accesses involving all memory objects that exist at the time of its execution..</dd>
+          </dl>
+        </section>
         <section id="func-members">
           <h2><a href="#func-members">Functions</a></h2>
           <dl class="m-doc">
@@ -106,6 +116,14 @@
               const Image::Memory_Barrier* _imageMemoryBarriers)</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaf54b09173789b300d2aa86b9f724cf1c" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _queue) -&gt; EResult</span>
+            </dt>
+            <dd>To wait on the host for the completion of outstanding queue operations for a given queue.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga8ca8d08125c7395b133f477604b62722" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _device) -&gt; EResult</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDeviceWaitIdle">Specification</a> .</dd>
           </dl>
         </section>
         <section>
@@ -160,6 +178,43 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaf54b09173789b300d2aa86b9f724cf1c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf54b09173789b300d2aa86b9f724cf1c" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _queue)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>To wait on the host for the completion of outstanding queue operations for a given queue.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_queue</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueWaitIdle">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8ca8d08125c7395b133f477604b62722"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8ca8d08125c7395b133f477604b62722" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _device)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDeviceWaitIdle">Specification</a> .</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div></section>
         </section>
       </div>

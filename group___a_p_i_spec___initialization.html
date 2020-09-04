@@ -53,6 +53,181 @@
           <span class="m-breadcrumb"><a href="group___a_p_i___specification.html">API_Specification</a> &raquo;</span>
           APISpec_Initialization <span class="m-thin">module</span></h1>
         <p>Chapter 3: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap4.html">Specification</a></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">VT::V1::AppInstance::AppInfo</a>
+            </dt>
+            <dd>A structure that specifies to the Vulkan driver information about an application that will run an instance.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">VT::V1::AppInstance::CreateInfo</a>
+            </dt>
+            <dd>Structure specifying parameters of a newly created instance.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_features.html" class="m-doc">VT::V1::AppInstance::ValidationFeatures</a>
+            </dt>
+            <dd>Used when creating a Vulkan app instance and want to enable specific validation features. (Added to the Next chain).</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_validation_flags.html" class="m-doc">VT::V1::AppInstance::ValidationFlags</a>
+            </dt>
+            <dd>Used when creating a Vulkan app instance and want to disable validation checks.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_app_instance.html" class="m-doc">VT::V1::AppInstance</a>
+            </dt>
+            <dd>An object that manages the represented application process state within the GPU.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v2_1_1_app_instance.html" class="m-doc">VT::V2::AppInstance</a>
+            </dt>
+            <dd>An object that manages the represented application process state within the GPU.</dd>
+            <dt>
+              class <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">VT::V3::AppInstance</a>
+            </dt>
+            <dd>An object that manages the represented application process state within the GPU.</dd>
+          </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> = VkInstance
+            </dt>
+            <dd>Opaque handle to an instance object.</dd>
+            <dt>
+              using <a href="#ga1628748da10e837b3d68ab669cbb6d69" class="m-doc">CreateFlags</a> = Bitmask&lt;EUndefined, VkInstanceCreateFlags&gt;
+            </dt>
+            <dd>Reserved for future use...</dd>
+          </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaefc4d5bbce2f855014cd58d7f912f7c7" class="m-doc">Create</a>(</span><span class="m-doc-wrap">const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _handle) -&gt; EResult</span>
+            </dt>
+            <dd>Create a new Vulkan application instance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga1b42a145a62f694d2c39e19df489c73d" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">Handle _handle,
+              const Memory::AllocationCallbacks* _callbacks)</span>
+            </dt>
+            <dd>Destroy an application instance of Vulkan.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gae481e0c8f306e13a339969fc62186a3b" class="m-doc">GetVersion</a>(</span><span class="m-doc-wrap">uint32&amp; _versionContainer) -&gt; EResult</span>
+            </dt>
+            <dd>Query the version of application instance-level functionality supported by the implementation.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ReturnType&gt;</div>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga28dcdd04271588afe7231b5d6a27bbea" class="m-doc">GetProcedureAddress</a>(</span><span class="m-doc-wrap">Handle&amp; _handle,
+              RoCStr _procedureName) -&gt; std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type</span>
+            </dt>
+            <dd>Function pointers for all Vulkan commands can be obtained with this command.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ReturnType&gt;</div>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gadbe6c1cd98c28478373f22f84b9b1e3a" class="m-doc">GetProcedureAddress</a>(</span><span class="m-doc-wrap">Handle&amp; _appInstance,
+              RoCStr _procedureName) -&gt; std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type</span>
+            </dt>
+            <dd>Function pointers for all Vulkan commands directly addressed from the device.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="gaa1d433b25bec6e23ee726f47ad846ce7"><div>
+            <h3>
+              using <a href="#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc-self">Handle</a> = VkInstance
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Opaque handle to an instance object.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga1628748da10e837b3d68ab669cbb6d69"><div>
+            <h3>
+              using <a href="#ga1628748da10e837b3d68ab669cbb6d69" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EUndefined, VkInstanceCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Reserved for future use...</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a></p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="gaefc4d5bbce2f855014cd58d7f912f7c7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaefc4d5bbce2f855014cd58d7f912f7c7" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _handle)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Create a new Vulkan application instance.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga1b42a145a62f694d2c39e19df489c73d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1b42a145a62f694d2c39e19df489c73d" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">Handle _handle,
+              const Memory::AllocationCallbacks* _callbacks)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy an application instance of Vulkan.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gae481e0c8f306e13a339969fc62186a3b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae481e0c8f306e13a339969fc62186a3b" class="m-doc-self">GetVersion</a>(</span><span class="m-doc-wrap">uint32&amp; _versionContainer)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+            </h3>
+            <p>Query the version of application instance-level functionality supported by the implementation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_versionContainer</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceVersion">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga28dcdd04271588afe7231b5d6a27bbea"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ReturnType&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga28dcdd04271588afe7231b5d6a27bbea" class="m-doc-self">GetProcedureAddress</a>(</span><span class="m-doc-wrap">Handle&amp; _handle,
+              RoCStr _procedureName)</span></span>
+            </h3>
+            <p>Function pointers for all Vulkan commands can be obtained with this command.</p>
+<p>vkGetInstanceProcAddr itself is obtained in a platform- and loader- specific manner. Typically, the loader library will export this command as a function symbol, so applications can link against the loader library, or load it dynamically and look up the symbol using platform-specific APIs.</p><p>Note: ReturnType is restricted to only function pointing types.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gadbe6c1cd98c28478373f22f84b9b1e3a"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename ReturnType&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gadbe6c1cd98c28478373f22f84b9b1e3a" class="m-doc-self">GetProcedureAddress</a>(</span><span class="m-doc-wrap">Handle&amp; _appInstance,
+              RoCStr _procedureName)</span></span>
+            </h3>
+            <p>Function pointers for all Vulkan commands directly addressed from the device.</p>
+<p>In order to support systems with multiple Vulkan implementations, the function pointers returned by vkGetInstanceProcAddr may point to dispatch code that calls a different real implementation for different VkDevice objects or their child objects. The overhead of the internal dispatch for VkDevice objects can be avoided by obtaining device-specific function pointers for any commands that use a device or device-child object as their dispatchable object.</p><p>Note: ReturnType is restricted to only function pointing types.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a></p>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>

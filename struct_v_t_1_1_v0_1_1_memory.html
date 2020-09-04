@@ -73,7 +73,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_memory.html" class="m-doc">VT::V1::Memory</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>General memory structures and functionality for device memory.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -82,11 +82,11 @@
             <dt>
               struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryAllocateInfo">Specification</a><br /></dd>
+            <dd>Structure describing parameters of the allocation.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">AllocationCallbacks</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAllocationCallbacks">Specification</a></dd>
+            <dd>Vulkan provides applications the opportunity to perform host memory allocations on behalf of the Vulkan implementation. If this feature is not used, the implementation will perform its own memory allocations.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_barrier.html" class="m-doc">Barrier</a>
             </dt>
@@ -98,11 +98,11 @@
             <dt>
               struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_requirements.html" class="m-doc">Requirements</a>
             </dt>
-            <dd></dd>
+            <dd>Structure describing the memory requirements for a buffer or an image.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_type.html" class="m-doc">Type</a>
             </dt>
-            <dd></dd>
+            <dd>Structures describing the memory types that can be used to access memory allocated from the heaps specified by memoryHeaps.</dd>
             <dt id="a3dec65d01ed413552209f9f0c42b36ee">
               using <a href="#a3dec65d01ed413552209f9f0c42b36ee" class="m-doc-self">HeapFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga32118069a204d063a9cf80a79a20dd8e" class="m-doc">EMemoryHeapFlag</a>, VkMemoryHeapFlags&gt;
             </dt>
@@ -115,26 +115,22 @@
               using <a href="#a86acc27847a79e66573d32b766cef916" class="m-doc-self">PropertyFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#gac8ecd1b2af18b072e130c145420c4755" class="m-doc">EMemoryPropertyFlag</a>, VkMemoryPropertyFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryPropertyFlags">Specification</a></dd>
-            <dt id="aeed573a9f9c7df75a23dbc1f5d2f0d39">
-              using <a href="#aeed573a9f9c7df75a23dbc1f5d2f0d39" class="m-doc-self">FPtr_Allocation</a> = PFN_vkAllocationFunction
+            <dt>
+              using <a href="group___a_p_i_spec___memory___allocation.html#gaeed573a9f9c7df75a23dbc1f5d2f0d39" class="m-doc">FPtr_Allocation</a> = PFN_vkAllocationFunction
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a></dd>
-            <dt id="a762b4b10067a8a052bae7871cea3aea7">
-              using <a href="#a762b4b10067a8a052bae7871cea3aea7" class="m-doc-self">FPtr_Reallocation</a> = PFN_vkReallocationFunction
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a><br /></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___memory___allocation.html#ga762b4b10067a8a052bae7871cea3aea7" class="m-doc">FPtr_Reallocation</a> = PFN_vkReallocationFunction
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkReallocationFunction">Specification</a></dd>
-            <dt id="a3548f95b0b8392db680d872a6aad9066">
-              using <a href="#a3548f95b0b8392db680d872a6aad9066" class="m-doc-self">FPtr_Free</a> = PFN_vkFreeFunction
+            <dt>
+              using <a href="group___a_p_i_spec___memory___allocation.html#ga3548f95b0b8392db680d872a6aad9066" class="m-doc">FPtr_Free</a> = PFN_vkFreeFunction
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkFreeFunction">Specification</a></dd>
-            <dt id="a66ffc570e2f58cf84938ca9db6e7073c">
-              using <a href="#a66ffc570e2f58cf84938ca9db6e7073c" class="m-doc-self">FPtr_InternalAllocationNotification</a> = PFN_vkInternalAllocationNotification
+            <dt>
+              using <a href="group___a_p_i_spec___memory___allocation.html#ga66ffc570e2f58cf84938ca9db6e7073c" class="m-doc">FPtr_InternalAllocationNotification</a> = PFN_vkInternalAllocationNotification
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a></dd>
-            <dt id="a7fc2ea94a331666244a380d72d041b85">
-              using <a href="#a7fc2ea94a331666244a380d72d041b85" class="m-doc-self">FPtr_InternalFreeNotification</a> = PFN_vkInternalFreeNotification
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalFreeNotification">Specification</a></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a><br /></dd>
           </dl>
         </section>
         <section id="pub-static-attribs">

@@ -112,24 +112,24 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt id="aa37c6d64e88643f8901663a7aeb2d191">
-              <span class="m-doc-wrap-bumper">static auto <a href="#aa37c6d64e88643f8901663a7aeb2d191" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#aa37c6d64e88643f8901663a7aeb2d191" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v2_1_1_command_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a>&amp; _commandPool) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Uses the VulkanAPI&#x27;s default allocator.</dd>
             <dt id="a99519c67c6e9b6541c0264c57d9f35c7">
-              <span class="m-doc-wrap-bumper">static void <a href="#a99519c67c6e9b6541c0264c57d9f35c7" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static void <a href="#a99519c67c6e9b6541c0264c57d9f35c7" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandPool)</span>
             </dt>
             <dd>Uses the VulkanAPI&#x27;s default allocator.</dd>
             <dt id="a576a665a2b663bcfbab97660cc493a16">
-              <span class="m-doc-wrap-bumper">static void <a href="#a576a665a2b663bcfbab97660cc493a16" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void <a href="#a576a665a2b663bcfbab97660cc493a16" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_command_pool_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _info,
               const <a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a>* _commandBuffers)</span>
             </dt>
             <dd>Allows for the passing of the allocate info to specify the pool and buffer count alternatively.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ae9386253092021fafc132dae4a01c725" class="m-doc">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae9386253092021fafc132dae4a01c725" class="m-doc">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">CommandPool::<wbr />Handle</a> _commandPool) -&gt; <a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a></span>
             </dt>
             <dd>Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer.</dd>
@@ -137,24 +137,24 @@
               <span class="m-doc-wrap-bumper">static void <a href="#ae263ac6b0a34a1191def183adb5679f8" class="m-doc">EndSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v2_1_1_command_pool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a> ::<a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandBuffer,
               <a href="struct_v_t_1_1_v2_1_1_command_pool.html" class="m-doc">CommandPool</a> ::<a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandPool,
               <a href="struct_v_t_1_1_v2_1_1_logical_device.html" class="m-doc">LogicalDevice</a> ::<a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue.html#afdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue)</span>
+              <a href="group___a_p_i_spec___devices__and___queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue)</span>
             </dt>
             <dd>Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ac272e0b8b0f150ec3eae672464cfdcd8" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac272e0b8b0f150ec3eae672464cfdcd8" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v2_1_1_command_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a>&amp; _commandPool) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a command pool.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a420085c1fc4a42992fe26322c6dcfc6d" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static void <a href="#a420085c1fc4a42992fe26322c6dcfc6d" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandPool,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a20642a3814f26f258a07157041fd7557" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static void <a href="#a20642a3814f26f258a07157041fd7557" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandPool,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferCount,
               const <a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a>* _commandBuffers)</span>
@@ -166,7 +166,7 @@
           <h2>Function documentation</h2>
           <section class="m-doc-details" id="ae9386253092021fafc132dae4a01c725"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a> VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae9386253092021fafc132dae4a01c725" class="m-doc-self">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static <a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a> VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae9386253092021fafc132dae4a01c725" class="m-doc-self">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">CommandPool::<wbr />Handle</a> _commandPool)</span></span>
             </h3>
             <p>Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer.</p>
@@ -177,14 +177,14 @@
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae263ac6b0a34a1191def183adb5679f8" class="m-doc-self">EndSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v2_1_1_command_pool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a> ::<a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandBuffer,
               <a href="struct_v_t_1_1_v2_1_1_command_pool.html" class="m-doc">CommandPool</a> ::<a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandPool,
               <a href="struct_v_t_1_1_v2_1_1_logical_device.html" class="m-doc">LogicalDevice</a> ::<a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue.html#afdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue)</span></span>
+              <a href="group___a_p_i_spec___devices__and___queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue)</span></span>
             </h3>
             <p>Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.</p>
 <p>Will wait until the queue is idle that the commands were submitted to. Will also free the command buffer after completion.</p><p>Expected to be used with the BeginSingleTimeCommands function (defined above it).</p>
           </div></section>
           <section class="m-doc-details" id="ac272e0b8b0f150ec3eae672464cfdcd8"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac272e0b8b0f150ec3eae672464cfdcd8" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac272e0b8b0f150ec3eae672464cfdcd8" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v2_1_1_command_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a>&amp; _commandPool)</span></span>
@@ -217,7 +217,7 @@
           </div></section>
           <section class="m-doc-details" id="a420085c1fc4a42992fe26322c6dcfc6d"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a420085c1fc4a42992fe26322c6dcfc6d" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a420085c1fc4a42992fe26322c6dcfc6d" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandPool,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
@@ -244,7 +244,7 @@
           </div></section>
           <section class="m-doc-details" id="a20642a3814f26f258a07157041fd7557"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20642a3814f26f258a07157041fd7557" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20642a3814f26f258a07157041fd7557" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               <a href="group___a_p_i_spec___command___buffers.html#gacbeecdc474010309fdbaacf031d615f5" class="m-doc">Handle</a> _commandPool,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferCount,
               const <a href="group___a_p_i_spec___command___buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a>* _commandBuffers)</span></span>

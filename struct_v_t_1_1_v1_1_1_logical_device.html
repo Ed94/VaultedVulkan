@@ -74,7 +74,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_logical_device.html" class="m-doc">VT::V2::LogicalDevice</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Represent logical connections to physical devices.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -84,10 +84,6 @@
               struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceCreateInfo">Specification</a></dd>
-            <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_diagnostics_config_create_info.html" class="m-doc">DiagnosticsConfigCreateInfo</a>
-            </dt>
-            <dd></dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_group_create_info.html" class="m-doc">GroupCreateInfo</a>
             </dt>
@@ -99,7 +95,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_private_data_create_info.html" class="m-doc">PrivateDataCreateInfo</a>
             </dt>
-            <dd></dd>
+            <dd>Used to reserve private data storage slots.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_queue.html" class="m-doc">Queue</a>
             </dt>
@@ -112,10 +108,10 @@
               using <a href="#a8a6aa2280d23fe6e6315b65c470e2351" class="m-doc-self">Memory</a> = <a href="struct_v_t_1_1_v0_1_1_memory.html" class="m-doc">V0::<wbr />Memory</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a8b4b699ccf9c0ef21431d969fe734450">
-              using <a href="#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc-self">Handle</a> = VkDevice
+            <dt>
+              using <a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> = VkDevice
             </dt>
-            <dd>Opaque handle to a device object.<br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevice">Specification</a></dd>
             <dt id="ac885578826b79f14f8bd7931aacfa8d2">
               using <a href="#ac885578826b79f14f8bd7931aacfa8d2" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, <a href="group___flags__and___bitmasks.html#ga3f56f691948d0b060a953c74460f359d" class="m-doc">Flags</a>&gt;
             </dt>
@@ -126,115 +122,28 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#aac0ce8eef59e4836fca590ce03cb64cb" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _physicalDevice,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___devices__and___queues.html#gaac0ce8eef59e4836fca590ce03cb64cb" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _physicalDevice,
               const <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp; _device) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp; _device) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>A logical device is created as a connection to a physical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a32070b15633741526adfec4bdb9ef60c" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___devices__and___queues.html#ga32070b15633741526adfec4bdb9ef60c" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> _device,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy a logical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a8ca8d08125c7395b133f477604b62722" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> _device) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___synchronization__and___cache___control.html#ga8ca8d08125c7395b133f477604b62722" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> _device) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDeviceWaitIdle">Specification</a> .</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename ReturnType&gt;</div>
-              <span class="m-doc-wrap-bumper">static auto <a href="#adbe6c1cd98c28478373f22f84b9b1e3a" class="m-doc">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp; _appInstance,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___initialization.html#gadbe6c1cd98c28478373f22f84b9b1e3a" class="m-doc">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp; _appInstance,
               <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedureName) -&gt; std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type</span>
             </dt>
             <dd>Function pointers for all Vulkan commands directly addressed from the device.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="aac0ce8eef59e4836fca590ce03cb64cb"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />LogicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aac0ce8eef59e4836fca590ce03cb64cb" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _physicalDevice,
-              const <a href="struct_v_t_1_1_v1_1_1_logical_device_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp; _device)</span></span>
-            </h3>
-            <p>A logical device is created as a connection to a physical device.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_physicalDevice</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_info</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_device</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDevice">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a32070b15633741526adfec4bdb9ef60c"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />LogicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a32070b15633741526adfec4bdb9ef60c" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> _device,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
-            </h3>
-            <p>Destroy a logical device.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_device</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p>To ensure that no work is active on the device, vkDeviceWaitIdle can be used to gate the destruction of the device. Prior to destroying a device, an application is responsible for destroying/freeing any Vulkan objects that were created using that device as the first parameter of the corresponding vkCreate* or vkAllocate* command.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDevice">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a8ca8d08125c7395b133f477604b62722"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />LogicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8ca8d08125c7395b133f477604b62722" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> _device)</span></span>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDeviceWaitIdle">Specification</a> .</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_device</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="adbe6c1cd98c28478373f22f84b9b1e3a"><div>
-            <h3>
-              <div class="m-doc-template">
-                template&lt;typename ReturnType&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">static std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type VT::<wbr />V1::<wbr />LogicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adbe6c1cd98c28478373f22f84b9b1e3a" class="m-doc-self">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_logical_device.html#a8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp; _appInstance,
-              <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedureName)</span></span>
-            </h3>
-            <p>Function pointers for all Vulkan commands directly addressed from the device.</p>
-<p>In order to support systems with multiple Vulkan implementations, the function pointers returned by vkGetInstanceProcAddr may point to dispatch code that calls a different real implementation for different VkDevice objects or their child objects. The overhead of the internal dispatch for VkDevice objects can be avoided by obtaining device-specific function pointers for any commands that use a device or device-child object as their dispatchable object.</p><p>Note: ReturnType is restricted to only function pointing types.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetInstanceProcAddr">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

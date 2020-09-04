@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v0_1_1_memory.html">Memory</a>::<wbr/></span>AllocationCallbacks <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___memory___backend_8hpp.html">&lt;VaultedThermals/VT_Memory_Backend.hpp&gt;</a></div>
         </h1>
-        <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAllocationCallbacks">Specification</a></p>
+        <p>Vulkan provides applications the opportunity to perform host memory allocations on behalf of the Vulkan implementation. If this feature is not used, the implementation will perform its own memory allocations.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -66,6 +66,7 @@
             </li>
           </ul>
         </div>
+<p>Since most memory allocations are off the critical path, this is not meant as a performance feature. Rather, this can be useful for certain embedded systems, for debugging purposes (e.g. putting a guard page after all host allocations), or for memory allocation logging.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAllocationCallbacks">Specification</a></p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -84,23 +85,23 @@
             </dt>
             <dd><span></span></dd>
             <dt id="a1d66f8a6181be60c11f63bd4a89cb7df">
-              <a href="struct_v_t_1_1_v0_1_1_memory.html#aeed573a9f9c7df75a23dbc1f5d2f0d39" class="m-doc">FPtr_<wbr />Allocation</a> <a href="#a1d66f8a6181be60c11f63bd4a89cb7df" class="m-doc-self">Allocation</a>
+              <a href="group___a_p_i_spec___memory___allocation.html#gaeed573a9f9c7df75a23dbc1f5d2f0d39" class="m-doc">FPtr_<wbr />Allocation</a> <a href="#a1d66f8a6181be60c11f63bd4a89cb7df" class="m-doc-self">Allocation</a>
             </dt>
             <dd><span></span></dd>
             <dt id="ac4b0a84ac2665b59c1db35e80d7dd70f">
-              <a href="struct_v_t_1_1_v0_1_1_memory.html#a762b4b10067a8a052bae7871cea3aea7" class="m-doc">FPtr_<wbr />Reallocation</a> <a href="#ac4b0a84ac2665b59c1db35e80d7dd70f" class="m-doc-self">Reallocation</a>
+              <a href="group___a_p_i_spec___memory___allocation.html#ga762b4b10067a8a052bae7871cea3aea7" class="m-doc">FPtr_<wbr />Reallocation</a> <a href="#ac4b0a84ac2665b59c1db35e80d7dd70f" class="m-doc-self">Reallocation</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a79f3ff20e99498f45161bc5c09bba88b">
-              <a href="struct_v_t_1_1_v0_1_1_memory.html#a3548f95b0b8392db680d872a6aad9066" class="m-doc">FPtr_<wbr />Free</a> <a href="#a79f3ff20e99498f45161bc5c09bba88b" class="m-doc-self">Free</a>
+              <a href="group___a_p_i_spec___memory___allocation.html#ga3548f95b0b8392db680d872a6aad9066" class="m-doc">FPtr_<wbr />Free</a> <a href="#a79f3ff20e99498f45161bc5c09bba88b" class="m-doc-self">Free</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a4359bb758c70e67555ccb30e6a5177d9">
-              <a href="struct_v_t_1_1_v0_1_1_memory.html#a66ffc570e2f58cf84938ca9db6e7073c" class="m-doc">FPtr_<wbr />InternalAllocationNotification</a> <a href="#a4359bb758c70e67555ccb30e6a5177d9" class="m-doc-self">InternalAllocation</a>
+              <a href="group___a_p_i_spec___memory___allocation.html#ga66ffc570e2f58cf84938ca9db6e7073c" class="m-doc">FPtr_<wbr />InternalAllocationNotification</a> <a href="#a4359bb758c70e67555ccb30e6a5177d9" class="m-doc-self">InternalAllocation</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a5988dac36baf5a35845e547394e94e19">
-              <a href="struct_v_t_1_1_v0_1_1_memory.html#a7fc2ea94a331666244a380d72d041b85" class="m-doc">FPtr_<wbr />InternalFreeNotification</a> <a href="#a5988dac36baf5a35845e547394e94e19" class="m-doc-self">InternalFree</a>
+              <a href="group___a_p_i_spec___memory___allocation.html#ga7fc2ea94a331666244a380d72d041b85" class="m-doc">FPtr_<wbr />InternalFreeNotification</a> <a href="#a5988dac36baf5a35845e547394e94e19" class="m-doc-self">InternalFree</a>
             </dt>
             <dd><span></span></dd>
           </dl>

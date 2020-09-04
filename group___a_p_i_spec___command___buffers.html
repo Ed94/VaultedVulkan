@@ -178,6 +178,10 @@
               using <a href="#ga6501eac80bc4f25628b46face850c46e" class="m-doc">TrimFlags</a> = Bitmask&lt;EUndefined, VkCommandPoolTrimFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a></dd>
+            <dt>
+              using <a href="#ga13106f4efe079db094a20309ebf46bb7" class="m-doc">SubmitInfo</a> = VkSubmitInfo
+            </dt>
+            <dd>Specifies a command buffer submission batch.</dd>
           </dl>
         </section>
         <section id="func-members">
@@ -242,6 +246,13 @@
               TrimFlags _flags)</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkTrimCommandPool">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gad875c6ce2c482effa2aac35bc8e651e2" class="m-doc">SubmitToQueue</a>(</span><span class="m-doc-wrap">LogicalDevice::Queue::Handle _queue,
+              uint32 _submitCount,
+              const SubmitInfo* _submissions,
+              Fence_Handle _fence) -&gt; EResult</span>
+            </dt>
+            <dd>Submit command buffers to the queue.</dd>
           </dl>
         </section>
         <section>
@@ -294,6 +305,14 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga13106f4efe079db094a20309ebf46bb7"><div>
+            <h3>
+              using <a href="#ga13106f4efe079db094a20309ebf46bb7" class="m-doc-self">SubmitInfo</a> = VkSubmitInfo
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>Specifies a command buffer submission batch.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a></p>
           </div></section>
         </section>
         <section>
@@ -558,6 +577,40 @@
                 </tr>
               </tbody>
             </table>
+          </div></section>
+          <section class="m-doc-details" id="gad875c6ce2c482effa2aac35bc8e651e2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad875c6ce2c482effa2aac35bc8e651e2" class="m-doc-self">SubmitToQueue</a>(</span><span class="m-doc-wrap">LogicalDevice::Queue::Handle _queue,
+              uint32 _submitCount,
+              const SubmitInfo* _submissions,
+              Fence_Handle _fence)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___logical_device_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>Submit command buffers to the queue.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_queue</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_submitCount</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_submissions</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fence</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueSubmit">Specification</a></p>
           </div></section>
         </section>
       </div>
