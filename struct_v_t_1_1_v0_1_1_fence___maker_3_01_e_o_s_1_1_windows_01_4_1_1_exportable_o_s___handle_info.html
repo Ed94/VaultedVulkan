@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V2::Semaphore::ExportCreateInfo::Win32HandleInfo struct | VaultedThermals</title>
+  <title>VT::V0::Fence_Maker&lt;EOS::Windows&gt;::ExportableOS_HandleInfo struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,26 +50,54 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v2.html">V2</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v2_1_1_semaphore.html">Semaphore</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_export_create_info.html">ExportCreateInfo</a>::<wbr/></span>Win32HandleInfo <span class="m-thin">struct</span>
-          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;&gt;</div>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_windows_01_4.html">Fence_Maker&lt;EOS::Windows&gt;</a>::<wbr/></span>ExportableOS_HandleInfo <span class="m-thin">struct</span>
         </h1>
-        <p><span></span></p>
+        <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <section id="typeless-methods">
-          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
-            <dt id="a9f36b152508280739d8983f9dc25c896">
-              <span class="m-doc-wrap-bumper"><a href="#a9f36b152508280739d8983f9dc25c896" class="m-doc-self">Win32HandleInfo</a>(</span><span class="m-doc-wrap">)</span>
+            <dt>
+              <div class="m-doc-template">template&lt;typename VulkanType, <a href="group___corridors.html#gacd13528f982c0cebc4759562268d1f2e" class="m-doc">EStructureType</a> TemplateSpecifiedStype = EStructureType::Max_Enum&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR&gt;</a>
+            </dt>
+            <dd>Base struct for wrapping Vulkan native C API Structs.</dd>
+          </dl>
+        </section>
+        <section id="pub-attribs">
+          <h2><a href="#pub-attribs">Public variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a533906102f785e2dccb5b1f23a644f51">
+              <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html#abca8afcbf6bcf75281b832accad80565" class="m-doc">EType</a> <a href="#a533906102f785e2dccb5b1f23a644f51" class="m-doc-self">SType</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af9fe979a8d840b65e781c937c394566f">
+              const void* <a href="#af9fe979a8d840b65e781c937c394566f" class="m-doc-self">Next</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af534f5b9a2df23d6e9d8cbead0503c5a">
+              const SECURITY_ATTRIBUTES* <a href="#af534f5b9a2df23d6e9d8cbead0503c5a" class="m-doc-self">Attributes</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a23ef0586547079d8aa933c89f4251468">
+              DWORD <a href="#a23ef0586547079d8aa933c89f4251468" class="m-doc-self">AccessRights</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2d03419981e01132cf5ac0c7a8b0d415">
+              LPCWSTR <a href="#a2d03419981e01132cf5ac0c7a8b0d415" class="m-doc-self">Name</a>
             </dt>
             <dd><span></span></dd>
           </dl>

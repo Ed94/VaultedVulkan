@@ -71,8 +71,8 @@
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
-              <div class="m-doc-template">template&lt;<a href="group___vault__0.html#gaa2127949b90f68272d1872f071d444fc" class="m-doc">EOS_<wbr />Platform</a>&gt;</div>
-              struct <a href="struct_v_t_1_1_v0_1_1_surface___maker.html" class="m-doc">VT::V0::Surface_Maker&lt;OS_Platform&gt;</a>
+              <div class="m-doc-template">template&lt;<a href="group___vault__0.html#gaa4663fc3dc8e9f603722e9acd30a8a7f" class="m-doc">EOS</a>&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_surface___maker.html" class="m-doc">VT::V0::Surface_Maker&lt;V0::OS_Platform&gt;</a>
             </dt>
             <dd>Used to create an OS platform&#x27;s surface type.</dd>
           </dl>
@@ -96,27 +96,27 @@
             </dt>
             <dd>Destroy a VkSurfaceKHR object.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a8e221f8a64c1a8814a69b76e2ea40d9f" class="m-doc">CheckPhysicalDeviceSupport</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">V1::<wbr />PhysicalDevice::<wbr />Handle</a> _physDeviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a8e221f8a64c1a8814a69b76e2ea40d9f" class="m-doc">CheckPhysicalDeviceSupport</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">V1::<wbr />PhysicalDevice::<wbr />Handle</a> _physDeviceHandle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
               Surface::Handle _surfaceHandle,
               <a href="group___a_p_i_spec___fundamentals.html#gaf5aa2c678a4f6e291ea8cdc335cd7738" class="m-doc">Bool</a>&amp; _checkResult) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query if presentation is supported.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a24005da70eff31a282f2c51557dfba1b" class="m-doc">GetPhysicalDeviceCapabilities</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a24005da70eff31a282f2c51557dfba1b" class="m-doc">GetPhysicalDeviceCapabilities</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surface,
               Surface::Capabilities&amp; _capabilitiesResult) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query surface capabilities.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a056f9161f759b0b6ee055547b6672ca3" class="m-doc">GetFormats</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a056f9161f759b0b6ee055547b6672ca3" class="m-doc">GetFormats</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surfaceHandle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numFormats,
               Surface::Format* _formatsContainer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query color formats supported by surface.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a1d5487f57caef844178835a5e990767d" class="m-doc">QuerySupportedPresentationModes</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1d5487f57caef844178835a5e990767d" class="m-doc">QuerySupportedPresentationModes</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surfaceHandle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numPresentationModes,
               <a href="group___corridors.html#ga2b9753018ef460b6d543aa9b1072df93" class="m-doc">EPresentationMode</a>* _presentationModesContainer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
@@ -156,7 +156,7 @@
           </div></section>
           <section class="m-doc-details" id="a8e221f8a64c1a8814a69b76e2ea40d9f"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8e221f8a64c1a8814a69b76e2ea40d9f" class="m-doc-self">CheckPhysicalDeviceSupport</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">V1::<wbr />PhysicalDevice::<wbr />Handle</a> _physDeviceHandle,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8e221f8a64c1a8814a69b76e2ea40d9f" class="m-doc-self">CheckPhysicalDeviceSupport</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">V1::<wbr />PhysicalDevice::<wbr />Handle</a> _physDeviceHandle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
               Surface::Handle _surfaceHandle,
               <a href="group___a_p_i_spec___fundamentals.html#gaf5aa2c678a4f6e291ea8cdc335cd7738" class="m-doc">Bool</a>&amp; _checkResult)</span></span>
@@ -189,7 +189,7 @@
           </div></section>
           <section class="m-doc-details" id="a24005da70eff31a282f2c51557dfba1b"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a24005da70eff31a282f2c51557dfba1b" class="m-doc-self">GetPhysicalDeviceCapabilities</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a24005da70eff31a282f2c51557dfba1b" class="m-doc-self">GetPhysicalDeviceCapabilities</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surface,
               Surface::Capabilities&amp; _capabilitiesResult)</span></span>
             </h3>
@@ -217,7 +217,7 @@
           </div></section>
           <section class="m-doc-details" id="a056f9161f759b0b6ee055547b6672ca3"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a056f9161f759b0b6ee055547b6672ca3" class="m-doc-self">GetFormats</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a056f9161f759b0b6ee055547b6672ca3" class="m-doc-self">GetFormats</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surfaceHandle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numFormats,
               Surface::Format* _formatsContainer)</span></span>
@@ -250,7 +250,7 @@
           </div></section>
           <section class="m-doc-details" id="a1d5487f57caef844178835a5e990767d"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1d5487f57caef844178835a5e990767d" class="m-doc-self">QuerySupportedPresentationModes</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Surface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1d5487f57caef844178835a5e990767d" class="m-doc-self">QuerySupportedPresentationModes</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surfaceHandle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numPresentationModes,
               <a href="group___corridors.html#ga2b9753018ef460b6d543aa9b1072df93" class="m-doc">EPresentationMode</a>* _presentationModesContainer)</span></span>

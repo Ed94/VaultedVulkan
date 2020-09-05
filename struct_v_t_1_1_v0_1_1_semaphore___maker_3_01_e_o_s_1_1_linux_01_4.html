@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V1::Fence::GetWin32HandleInfo struct | VaultedThermals</title>
+  <title>VT::V0::Semaphore_Maker&lt;EOS::Linux&gt; struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,10 +50,11 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v1_1_1_fence.html">Fence</a>::<wbr/></span>GetWin32HandleInfo <span class="m-thin">struct</span>
-          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;&gt;</div>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span>Semaphore_Maker&lt;EOS::Linux&gt; <span class="m-thin">struct</span>
         </h1>
-        <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a></p>
+        <p><span></span></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -61,8 +62,8 @@
               Reference
               <ul>
                 <li><a href="#base-classes">Base classes</a></li>
-                <li><a href="#derived-classes">Derived classes</a></li>
-                <li><a href="#pub-attribs">Public variables</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
               </ul>
             </li>
           </ul>
@@ -71,40 +72,49 @@
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
-              <div class="m-doc-template">template&lt;typename VulkanType, <a href="group___corridors.html#gacd13528f982c0cebc4759562268d1f2e" class="m-doc">EStructureType</a> TemplateSpecifiedStype = EStructureType::Max_Enum&gt;</div>
-              struct <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR&gt;</a>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___platform_agnostic.html" class="m-doc">Semaphore_PlatformAgnostic</a>
             </dt>
-            <dd>Base struct for wrapping Vulkan native C API Structs.</dd>
+            <dd><span></span></dd>
           </dl>
         </section>
-        <section id="derived-classes">
-          <h2><a href="#derived-classes">Derived classes</a></h2>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
             <dt>
-              struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_get_win32_handle_info.html" class="m-doc">VT::V2::Fence::GetWin32HandleInfo</a>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4_1_1_exportable_o_s___handle_info.html" class="m-doc">ExportableOS_HandleInfo</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a><br /></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a><br /></dd>
+            <dt id="a4f7d134f771470a537c5f8e0c248d54c">
+              using <a href="#a4f7d134f771470a537c5f8e0c248d54c" class="m-doc-self">OS_Handle</a> = <a href="struct_v_t_1_1_v0_1_1_platform_types___maker.html" class="m-doc">PlatformTypes_<wbr />Maker</a>&lt;<a href="group___vault__0.html#ggaa4663fc3dc8e9f603722e9acd30a8a7faaea23489ce3aa9b6406ebb28e0cda430" class="m-doc">EOS::<wbr />Linux</a>&gt;::<a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4.html#a4f7d134f771470a537c5f8e0c248d54c" class="m-doc">OS_<wbr />Handle</a>
             </dt>
             <dd><span></span></dd>
           </dl>
         </section>
-        <section id="pub-attribs">
-          <h2><a href="#pub-attribs">Public variables</a></h2>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
-            <dt id="a2570fa8200188aef35c5310b0656e7f9">
-              <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html#abca8afcbf6bcf75281b832accad80565" class="m-doc">EType</a> <a href="#a2570fa8200188aef35c5310b0656e7f9" class="m-doc-self">SType</a>
+            <dt id="aef850eff40753722035b7a68b18dc1e8">
+              <span class="m-doc-wrap-bumper">static auto <a href="#aef850eff40753722035b7a68b18dc1e8" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">V1::<wbr />LogicalDevice::<wbr />Handle</a> _device,
+              const GetOS_HandleInfo&amp; _getInfo,
+              <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4.html#a4f7d134f771470a537c5f8e0c248d54c" class="m-doc">OS_<wbr />Handle</a>* _fileDescriptor) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a2e672653ca665082996fe823fe8b0343">
-              const void* <a href="#a2e672653ca665082996fe823fe8b0343" class="m-doc-self">Next</a>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreFdKHR">Specification</a></dd>
+            <dt id="afcd1597d9f063b87a0b152a02a78ed94">
+              <span class="m-doc-wrap-bumper">static auto <a href="#afcd1597d9f063b87a0b152a02a78ed94" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">V1::<wbr />LogicalDevice::<wbr />Handle</a> _device,
+              const ImportOS_HandleInfo&amp; _importPOSIX_Info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="afc123a0ce672122f2e34f3a6fda799af">
-              <a href="struct_v_t_1_1_v1_1_1_fence.html#aab82925b0f39aecb00ada6dff1f4d2af" class="m-doc">Handle</a> <a href="#afc123a0ce672122f2e34f3a6fda799af" class="m-doc-self">Fence</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="adbdeb70dc3d8c41964bcdba7c0270f71">
-              <a href="group___corridors.html#gacd6837e2d31d1f769dc2a645ca093567" class="m-doc">EExternalHandleTypeFlag</a> <a href="#adbdeb70dc3d8c41964bcdba7c0270f71" class="m-doc-self">HandleType</a>
-            </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreFdKHR">Specification</a></dd>
           </dl>
         </section>
       </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V0::Surface_Maker&lt;EOS_Platform::Windows&gt;::CreateInfo struct | VaultedThermals</title>
+  <title>VT::V0::Fence_Maker&lt;EOS::Linux&gt; struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,11 +50,11 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___surface_8hpp.html">&lt;VaultedThermals/VT_Surface.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;&gt;</div>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s___platform_1_1_windows_01_4.html">Surface_Maker&lt;EOS_Platform::Windows&gt;</a>::<wbr/></span>CreateInfo <span class="m-thin">struct</span>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span>Fence_Maker&lt;EOS::Linux&gt; <span class="m-thin">struct</span>
         </h1>
-        <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a></p>
+        <p><span></span></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -63,7 +63,7 @@
               <ul>
                 <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
-                <li><a href="#pub-attribs">Public variables</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
               </ul>
             </li>
           </ul>
@@ -72,45 +72,78 @@
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
-              <div class="m-doc-template">template&lt;typename VulkanType, <a href="group___corridors.html#gacd13528f982c0cebc4759562268d1f2e" class="m-doc">EStructureType</a> TemplateSpecifiedStype = EStructureType::Max_Enum&gt;</div>
-              struct <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR&gt;</a>
+              struct <a href="struct_v_t_1_1_v0_1_1_fence___platform_agnostic.html" class="m-doc">Fence_PlatformAgnostic</a>
             </dt>
-            <dd>Base struct for wrapping Vulkan native C API Structs.</dd>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
-            <dt id="a200517204c47d437420a08b998bff858">
-              using <a href="#a200517204c47d437420a08b998bff858" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, VkWin32SurfaceCreateFlagsKHR&gt;
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4_1_1_exportable_handle_info.html" class="m-doc">ExportableHandleInfo</a>
             </dt>
-            <dd>Reserved for future use.</dd>
+            <dd>Do not use, dummy structure.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a></dd>
+            <dt id="a7023dc33d1f48fcb823057919def765e">
+              using <a href="#a7023dc33d1f48fcb823057919def765e" class="m-doc-self">OS_Handle</a> = <a href="struct_v_t_1_1_v0_1_1_platform_types___maker.html" class="m-doc">PlatformTypes_<wbr />Maker</a>&lt;<a href="group___vault__0.html#ggaa4663fc3dc8e9f603722e9acd30a8a7faaea23489ce3aa9b6406ebb28e0cda430" class="m-doc">EOS::<wbr />Linux</a>&gt;::<a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4.html#a7023dc33d1f48fcb823057919def765e" class="m-doc">OS_<wbr />Handle</a>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
-        <section id="pub-attribs">
-          <h2><a href="#pub-attribs">Public variables</a></h2>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
-            <dt id="ac66d96e8050866ef864e44e5654c61df">
-              <a href="group___corridors.html#gacd13528f982c0cebc4759562268d1f2e" class="m-doc">EType</a> <a href="#ac66d96e8050866ef864e44e5654c61df" class="m-doc-self">SType</a>
+            <dt id="aff9613f4b53a12c9f0817aa1281fda1f">
+              <span class="m-doc-wrap-bumper">static auto <a href="#aff9613f4b53a12c9f0817aa1281fda1f" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">V1::<wbr />LogicalDevice::<wbr />Handle</a> _device,
+              const GetOS_HandleInfo&amp; _fdInfo,
+              <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4.html#a7023dc33d1f48fcb823057919def765e" class="m-doc">OS_<wbr />Handle</a>* _fileDescriptor) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a595be75273333c4e74ce92aaa4e7c34e">
-              const void* <a href="#a595be75273333c4e74ce92aaa4e7c34e" class="m-doc-self">Next</a>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceFdKHR">Specification</a><br /></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a0a2c6b389a76fcf1cceb86cf083d8f54" class="m-doc">ImportOS_Handle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">V1::<wbr />LogicalDevice::<wbr />Handle</a> _device,
+              const ImportOS_HandleInfo&amp; _importInfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a6dd8da01915584d6c6e56807d2841456">
-              <a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s___platform_1_1_windows_01_4_1_1_create_info.html#a200517204c47d437420a08b998bff858" class="m-doc">CreateFlags</a> <a href="#a6dd8da01915584d6c6e56807d2841456" class="m-doc-self">Flags</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a6d481c17db8db6c422fb28776a8bca98">
-              <a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s___platform_1_1_windows_01_4.html#a2e106ca1642d8a758dd3cf4e7793c9d1" class="m-doc">OS_<wbr />AppHandle</a> <a href="#a6d481c17db8db6c422fb28776a8bca98" class="m-doc-self">OSAppHandle</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a914bc1ac0d07eba38946fe66999be838">
-              <a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s___platform_1_1_windows_01_4.html#a1d923483fc0012853ea770e29d16271d" class="m-doc">OS_<wbr />WindowHandle</a> <a href="#a914bc1ac0d07eba38946fe66999be838" class="m-doc-self">OSWinHandle</a>
-            </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceFdKHR">Specification</a></dd>
           </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a0a2c6b389a76fcf1cceb86cf083d8f54"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V0::<wbr />Fence_Maker&lt;EOS::<wbr />Linux&gt;::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0a2c6b389a76fcf1cceb86cf083d8f54" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">V1::<wbr />LogicalDevice::<wbr />Handle</a> _device,
+              const ImportOS_HandleInfo&amp; _importInfo)</span></span>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceFdKHR">Specification</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_importInfo</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
         </section>
       </div>
     </div>

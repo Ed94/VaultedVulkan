@@ -51,7 +51,6 @@
       <div class="m-col-l-10 m-push-l-1">
         <h1>Classes</h2>
         <ul class="m-doc">
-          <li>namespace <a href="namespace_vaulted_thermals.html" class="m-doc">VaultedThermals</a> <span class="m-doc">Main library namespace for Vaulted Thermals (Vulkan Wrapper)</span></li>
           <li class="m-doc-collapsible">
             <a href="#" onclick="return toggle(this)">namespace</a> <a href="namespace_v_t.html" class="m-doc">VT</a> <span class="m-doc"><span></span></span>
             <ul class="m-doc">
@@ -79,7 +78,6 @@
                   <li>struct <a href="struct_v_t_1_1_corridors_1_1_layer_properties.html" class="m-doc">LayerProperties</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a><br /></span></li>
                   <li>struct <a href="struct_v_t_1_1_corridors_1_1_offset2_d.html" class="m-doc">Offset2D</a> <span class="m-doc">Structure specifying a two-dimensional offset.</span></li>
                   <li>struct <a href="struct_v_t_1_1_corridors_1_1_offset3_d.html" class="m-doc">Offset3D</a> <span class="m-doc">Structure specifying a three-dimensional offset.</span></li>
-                  <li>struct <a href="struct_v_t_1_1_corridors_1_1_queue_mask.html" class="m-doc">QueueMask</a> <span class="m-doc">Ease of identification masks for identifying a type of queue family.</span></li>
                   <li>struct <a href="struct_v_t_1_1_corridors_1_1_rect2_d.html" class="m-doc">Rect2D</a> <span class="m-doc">Structure specifying a two-dimensional subregion.</span></li>
                   <li>struct <a href="struct_v_t_1_1_corridors_1_1_stencil_operation_state.html" class="m-doc">StencilOperationState</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOpState">Specification</a><br /></span></li>
                   <li>struct <a href="struct_v_t_1_1_corridors_1_1_viewport.html" class="m-doc">Viewport</a> <span class="m-doc">Surface viewing region.</span></li>
@@ -90,6 +88,25 @@
                 <a href="#" onclick="return toggle(this)">namespace</a> <a href="namespace_v_t_1_1_v0.html" class="m-doc">V0</a> <span class="m-doc"><span></span></span>
                 <ul class="m-doc">
                   <li>struct <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a> <span class="m-doc"><span></span></span></li>
+                  <li>struct <a href="struct_v_t_1_1_v0_1_1_dummy_struct.html" class="m-doc">DummyStruct</a> <span class="m-doc">Used when creating fake VulkanAPI structures for platform abstraction uses.</span></li>
+                  <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___maker.html" class="m-doc">Fence_Maker</a> <span class="m-doc"><span></span></span></li>
+                  <li class="m-doc-collapsible collapsed">
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4.html" class="m-doc">Fence_Maker&lt;EOS::Linux&gt;</a> <span class="m-doc"><span></span></span>
+                    <ul class="m-doc">
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4_1_1_exportable_handle_info.html" class="m-doc">ExportableHandleInfo</a> <span class="m-doc">Do not use, dummy structure.</span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_linux_01_4_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a></span></li>
+                    </ul>
+                  </li>
+                  <li class="m-doc-collapsible collapsed">
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_windows_01_4.html" class="m-doc">Fence_Maker&lt;EOS::Windows&gt;</a> <span class="m-doc"><span></span></span>
+                    <ul class="m-doc">
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_windows_01_4_1_1_exportable_o_s___handle_info.html" class="m-doc">ExportableOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_windows_01_4_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___maker_3_01_e_o_s_1_1_windows_01_4_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceWin32HandleInfoKHR">Specification</a></span></li>
+                    </ul>
+                  </li>
+                  <li>struct <a href="struct_v_t_1_1_v0_1_1_fence___platform_agnostic.html" class="m-doc">Fence_PlatformAgnostic</a> <span class="m-doc"><span></span></span></li>
                   <li>class <a href="class_v_t_1_1_v0_1_1_i_dynamic_array.html" class="m-doc">IDynamicArray</a> <span class="m-doc">A custom dynamic container from the default can be used with specific functionality in the library.</span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc">General memory definitions.</span>
@@ -103,12 +120,31 @@
                     </ul>
                   </li>
                   <li>struct <a href="struct_v_t_1_1_v0_1_1_platform_types___maker.html" class="m-doc">PlatformTypes_Maker</a> <span class="m-doc">Defines maker of platform struct that defines operating system types.</span></li>
-                  <li>struct <a href="struct_v_t_1_1_v0_1_1_platform_types___maker_3_01_e_o_s___platform_1_1_windows_01_4.html" class="m-doc">PlatformTypes_Maker&lt;EOS_Platform::Windows&gt;</a> <span class="m-doc"><span></span></span></li>
+                  <li>struct <a href="struct_v_t_1_1_v0_1_1_platform_types___maker_3_01_e_o_s_1_1_linux_01_4.html" class="m-doc">PlatformTypes_Maker&lt;EOS::Linux&gt;</a> <span class="m-doc"><span></span></span></li>
+                  <li>struct <a href="struct_v_t_1_1_v0_1_1_platform_types___maker_3_01_e_o_s_1_1_windows_01_4.html" class="m-doc">PlatformTypes_Maker&lt;EOS::Windows&gt;</a> <span class="m-doc"><span></span></span></li>
+                  <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker.html" class="m-doc">Semaphore_Maker</a> <span class="m-doc"><span></span></span></li>
+                  <li class="m-doc-collapsible collapsed">
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4.html" class="m-doc">Semaphore_Maker&lt;EOS::Linux&gt;</a> <span class="m-doc"><span></span></span>
+                    <ul class="m-doc">
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4_1_1_exportable_o_s___handle_info.html" class="m-doc">ExportableOS_HandleInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a><br /></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a><br /></span></li>
+                    </ul>
+                  </li>
+                  <li class="m-doc-collapsible collapsed">
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4.html" class="m-doc">Semaphore_Maker&lt;EOS::Windows&gt;</a> <span class="m-doc"><span></span></span>
+                    <ul class="m-doc">
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4_1_1_exportable_o_s___handle_info.html" class="m-doc">ExportableOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a><br /></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a><br /></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a><br /></span></li>
+                    </ul>
+                  </li>
+                  <li>struct <a href="struct_v_t_1_1_v0_1_1_semaphore___platform_agnostic.html" class="m-doc">Semaphore_PlatformAgnostic</a> <span class="m-doc"><span></span></span></li>
                   <li>struct <a href="struct_v_t_1_1_v0_1_1_surface___maker.html" class="m-doc">Surface_Maker</a> <span class="m-doc">Used to create an OS platform&#x27;s surface type.</span></li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s___platform_1_1_windows_01_4.html" class="m-doc">Surface_Maker&lt;EOS_Platform::Windows&gt;</a> <span class="m-doc">Defines a Surface&#x27;s extended definitions for Windows.</span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s_1_1_windows_01_4.html" class="m-doc">Surface_Maker&lt;EOS::Windows&gt;</a> <span class="m-doc">Defines a Surface&#x27;s extended definitions for Windows.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s___platform_1_1_windows_01_4_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v0_1_1_surface___maker_3_01_e_o_s_1_1_windows_01_4_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a></span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
@@ -224,12 +260,7 @@
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateInfo">Specification</a></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_device_event_info.html" class="m-doc">DeviceEventInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventInfoEXT">Specification</a></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_display_event_info.html" class="m-doc">DisplayEventInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_exportable_win32.html" class="m-doc">ExportableWin32</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_export_create_info.html" class="m-doc">ExportCreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceCreateInfo">Specification</a></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_get_p_o_s_i_x___file_descriptor_info.html" class="m-doc">GetPOSIX_FileDescriptorInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_get_win32_handle_info.html" class="m-doc">GetWin32HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_import_fence_p_o_s_i_x___file_descriptor_info.html" class="m-doc">ImportFencePOSIX_FileDescriptorInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_fence_1_1_import_fence_win32_handle_info.html" class="m-doc">ImportFenceWin32HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceWin32HandleInfoKHR">Specification</a></span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
@@ -272,15 +303,15 @@
                   </li>
                   <li>struct <a href="struct_v_t_1_1_v1_1_1_memory.html" class="m-doc">Memory</a> <span class="m-doc">General memory structures and functionality for device memory.</span></li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_conformance_version.html" class="m-doc">ConformanceVersion</a> <span class="m-doc"></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_conformance_version.html" class="m-doc">ConformanceVersion</a> <span class="m-doc">Conformance test suite version an implementation is compliant with is described with this.</span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_features.html" class="m-doc">Features</a> <span class="m-doc">Structure describing the fine-grained features that can be supported by an implementation.</span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_group.html" class="m-doc">Group</a> <span class="m-doc"></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_limits.html" class="m-doc">Limits</a> <span class="m-doc">Structure reporting implementation-dependent physical device limits.</span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_memory_properties.html" class="m-doc">MemoryProperties</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification</a></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_memory_properties.html" class="m-doc">MemoryProperties</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification&lt;/<wbr /></a></span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a> <span class="m-doc"></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterKHR">Specification</a></span>
                         <ul class="m-doc">
                           <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter_1_1_description.html" class="m-doc">Description</a> <span class="m-doc"></span></li>
                         </ul>
@@ -288,18 +319,18 @@
                       <li class="m-doc-collapsible collapsed">
                         <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a> <span class="m-doc">Container of query general properties of physical devices once enumerated.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_device_i_d.html" class="m-doc">DeviceID</a> <span class="m-doc"></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_p_c_i_bus_info.html" class="m-doc">PCIBusInfo</a> <span class="m-doc"></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_vulkan11.html" class="m-doc">Vulkan11</a> <span class="m-doc"></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_vulkan12.html" class="m-doc">Vulkan12</a> <span class="m-doc"></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_device_i_d.html" class="m-doc">DeviceID</a> <span class="m-doc">To query the UUID and LUID of a device, add a VkPhysicalDeviceIDProperties structure to the pNext chain of the VkPhysicalDeviceProperties2 structure.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_p_c_i_bus_info.html" class="m-doc">PCIBusInfo</a> <span class="m-doc">To query the PCI bus information of a physical device, add a VkPhysicalDevicePCIBusInfoPropertiesEXT structure to the pNext chain of the VkPhysicalDeviceProperties2 structure.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_vulkan11.html" class="m-doc">Vulkan11</a> <span class="m-doc">To query the properties of the driver corresponding to Vulkan 1.1 functionality, add VkPhysicalDeviceVulkan11Properties to the pNext chain of the VkPhysicalDeviceProperties2 structure.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties_1_1_vulkan12.html" class="m-doc">Vulkan12</a> <span class="m-doc">To query the properties of the driver corresponding to Vulkan 1.2 functionality, add VkPhysicalDeviceVulkan12Properties to the pNext chain of the VkPhysicalDeviceProperties2 structure.</span></li>
                         </ul>
                       </li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a> <span class="m-doc"></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a> <span class="m-doc">Each structure in <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a> and its pNext chain contain members corresponding to properties or implementation-dependent limits.</span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties.html" class="m-doc">QueueFamilyProperties</a> <span class="m-doc">A set of queues that have common properties and support the same functionality.</span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a> <span class="m-doc"></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a> <span class="m-doc">Return extended information in a pNext chain of output structures.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2_1_1_checkpoint.html" class="m-doc">Checkpoint</a> <span class="m-doc"></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2_1_1_checkpoint.html" class="m-doc">Checkpoint</a> <span class="m-doc">Additional queue family information can be queried by setting <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2.html#aff2db5b912ee24e21c5172e6e21edf04" class="m-doc">QueueFamilyProperties2::<wbr />Next</a> to point to a <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2_1_1_checkpoint.html" class="m-doc">Checkpoint</a> structure.</span></li>
                         </ul>
                       </li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_sparse_memory_properties.html" class="m-doc">SparseMemoryProperties</a> <span class="m-doc">Structure specifying various sparse related properties of the physical device.</span></li>
@@ -451,16 +482,7 @@
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_semaphore.html" class="m-doc">Semaphore</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-semaphores">Specification</a></span>
                     <ul class="m-doc">
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreCreateInfo">Specification</a></span></li>
-                      <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_export_create_info.html" class="m-doc">ExportCreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreCreateInfo">Specification</a></span>
-                        <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_export_create_info_1_1_win32_handle_info.html" class="m-doc">Win32HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a><br /></span></li>
-                        </ul>
-                      </li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_get_p_o_s_i_x___file_descriptor_info.html" class="m-doc">GetPOSIX_FileDescriptorInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a><br /></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_get_win32_handle_info.html" class="m-doc">GetWin32HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a><br /></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_import_p_o_s_i_x___file_descriptor_info.html" class="m-doc">ImportPOSIX_FileDescriptorInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a><br /></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_import_win32_handle_info.html" class="m-doc">ImportWin32HandleInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a><br /></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_export_create_info.html" class="m-doc">ExportCreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreCreateInfo">Specification</a></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_signal_info.html" class="m-doc">SignalInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a><br /></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_type_specified_create_info.html" class="m-doc">TypeSpecifiedCreateInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a><br /></span></li>
                       <li>struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_wait_info.html" class="m-doc">WaitInfo</a> <span class="m-doc"><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a><br /></span></li>
@@ -574,12 +596,10 @@
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><span></span></span></li>
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_device_event_info.html" class="m-doc">DeviceEventInfo</a> <span class="m-doc"><span></span></span></li>
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_display_event_info.html" class="m-doc">DisplayEventInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_exportable_win32.html" class="m-doc">ExportableWin32</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_exportable_o_s___handle_info.html" class="m-doc">ExportableOS_HandleInfo</a> <span class="m-doc"><span></span></span></li>
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_export_create_info.html" class="m-doc">ExportCreateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_get_p_o_s_i_x___file_descriptor_info.html" class="m-doc">GetPOSIX_FileDescriptorInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_get_win32_handle_info.html" class="m-doc">GetWin32HandleInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_import_fence_p_o_s_i_x___file_descriptor_info.html" class="m-doc">ImportFencePOSIX_FileDescriptorInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_import_fence_win32_handle_info.html" class="m-doc">ImportFenceWin32HandleInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_fence_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a> <span class="m-doc"><span></span></span></li>
                     </ul>
                   </li>
                   <li class="m-doc-collapsible collapsed">
@@ -629,27 +649,27 @@
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_group.html" class="m-doc">Group</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_group.html" class="m-doc">Group</a> <span class="m-doc">Offers a default constructor.</span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a> <span class="m-doc">Offers a default constructor.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_performance_counter_1_1_description.html" class="m-doc">Description</a> <span class="m-doc"><span></span></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_performance_counter_1_1_description.html" class="m-doc">Description</a> <span class="m-doc">Offers a default constructor.</span></li>
                         </ul>
                       </li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a> <span class="m-doc">Offers a default constructor.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_device_i_d.html" class="m-doc">DeviceID</a> <span class="m-doc"><span></span></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_p_c_i_bus_info.html" class="m-doc">PCIBusInfo</a> <span class="m-doc"><span></span></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_vulkan11.html" class="m-doc">Vulkan11</a> <span class="m-doc"><span></span></span></li>
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_vulkan12.html" class="m-doc">Vulkan12</a> <span class="m-doc"><span></span></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_device_i_d.html" class="m-doc">DeviceID</a> <span class="m-doc">Offers a default constructor.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_p_c_i_bus_info.html" class="m-doc">PCIBusInfo</a> <span class="m-doc">Offers a default constructor.</span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_vulkan11.html" class="m-doc">Vulkan11</a> <span class="m-doc">Offers a default constructor.<br /></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties_1_1_vulkan12.html" class="m-doc">Vulkan12</a> <span class="m-doc">Offers a default constructor.<br /></span></li>
                         </ul>
                       </li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a> <span class="m-doc">Offers a default constructor.</span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a> <span class="m-doc">Offers a default constructor.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_queue_family_properties2_1_1_checkpoint.html" class="m-doc">Checkpoint</a> <span class="m-doc"><span></span></span></li>
+                          <li>struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_queue_family_properties2_1_1_checkpoint.html" class="m-doc">Checkpoint</a> <span class="m-doc">Offers a default constructor.</span></li>
                         </ul>
                       </li>
                     </ul>
@@ -768,6 +788,7 @@
                       </li>
                     </ul>
                   </li>
+                  <li>struct <a href="struct_v_t_1_1_v2_1_1_queue_mask.html" class="m-doc">QueueMask</a> <span class="m-doc">Ease of identification masks for identifying a type of queue family.</span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_render_pass.html" class="m-doc">RenderPass</a> <span class="m-doc"><span></span></span>
                     <ul class="m-doc">
@@ -786,16 +807,10 @@
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_semaphore.html" class="m-doc">Semaphore</a> <span class="m-doc"><span></span></span>
                     <ul class="m-doc">
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_create_info.html" class="m-doc">CreateInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_export_create_info.html" class="m-doc">ExportCreateInfo</a> <span class="m-doc"><span></span></span>
-                        <ul class="m-doc">
-                          <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_export_create_info_1_1_win32_handle_info.html" class="m-doc">Win32HandleInfo</a> <span class="m-doc"><span></span></span></li>
-                        </ul>
-                      </li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_get_p_o_s_i_x___file_descriptor_info.html" class="m-doc">GetPOSIX_FileDescriptorInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_get_win32_handle_info.html" class="m-doc">GetWin32HandleInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_import_p_o_s_i_x___file_descriptor_info.html" class="m-doc">ImportPOSIX_FileDescriptorInfo</a> <span class="m-doc"><span></span></span></li>
-                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_import_win32_handle_info.html" class="m-doc">ImportWin32HandleInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_exportable_o_s___handle_info.html" class="m-doc">ExportableOS_HandleInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_export_create_info.html" class="m-doc">ExportCreateInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a> <span class="m-doc"><span></span></span></li>
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_signal_info.html" class="m-doc">SignalInfo</a> <span class="m-doc"><span></span></span></li>
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_type_specified_create_info.html" class="m-doc">TypeSpecifiedCreateInfo</a> <span class="m-doc"><span></span></span></li>
                       <li>struct <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_wait_info.html" class="m-doc">WaitInfo</a> <span class="m-doc"><span></span></span></li>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V2::Semaphore::GetWin32HandleInfo struct | VaultedThermals</title>
+  <title>VT::V0::Semaphore_Maker&lt;EOS::Windows&gt; struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,8 +50,9 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v2.html">V2</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v2_1_1_semaphore.html">Semaphore</a>::<wbr/></span>GetWin32HandleInfo <span class="m-thin">struct</span>
-          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;&gt;</div>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span>Semaphore_Maker&lt;EOS::Windows&gt; <span class="m-thin">struct</span>
         </h1>
         <p><span></span></p>
         <div class="m-block m-default">
@@ -61,7 +62,8 @@
               Reference
               <ul>
                 <li><a href="#base-classes">Base classes</a></li>
-                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
               </ul>
             </li>
           </ul>
@@ -70,18 +72,49 @@
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_get_win32_handle_info.html" class="m-doc">VT::V1::Semaphore::GetWin32HandleInfo</a>
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a><br /></dd>
-          </dl>
-        </section>
-        <section id="typeless-methods">
-          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
-          <dl class="m-doc">
-            <dt id="a1df4a03edc756516d2631499c9bdd2ba">
-              <span class="m-doc-wrap-bumper"><a href="#a1df4a03edc756516d2631499c9bdd2ba" class="m-doc-self">GetWin32HandleInfo</a>(</span><span class="m-doc-wrap">)</span>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___platform_agnostic.html" class="m-doc">Semaphore_PlatformAgnostic</a>
             </dt>
             <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4_1_1_exportable_o_s___handle_info.html" class="m-doc">ExportableOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a><br /></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a><br /></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a><br /></dd>
+            <dt id="a003650b923280932dd65b20e4cab711a">
+              using <a href="#a003650b923280932dd65b20e4cab711a" class="m-doc-self">OS_Handle</a> = <a href="struct_v_t_1_1_v0_1_1_platform_types___maker.html" class="m-doc">PlatformTypes_<wbr />Maker</a>&lt;EOS::Windows&gt;::<a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4.html#a003650b923280932dd65b20e4cab711a" class="m-doc">OS_<wbr />Handle</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a97845626c1ed2937ac436f03bc582842">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a97845626c1ed2937ac436f03bc582842" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">V1::<wbr />LogicalDevice::<wbr />Handle</a> _device,
+              const GetOS_HandleInfo&amp; _getInfo,
+              <a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_windows_01_4.html#a003650b923280932dd65b20e4cab711a" class="m-doc">OS_<wbr />Handle</a>&amp; _handle) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreWin32HandleKHR">Specification</a></dd>
+            <dt id="ae9fdd389814b1bd8590af52191e21e2f">
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae9fdd389814b1bd8590af52191e21e2f" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">V1::<wbr />LogicalDevice::<wbr />Handle</a> _device,
+              const ImportOS_HandleInfo&amp; _importHandleInfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreWin32HandleKHR">Specification</a></dd>
           </dl>
         </section>
       </div>

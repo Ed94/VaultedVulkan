@@ -74,7 +74,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device.html" class="m-doc">VT::V1::PhysicalDevice</a>
             </dt>
-            <dd>Represents a physical device. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></dd>
+            <dd>Represents a physical device.</dd>
           </dl>
         </section>
         <section id="derived-classes">
@@ -92,23 +92,23 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_group.html" class="m-doc">Group</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt id="a66da316361f42e9a9af42ab55453339b">
               using <a href="#a66da316361f42e9a9af42ab55453339b" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v1_1_1_physical_device.html" class="m-doc">V1::<wbr />PhysicalDevice</a>
             </dt>
@@ -118,72 +118,56 @@
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a69574994f11f004ab991d48581591ecd" class="m-doc">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+            <dt id="a69574994f11f004ab991d48581591ecd">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a69574994f11f004ab991d48581591ecd" class="m-doc-self">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _extensionSpecified) -&gt; bool</span>
             </dt>
             <dd>Checks to see if the specified extensions are supported by the physical device.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ad409a8fe25628adc12d6c6709781d747" class="m-doc">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+            <dt id="ad409a8fe25628adc12d6c6709781d747">
+              <span class="m-doc-wrap-bumper">static auto <a href="#ad409a8fe25628adc12d6c6709781d747" class="m-doc-self">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a>&gt; _extensionsSpecified) -&gt; bool</span>
             </dt>
             <dd>Checks to see if the specified extensions are supported by the physical device.</dd>
             <dt id="a5ef73bb7a081e10cef8c63cd07264af3">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a5ef73bb7a081e10cef8c63cd07264af3" class="m-doc-self">FindSupportedFormat</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5ef73bb7a081e10cef8c63cd07264af3" class="m-doc-self">FindSupportedFormat</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               const <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group___corridors.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a>&gt;&amp; _canidates,
               <a href="group___corridors.html#gaf7d840a01ee04d8d618a5ad82dd738fd" class="m-doc">EImageTiling</a> _tiling,
               <a href="group___flags__and___bitmasks.html#gaac0a11aa04f9059d313bb40cce445275" class="m-doc">FormatFeatureFlags</a> _features,
               <a href="group___corridors.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a>&amp; _format) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if the formats in _canidates are available for the specified physical device, if the format is found, it will be returned with the format container reference.<br /></dd>
             <dt id="a23cfed740356b1e79e6e8030157a8e33">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a23cfed740356b1e79e6e8030157a8e33" class="m-doc-self">FindMemoryType</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a23cfed740356b1e79e6e8030157a8e33" class="m-doc-self">FindMemoryType</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _typeFilter,
               <a href="struct_v_t_1_1_v0_1_1_memory.html#a86acc27847a79e66573d32b766cef916" class="m-doc">Memory::<wbr />PropertyFlags</a> _properties) -&gt; <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Finds the memory type index based on the type filter and properties desired. (Returns the max value of uint32 otherwise)</dd>
             <dt id="ad2abef061d3f8da5633b3c082d5baedf">
-              <span class="m-doc-wrap-bumper">static auto <a href="#ad2abef061d3f8da5633b3c082d5baedf" class="m-doc-self">GetAvailableLayerExtensions</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#ad2abef061d3f8da5633b3c082d5baedf" class="m-doc-self">GetAvailableLayerExtensions</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
               <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="struct_v_t_1_1_corridors_1_1_extension_properties.html" class="m-doc">ExtensionProperties</a>&gt;&amp; _extensionListing) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the available layer extensions for the specified layer name into the _extensionListing container.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a13ed8ad56aa999cf35255b8b09dc3d58" class="m-doc">GetAvailableLayersAndExtensions</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#a13ed8ad56aa999cf35255b8b09dc3d58" class="m-doc">GetAvailableLayersAndExtensions</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="struct_v_t_1_1_v2_1_1_layer_and_extension_properties.html" class="m-doc">LayerAndExtensionProperties</a>&gt;&amp; _layersAndExtensions) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Gets all extensions for the known layers that the physical device supports.</dd>
             <dt id="abafb2f9bdaeefd23ee7666af45e82332">
-              <span class="m-doc-wrap-bumper">static auto <a href="#abafb2f9bdaeefd23ee7666af45e82332" class="m-doc-self">GetAvailableQueueFamilies</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle) -&gt; <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties.html" class="m-doc">QueueFamilyProperties</a>&gt;</span>
+              <span class="m-doc-wrap-bumper">static auto <a href="#abafb2f9bdaeefd23ee7666af45e82332" class="m-doc-self">GetAvailableQueueFamilies</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle) -&gt; <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties.html" class="m-doc">QueueFamilyProperties</a>&gt;</span>
             </dt>
             <dd>Provides the queue families for the respective device.</dd>
             <dt id="a53a1f8eb1fec4ee1fe034cea89749d88">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a53a1f8eb1fec4ee1fe034cea89749d88" class="m-doc-self">GetMaxSampleCount_ColorAndDepth</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle) -&gt; <a href="group___corridors.html#ga120d43f406f754c7941d5d9cc2b34959" class="m-doc">ESampleCount</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a53a1f8eb1fec4ee1fe034cea89749d88" class="m-doc-self">GetMaxSampleCount_ColorAndDepth</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle) -&gt; <a href="group___corridors.html#ga120d43f406f754c7941d5d9cc2b34959" class="m-doc">ESampleCount</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Gets the maximum sample count allowed for color and depth.</dd>
           </dl>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a69574994f11f004ab991d48581591ecd"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static bool VT::<wbr />V2::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69574994f11f004ab991d48581591ecd" class="m-doc-self">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _extensionSpecified)</span></span>
-            </h3>
-            <p>Checks to see if the specified extensions are supported by the physical device.</p>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000042" class="m-doc">Todo</a></h4><p>make the extensions specified container generic using an interface.</p></aside>
-          </div></section>
-          <section class="m-doc-details" id="ad409a8fe25628adc12d6c6709781d747"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static bool VT::<wbr />V2::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad409a8fe25628adc12d6c6709781d747" class="m-doc-self">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a>&gt; _extensionsSpecified)</span></span>
-            </h3>
-            <p>Checks to see if the specified extensions are supported by the physical device.</p>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000043" class="m-doc">Todo</a></h4><p>make the extensions specified container generic using an interface.</p></aside>
-          </div></section>
           <section class="m-doc-details" id="a13ed8ad56aa999cf35255b8b09dc3d58"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a13ed8ad56aa999cf35255b8b09dc3d58" class="m-doc-self">GetAvailableLayersAndExtensions</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a13ed8ad56aa999cf35255b8b09dc3d58" class="m-doc-self">GetAvailableLayersAndExtensions</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="struct_v_t_1_1_v2_1_1_layer_and_extension_properties.html" class="m-doc">LayerAndExtensionProperties</a>&gt;&amp; _layersAndExtensions)</span></span>
             </h3>
             <p>Gets all extensions for the known layers that the physical device supports.</p>

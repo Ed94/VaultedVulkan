@@ -94,12 +94,16 @@
               <span class="m-doc-wrap-bumper"><a href="#afea0a0b4550bf6fe4c8b775573ff4c94" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a2c2c958435f9f19a70d4898d45c98328">
-              <span class="m-doc-wrap-bumper"><a href="#a2c2c958435f9f19a70d4898d45c98328" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">) const</span>
+            <dt id="a0077c4d07e923d6ca29900ca945b311e">
+              <span class="m-doc-wrap-bumper"><a href="#a0077c4d07e923d6ca29900ca945b311e" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
             <dt id="ad1a0eded6da7b565bc531432e47a4e37">
               <span class="m-doc-wrap-bumper"><a href="#ad1a0eded6da7b565bc531432e47a4e37" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a7b8d0bc471c90bc128285d0e4e6df1fe">
+              <span class="m-doc-wrap-bumper"><a href="#a7b8d0bc471c90bc128285d0e4e6df1fe" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -107,24 +111,24 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a9a29de4990ac4e2b0cfbf88b47d4210c">
-              <span class="m-doc-wrap-bumper">void <a href="#a9a29de4990ac4e2b0cfbf88b47d4210c" class="m-doc-self">AssignPhysicalDevice</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _physicalDevice)</span>
+            <dt id="a821f48814b9a25f689e04df619700cc6">
+              <span class="m-doc-wrap-bumper">void <a href="#a821f48814b9a25f689e04df619700cc6" class="m-doc-self">AssignPhysicalDevice</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a>&amp; _physicalDevice)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ab0fb1f5d578715f0413dbdb4524f8386">
-              <span class="m-doc-wrap-bumper">auto <a href="#ab0fb1f5d578715f0413dbdb4524f8386" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _app,
+            <dt id="ae1f30eae29cfe8317291ed20b49b6f57">
+              <span class="m-doc-wrap-bumper">auto <a href="#ae1f30eae29cfe8317291ed20b49b6f57" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _app,
               OS_WindowHandle _window) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a55289667a38d9039f07bd51f0329185e">
-              <span class="m-doc-wrap-bumper">auto <a href="#a55289667a38d9039f07bd51f0329185e" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appHandle,
-              <a href="struct_v_t_1_1_v2_1_1_surface_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="adbef4f1daa2cc761b33550e287b601fc">
+              <span class="m-doc-wrap-bumper">auto <a href="#adbef4f1daa2cc761b33550e287b601fc" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _appHandle,
+              CreateInfo&amp; _createInfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aeab7d924c47973276f62f9802dd72248">
-              <span class="m-doc-wrap-bumper">auto <a href="#aeab7d924c47973276f62f9802dd72248" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appHandle,
-              <a href="struct_v_t_1_1_v2_1_1_surface_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a546ca51173d13df787b98f46527b4ede">
+              <span class="m-doc-wrap-bumper">auto <a href="#a546ca51173d13df787b98f46527b4ede" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _appHandle,
+              CreateInfo&amp; _createInfo,
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="ae8ab791bcbf98d694e40552f60b80a03">
@@ -161,20 +165,20 @@
         <section id="pro-attribs">
           <h2><a href="#pro-attribs">Protected variables</a></h2>
           <dl class="m-doc">
-            <dt id="aa9668eeb909757035e6dff58e2028286">
-              <a href="group___a_p_i_spec___initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> <a href="#aa9668eeb909757035e6dff58e2028286" class="m-doc-self">app</a>
+            <dt id="a4864d913c3803ed2e456432d5928e2df">
+              const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>* <a href="#a4864d913c3803ed2e456432d5928e2df" class="m-doc-self">app</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a051b3c6edd92149c07454c8a120f330b">
-              <a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> <a href="#a051b3c6edd92149c07454c8a120f330b" class="m-doc-self">physicalDevice</a>
+            <dt id="afab8c6c75c41e6571fd0780b8ffad365">
+              const <a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a>* <a href="#afab8c6c75c41e6571fd0780b8ffad365" class="m-doc-self">physicalDevice</a>
             </dt>
             <dd><span></span></dd>
             <dt id="adbbe04822309cb12aab33b510a6cce21">
-              <a href="struct_v_t_1_1_v2_1_1_surface_1_1_create_info.html" class="m-doc">CreateInfo</a> <a href="#adbbe04822309cb12aab33b510a6cce21" class="m-doc-self">info</a>
+              CreateInfo <a href="#adbbe04822309cb12aab33b510a6cce21" class="m-doc-self">info</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a05d96d020299cbab0e8c2828109e5573">
-              const Memory::AllocationCallbacks* <a href="#a05d96d020299cbab0e8c2828109e5573" class="m-doc-self">allocator</a>
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* <a href="#a05d96d020299cbab0e8c2828109e5573" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
             <dt id="aa8c0b96ba37fa94fba0fbd20f8e94a61">

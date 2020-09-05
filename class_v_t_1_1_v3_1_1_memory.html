@@ -68,7 +68,7 @@
             </li>
           </ul>
         </div>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000039" class="m-doc">Todo</a></h4><p>#TODO: Add documentation.</p></aside>
+<aside class="m-note m-dim"><h4><a href="todo.html#_todo000026" class="m-doc">Todo</a></h4><p>#TODO: Add documentation.</p></aside>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -94,12 +94,16 @@
               <span class="m-doc-wrap-bumper"><a href="#a8d4f6a4e39922e4229c539ddbc1e9c56" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a76c67612745f3a100736423d2cfd8074">
-              <span class="m-doc-wrap-bumper"><a href="#a76c67612745f3a100736423d2cfd8074" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">) const</span>
+            <dt id="aaa195c8f9fed976212a539750ea72483">
+              <span class="m-doc-wrap-bumper"><a href="#aaa195c8f9fed976212a539750ea72483" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
             <dt id="a1c67648c27a6874c020f014a51630840">
               <span class="m-doc-wrap-bumper"><a href="#a1c67648c27a6874c020f014a51630840" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3790b7cde3af9380e82871b9f844d626">
+              <span class="m-doc-wrap-bumper"><a href="#a3790b7cde3af9380e82871b9f844d626" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -107,13 +111,13 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="ac1371baf5a57e9a580682a3b6101360d">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac1371baf5a57e9a580682a3b6101360d" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+            <dt id="a7b3843b314a2c0c7e10f7428e7d82fd0">
+              <span class="m-doc-wrap-bumper">auto <a href="#a7b3843b314a2c0c7e10f7428e7d82fd0" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a983ad0eadd6510e9ff3c11e1d45470e1">
-              <span class="m-doc-wrap-bumper">auto <a href="#a983ad0eadd6510e9ff3c11e1d45470e1" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+            <dt id="ac84b9ada85d9f3f83649d694250d82c5">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac84b9ada85d9f3f83649d694250d82c5" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="struct_v_t_1_1_v2_1_1_memory_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
@@ -144,6 +148,10 @@
               <a href="group___corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data)</span>
             </dt>
             <dd><span></span></dd>
+            <dt id="aec7e41f770fc07baae3e05acb33a55b7">
+              <span class="m-doc-wrap-bumper">auto <a href="#aec7e41f770fc07baae3e05acb33a55b7" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_memory.html" class="m-doc">Memory</a>&amp; _other) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -161,8 +169,8 @@
               const AllocationCallbacks* <a href="#adfc3e89bfbb3d81ce805e44ef07cdf3f" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="ad77b4fd0c5f982ea116a557355ae56f3">
-              <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>* <a href="#ad77b4fd0c5f982ea116a557355ae56f3" class="m-doc-self">device</a>
+            <dt id="af211a7b2eef6b1c93770796895125455">
+              const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>* <a href="#af211a7b2eef6b1c93770796895125455" class="m-doc-self">device</a>
             </dt>
             <dd><span></span></dd>
           </dl>

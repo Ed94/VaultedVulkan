@@ -94,8 +94,16 @@
               <span class="m-doc-wrap-bumper"><a href="#a6b0b92970cf2f1ce0f2d6a346ab33e22" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
+            <dt id="ad0d99f2f2380b3cd9e7513b7024a2373">
+              <span class="m-doc-wrap-bumper"><a href="#ad0d99f2f2380b3cd9e7513b7024a2373" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd><span></span></dd>
             <dt id="aef16836b0d69a421ff8c610cc5378d48">
               <span class="m-doc-wrap-bumper"><a href="#aef16836b0d69a421ff8c610cc5378d48" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4f25491d254b7067f41664ed57d3e53d">
+              <span class="m-doc-wrap-bumper"><a href="#a4f25491d254b7067f41664ed57d3e53d" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -103,15 +111,15 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a56831b7c5538cade6f9625439fd6ebd5">
-              <span class="m-doc-wrap-bumper">auto <a href="#a56831b7c5538cade6f9625439fd6ebd5" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a5a6a96fa2f6167bb53d284204d956d41">
+              <span class="m-doc-wrap-bumper">auto <a href="#a5a6a96fa2f6167bb53d284204d956d41" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              CreateInfo&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a825488dac4f14b87d98c3aadd4e59197">
-              <span class="m-doc-wrap-bumper">auto <a href="#a825488dac4f14b87d98c3aadd4e59197" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
-              const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a142c111a22ac7dfbd5f1d9c2ae3e6209">
+              <span class="m-doc-wrap-bumper">auto <a href="#a142c111a22ac7dfbd5f1d9c2ae3e6209" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              CreateInfo&amp; _info,
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a9ae96401534834d3151dd14bf585923f">
@@ -126,6 +134,10 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a9679b88bafb04ef29a5b7b2877704b20" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) -&gt; <a href="struct_v_t_1_1_v1_1_1_render_pass.html#a200aa837668e5a1e79d7faa13906c0cc" class="m-doc">Handle</a></span>
             </dt>
             <dd><span></span></dd>
+            <dt id="a0b6eb3b324eed8a375688bcfc043a289">
+              <span class="m-doc-wrap-bumper">auto <a href="#a0b6eb3b324eed8a375688bcfc043a289" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_render_pass.html" class="m-doc">RenderPass</a>&amp; _other) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -136,15 +148,15 @@
             </dt>
             <dd><span></span></dd>
             <dt id="afe960b015472dbbe58f2e06b2ffb3f84">
-              const Memory::AllocationCallbacks* <a href="#afe960b015472dbbe58f2e06b2ffb3f84" class="m-doc-self">allocator</a>
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* <a href="#afe960b015472dbbe58f2e06b2ffb3f84" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a494c68edd197fb7fe7ded7ff56f6d558">
-              <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_create_info.html" class="m-doc">CreateInfo</a> <a href="#a494c68edd197fb7fe7ded7ff56f6d558" class="m-doc-self">info</a>
+              CreateInfo <a href="#a494c68edd197fb7fe7ded7ff56f6d558" class="m-doc-self">info</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a5f9259591aad4da824e96351d05102aa">
-              <a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> <a href="#a5f9259591aad4da824e96351d05102aa" class="m-doc-self">device</a>
+            <dt id="acbe4a5c05ad8de6b555838ca37026726">
+              const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>* <a href="#acbe4a5c05ad8de6b555838ca37026726" class="m-doc-self">device</a>
             </dt>
             <dd><span></span></dd>
           </dl>

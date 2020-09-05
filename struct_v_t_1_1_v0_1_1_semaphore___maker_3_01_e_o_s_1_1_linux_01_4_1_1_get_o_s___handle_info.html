@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V0::PlatformTypes_Maker&lt;EOS_Platform::Windows&gt; struct | VaultedThermals</title>
+  <title>VT::V0::Semaphore_Maker&lt;EOS::Linux&gt;::GetOS_HandleInfo struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,31 +50,50 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___platform_8hpp.html">&lt;VaultedThermals/VT_Platform.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sync_and_cache_control_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
           <div class="m-doc-template">template&lt;&gt;</div>
-          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span>PlatformTypes_Maker&lt;EOS_Platform::Windows&gt; <span class="m-thin">struct</span>
+          <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v0.html">V0</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v0_1_1_semaphore___maker_3_01_e_o_s_1_1_linux_01_4.html">Semaphore_Maker&lt;EOS::Linux&gt;</a>::<wbr/></span>GetOS_HandleInfo <span class="m-thin">struct</span>
         </h1>
-        <p><span></span></p>
+        <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a><br /></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <section id="pub-types">
-          <h2><a href="#pub-types">Public types</a></h2>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
-            <dt id="a19b4052c427b4d32a8265a85a723dae3">
-              using <a href="#a19b4052c427b4d32a8265a85a723dae3" class="m-doc-self">OS_AppHandle</a> = HINSTANCE
+            <dt>
+              <div class="m-doc-template">template&lt;typename VulkanType, <a href="group___corridors.html#gacd13528f982c0cebc4759562268d1f2e" class="m-doc">EStructureType</a> TemplateSpecifiedStype = EStructureType::Max_Enum&gt;</div>
+              struct <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR&gt;</a>
+            </dt>
+            <dd>Base struct for wrapping Vulkan native C API Structs.</dd>
+          </dl>
+        </section>
+        <section id="pub-attribs">
+          <h2><a href="#pub-attribs">Public variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a0c83d2ad840dd1632a69ebf1e4969c68">
+              <a href="struct_v_t_1_1_v0_1_1_v_k_struct___base.html#abca8afcbf6bcf75281b832accad80565" class="m-doc">EType</a> <a href="#a0c83d2ad840dd1632a69ebf1e4969c68" class="m-doc-self">SType</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a5324496b4ba97ae304b53d10216ff87d">
-              using <a href="#a5324496b4ba97ae304b53d10216ff87d" class="m-doc-self">OS_WindowHandle</a> = HWND
+            <dt id="a1d406478c56cdb7f4c7beb9730f8ffdc">
+              const void* <a href="#a1d406478c56cdb7f4c7beb9730f8ffdc" class="m-doc-self">Next</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae68c235421df344e4ef91d476aa4898d">
+              <a href="struct_v_t_1_1_v0_1_1_semaphore___platform_agnostic.html#ad2cc87aee9cbf3d930a56549dc34fc46" class="m-doc">Handle</a> <a href="#ae68c235421df344e4ef91d476aa4898d" class="m-doc-self">Semaphore</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0152373c16dd18da5f269c46e5736074">
+              <a href="struct_v_t_1_1_v0_1_1_semaphore___platform_agnostic.html#a8c2d633e85ac6fb2ee8e1b189b3b397d" class="m-doc">EExternalHandleType</a> <a href="#a0152373c16dd18da5f269c46e5736074" class="m-doc-self">HandleType</a>
             </dt>
             <dd><span></span></dd>
           </dl>

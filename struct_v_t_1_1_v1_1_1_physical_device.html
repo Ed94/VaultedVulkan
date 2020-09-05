@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span>PhysicalDevice <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___physical_device_8hpp.html">&lt;VaultedThermals/VT_PhysicalDevice.hpp&gt;</a></div>
         </h1>
-        <p>Represents a physical device. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></p>
+        <p>Represents a physical device.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -68,6 +68,7 @@
             </li>
           </ul>
         </div>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a></p>
         <section id="derived-classes">
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
@@ -83,7 +84,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_conformance_version.html" class="m-doc">ConformanceVersion</a>
             </dt>
-            <dd></dd>
+            <dd>Conformance test suite version an implementation is compliant with is described with this.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_features.html" class="m-doc">Features</a>
             </dt>
@@ -99,11 +100,11 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_memory_properties.html" class="m-doc">MemoryProperties</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification</a></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification&lt;/<wbr /></a></dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a>
             </dt>
-            <dd></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterKHR">Specification</a></dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a>
             </dt>
@@ -111,7 +112,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a>
             </dt>
-            <dd></dd>
+            <dd>Each structure in <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a> and its pNext chain contain members corresponding to properties or implementation-dependent limits.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties.html" class="m-doc">QueueFamilyProperties</a>
             </dt>
@@ -119,7 +120,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a>
             </dt>
-            <dd></dd>
+            <dd>Return extended information in a pNext chain of output structures.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_sparse_memory_properties.html" class="m-doc">SparseMemoryProperties</a>
             </dt>
@@ -128,22 +129,22 @@
               using <a href="#a911139a1e7e45d716834b458442191b3" class="m-doc-self">Memory</a> = <a href="struct_v_t_1_1_v0_1_1_memory.html" class="m-doc">V0::<wbr />Memory</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="af37b72fc21cdb4a17f4d2e064afb7e8c">
-              using <a href="#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc-self">Handle</a> = VkPhysicalDevice
+            <dt>
+              using <a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> = VkPhysicalDevice
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevice">Specification</a></dd>
             <dt id="aa707e3455c39e6b591d6e8b3fe46934a">
               using <a href="#aa707e3455c39e6b591d6e8b3fe46934a" class="m-doc-self">NameStr</a> = char[<a href="struct_v_t_1_1_v1_1_1_physical_device.html#a3c5b6dffab797564ec1b90865312d55f" class="m-doc">MaxNameSize</a>]
             </dt>
-            <dd><span></span></dd>
+            <dd>Used in various structures to define a name.</dd>
             <dt id="a1d2de05d3ae00bdb90da824494eff650">
               using <a href="#a1d2de05d3ae00bdb90da824494eff650" class="m-doc-self">DriverNameStr</a> = char[<a href="struct_v_t_1_1_v1_1_1_physical_device.html#a0f0422515fc586fde05e29758d9d41df" class="m-doc">MaxDriverNameSize</a>]
             </dt>
-            <dd><span></span></dd>
+            <dd>Driver name string.</dd>
             <dt id="a08ec9eceb7d8984e5d197b1f44f451cf">
               using <a href="#a08ec9eceb7d8984e5d197b1f44f451cf" class="m-doc-self">DriverInfoStr</a> = char[<a href="struct_v_t_1_1_v1_1_1_physical_device.html#a919306cb3298cb8d639df6c87e252935" class="m-doc">MaxDriverInfoSize</a>]
             </dt>
-            <dd><span></span></dd>
+            <dd>Driver info string.</dd>
             <dt id="a4eaf6515339874e64cfe534f8825f936">
               using <a href="#a4eaf6515339874e64cfe534f8825f936" class="m-doc-self">EDeviceType</a> = <a href="group___corridors.html#gab5714cc65a396c2e5fac7ab2a1d489a8" class="m-doc">EPhysicalDeviceType</a>
             </dt>
@@ -156,191 +157,78 @@
             <dt id="a3c5b6dffab797564ec1b90865312d55f">
               static <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> <a href="#a3c5b6dffab797564ec1b90865312d55f" class="m-doc-self">MaxNameSize</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Maximum size of a name string.</dd>
             <dt id="ad110571e623eea6b56d6e847df792f9b">
               static <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> <a href="#ad110571e623eea6b56d6e847df792f9b" class="m-doc-self">MaxDeviceGroupSize</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Maximum size of a device group.</dd>
             <dt id="a0f0422515fc586fde05e29758d9d41df">
               static <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> <a href="#a0f0422515fc586fde05e29758d9d41df" class="m-doc-self">MaxDriverNameSize</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>maximum size of a driver name string.</dd>
             <dt id="a919306cb3298cb8d639df6c87e252935">
               static <a href="group___common___object___types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> <a href="#a919306cb3298cb8d639df6c87e252935" class="m-doc-self">MaxDriverInfoSize</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Maximum size of a driver info string.</dd>
           </dl>
         </section>
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ac82436098c68e209df40e21b022add0c" class="m-doc">GetFeatures</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___features.html#gac82436098c68e209df40e21b022add0c" class="m-doc">GetFeatures</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_features.html" class="m-doc">Features</a>&amp; _features)</span>
             </dt>
             <dd>Query supported features. Reports capabilities of a physical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ada11580cdc16363b186f9384a5f6d6d5" class="m-doc">GetFormatProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___formats.html#gada11580cdc16363b186f9384a5f6d6d5" class="m-doc">GetFormatProperties</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a> _format,
               <a href="struct_v_t_1_1_corridors_1_1_format_properties.html" class="m-doc">FormatProperties</a>&amp; _properties)</span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFormatProperties">Specification</a></dd>
+            <dd>Query supported format features which are properties of the physical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a3c93ad475cf02d1da5660c063fb2178e" class="m-doc">GetMemoryProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___memory___allocation.html#ga3c93ad475cf02d1da5660c063fb2178e" class="m-doc">GetMemoryProperties</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_memory_properties.html" class="m-doc">MemoryProperties</a>&amp; _properties)</span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceMemoryProperties">Specification</a></dd>
+            <dd>Query memory properties.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a049bc022dd9e8ab8b03fbbfeedc0b770" class="m-doc">GetProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___devices__and___queues.html#ga049bc022dd9e8ab8b03fbbfeedc0b770" class="m-doc">GetProperties</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a>&amp; _properties)</span>
             </dt>
             <dd>Query general properties of physical devices once enumerated.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ab48d7dae0f52e6606145d55e39bb91bc" class="m-doc">GetProperties2</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___devices__and___queues.html#gab48d7dae0f52e6606145d55e39bb91bc" class="m-doc">GetProperties2</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a>&amp; _properties)</span>
             </dt>
             <dd>Query general properties of physical devices once enumerated (Second Ver).</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a3fe8173aadaa7144f7d289ab4a2ca95c" class="m-doc">QueryExtensionProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___extending___vulkan.html#ga3fe8173aadaa7144f7d289ab4a2ca95c" class="m-doc">QueryExtensionProperties</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numExtensions,
               <a href="struct_v_t_1_1_corridors_1_1_extension_properties.html" class="m-doc">ExtensionProperties</a>* _extensionPropertiesContainer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Device extensions add new device-level functionality to the API, outside of the core specification.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a6dc362b80139080845ded746216db1e9" class="m-doc">QueryQueueFamilyProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___devices__and___queues.html#ga6dc362b80139080845ded746216db1e9" class="m-doc">QueryQueueFamilyProperties</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numQueueFamilies,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties.html" class="m-doc">QueueFamilyProperties</a>* _queueFamilies)</span>
             </dt>
             <dd>Query properties of queues available on a physical device. Reports properties of the queues of the specified physical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a1d68edfcac3cc2d3690c149e6ef5d2f7" class="m-doc">QueryQueueFamilyProperties2</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___devices__and___queues.html#ga1d68edfcac3cc2d3690c149e6ef5d2f7" class="m-doc">QueryQueueFamilyProperties2</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numProperties,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a>* _properties)</span>
             </dt>
-            <dd></dd>
+            <dd>Query properties of queues available on a physical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a2e8560a4c56d76df5c64babef16ef48e" class="m-doc">QueryPerfomranceQueryCounters</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___devices__and___queues.html#ga2e8560a4c56d76df5c64babef16ef48e" class="m-doc">QueryPerfomranceQueryCounters</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numCounters,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a>* _counters,
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter_1_1_description.html" class="m-doc">PerformanceCounter::<wbr />Description</a>* _counterDescriptions) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd></dd>
+            <dd>Enumerate the performance query counters available on a queue family of a physical device.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="ac82436098c68e209df40e21b022add0c"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac82436098c68e209df40e21b022add0c" class="m-doc-self">GetFeatures</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_features.html" class="m-doc">Features</a>&amp; _features)</span></span>
-            </h3>
-            <p>Query supported features. Reports capabilities of a physical device.</p>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFeatures">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="ada11580cdc16363b186f9384a5f6d6d5"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ada11580cdc16363b186f9384a5f6d6d5" class="m-doc-self">GetFormatProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a> _format,
-              <a href="struct_v_t_1_1_corridors_1_1_format_properties.html" class="m-doc">FormatProperties</a>&amp; _properties)</span></span>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFormatProperties">Specification</a></p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_handle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_format</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_properties</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a3c93ad475cf02d1da5660c063fb2178e"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3c93ad475cf02d1da5660c063fb2178e" class="m-doc-self">GetMemoryProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_memory_properties.html" class="m-doc">MemoryProperties</a>&amp; _properties)</span></span>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceMemoryProperties">Specification</a></p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_handle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_properties</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a049bc022dd9e8ab8b03fbbfeedc0b770"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a049bc022dd9e8ab8b03fbbfeedc0b770" class="m-doc-self">GetProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties.html" class="m-doc">Properties</a>&amp; _properties)</span></span>
-            </h3>
-            <p>Query general properties of physical devices once enumerated.</p>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="ab48d7dae0f52e6606145d55e39bb91bc"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab48d7dae0f52e6606145d55e39bb91bc" class="m-doc-self">GetProperties2</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_properties2.html" class="m-doc">Properties2</a>&amp; _properties)</span></span>
-            </h3>
-            <p>Query general properties of physical devices once enumerated (Second Ver).</p>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties2">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a3fe8173aadaa7144f7d289ab4a2ca95c"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3fe8173aadaa7144f7d289ab4a2ca95c" class="m-doc-self">QueryExtensionProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numExtensions,
-              <a href="struct_v_t_1_1_corridors_1_1_extension_properties.html" class="m-doc">ExtensionProperties</a>* _extensionPropertiesContainer)</span></span>
-            </h3>
-            <p>Device extensions add new device-level functionality to the API, outside of the core specification.</p>
-<p>Query the extensions available to a given physical device.</p><p>When pLayerName parameter is NULL, only extensions provided by the Vulkan implementation or by implicitly enabled layers are returned. When pLayerName is the name of a layer, the device extensions provided by that layer are returned.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_device_extensions">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a6dc362b80139080845ded746216db1e9"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6dc362b80139080845ded746216db1e9" class="m-doc-self">QueryQueueFamilyProperties</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numQueueFamilies,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties.html" class="m-doc">QueueFamilyProperties</a>* _queueFamilies)</span></span>
-            </h3>
-            <p>Query properties of queues available on a physical device. Reports properties of the queues of the specified physical device.</p>
-<p>If pQueueFamilyProperties is NULL, then the number of queue families available is returned in pQueueFamilyPropertyCount. Implementations must support at least one queue family. Otherwise, pQueueFamilyPropertyCount must point to a variable set by the user to the number of elements in the pQueueFamilyProperties array, and on return the variable is overwritten with the number of structures actually written to pQueueFamilyProperties.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceQueueFamilyProperties">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a1d68edfcac3cc2d3690c149e6ef5d2f7"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1d68edfcac3cc2d3690c149e6ef5d2f7" class="m-doc-self">QueryQueueFamilyProperties2</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numProperties,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_queue_family_properties2.html" class="m-doc">QueueFamilyProperties2</a>* _properties)</span></span>
-            </h3>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceQueueFamilyProperties2">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a2e8560a4c56d76df5c64babef16ef48e"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2e8560a4c56d76df5c64babef16ef48e" class="m-doc-self">QueryPerfomranceQueryCounters</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_physical_device.html#af37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numCounters,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter.html" class="m-doc">PerformanceCounter</a>* _counters,
-              <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_performance_counter_1_1_description.html" class="m-doc">PerformanceCounter::<wbr />Description</a>* _counterDescriptions)</span></span>
-            </h3>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

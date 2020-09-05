@@ -111,15 +111,15 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a1d7f66fcfeb4b7d7f90ebfa689578673">
-              <span class="m-doc-wrap-bumper">auto <a href="#a1d7f66fcfeb4b7d7f90ebfa689578673" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a792d6fa9d8459779066744d3df863e7c">
+              <span class="m-doc-wrap-bumper">auto <a href="#a792d6fa9d8459779066744d3df863e7c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              CreateInfo&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ae20e574ecc5d983a48f45d4446d43138">
-              <span class="m-doc-wrap-bumper">auto <a href="#ae20e574ecc5d983a48f45d4446d43138" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
-              const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a397bf954f731f1672c9e85637eaeea41">
+              <span class="m-doc-wrap-bumper">auto <a href="#a397bf954f731f1672c9e85637eaeea41" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              CreateInfo&amp; _info,
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="ae6ccf3d41cbefaff740ab4135ced528d">
@@ -131,25 +131,16 @@
             </dt>
             <dd><span></span></dd>
             <dt id="abf75aada6579ea3f2755b60241e227d3">
-              <span class="m-doc-wrap-bumper">auto <a href="#abf75aada6579ea3f2755b60241e227d3" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="struct_v_t_1_1_v1_1_1_semaphore.html#abed453907c59f803b0514e803e6af72b" class="m-doc">Handle</a>&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#abf75aada6579ea3f2755b60241e227d3" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const Handle&amp;</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aecdb0a85100afac62c144f84e7660803">
-              <span class="m-doc-wrap-bumper">auto <a href="#aecdb0a85100afac62c144f84e7660803" class="m-doc-self">GetPOSIX_FileDescriptor</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_get_p_o_s_i_x___file_descriptor_info.html" class="m-doc">GetPOSIX_<wbr />FileDescriptorInfo</a>&amp; _getInfo,
-              int* _fileDescriptor) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="ad23aa6a749c4ff0dc097b9a32765d79c">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad23aa6a749c4ff0dc097b9a32765d79c" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_get_o_s___handle_info.html" class="m-doc">GetOS_<wbr />HandleInfo</a>&amp; _getInfo,
+              OS_Handle&amp; _osHandle) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a87d56965171c6aab3fa5764b738c7f70">
-              <span class="m-doc-wrap-bumper">auto <a href="#a87d56965171c6aab3fa5764b738c7f70" class="m-doc-self">GetWin32Handle</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_get_win32_handle_info.html" class="m-doc">GetWin32HandleInfo</a>&amp; _getInfo,
-              HANDLE&amp; _winHandle) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a9df02169c622e3f85f2aca250e407a28">
-              <span class="m-doc-wrap-bumper">auto <a href="#a9df02169c622e3f85f2aca250e407a28" class="m-doc-self">ImportPOSIX_FileDescriptor</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_import_p_o_s_i_x___file_descriptor_info.html" class="m-doc">ImportPOSIX_<wbr />FileDescriptorInfo</a>&amp; _importPOSIX_Info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a4a232ee93f8f9575188ca38ed9d30921">
-              <span class="m-doc-wrap-bumper">auto <a href="#a4a232ee93f8f9575188ca38ed9d30921" class="m-doc-self">ImportWin32Handle</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_import_win32_handle_info.html" class="m-doc">ImportWin32HandleInfo</a>&amp; _importHandleInfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a027122c4261d7ecb654ec6840daaa822">
+              <span class="m-doc-wrap-bumper">auto <a href="#a027122c4261d7ecb654ec6840daaa822" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap">const <a href="struct_v_t_1_1_v2_1_1_semaphore_1_1_import_o_s___handle_info.html" class="m-doc">ImportOS_<wbr />HandleInfo</a>&amp; _importPOSIX_Info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a71d0a896df3d5f58b5f4cff165df6b07">
@@ -167,19 +158,19 @@
           <h2><a href="#pro-attribs">Protected variables</a></h2>
           <dl class="m-doc">
             <dt id="a47936189ee62219f20dc6587228b678d">
-              <a href="struct_v_t_1_1_v1_1_1_semaphore.html#abed453907c59f803b0514e803e6af72b" class="m-doc">Handle</a> <a href="#a47936189ee62219f20dc6587228b678d" class="m-doc-self">handle</a>
+              Handle <a href="#a47936189ee62219f20dc6587228b678d" class="m-doc-self">handle</a>
             </dt>
             <dd><span></span></dd>
             <dt id="ac80edb85027f1ee4c1929f9a36724a89">
-              const Memory::AllocationCallbacks* <a href="#ac80edb85027f1ee4c1929f9a36724a89" class="m-doc-self">allocator</a>
+              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* <a href="#ac80edb85027f1ee4c1929f9a36724a89" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
             <dt id="ae798f1032a4e82454ef49a5811bb26a8">
-              <a href="struct_v_t_1_1_v1_1_1_semaphore_1_1_create_info.html" class="m-doc">CreateInfo</a> <a href="#ae798f1032a4e82454ef49a5811bb26a8" class="m-doc-self">info</a>
+              CreateInfo <a href="#ae798f1032a4e82454ef49a5811bb26a8" class="m-doc-self">info</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a17bdffea878889c369bf74a903d57918">
-              <a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> <a href="#a17bdffea878889c369bf74a903d57918" class="m-doc-self">device</a>
+            <dt id="a1f2c5296d4095c63a458fc76e02a7f07">
+              const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>* <a href="#a1f2c5296d4095c63a458fc76e02a7f07" class="m-doc-self">device</a>
             </dt>
             <dd><span></span></dd>
           </dl>

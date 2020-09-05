@@ -78,6 +78,13 @@
               ExtensionProperties* _propertiesContainer) -&gt; EResult</span>
             </dt>
             <dd>Query the available instance extensions.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga3fe8173aadaa7144f7d289ab4a2ca95c" class="m-doc">QueryExtensionProperties</a>(</span><span class="m-doc-wrap">Handle _handle,
+              RoCStr _layerName,
+              uint32* _numExtensions,
+              ExtensionProperties* _extensionPropertiesContainer) -&gt; EResult</span>
+            </dt>
+            <dd>Device extensions add new device-level functionality to the API, outside of the core specification.</dd>
           </dl>
         </section>
         <section>
@@ -100,6 +107,17 @@
             </h3>
             <p>Query the available instance extensions.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga3fe8173aadaa7144f7d289ab4a2ca95c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga3fe8173aadaa7144f7d289ab4a2ca95c" class="m-doc-self">QueryExtensionProperties</a>(</span><span class="m-doc-wrap">Handle _handle,
+              RoCStr _layerName,
+              uint32* _numExtensions,
+              ExtensionProperties* _extensionPropertiesContainer)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___physical_device_8hpp.html">&lt;VaultedThermals/VT_PhysicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>Device extensions add new device-level functionality to the API, outside of the core specification.</p>
+<p>Query the extensions available to a given physical device.</p><p>When pLayerName parameter is NULL, only extensions provided by the Vulkan implementation or by implicitly enabled layers are returned. When pLayerName is the name of a layer, the device extensions provided by that layer are returned.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_device_extensions">Specification</a></p>
           </div></section>
         </section>
       </div>
