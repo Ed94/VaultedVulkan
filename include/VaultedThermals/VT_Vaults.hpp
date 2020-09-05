@@ -480,7 +480,7 @@ namespace VaultedThermals
 */
 
 /** 
-@defgroup APISpec__Appendix-E__Layers_and_Extensions_-Informative-
+@defgroup APISpec__Appendix-E__Layers_and_Extensions_Informative
 @ingroup API_Specification
 
 @brief Appendix E: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap48.html">Specification</a> 

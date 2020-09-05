@@ -34,6 +34,9 @@ namespace VaultedThermals
 {
 	namespace V0
 	{
+		using V1::AccessFlags;
+		using V1::DeviceSize ;
+
 		/**
 		@addtogroup Vault_0
 		@{

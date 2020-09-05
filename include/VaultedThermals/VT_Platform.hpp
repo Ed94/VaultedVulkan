@@ -22,6 +22,23 @@
 
 #endif
 
+#ifdef __MACH__
+
+	#ifdef  VK_USE_PLATFORM_MACOS_MVK
+	#define VK_USE_PLATFORM_MACOS_MVK
+	#endif
+
+#endif
+
+#ifdef __linux__
+	
+	#ifdef  VK_USE_PLATFORM_WAYLAND_KHR
+    #define VK_USE_PLATFORM_WAYLAND_KHR
+	#endif
+
+#endif
+
+
 
 /** 
 @todo
@@ -60,7 +77,7 @@ namespace VaultedThermals
 		/** @enum EOS_Platform
 			@brief Enum specifies operating system platform.
 		*/
-		enum class EOS_Platform
+		enum class EOS
 		{
 			Windows, Mac, Linux
 		};
@@ -71,17 +88,44 @@ namespace VaultedThermals
 
 				@brief Contains the definition of the OS_Platform. (Set to windows)
 			 */
-			constexpr EOS_Platform OS_Platform = EOS_Platform::Windows;
+			constexpr EOS OS_Platform = EOS::Windows;
 
 		#endif
+
+		#ifdef __MACH__
+
+			/** @var OS_Platform
+
+			@brief Contains the definition of the OS_Platform. (Set to Mac)
+			*/
+			constexpr EOS OS = EOS::Mac;
+
+		#endif
+
+		#ifdef __linux__
+
+			/** @var OS_Platform
+
+			@brief Contains the definition of the OS_Platform. (Set to Linux)
+			*/
+			constexpr EOS OS = EOS::Linux;
+
+		#endif 
 
 		/**  
 		@struct PlatformTypes_Maker
 
 		@brief Defines maker of platform struct that defines operating system types.
 		*/
-		template<EOS_Platform>
+		template<EOS>
 		struct PlatformTypes_Maker;
+
+		template<>
+		struct PlatformTypes_Maker<EOS::Linux>
+		{
+			using OS_Handle = int;
+		};
+
 
 		/** 
 		@struct PlatformTypes_Maker_WindowsImplementation
@@ -89,10 +133,11 @@ namespace VaultedThermals
 		@brief Defines Windows specific types.
 		*/	
 		template<>
-		struct PlatformTypes_Maker<EOS_Platform::Windows>
+		struct PlatformTypes_Maker<EOS::Windows>
 		{
 			using OS_AppHandle    = HINSTANCE;
 			using OS_WindowHandle = HWND     ;
+			using OS_Handle       = HANDLE   ;
 		};
 
 		/** 
@@ -103,6 +148,11 @@ namespace VaultedThermals
 		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;
 
 		/** @} */
+	}
+
+	namespace Corridors
+	{
+		using V0::OS_Platform;
 	}
 
 
@@ -177,6 +227,16 @@ namespace VaultedThermals
 	*/
 	MakeCallEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL)
 
+	/**
+	@brief Used to wrap a function with the vulkan calling convention specifiers.
+	Used for vulkan messaging callbacks.
+
+	@details
+	This is the only intended macro to be used by the user of this library.
+	If the user wishes to avoid using this ease of use macro, the actual function call can be made:
+
+	Enforced_Call<CallEnforcerID_Vulkan, decltype(Function), Function>()
+	*/
 	#define EnforceVulkanCallingConvention(_FUNCTION) \
 	EnforceCallingConvention(CallEnforcerID_Vulkan, _FUNCTION)
 

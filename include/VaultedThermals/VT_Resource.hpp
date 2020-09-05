@@ -1213,38 +1213,38 @@ namespace VaultedThermals
 
 			using Parent = V2::Buffer;
 
-			EResult BindMemory(Memory::Handle _memory, DeviceSize _memoryOffset)
+			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
-				memory       = _memory      ;
+				memory       = &_memory     ;
 				memoryOffset = _memoryOffset;
 
-				return Parent::BindMemory(device, handle, memory, memoryOffset);
+				return Parent::BindMemory(*device, handle, *memory, memoryOffset);
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _createInfo)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _createInfo)
 			{
-				device    = _device                 ;
+				device    = &_device                ;
 				info      = _createInfo             ;
 				allocator = Memory::DefaultAllocator;
 
-				EResult returnCode = Parent::Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode == EResult::Success)
-					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 				
 				return returnCode;
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    =  _device    ;
-				info      = _createInfo ;
-				allocator = _allocator  ;
+				device    = &_device   ;
+				info      = _createInfo;
+				allocator = _allocator ;
 
-				EResult returnCode = Parent::Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode == EResult::Success)
-					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 				
 				return returnCode;
 			}
@@ -1257,15 +1257,15 @@ namespace VaultedThermals
 				      Memory&               _memory
 			)
 			{
-				device    = _device.GetHandle()    ;
+				device    = &_device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				EResult returnCode = Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 
 				Memory::AllocateInfo allocationInfo{};
 
@@ -1274,11 +1274,11 @@ namespace VaultedThermals
 				allocationInfo.MemoryTypeIndex = 
 					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
 
-				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+				returnCode = _memory.Allocate(*device, allocationInfo, allocator);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+				BindMemory(_memory, Memory::ZeroOffset);
 
 				return returnCode;
 			}
@@ -1292,15 +1292,15 @@ namespace VaultedThermals
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device    = _device.GetHandle();
-				info      = _info              ;
-				allocator = _allocator         ;
+				device    = &_device   ;
+				info      = _info      ;
+				allocator = _allocator ;
 
-				EResult returnCode = Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 
 				Memory::AllocateInfo allocationInfo{};
 
@@ -1309,18 +1309,18 @@ namespace VaultedThermals
 				allocationInfo.MemoryTypeIndex = 
 					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
 
-				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+				returnCode = _memory.Allocate(*device, allocationInfo, allocator);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+				BindMemory(_memory, Memory::ZeroOffset);
 
 				return returnCode;
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			const Handle& GetHandle() const
@@ -1338,14 +1338,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
-			
+
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const Buffer& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
@@ -1354,9 +1364,9 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 
-			Memory::Handle memory;
+			const Memory* memory;
 
 			DeviceSize memoryOffset;
 
@@ -1370,27 +1380,27 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::BufferView;
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    = _device                 ;
+				device    = &_device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device   ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			operator Handle()
@@ -1398,14 +1408,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const BufferView& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
@@ -1414,7 +1434,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 
 			const Memory::AllocationCallbacks* allocator;
 		};
@@ -1425,65 +1445,65 @@ namespace VaultedThermals
 			using Parent = V2::Image;
 
 
-			void Assign(LogicalDevice::Handle _device, Handle _handle)
+			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
-				device = _device;
+				device = &_device;
 				handle = _handle;
 			}
 
-			EResult BindMemory(Memory::Handle _memory, DeviceSize _memoryOffset)
+			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
-				memory       = _memory      ;
+				memory       = &_memory     ;
 				memoryOffset = _memoryOffset;
 
-				return Parent::BindMemory(device, handle, memory, memoryOffset);
+				return Parent::BindMemory(*device, handle, *memory, memoryOffset);
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    = _device                 ;
+				device    = &_device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				EResult returnCode = Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode == EResult::Success)
-					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 
 				return returnCode;
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device   ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				EResult returnCode = Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode == EResult::Success)
-					Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 
 				return returnCode;
 			}
 
 			EResult CreateAndBind
 			(
-				const LogicalDevice&        _device        ,  
-				      CreateInfo&           _info          ,  
-				      Memory::PropertyFlags _memoryFlags   ,
+				const LogicalDevice&        _device     ,  
+				      CreateInfo&           _info       ,  
+				      Memory::PropertyFlags _memoryFlags,
 				      Memory&               _memory
 			)
 			{
-				device    = _device.GetHandle()    ;
+				device    = &_device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				EResult returnCode = Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 
 				Memory::AllocateInfo allocationInfo{};
 
@@ -1492,11 +1512,11 @@ namespace VaultedThermals
 				allocationInfo.MemoryTypeIndex = 
 					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
 
-				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+				returnCode = _memory.Allocate(*device, allocationInfo, allocator);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+				BindMemory(_memory, Memory::ZeroOffset);
 
 				return returnCode;
 			}
@@ -1510,15 +1530,15 @@ namespace VaultedThermals
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device    = _device.GetHandle();
-				info      = _info              ;
-				allocator = _allocator         ;
+				device    = &_device  ;
+				info      = _info     ;
+				allocator = _allocator;
 
-				EResult returnCode = Parent::Create(device, info, allocator, handle);
+				EResult returnCode = Parent::Create(*device, info, allocator, handle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				Parent::GetMemoryRequirements(device, handle, memoryRequirements);
+				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 
 				Memory::AllocateInfo allocationInfo{};
 
@@ -1527,18 +1547,18 @@ namespace VaultedThermals
 				allocationInfo.MemoryTypeIndex = 
 					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
 
-				returnCode = _memory.Allocate(device, allocationInfo, allocator);
+				returnCode = _memory.Allocate(*device, allocationInfo, allocator);
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				BindMemory(_memory.GetHandle(), Memory::ZeroOffset);
+				BindMemory(_memory, Memory::ZeroOffset);
 
 				return returnCode;
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			Handle GetHandle() const
@@ -1556,14 +1576,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const Image& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
@@ -1574,13 +1604,13 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			Memory::Handle memory;
+			const Memory* memory;
 
 			DeviceSize memoryOffset;
 
 			Memory::Requirements memoryRequirements;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		class ImageView : public V2::ImageView
@@ -1588,27 +1618,27 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::ImageView;
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    = _device                 ;
+				device    = &_device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device   ;
-				info      = _info     ;
-				allocator = _allocator;
+				device    = &_device   ;
+				info      = _info      ;
+				allocator = _allocator ;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			Handle GetHandle()
@@ -1621,9 +1651,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
+			operator Handle* ()
+			{
+				return &handle;
+			}
+
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const ImageView& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:	
@@ -1634,7 +1679,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		class DescriptorSet : public V2::DescriptorSet
@@ -1642,10 +1687,10 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::DescriptorSet;
 
-			void Assign(LogicalDevice::Handle& _device, Handle _handle)
+			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
-				device = _device;
-				handle = _handle;
+				device = &_device;
+				handle = _handle ;
 			}
 			
 			const Handle& GetHandle() const
@@ -1661,7 +1706,7 @@ namespace VaultedThermals
 				const Copy*                 _descriptorCopies
 			)
 			{
-				Parent::Render(device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
+				Parent::Render(*device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
 			}
 
 			operator Handle()
@@ -1669,9 +1714,9 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
@@ -1679,11 +1724,21 @@ namespace VaultedThermals
 				return handle;
 			}
 
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const DescriptorSet& _other)
+			{
+				return handle == _other.handle;
+			}
+
 		protected:
 
 			Handle handle;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		class DescriptorPool : public V2::DescriptorPool
@@ -1694,7 +1749,7 @@ namespace VaultedThermals
 
 			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
 			{
-				return Parent::Allocate(device, _info, _handlesContainer);
+				return Parent::Allocate(*device, _info, _handlesContainer);
 			}
 
 			EResult Allocate
@@ -1706,13 +1761,13 @@ namespace VaultedThermals
 			{
 				_sets.resize(_info.DescriptorSetCount); _handles.resize(_info.DescriptorSetCount);
 
-				EResult returnCode = Parent::Allocate(device, _info, _handles.data());
+				EResult returnCode = Parent::Allocate(*device, _info, _handles.data());
 
 				if (returnCode != EResult::Success) return returnCode;
 
 				for (DeviceSize index = 0; index < _info.DescriptorSetCount; index++)
 				{
-					_sets[index].Assign(device, _handles[index]);
+					_sets[index].Assign(*device, _handles[index]);
 				}
 
 				return returnCode;
@@ -1720,35 +1775,35 @@ namespace VaultedThermals
 
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    = _device.GetHandle()     ;
+				device    = &_device                ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device.GetHandle();
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			EResult Free(uint32 _count, DescriptorSet::Handle* _handles)
 			{
-				return Parent::Free(device, handle, _count, _handles);
+				return Parent::Free(*device, handle, _count, _handles);
 			}
 
 			EResult Free(DynamicArray<DescriptorSet::Handle> _handles)
 			{
-				return Parent::Free(device, handle, static_cast<uint32>(_handles.size()), _handles.data());
+				return Parent::Free(*device, handle, static_cast<uint32>(_handles.size()), _handles.data());
 			}
 
 			const Handle& GetHandle() const
@@ -1758,7 +1813,7 @@ namespace VaultedThermals
 
 			EResult Reset(ResetFlags& _flags)
 			{
-				return Parent::Reset(device, handle, _flags);
+				return Parent::Reset(*device, handle, _flags);
 			}
 
 			operator Handle()
@@ -1766,14 +1821,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const DescriptorPool& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
@@ -1784,7 +1849,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		/** @} */

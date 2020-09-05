@@ -299,39 +299,39 @@ namespace VaultedThermals
 				uint32&               _imageIndex
 			)
 			{
-				return Parent::AcquireNextImage(device, handle, _timeout, _semaphore, _fence, _imageIndex);
+				return Parent::AcquireNextImage(*device, handle, _timeout, _semaphore, _fence, _imageIndex);
 			}
 
 			EResult Create
 			(
-				      LogicalDevice::Handle _deviceHandle,
-				const CreateInfo&           _info        
+				const LogicalDevice& _deviceHandle,
+				const CreateInfo&    _info        
 			)
 			{
-				device    = _deviceHandle;
-				info      = _info        ;
+				device    = &_deviceHandle          ;
+				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, handle);
+				return Parent::Create(*device, info, handle);
 			}
 
 			EResult Create
 			(
-				      LogicalDevice::Handle        _deviceHandle,
+				const LogicalDevice&               _deviceHandle,
 				const CreateInfo&                  _info        ,
 				const Memory::AllocationCallbacks* _allocator   
 			)
 			{
-				device    = _deviceHandle;
-				info      = _info        ;
-				allocator = _allocator   ;
+				device    = &_deviceHandle;
+				info      = _info         ;
+				allocator = _allocator    ;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle);
+				Parent::Destroy(*device, handle);
 			}
 
 			const Handle& GetHandle() const
@@ -353,7 +353,7 @@ namespace VaultedThermals
 
 				for (DeviceSize index = 0; index < numImages; index++)
 				{
-					_images[index].Assign(device, handles[index]);
+					_images[index].Assign(*device, handles[index]);
 				}
 
 				return result;
@@ -366,7 +366,7 @@ namespace VaultedThermals
 
 			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
 			{
-				return Parent::QueryImages(device, handle, _numImages, _imagesContainer);
+				return Parent::QueryImages(*device, handle, _numImages, _imagesContainer);
 			}
 
 			operator Handle()
@@ -374,14 +374,19 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
 			}
 
 			bool operator== (const Swapchain& _other)
@@ -397,7 +402,7 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		/** @} */

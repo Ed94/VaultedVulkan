@@ -1,7 +1,7 @@
 /*!
 @file VT_Shaders.hpp
 
-@brief 
+@brief Vaulted Thermals: Shaders
 
 @details
 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#shaders">Specification</a> 
@@ -203,37 +203,32 @@ namespace VaultedThermals
 			
 			using Parent = V2::ShaderModule;
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    =  _device                ;
+				device    =  &_device               ;
 				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, handle);
+				return Parent::Create(*device, info, handle);
 			}
 
 			EResult Create
 			(
-				      LogicalDevice::Handle        _device   ,
+				const LogicalDevice&               _device   ,
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				device    = _device   ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			operator Handle()
@@ -241,14 +236,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const ShaderModule& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
@@ -259,7 +264,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		/** @} */

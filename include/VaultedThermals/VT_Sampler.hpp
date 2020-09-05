@@ -1,7 +1,9 @@
 /*!
 @file VT_Sampler.hpp
 
+@brief Vaulted Thermals: Sampler
 
+@details
 */
 
 
@@ -197,27 +199,27 @@ namespace VaultedThermals
 
             using Parent = V2::Sampler;
 
-            EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+            EResult Create(const LogicalDevice& _device, CreateInfo& _info)
             {
-                device    = _device;
+                device    = &_device;
                 info      = _info                   ;
                 allocator = Memory::DefaultAllocator;
 
-                return Parent::Create(device, info, allocator, handle);
+                return Parent::Create(*device, info, allocator, handle);
             }
 
-            EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+            EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
             {
-                device    = _device;
+                device    = &_device;
                 info      = _info  ;
                 allocator = _allocator;
 
-                return Parent::Create(device, info, allocator, handle);
+                return Parent::Create(*device, info, allocator, handle);
             }
 
             void Destroy()
             {
-                Parent::Destroy(device, handle, allocator);
+                Parent::Destroy(*device, handle, allocator);
             }
 
             const Handle& GetHandle() const
@@ -230,14 +232,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const Sampler& _other)
+			{
+				return handle == _other.handle;
 			}
 
         protected:
@@ -248,7 +260,7 @@ namespace VaultedThermals
 
             const Memory::AllocationCallbacks* allocator;
 
-            LogicalDevice::Handle device;
+            const LogicalDevice* device;
         };
 
 		/** @} */

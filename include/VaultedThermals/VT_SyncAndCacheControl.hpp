@@ -37,10 +37,319 @@ namespace VT
 namespace VaultedThermals
 #endif
 {
+	namespace V0
+	{
+		struct Fence_PlatformAgnostic
+		{
+			using EExternalHandleTypeFlag = EExternalFenceHandleTypeFlag;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a>  */
+			using Handle = VkFence;
+		};
+
+		struct Semaphore_PlatformAgnostic
+		{
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a> .
+			*/
+			using Handle = VkSemaphore;	
+
+			using EExternalHandleType = EExternalSemaphoreHandleTypeFlag;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a>  */
+			using ExternalHandleTypeFlags = Bitmask<EExternalHandleType, VkExternalSemaphoreHandleTypeFlags>;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a>  */
+			using ImportFlags = Bitmask<ESemaphoreImportFlag, VkSemaphoreImportFlags>;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a>  */
+			using WaitFlags = Bitmask<ESemaphoreWaitFlag, VkSemaphoreWaitFlags>;
+		};
+
+		template<EOS> struct Fence_Maker    ;
+		template<EOS> struct Semaphore_Maker;
+
+		template<> struct Fence_Maker<EOS::Linux> : Fence_PlatformAgnostic
+		{
+			using OS_Handle = PlatformTypes_Maker<EOS::Linux>::OS_Handle;
+
+			/** 
+			@brief Do not use, dummy structure.
+			*/
+			struct ExportableHandleInfo : V0::VKStruct_Base<DummyStruct, EStructureType::Max_Enum>
+			{
+				      EType SType;
+				const void* Next ;
+			};
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a> 
+			*/
+			struct GetOS_HandleInfo : V0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
+			{
+				      EType                   SType     ;
+				const void*                   Next      ;
+				      Handle                  Fence     ;
+					  EExternalHandleTypeFlag HandleType;
+			};
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a>
+			 */
+			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
+			{
+				      EType                   SType         ;
+				const void*                   Next          ;
+				      Handle                  Fence         ;
+				      FenceImportFlags        Flags         ;
+					  EExternalHandleTypeFlag HandleType    ;
+				      OS_Handle               FileDescriptor;
+			};
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceFdKHR">Specification</a>  
+			* 
+			* \param device
+			* \param pGetFdInfo
+			* \param pFd
+			* \return 
+			*/
+			static EResult GetOS_Handle
+			(
+				      V1::LogicalDevice::Handle _device        ,
+				const GetOS_HandleInfo&         _fdInfo        ,
+				      OS_Handle*                _fileDescriptor
+			)
+			{
+				return EResult(vkGetFenceFdKHR(_device, _fdInfo, _fileDescriptor));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceFdKHR">Specification</a>
+			 * 
+			 * \param _device
+			 * \param _importInfo
+			 * \return 
+			 */
+			static EResult ImportOS_Handle
+			(
+				      V1::LogicalDevice::Handle _device    ,
+				const ImportOS_HandleInfo&      _importInfo
+			)
+			{
+				return EResult(vkImportFenceFdKHR(_device, _importInfo));
+			}
+		};
+
+		template<> struct Fence_Maker<EOS::Windows> : Fence_PlatformAgnostic
+		{
+			using OS_Handle = PlatformTypes_Maker<EOS::Windows>::OS_Handle;
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a> 
+			*/
+			struct ExportableOS_HandleInfo : V0::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
+			{
+				      EType                SType       ;
+				const void*                Next        ;
+				const SECURITY_ATTRIBUTES* Attributes  ;
+				      DWORD                AccessRights;
+					  LPCWSTR              Name        ;
+			};
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a> 
+			*/
+			struct GetOS_HandleInfo : V0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
+			{
+				      EType                   SType     ;
+				const void*                   Next      ;
+				      Handle                  Fence     ;
+					  EExternalHandleTypeFlag HandleType;
+			};
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceWin32HandleInfoKHR">Specification</a> 
+			 * 
+			 * @details
+			 * Note: Windows provides an extra member for the handle name.
+			 */
+			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
+			{
+				      EType                   SType     ;
+				const void*                   Next      ;
+				      Handle                  Fence     ;
+					  FenceImportFlags        Flags     ;
+					  EExternalHandleTypeFlag HandleType;
+				      OS_Handle               Handle    ;
+					  LPCWSTR                 Name      ;
+			};
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceWin32HandleKHR">Specification</a>  
+			* \return 
+			*/
+			static EResult GetOS_Handle
+			(
+				      V1::LogicalDevice::Handle _device            ,
+				const GetOS_HandleInfo&         _getWin32HandleInfo,
+				      OS_Handle&                _winHandle
+			)
+			{
+				return EResult(vkGetFenceWin32HandleKHR(_device, _getWin32HandleInfo, &_winHandle));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceWin32HandleKHR">Specification</a> 
+			 * 
+			 * \param device
+			 * \param pImportFenceWin32HandleInfo
+			 * \return 
+			 */
+			static EResult ImportOS_Handle
+			(
+				      V1::LogicalDevice::Handle _device    ,
+				const ImportOS_HandleInfo&      _importInfo
+			)
+			{
+				return EResult(vkImportFenceWin32HandleKHR(_device, _importInfo));
+			}
+		};
+
+		template<> struct Semaphore_Maker<EOS::Linux> : Semaphore_PlatformAgnostic
+		{
+			using OS_Handle = PlatformTypes_Maker<EOS::Linux>::OS_Handle;
+
+			struct ExportableOS_HandleInfo : V0::VKStruct_Base<DummyStruct, EStructureType::Max_Enum>
+			{
+				      EType SType;
+				const void* Next ;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a>  */
+			struct GetOS_HandleInfo : V0::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
+			{
+				      EType               SType     ;
+				const void*               Next      ;
+				      Handle              Semaphore ;
+				      EExternalHandleType HandleType;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a>  */
+			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
+			{
+				      EType               SType     ;
+				const void*               Next      ;
+				      Handle              Semaphore ;
+				      ImportFlags         Flags     ;
+				      EExternalHandleType HandleType;
+				      OS_Handle           OSHandle  ;
+			};
+
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreFdKHR">Specification</a> 
+			 * 
+			 * \param device
+			 * \param pGetFdInfo
+			 * \param pFd
+			 * \return 
+			 */
+			static EResult GetOS_Handle
+			(
+				      V1::LogicalDevice::Handle _device        ,
+				const GetOS_HandleInfo&         _getInfo       ,
+				      OS_Handle*                _fileDescriptor
+			)
+			{
+				return EResult(vkGetSemaphoreFdKHR(_device, _getInfo, _fileDescriptor));
+			}
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreFdKHR">Specification</a> 
+			 * 
+			 * \param device
+			 * \param pImportSemaphoreFdInfo
+			 * \return 
+			 */
+			static EResult ImportOS_Handle(V1::LogicalDevice::Handle _device, const ImportOS_HandleInfo& _importPOSIX_Info)
+			{
+				return EResult(vkImportSemaphoreFdKHR(_device, _importPOSIX_Info));
+			}
+		};
+
+		template<> struct Semaphore_Maker<EOS::Windows> : Semaphore_PlatformAgnostic
+		{
+			using OS_Handle = PlatformTypes_Maker<EOS::Windows>::OS_Handle;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a>  */
+			struct ExportableOS_HandleInfo : V0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
+			{
+					  EType                SType       ;
+				const void*                Next        ;
+				const SECURITY_ATTRIBUTES* Attributes  ;
+					  DWORD                AccessRights;
+					  LPCWSTR              Name        ;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a>  */
+			struct GetOS_HandleInfo : V0::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
+			{
+				      EType               SType     ;
+				const void*               Next      ;
+				      Handle              Semaphore ;
+				      EExternalHandleType HandleType;
+			};
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a>  */
+			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
+			{
+				      EType               SType     ;
+				const void*               Next      ;
+				      Handle              Semaphore ;
+				      ImportFlags         Flags     ;
+				      EExternalHandleType HandleType;
+				      OS_Handle           OSHandle  ;
+				      LPCWSTR             Name      ;
+			};
+
+
+			/**
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreWin32HandleKHR">Specification</a> 
+			 * 
+			 * \param device
+			 * \param pGetWin32HandleInfo
+			 * \param pHandle
+			 * \return 
+			 */
+			static EResult GetOS_Handle
+			(
+				      V1::LogicalDevice::Handle _device ,
+				const GetOS_HandleInfo&         _getInfo,
+				      OS_Handle&                _handle
+			)
+			{
+				return EResult(vkGetSemaphoreWin32HandleKHR(_device, _getInfo, &_handle));
+			}
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreWin32HandleKHR">Specification</a> 
+			* 
+			* \param device
+			* \param pImportSemaphoreWin32HandleInfo
+			* \return 
+			*/
+			static EResult ImportOS_Handle(V1::LogicalDevice::Handle _device, const ImportOS_HandleInfo& _importHandleInfo)
+			{
+				return EResult(vkImportSemaphoreWin32HandleKHR(_device, _importHandleInfo));
+			}
+		};
+	}
+
 	namespace V1
 	{
 		/**
-		@addtogroup
+		@addtogroup Vault_1
 		@{
 		*/
 
@@ -142,13 +451,8 @@ namespace VaultedThermals
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-fences">Specification</a> 
 		 */
-		struct Fence
+		struct Fence : V0::Fence_Maker<V0::OS_Platform>
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a>  */
-			using Handle = VkFence;
-
-			using EExternalHandleTypeFlag = EExternalFenceHandleTypeFlag;
-
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a> 
 			 */
@@ -177,7 +481,7 @@ namespace VaultedThermals
 				      EDeviceEventType DeviceEvent;
 			};
 
-/**
+			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a> 
 			*/
 			struct DisplayEventInfo : V0::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
@@ -185,67 +489,6 @@ namespace VaultedThermals
 				      EType             SType       ;
 				const void*             Next        ;
 				      EDisplayEventType DisplayEvent;
-			};
-
-			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a> 
-			*/
-			struct ExportableWin32 : V0::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
-			{
-				      EType                SType     ;
-				const void*                Next      ;
-				const SECURITY_ATTRIBUTES* Attributes;
-				      DWORD                DW_Access ;
-				      LPCWSTR              Name      ;
-			};
-
-			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a> 
-			*/
-			struct GetPOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
-			{
-				      EType                   SType     ;
-				const void*                   Next      ;
-				      Handle                  Fence     ;
-					  EExternalHandleTypeFlag HandleType;
-			};
-
-			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a> 
-			*/
-			struct GetWin32HandleInfo : V0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
-			{
-				      EType                   SType     ;
-				const void*                   Next      ;
-				      Handle                  Fence     ;
-					  EExternalHandleTypeFlag HandleType;
-			};
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a>
-			 */
-			struct ImportFencePOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
-			{
-				      EType                        SType         ;
-				const void*                        Next          ;
-				      Handle                       Fence         ;
-				      FenceImportFlags             Flags         ;
-					  EExternalHandleTypeFlag HandleType    ;
-				      int                          FileDescriptor;
-			};
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceWin32HandleInfoKHR">Specification</a> 
-			 */
-			struct ImportFenceWin32HandleInfo : V0::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
-			{
-				      EType                        SType     ;
-				const void*                        Next      ;
-				      Handle                       Fence     ;
-					  FenceImportFlags             Flags     ;
-					  EExternalHandleTypeFlag HandleType;
-				      HANDLE                       Handle    ;
-				      LPCWSTR                      Name      ;
 			};
 
 			/**
@@ -305,71 +548,7 @@ namespace VaultedThermals
 			static EResult GetStatus(LogicalDevice::Handle _logicalDevice, Handle _fence)
 			{
 				return EResult(vkGetFenceStatus(_logicalDevice, _fence));
-			}
-
-			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceWin32HandleKHR">Specification</a>  
-			* \return 
-			*/
-			static EResult GetWin32Handle
-			(
-				      LogicalDevice::Handle _device            ,
-				const GetWin32HandleInfo&   _getWin32HandleInfo,
-				      HANDLE&               _winHandle
-			)
-			{
-				return EResult(vkGetFenceWin32HandleKHR(_device, _getWin32HandleInfo, &_winHandle));
-			}
-
-			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceFdKHR">Specification</a>  
-			* 
-			* \param device
-			* \param pGetFdInfo
-			* \param pFd
-			* \return 
-			*/
-			static EResult GetPOSIX_FileDescriptor
-			(
-				      LogicalDevice::Handle        _device        ,
-				const GetPOSIX_FileDescriptorInfo& _fdInfo        ,
-				      int*                         _fileDescriptor
-			)
-			{
-				return EResult(vkGetFenceFdKHR(_device, _fdInfo, _fileDescriptor));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceFdKHR">Specification</a>
-			 * 
-			 * \param _device
-			 * \param _importInfo
-			 * \return 
-			 */
-			static EResult ImportFence_POSIX_FileDescriptor
-			(
-				      LogicalDevice::Handle                _device    ,
-				const ImportFencePOSIX_FileDescriptorInfo& _importInfo
-			)
-			{
-				return EResult(vkImportFenceFdKHR(_device, _importInfo));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceWin32HandleKHR">Specification</a> 
-			 * 
-			 * \param device
-			 * \param pImportFenceWin32HandleInfo
-			 * \return 
-			 */
-			static EResult ImportFenceWin32Handle
-			(
-				      LogicalDevice::Handle       _device    ,
-				const ImportFenceWin32HandleInfo& _importInfo
-			)
-			{
-				return EResult(vkImportFenceWin32HandleKHR(_device, _importInfo));
-			}
+			}			
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDeviceEventEXT">Specification</a> 
@@ -455,21 +634,8 @@ namespace VaultedThermals
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-semaphores">Specification</a> 
 		 */
-		struct Semaphore
+		struct Semaphore : V0::Semaphore_Maker<V0::OS_Platform>
 		{
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a> .
-			 */
-			using Handle = VkSemaphore;
-
-			using EExternalHandleType = EExternalSemaphoreHandleTypeFlag;
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a>  */
-			using ImportFlags = Bitmask<ESemaphoreImportFlag, VkSemaphoreImportFlags>;
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a>  */
-			using WaitFlags = Bitmask<ESemaphoreWaitFlag, VkSemaphoreWaitFlags>;
-
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreCreateInfo">Specification</a> 
 			 */
@@ -487,63 +653,9 @@ namespace VaultedThermals
 			 */
 			struct ExportCreateInfo : V0::VKStruct_Base<VkExportSemaphoreCreateInfo, EStructureType::Export_Semaphore_CreateInfo_KHR>
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a>  */
-				using ExternalHandleTypeFlags = Bitmask<EExternalSemaphoreHandleTypeFlag, VkExternalSemaphoreHandleTypeFlags>;
-
 				      EType                   SType      ;
 				const void*                   Next       ;
-				      ExternalHandleTypeFlags HandleTypes;
-
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a>  */
-				struct Win32HandleInfo : V0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
-				{
-					      EType                SType     ;
-					const void*                Next      ;
-					const SECURITY_ATTRIBUTES* Attributes;
-					      DWORD                DWAccess  ;
-					      LPCWSTR              Name      ;
-				};
-			};
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a>  */
-			struct GetPOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
-			{
-				      EType               SType     ;
-				const void*               Next      ;
-				      Handle              Semaphore ;
-				      EExternalHandleType HandleType;
-			};
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a>  */
-			struct GetWin32HandleInfo : V0::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
-			{
-				      EType               SType     ;
-				const void*               Next      ;
-				      Handle              Semaphore ;
-				      EExternalHandleType HandleType;
-			};
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a>  */
-			struct ImportPOSIX_FileDescriptorInfo : V0::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
-			{
-				      EType               SType         ;
-				const void*               Next          ;
-				      Handle              Semaphore     ;
-				      ImportFlags         Flags         ;
-				      EExternalHandleType HandleType    ;
-				      int                 FileDescriptor;
-			};
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a>  */
-			struct ImportWin32HandleInfo : V0::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
-			{
-				      EType               SType     ;
-				const void*               Next      ;
-				      Handle              Semaphore ;
-				      ImportFlags         Flags     ;
-				      EExternalHandleType HandleType;
-				      HANDLE              Handle    ;
-				      LPCWSTR             Name      ;
+				      ExternalHandleTypeFlags HandleTypes;				
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a>  */
@@ -574,7 +686,6 @@ namespace VaultedThermals
 				const Handle*   Semaphores    ;
 				const uInt64*   Values        ;
 			};
-
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSemaphore">Specification</a> 
@@ -629,67 +740,7 @@ namespace VaultedThermals
 			)
 			{
 				return EResult(vkGetSemaphoreCounterValue(_device, _semaphore, &_value));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreFdKHR">Specification</a> 
-			 * 
-			 * \param device
-			 * \param pGetFdInfo
-			 * \param pFd
-			 * \return 
-			 */
-			static EResult GetPOSIX_FileDescriptor
-			(
-				      LogicalDevice::Handle        _device        ,
-				const GetPOSIX_FileDescriptorInfo& _getInfo       ,
-				      int*                         _fileDescriptor
-			)
-			{
-				return EResult(vkGetSemaphoreFdKHR(_device, _getInfo, _fileDescriptor));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreWin32HandleKHR">Specification</a> 
-			 * 
-			 * \param device
-			 * \param pGetWin32HandleInfo
-			 * \param pHandle
-			 * \return 
-			 */
-			static EResult GetWin32Handle
-			(
-				      LogicalDevice::Handle _device ,
-				const GetWin32HandleInfo&   _getInfo,
-				      HANDLE&               _handle
-			)
-			{
-				return EResult(vkGetSemaphoreWin32HandleKHR(_device, _getInfo, &_handle));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreFdKHR">Specification</a> 
-			 * 
-			 * \param device
-			 * \param pImportSemaphoreFdInfo
-			 * \return 
-			 */
-			static EResult ImportPOSIX_FileDescriptor(LogicalDevice::Handle _device, const ImportPOSIX_FileDescriptorInfo& _importPOSIX_Info)
-			{
-				return EResult(vkImportSemaphoreFdKHR(_device, _importPOSIX_Info));
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreWin32HandleKHR">Specification</a> 
-			 * 
-			 * \param device
-			 * \param pImportSemaphoreWin32HandleInfo
-			 * \return 
-			 */
-			static EResult ImportWin32Handle(LogicalDevice::Handle _device, const ImportWin32HandleInfo& _importHandleInfo)
-			{
-				return EResult(vkImportSemaphoreWin32HandleKHR(_device, _importHandleInfo));
-			}
+			}			
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkSignalSemaphore">Specification</a> 
@@ -812,45 +863,27 @@ namespace VaultedThermals
 				}
 			};
 
-			struct ExportableWin32 : Parent::ExportableWin32
+			struct ExportableOS_HandleInfo : Parent::ExportableOS_HandleInfo
 			{
-				ExportableWin32()
+				ExportableOS_HandleInfo()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
 				}
 			};
 
-			struct GetPOSIX_FileDescriptorInfo : Parent::GetPOSIX_FileDescriptorInfo
+			struct GetOS_HandleInfo : Parent::GetOS_HandleInfo
 			{
-				GetPOSIX_FileDescriptorInfo()
+				GetOS_HandleInfo()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
 				}
 			};
 
-			struct GetWin32HandleInfo : Parent::GetWin32HandleInfo
+			struct ImportOS_HandleInfo : Parent::ImportOS_HandleInfo
 			{
-				GetWin32HandleInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			struct ImportFencePOSIX_FileDescriptorInfo : Parent::ImportFencePOSIX_FileDescriptorInfo
-			{
-				ImportFencePOSIX_FileDescriptorInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			struct ImportFenceWin32HandleInfo : Parent::ImportFenceWin32HandleInfo
-			{
-				ImportFenceWin32HandleInfo()
+				ImportOS_HandleInfo()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
@@ -963,47 +996,29 @@ namespace VaultedThermals
 					SType = STypeEnum;
 					Next  = nullptr  ;
 				}
-
-				struct Win32HandleInfo : Parent::ExportCreateInfo::Win32HandleInfo
-				{
-					Win32HandleInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
 			};
 
-			struct GetPOSIX_FileDescriptorInfo : Parent::GetPOSIX_FileDescriptorInfo
+			struct ExportableOS_HandleInfo : Parent::ExportableOS_HandleInfo
 			{
-				GetPOSIX_FileDescriptorInfo()
+				ExportableOS_HandleInfo()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
 				}
 			};
 
-			struct GetWin32HandleInfo : Parent::GetWin32HandleInfo
+			struct GetOS_HandleInfo : Parent::GetOS_HandleInfo
 			{
-				GetWin32HandleInfo()
+				GetOS_HandleInfo()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
 				}
 			};
 
-			struct ImportPOSIX_FileDescriptorInfo : Parent::ImportPOSIX_FileDescriptorInfo
+			struct ImportOS_HandleInfo : Parent::ImportOS_HandleInfo
 			{
-				ImportPOSIX_FileDescriptorInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			struct ImportWin32HandleInfo : Parent::ImportWin32HandleInfo
-			{
-				ImportWin32HandleInfo()
+				ImportOS_HandleInfo()
 				{
 					SType = STypeEnum;
 					Next  = nullptr  ;
@@ -1076,27 +1091,27 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Event;
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    = _device   ;
-				info      = _info     ;
+				device    = &_device                ;
+				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, handle);
+				return Parent::Create(*device, info, handle);
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device   ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			const Handle& GetHandle() const
@@ -1106,17 +1121,17 @@ namespace VaultedThermals
 
 			EResult GetStatus()
 			{
-				return Parent::GetStatus(device, handle);
+				return Parent::GetStatus(*device, handle);
 			}
 
 			EResult Reset()
 			{
-				return Parent::Reset(device, handle);
+				return Parent::Reset(*device, handle);
 			}
 
 			EResult Set()
 			{
-				return Parent::Set(device, handle);
+				return Parent::Set(*device, handle);
 			}
 
 			operator Handle()
@@ -1142,7 +1157,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		class Fence : public V2::Fence
@@ -1150,32 +1165,32 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Fence;
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    = _device   ;
-				info      = _info     ;
+				device    = &_device                ;
+				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, handle);
+				return Parent::Create(*device, info, handle);
 			}
 
-			EResult Create(LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device   ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			LogicalDevice::Handle GetDeviceHandle() const
 			{
-				return device;
+				return *device;
 			}
 
 			const Handle& GetHandle() const
@@ -1185,42 +1200,32 @@ namespace VaultedThermals
 
 			EResult GetStatus()
 			{
-				return Parent::GetStatus(device, handle);
+				return Parent::GetStatus(*device, handle);
 			}
 
-			EResult GetWin32Handle(const GetWin32HandleInfo& _win32Info, HANDLE& _winHandle)
+			EResult GetOS_Handle(const GetOS_HandleInfo& _win32Info, OS_Handle & _winHandle)
 			{
-				return Parent::GetWin32Handle(device, _win32Info, _winHandle);
+				return Parent::GetOS_Handle(*device, _win32Info, _winHandle);
 			}
 
-			EResult GetPOSIX_FileDescriptor(const GetPOSIX_FileDescriptorInfo& _fdInfo, int* _fileDescriptor)
+			EResult ImportOS_Handle(const ImportOS_HandleInfo& _importInfo)
 			{
-				return Parent::GetPOSIX_FileDescriptor(device, _fdInfo, _fileDescriptor);
-			}
-
-			EResult ImportFence_POSIX_FileDescriptor(const ImportFencePOSIX_FileDescriptorInfo& _importInfo)
-			{
-				return Parent::ImportFence_POSIX_FileDescriptor(device, _importInfo);
-			}
-
-			EResult ImportFenceWin32Handle(const ImportFenceWin32HandleInfo& _importInfo)
-			{
-				return Parent::ImportFenceWin32Handle(device, _importInfo);
+				return Parent::ImportOS_Handle(*device, _importInfo);
 			}
 
 			EResult RegisterDeviceEvent(const DeviceEventInfo _eventInfo)
 			{
-				return Parent::RegisterDeviceEvent(device, _eventInfo, allocator, handle);
+				return Parent::RegisterDeviceEvent(*device, _eventInfo, allocator, handle);
 			}
 
 			EResult RegisterDisplayEvent(Display::Handle _display, const DisplayEventInfo& _eventInfo)
 			{
-				return Parent::RegisterDisplayEvent(device, _display, _eventInfo, allocator, handle);
+				return Parent::RegisterDisplayEvent(*device, _display, _eventInfo, allocator, handle);
 			}
 
 			EResult Reset()
 			{
-				return Parent::Reset(device, &handle, 1);
+				return Parent::Reset(*device, &handle, 1);
 			}
 
 			static EResult Reset(DynamicArray<Fence> _fences)
@@ -1236,7 +1241,7 @@ namespace VaultedThermals
 
 			EResult WaitFor(uInt64 _timeout)
 			{
-				return Parent::WaitForFences(device, 1, &handle, false, _timeout);
+				return Parent::WaitForFences(*device, 1, &handle, false, _timeout);
 			}
 
 			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, uInt64 _timeout)
@@ -1273,7 +1278,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		class Semaphore : public V2::Semaphore
@@ -1281,32 +1286,32 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Semaphore;
 
-			EResult Create(const LogicalDevice::Handle _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
-				device    =  _device  ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(device, info, handle);
+				return Parent::Create(*device, info, handle);
 			}
 
-			EResult Create(const LogicalDevice::Handle _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
-				device    = _device   ;
+				device    = &_device  ;
 				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(device, info, allocator, handle);
+				return Parent::Create(*device, info, allocator, handle);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(device, handle, allocator);
+				Parent::Destroy(*device, handle, allocator);
 			}
 
 			EResult GetCounterValue(uInt64& _value)
 			{
-				return Parent::GetCounterValue(device, handle, _value);
+				return Parent::GetCounterValue(*device, handle, _value);
 			}
 
 			const Handle& GetHandle() const
@@ -1314,34 +1319,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			EResult GetPOSIX_FileDescriptor(const GetPOSIX_FileDescriptorInfo& _getInfo, int* _fileDescriptor)
+			EResult GetOS_Handle(const GetOS_HandleInfo& _getInfo, OS_Handle& _osHandle)
 			{
-				return Parent::GetPOSIX_FileDescriptor(device, _getInfo, _fileDescriptor);
+				return Parent::GetOS_Handle(*device, _getInfo, _osHandle);
 			}
 
-			EResult GetWin32Handle(const GetWin32HandleInfo& _getInfo, HANDLE& _winHandle)
+			EResult ImportOS_Handle(const ImportOS_HandleInfo& _importPOSIX_Info)
 			{
-				return Parent::GetWin32Handle(device, _getInfo, _winHandle);
-			}
-
-			EResult ImportPOSIX_FileDescriptor(const ImportPOSIX_FileDescriptorInfo& _importPOSIX_Info)
-			{
-				return Parent::ImportPOSIX_FileDescriptor(device, _importPOSIX_Info);
-			}
-
-			EResult ImportWin32Handle(const ImportWin32HandleInfo& _importHandleInfo)
-			{
-				return Parent::ImportWin32Handle(device, _importHandleInfo);
+				return Parent::ImportOS_Handle(*device, _importPOSIX_Info);
 			}
 
 			EResult Signal(const SignalInfo& _info)
 			{
-				return Parent::Signal(device, _info);
+				return Parent::Signal(*device, _info);
 			}
 
 			EResult WaitFor(const WaitInfo& _info, uInt64 _timeout)
 			{
-				return Parent::WaitFor(device, _info, _timeout);
+				return Parent::WaitFor(*device, _info, _timeout);
 			}
 
 			operator Handle()
@@ -1372,7 +1367,7 @@ namespace VaultedThermals
 
 			CreateInfo info;
 
-			LogicalDevice::Handle device;
+			const LogicalDevice* device;
 		};
 
 		/** @} */

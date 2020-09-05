@@ -404,56 +404,56 @@ namespace VaultedThermals
 					info = _info;
 				}
 
-				EResult Create(AppInstance::Handle _appInstance)
+				EResult Create(const AppInstance&_appInstance)
 				{
-					app       = _appInstance ;
+					app       = &_appInstance           ;
 					allocator = Memory::DefaultAllocator;
 
-					return Parent::Create(app, info, handle);
+					return Parent::Create(*app, info, handle);
 				}
 
 				EResult Create
 				(
-						  AppInstance::Handle          _appInstance,
+					const AppInstance&                 _appInstance,
 					const Memory::AllocationCallbacks* _allocator  
 				)
 				{
-					app       = _appInstance;
-					allocator = _allocator  ;
+					app       = &_appInstance;
+					allocator = _allocator   ;
 
-					return Parent::Create(app, info, allocator, handle);
+					return Parent::Create(*app, info, allocator, handle);
 				}
 
 				EResult Create
 				(
-						  AppInstance::Handle _appInstance,
-					const CreateInfo&         _createSpec 
+					const AppInstance& _appInstance,
+					const CreateInfo&  _createSpec 
 				)
 				{
-					app       = _appInstance ;
+					app       = &_appInstance;
 					info      = _createSpec  ;
 					allocator = Memory::DefaultAllocator;
 
-					return Parent::Create(app, _createSpec, handle);
+					return Parent::Create(*app, _createSpec, handle);
 				}
 
 				EResult Create
 				(
-						  AppInstance::Handle          _appInstance,
+					const AppInstance&                 _appInstance,
 					const CreateInfo&                  _createSpec ,
 					const Memory::AllocationCallbacks* _allocator  
 				)
 				{
-					app       = _appInstance ;
+					app       = &_appInstance;
 					info      = _createSpec  ;
 					allocator = _allocator   ;
 
-					return Parent::Create(app, _createSpec, allocator, handle);
+					return Parent::Create(*app, _createSpec, allocator, handle);
 				}
 
 				void Destroy()
 				{
-					Parent::Destroy(app, handle, allocator);
+					Parent::Destroy(*app, handle, allocator);
 				}
 
 				const CreateInfo& GetInfo() const
@@ -488,7 +488,7 @@ namespace VaultedThermals
 
 			protected:
 
-				AppInstance::Handle app;
+				const AppInstance* app;
 
 				CreateInfo info;
 

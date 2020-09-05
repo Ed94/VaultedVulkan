@@ -62,7 +62,7 @@ namespace VaultedThermals
 			/**
 			@brief STL Exceptions (Note: right now the library does not STL exceptions but may in the future...):
 			*/
-			constexpr bool UseSTL_exceptions = false;
+			constexpr bool UseSTL_Exceptions = false;
 		#endif
 
 		/**
@@ -120,7 +120,12 @@ namespace VaultedThermals
 			virtual DataSize size() = NULL;
 		};
 
-	
+		/**
+		@brief Used when creating fake VulkanAPI structures for platform abstraction uses.
+		*/
+		struct DummyStruct
+		{};
+
 		/** @struct VKStruct_Base
 
 			@brief Base struct for wrapping Vulkan native C API Structs.
@@ -160,9 +165,9 @@ namespace VaultedThermals
 			@brief Does a pointer r-cast to the desired struct type. 
 			(Since any wrapped vulkan struct have the same members this is possible)
 			*/
-			operator const VulkanType& ()
+			operator const VulkanType& () const
 			{
-				return *reinterpret_cast<VulkanType*>(this);
+				return *reinterpret_cast<const VulkanType*>(this);
 			}
 
 			/**
@@ -269,7 +274,7 @@ namespace VaultedThermals
 			Bitmask() : mask(0) {}
 
 			template<typename... BitTypes>
-			Bitmask(BitTypes... _bits) : mask(0)
+			Bitmask(const BitTypes... _bits) : mask(0)
 			{
 				mask = (Representation(_bits) | ...);
 			}
@@ -291,13 +296,13 @@ namespace VaultedThermals
 			}
 
 			template<typename... BitType>
-			bool HasOrEither(const BitType... _bits)
+			bool HasOrEither(const BitType... _bits) const
 			{
 				return (mask & (Representation(_bits) | ...)) != 0;
 			}
 
 			template<typename... BitType>
-			bool HasExactly(const BitType... _bits)
+			bool HasExactly(const BitType... _bits) const
 			{
 				return (mask & (Representation(_bits) | ...)) == mask;
 			}
@@ -323,12 +328,12 @@ namespace VaultedThermals
 				return mask;
 			}
 
-			bool operator== (const Representation _other)
+			bool operator== (const Representation _other) const
 			{
 				return mask == _other;
 			}
 
-			bool operator== (const _ThisType& _other)
+			bool operator== (const _ThisType& _other) const
 			{
 				return mask == _other.mask;
 			}

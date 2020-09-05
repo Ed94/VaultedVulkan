@@ -44,6 +44,9 @@ namespace VaultedThermals
 {
 	namespace V0
 	{
+		using V1::Extent2D   ;
+		using V1::InstanceExt;
+
 		/**
 		@addtogroup Vault_0
 		@{
@@ -99,12 +102,10 @@ namespace VaultedThermals
 		};
 
 		/** @brief Used to create an OS platform's surface type. */
-		template<EOS_Platform>
-		struct Surface_Maker;
+		template<EOS> struct Surface_Maker;
 
 		/** @brief Defines a Surface's extended definitions for Windows. */
-		template<>
-		struct Surface_Maker<EOS_Platform::Windows> : public Surface_PlatformAgnostic
+		template<> struct Surface_Maker<EOS::Windows> : public Surface_PlatformAgnostic
 		{
 			using OS_AppHandle    = PlatformTypes::OS_AppHandle   ;
 			using OS_WindowHandle = PlatformTypes::OS_WindowHandle;
@@ -161,7 +162,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief Surface definition for the currently detected OS platform. */
-		using Surface = Surface_Maker<OS_Platform>;
+		//using Surface = Surface_Maker<OS_Platform>;
 
 		/** @} */
 	}
@@ -173,8 +174,14 @@ namespace VaultedThermals
 		@{
 		*/
 
-		/** @brief Surfaces hook onto a window to use as a rendering target. */
-		struct Surface : public V0::Surface
+		/** 
+		@brief Surfaces hook onto a window to use as a rendering target. 
+
+		@details
+
+		@ingroup
+		*/
+		struct Surface : public V0::Surface_Maker<V0::OS_Platform>
 		{
 			/**
 			 * @brief Destroy a VkSurfaceKHR object.
@@ -421,47 +428,47 @@ namespace VaultedThermals
 
 			using Parent = V2::Surface;
 
-			void AssignPhysicalDevice(const PhysicalDevice::Handle _physicalDevice)
+			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice)
 			{
-				physicalDevice = _physicalDevice;
+				physicalDevice = &_physicalDevice;
 			}
 
-			EResult Create(AppInstance::Handle _app, OS_WindowHandle _window)
+			EResult Create(const AppInstance& _app, OS_WindowHandle _window)
 			{
 				CreateInfo geninfo {}; geninfo.OSWinHandle = _window;
 
-				app       = _app                    ;
+				app       = &_app                   ;
 				info      = geninfo                 ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(app, info, handle);
+				return Parent::Create(*app, info, handle);
 			}
 
 			EResult Create
 			(
-				AppInstance::Handle _appHandle ,
-				CreateInfo&  _createInfo
+				const AppInstance& _appHandle ,
+				      CreateInfo&  _createInfo
 			)
 			{
-				app       = _appHandle;
+				app       = &_appHandle;
 				info      = _createInfo;
 				allocator = Memory::DefaultAllocator;
 				
-				return Parent::Create(app, info, handle);
+				return Parent::Create(*app, info, handle);
 			}
 
 			EResult Create
 			(
-				      AppInstance::Handle          _appHandle ,
+				const AppInstance&                 _appHandle ,
 				      CreateInfo&                  _createInfo,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				app       = _appHandle ;
+				app       = &_appHandle;
 				info      = _createInfo;
 				allocator = _allocator ;
 				
-				return Parent::Create(app, info, allocator, handle);
+				return Parent::Create(*app, info, allocator, handle);
 			}
 
 			EResult CheckPhysicalDeviceSupport
@@ -470,12 +477,12 @@ namespace VaultedThermals
 				Bool&  _checkResult
 			)
 			{
-				return Parent::CheckPhysicalDeviceSupport(physicalDevice, _queueFamilyIndex, handle, _checkResult);
+				return Parent::CheckPhysicalDeviceSupport(*physicalDevice, _queueFamilyIndex, handle, _checkResult);
 			}
 
 			void Destroy()
 			{
-				Parent::Destroy(app, handle);
+				Parent::Destroy(*app, handle);
 			}
 
 			const Handle& GetHandle() const
@@ -485,17 +492,17 @@ namespace VaultedThermals
 
 			EResult GetAvailableFormats(DynamicArray<Format>& _formatsContainer) const
 			{
-				return Parent::GetAvailableFormats(physicalDevice, handle, _formatsContainer);
+				return Parent::GetAvailableFormats(*physicalDevice, handle, _formatsContainer);
 			}
 
 			EResult GetPhysicalDeviceCapabilities(Capabilities& _result) const
 			{
-				return Parent::GetPhysicalDeviceCapabilities(physicalDevice, handle, _result);
+				return Parent::GetPhysicalDeviceCapabilities(*physicalDevice, handle, _result);
 			}
 
 			EResult GetSupportedPresentationModes(DynamicArray<EPresentationMode>& _presentationModesContainer) const
 			{
-				return Parent::GetSupportedPresentationModes(physicalDevice, handle, _presentationModesContainer);
+				return Parent::GetSupportedPresentationModes(*physicalDevice, handle, _presentationModesContainer);
 			}
 
 			operator Handle()
@@ -503,14 +510,19 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
+			{
+				return &handle;
+			}
+
+			operator const Handle& () const
 			{
 				return handle;
 			}
 
-			operator const Handle&() const
+			operator const Handle* () const
 			{
-				return handle;
+				return &handle;
 			}
 
 			bool operator== (const Surface& _other)
@@ -520,9 +532,9 @@ namespace VaultedThermals
 
 		protected:
 
-			AppInstance::Handle app;
+			const AppInstance* app;
 
-			PhysicalDevice::Handle physicalDevice;
+			const PhysicalDevice* physicalDevice;
 
 			CreateInfo info;
 

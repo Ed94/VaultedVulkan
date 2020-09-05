@@ -218,7 +218,7 @@ namespace VaultedThermals
 			using Parent::Allocate;
 
 			/**
-			* @brief Free a memory object allocated using the defautl allcator.
+			* @brief Free a memory object allocated using the default allocator.
 			* 
 			* \param _device
 			* \param _memory
@@ -282,7 +282,7 @@ namespace VaultedThermals
 
 			using Parent = V2::Memory;
 
-			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo)
+			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo)
 			{
 				device    = &_device                ;
 				info      = _allocateInfo           ;
@@ -291,7 +291,7 @@ namespace VaultedThermals
 				return Parent::Allocate(*device, info, handle);
 			}
 
-			EResult Allocate(LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device     ;
 				info      = _allocateInfo;
@@ -330,14 +330,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const Memory& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
@@ -348,7 +358,7 @@ namespace VaultedThermals
 
 			const AllocationCallbacks* allocator;
 
-			LogicalDevice* device;
+			const LogicalDevice* device;
 		};
 
 		/** @} */

@@ -50,6 +50,15 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief Vulkan's boolean type.
+
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBool32">Specification</a> 
+
+		@ingroup APISpec_Fundamentals
+		*/
+		using Bool = VkBool32;
+
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
 		using DeviceAddress = VkDeviceAddress;
 
@@ -366,6 +375,24 @@ namespace VaultedThermals
 			FormatFeatureFlags    LinearTilingFeatures ;
 			FormatFeatureFlags    OptimalTilingFeatures;
 			FormatFeatureFlags    BufferFeatures       ;
+
+			bool operator== (const FormatProperties& _other)
+			{ 
+				return 
+				LinearTilingFeatures  == _other.LinearTilingFeatures  && 
+				OptimalTilingFeatures == _other.OptimalTilingFeatures && 
+				BufferFeatures        == _other.BufferFeatures 
+				? true : false; 
+			}
+
+			bool operator!= (const FormatProperties& _other)
+			{ 
+				return 
+				LinearTilingFeatures  != _other.LinearTilingFeatures  && 
+				OptimalTilingFeatures != _other.OptimalTilingFeatures && 
+				BufferFeatures        != _other.BufferFeatures 
+				? true : false; 
+			}
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
@@ -387,8 +414,34 @@ namespace VaultedThermals
 			uint32            CompareMask;
 			uint32            WriteMask  ;
 			uint32            Reference  ;
+
+			bool operator== (const StencilOperationState& _other)
+			{
+				return
+				FailOp      == _other.FailOp      &&
+				PassOp      == _other.PassOp      &&
+				DepthFailOp == _other.DepthFailOp &&
+				CompareOp   == _other.CompareOp   &&
+				CompareMask == _other.CompareMask &&
+				WriteMask   == _other.WriteMask   &&
+				Reference   == _other.Reference 
+				? true : false;
+			}
+
+			bool operator!= (const StencilOperationState& _other)
+			{
+				return
+				FailOp      != _other.FailOp      &&
+				PassOp      != _other.PassOp      &&
+				DepthFailOp != _other.DepthFailOp &&
+				CompareOp   != _other.CompareOp   &&
+				CompareMask != _other.CompareMask &&
+				WriteMask   != _other.WriteMask   &&
+				Reference   != _other.Reference 
+				? true : false;
+			}
 		};
-		
+
 		/**
 		 * @brief Surface viewing region.
 

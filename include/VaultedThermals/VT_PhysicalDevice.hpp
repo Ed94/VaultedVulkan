@@ -1,7 +1,7 @@
 /*!
 @file VT_PhysicalDevice.hpp
 
-@brief VaultedThermals: Physical Device
+@brief Vaulted Thermals: Physical Device
 
 @details
 A physical device usually represents a single complete implementation of Vulkan 
@@ -44,30 +44,39 @@ namespace VaultedThermals
 
 		/**
 		@brief Represents a physical device.
-		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a> 
+		@details
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-physical-device-enumeration">Specification</a>
+		@ingroup APISpec_Devices_and_Queues
 		 */
 		struct PhysicalDevice
 		{
 			using Memory = V0::Memory;
 
-			using Handle = VkPhysicalDevice;   ///< <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevice">Specification</a> 
+			/**
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevice">Specification</a>
+			@ingroup APISpec_Devices_and_Queues
+			*/
+			using Handle = VkPhysicalDevice;
 
-			static constexpr DeviceSize MaxNameSize        = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;
-			static constexpr DeviceSize MaxDeviceGroupSize = VK_MAX_DEVICE_GROUP_SIZE        ;
+			static constexpr DeviceSize MaxNameSize        = VK_MAX_PHYSICAL_DEVICE_NAME_SIZE;   ///< @brief Maximum size of a name string.
+			static constexpr DeviceSize MaxDeviceGroupSize = VK_MAX_DEVICE_GROUP_SIZE        ;   ///< @brief Maximum size of a device group.
+			static constexpr DeviceSize MaxDriverNameSize  = VK_MAX_DRIVER_NAME_SIZE         ;   ///< @brief maximum size of a driver name string.
+			static constexpr DeviceSize MaxDriverInfoSize  = VK_MAX_DRIVER_INFO_SIZE         ;   ///< @brief Maximum size of a driver info string.
 
-			static constexpr DeviceSize MaxDriverNameSize = VK_MAX_DRIVER_NAME_SIZE;
-			static constexpr DeviceSize MaxDriverInfoSize = VK_MAX_DRIVER_INFO_SIZE;
+			using NameStr = char[MaxNameSize];   ///< @brief Used in various structures to define a name.
 
-			using NameStr = char[MaxNameSize];
+			using DriverNameStr = char[MaxDriverNameSize];   ///< @brief Driver name string.
+			using DriverInfoStr = char[MaxDriverInfoSize];   ///< @brief Driver info string.
 
-			using DriverNameStr = char[MaxDriverNameSize];
-			using DriverInfoStr = char[MaxDriverInfoSize];
-
-			using EDeviceType = EPhysicalDeviceType;	
+			using EDeviceType = EPhysicalDeviceType;
 
 			/**
+			* @brief Conformance test suite version an implementation is compliant with is described with this.
+			* 
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkConformanceVersion">Specification</a> 
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			struct ConformanceVersion : V0::VKStruct_Base<VkConformanceVersion>
 			{
@@ -81,7 +90,9 @@ namespace VaultedThermals
 			@brief Structure describing the fine-grained features that can be supported by an implementation.
 
 			@details
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceFeatures">Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceFeatures">Specification</a>
+
+			@ingroup APISpec_Features
 			*/
 			struct Features : V0::VKStruct_Base<VkPhysicalDeviceFeatures>
 			{
@@ -143,8 +154,12 @@ namespace VaultedThermals
 			};
 
 			/**
+			* @brief
+			* 
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceGroupProperties ">Specification</a> 
+			* 
+			* @ingorup APISpec_Devices_and_Queues
 			*/
 			struct Group : V0::VKStruct_Base<VkPhysicalDeviceGroupProperties, EStructureType::PhysicalDevice_GroupProperties>
 			{
@@ -162,6 +177,8 @@ namespace VaultedThermals
 
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceLimits">Specification</a> 
+
+			@ingroup APISpec_Limits
 			*/
 			struct Limits : V0::VKStruct_Base<VkPhysicalDeviceLimits>
 			{
@@ -274,7 +291,9 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceMemoryProperties">Specification</
+			 * 
+			 * @ingroup APISpec_Devices_and_Queues
 			 */
 			struct MemoryProperties : V0::VKStruct_Base<VkPhysicalDeviceMemoryProperties>
 			{
@@ -285,10 +304,10 @@ namespace VaultedThermals
 			};
 
 			/**
-			* @brief.
-			* 
-			* @details
+			* @brief
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterKHR">Specification</a> 
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			struct PerformanceCounter : V0::VKStruct_Base<VkPerformanceCounterKHR, EStructureType::PerformacneCounter_KHR>
 			{
@@ -303,12 +322,10 @@ namespace VaultedThermals
 				using DescriptionFlags = Bitmask<EPerformanceCounterDescriptionFlag, VkPerformanceCounterDescriptionFlagsKHR>;
 
 				/**
-				* @brief.
-				* 
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterDescriptionKHR">Specification</a> 
 				* 
-				* @todo Implement.
+				* @ingroup APISpec_Devices_and_Queues
 				*/
 				struct Description : V0::VKStruct_Base<VkPerformanceCounterDescriptionKHR>
 				{
@@ -330,6 +347,8 @@ namespace VaultedThermals
 			VkPhysicalDeviceProperties::sparseProperties member, which is a structure of type VkPhysicalDeviceSparseProperties.
 			
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#sparsememory-physicalprops">Specification</a> 
+
+			@ingroup APISpec_Sparse_Resources
 			*/
 			struct SparseMemoryProperties : V0::VKStruct_Base<VkPhysicalDeviceSparseProperties>
 			{
@@ -343,7 +362,10 @@ namespace VaultedThermals
 			/**
 			@brief Container of query general properties of physical devices once enumerated.
 
+			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties">Specification</a> 
+
+			@ingroup APISpec_Devices_and_Queues
 			*/
 			struct Properties : V0::VKStruct_Base<VkPhysicalDeviceProperties>
 			{
@@ -358,8 +380,12 @@ namespace VaultedThermals
 				SparseMemoryProperties SpareProperties  ;
 
 				/**
+				* @brief To query the UUID and LUID of a device, add a VkPhysicalDeviceIDProperties structure to the pNext chain of the VkPhysicalDeviceProperties2 structure.
+				* 
 				* @details
-				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties">Specification</a> 
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties">Specification</a>
+				* 
+				* @ingroup APISpec_Devices_and_Queues
 				*/
 				struct DeviceID : V0::VKStruct_Base<VkPhysicalDeviceIDProperties >
 				{
@@ -373,8 +399,13 @@ namespace VaultedThermals
 				};	
 
 				/**
+				* @brief To query the PCI bus information of a physical device, add a VkPhysicalDevicePCIBusInfoPropertiesEXT 
+				* structure to the pNext chain of the VkPhysicalDeviceProperties2 structure.
+				* 
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDevicePCIBusInfoPropertiesEXT">Specification</a> 
+				* 
+				* @ingroup APISpec_Devices_and_Queues
 				*/
 				struct PCIBusInfo : V0::VKStruct_Base<VkPhysicalDevicePCIBusInfoPropertiesEXT, EStructureType::PhysicalDevice_PCI_BUS_Info_Properties_EXT>
 				{
@@ -387,8 +418,13 @@ namespace VaultedThermals
 				};
 
 				/**
+				* @brief To query the properties of the driver corresponding to Vulkan 1.1 functionality, 
+				* add VkPhysicalDeviceVulkan11Properties to the pNext chain of the VkPhysicalDeviceProperties2 structure.
+				* 
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceVulkan11Properties">Specification</a> 
+				* 
+				* @ingroup APISpec_Devices_and_Queues
 				*/
 				struct Vulkan11 : V0::VKStruct_Base<VkPhysicalDeviceVulkan11Properties, EStructureType::PhysicalDevice_Vulkan_1_1_Properties>
 				{
@@ -414,11 +450,13 @@ namespace VaultedThermals
 				};
 
 				/**
+				* @brief To query the properties of the driver corresponding to Vulkan 1.2 functionality, 
+				* add VkPhysicalDeviceVulkan12Properties to the pNext chain of the VkPhysicalDeviceProperties2 structure.
 				* 
 				* @details
 				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceVulkan12Properties">Specification</a> 
 				*  
-				* @todo Implement.
+				* @ingroup APISpec_Devices_and_Queues
 				*/
 				struct Vulkan12 : V0::VKStruct_Base<VkPhysicalDeviceVulkan12Properties, EStructureType::PhysicalDevice_Vulkan_1_2_Properties>
 				{
@@ -480,10 +518,12 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief.
-			 * 
+			 * @brief Each structure in Properties and its pNext chain contain members corresponding to properties or implementation-dependent limits. 
+			 *  
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties2">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceProperties2">Specification</a>
+			 * 
+			 * @ingroup APISpec_Devices_and_Queues
 			 */
 			struct Properties2 : V0::VKStruct_Base<VkPhysicalDeviceProperties2, EStructureType::PhysicalDevice_Properties_2>
 			{
@@ -495,7 +535,10 @@ namespace VaultedThermals
 			/**
 			@brief A set of queues that have common properties and support the same functionality.
 
+			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyProperties">Specification</a> 
+
+			@ingroup APISpec_Devices_and_Queues
 			*/
 			struct QueueFamilyProperties : V0::VKStruct_Base<VkQueueFamilyProperties>
 			{
@@ -513,10 +556,12 @@ namespace VaultedThermals
 			};
 
 			/**
-			* @brief.
+			* @brief Return extended information in a pNext chain of output structures.
 			* 
 			* @details
-			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyProperties2">Specification</a> 
+			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyProperties2">Specification</a>
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			struct QueueFamilyProperties2 : V0::VKStruct_Base<VkQueueFamilyProperties2, EStructureType::QueueFamily_Properties_2>
 			{
@@ -525,10 +570,13 @@ namespace VaultedThermals
 				QueueFamilyProperties Properties;
 
 				/**
-				* @brief.
+				* @brief Additional queue family information can be queried by setting QueueFamilyProperties2::Next to 
+				* point to a Checkpoint structure.
 				* 
 				* @details
-				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyCheckpointPropertiesNV">Specification</a> 
+				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFamilyCheckpointPropertiesNV">Specification</a>
+				* 
+				* @ingroup APISpec_Devices_and_Queues
 				*/
 				struct Checkpoint : V0::VKStruct_Base<VkQueueFamilyCheckpointPropertiesNV, EStructureType::QueueFamilyCheckpoint_Properties_NV>
 				{
@@ -544,7 +592,9 @@ namespace VaultedThermals
 			@brief Query supported features. Reports capabilities of a physical device.
 
 			@details
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFeatures">Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFeatures">Specification</a>
+
+			@ingroup APISpec_Features
 			*/
 			static void GetFeatures(Handle _handle, Features& _features)
 			{
@@ -552,7 +602,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFormatProperties">Specification</a> 
+			 * @brief Query supported format features which are properties of the physical device.
+			 *
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFormatProperties">Specification</a>
+			 * 
+			 * @ingroup APISpec_Formats
 			 * 
 			 * \param _physicalDevice
 			 * \param _format
@@ -564,7 +618,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceMemoryProperties">Specification</a> 
+			 * @brief Query memory properties.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceMemoryProperties">Specification</a>
+			 * 
+			 * @ingroup APISpec_Memory_Allocation
 			 * 
 			 * \param _physicalDevice
 			 * \param _properties
@@ -577,7 +635,10 @@ namespace VaultedThermals
 			/**
 			@brief Query general properties of physical devices once enumerated.
 
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties">Specification</a> 
+			@details
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties">Specification</a>
+
+			@ingroup APISpec_Devices_and_Queues
 			*/
 			static void GetProperties(Handle _handle, Properties& _properties)
 			{
@@ -589,6 +650,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceProperties2">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Devices_and_Queues
 			 */
 			static void GetProperties2
 			(
@@ -609,6 +672,8 @@ namespace VaultedThermals
 			When pLayerName is the name of a layer, the device extensions provided by that layer are returned.
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_device_extensions">Specification</a> 
+
+			@ingroup APISpec_Extending_Vulkan
 			*/
 			static EResult QueryExtensionProperties(Handle _handle, RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
 			{
@@ -625,6 +690,8 @@ namespace VaultedThermals
 			with the number of structures actually written to pQueueFamilyProperties.
 
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceQueueFamilyProperties">Specification</a> 
+
+			@ingroup APISpec_Devices_and_Queues
 			*/
 			static void QueryQueueFamilyProperties(Handle _handle, uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies)
 			{
@@ -632,10 +699,12 @@ namespace VaultedThermals
 			}	
 
 			/**
-			* @brief.
+			* @brief Query properties of queues available on a physical device.
 			* 
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceQueueFamilyProperties2">Specification</a> 
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			static void QueryQueueFamilyProperties2
 			(
@@ -648,10 +717,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			* @brief.
+			* @brief Enumerate the performance query counters available on a queue family of a physical device.
 			* 
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR">Specification</a> 
+			* 
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			static EResult QueryPerfomranceQueryCounters
 			(
@@ -687,11 +758,16 @@ namespace VaultedThermals
 
 		/**
 		@brief Represents a physical device.
+
+		@ingroup
 		*/
 		struct PhysicalDevice : V1::PhysicalDevice
 		{
 			using Parent = V1::PhysicalDevice;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Group : public Parent::Group
 			{
 				Group()
@@ -701,6 +777,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct PerformanceCounter : public Parent::PerformanceCounter
 			{
 				PerformanceCounter()
@@ -709,6 +788,9 @@ namespace VaultedThermals
 					Next  = nullptr  ;
 				}
 
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct Description : public Parent::PerformanceCounter::Description
 				{
 					Description()
@@ -719,8 +801,14 @@ namespace VaultedThermals
 				};
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Properties : public Parent::Properties
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct DeviceID : public Parent::Properties::DeviceID
 				{
 					DeviceID()
@@ -730,6 +818,9 @@ namespace VaultedThermals
 					}
 				};
 
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct PCIBusInfo : public Parent::Properties::PCIBusInfo
 				{
 					PCIBusInfo()
@@ -739,6 +830,7 @@ namespace VaultedThermals
 					}
 				};
 
+				/** @brief Offers a default constructor.  */
 				struct Vulkan11 : public Parent::Properties::Vulkan11
 				{
 					Vulkan11()
@@ -748,6 +840,7 @@ namespace VaultedThermals
 					}
 				};
 
+				/** @brief Offers a default constructor.  */
 				struct Vulkan12 : public Parent::Properties::Vulkan12
 				{
 					Vulkan12()
@@ -758,6 +851,7 @@ namespace VaultedThermals
 				};
 			};
 
+			/** @brief Offers a default constructor. */
 			struct Properties2 : public Parent::Properties2
 			{
 				Properties2()
@@ -767,6 +861,7 @@ namespace VaultedThermals
 				}
 			};
 
+			/** @brief Offers a default constructor. */
 			struct QueueFamilyProperties2 : public Parent::QueueFamilyProperties2
 			{
 				QueueFamilyProperties2()
@@ -775,6 +870,7 @@ namespace VaultedThermals
 					Next  = nullptr  ;
 				}
 
+				/** @brief Offers a default constructor. */
 				struct Checkpoint : public Parent::QueueFamilyProperties2::Checkpoint
 				{
 					Checkpoint()
@@ -787,8 +883,6 @@ namespace VaultedThermals
 
 			/**
 			* @brief Checks to see if the specified extensions are supported by the physical device.
-			* 
-			* @todo make the extensions specified container generic using an interface.
 			*/
 			static bool CheckExtensionSupport(Handle _handle, RoCStr _extensionSpecified)
 			{
@@ -811,8 +905,6 @@ namespace VaultedThermals
 
 			/**
 			 * @brief Checks to see if the specified extensions are supported by the physical device.
-			 * 
-			 * @todo make the extensions specified container generic using an interface.
 			 */
 			static bool CheckExtensionSupport(Handle _handle, DynamicArray<RoCStr> _extensionsSpecified)
 			{
@@ -834,6 +926,10 @@ namespace VaultedThermals
 				return isSupported;
 			}
 
+			/**
+			@brief Checks to see if the formats in _canidates are available for the specified physical device, if the format is found, 
+			it will be returned with the format container reference.	
+			*/
 			static EResult FindSupportedFormat(Handle _handle, const DynamicArray<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format)
 			{
 				for (EFormat possibleFormat : _canidates)
@@ -872,6 +968,9 @@ namespace VaultedThermals
 				return EResult::Error_FormatNotSupported;
 			}
 
+			/**
+			@brief Finds the memory type index based on the type filter and properties desired. (Returns the max value of uint32 otherwise)
+			*/
 			static uint32 FindMemoryType(Handle _handle, uint32 _typeFilter, Memory::PropertyFlags _properties)
 			{
 				MemoryProperties memProperties;
@@ -892,9 +991,14 @@ namespace VaultedThermals
 
 			#ifdef VT_Option__Use_STL_Exceptions
 				throw std::runtime_error("Failed to find suitable memory type!");
+			#else
+				return 4294967295;
 			#endif
 			}
 
+			/**
+			@brief Provides the available layer extensions for the specified layer name into the _extensionListing container.
+			*/
 			static EResult GetAvailableLayerExtensions(Handle _handle, RoCStr _layerName, DynamicArray<ExtensionProperties>& _extensionListing)
 			{
 				uint32 count;
@@ -953,6 +1057,9 @@ namespace VaultedThermals
 				return queryResult;
 			}
 
+			/**
+			@brief Gets the maximum sample count allowed for color and depth.
+			*/
 			static ESampleCount GetMaxSampleCount_ColorAndDepth(Handle _handle)
 			{
 				Properties properties;
@@ -1184,9 +1291,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator const Handle&() const
+			operator Handle* ()
+			{
+				return &handle;
+			}
+
+			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const PhysicalDevice& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:

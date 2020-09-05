@@ -761,9 +761,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
+			operator Handle* ()
+			{
+				return &handle;
+			}
+
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const LogicalDevice& _other)
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
