@@ -56,22 +56,28 @@ namespace VaultedThermals
 		 * directly specifying them as parameters to certain commands.
 		 * 
 		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources-buffers">Specification</a> 
+		 * 
+		 * @ingroup	APISpec_Resource_Creation
 		 */
 		struct Buffer
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBuffer">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBuffer">Specification</a>  
+			@ingroup APISpec_Resource_Creation
+			*/
 			using Handle = VkBuffer;
 
 			using ECreateFlag = EBufferCreateFlag;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
 			using CreateFlags = Bitmask<EBufferCreateFlag, VkBufferCreateFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferUsageFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferUsageFlags">Specification</a> @ingroup APISpec_Resource_Creation */
 			using UsageFlags = Bitmask<EBufferUsage, VkBufferUsageFlags>;
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateInfo">Specification</a>
+			 * @ingroup APISpec_Resource_Creation
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
 			{
@@ -84,7 +90,7 @@ namespace VaultedThermals
 					  uint32       QueueFamilyIndexCount;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCopy">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCopy">Specification</a> @ingroup APISpec_Copy_Commands */
 			struct CopyInfo : V0::VKStruct_Base<VkBufferCopy>
 			{
 				DeviceSize SourceOffset;
@@ -94,6 +100,7 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferMemoryBarrier">Specification</a>
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			struct Memory_Barrier : V0::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
 			{
@@ -109,10 +116,12 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief.
+			 * @brief Attach memory to a buffer object.
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBindBufferMemory">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _device
 			 * \param _buffer
@@ -137,6 +146,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBuffer">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Resource_Creation
+			 * 
 			 * \param _deviceHandle
 			 * \param _createInfo
 			 * \param _allocator
@@ -156,6 +167,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyBuffer">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Resource_Creation
+			 * 
 			 * \param _deviceHandle
 			 * \param _buffer
 			 * \param _allocator
@@ -168,6 +181,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetBufferMemoryRequirements">Specification</a>
+			 * 
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _device
 			 * \param _buffer
@@ -193,17 +208,20 @@ namespace VaultedThermals
 		 * the following usage flags: UnformTexelBuffer or StorageTexelBuffer
 		 * 
 		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources-buffer-views">Specification</a> 
+		 * 
+		 * @ingroup APISpec_Resource_Creation
 		 */
 		struct BufferView
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferView">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferView">Specification</a> @ingroup APISpec_Resource_Creation */
 			using Handle = VkBufferView;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferViewCreateFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferViewCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
 			using CreateFlags = Bitmask<EUndefined, VkBufferViewCreateFlags>;
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a> .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a> 
+			 * @ingroup APISpec_Resource_Creation
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
 			{
@@ -220,7 +238,9 @@ namespace VaultedThermals
 			 * @brief Create a new buffer view object.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBufferView">Specification</a> .
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBufferView">Specification</a>.
+			 * 
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _deviceHandle
 			 * \param _creationSpec
@@ -239,6 +259,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Resource_Creation
+			 * 
 			 * \param _deviceHandle
 			 * \param _bufferView
 			 * \param _allocator
@@ -255,29 +277,32 @@ namespace VaultedThermals
 		(e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, 
 		or by directly specifying them as parameters to certain commands.
 
+		@details
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources-images">Specification</a> 
+
+		@ingroup APISpec_Resource_Creation
 		*/
 		struct Image
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImage">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImage">Specification</a> @ingroup APISpec_Resource_Creation */
 			using Handle = VkImage;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageAspectFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageAspectFlags">Specification</a> @ingroup APISpec_Resource_Creation */
 			using AspectFlags = Bitmask<EImageAspect, VkImageAspectFlags>;
 
 			using ECreateFlag = EImageCreateFlag;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
 			using CreateFlags = Bitmask<EImageCreateFlag, VkImageCreateFlags>;
 
 			using ETiling = EImageTiling;
 
 			using EUsage = EImageUsage;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageUsageFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageUsageFlags">Specification</a> @ingroup APISpec_Resource_Creation */
 			using UsageFlags = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a> @ingroup APISpec_Resource_Creation */
 			struct CreateInfo : V0::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
 			{
 				      EType        SType                ;
@@ -297,7 +322,10 @@ namespace VaultedThermals
 					  EImageLayout InitalLayout         ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceLayers">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceLayers">Specification</a>  
+			@ingroup APISpec_Copy_Commands
+			*/
 			struct SubresourceLayers : V0::VKStruct_Base<VkImageSubresourceLayers>
 			{
 				AspectFlags AspectMask    ;
@@ -306,7 +334,10 @@ namespace VaultedThermals
 				uint32      LayerCount    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceRange">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceRange">Specification</a>  
+			@ingroup APISpec_Resource_Creation
+			*/
 			struct SubresourceRange : V0::VKStruct_Base<VkImageSubresourceRange>
 			{
 				AspectFlags AspectMask    ;
@@ -316,7 +347,10 @@ namespace VaultedThermals
 				uint32      LayerCount    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageMemoryBarrier">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageMemoryBarrier">Specification</a>  
+			@ingroup APISpec_Synchronization_and_Cache_Control
+			*/
 			struct Memory_Barrier : V0::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
 			{
 				      EType            SType              ;
@@ -331,7 +365,10 @@ namespace VaultedThermals
 				      SubresourceRange SubresourceRange   ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageBlit">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageBlit">Specification</a>  
+			@ingroup APISpec_Copy_Commands
+			*/
 			struct Blit : V0::VKStruct_Base<VkImageBlit>
 			{
 				SubresourceLayers SrcSubresource;
@@ -341,7 +378,11 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBindImageMemory">Specification</a> 
+			 * @brief Attach memory to a VkImage object created without the VK_IMAGE_CREATE_DISJOINT_BIT set.
+			 *
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBindImageMemory">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _device
 			 * \param _image
@@ -364,6 +405,7 @@ namespace VaultedThermals
 			 * @brief  Create an image object.
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImage">Specification</a>.
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _deviceHandle
 			 * \param _createInfo
@@ -380,6 +422,7 @@ namespace VaultedThermals
 			 * @brief Destroy an image object.
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImage">Specification</a>.
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _deviceHandle
 			 * \param _image
@@ -392,6 +435,7 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetImageMemoryRequirements">Specification</a> 
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _device
 			 * \param _image
@@ -408,20 +452,22 @@ namespace VaultedThermals
 		* and state that controls how the contents are interpreted.
 		* 
 		* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#resources-image-views">Specification</a> 
+		* 
+		* @ingroup APISpec_Resource_Creation
 		*/
 		struct ImageView
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a> @ingroup APISpec_Resource_Creation */
 			using Handle = VkImageView;
 
 			using EViewType = EImageViewType;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
+			using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a> @ingroup APISpec_Resource_Creation */
 			struct CreateInfo : V0::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a>  */
-				using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
-
 				      EType                   SType           ;			
 				const void*                   Next            ;
 				      CreateFlags             Flags           ;
@@ -432,13 +478,14 @@ namespace VaultedThermals
 				      Image::SubresourceRange SubresourceRange;
 			};
 
-			
 
 			/**
 			 * @brief Create an image view object.
 			 * 
 			 * @details
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImageView">Specification</a> 
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImageView">Specification</a>
+			 * 
+			 * @ingroup APISpec_Resource_Creation
 			 * 
 			 * \param _deviceHandle
 			 * \param _creationSpec
@@ -463,6 +510,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImageView">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Resource_Creation
+			 * 
 			 * \param _deviceHandle
 			 * \param _imageView
 			 * \param _allocator
@@ -479,16 +528,19 @@ namespace VaultedThermals
 		};
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-sets">Specification</a>
+		 * @brief Descriptors are grouped together into descriptor set objects. A descriptor set object is an opaque object containing storage for a set of descriptors,
+		 * where the types and number of descriptors is defined by a descriptor set layout.
+		 * 
+		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-sets">Specification</a>
+		 * 
+		 * @ingroup APISpec_Resource_Descriptors
 		 */
 		struct DescriptorSet
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSet">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSet">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			using Handle = VkDescriptorSet;
 
-			
-
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBufferInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBufferInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct BufferInfo : V0::VKStruct_Base<VkDescriptorBufferInfo>
 			{
 				Buffer::Handle Buffer;
@@ -496,7 +548,7 @@ namespace VaultedThermals
 				DeviceSize     Range ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct Copy : V0::VKStruct_Base<VkCopyDescriptorSet>
 			{
 				      EType  SType          ;
@@ -510,7 +562,7 @@ namespace VaultedThermals
 				      uint32 DescriptorCount;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct ImageInfo : V0::VKStruct_Base<VkDescriptorImageInfo>
 			{
 				Sampler::Handle   Sampler    ;
@@ -518,7 +570,7 @@ namespace VaultedThermals
 				EImageLayout      ImageLayout;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct Write : V0::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
 			{
 				      EType               SType          ;
@@ -534,7 +586,9 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUpdateDescriptorSets">Specification</a> .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUpdateDescriptorSets">Specification</a>.
+			 * 
+			 * @ingroup APISpec_Resource_Descriptors
 			 * 
 			 * \param _device
 			 * \param _descriptorWriteCount
@@ -542,7 +596,7 @@ namespace VaultedThermals
 			 * \param _descriptorCopyCount
 			 * \param _descriptorCopies
 			 */
-			static void Render
+			static void Update
 			(
 				      LogicalDevice::Handle _device              ,
 				      uint32                _descriptorWriteCount,
@@ -555,18 +609,26 @@ namespace VaultedThermals
 			}
 		};	
 
+		/**
+		@brief A descriptor pool maintains a pool of descriptors, from which descriptor sets are allocated. Descriptor pools are externally synchronized, 
+		meaning that the application must not allocate and/or free descriptor sets from the same pool in multiple threads simultaneously.
+
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-allocation">Specification</a> 
+
+		@ingroup APISpec_Resource_Descriptors
+		*/
 		struct DescriptorPool
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPool">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPool">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			using Handle = VkDescriptorPool;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlags">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			using CreateFlags = Bitmask<EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolResetFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolResetFlags">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			using ResetFlags = Bitmask<EUndefined, VkDescriptorPoolResetFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct AllocateInfo : V0::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>
 			{
 				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
@@ -578,14 +640,14 @@ namespace VaultedThermals
 				const PipelineLayoutDescriptorSetHandle* SetLayouts        ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolSize">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolSize">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct Size : V0::VKStruct_Base<VkDescriptorPoolSize>
 			{
 				EDescriptorType Type ;
 				uint32          Count;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct CreateInfo : V0::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
 			{
 					  EType       SType        ;
@@ -598,6 +660,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAllocateDescriptorSets">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Resource_Descriptors
 			 * 
 			 * \param _device
 			 * \param _allocateInfo
@@ -616,6 +680,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorPool">Specification</a>
+			 * 
+			 * @ingroup APISpec_Resource_Descriptors
 			 * 
 			 * \param _device
 			 * \param _createInfo
@@ -637,6 +703,8 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorPool">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Resource_Descriptors
+			 * 
 			 * \param _device
 			 * \param _descriptorPool
 			 * \param _allocator
@@ -653,6 +721,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeDescriptorSets">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Resource_Descriptors
 			 * 
 			 * \param _device
 			 * \param _descriptorPool
@@ -673,6 +743,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetDescriptorPool">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Resource_Descriptors
 			 * 
 			 * \param _device
 			 * \param _descriptorPool
@@ -704,6 +776,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Buffer;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo() 
@@ -725,6 +800,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Memory_Barrier : Parent::Memory_Barrier
 			{
 				Memory_Barrier()
@@ -864,6 +942,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::BufferView;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -908,6 +989,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Image;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -917,6 +1001,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Memory_Barrier : public Parent::Memory_Barrier
 			{
 				Memory_Barrier()
@@ -1052,6 +1139,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::ImageView;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -1110,6 +1200,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::DescriptorSet;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Copy : public Parent::Copy
 			{
 				Copy()
@@ -1119,6 +1212,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct Write : public Parent::Write
 			{
 				Write()
@@ -1127,14 +1223,15 @@ namespace VaultedThermals
 					Next  = nullptr;
 				}
 			};
-
-			
 		};
 
 		struct DescriptorPool : public V1::DescriptorPool
 		{
 			using Parent = V1::DescriptorPool;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct AllocateInfo : public Parent::AllocateInfo
 			{
 				AllocateInfo()
@@ -1144,6 +1241,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -1698,7 +1798,7 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			void Render
+			void Update
 			(
 				      uint32                _descriptorWriteCount,
 				const Write*                _descriptorWrites    ,
@@ -1706,7 +1806,7 @@ namespace VaultedThermals
 				const Copy*                 _descriptorCopies
 			)
 			{
-				Parent::Render(*device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
+				Parent::Update(*device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
 			}
 
 			operator Handle()

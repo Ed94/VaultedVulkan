@@ -50,16 +50,18 @@ namespace VaultedThermals
 		 * @brief A monolithic object describing the entire graphics, raytracing, or compute pipeline.
 		 * 
 		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines">Specification</a> 
+		 * 
+		 * @ingroup APISpec_Pipelines
 		 */
 		struct Pipeline
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipeline">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipeline">Specification</a> @ingroup APISpec_Pipelines */
 			using Handle = VkPipeline;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a> @ingroup APISpec_Pipelines */
 			using ShaderStageFlags = Bitmask<EShaderStageFlag, VkShaderStageFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			using StageFlags = Bitmask<EPipelineStageFlag, VkPipelineStageFlags>;
 
 			/**
@@ -72,16 +74,18 @@ namespace VaultedThermals
 			 * Applications can manage the host memory consumed by a pipeline cache object and control the amount of data retrieved from a pipeline cache object.
 			 * 
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines-cache">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Pipelines
 			 */
 			struct Cache
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.htmal#VkPipelineCache">Specification</a>  */
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.htmal#VkPipelineCache">Specification</a> @ingroup APISpec_Pipelines */
 				using Handle = VkPipelineCache;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlags">Specification</a>  */
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlags">Specification</a> @ingroup APISpec_Pipelines  */
 				using CreateFlags = Bitmask<EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateInfo">Specification</a>  */
+				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateInfo">Specification</a> @ingroup APISpec_Pipelines */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineCacheCreateInfo, EStructureType::Pipeline_Cache_CreateInfo>
 				{
 					      EType       SType          ;
@@ -96,6 +100,8 @@ namespace VaultedThermals
 				 * 
 				 * @details
 				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineCache">Specification</a>
+				 * 
+				 * @ingroup APISpec_Pipelines
 				 * 
 				 * \param _deviceHandle
 				 * \param _createInfo
@@ -120,6 +126,8 @@ namespace VaultedThermals
 				 * @details
 				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipelineCache">Specification</a> 
 				 * 
+				 * @ingroup APISpec_Pipelines
+				 * 
 				 * \param _deviceHandle
 				 * \param _cache
 				 * \param _allocator
@@ -128,12 +136,37 @@ namespace VaultedThermals
 				{
 					vkDestroyPipelineCache(_deviceHandle, _cache, _allocator->operator const VkAllocationCallbacks*());
 				}
+
+				/** 
+				@todo 
+				#TODO: MakeMergCacheFunction vkMergePipelineCaches 
+				*/
+
+				/** 
+				@todo 
+				#TODO:  vkGetPipelineCacheData 
+				*/
 			};
 
-			/** @brief  */
+			/** 
+			@brief  
+			Blending combines the incoming source fragment’s R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
+			at the fragment’s (xf,yf) location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
+
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#framebuffer-blending">Specification</a> 
+
+			@ingroup APISpec_The_Framebuffer
+			*/
 			struct ColorBlendState
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendAttachmentState">Specification</a>  */
+				/** 
+				@brief Specifies per-target blending state for each individual color attachment.
+				
+				@details
+				<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendAttachmentState">Specification</a> 
+				
+				@ingroup APISpec_The_Framebuffer
+				*/
 				struct AttachmentState : V0::VKStruct_Base<VkPipelineColorBlendAttachmentState, EStructureType::Pipeline_ColorBlendAdvancedState_CreateInfo_EXT>
 				{
 					Bool                EnableBlend                 ;
@@ -146,9 +179,12 @@ namespace VaultedThermals
 					ColorComponentFlags ColorWriteMask              ;
 				};
 
-				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendStateCreateInfo">Specification</a> 
+				@ingroup APISpec_The_Framebuffer 
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineColorBlendStateCreateInfo, EStructureType::Pipeline_ColorBlendState_CreateInfo>
 				{
 					      EType            SType                ;
@@ -162,13 +198,25 @@ namespace VaultedThermals
 				};
 			};
 
-			/** @brief */
+			/** 
+			@brief Pipeline state controlling the depth bounds tests, stencil test, and depth test.
+
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fragops-ds-state">Specification</a> 
+
+			@ingroup APISpec_Fragment_Operations
+			*/
 			struct DepthStencilState
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateFlags">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateFlags">Specification</a> 
+				@ingroup APISpec_Fragment_Operations
+				*/
 				using CreateFlags = Bitmask<EUndefined, VkPipelineDepthStencilStateCreateFlags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Fragment_Operations
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo, EStructureType::Pipeline_DepthStencilState_CreateInfo>
 				{
 					      EType                 SType                ;
@@ -186,12 +234,21 @@ namespace VaultedThermals
 				};
 			};
 
-			/** @brief */
+			/** 
+			@brief Used to indicate which properties of the pipeline state object are dynamic and can be changed independently of the pipeline state. 
+
+			@details This can be NULL, which means no state in the pipeline is considered dynamic.
+
+			@ingroup APISpec_Pipelines
+			*/
 			struct DynamicState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDynamicStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDynamicStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineDynamicStateCreateInfo, EStructureType::Pipeline_DynamicState_CreateInfo>
 				{
 					      EType          SType     ;
@@ -202,12 +259,22 @@ namespace VaultedThermals
 				};
 			};
 
-			/** @brief */
+			/** 
+			@brief Each draw is made up of zero or more vertices and zero or more instances, which are processed by the device and result in the assembly of primitives.
+			Primitives are assembled according to the InputAssemblyState member.
+
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#drawing">Specification</a> 
+
+			@ingroup APISpec_Drawing_Commands
+			*/
 			struct InputAssemblyState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Drawing_Commands
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineInputAssemblyStateCreateInfo, EStructureType::Pipeline_InputAssemblyState_CreateInfo>
 				{
 					      EType              SType                 ;
@@ -223,13 +290,20 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-pipelinelayout">Specification</a> 
+			 * @ingroup APISpec_Resource_Descriptors
 			 */
 			struct Layout
 			{
-				/** @ */
+				/**
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineLayout">Specification</a> 
+				@ingroup APISpec_Resource_Descriptors 
+				*/
 				using Handle = VkPipelineLayout;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPushConstantRange">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPushConstantRange">Specification</a>  
+				@ingroup APISpec_Resource_Descriptors
+				*/
 				struct PushConstantRange : V0::VKStruct_Base<VkPushConstantRange>
 				{
 					ShaderStageFlags StageFlags;
@@ -246,14 +320,21 @@ namespace VaultedThermals
 				 * where the types and number of descriptors is defined by a descriptor set layout. 
 				 * 
 				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-setlayout">Specification</a> 
-				 * @todo See if this should be outside of the layout structure.
+				 * 
+				 * @ingroup APISpec_Resource_Descriptors
 				 */
 				struct DescriptorSet
 				{
-					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayout">Specification</a>  */
+					/** 
+					@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayout">Specification</a> 
+					@ingroup APISpec_Resource_Descriptors
+					*/
 					using Handle = VkDescriptorSetLayout;
 
-					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBinding">Specification</a>  */
+					/** 
+					@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBinding">Specification</a> 
+					@ingroup APISpec_Resource_Descriptors
+					*/
 					struct Binding : V0::VKStruct_Base<VkDescriptorSetLayoutBinding>
 					{
 						      uint32           BindingID        ;
@@ -262,10 +343,16 @@ namespace VaultedThermals
 						      ShaderStageFlags StageFlags       ;
 						const Sampler::Handle* ImmutableSamplers;
 
-						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlags">Specification</a>  */
+						/** 
+						@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlags">Specification</a> 
+						@ingroup APISpec_Resource_Descriptors 
+						*/
 						using CreateFlags = Bitmask<EDescriptorBindingFlag ,VkDescriptorBindingFlags>;
 
-						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a>  */
+						/** 
+						@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a> 
+						@ingroup APISpec_Resource_Descriptors 
+						*/
 						struct FlagsCreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
 						{
 							      EType       SType        ;
@@ -275,9 +362,17 @@ namespace VaultedThermals
 						};
 					};
 
-					using CreateFlags = Bitmask<EDescriptorSetLayoutCreateFlag, Flags>;
+					/** 
+					@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateFlags">Specification</a>  
+					@ingroup APISpec_Resource_Descriptors
+					*/
+					using CreateFlags = Bitmask<EDescriptorSetLayoutCreateFlag, VkDescriptorSetLayoutCreateFlags>;
 
-					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateInfo">Specification</a>  */
+					/** 
+					@brief Information about the descriptor set layout.
+					@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateInfo">Specification</a>  
+					@ingroup APISpec_Resource_Descriptors
+					*/
 					struct CreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutCreateInfo, EStructureType::Descriptor_SetLayout_CreateInfo>
 					{
 						      EType       SType       ;
@@ -287,14 +382,20 @@ namespace VaultedThermals
 						const Binding*    Bindings    ;
 					};
 
-					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutSupport">Specification</a>  */
+					/** 
+					@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutSupport">Specification</a>  
+					@ingroup APISpec_Resource_Descriptors	
+					*/
 					struct Support : V0::VKStruct_Base<VkDescriptorSetLayoutSupport, EStructureType::Descriptor_SetLayoutSupport>
 					{
 						EType SType    ;
 						void* Next     ;
 						Bool  Supported;
 
-						/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetVariableDescriptorCountLayoutSupport">Specification</a>  */
+						/** 
+						@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetVariableDescriptorCountLayoutSupport">Specification</a>  
+						@ingroup APISpec_Resource_Descriptors
+						*/
 						struct SetVariableCount : V0::VKStruct_Base<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
 						{
 							EType  SType           ;
@@ -308,6 +409,8 @@ namespace VaultedThermals
 					 * 
 					 * @details
 					 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorSetLayout">Specification</a> 
+					 * 
+					 * @ingroup APISpec_Resource_Descriptors
 					 * 
 					 * \param _deviceHandle
 					 * \param _createInfo
@@ -332,6 +435,8 @@ namespace VaultedThermals
 					 * @details
 					 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorSetLayout">Specification</a> 
 					 * 
+					 * @ingroup APISpec_Resource_Descriptors
+					 * 
 					 * \param _deviceHandle
 					 * \param _descriptorSet
 					 * \param _allocator
@@ -347,6 +452,8 @@ namespace VaultedThermals
 					 * @details
 					 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetDescriptorSetLayoutSupport">Specification</a> 
 					 * 
+					 * @ingroup APISpec_Resource_Descriptors
+					 * 
 					 * \param _deviceHandle
 					 * \param _createInfo
 					 * \param _support
@@ -357,10 +464,13 @@ namespace VaultedThermals
 					}
 				};
 
-				
-				using CreateFlags = Bitmask<EUndefined, Flags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineLayoutCreateInfo">Specification</a>  */
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
+
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineLayoutCreateInfo">Specification</a>  
+				@ingroup APISpec_Resource_Descriptors
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineLayoutCreateInfo, EStructureType::Pipeline_Layout_CreateInfo>
 				{
 					      EType                  SType                 ;
@@ -377,6 +487,8 @@ namespace VaultedThermals
 				 * 
 				 * @details
 				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineLayout">Specification</a> 
+				 * 
+				 * @ingroup APISpec_Resource_Descriptors
 				 * 
 				 * \param _deviceHandle
 				 * \param _creationSpec
@@ -401,6 +513,8 @@ namespace VaultedThermals
 				 * @details
 				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipelineLayout">Specification</a> 
 				 * 
+				 * @ingroup APISpec_Resource_Descriptors
+				 * 
 				 * \param _deviceHandle
 				 * \param _pipelineLayout
 				 * \param _allocator
@@ -416,15 +530,24 @@ namespace VaultedThermals
 				}
 			};
 
-			/** @brief */
+			/** 
+			@brief Structure specifying parameters of a newly created pipeline multisample state.
+			@ingroup APISpec_Rasterization
+			*/
 			struct MultiSampleState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleMask">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleMask">Specification</a>  
+				@ingroup APISpec_Rasterization
+				*/
 				using SampleMask = VkSampleMask;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineMultisampleStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineMultisampleStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Rasterization
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineMultisampleStateCreateInfo, EStructureType::Pipeline_MultisampleState_CreateInfo>
 				{
 					      EType        SType                ;
@@ -439,15 +562,25 @@ namespace VaultedThermals
 				};
 			};
 
-			/** @brief  */
+			/** 
+			@brief Rasterization is the process by which a primitive is converted to a two-dimensional image. 
+			Each point of this image contains associated data such as depth, color, or other attributes.
+			@ingroup APISpec_Rasterization
+			*/
 			struct RasterizationState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCullModeFlags">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCullModeFlags">Specification</a>  
+				@ingroup APISpec_Rasterization
+				*/
 				using CullModeFlags = Bitmask<ECullModeFlag, VkCullModeFlags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineRasterizationStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineRasterizationStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Rasterization
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineRasterizationStateCreateInfo, EStructureType::Pipeline_RasterizationState_CreateInfo>
 				{
 					      EType         SType                  ;
@@ -473,11 +606,16 @@ namespace VaultedThermals
 			while executing an application that uses the Vulkan API.
 
 			@details
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationMapEntry">Specification</a> 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationMapEntry">Specification</a>
+
+			@ingroup APISpec_Pipelines
 			*/
 			struct Specialization
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationMapEntry">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationMapEntry">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				struct MapEntry : V0::VKStruct_Base<VkSpecializationMapEntry>
 				{
 					uint32   ConstantID;
@@ -485,7 +623,10 @@ namespace VaultedThermals
 					DataSize Size      ;
 				};
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSpecializationInfo">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				struct Info : V0::VKStruct_Base<VkSpecializationInfo>
 				{
 					      uint32    MapEntryCount;
@@ -497,13 +638,21 @@ namespace VaultedThermals
 
 			/**
 			 * @brief Used to handle shader staging within a pipeline, more than one shader can be staged in a pipeline.
+			 * 
+			 * @ingroup APISpec_Pipelines
 			 */
 			struct ShaderStage
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				using CreateFlags = Bitmask<EPipelineShaderStageCreateFlag, VkShaderStageFlags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateInfo">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineShaderStageCreateInfo , EStructureType::Pipeline_ShaderStage_CreateInfo>
 				{
 					      EType                 SType         ;
@@ -516,13 +665,29 @@ namespace VaultedThermals
 				};
 			};
 			
-			/** @brief */
+			/** 
+			@brief Tessellation involves three pipeline stages. 
+			
+			@details 
+			First, a tessellation control shader transforms control points of a patch and can produce per-patch data.
+			Second, a fixed-function tessellator generates multiple primitives corresponding to a tessellation of the patch in (u,v) or (u,v,w) parameter space. 
+			Third, a tessellation evaluation shader transforms the vertices of the tessellated patch, for example to compute their positions and attributes as part of the 
+			tessellated surface. The tessellator is enabled when the pipeline contains both a tessellation control shader and a tessellation evaluation shader.
+
+			@ingroup APISpec_Tessellation
+			*/
 			struct TessellationState
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateFlags">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateFlags">Specification</a>  
+				@ingroup APISpec_Tessellation
+				*/
 				using CreateFlags = Bitmask<EUndefined, VkPipelineTessellationStateCreateFlags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Tessellation
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineTessellationStateCreateInfo, EStructureType::Pipeline_TessellationState_CreateInfo>
 				{
 					      EType       SType             ;
@@ -533,13 +698,17 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief.
+			 * @brief .
+			 * @ingroup APISpec_Fixed-Function_Vertex_Processing
 			 */
 			struct VertexInputState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future.
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputAttributeDescription">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputAttributeDescription">Specification</a>  
+				@ingroup APISpec_Fixed-Function_Vertex_Processing
+				*/
 				struct AttributeDescription : V0::VKStruct_Base<VkVertexInputAttributeDescription>
 				{
 					uint32  Location;
@@ -548,7 +717,10 @@ namespace VaultedThermals
 					uint32  Offset  ;
 				};
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputBindingDescription">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputBindingDescription">Specification</a>  
+				@ingroup APISpec_Fixed-Function_Vertex_Processing
+				*/
 				struct BindingDescription : V0::VKStruct_Base<VkVertexInputBindingDescription>
 				{
 					uint32           Binding  ;
@@ -556,7 +728,10 @@ namespace VaultedThermals
 					EVertexInputRate InputRate;
 				};
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineVertexInputStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineVertexInputStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Fixed-Function_Vertex_Processing
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineVertexInputStateCreateInfo, EStructureType::Pipeline_VertexInputState_CreateInfo>
 				{
 					      EType                 SType                        ;
@@ -569,12 +744,23 @@ namespace VaultedThermals
 				};
 			};
 
-			/** @brief */
+			/** 
+			@brief The viewport transformation is determined by the selected viewport’s width and height in pixels, px and py, respectively, 
+			and its center (ox, oy) (also in pixels), as well as its depth range min and max determining a depth range scale value pz and 
+			a depth range bias value oz (defined below). 
+
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vertexpostproc-viewport">Specification</a> 
+
+			@ingroup APISpec_Fixed-Function_Vertex_Post-Processing
+			*/
 			struct ViewportState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   // Reserved for future use.
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineViewportStateCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineViewportStateCreateInfo">Specification</a>  
+				@ingroup APISpec_Fixed-Function_Vertex_Post-Processing
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineViewportStateCreateInfo, EStructureType::Pipeline_ViewportState_CreateInfo>
 				{
 					      EType       SType        ;
@@ -592,13 +778,21 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines-compute">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Pipelines
 			 */
 			struct Compute
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkComputePipelineCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkComputePipelineCreateInfo">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkComputePipelineCreateInfo, EStructureType::ComputePipeline_CreateInfo>
 				{
 					      EType                   SType             ;
@@ -613,7 +807,9 @@ namespace VaultedThermals
 				/**
 				 * @brief Create a compute pipeline.
 				 * 
-				 * @details <a href="linkURL">Specification</a> 
+				 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateComputePipelines">Specification</a> 
+				 * 
+				 * @ingroup APISpec_Pipelines
 				 * 
 				 * \param _deviceHandle
 				 * \param _cache
@@ -642,13 +838,21 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines-graphics">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Pipelines
 			 */
 			struct Graphics
 			{
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineCreateInfo">Specification</a>  */
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineCreateInfo">Specification</a>  
+				@ingroup APISpec_Pipelines
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkGraphicsPipelineCreateInfo, EStructureType::GraphicsPipeline_CreateInfo>
 				{
 					using RenderPass_Handle = VkRenderPass;   // RenderPass::Handle not defined yet. (Defined in VT_RenderPass.hpp)
@@ -683,11 +887,16 @@ namespace VaultedThermals
 				 * use vkCmdBindPipelineShaderGroupNV to bind an individual shader group. The primary purpose 
 				 * of shader groups is allowing the device to bind different pipeline state using Device-Generated Commands.
 				 * 
-				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#pipelines">Specification</a> 
+				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#graphics-shadergroups">Specification</a> 
+				 * 
+				 * @ingroup APISpec_Pipelines
 				 */
 				struct ShaderGroup 
 				{
-					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsShaderGroupCreateInfoNV">Specification</a>  */
+					/** 
+					@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsShaderGroupCreateInfoNV">Specification</a>  
+					@ingroup APISpec_Pipelines
+					*/
 					struct CreateInfo : V0::VKStruct_Base<VkGraphicsShaderGroupCreateInfoNV, EStructureType::GraphicsShaderGroup_CreateInfo_NV>
 					{
 						      EType                          SType            ;
@@ -698,7 +907,10 @@ namespace VaultedThermals
 						const TessellationState::CreateInfo* TessellationState;
 					};
 
-					/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineShaderGroupsCreateInfoNV">Specification</a>  */
+					/** 
+					@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineShaderGroupsCreateInfoNV">Specification</a>  
+					@ingroup APISpec_Pipelines
+					*/
 					struct MultipleCreateInfo : V0::VKStruct_Base<VkGraphicsPipelineShaderGroupsCreateInfoNV, EStructureType::GraphicsPipeline_ShaderGroups_CreateInfo_NV>
 					{
 						      EType             SType;
@@ -715,6 +927,8 @@ namespace VaultedThermals
 				 * 
 				 * @details
 				 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateGraphicsPipelines">Specification</a> 
+				 * 
+				 * @ingroup APISpec_Pipelines
 				 * 
 				 * \param _deviceHandle
 				 * \param _pipelineCache
@@ -744,6 +958,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipeline">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Pipelines
+			 * 
 			 * \param _deviceHandle
 			 * \param _pipeline
 			 * \param _allocator
@@ -772,6 +988,9 @@ namespace VaultedThermals
 			{
 				using Parent = Parent::Cache;
 
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::Cache::CreateInfo
 				{
 					CreateInfo()
@@ -782,10 +1001,7 @@ namespace VaultedThermals
 				};
 
 				/**
-				* @brief Create a pipeline cache.
-				* 
-				* @details
-				* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineCache">Specification</a>
+				* @brief Create a pipeline cache (Uses the default allocator).
 				* 
 				* \param _deviceHandle
 				* \param _createInfo
@@ -822,6 +1038,9 @@ namespace VaultedThermals
 
 			struct ColorBlendState : public Parent::ColorBlendState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::ColorBlendState::CreateInfo
 				{
 					CreateInfo()
@@ -834,6 +1053,9 @@ namespace VaultedThermals
 
 			struct DepthStencilState : public Parent::DepthStencilState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::DepthStencilState::CreateInfo
 				{
 					CreateInfo()
@@ -849,6 +1071,9 @@ namespace VaultedThermals
 			
 			struct DynamicState : public Parent::DynamicState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::DynamicState::CreateInfo
 				{
 					CreateInfo()
@@ -861,6 +1086,9 @@ namespace VaultedThermals
 
 			struct InputAssemblyState : public Parent::InputAssemblyState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::InputAssemblyState::CreateInfo
 				{
 					CreateInfo()
@@ -881,6 +1109,9 @@ namespace VaultedThermals
 
 					struct Binding : public Parent::Binding
 					{
+						/**
+						@brief Offers a default constructor.
+						*/
 						struct FlagsCreateInfo : public Parent::Binding::FlagsCreateInfo
 						{
 							FlagsCreateInfo()
@@ -891,6 +1122,9 @@ namespace VaultedThermals
 						};
 					};
 
+					/**
+					@brief Offers a default constructor.
+					*/
 					struct CreateInfo : public Parent::CreateInfo
 					{
 						CreateInfo()
@@ -900,6 +1134,9 @@ namespace VaultedThermals
 						}
 					};
 
+					/**
+					@brief Offers a default constructor.
+					*/
 					struct Support : public Parent::Support
 					{
 						Support()
@@ -908,6 +1145,9 @@ namespace VaultedThermals
 							Next  = nullptr  ;
 						}
 
+						/**
+						@brief Offers a default constructor.
+						*/
 						struct SetVariableCount : public Parent::Support::SetVariableCount
 						{
 							SetVariableCount()
@@ -956,6 +1196,9 @@ namespace VaultedThermals
 					using Parent::Destroy;
 				};
 
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::Layout::CreateInfo
 				{
 					CreateInfo()
@@ -1005,6 +1248,9 @@ namespace VaultedThermals
 
 			struct MultiSampleState : public Parent::MultiSampleState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::MultiSampleState::CreateInfo
 				{
 					CreateInfo()
@@ -1017,6 +1263,9 @@ namespace VaultedThermals
 
 			struct RasterizationState : public Parent::RasterizationState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::RasterizationState::CreateInfo
 				{
 					CreateInfo()
@@ -1029,6 +1278,9 @@ namespace VaultedThermals
 
 			struct ShaderStage : public Parent::ShaderStage
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::ShaderStage::CreateInfo
 				{
 					CreateInfo()
@@ -1044,6 +1296,9 @@ namespace VaultedThermals
 
 			struct TessellationState : public Parent::TessellationState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::TessellationState::CreateInfo
 				{
 					CreateInfo()
@@ -1056,6 +1311,9 @@ namespace VaultedThermals
 
 			struct VertexInputState : public Parent::VertexInputState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::VertexInputState::CreateInfo
 				{
 					CreateInfo()
@@ -1068,6 +1326,9 @@ namespace VaultedThermals
 
 			struct ViewportState : public Parent::ViewportState
 			{
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::ViewportState::CreateInfo
 				{
 					CreateInfo()
@@ -1082,6 +1343,9 @@ namespace VaultedThermals
 			{
 				using Parent = Parent::Compute;
 
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::Compute::CreateInfo
 				{
 					CreateInfo()
@@ -1116,14 +1380,15 @@ namespace VaultedThermals
 				}
 
 				using Parent::Create;
-
-
 			};
 
 			struct Graphics : public Parent::Graphics
 			{
 				using Parent = Parent::Graphics;
 
+				/**
+				@brief Offers a default constructor.
+				*/
 				struct CreateInfo : public Parent::Graphics::CreateInfo
 				{
 					CreateInfo() 
@@ -1152,6 +1417,9 @@ namespace VaultedThermals
 
 				struct ShaderGroup : public Parent::Graphics::ShaderGroup
 				{
+					/**
+					@brief Offers a default constructor.
+					*/
 					struct CreateInfo : public Parent::Graphics::ShaderGroup::CreateInfo
 					{
 						CreateInfo()
@@ -1161,6 +1429,9 @@ namespace VaultedThermals
 						}
 					};
 
+					/**
+					@brief Offers a default constructor.
+					*/
 					struct MultipleCreateInfo : public Parent::Graphics::ShaderGroup::MultipleCreateInfo
 					{
 						MultipleCreateInfo()

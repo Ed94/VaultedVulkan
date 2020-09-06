@@ -52,17 +52,28 @@ namespace VaultedThermals
 		 * @brief Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.
 		 * 
 		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_framebuffers">Specification</a> 
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_framebuffers">Specification</a>
+		 * 
+		 * @ingroup APISpec_Render_Pass
 		 */
 		struct Framebuffer
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebuffer">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebuffer">Specification</a>  
+			@ingroup APISpec_Render_Pass
+			*/
 			using Handle = VkFramebuffer;
 			
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlags">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlags">Specification</a>  
+			@ingroup APISpec_Render_Pass
+			*/
 			using CreateFlags = Bitmask<EFrameBufferCreateFlag, VkFramebufferCreateFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  
+			@ingroup APISpec_Render_Pass
+			*/
 			struct CreateInfo : V0::VKStruct_Base<VkFramebufferCreateInfo, EStructureType::Framebuffer_CreateInfo>
 			{
 				using RenderPass_Handle = VkRenderPass;   // RenderPass::Handle not defined yet. (Defined later in the file)
@@ -83,6 +94,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFramebuffer">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Render_Pass
 			 * 
 			 * \param _deviceHanle
 			 * \param _creationSpec
@@ -107,6 +120,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFramebuffer">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Render_Pass
+			 * 
 			 * \param _deviceHandle
 			 * \param _framebuffer
 			 * \param _allocator
@@ -121,20 +136,22 @@ namespace VaultedThermals
 		 * @brief A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.
 		 * 
 		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#renderpass">Specification</a> 
+		 * 
+		 * @ingroup APISpec_Render_Pass
 		 */
 		struct RenderPass
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPass">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPass">Specification</a> @ingroup APISpec_Render_Pass */
 			using Handle = VkRenderPass;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlags">Specification</a> @ingroup APISpec_Render_Pass */
 			using AttachmentDescriptionFlags = Bitmask<EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags>;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlags">Specification</a> @ingroup APISpec_Render_Pass */
 			using SubpassDesriptionFlags     = Bitmask<ESubpassDescriptionFlag   , VkSubpassDescriptionFlags   >;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateFlags">Specification</a> @ingroup APISpec_Render_Pass */
 			using CreateFlags                = Bitmask<EUndefined                , VkRenderPassCreateFlags     >;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a> @ingroup APISpec_Render_Pass */
 			struct AttachmentDescription : V0::VKStruct_Base<VkAttachmentDescription>
 			{
 				AttachmentDescriptionFlags Flags         ;
@@ -148,14 +165,14 @@ namespace VaultedThermals
 				EImageLayout               FinalLayout   ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentReference">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentReference">Specification</a> @ingroup APISpec_Render_Pass */
 			struct AttachmentReference : V0::VKStruct_Base<VkAttachmentReference>
 			{
 				uint32       Attachment;
 				EImageLayout Layout    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassBeginInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassBeginInfo">Specification</a> @ingroup APISpec_Render_Pass */
 			struct BeginInfo : V0::VKStruct_Base<VkRenderPassBeginInfo, EStructureType::RenderPass_BeginInfo>
 			{
 				      EType               SType          ;
@@ -167,7 +184,7 @@ namespace VaultedThermals
 				const ClearValue*         ClearValues    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescription">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescription">Specification</a> @ingroup APISpec_Render_Pass */
 			struct SubpassDescription : V0::VKStruct_Base<VkSubpassDescription>
 			{
 				      SubpassDesriptionFlags Flags                  ;
@@ -182,7 +199,7 @@ namespace VaultedThermals
 				const uint32*                PreserveAttachments    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a> @ingroup APISpec_Render_Pass */
 			struct SubpassDependency : V0::VKStruct_Base<VkSubpassDependency>
 			{
 				uint32               SourceSubpass        ;
@@ -194,7 +211,7 @@ namespace VaultedThermals
 				DependencyFlags      DependencyFlags      ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateInfo">Specification</a> @ingroup APISpec_Render_Pass */
 			struct CreateInfo : V0::VKStruct_Base<VkRenderPassCreateInfo, EStructureType::RenderPass_CreateInfo>
 			{
 				      EType                  SType          ;
@@ -213,6 +230,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#renderpass-creation">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Render_Pass
 			 * 
 			 * \param _deviceHandle
 			 * \param _createInfo
@@ -237,6 +256,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyRenderPass">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Render_Pass
+			 * 
 			 * \param _deviceHandle
 			 * \param _renderPass
 			 * \param _allocator
@@ -257,10 +278,16 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.
+		*/
 		struct Framebuffer : public V1::Framebuffer
 		{
 			using Parent = V1::Framebuffer;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : Parent::CreateInfo
 			{
 				CreateInfo()
@@ -308,10 +335,16 @@ namespace VaultedThermals
 			using Parent::Destroy;
 		};
 
+		/**
+		@brief A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.
+		*/
 		struct RenderPass : public V1::RenderPass
 		{
 			using Parent = V1::RenderPass;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct BeginInfo : public Parent::BeginInfo
 			{
 				BeginInfo()
@@ -321,12 +354,15 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
 				{
 					SType = STypeEnum;
-					Next = nullptr;
+					Next  = nullptr  ;
 				}
 			};
 
@@ -334,25 +370,30 @@ namespace VaultedThermals
 			{
 			};*/
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct SubpassDescription : public Parent::SubpassDescription
 			{
 				SubpassDescription()
 				{
-					InputAttachmentCount = 0;
-					InputAttachments = nullptr;
-					ColorAttachmentCount = 0;
-					ColorAttachments = nullptr;
-					ResolveAttachments = nullptr;
-					DepthStencilAttachment = nullptr;
+					InputAttachmentCount    = 0;
+					InputAttachments        = nullptr;
+					ColorAttachmentCount    = 0;
+					ColorAttachments        = nullptr;
+					ResolveAttachments      = nullptr;
+					DepthStencilAttachment  = nullptr;
 					PreserveAttachmentCount = 0;
-					PreserveAttachments = nullptr;
+					PreserveAttachments     = nullptr;
 				}
 			};
 
 			/**
-			 * @brief Create a render pass.
+			 * @brief Create a render pass. (Default Allocator)
 			 * 
 			 * @details
+			 * 
+			 * @ingroup 
 			 * 
 			 * \param _deviceHandle
 			 * \param _createInfo
@@ -372,9 +413,11 @@ namespace VaultedThermals
 			using Parent::Create;
 
 			/**
-			 * @brief Destroy a render pass.
+			 * @brief Destroy a render pass. (Default Allocator)
 			 * 
 			 * @details
+			 * 
+			 * @ingroup 
 			 * 
 			 * \param _deviceHandle
 			 * \param _renderPass

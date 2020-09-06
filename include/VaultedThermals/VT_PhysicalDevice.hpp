@@ -159,7 +159,7 @@ namespace VaultedThermals
 			* @details
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPhysicalDeviceGroupProperties ">Specification</a> 
 			* 
-			* @ingorup APISpec_Devices_and_Queues
+			* @ingroup APISpec_Devices_and_Queues
 			*/
 			struct Group : V0::VKStruct_Base<VkPhysicalDeviceGroupProperties, EStructureType::PhysicalDevice_GroupProperties>
 			{
