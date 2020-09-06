@@ -59,11 +59,83 @@
             <li>
               Reference
               <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
                 <li><a href="#func-members">Functions</a></li>
               </ul>
             </li>
           </ul>
         </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_framebuffer_1_1_create_info.html" class="m-doc">VT::V1::Framebuffer::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a><br /></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_framebuffer.html" class="m-doc">VT::V1::Framebuffer</a>
+            </dt>
+            <dd>Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_attachment_description.html" class="m-doc">VT::V1::RenderPass::AttachmentDescription</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_attachment_reference.html" class="m-doc">VT::V1::RenderPass::AttachmentReference</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentReference">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_begin_info.html" class="m-doc">VT::V1::RenderPass::BeginInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassBeginInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_subpass_description.html" class="m-doc">VT::V1::RenderPass::SubpassDescription</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescription">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_subpass_dependency.html" class="m-doc">VT::V1::RenderPass::SubpassDependency</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_render_pass_1_1_create_info.html" class="m-doc">VT::V1::RenderPass::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_render_pass.html" class="m-doc">VT::V1::RenderPass</a>
+            </dt>
+            <dd>A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.</dd>
+          </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> = VkFramebuffer
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebuffer">Specification</a><br /></dd>
+            <dt>
+              using <a href="#ga089c577de8c46eede342feaa75af65b0" class="m-doc">CreateFlags</a> = Bitmask&lt;EFrameBufferCreateFlag, VkFramebufferCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlags">Specification</a><br /></dd>
+            <dt>
+              using <a href="#ga200aa837668e5a1e79d7faa13906c0cc" class="m-doc">Handle</a> = VkRenderPass
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPass">Specification</a></dd>
+            <dt>
+              using <a href="#gadbc2f30e8e202c9ea01a4c3871b10c2e" class="m-doc">AttachmentDescriptionFlags</a> = Bitmask&lt;EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlags">Specification</a></dd>
+            <dt>
+              using <a href="#gad740975c6b30880db8cffc222364d5f4" class="m-doc">SubpassDesriptionFlags</a> = Bitmask&lt;ESubpassDescriptionFlag, VkSubpassDescriptionFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlags">Specification</a></dd>
+            <dt>
+              using <a href="#gae36a537fd8ba54be47f9224a19d46369" class="m-doc">CreateFlags</a> = Bitmask&lt;EUndefined, VkRenderPassCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateFlags">Specification</a></dd>
+          </dl>
+        </section>
         <section id="func-members">
           <h2><a href="#func-members">Functions</a></h2>
           <dl class="m-doc">
@@ -77,7 +149,78 @@
               <span class="m-doc-wrap-bumper">static void <a href="#gad325d76670af5d89a857da93778ce75a" class="m-doc">EndRenderPass</a>(</span><span class="m-doc-wrap">Handle _commandBuffer)</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdEndRenderPass">Specification</a> .</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gae862351579f4bce2a2108123265de303" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHanle,
+              const CreateInfo&amp; _creationSpec,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _framebuffer) -&gt; EResult</span>
+            </dt>
+            <dd>Creates a framebuffer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga7ddb08f32d384b378fa6e25ada999661" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _framebuffer,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a framebuffer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gad6ef1c7ca068d5929bfae190981ef691" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _renderPass) -&gt; EResult</span>
+            </dt>
+            <dd>Create a render pass.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga3266cd6fc76d8aa0acad360a34678c00" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _renderPass,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a render pass.</dd>
           </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="gaabdff6e5480aff769cbf9cddd5b8253f"><div>
+            <h3>
+              using <a href="#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc-self">Handle</a> = VkFramebuffer
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebuffer">Specification</a><br /></p>
+          </div></section>
+          <section class="m-doc-details" id="ga089c577de8c46eede342feaa75af65b0"><div>
+            <h3>
+              using <a href="#ga089c577de8c46eede342feaa75af65b0" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EFrameBufferCreateFlag, VkFramebufferCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlags">Specification</a><br /></p>
+          </div></section>
+          <section class="m-doc-details" id="ga200aa837668e5a1e79d7faa13906c0cc"><div>
+            <h3>
+              using <a href="#ga200aa837668e5a1e79d7faa13906c0cc" class="m-doc-self">Handle</a> = VkRenderPass
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPass">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gadbc2f30e8e202c9ea01a4c3871b10c2e"><div>
+            <h3>
+              using <a href="#gadbc2f30e8e202c9ea01a4c3871b10c2e" class="m-doc-self">AttachmentDescriptionFlags</a> = Bitmask&lt;EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gad740975c6b30880db8cffc222364d5f4"><div>
+            <h3>
+              using <a href="#gad740975c6b30880db8cffc222364d5f4" class="m-doc-self">SubpassDesriptionFlags</a> = Bitmask&lt;ESubpassDescriptionFlag, VkSubpassDescriptionFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gae36a537fd8ba54be47f9224a19d46369"><div>
+            <h3>
+              using <a href="#gae36a537fd8ba54be47f9224a19d46369" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EUndefined, VkRenderPassCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateFlags">Specification</a></p>
+          </div></section>
         </section>
         <section>
           <h2>Function documentation</h2>
@@ -107,6 +250,132 @@
                 </tr>
               </tbody>
             </table>
+          </div></section>
+          <section class="m-doc-details" id="gae862351579f4bce2a2108123265de303"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae862351579f4bce2a2108123265de303" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHanle,
+              const CreateInfo&amp; _creationSpec,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _framebuffer)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p>Creates a framebuffer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHanle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_creationSpec</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_framebuffer</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFramebuffer">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga7ddb08f32d384b378fa6e25ada999661"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7ddb08f32d384b378fa6e25ada999661" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _framebuffer,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a framebuffer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_framebuffer</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFramebuffer">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gad6ef1c7ca068d5929bfae190981ef691"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad6ef1c7ca068d5929bfae190981ef691" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _renderPass)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p>Create a render pass.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_renderPass</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#renderpass-creation">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga3266cd6fc76d8aa0acad360a34678c00"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga3266cd6fc76d8aa0acad360a34678c00" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _renderPass,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a render pass.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_renderPass</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyRenderPass">Specification</a></p>
           </div></section>
         </section>
       </div>

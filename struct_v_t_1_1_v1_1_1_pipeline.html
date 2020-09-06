@@ -85,21 +85,17 @@
             </dt>
             <dd><a href="struct_v_t_1_1_v1_1_1_pipeline.html" class="m-doc">Pipeline</a> cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.</dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_color_blend_state.html" class="m-doc">ColorBlendState</a>
-            </dt>
-            <dd><br /></dd>
-            <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_compute.html" class="m-doc">Compute</a>
             </dt>
             <dd>The compute pipeline represents a compute shader.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_depth_stencil_state.html" class="m-doc">DepthStencilState</a>
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="struct_v_t_1_1_v1_1_1_pipeline.html" class="m-doc">Pipeline</a> state controlling the depth bounds tests, stencil test, and depth test.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_dynamic_state.html" class="m-doc">DynamicState</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Used to indicate which properties of the pipeline state object are dynamic and can be changed independently of the pipeline state.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_graphics.html" class="m-doc">Graphics</a>
             </dt>
@@ -107,7 +103,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_input_assembly_state.html" class="m-doc">InputAssemblyState</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Each draw is made up of zero or more vertices and zero or more instances, which are processed by the device and result in the assembly of primitives. Primitives are assembled according to the <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_input_assembly_state.html" class="m-doc">InputAssemblyState</a> member.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout.html" class="m-doc">Layout</a>
             </dt>
@@ -115,11 +111,11 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_multi_sample_state.html" class="m-doc">MultiSampleState</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Structure specifying parameters of a newly created pipeline multisample state.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_rasterization_state.html" class="m-doc">RasterizationState</a>
             </dt>
-            <dd><br /></dd>
+            <dd>Rasterization is the process by which a primitive is converted to a two-dimensional image. Each point of this image contains associated data such as depth, color, or other attributes.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_shader_stage.html" class="m-doc">ShaderStage</a>
             </dt>
@@ -131,70 +127,35 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_tessellation_state.html" class="m-doc">TessellationState</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Tessellation involves three pipeline stages.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_vertex_input_state.html" class="m-doc">VertexInputState</a>
             </dt>
             <dd><span></span></dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_viewport_state.html" class="m-doc">ViewportState</a>
+              using <a href="group___a_p_i_spec___pipelines.html#gac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a> = VkPipeline
             </dt>
-            <dd><span></span></dd>
-            <dt id="ac3cd41e887e44ddb63f3dfb7248c3a64">
-              using <a href="#ac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc-self">Handle</a> = VkPipeline
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipeline">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___pipelines.html#ga87dda678425b6a6dacb00d7f6528cc87" class="m-doc">ShaderStageFlags</a> = Bitmask&lt;<a href="group___corridors.html#ga79fb17db654ab15368928d02ee981690" class="m-doc">EShaderStageFlag</a>, VkShaderStageFlags&gt;
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipeline">Specification</a><br /></dd>
-            <dt id="a87dda678425b6a6dacb00d7f6528cc87">
-              using <a href="#a87dda678425b6a6dacb00d7f6528cc87" class="m-doc-self">ShaderStageFlags</a> = Bitmask&lt;<a href="group___corridors.html#ga79fb17db654ab15368928d02ee981690" class="m-doc">EShaderStageFlag</a>, VkShaderStageFlags&gt;
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___synchronization__and___cache___control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">StageFlags</a> = Bitmask&lt;<a href="group___corridors.html#gaf61657ceda0f4eaabf29abbd25f826fd" class="m-doc">EPipelineStageFlag</a>, VkPipelineStageFlags&gt;
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a><br /></dd>
-            <dt id="ac7aacda0e58a9fc0a71892049d4b3e0d">
-              using <a href="#ac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc-self">StageFlags</a> = Bitmask&lt;<a href="group___corridors.html#gaf61657ceda0f4eaabf29abbd25f826fd" class="m-doc">EPipelineStageFlag</a>, VkPipelineStageFlags&gt;
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a></dd>
           </dl>
         </section>
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ae0cf8631b00baad67345cfbf4495905f" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline.html#ac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a> _pipeline,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___pipelines.html#gae0cf8631b00baad67345cfbf4495905f" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group___a_p_i_spec___pipelines.html#gac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a> _pipeline,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy a pipeline object.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="ae0cf8631b00baad67345cfbf4495905f"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />Pipeline::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae0cf8631b00baad67345cfbf4495905f" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline.html#ac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a> _pipeline,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
-            </h3>
-            <p>Destroy a pipeline object.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_pipeline</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyPipeline">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

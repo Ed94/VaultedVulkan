@@ -67,7 +67,7 @@
             </li>
           </ul>
         </div>
-<p>A descriptor set object is an opaque object containing storage for a set of descriptors, where the types and number of descriptors is defined by a descriptor set layout.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-setlayout">Specification</a></p><aside class="m-note m-dim"><h4><a href="todo.html#_todo000029" class="m-doc">Todo</a></h4><p>See if this should be outside of the layout structure.</p></aside>
+<p>A descriptor set object is an opaque object containing storage for a set of descriptors, where the types and number of descriptors is defined by a descriptor set layout.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-setlayout">Specification</a></p>
         <section id="derived-classes">
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
@@ -83,140 +83,48 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_binding.html" class="m-doc">Binding</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBinding">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBinding">Specification</a></dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateInfo">Specification</a><br /></dd>
+            <dd>Information about the descriptor set layout.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_support.html" class="m-doc">Support</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutSupport">Specification</a><br /></dd>
-            <dt id="a8b5c84d60ca87b5b0f8ada365e65892e">
-              using <a href="#a8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc-self">Handle</a> = VkDescriptorSetLayout
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutSupport">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___resource___descriptors.html#ga8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc">Handle</a> = VkDescriptorSetLayout
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayout">Specification</a><br /></dd>
-            <dt id="a06f80bbc5f8342fda105f63341fd66c0">
-              using <a href="#a06f80bbc5f8342fda105f63341fd66c0" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#gaf2486f3d3ba5e409b111d4ced3b84b9f" class="m-doc">EDescriptorSetLayoutCreateFlag</a>, <a href="group___flags__and___bitmasks.html#ga3f56f691948d0b060a953c74460f359d" class="m-doc">Flags</a>&gt;
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayout">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___resource___descriptors.html#ga60acc84b95aa755e4571cbe2a51adb3d" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#gaf2486f3d3ba5e409b111d4ced3b84b9f" class="m-doc">EDescriptorSetLayoutCreateFlag</a>, VkDescriptorSetLayoutCreateFlags&gt;
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateFlags">Specification</a><br /></dd>
           </dl>
         </section>
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a58c6acc83f4ce7a0b6a5e5d305cead18" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___resource___descriptors.html#ga58c6acc83f4ce7a0b6a5e5d305cead18" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set.html#a8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc">Handle</a>&amp; _setLayout) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc">Handle</a>&amp; _setLayout) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a descriptor set layout.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ae493317fcc780a1bd0addeb4e460f8a2" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set.html#a8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc">Handle</a> _descriptorSet,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___resource___descriptors.html#gae493317fcc780a1bd0addeb4e460f8a2" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc">Handle</a> _descriptorSet,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy a descriptor set layout.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#ad2fa9a3e938ee45b6e6d4ded88510424" class="m-doc">GetSupport</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___resource___descriptors.html#gad2fa9a3e938ee45b6e6d4ded88510424" class="m-doc">GetSupport</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_support.html" class="m-doc">Support</a>&amp; _support)</span>
             </dt>
             <dd>Query whether a descriptor set layout can be created.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a58c6acc83f4ce7a0b6a5e5d305cead18"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Pipeline::<wbr />Layout::<wbr />DescriptorSet::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a58c6acc83f4ce7a0b6a5e5d305cead18" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              const <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set.html#a8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc">Handle</a>&amp; _setLayout)</span></span>
-            </h3>
-            <p>Create a descriptor set layout.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_createInfo</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_setLayout</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorSetLayout">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="ae493317fcc780a1bd0addeb4e460f8a2"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />Pipeline::<wbr />Layout::<wbr />DescriptorSet::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae493317fcc780a1bd0addeb4e460f8a2" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set.html#a8b5c84d60ca87b5b0f8ada365e65892e" class="m-doc">Handle</a> _descriptorSet,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
-            </h3>
-            <p>Destroy a descriptor set layout.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_descriptorSet</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorSetLayout">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="ad2fa9a3e938ee45b6e6d4ded88510424"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />Pipeline::<wbr />Layout::<wbr />DescriptorSet::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad2fa9a3e938ee45b6e6d4ded88510424" class="m-doc-self">GetSupport</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_descriptor_set_1_1_support.html" class="m-doc">Support</a>&amp; _support)</span></span>
-            </h3>
-            <p>Query whether a descriptor set layout can be created.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_createInfo</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_support</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetDescriptorSetLayoutSupport">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

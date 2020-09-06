@@ -74,7 +74,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_framebuffer.html" class="m-doc">VT::V2::Framebuffer</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -84,12 +84,12 @@
               struct <a href="struct_v_t_1_1_v1_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a><br /></dd>
-            <dt id="aabdff6e5480aff769cbf9cddd5b8253f">
-              using <a href="#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc-self">Handle</a> = VkFramebuffer
+            <dt>
+              using <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> = VkFramebuffer
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebuffer">Specification</a><br /></dd>
-            <dt id="a089c577de8c46eede342feaa75af65b0">
-              using <a href="#a089c577de8c46eede342feaa75af65b0" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga8e677e9399fd6d13d95f5e44fecf42dd" class="m-doc">EFrameBufferCreateFlag</a>, VkFramebufferCreateFlags&gt;
+            <dt>
+              using <a href="group___a_p_i_spec___render___pass.html#ga089c577de8c46eede342feaa75af65b0" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga8e677e9399fd6d13d95f5e44fecf42dd" class="m-doc">EFrameBufferCreateFlag</a>, VkFramebufferCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlags">Specification</a><br /></dd>
           </dl>
@@ -98,83 +98,19 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ae862351579f4bce2a2108123265de303" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHanle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___render___pass.html#gae862351579f4bce2a2108123265de303" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHanle,
               const <a href="struct_v_t_1_1_v1_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Creates a framebuffer.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a7ddb08f32d384b378fa6e25ada999661" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___render___pass.html#ga7ddb08f32d384b378fa6e25ada999661" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy a framebuffer.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="ae862351579f4bce2a2108123265de303"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Framebuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae862351579f4bce2a2108123265de303" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHanle,
-              const <a href="struct_v_t_1_1_v1_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer)</span></span>
-            </h3>
-            <p>Creates a framebuffer.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHanle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_creationSpec</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_framebuffer</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFramebuffer">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a7ddb08f32d384b378fa6e25ada999661"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />Framebuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ddb08f32d384b378fa6e25ada999661" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
-            </h3>
-            <p>Destroy a framebuffer.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_framebuffer</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFramebuffer">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

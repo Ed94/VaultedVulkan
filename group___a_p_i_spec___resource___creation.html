@@ -60,6 +60,8 @@
               Reference
               <ul>
                 <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
+                <li><a href="#func-members">Functions</a></li>
               </ul>
             </li>
           </ul>
@@ -71,7 +73,634 @@
               struct <a href="struct_v_t_1_1_v0_1_1_memory_1_1_requirements.html" class="m-doc">VT::V0::Memory::Requirements</a>
             </dt>
             <dd>Structure describing the memory requirements for a buffer or an image.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_buffer_1_1_create_info.html" class="m-doc">VT::V1::Buffer::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_buffer.html" class="m-doc">VT::V1::Buffer</a>
+            </dt>
+            <dd>A linear array of data.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_buffer_view_1_1_create_info.html" class="m-doc">VT::V1::BufferView::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_buffer_view.html" class="m-doc">VT::V1::BufferView</a>
+            </dt>
+            <dd>A buffer view represents a contiguous range of a buffer and a specific format to be used to interpret the data.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_image_1_1_create_info.html" class="m-doc">VT::V1::Image::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_image_1_1_subresource_range.html" class="m-doc">VT::V1::Image::SubresourceRange</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageSubresourceRange">Specification</a><br /></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_image.html" class="m-doc">VT::V1::Image</a>
+            </dt>
+            <dd>Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes (e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, or by directly specifying them as parameters to certain commands.</dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_image_view_1_1_create_info.html" class="m-doc">VT::V1::ImageView::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_image_view.html" class="m-doc">VT::V1::ImageView</a>
+            </dt>
+            <dd>An object that represents an image subresource range of a specific image, and state that controls how the contents are interpreted.</dd>
           </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#ga6c9a4b68427349a760f9a371985418a5" class="m-doc">Handle</a> = VkBuffer
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBuffer">Specification</a><br /></dd>
+            <dt>
+              using <a href="#gaf81020537389ce373481b6fc0d3119cd" class="m-doc">CreateFlags</a> = Bitmask&lt;EBufferCreateFlag, VkBufferCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateFlags">Specification</a></dd>
+            <dt>
+              using <a href="#ga82ced2a4067bf2aa47b2cbeeef637504" class="m-doc">UsageFlags</a> = Bitmask&lt;EBufferUsage, VkBufferUsageFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferUsageFlags">Specification</a></dd>
+            <dt>
+              using <a href="#ga12fa38832f73e76721492ee2a2553435" class="m-doc">Handle</a> = VkBufferView
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferView">Specification</a></dd>
+            <dt>
+              using <a href="#ga27b0c2d0597381d3e3c4cba321601995" class="m-doc">CreateFlags</a> = Bitmask&lt;EUndefined, VkBufferViewCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferViewCreateFlags">Specification</a></dd>
+            <dt>
+              using <a href="#ga274108ac188cab9c25c90deb9a46be8c" class="m-doc">Handle</a> = VkImage
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImage">Specification</a></dd>
+            <dt>
+              using <a href="#gaf4efff5b3fecd99572288277a64c72fc" class="m-doc">AspectFlags</a> = Bitmask&lt;EImageAspect, VkImageAspectFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageAspectFlags">Specification</a></dd>
+            <dt>
+              using <a href="#gaa85f6dde43ae78ad55d230654e31e1cb" class="m-doc">CreateFlags</a> = Bitmask&lt;EImageCreateFlag, VkImageCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateFlags">Specification</a></dd>
+            <dt>
+              using <a href="#gaaf03ec71f584d986d38ab15000dc232c" class="m-doc">UsageFlags</a> = Bitmask&lt;EImageUsage, VkImageUsageFlags&gt;
+            </dt>
+            <dd>Bitmask specifying intended usage of an image.</dd>
+            <dt>
+              using <a href="#ga46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a> = VkImageView
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a></dd>
+            <dt>
+              using <a href="#ga03c2f0d98ce1585bba7e0f081484220c" class="m-doc">CreateFlags</a> = Bitmask&lt;EImageViewCreateFlag, VkImageViewCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a></dd>
+          </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga50e8f1753244e005bbd44492749a05bb" class="m-doc">BindMemory</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _buffer,
+              Memory::Handle _memory,
+              DeviceSize _memoryOffset) -&gt; EResult</span>
+            </dt>
+            <dd>Attach memory to a buffer object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaced964904bafc5c2863073ebc2b21531" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _buffer) -&gt; EResult</span>
+            </dt>
+            <dd>Create a new buffer object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gaba90b0f11229a5d2b88f0ad8b321ee67" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _buffer,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a buffer object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga27ed1b3497480856070e473fd9e1e0b2" class="m-doc">GetMemoryRequirements</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _buffer,
+              Memory::Requirements&amp; _memoryRequirements)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetBufferMemoryRequirements">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga195ef03b1c59b7bbed7d7f04102cb3a9" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _bufferView) -&gt; EResult</span>
+            </dt>
+            <dd>Create a new buffer view object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga9c3daf5f529ddfa07cb96b9d50d73b83" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _bufferView,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a buffer view object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gac20bcfc7ca04d50554fb9613fa9955c9" class="m-doc">BindMemory</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _image,
+              Memory::Handle _memory,
+              DeviceSize _memoryOffset) -&gt; EResult</span>
+            </dt>
+            <dd>Attach memory to a VkImage object created without the VK_IMAGE_CREATE_DISJOINT_BIT set.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga6fcc47d9c1b9e9706531940a1c99fad8" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _imageHandle) -&gt; EResult</span>
+            </dt>
+            <dd>Create an image object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga8eb81e905f03d060097d0c18905f4d83" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _image,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy an image object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga6bc8c2d32f71da98c638aff743950352" class="m-doc">GetMemoryRequirements</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _image,
+              Memory::Requirements&amp; _memoryRequirements)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetImageMemoryRequirements">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga4f28bad270e6294cecfbfbb2ac7d14b4" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _creationSpec,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _imageView) -&gt; EResult</span>
+            </dt>
+            <dd>Create an image view object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga367697cfcd9d2ccce195d903aeef846d" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _imageView,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy an image view.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="ga6c9a4b68427349a760f9a371985418a5"><div>
+            <h3>
+              using <a href="#ga6c9a4b68427349a760f9a371985418a5" class="m-doc-self">Handle</a> = VkBuffer
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBuffer">Specification</a><br /></p>
+          </div></section>
+          <section class="m-doc-details" id="gaf81020537389ce373481b6fc0d3119cd"><div>
+            <h3>
+              using <a href="#gaf81020537389ce373481b6fc0d3119cd" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EBufferCreateFlag, VkBufferCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga82ced2a4067bf2aa47b2cbeeef637504"><div>
+            <h3>
+              using <a href="#ga82ced2a4067bf2aa47b2cbeeef637504" class="m-doc-self">UsageFlags</a> = Bitmask&lt;EBufferUsage, VkBufferUsageFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferUsageFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga12fa38832f73e76721492ee2a2553435"><div>
+            <h3>
+              using <a href="#ga12fa38832f73e76721492ee2a2553435" class="m-doc-self">Handle</a> = VkBufferView
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferView">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga27b0c2d0597381d3e3c4cba321601995"><div>
+            <h3>
+              using <a href="#ga27b0c2d0597381d3e3c4cba321601995" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EUndefined, VkBufferViewCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferViewCreateFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga274108ac188cab9c25c90deb9a46be8c"><div>
+            <h3>
+              using <a href="#ga274108ac188cab9c25c90deb9a46be8c" class="m-doc-self">Handle</a> = VkImage
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImage">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaf4efff5b3fecd99572288277a64c72fc"><div>
+            <h3>
+              using <a href="#gaf4efff5b3fecd99572288277a64c72fc" class="m-doc-self">AspectFlags</a> = Bitmask&lt;EImageAspect, VkImageAspectFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageAspectFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaa85f6dde43ae78ad55d230654e31e1cb"><div>
+            <h3>
+              using <a href="#gaa85f6dde43ae78ad55d230654e31e1cb" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EImageCreateFlag, VkImageCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaaf03ec71f584d986d38ab15000dc232c"><div>
+            <h3>
+              using <a href="#gaaf03ec71f584d986d38ab15000dc232c" class="m-doc-self">UsageFlags</a> = Bitmask&lt;EImageUsage, VkImageUsageFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Bitmask specifying intended usage of an image.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga46afc39800ae00c47b6af552c7cabafd"><div>
+            <h3>
+              using <a href="#ga46afc39800ae00c47b6af552c7cabafd" class="m-doc-self">Handle</a> = VkImageView
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga03c2f0d98ce1585bba7e0f081484220c"><div>
+            <h3>
+              using <a href="#ga03c2f0d98ce1585bba7e0f081484220c" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EImageViewCreateFlag, VkImageViewCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a></p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ga50e8f1753244e005bbd44492749a05bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga50e8f1753244e005bbd44492749a05bb" class="m-doc-self">BindMemory</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _buffer,
+              Memory::Handle _memory,
+              DeviceSize _memoryOffset)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Attach memory to a buffer object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_buffer</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_memory</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_memoryOffset</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBindBufferMemory">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaced964904bafc5c2863073ebc2b21531"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaced964904bafc5c2863073ebc2b21531" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _buffer)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Create a new buffer object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_buffer</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBuffer">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaba90b0f11229a5d2b88f0ad8b321ee67"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaba90b0f11229a5d2b88f0ad8b321ee67" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _buffer,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a buffer object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_buffer</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyBuffer">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga27ed1b3497480856070e473fd9e1e0b2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga27ed1b3497480856070e473fd9e1e0b2" class="m-doc-self">GetMemoryRequirements</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _buffer,
+              Memory::Requirements&amp; _memoryRequirements)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetBufferMemoryRequirements">Specification</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_buffer</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_memoryRequirements</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ga195ef03b1c59b7bbed7d7f04102cb3a9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga195ef03b1c59b7bbed7d7f04102cb3a9" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _bufferView)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Create a new buffer view object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_info</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_bufferView</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBufferView">Specification</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga9c3daf5f529ddfa07cb96b9d50d73b83"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9c3daf5f529ddfa07cb96b9d50d73b83" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _bufferView,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a buffer view object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_bufferView</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gac20bcfc7ca04d50554fb9613fa9955c9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac20bcfc7ca04d50554fb9613fa9955c9" class="m-doc-self">BindMemory</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _image,
+              Memory::Handle _memory,
+              DeviceSize _memoryOffset)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Attach memory to a VkImage object created without the VK_IMAGE_CREATE_DISJOINT_BIT set.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_image</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_memory</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_memoryOffset</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkBindImageMemory">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga6fcc47d9c1b9e9706531940a1c99fad8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6fcc47d9c1b9e9706531940a1c99fad8" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _imageHandle)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Create an image object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_imageHandle</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImage">Specification</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga8eb81e905f03d060097d0c18905f4d83"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8eb81e905f03d060097d0c18905f4d83" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _image,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy an image object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_image</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImage">Specification</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga6bc8c2d32f71da98c638aff743950352"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6bc8c2d32f71da98c638aff743950352" class="m-doc-self">GetMemoryRequirements</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _image,
+              Memory::Requirements&amp; _memoryRequirements)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetImageMemoryRequirements">Specification</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_image</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_memoryRequirements</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ga4f28bad270e6294cecfbfbb2ac7d14b4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4f28bad270e6294cecfbfbb2ac7d14b4" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _creationSpec,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _imageView)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Create an image view object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_creationSpec</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_imageView</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImageView">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga367697cfcd9d2ccce195d903aeef846d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga367697cfcd9d2ccce195d903aeef846d" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _imageView,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy an image view.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_imageView</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImageView">Specification</a></p>
+          </div></section>
         </section>
       </div>
     </div>

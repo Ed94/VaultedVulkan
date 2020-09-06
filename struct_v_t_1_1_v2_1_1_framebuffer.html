@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v2.html">V2</a>::<wbr/></span>Framebuffer <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___render_pass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -92,7 +92,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt id="a545babaf66106ac4acd68aa28bdee177">
               using <a href="#a545babaf66106ac4acd68aa28bdee177" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v1_1_1_framebuffer.html" class="m-doc">V1::<wbr />Framebuffer</a>
             </dt>
@@ -105,24 +105,24 @@
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#ae73c21e104c4d49a2d5f379b37ae4d71" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHanle,
               const <a href="struct_v_t_1_1_v2_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Creates a framebuffer.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#aa57a0b270da00bbb5688b836e7d44165" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer)</span>
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer)</span>
             </dt>
             <dd>Destroy a framebuffer.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#ae862351579f4bce2a2108123265de303" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHanle,
               const <a href="struct_v_t_1_1_v2_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Creates a framebuffer.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#a7ddb08f32d384b378fa6e25ada999661" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer,
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy a framebuffer.</dd>
@@ -134,7 +134,7 @@
             <h3>
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Framebuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae73c21e104c4d49a2d5f379b37ae4d71" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHanle,
               const <a href="struct_v_t_1_1_v2_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer)</span></span>
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer)</span></span>
             </h3>
             <p>Creates a framebuffer.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -160,7 +160,7 @@
           <section class="m-doc-details" id="aa57a0b270da00bbb5688b836e7d44165"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Framebuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa57a0b270da00bbb5688b836e7d44165" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer)</span></span>
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer)</span></span>
             </h3>
             <p>Destroy a framebuffer.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -184,7 +184,7 @@
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Framebuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae862351579f4bce2a2108123265de303" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHanle,
               const <a href="struct_v_t_1_1_v2_1_1_framebuffer_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer)</span></span>
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a>&amp; _framebuffer)</span></span>
             </h3>
             <p>Creates a framebuffer.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -215,7 +215,7 @@
           <section class="m-doc-details" id="a7ddb08f32d384b378fa6e25ada999661"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Framebuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ddb08f32d384b378fa6e25ada999661" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_framebuffer.html#aabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer,
+              <a href="group___a_p_i_spec___render___pass.html#gaabdff6e5480aff769cbf9cddd5b8253f" class="m-doc">Handle</a> _framebuffer,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
             <p>Destroy a framebuffer.</p>

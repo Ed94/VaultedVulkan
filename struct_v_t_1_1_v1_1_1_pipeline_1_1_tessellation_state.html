@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span><span class="m-breadcrumb"><a href="struct_v_t_1_1_v1_1_1_pipeline.html">Pipeline</a>::<wbr/></span>TessellationState <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Tessellation involves three pipeline stages.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -66,6 +66,7 @@
             </li>
           </ul>
         </div>
+<p>First, a tessellation control shader transforms control points of a patch and can produce per-patch data. Second, a fixed-function tessellator generates multiple primitives corresponding to a tessellation of the patch in (u,v) or (u,v,w) parameter space. Third, a tessellation evaluation shader transforms the vertices of the tessellated patch, for example to compute their positions and attributes as part of the tessellated surface. The tessellator is enabled when the pipeline contains both a tessellation control shader and a tessellation evaluation shader.</p>
         <section id="derived-classes">
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
@@ -82,8 +83,8 @@
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_tessellation_state_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateInfo">Specification</a><br /></dd>
-            <dt id="a11346926e88ebe7628e0f4a3633a993d">
-              using <a href="#a11346926e88ebe7628e0f4a3633a993d" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, VkPipelineTessellationStateCreateFlags&gt;
+            <dt>
+              using <a href="group___a_p_i_spec___tessellation.html#ga11346926e88ebe7628e0f4a3633a993d" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, VkPipelineTessellationStateCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateFlags">Specification</a><br /></dd>
           </dl>

@@ -92,7 +92,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_pipeline_1_1_cache_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt id="af7b6f4a9baed472af381d707e094fef8">
               using <a href="#af7b6f4a9baed472af381d707e094fef8" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Parent::<wbr />Cache</a>
             </dt>
@@ -105,24 +105,24 @@
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#a0085e358846bf68a832bd3f9bad9fd05" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v2_1_1_pipeline_1_1_cache_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd>Create a pipeline cache.</dd>
+            <dd>Create a pipeline cache (Uses the default allocator).</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#a509e6ab3b41a3601fb343cd090b917f0" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache)</span>
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache)</span>
             </dt>
             <dd>Destroy a pipeline cache.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#a61abfdfd998078f86cceba6455b8a3a2" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v2_1_1_pipeline_1_1_cache_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a pipeline cache.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#a5c187076189a69dc611a7552425699ff" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache,
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy a pipeline cache.</dd>
@@ -134,9 +134,9 @@
             <h3>
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Pipeline::<wbr />Cache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0085e358846bf68a832bd3f9bad9fd05" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v2_1_1_pipeline_1_1_cache_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache)</span></span>
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache)</span></span>
             </h3>
-            <p>Create a pipeline cache.</p>
+            <p>Create a pipeline cache (Uses the default allocator).</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -156,12 +156,11 @@
                 </tr>
               </tbody>
             </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreatePipelineCache">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="a509e6ab3b41a3601fb343cd090b917f0"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Pipeline::<wbr />Cache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a509e6ab3b41a3601fb343cd090b917f0" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache)</span></span>
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache)</span></span>
             </h3>
             <p>Destroy a pipeline cache.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -185,7 +184,7 @@
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Pipeline::<wbr />Cache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a61abfdfd998078f86cceba6455b8a3a2" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v2_1_1_pipeline_1_1_cache_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache)</span></span>
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a>&amp; _pipelineCache)</span></span>
             </h3>
             <p>Create a pipeline cache.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -216,7 +215,7 @@
           <section class="m-doc-details" id="a5c187076189a69dc611a7552425699ff"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Pipeline::<wbr />Cache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5c187076189a69dc611a7552425699ff" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache,
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _cache,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
             <p>Destroy a pipeline cache.</p>

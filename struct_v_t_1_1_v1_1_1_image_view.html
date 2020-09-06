@@ -83,98 +83,38 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_image_view_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a><br /></dd>
-            <dt id="a46afc39800ae00c47b6af552c7cabafd">
-              using <a href="#a46afc39800ae00c47b6af552c7cabafd" class="m-doc-self">Handle</a> = VkImageView
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___resource___creation.html#ga46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a> = VkImageView
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a></dd>
             <dt id="a587c8695d3ee8a1cc9b8aea0e0553180">
               using <a href="#a587c8695d3ee8a1cc9b8aea0e0553180" class="m-doc-self">EViewType</a> = <a href="group___corridors.html#gaac79881e354210ff39e8769e0b41cb6e" class="m-doc">EImageViewType</a>
             </dt>
             <dd><span></span></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___resource___creation.html#ga03c2f0d98ce1585bba7e0f081484220c" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#gabfd86da21020e596e5186012af8cb5aa" class="m-doc">EImageViewCreateFlag</a>, VkImageViewCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a></dd>
           </dl>
         </section>
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a4f28bad270e6294cecfbfbb2ac7d14b4" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___resource___creation.html#ga4f28bad270e6294cecfbfbb2ac7d14b4" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v1_1_1_image_view_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_image_view.html#a46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a>&amp; _imageView) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___resource___creation.html#ga46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a>&amp; _imageView) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create an image view object.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a367697cfcd9d2ccce195d903aeef846d" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_image_view.html#a46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a> _imageView,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___resource___creation.html#ga367697cfcd9d2ccce195d903aeef846d" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group___a_p_i_spec___resource___creation.html#ga46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a> _imageView,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy an image view.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a4f28bad270e6294cecfbfbb2ac7d14b4"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />ImageView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4f28bad270e6294cecfbfbb2ac7d14b4" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              const <a href="struct_v_t_1_1_v1_1_1_image_view_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_image_view.html#a46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a>&amp; _imageView)</span></span>
-            </h3>
-            <p>Create an image view object.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_creationSpec</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_imageView</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImageView">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a367697cfcd9d2ccce195d903aeef846d"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />ImageView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a367697cfcd9d2ccce195d903aeef846d" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_image_view.html#a46afc39800ae00c47b6af552c7cabafd" class="m-doc">Handle</a> _imageView,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
-            </h3>
-            <p>Destroy an image view.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_imageView</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImageView">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

@@ -88,8 +88,8 @@
               struct <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_graphics_1_1_shader_group.html" class="m-doc">ShaderGroup</a>
             </dt>
             <dd><a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_graphics.html" class="m-doc">Graphics</a> pipelines can contain multiple shader groups that can be bound individually. \ Each shader group behaves as if it was a pipeline using the shader groups state.</dd>
-            <dt id="ab82c42a369f9af4ed0c1889a5da6e3ce">
-              using <a href="#ab82c42a369f9af4ed0c1889a5da6e3ce" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga8423a7c9d5e300eecb1d2104d4541b4d" class="m-doc">EPipelineCreateFlag</a>, VkPipelineCreateFlags&gt;
+            <dt>
+              using <a href="group___a_p_i_spec___pipelines.html#gab82c42a369f9af4ed0c1889a5da6e3ce" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga8423a7c9d5e300eecb1d2104d4541b4d" class="m-doc">EPipelineCreateFlag</a>, VkPipelineCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a><br /></dd>
           </dl>
@@ -98,61 +98,15 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a286c34f8c51dde3367470d27fd615efc" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _pipelineCache,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___pipelines.html#ga286c34f8c51dde3367470d27fd615efc" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group___a_p_i_spec___pipelines.html#ga7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _pipelineCache,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _createInfoCount,
               const <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_graphics_1_1_create_info.html" class="m-doc">CreateInfo</a>* _createInfos,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline.html#ac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a>* _pipelines) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___pipelines.html#gac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a>* _pipelines) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a graphics pipeline.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a286c34f8c51dde3367470d27fd615efc"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Pipeline::<wbr />Graphics::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a286c34f8c51dde3367470d27fd615efc" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html#a7504b1e0f1aec1e5e26b99f0a1088883" class="m-doc">Cache::<wbr />Handle</a> _pipelineCache,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _createInfoCount,
-              const <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_graphics_1_1_create_info.html" class="m-doc">CreateInfo</a>* _createInfos,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline.html#ac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a>* _pipelines)</span></span>
-            </h3>
-            <p>Create a graphics pipeline.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_deviceHandle</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_pipelineCache</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_createInfoCount</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_createInfos</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_pipelines</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateGraphicsPipelines">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

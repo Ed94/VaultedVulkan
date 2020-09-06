@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span>DescriptorSet <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
         </h1>
-        <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-sets">Specification</a></p>
+        <p>Descriptors are grouped together into descriptor set objects. A descriptor set object is an opaque object containing storage for a set of descriptors, where the types and number of descriptors is defined by a descriptor set layout.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -67,6 +67,7 @@
             </li>
           </ul>
         </div>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#descriptorsets-sets">Specification</a></p>
         <section id="derived-classes">
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
@@ -82,77 +83,37 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_buffer_info.html" class="m-doc">BufferInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBufferInfo">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBufferInfo">Specification</a></dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_copy.html" class="m-doc">Copy</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a></dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_image_info.html" class="m-doc">ImageInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a></dd>
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_write.html" class="m-doc">Write</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a><br /></dd>
-            <dt id="a919d5708835c743707d39fa067ab85d7">
-              using <a href="#a919d5708835c743707d39fa067ab85d7" class="m-doc-self">Handle</a> = VkDescriptorSet
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___resource___descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">Handle</a> = VkDescriptorSet
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSet">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSet">Specification</a></dd>
           </dl>
         </section>
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#adc96c67f99f2e1ffecf000d7a9738f93" class="m-doc">Render</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___resource___descriptors.html#ga6fac08040e5ca77b0a8193493ebb3089" class="m-doc">Update</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorWriteCount,
               const <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_write.html" class="m-doc">Write</a>* _descriptorWrites,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorCopyCount,
               const <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_copy.html" class="m-doc">Copy</a>* _descriptorCopies)</span>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUpdateDescriptorSets">Specification</a> .</dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUpdateDescriptorSets">Specification</a>.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="adc96c67f99f2e1ffecf000d7a9738f93"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />DescriptorSet::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc96c67f99f2e1ffecf000d7a9738f93" class="m-doc-self">Render</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorWriteCount,
-              const <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_write.html" class="m-doc">Write</a>* _descriptorWrites,
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorCopyCount,
-              const <a href="struct_v_t_1_1_v1_1_1_descriptor_set_1_1_copy.html" class="m-doc">Copy</a>* _descriptorCopies)</span></span>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkUpdateDescriptorSets">Specification</a> .</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_device</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_descriptorWriteCount</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_descriptorWrites</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_descriptorCopyCount</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_descriptorCopies</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div></section>
         </section>
       </div>
     </div>

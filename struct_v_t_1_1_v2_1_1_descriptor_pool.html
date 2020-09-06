@@ -74,7 +74,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html" class="m-doc">VT::V1::DescriptorPool</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>A descriptor pool maintains a pool of descriptors, from which descriptor sets are allocated. Descriptor pools are externally synchronized, meaning that the application must not allocate and/or free descriptor sets from the same pool in multiple threads simultaneously.</dd>
           </dl>
         </section>
         <section id="derived-classes">
@@ -92,11 +92,11 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_descriptor_pool_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_descriptor_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt id="a75920f3cdc0e453490374c89c95c0d54">
               using <a href="#a75920f3cdc0e453490374c89c95c0d54" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html" class="m-doc">V1::<wbr />DescriptorPool</a>
             </dt>
@@ -109,38 +109,38 @@
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#a45b485f01043a726a72db9b2d9a380db" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_descriptor_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd></dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#ac9e6d4eeead18d6840b9bb58862a4624" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool)</span>
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool)</span>
             </dt>
             <dd></dd>
             <dt id="a2ae80ccbe4146713bf51d5274dcd7dd9">
               <span class="m-doc-wrap-bumper">static auto <a href="#a2ae80ccbe4146713bf51d5274dcd7dd9" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_descriptor_pool_1_1_allocate_info.html" class="m-doc">AllocateInfo</a>&amp; _info,
-              const <a href="struct_v_t_1_1_v1_1_1_descriptor_set.html#a919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="group___a_p_i_spec___resource___descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#a9b00fb0e5ec493d0412f046087ce7c2c" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_descriptor_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorPool">Specification</a></dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#afe84abe585df688c23d9f2cd6232fce2" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorPool">Specification</a></dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#aa9dcc90d5b133e6f71fa43d7edab1913" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorSetCount,
-              const <a href="struct_v_t_1_1_v1_1_1_descriptor_set.html#a919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="group___a_p_i_spec___resource___descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeDescriptorSets">Specification</a></dd>
           </dl>
@@ -151,7 +151,7 @@
             <h3>
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />DescriptorPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a45b485f01043a726a72db9b2d9a380db" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_descriptor_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool)</span></span>
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool)</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -176,7 +176,7 @@
           <section class="m-doc-details" id="ac9e6d4eeead18d6840b9bb58862a4624"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />DescriptorPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac9e6d4eeead18d6840b9bb58862a4624" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool)</span></span>
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool)</span></span>
             </h3>
             <table class="m-table m-fullwidth m-flat">
               <thead>
@@ -199,7 +199,7 @@
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />DescriptorPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9b00fb0e5ec493d0412f046087ce7c2c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_descriptor_pool_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool)</span></span>
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a>&amp; _descriptorPool)</span></span>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDescriptorPool">Specification</a></p>
             <table class="m-table m-fullwidth m-flat">
@@ -229,7 +229,7 @@
           <section class="m-doc-details" id="afe84abe585df688c23d9f2cd6232fce2"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />DescriptorPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afe84abe585df688c23d9f2cd6232fce2" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorPool">Specification</a></p>
@@ -256,9 +256,9 @@
           <section class="m-doc-details" id="aa9dcc90d5b133e6f71fa43d7edab1913"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />DescriptorPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa9dcc90d5b133e6f71fa43d7edab1913" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_descriptor_pool.html#a8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
+              <a href="group___a_p_i_spec___resource___descriptors.html#ga8203d6b585ab23bf81a856763d6aa446" class="m-doc">Handle</a> _descriptorPool,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorSetCount,
-              const <a href="struct_v_t_1_1_v1_1_1_descriptor_set.html#a919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets)</span></span>
+              const <a href="group___a_p_i_spec___resource___descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets)</span></span>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeDescriptorSets">Specification</a></p>
             <table class="m-table m-fullwidth m-flat">
