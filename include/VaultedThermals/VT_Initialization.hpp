@@ -195,7 +195,7 @@ namespace VaultedThermals
 				      Handle&                      _handle
 			)
 			{
-				return EResult(vkCreateInstance( _info, _allocator->operator const VkAllocationCallbacks*(), &_handle));
+				return EResult(vkCreateInstance( _info, *_allocator, &_handle));
 			}
 
 			/**
@@ -206,9 +206,9 @@ namespace VaultedThermals
 
 			@ingroup APISpec_Initialization
 			*/
-			static void Destroy(Handle _handle , const Memory::AllocationCallbacks* _callbacks)
+			static void Destroy(Handle _handle , const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyInstance(_handle, _callbacks->operator const VkAllocationCallbacks*());
+				vkDestroyInstance(_handle, *_allocator);
 			}
 
 			/**
@@ -237,7 +237,7 @@ namespace VaultedThermals
 			*/
 			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
 			{
-				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, _propertiesContainer->operator VkLayerProperties * ()));
+				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, *_propertiesContainer));
 			}
 
 			/**
@@ -250,7 +250,7 @@ namespace VaultedThermals
 			 */
 			static EResult QueryAvailableAppExtensions(RoCStr _layerName, uint32& _numProperties, ExtensionProperties* _propertiesContainer)
 			{
-				return EResult(vkEnumerateInstanceExtensionProperties(_layerName, &_numProperties, _propertiesContainer->operator VkExtensionProperties*()));
+				return EResult(vkEnumerateInstanceExtensionProperties(_layerName, &_numProperties, *_propertiesContainer));
 			}
 
 			/**
@@ -285,7 +285,7 @@ namespace VaultedThermals
 				PhysicalDevice::Group* _groupProperties
 			)
 			{
-				return EResult(vkEnumeratePhysicalDeviceGroups(_handle, _numGroups, _groupProperties->operator VkPhysicalDeviceGroupProperties*()));
+				return EResult(vkEnumeratePhysicalDeviceGroups(_handle, _numGroups, *_groupProperties));
 			}
 
 			template<typename ReturnType>
@@ -549,7 +549,7 @@ namespace VaultedThermals
 			 * \param _appInfo
 			 * \param _creationSpec
 			 */
-			EResult Create(AppInstance::CreateInfo& _createinfo)
+			EResult Create(const AppInstance::CreateInfo& _createinfo)
 			{
 				allocator = nullptr;
 
@@ -563,9 +563,9 @@ namespace VaultedThermals
 			 * \param _creationSpec
 			 * \param _allocator
 			 */
-			EResult Create(AppInstance::CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const AppInstance::CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
-				allocator  = _allocator ;
+				allocator = &_allocator;
 
 				return Parent::Create(_createInfo, allocator, handle);
 			}

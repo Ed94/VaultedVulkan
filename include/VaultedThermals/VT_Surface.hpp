@@ -449,24 +449,15 @@ namespace VaultedThermals
 				return Parent::Create(*app, _info, handle);
 			}
 
-			EResult Create
-			(
-				const AppInstance&                 _appHandle,
-				const CreateInfo&                  _info     ,
-				const Memory::AllocationCallbacks* _allocator
-			)
+			EResult Create(const AppInstance& _appHandle, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				app       = &_appHandle;
-				allocator = _allocator ;
+				allocator = &_allocator;
 				
 				return Parent::Create(*app, _info, allocator, handle);
 			}
 
-			EResult CheckPhysicalDeviceSupport
-			(
-				uint32 _queueFamilyIndex,
-				Bool&  _checkResult
-			)
+			EResult CheckPhysicalDeviceSupport(uint32 _queueFamilyIndex, Bool& _checkResult)
 			{
 				return Parent::CheckPhysicalDeviceSupport(*physicalDevice, _queueFamilyIndex, handle, _checkResult);
 			}

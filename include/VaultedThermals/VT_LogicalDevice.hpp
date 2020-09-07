@@ -263,7 +263,7 @@ namespace VaultedThermals
 					      Queue::Handle* _queue
 				)
 				{
-					vkGetDeviceQueue2(_device, _queueInfo->operator const VkDeviceQueueInfo2*(), _queue);
+					vkGetDeviceQueue2(_device, *_queueInfo, _queue);
 				}
 			};
 
@@ -350,7 +350,7 @@ namespace VaultedThermals
 				      Handle&                      _device
 			)
 			{
-				return EResult(vkCreateDevice(_physicalDevice, _info.operator const VkDeviceCreateInfo *(), _allocator->operator const VkAllocationCallbacks*(), &_device));
+				return EResult(vkCreateDevice(_physicalDevice, _info, *_allocator, &_device));
 			}
 
 			/**
@@ -371,7 +371,7 @@ namespace VaultedThermals
 			 */
 			static void Destroy(Handle _device, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyDevice(_device, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyDevice(_device, *_allocator);
 			}
 
 			/**
@@ -552,7 +552,7 @@ namespace VaultedThermals
 			*/
 			static void Destroy(Handle _device)
 			{
-				vkDestroyDevice(_device, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+				vkDestroyDevice(_device, *Memory::DefaultAllocator);
 			}
 
 			using Parent::Destroy;
@@ -681,9 +681,9 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
-			EResult Create(CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
-				allocator = _allocator      ;
+				allocator = &_allocator;
 
 				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
 			}
@@ -696,10 +696,10 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
-			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
 				physicalDevice = &_physicalDevice;
-				allocator      = _allocator      ;
+				allocator      = &_allocator     ;
 
 				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
 			}

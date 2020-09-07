@@ -117,7 +117,7 @@ namespace VaultedThermals
 					      Cache::Handle&               _pipelineCache
 				)
 				{
-					return EResult(vkCreatePipelineCache(_deviceHandle, _createInfo.operator const VkPipelineCacheCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_pipelineCache));
+					return EResult(vkCreatePipelineCache(_deviceHandle, _createInfo, *_allocator, &_pipelineCache));
 				}
 
 				/**
@@ -134,7 +134,7 @@ namespace VaultedThermals
 				 */
 				static void Destroy(LogicalDevice::Handle _deviceHandle, Cache::Handle _cache, const Memory::AllocationCallbacks* _allocator)
 				{
-					vkDestroyPipelineCache(_deviceHandle, _cache, _allocator->operator const VkAllocationCallbacks*());
+					vkDestroyPipelineCache(_deviceHandle, _cache, *_allocator);
 				}
 
 				/** 
@@ -428,7 +428,7 @@ namespace VaultedThermals
 						      Handle&                      _setLayout
 					)
 					{
-						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo.operator const VkDescriptorSetLayoutCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_setLayout));
+						return EResult(vkCreateDescriptorSetLayout(_deviceHandle, _createInfo, *_allocator, &_setLayout));
 					}
 
 					/**
@@ -445,7 +445,7 @@ namespace VaultedThermals
 					 */
 					static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _descriptorSet, const Memory::AllocationCallbacks* _allocator)
 					{
-						vkDestroyDescriptorSetLayout(_deviceHandle, _descriptorSet, _allocator->operator const VkAllocationCallbacks*());
+						vkDestroyDescriptorSetLayout(_deviceHandle, _descriptorSet, *_allocator);
 					}
 
 					/**
@@ -506,7 +506,7 @@ namespace VaultedThermals
 					      Handle&                      _pipelineLayout
 				)
 				{
-					return EResult(vkCreatePipelineLayout(_deviceHandle, _creationSpec.operator const VkPipelineLayoutCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_pipelineLayout));
+					return EResult(vkCreatePipelineLayout(_deviceHandle, _creationSpec, *_allocator, &_pipelineLayout));
 				}
 
 				/**
@@ -528,7 +528,7 @@ namespace VaultedThermals
 					const Memory::AllocationCallbacks* _allocator
 				)
 				{
-					vkDestroyPipelineLayout(_deviceHandle, _pipelineLayout, _allocator->operator const VkAllocationCallbacks*());
+					vkDestroyPipelineLayout(_deviceHandle, _pipelineLayout, *_allocator);
 				}
 			};
 
@@ -831,7 +831,7 @@ namespace VaultedThermals
 					      Handle*                      _pipelines
 				)
 				{
-					return EResult(vkCreateComputePipelines(_deviceHandle, _cache, _createInfoCount, _createInfos->operator const VkComputePipelineCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), _pipelines));
+					return EResult(vkCreateComputePipelines(_deviceHandle, _cache, _createInfoCount, *_createInfos, *_allocator, _pipelines));
 				}
 			};
 
@@ -950,7 +950,7 @@ namespace VaultedThermals
 					      Handle*                      _pipelines
 				)
 				{
-					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, _createInfos->operator const VkGraphicsPipelineCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), _pipelines));
+					return EResult(vkCreateGraphicsPipelines(_deviceHandle, _pipelineCache, _createInfoCount, *_createInfos, *_allocator, _pipelines));
 				}
 			};
 
@@ -968,7 +968,7 @@ namespace VaultedThermals
 			 */
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _pipeline, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyPipeline(_deviceHandle, _pipeline, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyPipeline(_deviceHandle, _pipeline, *_allocator);
 			}
 		};
 
@@ -1504,11 +1504,7 @@ namespace VaultedThermals
 			public:
 				using Parent = V2::Pipeline::Cache;
 
-				EResult Create
-				(
-					const LogicalDevice& _device,
-					      CreateInfo&    _info  
-				)
+				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
 					device    = &_device                ;
 					allocator = Memory::DefaultAllocator;
@@ -1516,15 +1512,10 @@ namespace VaultedThermals
 					return Parent::Create(*device, _info, allocator, handle);
 				}
 
-				EResult Create
-				(
-					const LogicalDevice&               _device   ,
-					      CreateInfo&                  _info     ,
-					const Memory::AllocationCallbacks* _allocator
-				)
+				EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 				{
-					device    = &_device  ;
-					allocator = _allocator;
+					device    = &_device   ;
+					allocator = &_allocator;
 
 					return Parent::Create(*device, _info, allocator, handle);
 				}
@@ -1578,7 +1569,7 @@ namespace VaultedThermals
 				public:
 					using Parent = V2::Pipeline::Layout::DescriptorSet;
 
-					void Assign(const LogicalDevice& _device, CreateInfo& _info)
+					void Assign(const LogicalDevice& _device, const CreateInfo& _info)
 					{
 						device    = &_device                ;
 						info      = _info                   ;
@@ -1587,16 +1578,11 @@ namespace VaultedThermals
 						Parent::GetSupport(*device, info, support);
 					}
 
-					void Assign
-					(
-						const LogicalDevice&               _device   ,
-						      CreateInfo&                  _info     ,
-						const Memory::AllocationCallbacks* _allocator
-					)
+					void Assign(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 					{
-						device    = &_device  ;
-						info      = _info     ;
-						allocator = _allocator;
+						device    = &_device   ;
+						info      = _info      ;
+						allocator = &_allocator;
 
 						Parent::GetSupport(*device, info, support);
 					}
@@ -1654,11 +1640,7 @@ namespace VaultedThermals
 					Support support;
 				};
 
-				EResult Create
-				(
-					const LogicalDevice& _device,
-					      CreateInfo&    _info  
-				)
+				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
 					device    = &_device                ;
 					allocator = Memory::DefaultAllocator;
@@ -1666,15 +1648,10 @@ namespace VaultedThermals
 					return Parent::Create(*device, _info, allocator, handle);
 				}
 
-				EResult Create
-				(
-					const LogicalDevice&               _device   ,
-					      CreateInfo&                  _info     ,
-					const Memory::AllocationCallbacks* _allocator
-				)
+				EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 				{
-					device    = &_device  ;
-					allocator = _allocator;
+					device    = &_device   ;
+					allocator = &_allocator;
 
 					return Parent::Create(*device, _info, allocator, handle);
 				}
@@ -1796,7 +1773,7 @@ namespace VaultedThermals
 				);
 			}
 
-			EResult Create(const LogicalDevice& _device, Cache& _cache, const CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, const Cache& _cache, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = &_cache ;
@@ -1816,7 +1793,7 @@ namespace VaultedThermals
 			EResult Create
 			(
 				const LogicalDevice&               _device   , 
-				      Cache&                       _cache    , 
+				const Cache&                       _cache    , 
 				const CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)

@@ -80,7 +80,7 @@ namespace VaultedThermals
 				      Handle&               _memory
 			)
 			{
-				return EResult(vkAllocateMemory(_device, _allocateInfo, _allocator->operator const VkAllocationCallbacks*(), &_memory) );
+				return EResult(vkAllocateMemory(_device, _allocateInfo, *_allocator, &_memory) );
 			}
 
 			/**
@@ -95,14 +95,9 @@ namespace VaultedThermals
 			* \param _allocator
 			* \return 
 			*/
-			static void Free
-			(
-				      LogicalDevice::Handle _device   ,
-				      Handle                _memory   ,
-				const AllocationCallbacks*  _allocator
-			)
+			static void Free(LogicalDevice::Handle _device, Handle _memory, const AllocationCallbacks* _allocator)
 			{
-				vkFreeMemory(_device, _memory, _allocator->operator const VkAllocationCallbacks*());
+				vkFreeMemory(_device, _memory, *_allocator);
 			}
 
 			/** 
@@ -205,14 +200,9 @@ namespace VaultedThermals
 			* \param _memory
 			* \return 
 			*/
-			static EResult Allocate
-			(
-				      LogicalDevice::Handle _device      ,
-				const AllocateInfo&         _allocateInfo,
-				      Handle&               _memory
-			)
+			static EResult Allocate(LogicalDevice::Handle _device, const AllocateInfo& _allocateInfo, Handle& _memory)
 			{
-				return EResult(vkAllocateMemory(_device, _allocateInfo, Memory::DefaultAllocator->operator const VkAllocationCallbacks*(), &_memory) );
+				return EResult(vkAllocateMemory(_device, _allocateInfo, *Memory::DefaultAllocator, &_memory) );
 			}
 
 			using Parent::Allocate;
@@ -227,7 +217,7 @@ namespace VaultedThermals
 			*/
 			static void Free(LogicalDevice::Handle _device, Handle _memory)
 			{
-				vkFreeMemory(_device, _memory, Memory::DefaultAllocator->operator const VkAllocationCallbacks*());
+				vkFreeMemory(_device, _memory, *Memory::DefaultAllocator);
 			}
 
 			using Parent::Free;
@@ -290,10 +280,10 @@ namespace VaultedThermals
 				return Parent::Allocate(*device, _allocateInfo, handle);
 			}
 
-			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks& _allocator)
 			{
-				device    = &_device     ;
-				allocator = _allocator   ;
+				device    = &_device   ;
+				allocator = &_allocator;
 
 				return Parent::Allocate(*device, _allocateInfo, allocator, handle);
 			}

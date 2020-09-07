@@ -307,12 +307,7 @@ namespace VaultedThermals
 			 * \param _framebuffer
 			 * \return 
 			 */
-			static EResult Create
-			(
-				      LogicalDevice::Handle _deviceHanle ,
-				const CreateInfo&           _creationSpec,
-				      Handle&               _framebuffer
-			)
+			static EResult Create(LogicalDevice::Handle _deviceHanle, const CreateInfo& _creationSpec, Handle& _framebuffer)
 			{
 				return Parent::Create(_deviceHanle, _creationSpec, Memory::DefaultAllocator, _framebuffer);
 			}
@@ -448,29 +443,22 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
 				device    = &_device                ;
-				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);
+				return Parent::Create(*device, _info, handle);
 			}
 
-			EResult Create(const LogicalDevice* _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice* _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
-				device    = _device   ;
-				info      = _info     ;
-				allocator = _allocator;
+				device    = _device    ;
+				allocator = &_allocator;
 
-				return Parent::Create(*device, info, allocator, handle);
+				return Parent::Create(*device, _info, allocator, handle);
 			}
 
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
 			}
 
 			operator Handle()
@@ -493,7 +481,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const Framebuffer& _other)
+			bool operator== (const Framebuffer& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -501,8 +489,6 @@ namespace VaultedThermals
 		protected:
 
 			Handle handle;
-
-			CreateInfo info;
 
 			const Memory::AllocationCallbacks* allocator;
 
@@ -522,10 +508,10 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
-			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
-				device    = &_device  ;
-				allocator = _allocator;
+				device    = &_device   ;
+				allocator = &_allocator;
 
 				return Parent::Create(*device, _info, allocator, handle);
 			}

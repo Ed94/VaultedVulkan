@@ -598,7 +598,7 @@ namespace VaultedThermals
 			*/
 			static void GetFeatures(Handle _handle, Features& _features)
 			{
-				vkGetPhysicalDeviceFeatures(_handle, _features.operator VkPhysicalDeviceFeatures*());
+				vkGetPhysicalDeviceFeatures(_handle, _features);
 			}
 
 			/**
@@ -642,7 +642,7 @@ namespace VaultedThermals
 			*/
 			static void GetProperties(Handle _handle, Properties& _properties)
 			{
-				vkGetPhysicalDeviceProperties(_handle, _properties.operator VkPhysicalDeviceProperties*());
+				vkGetPhysicalDeviceProperties(_handle, _properties);
 			}
 
 			/**
@@ -677,7 +677,7 @@ namespace VaultedThermals
 			*/
 			static EResult QueryExtensionProperties(Handle _handle, RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
 			{
-				return EResult(vkEnumerateDeviceExtensionProperties(_handle, _layerName, _numExtensions, _extensionPropertiesContainer->operator VkExtensionProperties*()));
+				return EResult(vkEnumerateDeviceExtensionProperties(_handle, _layerName, _numExtensions, *_extensionPropertiesContainer));
 			}
 
 			/**
@@ -695,7 +695,7 @@ namespace VaultedThermals
 			*/
 			static void QueryQueueFamilyProperties(Handle _handle, uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies)
 			{
-				vkGetPhysicalDeviceQueueFamilyProperties(_handle, _numQueueFamilies, _queueFamilies->operator VkQueueFamilyProperties*());
+				vkGetPhysicalDeviceQueueFamilyProperties(_handle, _numQueueFamilies, *_queueFamilies);
 			}	
 
 			/**
@@ -713,7 +713,7 @@ namespace VaultedThermals
 				QueueFamilyProperties2* _properties
 			)
 			{
-				vkGetPhysicalDeviceQueueFamilyProperties2(_handle, _numProperties, _properties->operator VkQueueFamilyProperties2*());
+				vkGetPhysicalDeviceQueueFamilyProperties2(_handle, _numProperties, *_properties);
 			}
 
 			/**
@@ -735,11 +735,11 @@ namespace VaultedThermals
 			{
 				return EResult(vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR
 				(
-					_handle,
-					_queueFamilyIndex,
-					_numCounters,
-					_counters->operator VkPerformanceCounterKHR*(),
-					_counterDescriptions->operator VkPerformanceCounterDescriptionKHR*()
+					_handle              ,
+					_queueFamilyIndex    ,
+					_numCounters         ,
+					*_counters           ,
+					*_counterDescriptions
 				));
 			}
 		};

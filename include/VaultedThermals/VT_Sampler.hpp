@@ -219,10 +219,10 @@ namespace VaultedThermals
                 return Parent::Create(*device, _info, allocator, handle);
             }
 
-            EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+            EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
             {
-                device    = &_device;
-                allocator = _allocator;
+                device    = &_device   ;
+                allocator = &_allocator;
 
                 return Parent::Create(*device, _info, allocator, handle);
             }

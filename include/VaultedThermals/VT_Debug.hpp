@@ -260,7 +260,7 @@ namespace VaultedThermals
 
 					if (delegate != nullptr)
 					{
-						delegate(_appInstance, _messenger, _allocator->operator const VkAllocationCallbacks*());
+						delegate(_appInstance, _messenger, *_allocator);
 					}
 				}
 			}; 
@@ -397,11 +397,7 @@ namespace VaultedThermals
 
 				using Parent = V2::DebugUtils::Messenger;
 
-				EResult Create
-				(
-					const AppInstance& _appInstance,
-					const CreateInfo&  _createSpec 
-				)
+				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec)
 				{
 					app       = &_appInstance           ;
 					allocator = Memory::DefaultAllocator;
@@ -409,12 +405,7 @@ namespace VaultedThermals
 					return Parent::Create(*app, _createSpec, handle);
 				}
 
-				EResult Create
-				(
-					const AppInstance&                 _appInstance,
-					const CreateInfo&                  _createSpec ,
-					const Memory::AllocationCallbacks* _allocator  
-				)
+				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec, const Memory::AllocationCallbacks* _allocator)
 				{
 					app       = &_appInstance;
 					allocator = _allocator   ;
