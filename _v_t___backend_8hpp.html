@@ -80,17 +80,12 @@
           <h2><a href="#nested-classes">Classes</a></h2>
           <dl class="m-doc">
             <dt>
-              <div class="m-doc-template">template&lt;typename Enum&gt;</div>
-              struct <a href="struct_bitmaskable.html" class="m-doc">Bitmaskable</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt>
               <div class="m-doc-template">template&lt;typename Type&gt;</div>
               class <a href="class_v_t_1_1_v0_1_1_i_dynamic_array.html" class="m-doc">VT::V0::IDynamicArray</a>
             </dt>
             <dd>A custom dynamic container from the default can be used with specific functionality in the library.</dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v0_1_1_dummy_struct.html" class="m-doc">VT::V0::DummyStruct</a>
+              struct <a href="struct_v_t_1_1_v0_1_1_dummy_base.html" class="m-doc">VT::V0::DummyBase</a>
             </dt>
             <dd>Used when creating fake VulkanAPI structures for platform abstraction uses.</dd>
             <dt>
@@ -103,11 +98,20 @@
               struct <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">VT::V0::Bitmask</a>
             </dt>
             <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Enum&gt;</div>
+              struct <a href="struct_bitmaskable.html" class="m-doc">Bitmaskable</a>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="define-members">
           <h2><a href="#define-members">Defines</a></h2>
           <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">#define <a href="group___vault__0.html#gae26a063787d7d419d778ceb6e8a9c01f" class="m-doc">VT_InlineSpecifier</a></span>
+            </dt>
+            <dd>Note: I do not use these as no optimization via inlining has been looked into as of yet...</dd>
             <dt id="ae4294cb93aaf549435c42bc407f51042">
               <span class="m-doc-wrap-bumper">#define <a href="#ae4294cb93aaf549435c42bc407f51042" class="m-doc-self">BITMASK_DEFINED</a></span>
             </dt>
@@ -116,15 +120,6 @@
               <span class="m-doc-wrap-bumper">#define <a href="#a7a7ce2892f50cd985ca0c38a40a1aa90" class="m-doc-self">SpecifyBitmaskable</a>(</span><span class="m-doc-wrap">__ENUM)</span>
             </dt>
             <dd><span></span></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">#define <a href="group___vault__0.html#gae26a063787d7d419d778ceb6e8a9c01f" class="m-doc">VT_InlineSpecifier</a></span>
-            </dt>
-            <dd>Note: I do not use these as no optimization via inlining has been looked into as of yet...</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">#define <a href="group___vault__0.html#ga710126d2f4fb6fac43ce6160adb78a5c" class="m-doc">VT_VKStruct_Base</a>(</span><span class="m-doc-wrap">_VulkanType,
-              _EStructure)</span>
-            </dt>
-            <dd>Macro variant of the template for wrapping a vulkan structure.</dd>
           </dl>
         </section>
       </div>

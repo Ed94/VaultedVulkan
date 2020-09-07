@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v2.html">V2</a>::<wbr/></span>Sampler <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sampler_8hpp.html">&lt;VaultedThermals/VT_Sampler.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -74,7 +74,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_sampler.html" class="m-doc">VT::V1::Sampler</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</dd>
           </dl>
         </section>
         <section id="derived-classes">
@@ -92,7 +92,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt id="a6b657583401f529413fdcfb2d11d4868">
               using <a href="#a6b657583401f529413fdcfb2d11d4868" class="m-doc-self">Parent</a> = <a href="struct_v_t_1_1_v1_1_1_sampler.html" class="m-doc">V1::<wbr />Sampler</a>
             </dt>
@@ -105,27 +105,27 @@
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#a40d51240aad68903f056fe53186b17ca" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd></dd>
+            <dd>Create a sampler object (Default Allocator).</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#a0fd49daf045cf9ea5daedb783109e954" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler)</span>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler)</span>
             </dt>
-            <dd></dd>
+            <dd>Destroy a sampler (Default Allocator).</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#af3f2ad33ecd5a57fc150b3289b37edd4" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd></dd>
+            <dd>Create a sampler object.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#a18467ea60c5e17d1e3d869e6d28023f1" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler,
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
-            <dd></dd>
+            <dd>Destroy a sampler.</dd>
           </dl>
         </section>
         <section>
@@ -134,8 +134,9 @@
             <h3>
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Sampler::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a40d51240aad68903f056fe53186b17ca" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler)</span></span>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler)</span></span>
             </h3>
+            <p>Create a sampler object (Default Allocator).</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -159,8 +160,9 @@
           <section class="m-doc-details" id="a0fd49daf045cf9ea5daedb783109e954"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Sampler::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0fd49daf045cf9ea5daedb783109e954" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler)</span></span>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler)</span></span>
             </h3>
+            <p>Destroy a sampler (Default Allocator).</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -183,8 +185,9 @@
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Sampler::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af3f2ad33ecd5a57fc150b3289b37edd4" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v2_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler)</span></span>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler)</span></span>
             </h3>
+            <p>Create a sampler object.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -213,9 +216,10 @@
           <section class="m-doc-details" id="a18467ea60c5e17d1e3d869e6d28023f1"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Sampler::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a18467ea60c5e17d1e3d869e6d28023f1" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler,
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
+            <p>Destroy a sampler.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>

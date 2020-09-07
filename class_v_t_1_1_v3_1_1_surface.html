@@ -120,14 +120,14 @@
               OS_WindowHandle _window) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="adbef4f1daa2cc761b33550e287b601fc">
-              <span class="m-doc-wrap-bumper">auto <a href="#adbef4f1daa2cc761b33550e287b601fc" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _appHandle,
-              CreateInfo&amp; _createInfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="ae61703005838ab7cd9936c85a2bfaa7d">
+              <span class="m-doc-wrap-bumper">auto <a href="#ae61703005838ab7cd9936c85a2bfaa7d" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _appHandle,
+              const <a href="struct_v_t_1_1_v2_1_1_surface_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a546ca51173d13df787b98f46527b4ede">
-              <span class="m-doc-wrap-bumper">auto <a href="#a546ca51173d13df787b98f46527b4ede" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _appHandle,
-              CreateInfo&amp; _createInfo,
+            <dt id="a173ff8d998af6165273fe99a42a87532">
+              <span class="m-doc-wrap-bumper">auto <a href="#a173ff8d998af6165273fe99a42a87532" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _appHandle,
+              const <a href="struct_v_t_1_1_v2_1_1_surface_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
@@ -140,24 +140,20 @@
               <span class="m-doc-wrap-bumper">void <a href="#a157a15789bc42e060f628e5da2e3e97d" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a7b5b7293ea225b49425907ef592871b6">
-              <span class="m-doc-wrap-bumper">auto <a href="#a7b5b7293ea225b49425907ef592871b6" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const Handle&amp;</span>
-            </dt>
-            <dd><span></span></dd>
             <dt id="ac4e2a10119586ad84ba55f09acbd61f0">
               <span class="m-doc-wrap-bumper">auto <a href="#ac4e2a10119586ad84ba55f09acbd61f0" class="m-doc-self">GetAvailableFormats</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;Format&gt;&amp; _formatsContainer) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a68dbdbd986ad438531c42abe2f630a96">
-              <span class="m-doc-wrap-bumper">auto <a href="#a68dbdbd986ad438531c42abe2f630a96" class="m-doc-self">GetPhysicalDeviceCapabilities</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v2_1_1_surface_1_1_capabilities.html" class="m-doc">Capabilities</a>&amp; _result) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a68dbdbd986ad438531c42abe2f630a96" class="m-doc-self">GetPhysicalDeviceCapabilities</a>(</span><span class="m-doc-wrap">Capabilities&amp; _result) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a8ce7e53a01e66507ec25053cbcb6ed8c">
               <span class="m-doc-wrap-bumper">auto <a href="#a8ce7e53a01e66507ec25053cbcb6ed8c" class="m-doc-self">GetSupportedPresentationModes</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group___corridors.html#ga2b9753018ef460b6d543aa9b1072df93" class="m-doc">EPresentationMode</a>&gt;&amp; _presentationModesContainer) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a731e1c85e7b556d4a1b522da2b96145a">
-              <span class="m-doc-wrap-bumper">auto <a href="#a731e1c85e7b556d4a1b522da2b96145a" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_surface.html" class="m-doc">Surface</a>&amp; _other) -&gt; bool</span>
+            <dt id="a77240017d70b85fa5bdecabc78277ad4">
+              <span class="m-doc-wrap-bumper">auto <a href="#a77240017d70b85fa5bdecabc78277ad4" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_surface.html" class="m-doc">Surface</a>&amp; _other) const -&gt; bool</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -165,24 +161,20 @@
         <section id="pro-attribs">
           <h2><a href="#pro-attribs">Protected variables</a></h2>
           <dl class="m-doc">
-            <dt id="a4864d913c3803ed2e456432d5928e2df">
-              const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>* <a href="#a4864d913c3803ed2e456432d5928e2df" class="m-doc-self">app</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="afab8c6c75c41e6571fd0780b8ffad365">
-              const <a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a>* <a href="#afab8c6c75c41e6571fd0780b8ffad365" class="m-doc-self">physicalDevice</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="adbbe04822309cb12aab33b510a6cce21">
-              CreateInfo <a href="#adbbe04822309cb12aab33b510a6cce21" class="m-doc-self">info</a>
+            <dt id="aa8c0b96ba37fa94fba0fbd20f8e94a61">
+              Handle <a href="#aa8c0b96ba37fa94fba0fbd20f8e94a61" class="m-doc-self">handle</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a05d96d020299cbab0e8c2828109e5573">
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* <a href="#a05d96d020299cbab0e8c2828109e5573" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="aa8c0b96ba37fa94fba0fbd20f8e94a61">
-              Handle <a href="#aa8c0b96ba37fa94fba0fbd20f8e94a61" class="m-doc-self">handle</a>
+            <dt id="a4864d913c3803ed2e456432d5928e2df">
+              const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>* <a href="#a4864d913c3803ed2e456432d5928e2df" class="m-doc-self">app</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="afab8c6c75c41e6571fd0780b8ffad365">
+              const <a href="class_v_t_1_1_v3_1_1_physical_device.html" class="m-doc">PhysicalDevice</a>* <a href="#afab8c6c75c41e6571fd0780b8ffad365" class="m-doc-self">physicalDevice</a>
             </dt>
             <dd><span></span></dd>
           </dl>

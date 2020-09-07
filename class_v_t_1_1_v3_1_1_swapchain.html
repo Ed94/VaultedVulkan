@@ -120,12 +120,12 @@
             <dd><span></span></dd>
             <dt id="a772e180ab01d1df5cc6bcf173c9cf643">
               <span class="m-doc-wrap-bumper">auto <a href="#a772e180ab01d1df5cc6bcf173c9cf643" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _deviceHandle,
-              const CreateInfo&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="struct_v_t_1_1_v1_1_1_swapchain_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a8304f64791f3b3aa635288eac0534722">
               <span class="m-doc-wrap-bumper">auto <a href="#a8304f64791f3b3aa635288eac0534722" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _deviceHandle,
-              const CreateInfo&amp; _info,
+              const <a href="struct_v_t_1_1_v1_1_1_swapchain_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
@@ -133,16 +133,8 @@
               <span class="m-doc-wrap-bumper">void <a href="#aa334c15d7f7e62c63e6d32cb67481e51" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a79d4e06ba35c99e23794994fd746b4fc">
-              <span class="m-doc-wrap-bumper">auto <a href="#a79d4e06ba35c99e23794994fd746b4fc" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="struct_v_t_1_1_v1_1_1_swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a>&amp;</span>
-            </dt>
-            <dd><span></span></dd>
             <dt id="a3f4256ddb31dba458ed6ce637237211e">
               <span class="m-doc-wrap-bumper">auto <a href="#a3f4256ddb31dba458ed6ce637237211e" class="m-doc-self">GetImages</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="class_v_t_1_1_v3_1_1_image.html" class="m-doc">Image</a>&gt;&amp; _images) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ad0b8adc21a5989ebf3f5d7691661b4b0">
-              <span class="m-doc-wrap-bumper">auto <a href="#ad0b8adc21a5989ebf3f5d7691661b4b0" class="m-doc-self">GetMinimumImageCount</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="af8a0701d788ee3448df1a253c1d8892f">
@@ -150,8 +142,8 @@
               <a href="group___a_p_i_spec___resource___creation.html#ga274108ac188cab9c25c90deb9a46be8c" class="m-doc">Image::<wbr />Handle</a>* _imagesContainer) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ae39a02feb40fe560b68524d2264453a6">
-              <span class="m-doc-wrap-bumper">auto <a href="#ae39a02feb40fe560b68524d2264453a6" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_swapchain.html" class="m-doc">Swapchain</a>&amp; _other) -&gt; bool</span>
+            <dt id="aff858a930fe01788a62a3ad13adf3d51">
+              <span class="m-doc-wrap-bumper">auto <a href="#aff858a930fe01788a62a3ad13adf3d51" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_swapchain.html" class="m-doc">Swapchain</a>&amp; _other) const -&gt; bool</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -161,10 +153,6 @@
           <dl class="m-doc">
             <dt id="a6f463f3a2b6542f5a8ff7f7ebc859696">
               <a href="struct_v_t_1_1_v1_1_1_swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> <a href="#a6f463f3a2b6542f5a8ff7f7ebc859696" class="m-doc-self">handle</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a9f03c934ba7c7dcf1ded33dbd66d200f">
-              CreateInfo <a href="#a9f03c934ba7c7dcf1ded33dbd66d200f" class="m-doc-self">info</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a2f78d427fe99a6ccd2862d36f769b65e">

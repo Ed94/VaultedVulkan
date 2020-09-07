@@ -64,7 +64,6 @@
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#pub-static-methods">Public static functions</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
-                <li><a href="#pro-attribs">Protected variables</a></li>
               </ul>
             </li>
           </ul>
@@ -90,11 +89,11 @@
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
-            <dt id="aad8a7723c2d6a5555a0ad7e0ba795528">
-              <span class="m-doc-wrap-bumper">static auto <a href="#aad8a7723c2d6a5555a0ad7e0ba795528" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Cache</a>* _cache,
+            <dt id="a4870af3247ecee233f29c641cf862836">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a4870af3247ecee233f29c641cf862836" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Cache</a>&amp; _cache,
               <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _createInfoCount,
-              <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>* _createInfos,
+              const <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>* _createInfos,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
               <a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html" class="m-doc">GraphicsPipeline</a>&gt;&amp; _pipelines) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
@@ -104,39 +103,29 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a5a68077ecf667d9655b12b973ee85c90">
-              <span class="m-doc-wrap-bumper">void <a href="#a5a68077ecf667d9655b12b973ee85c90" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Cache</a>* _cache,
-              <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>&amp; _info,
+            <dt id="a6669f8538d30abc7ba957226c40a98bf">
+              <span class="m-doc-wrap-bumper">void <a href="#a6669f8538d30abc7ba957226c40a98bf" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Cache</a>&amp; _cache,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
               <a href="group___a_p_i_spec___pipelines.html#gac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a> _handle)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a67731c3cd8bf9b0c7fd554ea7758f60f">
-              <span class="m-doc-wrap-bumper">auto <a href="#a67731c3cd8bf9b0c7fd554ea7758f60f" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a964ba8670c546308b8a8ecdbfe017e9e">
+              <span class="m-doc-wrap-bumper">auto <a href="#a964ba8670c546308b8a8ecdbfe017e9e" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="adebd63d3216187b885d3dff6a5dbe4cb">
-              <span class="m-doc-wrap-bumper">auto <a href="#adebd63d3216187b885d3dff6a5dbe4cb" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+            <dt id="a2ebf451f77e310fd60764fadd7d8b392">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2ebf451f77e310fd60764fadd7d8b392" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Cache</a>&amp; _cache,
-              <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a10da5ea01ecdc0becae8567a9be88b28">
-              <span class="m-doc-wrap-bumper">auto <a href="#a10da5ea01ecdc0becae8567a9be88b28" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Cache</a>&amp; _cache,
+            <dt id="aaac85fd49e17d918ccac9b1e07d45278">
+              <span class="m-doc-wrap-bumper">auto <a href="#aaac85fd49e17d918ccac9b1e07d45278" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_cache.html" class="m-doc">Cache</a>&amp; _cache,
               <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
-          </dl>
-        </section>
-        <section id="pro-attribs">
-          <h2><a href="#pro-attribs">Protected variables</a></h2>
-          <dl class="m-doc">
-            <dt id="aa70643085254f97d4a6fa8dbd073c80d">
-              <a href="class_v_t_1_1_v3_1_1_graphics_pipeline.html#a885c6242950ead9874ac4fd180041709" class="m-doc">CreateInfo</a> <a href="#aa70643085254f97d4a6fa8dbd073c80d" class="m-doc-self">info</a>
             </dt>
             <dd><span></span></dd>
           </dl>

@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespace_v_t.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespace_v_t_1_1_v1.html">V1</a>::<wbr/></span>Sampler <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sampler_8hpp.html">&lt;VaultedThermals/VT_Sampler.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -67,13 +67,14 @@
             </li>
           </ul>
         </div>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a></p>
         <section id="derived-classes">
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_sampler.html" class="m-doc">VT::V2::Sampler</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -82,15 +83,15 @@
             <dt>
               struct <a href="struct_v_t_1_1_v1_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a><br /></dd>
-            <dt id="a0eecca1d7aa5b3a36c8a5b732ae7bec4">
-              using <a href="#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc-self">Handle</a> = VkSampler
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> = VkSampler
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a><br /></dd>
-            <dt id="a5ec268470d7d764446c2aa52819f079e">
-              using <a href="#a5ec268470d7d764446c2aa52819f079e" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga65425d2d8d5dad8681945b138a1f40d6" class="m-doc">ESamplerCreateFlag</a>, VkSamplerCreateFlags&gt;
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___samplers.html#ga5ec268470d7d764446c2aa52819f079e" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga65425d2d8d5dad8681945b138a1f40d6" class="m-doc">ESamplerCreateFlag</a>, VkSamplerCreateFlags&gt;
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlags">Specification</a><br /></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlags">Specification</a></dd>
             <dt id="a53f52f07f4beaeb4180514c1e5728f58">
               using <a href="#a53f52f07f4beaeb4180514c1e5728f58" class="m-doc-self">EMipmapMode</a> = <a href="group___corridors.html#gabf9acb4a763d3799b47ede88cb89e66b" class="m-doc">ESamplerMipmapMode</a>
             </dt>
@@ -105,81 +106,19 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#af3f2ad33ecd5a57fc150b3289b37edd4" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <span class="m-doc-wrap-bumper">static auto <a href="group___a_p_i_spec___samplers.html#gaf3f2ad33ecd5a57fc150b3289b37edd4" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               const <a href="struct_v_t_1_1_v1_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd></dd>
+            <dd>Create a sampler object.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a18467ea60c5e17d1e3d869e6d28023f1" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler,
+              <span class="m-doc-wrap-bumper">static void <a href="group___a_p_i_spec___samplers.html#ga18467ea60c5e17d1e3d869e6d28023f1" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
-            <dd></dd>
+            <dd>Destroy a sampler.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="af3f2ad33ecd5a57fc150b3289b37edd4"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />Sampler::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af3f2ad33ecd5a57fc150b3289b37edd4" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              const <a href="struct_v_t_1_1_v1_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp; _sampler)</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_device</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_createInfo</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_sampler</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSampler">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="a18467ea60c5e17d1e3d869e6d28023f1"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />Sampler::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a18467ea60c5e17d1e3d869e6d28023f1" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> _sampler,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_device</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_sampler</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_allocator</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySampler">Specification</a></p>
-          </div></section>
         </section>
       </div>
     </div>

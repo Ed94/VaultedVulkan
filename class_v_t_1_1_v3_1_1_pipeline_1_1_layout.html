@@ -98,12 +98,16 @@
               <span class="m-doc-wrap-bumper"><a href="#afead746164c3ae0ef29406344dbbc03d" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a22479cc3d1026ac093990ae2cac32217">
-              <span class="m-doc-wrap-bumper"><a href="#a22479cc3d1026ac093990ae2cac32217" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">) const</span>
+            <dt id="a50ffb319573316c84344d5e2cbff9d4a">
+              <span class="m-doc-wrap-bumper"><a href="#a50ffb319573316c84344d5e2cbff9d4a" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
             <dt id="aa0dfaf576495065ea2587f946239046b">
               <span class="m-doc-wrap-bumper"><a href="#aa0dfaf576495065ea2587f946239046b" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a8f6f06779edd989527c88f794b6a36e6">
+              <span class="m-doc-wrap-bumper"><a href="#a8f6f06779edd989527c88f794b6a36e6" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -111,14 +115,14 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="aff34b72b9abe5a5047b260ccecda5872">
-              <span class="m-doc-wrap-bumper">auto <a href="#aff34b72b9abe5a5047b260ccecda5872" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              CreateInfo&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="abc1d1a00d2f577259cc07aa352d4c6f9">
+              <span class="m-doc-wrap-bumper">auto <a href="#abc1d1a00d2f577259cc07aa352d4c6f9" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ae086ef239a935373141879b3479e3ad0">
-              <span class="m-doc-wrap-bumper">auto <a href="#ae086ef239a935373141879b3479e3ad0" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              CreateInfo&amp; _info,
+            <dt id="a66553e0d97c62c6ee594530e2d97bb7a">
+              <span class="m-doc-wrap-bumper">auto <a href="#a66553e0d97c62c6ee594530e2d97bb7a" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              <a href="struct_v_t_1_1_v1_1_1_pipeline_1_1_layout_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
               const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
@@ -126,8 +130,8 @@
               <span class="m-doc-wrap-bumper">void <a href="#ab42c83a1d88bfdf1aadd221a4c0e3e33" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aa13bd27982fce73921efc0523a1a4f8d">
-              <span class="m-doc-wrap-bumper">auto <a href="#aa13bd27982fce73921efc0523a1a4f8d" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group___a_p_i_spec___resource___descriptors.html#gaf8e5d7f0e2fba7db9951ad6b4d849953" class="m-doc">Handle</a></span>
+            <dt id="a21b3596191ff73fd52725d7a278f9647">
+              <span class="m-doc-wrap-bumper">auto <a href="#a21b3596191ff73fd52725d7a278f9647" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_pipeline_1_1_layout.html" class="m-doc">Layout</a>&amp; _other) const -&gt; bool</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -143,12 +147,8 @@
               const Memory::AllocationCallbacks* <a href="#a5b49b6fd1bb275caeef5ee3b61f694f4" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a375b6f2317612adcd1b0de15c7b354c1">
-              CreateInfo <a href="#a375b6f2317612adcd1b0de15c7b354c1" class="m-doc-self">info</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ae02c4baffd5cf5ca964e8b752fd78eb6">
-              <a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> <a href="#ae02c4baffd5cf5ca964e8b752fd78eb6" class="m-doc-self">device</a>
+            <dt id="a93807ba3f04158ff2624265352319dbe">
+              const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>* <a href="#a93807ba3f04158ff2624265352319dbe" class="m-doc-self">device</a>
             </dt>
             <dd><span></span></dd>
           </dl>

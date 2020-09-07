@@ -87,7 +87,7 @@
             </dt>
             <dd>A custom dynamic container from the default can be used with specific functionality in the library.</dd>
             <dt>
-              struct <a href="struct_v_t_1_1_v0_1_1_dummy_struct.html" class="m-doc">VT::V0::DummyStruct</a>
+              struct <a href="struct_v_t_1_1_v0_1_1_dummy_base.html" class="m-doc">VT::V0::DummyBase</a>
             </dt>
             <dd>Used when creating fake VulkanAPI structures for platform abstraction uses.</dd>
             <dt>
@@ -199,11 +199,6 @@
             </dt>
             <dd>Note: I do not use these as no optimization via inlining has been looked into as of yet...</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">#define <a href="#ga710126d2f4fb6fac43ce6160adb78a5c" class="m-doc">VT_VKStruct_Base</a>(</span><span class="m-doc-wrap">_VulkanType,
-              _EStructure)</span>
-            </dt>
-            <dd>Macro variant of the template for wrapping a vulkan structure.</dd>
-            <dt>
               <span class="m-doc-wrap-bumper">#define <a href="#gadd55125675e909d00149b739cd1f8419" class="m-doc">CALLING_CONVENTION_ENFORCER_H</a></span>
             </dt>
             <dd><span></span></dd>
@@ -289,15 +284,6 @@
             </h3>
             <p>Note: I do not use these as no optimization via inlining has been looked into as of yet...</p>
 <p>Inline specification set to none. (Does not do influence compiler)</p>
-          </div></section>
-          <section class="m-doc-details" id="ga710126d2f4fb6fac43ce6160adb78a5c"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">#define <a href="#ga710126d2f4fb6fac43ce6160adb78a5c" class="m-doc-self">VT_VKStruct_Base</a>(</span><span class="m-doc-wrap">_VulkanType,
-              _EStructure)</span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___backend_8hpp.html">&lt;VaultedThermals/VT_Backend.hpp&gt;</a></div>
-            </h3>
-            <p>Macro variant of the template for wrapping a vulkan structure.</p>
-<p>this will be used if its decided to implement the library feature of generating the library via macros if its decided to support the only one vault implementation without inheritance... (If this is supported, it will be a different repo, to avoid obfuscating the source of the main repository.</p>
           </div></section>
           <section class="m-doc-details" id="gadd55125675e909d00149b739cd1f8419"><div>
             <h3>

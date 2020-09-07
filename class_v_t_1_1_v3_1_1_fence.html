@@ -110,12 +110,16 @@
               <span class="m-doc-wrap-bumper"><a href="#af31e7408dd5c8c6c6690b261402a3674" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a892bfd37f9f21d5f09231987aa92d957">
-              <span class="m-doc-wrap-bumper"><a href="#a892bfd37f9f21d5f09231987aa92d957" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">) const</span>
+            <dt id="ab6d5ada8e763c5c930dcb1d0e9daa19c">
+              <span class="m-doc-wrap-bumper"><a href="#ab6d5ada8e763c5c930dcb1d0e9daa19c" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
             <dt id="a31e84664f22adf6be1621b8252df915f">
               <span class="m-doc-wrap-bumper"><a href="#a31e84664f22adf6be1621b8252df915f" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a28b93a8e38fcc456c73350ede1f4f58d">
+              <span class="m-doc-wrap-bumper"><a href="#a28b93a8e38fcc456c73350ede1f4f58d" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -125,13 +129,13 @@
           <dl class="m-doc">
             <dt id="a73287073b45bd334cd76a47005533084">
               <span class="m-doc-wrap-bumper">auto <a href="#a73287073b45bd334cd76a47005533084" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              CreateInfo&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="struct_v_t_1_1_v1_1_1_fence_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a10e83f0439b6986d793be51377982b6f">
               <span class="m-doc-wrap-bumper">auto <a href="#a10e83f0439b6986d793be51377982b6f" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              CreateInfo&amp; _info,
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="struct_v_t_1_1_v1_1_1_fence_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a5dc285fa6f23cbc7964cd82a3d0dbfd9">
@@ -176,6 +180,10 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a72c608728be8254597b9318117f3cfcc" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga99afca8daad59df55c5258e67e4db0c7" class="m-doc">uInt64</a> _timeout) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
+            <dt id="a57ac3fff4b11f47b3d34d06e33b4a402">
+              <span class="m-doc-wrap-bumper">auto <a href="#a57ac3fff4b11f47b3d34d06e33b4a402" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_fence.html" class="m-doc">Fence</a>&amp; _other) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -186,11 +194,7 @@
             </dt>
             <dd><span></span></dd>
             <dt id="aa83d5df32b6791bc2b467b30edca6359">
-              const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* <a href="#aa83d5df32b6791bc2b467b30edca6359" class="m-doc-self">allocator</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a9a8ee87e381594c6d578ce165882fdc8">
-              CreateInfo <a href="#a9a8ee87e381594c6d578ce165882fdc8" class="m-doc-self">info</a>
+              const Memory::AllocationCallbacks* <a href="#aa83d5df32b6791bc2b467b30edca6359" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
             <dt id="acc98ba1e4fb2a8146a57d8d15d0031b8">

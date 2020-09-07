@@ -84,14 +84,14 @@
               struct <a href="struct_v_t_1_1_v1_1_1_shader_module_1_1_create_info.html" class="m-doc">CreateInfo</a>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a><br /></dd>
-            <dt id="a4b8fd3666d81f17763172c1d8d59111f">
-              using <a href="#a4b8fd3666d81f17763172c1d8d59111f" class="m-doc-self">Handle</a> = VkShaderModule
+            <dt>
+              using <a href="group___a_p_i_spec___shaders.html#ga4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a> = VkShaderModule
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModule">Specification</a><br /></dd>
-            <dt id="ac925c5782570c035a660e6ba973e20ec">
-              using <a href="#ac925c5782570c035a660e6ba973e20ec" class="m-doc-self">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, <a href="group___flags__and___bitmasks.html#ga3f56f691948d0b060a953c74460f359d" class="m-doc">Flags</a>&gt;
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModule">Specification</a></dd>
+            <dt>
+              using <a href="group___a_p_i_spec___shaders.html#gac925c5782570c035a660e6ba973e20ec" class="m-doc">CreateFlags</a> = <a href="struct_v_t_1_1_v0_1_1_bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group___corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, <a href="group___flags__and___bitmasks.html#ga3f56f691948d0b060a953c74460f359d" class="m-doc">Flags</a>&gt;
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a><br /></dd>
+            <dd>Reserved for future use.</dd>
           </dl>
         </section>
         <section id="pub-static-methods">
@@ -101,12 +101,12 @@
               <span class="m-doc-wrap-bumper">static auto <a href="#a798955d829e4d6d3ba7b7da3ab3f0e1d" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v1_1_1_shader_module_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_shader_module.html#a4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a>&amp; _shaderModule) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group___a_p_i_spec___shaders.html#ga4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a>&amp; _shaderModule) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a sher module.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#a60439f68755e30097305ece58fe178c0" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_shader_module.html#a4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a> _moduleHandle,
+              <a href="group___a_p_i_spec___shaders.html#ga4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a> _moduleHandle,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
             <dd>Destroy a shader module.</dd>
@@ -119,7 +119,7 @@
               <span class="m-doc-wrap-bumper">static <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />ShaderModule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a798955d829e4d6d3ba7b7da3ab3f0e1d" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="struct_v_t_1_1_v1_1_1_shader_module_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _creationSpec,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="struct_v_t_1_1_v1_1_1_shader_module.html#a4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a>&amp; _shaderModule)</span></span>
+              <a href="group___a_p_i_spec___shaders.html#ga4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a>&amp; _shaderModule)</span></span>
             </h3>
             <p>Create a sher module.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -150,7 +150,7 @@
           <section class="m-doc-details" id="a60439f68755e30097305ece58fe178c0"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V1::<wbr />ShaderModule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60439f68755e30097305ece58fe178c0" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group___a_p_i_spec___devices__and___queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="struct_v_t_1_1_v1_1_1_shader_module.html#a4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a> _moduleHandle,
+              <a href="group___a_p_i_spec___shaders.html#ga4b8fd3666d81f17763172c1d8d59111f" class="m-doc">Handle</a> _moduleHandle,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
             </h3>
             <p>Destroy a shader module.</p>

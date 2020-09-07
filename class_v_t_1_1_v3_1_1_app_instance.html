@@ -122,14 +122,12 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a0a45500ec97e5f663e00fefdc751d9a5" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInstance::<wbr />AppInfo</a>&amp; _appInfo,
-              <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createinfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="adb82a3ae9d8dd03a58a8b0e9f9c14344">
+              <span class="m-doc-wrap-bumper">auto <a href="#adb82a3ae9d8dd03a58a8b0e9f9c14344" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createinfo) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create an application instance.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a6d0012bd83e8bd72a4a5bc5b3a11881e" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInstance::<wbr />AppInfo</a>&amp; _appInfo,
-              <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createInfo,
+              <span class="m-doc-wrap-bumper">auto <a href="#a9994a3a343d12df07eadd3689d797c0c" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createInfo,
               const Memory::AllocationCallbacks* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create an application instance.</dd>
@@ -145,14 +143,6 @@
               <span class="m-doc-wrap-bumper">auto <a href="#aa0cabc35441391a32312786a6f4710d9" class="m-doc">GetAvailablePhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>&gt;&amp; _groupListing) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Provides a list of the device groups present in the system.</dd>
-            <dt id="af4087c8e877d5bd6590310c6c178656e">
-              <span class="m-doc-wrap-bumper">auto <a href="#af4087c8e877d5bd6590310c6c178656e" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="group___a_p_i_spec___initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a>&amp;</span>
-            </dt>
-            <dd>Provides the app instance&#x27;s handle.</dd>
-            <dt id="ad1da5f68c55fd0337b23c98d2693ad06">
-              <span class="m-doc-wrap-bumper">auto <a href="#ad1da5f68c55fd0337b23c98d2693ad06" class="m-doc-self">GetVersion</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a></span>
-            </dt>
-            <dd>Get application version.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename ReturnType&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#aaa7f4c5784e4d5e718b77435041160b3" class="m-doc">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="group___corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedureName) const -&gt; std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type</span>
@@ -168,8 +158,8 @@
               <a href="struct_v_t_1_1_v1_1_1_physical_device_1_1_group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>* _groupProperties) const -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Retrieve a list of physical device groups.</dd>
-            <dt id="ac116d3a586f173b116dbeee9fade6e66">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac116d3a586f173b116dbeee9fade6e66" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _other) -&gt; bool</span>
+            <dt id="a475210475ed385008756d139a798845a">
+              <span class="m-doc-wrap-bumper">auto <a href="#a475210475ed385008756d139a798845a" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_app_instance.html" class="m-doc">AppInstance</a>&amp; _other) const -&gt; bool</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -181,18 +171,6 @@
               <a href="group___a_p_i_spec___initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> <a href="#a38396b032d45aeaf9d048f3e318f2b2a" class="m-doc-self">handle</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a6350ff8dbd05c3e06ed126a5311325a6">
-              AppInfo <a href="#a6350ff8dbd05c3e06ed126a5311325a6" class="m-doc-self">appInfo</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a1afed86d241f3173f6e1c15d0c7ce123">
-              <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">CreateInfo</a> <a href="#a1afed86d241f3173f6e1c15d0c7ce123" class="m-doc-self">createInfo</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a9d610d2580296dc6751cdf40bd22ac3b">
-              <a href="group___corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> <a href="#a9d610d2580296dc6751cdf40bd22ac3b" class="m-doc-self">version</a>
-            </dt>
-            <dd><span></span></dd>
             <dt id="a634e66a3d3c48e599213198cb871d05f">
               const Memory::AllocationCallbacks* <a href="#a634e66a3d3c48e599213198cb871d05f" class="m-doc-self">allocator</a>
             </dt>
@@ -201,32 +179,9 @@
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a0a45500ec97e5f663e00fefdc751d9a5"><div>
+          <section class="m-doc-details" id="a9994a3a343d12df07eadd3689d797c0c"><div>
             <h3>
-              <span class="m-doc-wrap-bumper"><a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0a45500ec97e5f663e00fefdc751d9a5" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInstance::<wbr />AppInfo</a>&amp; _appInfo,
-              <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createinfo)</span></span>
-            </h3>
-            <p>Create an application instance.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_appInfo</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_createinfo</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div></section>
-          <section class="m-doc-details" id="a6d0012bd83e8bd72a4a5bc5b3a11881e"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"><a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d0012bd83e8bd72a4a5bc5b3a11881e" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_app_info.html" class="m-doc">AppInstance::<wbr />AppInfo</a>&amp; _appInfo,
-              <a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createInfo,
+              <span class="m-doc-wrap-bumper"><a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9994a3a343d12df07eadd3689d797c0c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="struct_v_t_1_1_v1_1_1_app_instance_1_1_create_info.html" class="m-doc">AppInstance::<wbr />CreateInfo</a>&amp; _createInfo,
               const Memory::AllocationCallbacks* _allocator)</span></span>
             </h3>
             <p>Create an application instance.</p>
@@ -236,11 +191,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">_appInfo</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_createInfo</td>
+                  <td style="width: 1%">_createInfo</td>
                   <td></td>
                 </tr>
                 <tr>

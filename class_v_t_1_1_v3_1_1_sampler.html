@@ -75,7 +75,7 @@
             <dt>
               struct <a href="struct_v_t_1_1_v2_1_1_sampler.html" class="m-doc">VT::V2::Sampler</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -111,14 +111,14 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a2d242cc4408cd2abba9eb8d5ea5c1dbe">
-              <span class="m-doc-wrap-bumper">auto <a href="#a2d242cc4408cd2abba9eb8d5ea5c1dbe" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              CreateInfo&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="abfc23769f25596f5862f1702f2a1bf8c">
+              <span class="m-doc-wrap-bumper">auto <a href="#abfc23769f25596f5862f1702f2a1bf8c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="struct_v_t_1_1_v1_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
-            <dt id="ac4ffe1e0cbbc13c53a6ca22619b92cb9">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac4ffe1e0cbbc13c53a6ca22619b92cb9" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              CreateInfo&amp; _info,
+            <dt id="a3a4a816f34a4f6d09559de0dff4aae53">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3a4a816f34a4f6d09559de0dff4aae53" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_logical_device.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="struct_v_t_1_1_v1_1_1_sampler_1_1_create_info.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="struct_v_t_1_1_v0_1_1_memory_1_1_allocation_callbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group___corridors.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
@@ -126,12 +126,8 @@
               <span class="m-doc-wrap-bumper">void <a href="#a8b2ffedaf57fb3812ee68b3a77d65848" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="aaeacabf0ef63a16572588fcefd9bb076">
-              <span class="m-doc-wrap-bumper">auto <a href="#aaeacabf0ef63a16572588fcefd9bb076" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a>&amp;</span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ab9390942d2b91b9d82a776c27d6129b1">
-              <span class="m-doc-wrap-bumper">auto <a href="#ab9390942d2b91b9d82a776c27d6129b1" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_sampler.html" class="m-doc">Sampler</a>&amp; _other) -&gt; bool</span>
+            <dt id="a1a254c7d13bc7b1e42ce832ca4a0243d">
+              <span class="m-doc-wrap-bumper">auto <a href="#a1a254c7d13bc7b1e42ce832ca4a0243d" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="class_v_t_1_1_v3_1_1_sampler.html" class="m-doc">Sampler</a>&amp; _other) const -&gt; bool</span>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -140,11 +136,7 @@
           <h2><a href="#pro-attribs">Protected variables</a></h2>
           <dl class="m-doc">
             <dt id="ab163cd5b9fa8b073895447e2d0b09bba">
-              <a href="struct_v_t_1_1_v1_1_1_sampler.html#a0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> <a href="#ab163cd5b9fa8b073895447e2d0b09bba" class="m-doc-self">handle</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="ac117bf507feed6126b61b50435725d1b">
-              CreateInfo <a href="#ac117bf507feed6126b61b50435725d1b" class="m-doc-self">info</a>
+              <a href="group___a_p_i_spec___samplers.html#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> <a href="#ab163cd5b9fa8b073895447e2d0b09bba" class="m-doc-self">handle</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a26835a45c2d797e8184599282511d9e8">

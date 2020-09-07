@@ -53,6 +53,146 @@
           <span class="m-breadcrumb"><a href="group___a_p_i___specification.html">API_Specification</a> &raquo;</span>
           APISpec_Samplers <span class="m-thin">module</span></h1>
         <p>Chapter 12: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap13.html">Specification</a></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_sampler_1_1_create_info.html" class="m-doc">VT::V1::Sampler::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="struct_v_t_1_1_v1_1_1_sampler.html" class="m-doc">VT::V1::Sampler</a>
+            </dt>
+            <dd>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</dd>
+          </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc">Handle</a> = VkSampler
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a></dd>
+            <dt>
+              using <a href="#ga5ec268470d7d764446c2aa52819f079e" class="m-doc">CreateFlags</a> = Bitmask&lt;ESamplerCreateFlag, VkSamplerCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlags">Specification</a></dd>
+          </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaf3f2ad33ecd5a57fc150b3289b37edd4" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _sampler) -&gt; EResult</span>
+            </dt>
+            <dd>Create a sampler object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga18467ea60c5e17d1e3d869e6d28023f1" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _sampler,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a sampler.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="ga0eecca1d7aa5b3a36c8a5b732ae7bec4"><div>
+            <h3>
+              using <a href="#ga0eecca1d7aa5b3a36c8a5b732ae7bec4" class="m-doc-self">Handle</a> = VkSampler
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sampler_8hpp.html">&lt;VaultedThermals/VT_Sampler.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga5ec268470d7d764446c2aa52819f079e"><div>
+            <h3>
+              using <a href="#ga5ec268470d7d764446c2aa52819f079e" class="m-doc-self">CreateFlags</a> = Bitmask&lt;ESamplerCreateFlag, VkSamplerCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sampler_8hpp.html">&lt;VaultedThermals/VT_Sampler.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlags">Specification</a></p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="gaf3f2ad33ecd5a57fc150b3289b37edd4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf3f2ad33ecd5a57fc150b3289b37edd4" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _sampler)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sampler_8hpp.html">&lt;VaultedThermals/VT_Sampler.hpp&gt;</a></div>
+            </h3>
+            <p>Create a sampler object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_sampler</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSampler">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga18467ea60c5e17d1e3d869e6d28023f1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga18467ea60c5e17d1e3d869e6d28023f1" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _sampler,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="_v_t___sampler_8hpp.html">&lt;VaultedThermals/VT_Sampler.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a sampler.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_sampler</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySampler">Specification</a></p>
+          </div></section>
+        </section>
       </div>
     </div>
   </div>
