@@ -15,6 +15,7 @@
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
@@ -70,13 +71,13 @@ namespace VaultedThermals
 			*/
 			using CreateFlags = Bitmask<EUndefined, Flags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a> @ingroup  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a> @ingroup APISpec_Shaders */
 			struct CreateInfo : V0::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
 			{
 				      EType             SType    ;
 				const void*             Next     ;
 				      CreateFlags       Flags    ;
-				      DataSize          CodeSize ;
+				      WordSize          CodeSize ;
 				const SPIR_V::Bytecode* Code     ;
 			};
 
@@ -85,6 +86,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateShaderModule">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Shaders
 			 * 
 			 * \param _deviceHandle
 			 * \param _creationSpec
@@ -108,6 +111,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyShaderModule">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Shaders
 			 * 
 			 * \param _deviceHandle
 			 * \param _moduleHandle
@@ -133,6 +138,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::ShaderModule;
 
+			/**
+			@brief Offers a default constructor and one code/code size parameters.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -143,7 +151,7 @@ namespace VaultedThermals
 					Code     = nullptr  ;
 				}
 
-				CreateInfo(RoCStr _code, DataSize _codeSize)
+				CreateInfo(RoCStr _code, WordSize _codeSize)
 				{
 					using SPIR_V::Bytecode;
 

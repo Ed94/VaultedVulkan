@@ -55,6 +55,7 @@ specified, why this is required.
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 
 
 #pragma endregion Includes
@@ -161,72 +162,37 @@ namespace VaultedThermals
 @{
 */
 
-// #TODO: Move to V0?
-#ifndef CALLING_CONVENTION_ENFORCER_H
-#define CALLING_CONVENTION_ENFORCER_H
-
-
-	template <class ID>
-	struct CallEnforcementSet;
-
-	#define MakeCallEnforcer_ConventionID(__API_NAME) \
-	class CallEnforcerID_##__API_NAME;
-
-	#define MakeCallEnforcer_EnforcementSet(__API_NAME, __ATTRIBUTE, __CALL)         \
-	template<>                                                                       \
-	struct CallEnforcementSet<CallEnforcerID_##__API_NAME>                           \
-	{                                                                                \
-		template<typename FunctionType, FunctionType*>                               \
-		struct CallEnforcer_CallMaker;                                               \
-		                                                                             \
-		template                                                                     \
-		<                                                                            \
-			typename    ReturnType    ,                                              \
-			typename... ParameterTypes,                                              \
-			ReturnType(*FunctionType)(ParameterTypes...)                             \
-		>                                                                            \
-		struct CallEnforcer_CallMaker<ReturnType(ParameterTypes...), FunctionType>   \
-		{                                                                            \
-			static __ATTRIBUTE ReturnType __CALL Call(ParameterTypes... _parameters) \
-			{                                                                        \
-				return FunctionType(std::forward<ParameterTypes>(_parameters)...);   \
-			}                                                                        \
-		};                                                                           \
-	};
-
-	#define MakeCallEnforcer(__API_NAME, __ATTRIBUTE, __CALL)        \
-	MakeCallEnforcer_ConventionID(__API_NAME);                       \
-	MakeCallEnforcer_EnforcementSet(__API_NAME, __ATTRIBUTE, __CALL);
-
-	template
-	<
-		class    ID          ,
-		typename FunctionType,
-
-		FunctionType& _functionRef
-	>
-	auto Enforced_Call()
-	{
-		return &(CallEnforcementSet<ID>::template CallEnforcer_CallMaker<FunctionType, &_functionRef>::Call);
-	};
-
-	/*
-	Ease of use macro to call the Enforcer_Caller for the defined API convention.
+	/**
+	I decided to make a hardcoded calling convention enforcer here just for the library. There used to be this fancy macro thing here...
+	Naturally it did not play well with other compilers...
 	*/
-	#define EnforceCallingConvention(__API_NAME, __FUNCTION)      \
-	Enforced_Call<__API_NAME, decltype(__FUNCTION), __FUNCTION>()
 
-#endif
+	template<typename FunctionType, FunctionType*>
+	struct CallEnforcer_CallMaker;
 
 	/**
-	@def Vulkan Convention Enforcement.
-
-	@brief Generates the convention enforcer set for the vulkan API.
-
-	@details
-	EnforceConvention(EnforcerID_Vulkan, _functionName) will wrap a function call with the proper calling conventions for the Vulkan API.
+	@brief Generates a wrapped call to the function passed to it.
 	*/
-	MakeCallEnforcer(Vulkan, VKAPI_ATTR, VKAPI_CALL)
+	template
+	<
+		typename    ReturnType    ,
+		typename... ParameterTypes,
+
+		ReturnType(*FunctionPtr)(ParameterTypes...)
+	>
+	struct CallEnforcer_CallMaker<ReturnType(ParameterTypes...), FunctionPtr>
+	{
+		static VKAPI_ATTR ReturnType VKAPI_CALL Call(ParameterTypes... _parameters)
+		{
+			return FunctionPtr(std::forward<ParameterTypes>(_parameters)...);
+		}
+	};
+
+	template<typename FunctionType, FunctionType& _functionRef>
+	auto GetVulkanAPI_Call()
+	{
+		return &(CallEnforcer_CallMaker<FunctionType, &_functionRef>::Call);
+	}
 
 	/**
 	@brief Used to wrap a function with the vulkan calling convention specifiers.
@@ -236,10 +202,10 @@ namespace VaultedThermals
 	This is the only intended macro to be used by the user of this library.
 	If the user wishes to avoid using this ease of use macro, the actual function call can be made:
 
-	Enforced_Call<CallEnforcerID_Vulkan, decltype(Function), Function>()
+	Enforced_Call<decltype(Function), Function>()
 	*/
 	#define EnforceVulkanCallingConvention(_FUNCTION) \
-	EnforceCallingConvention(CallEnforcerID_Vulkan, _FUNCTION)
+	GetVulkanAPI_Call<decltype(_FUNCTION), _FUNCTION>()
 
 	/** @} */
 }

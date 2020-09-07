@@ -17,6 +17,7 @@ Had to make this as there are definitions used by both application instance and 
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"

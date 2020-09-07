@@ -29,10 +29,6 @@ Define macro: VT_Vault_MagmaChamber_Open if you want this. [Note: Currently not 
 
 
 
-#include "VT_APISpecGroups.hpp"
-
-
-
 #ifndef VT_Option__Use_Long_Namespace
 /**
 @defgroup VaultedThermals

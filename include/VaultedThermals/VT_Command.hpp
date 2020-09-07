@@ -17,6 +17,7 @@
 // VT
 
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"

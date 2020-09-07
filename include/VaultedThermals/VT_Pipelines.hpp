@@ -15,6 +15,7 @@
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
@@ -91,7 +92,7 @@ namespace VaultedThermals
 					      EType       SType          ;
 					const void*       Next           ;
 					      CreateFlags Flags          ;
-					      DataSize    InitialDataSize;
+					      WordSize    InitialDataSize;
 					const void*       InitialData    ;
 				};
 
@@ -622,7 +623,7 @@ namespace VaultedThermals
 				{
 					uint32   ConstantID;
 					uint32   Offset    ;
-					DataSize Size      ;
+					WordSize Size      ;
 				};
 
 				/** 
@@ -633,7 +634,7 @@ namespace VaultedThermals
 				{
 					      uint32    MapEntryCount;
 					const MapEntry* MapEntires   ;
-					      DataSize  SizeOfData   ;
+					      WordSize  SizeOfData   ;
 					const void*     Data         ;
 				};
 			};

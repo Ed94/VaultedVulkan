@@ -15,6 +15,7 @@
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
@@ -59,14 +60,14 @@ namespace VaultedThermals
 		{
 			using Image = V1::Image;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceKHR">Specification</a>  */
-			using Handle = VkSurfaceKHR;   ///< Opaque handle to a surface object.
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
+			using Handle = VkSurfaceKHR;
 
 			using ETransform = ESurfaceTransformFlag;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagsKHR">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
 			using ETransformFlags     = Bitmask<ESurfaceTransformFlag, VkSurfaceTransformFlagsKHR>;
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagsKHR">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
 			using CompositeAlphaFlags = Bitmask<ECompositeAlpha      , VkCompositeAlphaFlagsKHR  >;
 
 			/**
@@ -74,6 +75,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceCapabilitiesKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 */
 			struct Capabilities : V0::VKStruct_Base<VkSurfaceCapabilitiesKHR>
 			{
@@ -106,23 +109,26 @@ namespace VaultedThermals
 				bool operator!= (const Capabilities& _other)
 				{
 					return
-						MinImageCount           == _other.MinImageCount           &&
-						MaxImageCount           == _other.MaxImageCount           &&
-						CurrentExtent           == _other.CurrentExtent           &&
-						MinImageExtent          == _other.MinImageExtent          &&
-						MaxImageExtent          == _other.MaxImageExtent          &&
-						MaxImageArrayLayers     == _other.MaxImageArrayLayers     &&
-						SupportedTransforms     == _other.SupportedTransforms     &&
-						SupportedCompositeAlpha == _other.SupportedCompositeAlpha &&
-						SupportedUsageFlags     == _other.SupportedUsageFlags 
-						? false : true;
+						MinImageCount           != _other.MinImageCount           &&
+						MaxImageCount           != _other.MaxImageCount           &&
+						CurrentExtent           != _other.CurrentExtent           &&
+						MinImageExtent          != _other.MinImageExtent          &&
+						MaxImageExtent          != _other.MaxImageExtent          &&
+						MaxImageArrayLayers     != _other.MaxImageArrayLayers     &&
+						SupportedTransforms     != _other.SupportedTransforms     &&
+						SupportedCompositeAlpha != _other.SupportedCompositeAlpha &&
+						SupportedUsageFlags     != _other.SupportedUsageFlags 
+						? true : false;
 				}
 			};
 
 			/**
 			 * @brief Structure describing a supported swapchain format-color space pair.
+			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceFormatKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 */
 			struct Format : V0::VKStruct_Base<VkSurfaceFormatKHR>
 			{
@@ -142,7 +148,11 @@ namespace VaultedThermals
 
 			static constexpr RoCStr OSSurface = InstanceExt::Win32Surface;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a> */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a> 
+
+			@ingroup APISpec_Window_System_Integration_WSI
+			*/
 			struct CreateInfo : V0::VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
 			{
 				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
@@ -172,6 +182,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateWin32SurfaceKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * \param _appHandle
 			 * \param _createInfo
@@ -205,11 +217,11 @@ namespace VaultedThermals
 		*/
 
 		/** 
-		@brief Surfaces hook onto a window to use as a rendering target. 
+		@brief Native platform surface or window objects are abstracted by surface objects.
 
-		@details
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_surface">Specification</a> 
 
-		@ingroup
+		@ingroup APISpec_Window_System_Integration_WSI
 		*/
 		struct Surface : public V0::Surface_Maker<V0::OS_Platform>
 		{
@@ -218,6 +230,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySurfaceKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * \param _appHandle
 			 * \param _surfaceHandle
@@ -233,6 +247,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceSupportKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * \param _physDeviceHandle
 			 * \param _queueFamilyIndex
@@ -257,6 +273,8 @@ namespace VaultedThermals
 			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceCapabilitiesKHR">Specification</a>  
 			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
+			 * 
 			 * \param _deviceHandle
 			 * \param _surface
 			 * \param _capabilitiesResult
@@ -275,7 +293,9 @@ namespace VaultedThermals
 			 * Otherwise, pSurfaceFormatCount must point to a variable set by the user to the number of elements in the pSurfaceFormats array, 
 			 * and on return the variable is overwritten with the number of structures actually written to pSurfaceFormats.
 			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceFormatsKHR">Specification</a>  
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceFormatsKHR">Specification</a> 
+			 *
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * \param _deviceHandle
 			 * \param _surfaceHandle
@@ -297,6 +317,8 @@ namespace VaultedThermals
 			 * and on return the variable is overwritten with the number of values actually written to pPresentModes.
 			 * 
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfacePresentModesKHR">Specification</a>  
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * \param _deviceHandle
 			 * \param _surfaceHandle
@@ -330,6 +352,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Surface;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -340,6 +365,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Create a surface (Default Allocator).
+			*/
 			static EResult Create(AppInstance::Handle _appHandle, const CreateInfo& _createInfo, Handle& _surfaceHandle)
 			{
 				return Parent::Create(_appHandle, _createInfo, Memory::DefaultAllocator, _surfaceHandle);
@@ -347,6 +375,9 @@ namespace VaultedThermals
 
 			using Parent::Create;
 
+			/**
+			@brief Destroy a surface (Default Allocator).
+			*/
 			static void Destroy(AppInstance::Handle _appHandle, Surface::Handle _surfaceHandle)
 			{
 				Parent::Destroy(_appHandle, _surfaceHandle, Memory::DefaultAllocator);

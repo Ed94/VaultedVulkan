@@ -11,11 +11,9 @@ Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/inde
 - Leveled abstraction namespacing and optional implementation wrapped in macros to allow easy discretion of features desired.
 
 ## State
+WIP. See milestones in issues.
 
-This is currently a WIP, I am fleshing this out while making my engine project:
-[Abstract Realm](https://github.com/Ed94/AbstractRealm)
-
-Currently the API can be used to bootstrap a vulkan backend, however a good amount of the API has not been wrapped.
+Currently the library can be used to bootstrap a vulkan backend, however a good amount of the C-API has not been wrapped.
 
 My current intentions is to get this going as far as I like in conjunction with following various vulkan guides, and making my engine mvp. 
 After that is done, this will be publicly released with some sort of open source license.

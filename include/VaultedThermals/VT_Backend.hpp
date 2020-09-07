@@ -14,6 +14,7 @@
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
@@ -89,15 +90,15 @@ namespace VaultedThermals
 		public:
 			~IDynamicArray() {};
 
-			virtual Type at(DataSize _index) = NULL;
+			virtual Type at(WordSize _index) = NULL;
 
 			virtual Type data() = NULL;
 
 			virtual void push_back() = NULL;
 
-			virtual void resize(DataSize _size) = NULL;
+			virtual void resize(WordSize _size) = NULL;
 
-			virtual DataSize size() = NULL;
+			virtual WordSize size() = NULL;
 		};
 
 		/**
@@ -168,6 +169,25 @@ namespace VaultedThermals
 				return reinterpret_cast<const VulkanType*>(this);
 			}
 		};
+
+		#ifndef BITMASK_DEFINED
+		#define BITMASK_DEFINED
+
+			#define Bitmaskable_ScopeBase()              \
+			template<typename Enum>                      \
+			struct Bitmaskable                           \
+			{                                            \
+				static constexpr bool specified = false; \
+			}; 
+
+			#define SpecifyBitmaskable(__ENUM)          \
+			template<>                                  \
+			struct Bitmaskable<__ENUM>                  \
+			{                                           \
+				static constexpr bool specified = true; \
+			};
+
+		#endif
 
 		template
 		<
@@ -263,23 +283,7 @@ namespace VaultedThermals
 
 
 
-#ifndef BITMASK_DEFINED
-#define BITMASK_DEFINED
 
-template<typename Enum>
-struct Bitmaskable
-{
-	static constexpr bool specified = false;
-};
-
-#define SpecifyBitmaskable(__ENUM)                  \
-		template<>                                  \
-		struct Bitmaskable<__ENUM>                  \
-		{                                           \
-			static constexpr bool specified = true; \
-		};
-
-#endif
 
 
 

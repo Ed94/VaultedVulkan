@@ -15,6 +15,7 @@
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_CPP_STL.hpp"
 #include "VT_Enums.hpp"
@@ -43,26 +44,28 @@ namespace VaultedThermals
 		{
 			using EExternalHandleTypeFlag = EExternalFenceHandleTypeFlag;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			using Handle = VkFence;
 		};
 
 		struct Semaphore_PlatformAgnostic
 		{
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a> .
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a> 
+
+			@ingroup APISpec_Synchronization_and_Cache_Control
 			*/
 			using Handle = VkSemaphore;	
 
 			using EExternalHandleType = EExternalSemaphoreHandleTypeFlag;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a> @ingroup APISpec_Additional_Capabilities */
 			using ExternalHandleTypeFlags = Bitmask<EExternalHandleType, VkExternalSemaphoreHandleTypeFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			using ImportFlags = Bitmask<ESemaphoreImportFlag, VkSemaphoreImportFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			using WaitFlags = Bitmask<ESemaphoreWaitFlag, VkSemaphoreWaitFlags>;
 		};
 
@@ -84,6 +87,8 @@ namespace VaultedThermals
 
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a> 
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
 			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
 			{
@@ -95,6 +100,8 @@ namespace VaultedThermals
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
 			{
@@ -107,7 +114,11 @@ namespace VaultedThermals
 			};
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceFdKHR">Specification</a>  
+			* @brief 
+			* 
+			* @details<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceFdKHR">Specification</a>  
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
 			* 
 			* \param device
 			* \param pGetFdInfo
@@ -125,7 +136,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceFdKHR">Specification</a>
+			 * @brief  
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceFdKHR">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \param _importInfo
@@ -147,6 +162,8 @@ namespace VaultedThermals
 
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a> 
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
 			*/
 			struct ExportableOS_HandleInfo : V0::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
 			{
@@ -159,6 +176,8 @@ namespace VaultedThermals
 
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a> 
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
 			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
 			{
@@ -173,6 +192,8 @@ namespace VaultedThermals
 			 * 
 			 * @details
 			 * Note: Windows provides an extra member for the handle name.
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
 			{
@@ -186,7 +207,12 @@ namespace VaultedThermals
 			};
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceWin32HandleKHR">Specification</a>  
+			* @brief Export a Windows handle representing the state of a fence.
+			
+			* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceWin32HandleKHR">Specification</a>  
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
+			* 
 			* \return 
 			*/
 			static EResult GetOS_Handle
@@ -200,7 +226,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceWin32HandleKHR">Specification</a> 
+			 * @brief Import a fence payload from a Windows handle.
+			 *
+			 * @details
+			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceWin32HandleKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param pImportFenceWin32HandleInfo
@@ -220,14 +251,20 @@ namespace VaultedThermals
 		{
 			using OS_Handle = PlatformTypes_Maker<EOS::Linux>::OS_Handle;
 
-			/** @brief Do not use, dummy structure. */
+			/** 
+			@brief Do not use, dummy structure. 
+			*/
 			struct ExportableOS_HandleInfo : V0::VKStruct_Base<DummyBase, EStructureType::Max_Enum>
 			{
 				      EType SType;
 				const void* Next ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a>  
+
+			@ingroup APISpec_Synchronization_and_Cache_Control
+			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
 			{
 				      EType               SType     ;
@@ -236,7 +273,11 @@ namespace VaultedThermals
 				      EExternalHandleType HandleType;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a>  
+
+			@ingroup APISpec_Synchronization_and_Cache_Control
+			*/
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
 			{
 				      EType               SType     ;
@@ -249,7 +290,11 @@ namespace VaultedThermals
 
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreFdKHR">Specification</a> 
+			 * @brief Export a POSIX file descriptor representing the payload of a semaphore.
+			 *  
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreFdKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param pGetFdInfo
@@ -267,7 +312,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreFdKHR">Specification</a> 
+			 * @brief Import a semaphore payload from a POSIX file descriptor.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreFdKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param pImportSemaphoreFdInfo
@@ -283,7 +332,11 @@ namespace VaultedThermals
 		{
 			using OS_Handle = PlatformTypes_Maker<EOS::Windows>::OS_Handle;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a>  
+
+			@ingroup APISpec_Synchronization_and_Cache_Control
+			*/
 			struct ExportableOS_HandleInfo : V0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
 			{
 					  EType                SType       ;
@@ -293,7 +346,11 @@ namespace VaultedThermals
 					  LPCWSTR              Name        ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a>  
+
+			@ingroup APISpec_Synchronization_and_Cache_Control
+			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
 			{
 				      EType               SType     ;
@@ -302,7 +359,11 @@ namespace VaultedThermals
 				      EExternalHandleType HandleType;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a>  */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a>  
+
+			@ingroup APISpec_Synchronization_and_Cache_Control
+			*/
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
 			{
 				      EType               SType     ;
@@ -316,7 +377,11 @@ namespace VaultedThermals
 
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreWin32HandleKHR">Specification</a> 
+			 * @brief Export a Windows handle representing the payload of a semaphore.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreWin32HandleKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param pGetWin32HandleInfo
@@ -334,7 +399,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreWin32HandleKHR">Specification</a> 
+			* @brief Import a semaphore payload from a Windows handle.
+			* 
+			* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreWin32HandleKHR">Specification</a> 
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
 			* 
 			* \param device
 			* \param pImportSemaphoreWin32HandleInfo
@@ -355,27 +424,36 @@ namespace VaultedThermals
 		*/
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-events">Specification</a> 
+		 * @brief 
+		 * Events are a synchronization primitive that can be used to insert a fine-grained dependency between commands submitted to the same queue, 
+		 * or between the host and a queue. Events must not be used to insert a dependency between commands submitted to different queues. 
+		 * Events have two states - signaled and unsignaled. 
+		 * 
+		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-events">Specification</a> 
+		 * 
+		 * @ingroup APISpec_Synchronization_and_Cache_Control
 		 */
 		struct Event
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEvent">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEvent">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			using Handle = VkEvent;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEventCreateInfo">Specification</a>  */
+			using CreateFlags = Bitmask<EUndefined, VkEventCreateFlags>;   ///< @brief Reserved for future use.
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEventCreateInfo">Specification</a> @ingroup  APISpec_Synchronization_and_Cache_Control */
 			struct CreateInfo : V0::VKStruct_Base<VkEventCreateInfo, EStructureType::Event_CreateInfo>
 			{
-				using CreateFlags = Bitmask<EUndefined, VkEventCreateFlags>;
-
 				      EType       SType;
 				const void*       Next ;
 				      CreateFlags Flags;
 			};
 
 			/**
-			 * @brief.
+			 * @brief Create an Event.
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateEvent">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \param _createInfo
@@ -391,12 +469,16 @@ namespace VaultedThermals
 				      Handle&                      _event
 			)
 			{
-				return EResult(vkCreateEvent(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_event));
+				return EResult(vkCreateEvent(_device, _createInfo, *_allocator, &_event));
 			}
 
 			/**
-			 * @brief 
+			 * @brief Destroy an event.
+			 * 
+			 * @details
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyEvent">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \param _event
@@ -409,11 +491,15 @@ namespace VaultedThermals
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				vkDestroyEvent(_device, _event, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyEvent(_device, _event, *_allocator);
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetEventStatus">Specification</a> 
+			 * @brief Query the state of an event from the host.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetEventStatus">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param event
@@ -425,7 +511,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetEvent">Specification</a> 
+			 * @brief 
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetEvent">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \param _event
@@ -437,7 +527,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkSetEvent">Specification</a> 
+			 * @brief 
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkSetEvent">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \param _event
@@ -450,20 +544,25 @@ namespace VaultedThermals
 		};
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-fences">Specification</a> 
-		 */
+		@brief Fences are a synchronization primitive that can be used to insert a dependency from a queue to the host. Fences have two states - signaled and unsignaled.
+
+		@details
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-fences">Specification</a> 
+
+		@ingroup APISpec_Synchronization_and_Cache_Control
+		*/
 		struct Fence : V0::Fence_Maker<V0::OS_Platform>
 		{
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			using CreateFlags = Bitmask<EFenceCreateFlag, VkFenceCreateFlags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlags">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			using ExternalHandleFlags = Bitmask<EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags>;
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateInfo">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkFenceCreateInfo, EStructureType::Fence_CreateInfo>
 			{
@@ -473,7 +572,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventInfoEXT">Specification</a> 
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventInfoEXT">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control
 			*/
 			struct DeviceEventInfo : V0::VKStruct_Base<VkDeviceEventInfoEXT, EStructureType::Device_EventInfo_EXT>
 			{
@@ -483,7 +582,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a> 
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control
 			*/
 			struct DisplayEventInfo : V0::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
 			{
@@ -493,7 +592,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceCreateInfo">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
 			struct ExportCreateInfo : V0::VKStruct_Base<VkExportFenceCreateInfo, EStructureType::ExportFence_CreateInfo>
 			{
@@ -503,7 +602,11 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a> 
+			 * @brief Create a fence.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _logicalDevice
 			 * \param _createInfo
@@ -519,11 +622,15 @@ namespace VaultedThermals
 				      Handle&                      _fence
 			)
 			{
-				return EResult(vkCreateFence(_logicalDevice, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_fence));
+				return EResult(vkCreateFence(_logicalDevice, _createInfo, *_allocator, &_fence));
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFence">Specification</a> 
+			 * @brief Destroy a fence.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFence">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _logicalDevice
 			 * \param _fence
@@ -536,11 +643,15 @@ namespace VaultedThermals
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				vkDestroyFence(_logicalDevice, _fence, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyFence(_logicalDevice, _fence, *_allocator);
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceStatus">Specification</a> 
+			 * @brief Export a Windows handle representing the state of a fence.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceStatus">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _logicalDevice
 			 * \param _fence
@@ -552,7 +663,11 @@ namespace VaultedThermals
 			}			
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDeviceEventEXT">Specification</a> 
+			 * @brief Create a fence that will be signaled when an event occurs on a device.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDeviceEventEXT">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param pDeviceEventInfo
@@ -568,11 +683,15 @@ namespace VaultedThermals
 				      Handle&                      _fence
 			)
 			{
-				return EResult(vkRegisterDeviceEventEXT(_device, _deviceEventInfo, _allocator->operator const VkAllocationCallbacks*(), &_fence));
+				return EResult(vkRegisterDeviceEventEXT(_device, _deviceEventInfo, *_allocator, &_fence));
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a> 
+			 * @brief 
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param display
@@ -590,11 +709,13 @@ namespace VaultedThermals
 				      Handle&                      _fence
 			)
 			{
-				return EResult(vkRegisterDisplayEventEXT(_device, _display, _displayEventInfo, _allocator->operator const VkAllocationCallbacks*(), &_fence));
+				return EResult(vkRegisterDisplayEventEXT(_device, _display, _displayEventInfo, *_allocator, &_fence));
 			}
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetFences">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _logicalDevice
 			 * \param _fences
@@ -611,6 +732,8 @@ namespace VaultedThermals
 			 * @brief .
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkWaitForFences">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param fenceCount
@@ -634,11 +757,15 @@ namespace VaultedThermals
 
 		/**
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-semaphores">Specification</a> 
+		 * 
+		 * @ingroup
 		 */
 		struct Semaphore : V0::Semaphore_Maker<V0::OS_Platform>
 		{
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreCreateInfo">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreCreateInfo">Specification</a> APISpec_Synchronization_and_Cache_Control
+			 * 
+			 * @ingroup
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkSemaphoreCreateInfo, EStructureType::Semaphore_CreateInfo>
 			{
@@ -650,7 +777,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreCreateInfo">Specification</a> 
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Controls
 			 */
 			struct ExportCreateInfo : V0::VKStruct_Base<VkExportSemaphoreCreateInfo, EStructureType::Export_Semaphore_CreateInfo_KHR>
 			{
@@ -659,7 +786,7 @@ namespace VaultedThermals
 				      ExternalHandleTypeFlags HandleTypes;				
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			struct SignalInfo : V0::VKStruct_Base<VkSemaphoreSignalInfo, EStructureType::Semaphore_SignalInfo>
 			{
 				      EType  SType    ;
@@ -668,7 +795,7 @@ namespace VaultedThermals
 				      uInt64 Value    ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			struct TypeSpecifiedCreateInfo : V0::VKStruct_Base<VkSemaphoreTypeCreateInfo, EStructureType::SemaphoreType_CreateInfo>
 			{
 				      EType  SType        ;
@@ -677,7 +804,7 @@ namespace VaultedThermals
 				      uInt64 InitialValue ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			struct WaitInfo : V0::VKStruct_Base<VkSemaphoreWaitInfo, EStructureType::Semaphore_WaitInfo>
 			{
 				      EType     SType         ;
@@ -689,7 +816,11 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSemaphore">Specification</a> 
+			 * @brief Create a semaphore.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSemaphore">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param pCreateInfo
@@ -705,11 +836,15 @@ namespace VaultedThermals
 				      Handle&                      _semaphore
 			)
 			{
-				return EResult(vkCreateSemaphore(_device, _createInfo.operator const VkSemaphoreCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_semaphore));
+				return EResult(vkCreateSemaphore(_device, _createInfo, *_allocator, &_semaphore));
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySemaphore">Specification</a> 
+			 * @brief Destroy a semaphore.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySemaphore">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \param _semaphore
@@ -722,11 +857,15 @@ namespace VaultedThermals
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
-				vkDestroySemaphore(_device, _semaphore, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroySemaphore(_device, _semaphore, *_allocator);
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreCounterValue">Specification</a> 
+			 * @brief Query the current counter value of a semaphore created with a SemaphoreType of Timeline from the host.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreCounterValue">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param semaphore
@@ -744,7 +883,11 @@ namespace VaultedThermals
 			}			
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkSignalSemaphore">Specification</a> 
+			 * @brief Signal a semaphore created with a SemaphoreType of Timeline with a particular counter value, on the host.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkSignalSemaphore">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param device
 			 * \param pSignalInfo
@@ -756,7 +899,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkWaitSemaphores">Specification</a>.
+			 * @brief Wait for a set of semaphores created with a VkSemaphoreType of VK_SEMAPHORE_TYPE_TIMELINE to reach particular counter values on the host.
+			 * 
+			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkWaitSemaphores">Specification</a>
+			 * 
+			 * @ingroup APISpec_Synchronization_and_Cache_Control
 			 * 
 			 * \param _device
 			 * \param _waitInfo
@@ -788,6 +935,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Event;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : Parent::CreateInfo
 			{
 				CreateInfo()
@@ -798,7 +948,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief.
+			 * @brief Create an event (Default Allocator).
 			 * 
 			 * \param _device
 			 * \param _createInfo
@@ -819,7 +969,7 @@ namespace VaultedThermals
 			using Parent::Create;
 
 			/**
-			 * @brief 
+			 * @brief Destroy an event (Default Allocator).
 
 			 * \param _device
 			 * \param _event
@@ -837,6 +987,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Fence;
 			
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : Parent::CreateInfo
 			{
 				CreateInfo()
@@ -846,6 +999,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct DeviceEventInfo : Parent::DeviceEventInfo
 			{
 				DeviceEventInfo()
@@ -855,6 +1011,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct DisplayEventInfo : Parent::DisplayEventInfo
 			{
 				DisplayEventInfo()
@@ -864,6 +1023,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct ExportableOS_HandleInfo : Parent::ExportableOS_HandleInfo
 			{
 				ExportableOS_HandleInfo()
@@ -873,6 +1035,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct GetOS_HandleInfo : Parent::GetOS_HandleInfo
 			{
 				GetOS_HandleInfo()
@@ -882,6 +1047,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct ImportOS_HandleInfo : Parent::ImportOS_HandleInfo
 			{
 				ImportOS_HandleInfo()
@@ -891,6 +1059,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct ExportCreateInfo : Parent::ExportCreateInfo
 			{
 				ExportCreateInfo()
@@ -901,7 +1072,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief 
+			 * @brief Create a fence (Default Allocator).
 			 * 
 			 * \param _logicalDevice
 			 * \param _createInfo
@@ -922,7 +1093,7 @@ namespace VaultedThermals
 			using Parent::Create;
 
 			/**
-			 * @brief 
+			 * @brief Destroy a fence (Default Allocator).
 			 * 
 			 * \param _logicalDevice
 			 * \param _fence
@@ -936,6 +1107,10 @@ namespace VaultedThermals
 			using Parent::Destroy;
 
 			/**
+			* 
+			* @brief
+			* 
+			* @details
 			 * 
 			 * \param device
 			 * \param pDeviceEventInfo
@@ -956,6 +1131,10 @@ namespace VaultedThermals
 			using Parent::RegisterDeviceEvent;
 
 			/**
+			* @brief 
+			* 
+			* @details
+			* 
 			 * \param device
 			 * \param display
 			 * \param pDisplayEventInfo
@@ -981,6 +1160,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Semaphore;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : Parent::CreateInfo
 			{
 				CreateInfo()
@@ -990,6 +1172,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct ExportCreateInfo : Parent::ExportCreateInfo
 			{
 				ExportCreateInfo()
@@ -999,6 +1184,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct ExportableOS_HandleInfo : Parent::ExportableOS_HandleInfo
 			{
 				ExportableOS_HandleInfo()
@@ -1008,6 +1196,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct GetOS_HandleInfo : Parent::GetOS_HandleInfo
 			{
 				GetOS_HandleInfo()
@@ -1017,6 +1208,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct ImportOS_HandleInfo : Parent::ImportOS_HandleInfo
 			{
 				ImportOS_HandleInfo()
@@ -1026,6 +1220,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct SignalInfo : Parent::SignalInfo
 			{
 				SignalInfo()
@@ -1035,6 +1232,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct TypeSpecifiedCreateInfo : Parent::TypeSpecifiedCreateInfo
 			{
 				TypeSpecifiedCreateInfo()
@@ -1044,6 +1244,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct WaitInfo : Parent::WaitInfo
 			{
 				WaitInfo()
@@ -1053,6 +1256,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Create a semaphore (Default Allocator).
+			*/
 			static EResult Create
 			(
 				      LogicalDevice::Handle _device    ,
@@ -1065,6 +1271,9 @@ namespace VaultedThermals
 
 			using Parent::Create;
 
+			/**
+			@brief Destroy a semaphore (Default Allocator).
+			*/
 			static void Destroy
 			(
 				LogicalDevice::Handle _device   ,
@@ -1138,14 +1347,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
 			{
 				return handle;
+			}
+
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const Event& _other) const
+			{
+				return handle == _other.handle;
 			}
 
 		protected:

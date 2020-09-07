@@ -15,6 +15,7 @@
 
 // VT
 #include "VT_Vaults.hpp"
+#include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
 #include "VT_Enums.hpp"
 #include "VT_Backend.hpp"
@@ -53,23 +54,25 @@ namespace VaultedThermals
 		 * @brief A queue of images that can be presented to a surface.
 		 * 
 		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a> 
+		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a>
+		 * 
+		 * @ingroup  APISpec_Window_System_Integration_WSI
 		 */
 		struct Swapchain
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
 			using Handle = VkSwapchainKHR;
 
+			using ECreateFlag = ESwapchainCreateFlag;
+
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
+			using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
+
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> .
+			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> @ingroup APISpec_Window_System_Integration_WSI
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
 			{
-				using ECreateFlag = ESwapchainCreateFlag;
-
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a>  */
-				using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
-
 				      EType                 SType                ;
 				const void*                 Next                 ;
 				      CreateFlags           Flags                ;
@@ -90,7 +93,7 @@ namespace VaultedThermals
 				      Handle                OldSwapchain         ;
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
 			struct PresentationInfo : V0::VKStruct_Base<VkPresentInfoKHR, EStructureType::PresentInfo_KHR>
 			{
 				      EType              SType             ;
@@ -104,9 +107,11 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @brief
+			 * @brief Acquire an available presentable image to use, and retrieve the index of that image.
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAcquireNextImageKHR">Specification</a>
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * \param _device
 			 * \param _swapchain
@@ -138,6 +143,8 @@ namespace VaultedThermals
 			 * 
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSwapchainKHR">link text</a> 
 			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
+			 * 
 			 * \param _deviceHandle
 			 * \param _creationSpecification
 			 * \param _allocator
@@ -164,6 +171,8 @@ namespace VaultedThermals
 			 * 
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySwapchainKHR">Specification</a> 
 			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
+			 * 
 			 * \param _deviceHandle
 			 * \param _swapChainToDestroy
 			 * \param _allocator
@@ -171,6 +180,18 @@ namespace VaultedThermals
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _swapChainToDestroy, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, _allocator->operator const VkAllocationCallbacks*());
+			}
+
+			/**
+			@brief Query a swapchain’s status when rendering to a shared presentable image.
+
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainStatusKHR">Specification</a> 
+
+			@ingroup APISpec_Window_System_Integration_WSI
+			*/
+			static EResult GetStatus(LogicalDevice::Handle _device, Handle _swapchain)
+			{
+				return EResult(vkGetSwapchainStatusKHR(_device, _swapchain));
 			}
 
 			/**
@@ -182,6 +203,8 @@ namespace VaultedThermals
 			 * and on return the variable is overwritten with the number of structures actually written to pSwapchainImages.
 			 * 
 			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainImagesKHR">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * \param _deviceHandle
 			 * \param _swapChain
@@ -209,6 +232,9 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Swapchain;
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct CreateInfo : Parent::CreateInfo
 			{
 				CreateInfo()
@@ -218,6 +244,9 @@ namespace VaultedThermals
 				}
 			};
 
+			/**
+			@brief Offers a default constructor.
+			*/
 			struct PresentationInfo : Parent::PresentationInfo
 			{
 				PresentationInfo()
@@ -227,6 +256,9 @@ namespace VaultedThermals
 				}
 			};
 			
+			/**
+			@brief Create a swapchain (Default Allocator).
+			*/
 			static EResult Create
 			(
 				      LogicalDevice::Handle _deviceHandle,
@@ -239,6 +271,9 @@ namespace VaultedThermals
 
 			using Parent::Create;
 
+			/**
+			@brief Destroy a swapchain (Default Allocator).
+			*/
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _swapChainToDestroy)
 			{
 				Parent::Destroy(_deviceHandle, _swapChainToDestroy, Memory::DefaultAllocator);
