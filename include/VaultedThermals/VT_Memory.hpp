@@ -285,19 +285,17 @@ namespace VaultedThermals
 			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo)
 			{
 				device    = &_device                ;
-				info      = _allocateInfo           ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Allocate(*device, info, handle);
+				return Parent::Allocate(*device, _allocateInfo, handle);
 			}
 
 			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device     ;
-				info      = _allocateInfo;
 				allocator = _allocator   ;
 
-				return Parent::Allocate(*device, info, allocator, handle);
+				return Parent::Allocate(*device, _allocateInfo, allocator, handle);
 			}
 
 			void Free()
@@ -345,7 +343,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const Memory& _other)
+			bool operator== (const Memory& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -353,8 +351,6 @@ namespace VaultedThermals
 		protected:
 
 			Handle handle;
-
-			AllocateInfo info;
 
 			const AllocationCallbacks* allocator;
 

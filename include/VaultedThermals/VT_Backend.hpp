@@ -20,26 +20,6 @@
 
 
 
-#ifndef BITMASK_DEFINED
-#define BITMASK_DEFINED
-
-template<typename Enum>
-struct Bitmaskable
-{
-	static constexpr bool specified = false;
-};
-
-#define SpecifyBitmaskable(__ENUM)      \
-		template<>                              \
-		struct Bitmaskable<__ENUM>              \
-		{							            \
-			static constexpr bool specified = true; \
-		};	
-
-#endif
-
-
-
 #ifndef VT_Option__Use_Long_Namespace
 namespace VT
 #else
@@ -123,7 +103,7 @@ namespace VaultedThermals
 		/**
 		@brief Used when creating fake VulkanAPI structures for platform abstraction uses.
 		*/
-		struct DummyStruct
+		struct DummyBase
 		{};
 
 		/** @struct VKStruct_Base
@@ -188,71 +168,6 @@ namespace VaultedThermals
 				return reinterpret_cast<const VulkanType*>(this);
 			}
 		};
-
-	// Used for collapsing macro in visual studio...
-	#pragma region VT_VKStruct_Base
-		/**
-		@brief Macro variant of the template for wrapping a vulkan structure.
-
-		@details this will be used if its decided to implement the library feature of generating the library via macros
-		if its decided to support the only one vault implementation without inheritance...
-		(If this is supported, it will be a different repo, to avoid obfuscating the source of the main repository.
-		*/
-		#define VT_VKStruct_Base(_VulkanType, _EStructure) \
-			/** \
-			* @typedef EType \
-			* \
-			* @brief Defines the EType enum to the default vkStructureType enum for now.\
-			*/ \
-			using EType = EStructureType; \
-		\
-			/** @brief Keeps track of the structure type enum for a native vulkan struct (If an enum does not exist Max_Enum is used instead) */ \
-			static constexpr EType STypeEnum = _EStructure; \
-		\
-			/** \
-			@typdef VkType \
-		\
-			@brief Keeps record of the struct's inherent vulkan equivalent. \
-			*/ \
-			using VkType = _VulkanType; \
-		\
-			/** \
-			@brief Does a pointer r-cast to the desired struct type. \
-			(Since any wrapped vulkan struct have the same members this is possible) \
-			*/ \
-			operator _VulkanType() \
-			{ \
-				return *reinterpret_cast<_VulkanType*>(this); \
-			} \
-		\
-			/** \
-			@brief Does a pointer r-cast to the desired struct type. \
-			(Since any wrapped vulkan struct have the same members this is possible) \
-			*/ \
-			operator const _VulkanType& () \
-			{ \
-				return *reinterpret_cast<_VulkanType*>(this); \
-			} \
-		\
-			/** \
-			@brief Does a pointer r-cast to the desired struct type. \
-			(Since any wrapped vulkan struct have the same members this is possible) \
-			*/ \
-			operator _VulkanType*() \
-			{ \
-				return reinterpret_cast<_VulkanType*>(this); \
-			} \
-		\
-			/** \
-			@brief Does a pointer r-cast to the desired struct type. \
-			(Since any wrapped vulkan struct have the same members this is possible) \
-			*/ \
-			operator const VulkanType*() const \
-			{ \
-				return reinterpret_cast<const _VulkanType*>(this); \
-			}
-
-	#pragma endregion VKStruct_Base
 
 		template
 		<
@@ -345,3 +260,94 @@ namespace VaultedThermals
 		/** @} */
 	}
 }
+
+
+
+#ifndef BITMASK_DEFINED
+#define BITMASK_DEFINED
+
+template<typename Enum>
+struct Bitmaskable
+{
+	static constexpr bool specified = false;
+};
+
+#define SpecifyBitmaskable(__ENUM)                  \
+		template<>                                  \
+		struct Bitmaskable<__ENUM>                  \
+		{                                           \
+			static constexpr bool specified = true; \
+		};
+
+#endif
+
+
+
+
+// Not Used
+
+	// Used for collapsing macro in visual studio...
+	//#pragma region VT_VKStruct_Base
+	//	/**
+	//	@brief Macro variant of the template for wrapping a vulkan structure.
+
+	//	@details this will be used if its decided to implement the library feature of generating the library via macros
+	//	if its decided to support the only one vault implementation without inheritance...
+	//	(If this is supported, it will be a different repo, to avoid obfuscating the source of the main repository.
+	//	*/
+	//	#define VT_VKStruct_Base(_VulkanType, _EStructure) \
+	//		/** \
+	//		* @typedef EType \
+	//		* \
+	//		* @brief Defines the EType enum to the default vkStructureType enum for now.\
+	//		*/ \
+	//		using EType = EStructureType; \
+	//	\
+	//		/** @brief Keeps track of the structure type enum for a native vulkan struct (If an enum does not exist Max_Enum is used instead) */ \
+	//		static constexpr EType STypeEnum = _EStructure; \
+	//	\
+	//		/** \
+	//		@typdef VkType \
+	//	\
+	//		@brief Keeps record of the struct's inherent vulkan equivalent. \
+	//		*/ \
+	//		using VkType = _VulkanType; \
+	//	\
+	//		/** \
+	//		@brief Does a pointer r-cast to the desired struct type. \
+	//		(Since any wrapped vulkan struct have the same members this is possible) \
+	//		*/ \
+	//		operator _VulkanType() \
+	//		{ \
+	//			return *reinterpret_cast<_VulkanType*>(this); \
+	//		} \
+	//	\
+	//		/** \
+	//		@brief Does a pointer r-cast to the desired struct type. \
+	//		(Since any wrapped vulkan struct have the same members this is possible) \
+	//		*/ \
+	//		operator const _VulkanType& () \
+	//		{ \
+	//			return *reinterpret_cast<_VulkanType*>(this); \
+	//		} \
+	//	\
+	//		/** \
+	//		@brief Does a pointer r-cast to the desired struct type. \
+	//		(Since any wrapped vulkan struct have the same members this is possible) \
+	//		*/ \
+	//		operator _VulkanType*() \
+	//		{ \
+	//			return reinterpret_cast<_VulkanType*>(this); \
+	//		} \
+	//	\
+	//		/** \
+	//		@brief Does a pointer r-cast to the desired struct type. \
+	//		(Since any wrapped vulkan struct have the same members this is possible) \
+	//		*/ \
+	//		operator const VulkanType*() const \
+	//		{ \
+	//			return reinterpret_cast<const _VulkanType*>(this); \
+	//		}
+
+	//#pragma endregion VKStruct_Base
+

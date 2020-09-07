@@ -76,7 +76,7 @@ namespace VaultedThermals
 			/** 
 			@brief Do not use, dummy structure.
 			*/
-			struct ExportableHandleInfo : V0::VKStruct_Base<DummyStruct, EStructureType::Max_Enum>
+			struct ExportableHandleInfo : V0::VKStruct_Base<DummyBase, EStructureType::Max_Enum>
 			{
 				      EType SType;
 				const void* Next ;
@@ -220,7 +220,8 @@ namespace VaultedThermals
 		{
 			using OS_Handle = PlatformTypes_Maker<EOS::Linux>::OS_Handle;
 
-			struct ExportableOS_HandleInfo : V0::VKStruct_Base<DummyStruct, EStructureType::Max_Enum>
+			/** @brief Do not use, dummy structure. */
+			struct ExportableOS_HandleInfo : V0::VKStruct_Base<DummyBase, EStructureType::Max_Enum>
 			{
 				      EType SType;
 				const void* Next ;
@@ -1094,19 +1095,17 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
 				device    = &_device                ;
-				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);
+				return Parent::Create(*device, _info, handle);
 			}
 
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device  ;
-				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(*device, info, allocator, handle);
+				return Parent::Create(*device, _info, allocator, handle);
 			}
 
 			void Destroy()
@@ -1155,8 +1154,6 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 
-			CreateInfo info;
-
 			const LogicalDevice* device;
 		};
 
@@ -1168,19 +1165,17 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
 				device    = &_device                ;
-				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);
+				return Parent::Create(*device, _info, handle);
 			}
 
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device  ;
-				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(*device, info, allocator, handle);
+				return Parent::Create(*device, _info, allocator, handle);
 			}
 
 			void Destroy()
@@ -1260,9 +1255,9 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
@@ -1270,13 +1265,21 @@ namespace VaultedThermals
 				return handle;
 			}
 
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const Fence& _other) const
+			{
+				return handle == _other.handle;
+			}
+
 		protected:
 
 			Handle handle;
 
 			const Memory::AllocationCallbacks* allocator;
-
-			CreateInfo info;
 
 			const LogicalDevice* device;
 		};
@@ -1289,19 +1292,17 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
 				device    = &_device  ;
-				info      = _info     ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);
+				return Parent::Create(*device, _info, handle);
 			}
 
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device  ;
-				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(*device, info, allocator, handle);
+				return Parent::Create(*device, _info, allocator, handle);
 			}
 
 			void Destroy()
@@ -1312,11 +1313,6 @@ namespace VaultedThermals
 			EResult GetCounterValue(uInt64& _value)
 			{
 				return Parent::GetCounterValue(*device, handle, _value);
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
 			}
 
 			EResult GetOS_Handle(const GetOS_HandleInfo& _getInfo, OS_Handle& _osHandle)
@@ -1344,19 +1340,24 @@ namespace VaultedThermals
 				return handle;
 			}
 
-			operator Handle*()
+			operator Handle* ()
 			{
 				return &handle;
 			}
 
-			operator const Handle&() const
+			operator const Handle& () const
 			{
 				return handle;
 			}
 
-			operator const Handle*() const
+			operator const Handle* () const
 			{
 				return &handle;
+			}
+
+			bool operator== (const Semaphore& _other) const
+			{
+				return handle == _other.handle;
 			}
 
 		protected:
@@ -1364,8 +1365,6 @@ namespace VaultedThermals
 			Handle handle;
 
 			const Memory::AllocationCallbacks* allocator;
-
-			CreateInfo info;
 
 			const LogicalDevice* device;
 		};

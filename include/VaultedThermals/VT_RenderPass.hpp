@@ -220,7 +220,7 @@ namespace VaultedThermals
 				      uint32                 AttachmentCount;
 				const AttachmentDescription* Attachments    ;
 				      uint32                 SubpassCount   ;
-				const SubpassDescription*     Subpasses     ;
+				const SubpassDescription*    Subpasses     ;
 				      uint32                 DependencyCount;
 				const SubpassDependency*     Dependencies   ;
 			};
@@ -514,39 +514,25 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::RenderPass;
 
-
-
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
-				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);
+				return Parent::Create(*device, _info, handle);
 			}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device  ;
-				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(*device, info, allocator, handle);
+				return Parent::Create(*device, _info, allocator, handle);
 			}
 
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
-			}
-
-			uint32 GetAttachmentCount()
-			{
-				return info.AttachmentCount;
-			}
-
-			Handle GetHandle()
-			{
-				return handle;
 			}
 
 			operator Handle()
@@ -579,8 +565,6 @@ namespace VaultedThermals
 			Handle handle;
 
 			const Memory::AllocationCallbacks* allocator;
-
-			CreateInfo info;
 
 			const LogicalDevice* device;
 		};

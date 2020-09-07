@@ -322,9 +322,9 @@ namespace VaultedThermals
 				      uint32                    QueueCreateInfoCount ;
 				const Queue::CreateInfo*        QueueCreateInfos     ;
 				      uint32                    EnabledLayerCount    ;
-				      RoSCtr_roArray_Array      EnabledLayerNames    ;
+					  RoArray_of_RoCStr         EnabledLayerNames    ;
 				      uint32                    EnabledExtensionCount;
-				      RoSCtr_roArray_Array      EnabledExtensionNames;
+					  RoArray_of_RoCStr         EnabledExtensionNames;
 				const PhysicalDevice::Features* EnabledFeatures      ;
 			};
 
@@ -582,20 +582,11 @@ namespace VaultedThermals
 
 				Queue() { assignment = EQueueFlag::MaxEnum; }
 
-				void Assign(const LogicalDevice& _logicalDevice, CreateInfo& _info)
+				void Assign(const LogicalDevice& _logicalDevice, uint32 _familyIndex, uint32 _queueIndex, EQueueFlag _type)
 				{
 					device = &_logicalDevice;
-					info   = &_info         ;
-					//info   = _info         ;
 
-					queueIndex = 0;
-				}
-
-				void Assign(const LogicalDevice& _logicalDevice, CreateInfo& _info, uint32 _queueIndex, EQueueFlag _type)
-				{
-					device = &_logicalDevice;
-					info   = &_info         ;
-					//info   = _info         ;
+					familyIndex = _familyIndex;
 
 					queueIndex = _queueIndex;
 
@@ -604,7 +595,7 @@ namespace VaultedThermals
 
 				uint32 GetFamilyIndex() const
 				{
-					return info->QueueFamilyIndex;
+					return familyIndex;
 				}
 
 				uint32 GetQueueIndex() const
@@ -617,11 +608,6 @@ namespace VaultedThermals
 					return handle;
 				}
 
-				const CreateInfo& GetInfo() const
-				{
-					return *info;
-				}
-
 				const EQueueFlag& GetType() const
 				{
 					return assignment;
@@ -629,7 +615,7 @@ namespace VaultedThermals
 
 				void Retrieve()
 				{
-					Parent::Get(*device, info->QueueFamilyIndex, queueIndex, handle);
+					Parent::Get(*device, familyIndex, queueIndex, handle);
 				}
 
 				bool FamilySpecified() const
@@ -674,12 +660,11 @@ namespace VaultedThermals
 
 				Handle handle;
 
-				//CreateInfo* info;   // TODO Change to this
-				CreateInfo* info;
-
 				EQueueFlag assignment;
 
 				const LogicalDevice* device;
+
+				uint32 familyIndex;
 
 				uint32 queueIndex;
 			};
@@ -691,36 +676,32 @@ namespace VaultedThermals
 
 			EResult Create(CreateInfo& _createInfo)
 			{
-				info      = _createInfo             ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*physicalDevice, info, handle);
+				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
 			EResult Create(CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				info      = _createInfo     ;
 				allocator = _allocator      ;
 
-				return Parent::Create(*physicalDevice, info, allocator, handle);
+				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
 			}
 
 			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo)
 			{
 				physicalDevice = &_physicalDevice        ;
-				info           = _createInfo             ;
 				allocator      = Memory::DefaultAllocator;
 
-				return Parent::Create(*physicalDevice, info, handle);
+				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
 			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
 				physicalDevice = &_physicalDevice;
-				info           = _createInfo     ;
 				allocator      = _allocator      ;
 
-				return Parent::Create(*physicalDevice, info, allocator, handle);
+				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
 			}
 
 			void Destroy()
@@ -776,7 +757,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const LogicalDevice& _other)
+			bool operator== (const LogicalDevice& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -785,7 +766,7 @@ namespace VaultedThermals
 
 			Handle handle;
 
-			CreateInfo info;
+			Deque<void*> nextChain;
 
 			const PhysicalDevice* physicalDevice;
 

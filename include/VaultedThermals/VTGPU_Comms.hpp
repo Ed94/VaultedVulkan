@@ -51,14 +51,20 @@ namespace VaultedThermals
 		@{
 		*/
 
+		enum class EGPU_Engage
+		{
+			Single,
+			Multi
+		};
+
 	/**
 	 * While this option has been defined here, currently this bootstrapped backend only supports
 	 * engaging a single GPU...
 	 */
 	#ifndef VT_Option_AllowMultiGPUEngagement
-		constexpr bool EngageSingleGPU = true;
+		constexpr EGPU_Engage GPU_Engagement = EGPU_Engage::Single;
 	#else
-		constexpr bool EngageSingleGPU = false;
+		constexpr EGPU_Engage GPU_Engagement = EGPU_Engage::Multi;
 	#endif
 
 		using V3::DebugUtils;
@@ -77,6 +83,19 @@ namespace VaultedThermals
 		};
 
 		using PhysicalDeviceList = DynamicArray<PhysicalDevice>;
+
+		struct DebugUtils : public V3::DebugUtils
+		{
+			using Parent = V3::DebugUtils;
+
+			class Messenger : public Parent::Messenger
+			{
+			public:
+				using Parent = V3::DebugUtils::Messenger;
+
+			protected:
+			};
+		};
 
 		class AppInstance : public V3::AppInstance
 		{
@@ -104,11 +123,11 @@ namespace VaultedThermals
 		
 		namespace Backend
 		{
-			template<bool>
+			template<EGPU_Engage>
 			class GPU_Comms_Maker;
 
 			template<>
-			class GPU_Comms_Maker<true /* Engage Single GPU */>
+			class GPU_Comms_Maker<EGPU_Engage::Single>
 			{
 			public:
 
@@ -159,7 +178,7 @@ namespace VaultedThermals
 			};
 		}
 
-		using GPU_Comms = Backend::GPU_Comms_Maker<EngageSingleGPU>;
+		using GPU_Comms = Backend::GPU_Comms_Maker<GPU_Engagement>;
 
 		/** @} */
 	}

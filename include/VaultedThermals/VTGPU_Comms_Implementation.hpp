@@ -12,7 +12,7 @@
 
 
 
-#include "VT_GPU_Comms.hpp"
+#include "VTGPU_Comms.hpp"
 
 
 

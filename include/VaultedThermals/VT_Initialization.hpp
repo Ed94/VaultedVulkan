@@ -136,14 +136,14 @@ namespace VaultedThermals
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
 			{
-				      EType                SType                ;
-				const void*                Next                 ;
-				      CreateFlags          Flags                ;
-				const AppInfo*             AppInfo              ;
-				      uint32               EnabledLayerCount    ;
-				      RoSCtr_roArray_Array EnabledLayerNames    ;
-				      uint32               EnabledExtensionCount;
-				      RoSCtr_roArray_Array EnabledExtensionNames;
+				      EType             SType                ;
+				const void*             Next                 ;
+				      CreateFlags       Flags                ;
+				const AppInfo*          AppInfo              ;
+				      uint32            EnabledLayerCount    ;
+				      RoArray_of_RoCStr EnabledLayerNames    ;
+				      uint32            EnabledExtensionCount;
+					  RoArray_of_RoCStr EnabledExtensionNames;
 			};
 
 			/**
@@ -549,19 +549,11 @@ namespace VaultedThermals
 			 * \param _appInfo
 			 * \param _creationSpec
 			 */
-			EResult Create(AppInstance::AppInfo& _appInfo, AppInstance::CreateInfo& _createinfo)
+			EResult Create(AppInstance::CreateInfo& _createinfo)
 			{
-				appInfo      = _appInfo   ;
-				createInfo   = _createinfo;
-				allocator    = nullptr    ;
+				allocator = nullptr;
 
-				if (createInfo.AppInfo != &appInfo) createInfo.AppInfo = &appInfo;
-
-				EResult returnCode = Parent::GetVersion(version);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				return Parent::Create(createInfo, handle);
+				return Parent::Create(_createinfo, handle);
 			}
 
 			/**
@@ -571,17 +563,11 @@ namespace VaultedThermals
 			 * \param _creationSpec
 			 * \param _allocator
 			 */
-			EResult Create(AppInstance::AppInfo& _appInfo, AppInstance::CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
+			EResult Create(AppInstance::CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator)
 			{
-				appInfo    = _appInfo   ;
-				createInfo = _createInfo;
 				allocator  = _allocator ;
 
-				EResult returnCode = Parent::GetVersion(version);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				return Parent::Create(createInfo, allocator, handle);
+				return Parent::Create(_createInfo, allocator, handle);
 			}
 
 			/**
@@ -636,22 +622,6 @@ namespace VaultedThermals
 				returnCode = QueryPhysicalDeviceGroups(&count, _groupListing.data());
 
 				return returnCode;
-			}
-
-			/**
-			@brief Provides the app instance's handle.
-			*/
-			const Handle& GetHandle() const
-			{ 
-				return handle; 
-			}
-
-			/**
-			 * @brief Get application version.
-			 */
-			uint32 GetVersion() const
-			{
-				return version;
 			}
 
 			template<typename ReturnType>
@@ -721,17 +691,14 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const AppInstance& _other)
+			bool operator== (const AppInstance& _other) const
 			{
 				return handle == _other.handle;
 			}
 
 		protected:
 
-			Handle     handle    ;
-			AppInfo    appInfo   ;
-			CreateInfo createInfo;
-			uint32     version   ;
+			Handle handle;
 
 			const Memory::AllocationCallbacks* allocator;
 		};

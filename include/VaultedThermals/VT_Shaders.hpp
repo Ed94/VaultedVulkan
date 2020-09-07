@@ -54,16 +54,23 @@ namespace VaultedThermals
 		 * The stages of a pipeline can use shaders that come from different modules.
 		 * 
 		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#shader-modules">Specification</a> 
+		 * 
+		 * @ingroup APISpec_Shaders
 		 */
 		struct ShaderModule
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModule">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModule">Specification</a> @ingroup APISpec_Shaders */
 			using Handle = VkShaderModule;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a>  */
+			/** 
+			@brief Reserved for future use.
+			
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a> 
+			@ingroup APISpec_Shaders 
+			*/
 			using CreateFlags = Bitmask<EUndefined, Flags>;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a>  */
+			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a> @ingroup  */
 			struct CreateInfo : V0::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
 			{
 				      EType             SType    ;
@@ -203,27 +210,25 @@ namespace VaultedThermals
 			
 			using Parent = V2::ShaderModule;
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    =  &_device               ;
-				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);
+				return Parent::Create(*device, _info, handle);
 			}
 
 			EResult Create
 			(
 				const LogicalDevice&               _device   ,
-				      CreateInfo&                  _info     ,
+				const CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
 				device    = &_device  ;
-				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(*device, info, allocator, handle);
+				return Parent::Create(*device, _info, allocator, handle);
 			}
 
 			void Destroy()
@@ -251,7 +256,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const ShaderModule& _other)
+			bool operator== (const ShaderModule& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -261,8 +266,6 @@ namespace VaultedThermals
 			Handle handle;
 
 			const Memory::AllocationCallbacks* allocator;
-
-			CreateInfo info;
 
 			const LogicalDevice* device;
 		};

@@ -302,17 +302,12 @@ namespace VaultedThermals
 				return Parent::AcquireNextImage(*device, handle, _timeout, _semaphore, _fence, _imageIndex);
 			}
 
-			EResult Create
-			(
-				const LogicalDevice& _deviceHandle,
-				const CreateInfo&    _info        
-			)
+			EResult Create(const LogicalDevice& _deviceHandle, const CreateInfo& _info)
 			{
 				device    = &_deviceHandle          ;
-				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);
+				return Parent::Create(*device, _info, handle);
 			}
 
 			EResult Create
@@ -323,20 +318,14 @@ namespace VaultedThermals
 			)
 			{
 				device    = &_deviceHandle;
-				info      = _info         ;
 				allocator = _allocator    ;
 
-				return Parent::Create(*device, info, allocator, handle);
+				return Parent::Create(*device, _info, allocator, handle);
 			}
 
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle);
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
 			}
 
 			EResult GetImages(DynamicArray<Image>& _images)
@@ -357,11 +346,6 @@ namespace VaultedThermals
 				}
 
 				return result;
-			}
-
-			uint32 GetMinimumImageCount() const
-			{
-				return info.MinImageCount;
 			}
 
 			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
@@ -389,7 +373,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const Swapchain& _other)
+			bool operator== (const Swapchain& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -397,8 +381,6 @@ namespace VaultedThermals
 		protected:
 
 			Handle handle;
-
-			CreateInfo info;
 
 			const Memory::AllocationCallbacks* allocator;
 

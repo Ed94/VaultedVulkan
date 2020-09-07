@@ -139,6 +139,8 @@ namespace VaultedThermals
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a> @ingroup APISpec_Debugging */
 				using Handle = VkDebugUtilsMessengerEXT;
 
+				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
+
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a> @ingroup APISpec_Debugging */
 				struct CallbackData : V0::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
 				{
@@ -181,8 +183,6 @@ namespace VaultedThermals
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a> */
 				struct CreateInfo : V0::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
 				{ 
-					using CreateFlags = Bitmask<EUndefined, Flags>;
-
 						  EType                 SType       ;
 					const void*                 Next        ;
 						  CreateFlags           Flags       ;
@@ -387,10 +387,8 @@ namespace VaultedThermals
 		@todo 
 		#TODO: Add documentation.
 		*/
-		class DebugUtils : public V2::DebugUtils 
+		struct DebugUtils : public V2::DebugUtils 
 		{
-		public:
-
 			using Parent = V2::DebugUtils;
 
 			class Messenger : public Parent::Messenger
@@ -399,39 +397,13 @@ namespace VaultedThermals
 
 				using Parent = V2::DebugUtils::Messenger;
 
-				void AssignInfo(const CreateInfo& _info)
-				{
-					info = _info;
-				}
-
-				EResult Create(const AppInstance&_appInstance)
-				{
-					app       = &_appInstance           ;
-					allocator = Memory::DefaultAllocator;
-
-					return Parent::Create(*app, info, handle);
-				}
-
-				EResult Create
-				(
-					const AppInstance&                 _appInstance,
-					const Memory::AllocationCallbacks* _allocator  
-				)
-				{
-					app       = &_appInstance;
-					allocator = _allocator   ;
-
-					return Parent::Create(*app, info, allocator, handle);
-				}
-
 				EResult Create
 				(
 					const AppInstance& _appInstance,
 					const CreateInfo&  _createSpec 
 				)
 				{
-					app       = &_appInstance;
-					info      = _createSpec  ;
+					app       = &_appInstance           ;
 					allocator = Memory::DefaultAllocator;
 
 					return Parent::Create(*app, _createSpec, handle);
@@ -445,7 +417,6 @@ namespace VaultedThermals
 				)
 				{
 					app       = &_appInstance;
-					info      = _createSpec  ;
 					allocator = _allocator   ;
 
 					return Parent::Create(*app, _createSpec, allocator, handle);
@@ -454,11 +425,6 @@ namespace VaultedThermals
 				void Destroy()
 				{
 					Parent::Destroy(*app, handle, allocator);
-				}
-
-				const CreateInfo& GetInfo() const
-				{
-					return info;
 				}
 
 				operator Handle()
@@ -481,20 +447,18 @@ namespace VaultedThermals
 					return &handle;
 				}
 
-				bool operator== (const Messenger& _other)
+				bool operator== (const Messenger& _other) const
 				{
 					return handle == _other.handle;
 				}
 
 			protected:
 
+				Handle handle;
+
 				const AppInstance* app;
 
-				CreateInfo info;
-
 				const Memory::AllocationCallbacks* allocator;
-
-				Handle handle;
 			};
 		};
 

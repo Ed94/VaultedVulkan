@@ -1183,6 +1183,8 @@ namespace VaultedThermals
 			#ifdef VT_Option__Use_STL_Exceptions
 				throw std::runtime_error("Failed to find suitable memory type!");
 			#endif
+
+				return 4294967295;
 			}
 
 			EResult FindSupportedFormat(const DynamicArray<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format) const
@@ -1306,7 +1308,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const PhysicalDevice& _other)
+			bool operator== (const PhysicalDevice& _other) const
 			{
 				return handle == _other.handle;
 			}

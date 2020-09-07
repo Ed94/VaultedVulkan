@@ -42,20 +42,22 @@ namespace VaultedThermals
 		*/
 
         /**
-         * @brief.
+         * @brief Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.
+		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a> 
+		 * @ingroup APISpec_Samplers
          */
 		struct Sampler
 		{
-            /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a>  */
+            /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampler">Specification</a> @ingroup APISpec_Samplers */
 			using Handle = VkSampler;
 
-            /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlags">Specification</a>  */
+            /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlags">Specification</a> @ingroup APISpec_Samplers */
             using CreateFlags = Bitmask<ESamplerCreateFlag, VkSamplerCreateFlags>;
 
             using EMipmapMode = ESamplerMipmapMode ; 
             using AddressMode = ESamplerAddressMode;
 
-            /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a>  */
+            /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a> @ingroup APISpec_Samplers */
 			struct CreateInfo : V0::VKStruct_Base<VkSamplerCreateInfo, EStructureType::Sampler_CreateInfo>
 			{
                       EType             SType                  ;
@@ -79,9 +81,11 @@ namespace VaultedThermals
 			};
 
             /**
-             * @brief.
+             * @brief Create a sampler object.
              * 
              * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSampler">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Samplers
              * 
              * \param _device
              * \param _createInfo
@@ -101,10 +105,12 @@ namespace VaultedThermals
             }
 
             /**
-             * @brief.
+             * @brief Destroy a sampler.
              * 
              * @details
              * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySampler">Specification</a> 
+			 * 
+			 * @ingroup APISpec_Samplers
              * 
              * \param _device
              * \param _sampler
@@ -131,10 +137,16 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.
+		*/
         struct Sampler : public V1::Sampler
         {
             using Parent = V1::Sampler;
 
+			/**
+			@brief Offers a default constructor.
+			*/
             struct CreateInfo : public Parent::CreateInfo
             {
                 CreateInfo()
@@ -145,7 +157,7 @@ namespace VaultedThermals
             };
 
             /**
-             * @brief.
+             * @brief Create a sampler object (Default Allocator).
 
              * \param _device
              * \param _createInfo
@@ -166,7 +178,7 @@ namespace VaultedThermals
             using Parent::Create;
 
             /**
-             * @brief.
+             * @brief Destroy a sampler (Default Allocator).
              * 
              * @details
              * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySampler">Specification</a> 
@@ -199,32 +211,25 @@ namespace VaultedThermals
 
             using Parent = V2::Sampler;
 
-            EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+            EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
             {
-                device    = &_device;
-                info      = _info                   ;
+                device    = &_device                ;
                 allocator = Memory::DefaultAllocator;
 
-                return Parent::Create(*device, info, allocator, handle);
+                return Parent::Create(*device, _info, allocator, handle);
             }
 
-            EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
+            EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
             {
                 device    = &_device;
-                info      = _info  ;
                 allocator = _allocator;
 
-                return Parent::Create(*device, info, allocator, handle);
+                return Parent::Create(*device, _info, allocator, handle);
             }
 
             void Destroy()
             {
                 Parent::Destroy(*device, handle, allocator);
-            }
-
-            const Handle& GetHandle() const
-            {
-                return handle;
             }
 
 			operator Handle()
@@ -247,7 +252,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const Sampler& _other)
+			bool operator== (const Sampler& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -255,8 +260,6 @@ namespace VaultedThermals
         protected:
 
             Handle handle;
-
-            CreateInfo info;
 
             const Memory::AllocationCallbacks* allocator;
 

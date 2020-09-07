@@ -87,6 +87,36 @@ namespace VaultedThermals
 				ETransform          CurrentTransform       ;
 				CompositeAlphaFlags SupportedCompositeAlpha;
 				Image::UsageFlags   SupportedUsageFlags    ;
+
+				bool operator== (const Capabilities& _other)
+				{
+					return
+						MinImageCount           == _other.MinImageCount           &&
+						MaxImageCount           == _other.MaxImageCount           &&
+						CurrentExtent           == _other.CurrentExtent           &&
+						MinImageExtent          == _other.MinImageExtent          &&
+						MaxImageExtent          == _other.MaxImageExtent          &&
+						MaxImageArrayLayers     == _other.MaxImageArrayLayers     &&
+						SupportedTransforms     == _other.SupportedTransforms     &&
+						SupportedCompositeAlpha == _other.SupportedCompositeAlpha &&
+						SupportedUsageFlags     == _other.SupportedUsageFlags 
+						? true : false;
+				}
+
+				bool operator!= (const Capabilities& _other)
+				{
+					return
+						MinImageCount           == _other.MinImageCount           &&
+						MaxImageCount           == _other.MaxImageCount           &&
+						CurrentExtent           == _other.CurrentExtent           &&
+						MinImageExtent          == _other.MinImageExtent          &&
+						MaxImageExtent          == _other.MaxImageExtent          &&
+						MaxImageArrayLayers     == _other.MaxImageArrayLayers     &&
+						SupportedTransforms     == _other.SupportedTransforms     &&
+						SupportedCompositeAlpha == _other.SupportedCompositeAlpha &&
+						SupportedUsageFlags     == _other.SupportedUsageFlags 
+						? false : true;
+				}
 			};
 
 			/**
@@ -152,12 +182,12 @@ namespace VaultedThermals
 			static EResult Create
 			(
 				      V1::AppInstance::Handle      _appHandle    ,
-				      CreateInfo&                  _createInfo   ,
+				const CreateInfo&                  _info         ,
 				const Memory::AllocationCallbacks* _allocator    ,
 				      Handle&                      _surfaceHandle
 			)
 			{
-				return EResult(vkCreateWin32SurfaceKHR(_appHandle, _createInfo.operator const VkWin32SurfaceCreateInfoKHR*(), _allocator->operator const VkAllocationCallbacks*(), &_surfaceHandle));
+				return EResult(vkCreateWin32SurfaceKHR(_appHandle, _info, _allocator->operator const VkAllocationCallbacks*(), &_surfaceHandle));
 			}
 		};
 
@@ -212,10 +242,10 @@ namespace VaultedThermals
 			 */
 			static EResult CheckPhysicalDeviceSupport
 			(
-				V1::PhysicalDevice::Handle _physDeviceHandle,
-				uint32                     _queueFamilyIndex,
-				Surface::Handle            _surfaceHandle   ,
-				Bool& _checkResult
+				PhysicalDevice::Handle _physDeviceHandle,
+				uint32                 _queueFamilyIndex,
+				Surface::Handle        _surfaceHandle   ,
+				Bool&                  _checkResult
 			)
 			{
 				return EResult(vkGetPhysicalDeviceSurfaceSupportKHR(_physDeviceHandle, _queueFamilyIndex, _surfaceHandle, &_checkResult));
@@ -274,7 +304,13 @@ namespace VaultedThermals
 			 * \param _presentationModesContainer
 			 * \return 
 			 */
-			static EResult QuerySupportedPresentationModes(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, uint32& _numPresentationModes, EPresentationMode* _presentationModesContainer)
+			static EResult QuerySupportedPresentationModes
+			(
+				PhysicalDevice::Handle _deviceHandle              , 
+				Surface::Handle        _surfaceHandle             , 
+				uint32&                _numPresentationModes      , 
+				EPresentationMode*     _presentationModesContainer
+			)
 			{
 				return EResult(vkGetPhysicalDeviceSurfacePresentModesKHR(_deviceHandle, _surfaceHandle, &_numPresentationModes, (VkPresentModeKHR*)(_presentationModesContainer)));
 			}
@@ -294,39 +330,6 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Surface;
 
-			struct Capabilities : public Parent::Capabilities
-			{
-				bool operator== (const Capabilities& _other)
-				{
-					return
-						MinImageCount           == _other.MinImageCount           &&
-						MaxImageCount           == _other.MaxImageCount           &&
-						CurrentExtent           == _other.CurrentExtent           &&
-						MinImageExtent          == _other.MinImageExtent          &&
-						MaxImageExtent          == _other.MaxImageExtent          &&
-						MaxImageArrayLayers     == _other.MaxImageArrayLayers     &&
-						SupportedTransforms     == _other.SupportedTransforms     &&
-						SupportedCompositeAlpha == _other.SupportedCompositeAlpha &&
-						SupportedUsageFlags     == _other.SupportedUsageFlags 
-						? true : false;
-				}
-
-				bool operator!= (const Capabilities& _other)
-				{
-					return
-						MinImageCount           == _other.MinImageCount           &&
-						MaxImageCount           == _other.MaxImageCount           &&
-						CurrentExtent           == _other.CurrentExtent           &&
-						MinImageExtent          == _other.MinImageExtent          &&
-						MaxImageExtent          == _other.MaxImageExtent          &&
-						MaxImageArrayLayers     == _other.MaxImageArrayLayers     &&
-						SupportedTransforms     == _other.SupportedTransforms     &&
-						SupportedCompositeAlpha == _other.SupportedCompositeAlpha &&
-						SupportedUsageFlags     == _other.SupportedUsageFlags 
-						? false : true;
-				}
-			};
-
 			struct CreateInfo : public Parent::CreateInfo
 			{
 				CreateInfo()
@@ -337,12 +340,7 @@ namespace VaultedThermals
 				}
 			};
 
-			static EResult Create
-			(
-				AppInstance::Handle _appHandle    ,
-				CreateInfo&         _createInfo   ,
-				Handle&             _surfaceHandle
-			)
+			static EResult Create(AppInstance::Handle _appHandle, const CreateInfo& _createInfo, Handle& _surfaceHandle)
 			{
 				return Parent::Create(_appHandle, _createInfo, Memory::DefaultAllocator, _surfaceHandle);
 			}
@@ -438,37 +436,30 @@ namespace VaultedThermals
 				CreateInfo geninfo {}; geninfo.OSWinHandle = _window;
 
 				app       = &_app                   ;
-				info      = geninfo                 ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*app, info, handle);
+				return Parent::Create(*app, geninfo, handle);
 			}
 
-			EResult Create
-			(
-				const AppInstance& _appHandle ,
-				      CreateInfo&  _createInfo
-			)
+			EResult Create(const AppInstance& _appHandle, const CreateInfo&  _info)
 			{
-				app       = &_appHandle;
-				info      = _createInfo;
+				app       = &_appHandle             ;
 				allocator = Memory::DefaultAllocator;
 				
-				return Parent::Create(*app, info, handle);
+				return Parent::Create(*app, _info, handle);
 			}
 
 			EResult Create
 			(
-				const AppInstance&                 _appHandle ,
-				      CreateInfo&                  _createInfo,
+				const AppInstance&                 _appHandle,
+				const CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
 				app       = &_appHandle;
-				info      = _createInfo;
 				allocator = _allocator ;
 				
-				return Parent::Create(*app, info, allocator, handle);
+				return Parent::Create(*app, _info, allocator, handle);
 			}
 
 			EResult CheckPhysicalDeviceSupport
@@ -483,11 +474,6 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*app, handle);
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
 			}
 
 			EResult GetAvailableFormats(DynamicArray<Format>& _formatsContainer) const
@@ -525,22 +511,20 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const Surface& _other)
+			bool operator== (const Surface& _other) const
 			{
 				return handle == _other.handle;
 			}
 
 		protected:
 
+			Handle handle;
+
+			const Memory::AllocationCallbacks* allocator;
+			
 			const AppInstance* app;
 
 			const PhysicalDevice* physicalDevice;
-
-			CreateInfo info;
-
-			const Memory::AllocationCallbacks* allocator;
-
-			Handle handle;
 		};
 
 		/** @} */

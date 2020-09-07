@@ -376,7 +376,7 @@ namespace VaultedThermals
 					struct CreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutCreateInfo, EStructureType::Descriptor_SetLayout_CreateInfo>
 					{
 						      EType       SType       ;
-						const void*       Next   ;
+						const void*       Next        ;
 						      CreateFlags Flags       ;
 						      uint32      BindingCount;
 						const Binding*    Bindings    ;
@@ -395,6 +395,7 @@ namespace VaultedThermals
 
 						/** 
 						@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetVariableDescriptorCountLayoutSupport">Specification</a>  
+
 						@ingroup APISpec_Resource_Descriptors
 						*/
 						struct SetVariableCount : V0::VKStruct_Base<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
@@ -719,7 +720,7 @@ namespace VaultedThermals
 				};
 
 				/** 
-				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputBindingDescription">Specification</a>  
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputBindingDescription">Specification</a>
 				@ingroup APISpec_Fixed-Function_Vertex_Processing
 				*/
 				struct BindingDescription : V0::VKStruct_Base<VkVertexInputBindingDescription>
@@ -1286,10 +1287,10 @@ namespace VaultedThermals
 				{
 					CreateInfo()
 					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-						Module = Null<ShaderModule::Handle>;
-						Name = nullptr;
+						SType          = STypeEnum;
+						Next           = nullptr  ;
+						Module         = Null<ShaderModule::Handle>;
+						Name           = nullptr;
 						Specialization = nullptr;
 					}
 				};
@@ -1394,25 +1395,24 @@ namespace VaultedThermals
 				{
 					CreateInfo() 
 					{
-						SType      = STypeEnum;
-						Next       = nullptr  ;
-						StageCount = 0;
-
-						Stages = nullptr;
-						VertexInputState = nullptr;
+						SType              = STypeEnum;
+						Next               = nullptr  ;
+						StageCount         = 0;
+						Stages             = nullptr;
+						VertexInputState   = nullptr;
 						InputAssemblyState = nullptr;
-						TessellationState = nullptr;
-						ViewportState = nullptr;
+						TessellationState  = nullptr;
+						ViewportState      = nullptr;
 						RasterizationState = nullptr;
-						MultisampleState = nullptr;
-						DepthStencilState = nullptr;
-						ColorBlendState = nullptr;
-						DynamicState = nullptr;
-						Layout = Null<Layout::Handle>;
-						RenderPass = Null<RenderPass_Handle>;
-						Subpass = 0;
-						BasePipelineHandle = Null<Pipeline::Handle>;
-						BasePipelineIndex = 0;
+						MultisampleState   = nullptr;
+						DepthStencilState  = nullptr;
+						ColorBlendState    = nullptr;
+						DynamicState       = nullptr;
+						Layout             = Null<Layout::Handle>   ;
+						RenderPass         = Null<RenderPass_Handle>;
+						Subpass            = 0                      ;
+						BasePipelineHandle = Null<Pipeline::Handle> ;
+						BasePipelineIndex  = 0                      ;
 					}
 				};
 
@@ -1506,39 +1506,32 @@ namespace VaultedThermals
 
 				EResult Create
 				(
-					LogicalDevice::Handle _device,
-					CreateInfo&           _info  
+					const LogicalDevice& _device,
+					      CreateInfo&    _info  
 				)
 				{
-					device    = _device                 ;
-					info      = _info                   ;
+					device    = &_device                ;
 					allocator = Memory::DefaultAllocator;
 
-					return Parent::Create(device, info, allocator, handle);
+					return Parent::Create(*device, _info, allocator, handle);
 				}
 
 				EResult Create
 				(
-					      LogicalDevice::Handle        _device   ,
+					const LogicalDevice&               _device   ,
 					      CreateInfo&                  _info     ,
 					const Memory::AllocationCallbacks* _allocator
 				)
 				{
-					device    = _device   ;
-					info      = _info     ;
+					device    = &_device  ;
 					allocator = _allocator;
 
-					return Parent::Create(device, info, allocator, handle);
+					return Parent::Create(*device, _info, allocator, handle);
 				}
 
 				void Destroy()
 				{
-					Parent::Destroy(device, handle, allocator);
-				}
-
-				const Handle& GetHandle() const
-				{
-					return handle;
+					Parent::Destroy(*device, handle, allocator);
 				}
 
 				operator Handle()
@@ -1546,14 +1539,24 @@ namespace VaultedThermals
 					return handle;
 				}
 
-				operator Handle() const
+				operator Handle* ()
 				{
-					return handle;
+					return &handle;
 				}
 
 				operator const Handle& () const
 				{
 					return handle;
+				}
+
+				operator const Handle* () const
+				{
+					return &handle;
+				}
+
+				bool operator== (const Cache& _other) const
+				{
+					return handle == _other.handle;
 				}
 
 			protected:
@@ -1562,9 +1565,7 @@ namespace VaultedThermals
 
 				const Memory::AllocationCallbacks* allocator;
 				
-				CreateInfo info;
-
-				LogicalDevice::Handle device;
+				const LogicalDevice* device;
 			};
 
 			class Layout : public Parent::Layout
@@ -1577,42 +1578,37 @@ namespace VaultedThermals
 				public:
 					using Parent = V2::Pipeline::Layout::DescriptorSet;
 
-					void Assign(LogicalDevice::Handle _device, CreateInfo& _info)
+					void Assign(const LogicalDevice& _device, CreateInfo& _info)
 					{
-						device    = _device                 ;
+						device    = &_device                ;
 						info      = _info                   ;
 						allocator = Memory::DefaultAllocator;
 
-						Parent::GetSupport(device, info, support);
+						Parent::GetSupport(*device, info, support);
 					}
 
 					void Assign
 					(
-						      LogicalDevice::Handle        _device   ,
+						const LogicalDevice&               _device   ,
 						      CreateInfo&                  _info     ,
 						const Memory::AllocationCallbacks* _allocator
 					)
 					{
-						device    = _device   ;
+						device    = &_device  ;
 						info      = _info     ;
 						allocator = _allocator;
 
-						Parent::GetSupport(device, info, support);
+						Parent::GetSupport(*device, info, support);
 					}
 
 					EResult Create()
 					{
-						return Parent::Create(device, info, allocator, handle);
+						return Parent::Create(*device, info, allocator, handle);
 					}
 
 					void Destroy()
 					{
-						Parent::Destroy(device, handle, allocator);
-					}
-
-					const Handle& GetHandle() const
-					{
-						return handle;
+						Parent::Destroy(*device, handle, allocator);
 					}
 
 					const Support& GetSupport() const
@@ -1625,14 +1621,24 @@ namespace VaultedThermals
 						return handle;
 					}
 
-					operator Handle() const
+					operator Handle* ()
 					{
-						return handle;
+						return &handle;
 					}
 
 					operator const Handle& () const
 					{
 						return handle;
+					}
+
+					operator const Handle* () const
+					{
+						return &handle;
+					}
+
+					bool operator== (const DescriptorSet& _other) const
+					{
+						return handle == _other.handle;
 					}
 
 				protected:
@@ -1643,46 +1649,39 @@ namespace VaultedThermals
 
 					CreateInfo info;
 
-					LogicalDevice::Handle device;
+					const LogicalDevice* device;
 
 					Support support;
 				};
 
 				EResult Create
 				(
-					LogicalDevice::Handle _device,
-					CreateInfo&           _info  
+					const LogicalDevice& _device,
+					      CreateInfo&    _info  
 				)
 				{
-					device    = _device                 ;
-					info      = _info                   ;
+					device    = &_device                ;
 					allocator = Memory::DefaultAllocator;
 
-					return Parent::Create(device, info, allocator, handle);
+					return Parent::Create(*device, _info, allocator, handle);
 				}
 
 				EResult Create
 				(
-					      LogicalDevice::Handle        _device   ,
+					const LogicalDevice&               _device   ,
 					      CreateInfo&                  _info     ,
 					const Memory::AllocationCallbacks* _allocator
 				)
 				{
-					device    = _device   ;
-					info      = _info     ;
+					device    = &_device  ;
 					allocator = _allocator;
 
-					return Parent::Create(device, info, allocator, handle);
+					return Parent::Create(*device, _info, allocator, handle);
 				}
 
 				void Destroy()
 				{
-					Parent::Destroy(device, handle, allocator);
-				}
-
-				Handle GetHandle() const
-				{
-					return handle;
+					Parent::Destroy(*device, handle, allocator);
 				}
 
 				operator Handle()
@@ -1690,14 +1689,24 @@ namespace VaultedThermals
 					return handle;
 				}
 
-				operator Handle() const
+				operator Handle* ()
 				{
-					return handle;
+					return &handle;
 				}
 
 				operator const Handle& () const
 				{
 					return handle;
+				}
+
+				operator const Handle* () const
+				{
+					return &handle;
+				}
+
+				bool operator== (const Layout& _other) const
+				{
+					return handle == _other.handle;
 				}
 
 			protected:
@@ -1706,9 +1715,7 @@ namespace VaultedThermals
 
 				const Memory::AllocationCallbacks* allocator;
 
-				CreateInfo info;
-
-				LogicalDevice::Handle device;
+				const LogicalDevice* device;
 			};
 
 			void Destroy()
@@ -1716,19 +1723,14 @@ namespace VaultedThermals
 				Parent::Destroy(*device, handle);
 			}
 
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
-
 			operator Handle()
 			{
 				return handle;
 			}
 
-			operator Handle() const
+			operator Handle* ()
 			{
-				return handle;
+				return &handle;
 			}
 
 			operator const Handle& () const
@@ -1736,11 +1738,21 @@ namespace VaultedThermals
 				return handle;
 			}
 
+			operator const Handle* () const
+			{
+				return &handle;
+			}
+
+			bool operator== (const Pipeline& _other) const
+			{
+				return handle == _other.handle;
+			}
+
 		protected:
 
 			Handle handle;
 
-			Cache* cache;
+			const Cache* cache;
 
 			const Memory::AllocationCallbacks* allocator;
 
@@ -1756,24 +1768,21 @@ namespace VaultedThermals
 			void Assign
 			(
 				const LogicalDevice&               _device   ,
-				      Cache*                       _cache    ,
-				      CreateInfo&                  _info     ,
+				const Cache&                       _cache    ,
 				const Memory::AllocationCallbacks* _allocator,
 				      Handle                       _handle
 			)
 			{
 				handle    = _handle   ;
 				allocator = _allocator;
-				cache     = _cache    ;
+				cache     = &_cache   ;
 				device    = &_device  ;
-				info      = _info     ;
 			}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = nullptr ;
-				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Compute::Create
@@ -1781,26 +1790,25 @@ namespace VaultedThermals
 					*device            ,
 					Null<Cache::Handle>,
 					1                  ,
-					&info              ,
+					&_info             ,
 					allocator          ,
 					&handle
 				);
 			}
 
-			EResult Create(const LogicalDevice& _device, Cache& _cache, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, Cache& _cache, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = &_cache ;
-				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Compute::Create
 				(
-					*device            ,
-					cache ->GetHandle(),
-					1                  ,
-					&info              ,
-					allocator          ,
+					*device  ,
+					*cache   ,
+					1        ,
+					&_info   ,
+					allocator,
 					&handle
 				);
 			}
@@ -1809,22 +1817,21 @@ namespace VaultedThermals
 			(
 				const LogicalDevice&               _device   , 
 				      Cache&                       _cache    , 
-				      CreateInfo&                  _info     ,
+				const CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
 				device    = &_device  ;
 				cache     = &_cache   ;
-				info      = _info     ;
 				allocator = _allocator;
 
 				return Parent::Parent::Compute::Create
 				(
-					*device            ,
-					cache ->GetHandle(),
-					1                  ,
-					&info              ,
-					allocator          ,
+					*device  ,
+					*cache   ,
+					1        ,
+					&_info   ,
+					allocator,
 					&handle
 				);
 			}
@@ -1832,9 +1839,9 @@ namespace VaultedThermals
 			static EResult Create
 			(
 				const LogicalDevice&                 _device         ,
-				      Cache*                         _cache          ,
+				const Cache&                         _cache          ,
 				      uint32                         _createInfoCount,
-				      CreateInfo*                    _createInfos    ,
+				const CreateInfo*                    _createInfos    ,
 				const Memory::AllocationCallbacks*   _allocator      ,
 				      DynamicArray<ComputePipeline>& _pipelines
 			)
@@ -1846,11 +1853,11 @@ namespace VaultedThermals
 				EResult returnCode = 
 					Parent::Parent::Compute::Create
 					(
-						_device,
-						_cache->GetHandle(),
-						_createInfoCount   ,
-						_createInfos       ,
-						_allocator         ,
+						_device         ,
+						_cache          ,
+						_createInfoCount,
+						_createInfos    ,
+						_allocator      ,
 						handles
 					);
 
@@ -1860,15 +1867,11 @@ namespace VaultedThermals
 
 				for (auto pipeline : _pipelines)
 				{
-					pipeline.Assign(_device, _cache, _createInfos[index++], _allocator, handles[index]);
+					pipeline.Assign(_device, _cache, _allocator, handles[index]);
 				}
 
 				return returnCode;
 			}
-
-		protected:
-
-			CreateInfo info;
 		};
 
 		class GraphicsPipeline : public Pipeline
@@ -1879,24 +1882,21 @@ namespace VaultedThermals
 			void Assign
 			(
 				const LogicalDevice&               _device   ,
-				      Cache*                       _cache    ,
-				      CreateInfo&                  _info     ,
+				const Cache&                       _cache    ,
 				const Memory::AllocationCallbacks* _allocator,
 				      Handle                       _handle
 			)
 			{
 				handle    = _handle   ;
 				allocator = _allocator;
-				cache     = _cache    ;
+				cache     = &_cache   ;
 				device    = &_device  ;
-				info      = _info     ;	
 			}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = nullptr ;
-				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Graphics::Create
@@ -1904,17 +1904,16 @@ namespace VaultedThermals
 					*device            ,
 					Null<Cache::Handle>,
 					1                  ,
-					&info              ,
+					&_info             ,
 					allocator          ,
 					&handle
 				);
 			}
 
-			EResult Create(const LogicalDevice& _device, Cache& _cache, CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, Cache& _cache, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = &_cache ;
-				info      = _info   ;
 				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Graphics::Create
@@ -1922,7 +1921,7 @@ namespace VaultedThermals
 					*device,
 					*cache             ,
 					1                  ,
-					&info              ,
+					&_info             ,
 					allocator          ,
 					&handle
 				);
@@ -1931,22 +1930,21 @@ namespace VaultedThermals
 			EResult Create
 			(
 				const LogicalDevice&               _device   , 
-				      Cache&                       _cache    , 
+				const Cache&                       _cache    , 
 				      CreateInfo&                  _info     ,
 				const Memory::AllocationCallbacks* _allocator
 			)
 			{
 				device    = &_device  ;
 				cache     = &_cache   ;
-				info      = _info     ;
 				allocator = _allocator;
 
 				return Parent::Parent::Graphics::Create
 				(
 					*device            ,
-					cache ->GetHandle(),
+					*cache             ,
 					1                  ,
-					&info              ,
+					&_info             ,
 					allocator          ,
 					&handle
 				);
@@ -1955,9 +1953,9 @@ namespace VaultedThermals
 			static EResult Create
 			(
 				const LogicalDevice&                  _device         ,
-				      Cache*                          _cache          ,
+				const Cache&                          _cache          ,
 				      uint32                          _createInfoCount,
-				      CreateInfo*                     _createInfos    ,
+				const CreateInfo*                     _createInfos    ,
 				const Memory::AllocationCallbacks*    _allocator      ,
 				      DynamicArray<GraphicsPipeline>& _pipelines
 			)
@@ -1969,11 +1967,11 @@ namespace VaultedThermals
 				EResult returnCode = 
 					Parent::Parent::Graphics::Create
 					(
-						_device            ,
-						_cache->GetHandle(),
-						_createInfoCount   ,
-						_createInfos       ,
-						_allocator         ,
+						_device         ,
+						_cache          ,
+						_createInfoCount,
+						_createInfos    ,
+						_allocator      ,
 						handles
 					);
 
@@ -1983,15 +1981,11 @@ namespace VaultedThermals
 
 				for (auto pipeline : _pipelines)
 				{
-					pipeline.Assign(_device, _cache, _createInfos[index++], _allocator, handles[index]);
+					pipeline.Assign(_device, _cache, _allocator, handles[index]);
 				}
 
 				return returnCode;
 			}
-
-		protected:
-
-			CreateInfo info;
 		};
 
 		/** @} */

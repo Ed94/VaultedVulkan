@@ -1377,7 +1377,7 @@ namespace VaultedThermals
 				const DescriptorSet::Handle* _descriptorSets
 			) const
 			{
-				Parent::BindDescriptorSets(handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, 0, nullptr);
+				Parent::BindDescriptorSets(handle, _bindPoint, _layout, _firstSet, _descritporSetCount, _descriptorSets, 0, nullptr);
 			}
 
 			void BindDescriptorSets
@@ -1391,12 +1391,12 @@ namespace VaultedThermals
 				const uint32*                _dynamicOffsets
 			) const
 			{
-				Parent::BindDescriptorSets(handle, _bindPoint, _layout.GetHandle(), _firstSet, _descritporSetCount, _descriptorSets, _dynamicOffsetCount, _dynamicOffsets);
+				Parent::BindDescriptorSets(handle, _bindPoint, _layout, _firstSet, _descritporSetCount, _descriptorSets, _dynamicOffsetCount, _dynamicOffsets);
 			}
 
 			void BindIndexBuffer(Buffer& _buffer, DeviceSize _offset, EIndexType _type) const
 			{
-				Parent::BindIndexBuffer(handle, _buffer.GetHandle(), _offset, _type);
+				Parent::BindIndexBuffer(handle, _buffer, _offset, _type);
 			}
 
 			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers) const
@@ -1411,12 +1411,12 @@ namespace VaultedThermals
 
 			void BindPipeline(EPipelineBindPoint _bindPoint, Pipeline& _pipeline) const
 			{
-				Parent::BindPipeline(handle, _bindPoint, _pipeline.GetHandle());
+				Parent::BindPipeline(handle, _bindPoint, _pipeline);
 			}
 
 			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, uint32 _regionCount, const Image::Blit* _regions, EFilter _filter) const
 			{
-				Parent::BlitImage(handle, _src.GetHandle(), _srcLayout, _dst.GetHandle(), _dstLayout, _regionCount, _regions, _filter);
+				Parent::BlitImage(handle, _src, _srcLayout, _dst, _dstLayout, _regionCount, _regions, _filter);
 			}
 
 			void CopyBuffer
@@ -1427,7 +1427,7 @@ namespace VaultedThermals
 				const Buffer::CopyInfo*       _regions
 			) const
 			{
-				Parent::Parent::CopyBuffer(handle, _sourceBuffer.GetHandle(), _destinationBuffer.GetHandle(), _regionCount, _regions);
+				Parent::Parent::CopyBuffer(handle, _sourceBuffer, _destinationBuffer, _regionCount, _regions);
 			}
 
 			void CopyBufferToImage
@@ -1439,7 +1439,7 @@ namespace VaultedThermals
 				const BufferImageRegion* _regions
 			) const
 			{
-				Parent::CopyBufferToImage(handle, _srcBuffer.GetHandle(), _dstImage.GetHandle(), _dstImageLayout, _regionCount, _regions);
+				Parent::CopyBufferToImage(handle, _srcBuffer, _dstImage, _dstImageLayout, _regionCount, _regions);
 			}
 
 			void Draw
@@ -1485,8 +1485,6 @@ namespace VaultedThermals
 			}
 
 			const AllocateInfo& GetAllocateInfo() const { return info; }
-
-			const Handle& GetHandle() const { return handle; }
 
 			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
@@ -1715,7 +1713,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const CommandBuffer& _other)
+			bool operator== (const CommandBuffer& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -1724,9 +1722,11 @@ namespace VaultedThermals
 
 			Handle handle;
 
+			const LogicalDevice* device;
+
 			AllocateInfo info;
 
-			const LogicalDevice* device;
+			//Deque<void*> nextChain;   #TODO: Move to V4?
 		};
 
 		/**
@@ -1805,19 +1805,17 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
 				device    = &_device                ;
-				info      = _info                   ;
 				allocator = Memory::DefaultAllocator;
 
-				return Parent::Create(*device, info, handle);	
+				return Parent::Create(*device, _info, handle);	
 			}
 
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks* _allocator)
 			{
 				device    = &_device  ;
-				info      = _info     ;
 				allocator = _allocator;
 
-				return Parent::Create(*device, info, allocator, handle);	
+				return Parent::Create(*device, _info, allocator, handle);	
 			}
 
 			void Destroy()
@@ -1841,12 +1839,7 @@ namespace VaultedThermals
 
 			void Free(CommandBuffer& _commandBuffer)
 			{
-				Parent::Free(*device, handle, 1, &_commandBuffer.GetHandle());
-			}
-
-			const Handle& GetHandle() const
-			{
-				return handle;
+				Parent::Free(*device, handle, 1, _commandBuffer);
 			}
 
 			EResult Reset(ResetFlags _flags)
@@ -1894,7 +1887,7 @@ namespace VaultedThermals
 			(
 				      CommandBuffer&        _commandBuffer, 
 				const LogicalDevice::Queue& _queue
-			)
+			) 
 			{
 				EResult result = EResult::Incomplete;
 
@@ -1904,8 +1897,8 @@ namespace VaultedThermals
 
 				CommandBuffer::SubmitInfo submitInfo{};
 
-				submitInfo.CommandBufferCount = 1                          ;
-				submitInfo.CommandBuffers     = &_commandBuffer.GetHandle();
+				submitInfo.CommandBufferCount = 1             ;
+				submitInfo.CommandBuffers     = _commandBuffer;
 
 				result = _queue.SubmitToQueue(1, submitInfo, Null<Fence::Handle>);
 
@@ -1963,7 +1956,7 @@ namespace VaultedThermals
 				return &handle;
 			}
 
-			bool operator== (const CommandPool& _other)
+			bool operator== (const CommandPool& _other) const
 			{
 				return handle == _other.handle;
 			}
@@ -1974,9 +1967,9 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 
-			CreateInfo info;
-
 			const LogicalDevice* device;
+
+			//Deque<void*> nextChain;   #TODO: Move to V4?
 		};
 
 		/** @} */	// Vault_3

@@ -75,11 +75,11 @@ namespace VaultedThermals
 
 		// RawStrings
 
-		using CStr                 = char*             ;
-		using RoCStr               = const char*       ;
-		using CStrArray            = CStr*             ;
-		using RoCStrArray          = const char**      ;   ///< Readonly c-string array.
-		using RoSCtr_roArray_Array = const char* const*;   ///< Array of readonly array of readonly c-string.
+		using CStr              =       char*       ;
+		using RoCStr            = const char*       ;
+		using CStrArray         =       char*      *;
+		using RoCStrArray       = const char*      *;   ///< Readonly c-string array.
+		using RoArray_of_RoCStr = const char* const*;   ///< Array of readonly array of readonly c-string.
 
 
 

@@ -25,12 +25,15 @@ using DynamicArray = YourContainerHere
 
 Vault 4 Use:
 
-In a cpp file, include VaultedThermals.hpp with the following way:
+In a hpp file, include VaultedThermals.hpp with this macro definition defined:
+#define VT_Open_Vault_4
 
+This will include all V4 header implementation.
+
+In a cpp file, include VaultedThermals.hpp with this macro definition defined:
 #define VT_V4_Setup_Implementation
-#include "VaultedThermals.hpp
 
-This will drop into your project the necessary implementation for the instantiated
+This will include all V4 object implementation.
 */
 
 
@@ -88,6 +91,7 @@ Features that would be nice to have:
 
 
 
+#include "VaultedThermals/VT_APISpecGroups.hpp"
 #include "VaultedThermals/VT_Vaults.hpp"
 #include "VaultedThermals/VT_Platform.hpp"
 #include "VaultedThermals/VT_CPP_STL.hpp"
@@ -110,5 +114,14 @@ Features that would be nice to have:
 #include "VaultedThermals/VT_Surface.hpp"
 #include "VaultedThermals/VT_SwapChain.hpp"
 #include "VaultedThermals/VT_Debug.hpp"
-#include "VaultedThermals/VT_GPU_Comms.hpp"
-#include "VaultedThermals/VT_GPU.hpp"
+
+
+
+#ifdef VT_Open_Vault_4
+
+	#include "VaultedThermals/VTGPU_Comms.hpp"
+	#include "VaultedThermals/VTGPU_Comms_Implementation.hpp"
+
+	#include "VaultedThermals/VTGPU_Renderer.hpp"
+
+#endif
