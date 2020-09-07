@@ -21,6 +21,27 @@
 
 
 
+#ifndef BITMASK_DEFINED
+#define BITMASK_DEFINED
+
+	template<typename Enum>
+	struct Bitmaskable
+	{
+		static constexpr bool specified = false;
+	};
+
+	#define SpecifyBitmaskable(__ENUM)          \
+	template<>                                  \
+	struct Bitmaskable<__ENUM>                  \
+	{                                           \
+		static constexpr bool specified = true; \
+	};
+
+#endif
+
+
+
+
 #ifndef VT_Option__Use_Long_Namespace
 namespace VT
 #else
@@ -169,25 +190,6 @@ namespace VaultedThermals
 				return reinterpret_cast<const VulkanType*>(this);
 			}
 		};
-
-		#ifndef BITMASK_DEFINED
-		#define BITMASK_DEFINED
-
-			#define Bitmaskable_ScopeBase()              \
-			template<typename Enum>                      \
-			struct Bitmaskable                           \
-			{                                            \
-				static constexpr bool specified = false; \
-			}; 
-
-			#define SpecifyBitmaskable(__ENUM)          \
-			template<>                                  \
-			struct Bitmaskable<__ENUM>                  \
-			{                                           \
-				static constexpr bool specified = true; \
-			};
-
-		#endif
 
 		template
 		<
