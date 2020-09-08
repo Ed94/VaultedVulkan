@@ -50,17 +50,16 @@ namespace VaultedThermals
 		@{
 		*/
 
-		/*
-		 * @ingroup  APISpec_Window_System_Integration_WSI
-		 * 
-		 * @brief A queue of images that can be presented to a surface.
-		 * 
-		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a>
-		 */
+		/**
+		@ingroup  APISpec_Window_System_Integration_WSI
+		
+		@brief A queue of images that can be presented to a surface.
+		
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a>
+		*/
 		struct Swapchain
 		{
-			/*
+			/**
 			@ingroup APISpec_Window_System_Integration_WSI
 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a> 
@@ -69,14 +68,14 @@ namespace VaultedThermals
 
 			using ECreateFlag = ESwapchainCreateFlag;
 
-			/*
+			/**
 			@ingroup APISpec_Window_System_Integration_WSI
 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a> 
 			*/
 			using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
 
-			/*
+			/**
 			@ingroup APISpec_Window_System_Integration_WSI
 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> 
@@ -103,7 +102,7 @@ namespace VaultedThermals
 				      Handle                OldSwapchain         ;
 			};
 
-			/*
+			/**
 			@ingroup APISpec_Window_System_Integration_WSI
 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a>
@@ -120,7 +119,7 @@ namespace VaultedThermals
 				      EResult*           Results           ;
 			};
 
-			/*
+			/**
 			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * @brief Acquire an available presentable image to use, and retrieve the index of that image.
@@ -140,23 +139,16 @@ namespace VaultedThermals
 				return EResult(vkAcquireNextImageKHR(_device, _swapchain, _timeout, _semaphore, _fence, &_imageIndex));
 			}
 
-			/*
-			 * @ingroup APISpec_Window_System_Integration_WSI
-			 *
-			 * @brief Create a swapchain.
-			 * 
-			 * @details
-			 * If the oldSwapchain parameter of pCreateInfo is a valid swapchain, which has exclusive full-screen access, that access is released from oldSwapchain. 
-			 * If the command succeeds in this case, the newly created swapchain will automatically acquire exclusive full-screen access from oldSwapchain.
-			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSwapchainKHR">Specification</a> 
-			 *
-			 * \param _deviceHandle
-			 * \param _info
-			 * \param _allocator
-			 * \param _swapChain
-			 * \return 
-			 */
+			/**
+			@ingroup APISpec_Window_System_Integration_WSI
+			
+			@brief Create a swapchain.
+			* 
+			@details If the oldSwapchain parameter of pCreateInfo is a valid swapchain, which has exclusive full-screen access, that access is released from oldSwapchain.
+			If the command succeeds in this case, the newly created swapchain will automatically acquire exclusive full-screen access from oldSwapchain.
+			
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSwapchainKHR">Specification</a> 
+			*/
 			static EResult Create
 			(
 				      LogicalDevice::Handle        _deviceHandle,
@@ -168,7 +160,7 @@ namespace VaultedThermals
 				return EResult(vkCreateSwapchainKHR(_deviceHandle, _info, *_allocator, &_swapChain));
 			};
 
-			/*
+			/**
 			 * @ingroup APISpec_Window_System_Integration_WSI
 			 * 
 			 * @brief Destroy a swapchain object.
@@ -188,7 +180,7 @@ namespace VaultedThermals
 				vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, *_allocator);
 			}
 
-			/*
+			/**
 			@ingroup APISpec_Window_System_Integration_WSI
 
 			@brief Query a swapchain’s status when rendering to a shared presentable image.
@@ -200,18 +192,18 @@ namespace VaultedThermals
 				return EResult(vkGetSwapchainStatusKHR(_device, _swapchain));
 			}
 
-			/*
-			 * @ingroup APISpec_Window_System_Integration_WSI
-			 * 
-			 * @brief Obtain the array of presentable images associated with a swapchain.
-			 * 
-			 * @details
-			 * If pSwapchainImages is NULL, then the number of presentable images for swapchain is returned in pSwapchainImageCount. 
-			 * Otherwise, pSwapchainImageCount must point to a variable set by the user to the number of elements in the pSwapchainImages array, 
-			 * and on return the variable is overwritten with the number of structures actually written to pSwapchainImages.
-			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainImagesKHR">Specification</a>
-			 */
+			/**
+			@ingroup APISpec_Window_System_Integration_WSI
+			
+			@brief Obtain the array of presentable images associated with a swapchain.
+			
+			@details
+			If pSwapchainImages is NULL, then the number of presentable images for swapchain is returned in pSwapchainImageCount. 
+			Otherwise, pSwapchainImageCount must point to a variable set by the user to the number of elements in the pSwapchainImages array, 
+			and on return the variable is overwritten with the number of structures actually written to pSwapchainImages.
+			
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainImagesKHR">Specification</a>
+			*/
 			static EResult QueryImages(LogicalDevice::Handle _deviceHandle, Handle _swapChain, uint32& _numImages, Image::Handle* _imagesContainer)
 			{
 				return EResult(vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &_numImages, _imagesContainer));
@@ -232,7 +224,7 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Swapchain;
 
-			/*
+			/**
 			@brief Offers a default constructor.
 			*/
 			struct CreateInfo : Parent::CreateInfo
@@ -244,7 +236,7 @@ namespace VaultedThermals
 				}
 			};
 
-			/*
+			/**
 			@brief Offers a default constructor.
 			*/
 			struct PresentationInfo : Parent::PresentationInfo
@@ -256,7 +248,7 @@ namespace VaultedThermals
 				}
 			};
 			
-			/*
+			/**
 			@brief Create a swapchain (Default Allocator).
 			*/
 			static EResult Create
@@ -271,7 +263,7 @@ namespace VaultedThermals
 
 			using Parent::Create;
 
-			/*
+			/**
 			@brief Destroy a swapchain (Default Allocator).
 			*/
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _swapChainToDestroy)
@@ -281,14 +273,10 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 
-			/*
-			 * @brief Provides all presentable images with the swapchain.
-			 * 
-			 * \param _deviceHandle
-			 * \param _swapChain
-			 * \param _images
-			 * \return 
-			 */
+			/**
+			@brief Provides all presentable images with the swapchain.
+			\return 
+			*/
 			static EResult GetImages
 			(
 				LogicalDevice::Handle        _deviceHandle,
