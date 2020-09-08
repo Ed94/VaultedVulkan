@@ -61,6 +61,7 @@
               Reference
               <ul>
                 <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#derived-classes">Derived classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#pub-static-methods">Public static functions</a></li>
               </ul>
@@ -76,17 +77,18 @@
             <dd>Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information. Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.</dd>
           </dl>
         </section>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classVT_1_1V3_1_1DebugUtils_1_1Messenger.html" class="m-doc">VT::V3::DebugUtils::Messenger</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
-            <dt>
-              struct <a href="structVT_1_1V2_1_1DebugUtils_1_1Messenger_1_1CallbackData.html" class="m-doc">CallbackData</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt>
-              struct <a href="structVT_1_1V2_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>
-            </dt>
-            <dd>Offers a default constructor.</dd>
             <dt id="a57af7691fede9d77f00375d7940c5b04">
               using <a href="#a57af7691fede9d77f00375d7940c5b04" class="m-doc-self">Parent</a> = <a href="structVT_1_1V1_1_1DebugUtils_1_1Messenger.html" class="m-doc">Parent::<wbr />Messenger</a>
             </dt>
@@ -98,7 +100,7 @@
           <dl class="m-doc">
             <dt id="addb12ae25bf324efefc7e7734375ae8d">
               <span class="m-doc-wrap-bumper">static auto <a href="#addb12ae25bf324efefc7e7734375ae8d" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
-              const <a href="structVT_1_1V2_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
+              const <a href="structVT_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
               <a href="group__APISpec__Debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a>&amp; _messenger) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a debug messenger with the default memory allocator.</dd>

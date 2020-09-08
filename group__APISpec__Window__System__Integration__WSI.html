@@ -128,7 +128,8 @@
               <span class="m-doc-wrap-bumper">enum <a href="#ga5129bdd50b6a8a267ec532c69e0a68d4" class="m-doc">ECompositeAlpha</a> { </span><span class="m-doc-wrap"><a href="#gga5129bdd50b6a8a267ec532c69e0a68d4afaa90538de35640e4b1e31ccf35b6eb5" class="m-doc">Opaque</a> = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
               <a href="#gga5129bdd50b6a8a267ec532c69e0a68d4a35f7a4d0017cc8c4ea4c3691caf1fdfa" class="m-doc">PreMultiplied</a> = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR,
               <a href="#gga5129bdd50b6a8a267ec532c69e0a68d4a2a785ad8378e547091a950e190ba0506" class="m-doc">PostMultiplied</a> = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR,
-              <a href="#gga5129bdd50b6a8a267ec532c69e0a68d4ac49484faf79e2388b580e49444d6ac11" class="m-doc">Inherit</a> = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR }</span>
+              <a href="#gga5129bdd50b6a8a267ec532c69e0a68d4ac49484faf79e2388b580e49444d6ac11" class="m-doc">Inherit</a> = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR,
+              <a href="#gga5129bdd50b6a8a267ec532c69e0a68d4a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_COMPOSITE_ALPHA_FLAG_BITS_MAX_ENUM_KHR }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagBitsKHR">Specification</a></dd>
             <dt>
@@ -149,13 +150,15 @@
               <a href="#gga7cb0fec8d72e0b697a4e338c57898f6da3271c8494c1b383aee97fcde375e1804" class="m-doc">Horizontal_Mirror_Rotate_90</a> = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR,
               <a href="#gga7cb0fec8d72e0b697a4e338c57898f6da598883e52c5cf2561e118b2f0fcfacd3" class="m-doc">Horizontal_Mirror_Rotate_180</a> = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR,
               <a href="#gga7cb0fec8d72e0b697a4e338c57898f6da44253e6afee75fb6b31a1416b46f81e0" class="m-doc">Horizontal_Mirror_Rotate_270</a> = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR,
-              <a href="#gga7cb0fec8d72e0b697a4e338c57898f6dac49484faf79e2388b580e49444d6ac11" class="m-doc">Inherit</a> = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR }</span>
+              <a href="#gga7cb0fec8d72e0b697a4e338c57898f6dac49484faf79e2388b580e49444d6ac11" class="m-doc">Inherit</a> = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR,
+              <a href="#gga7cb0fec8d72e0b697a4e338c57898f6da9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_SURFACE_TRANSFORM_FLAG_BITS_MAX_ENUM_KHR }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagBitsKHR">Specification</a></dd>
             <dt>
               <span class="m-doc-wrap-bumper">enum <a href="#ga88a860418fcfcaae97dfa8a5af4afb5c" class="m-doc">ESwapchainCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#gga88a860418fcfcaae97dfa8a5af4afb5ca44ff641905c228a28dd70f657319ea41" class="m-doc">SplitInstanceBindRegions</a> = VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR,
               <a href="#gga88a860418fcfcaae97dfa8a5af4afb5ca41602ba02f85ce770a44f3bff69832a7" class="m-doc">CreateProtected</a> = VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR,
-              <a href="#gga88a860418fcfcaae97dfa8a5af4afb5ca808e9c70ecc523728236207d04eb5ba0" class="m-doc">CreateMutableFormat</a> = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR }</span>
+              <a href="#gga88a860418fcfcaae97dfa8a5af4afb5ca808e9c70ecc523728236207d04eb5ba0" class="m-doc">CreateMutableFormat</a> = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR,
+              <a href="#gga88a860418fcfcaae97dfa8a5af4afb5ca9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_SWAPCHAIN_CREATE_FLAG_BITS_MAX_ENUM_KHR }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagBitsKHR">Specification</a></dd>
           </dl>
@@ -184,7 +187,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a></dd>
             <dt>
-              using <a href="#ga01fcbc8d22735abb5d6780ea34f7f336" class="m-doc">CreateFlags</a> = Bitmask&lt;ECreateFlag, VkSwapchainCreateFlagsKHR&gt;
+              using <a href="#ga7cb00296183a4a9f0269e6516ac8d708" class="m-doc">CreateFlags</a> = Bitmask&lt;ESwapchainCreateFlag, VkSwapchainCreateFlagsKHR&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a></dd>
           </dl>
@@ -349,9 +352,9 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga01fcbc8d22735abb5d6780ea34f7f336"><div>
+          <section class="m-doc-details" id="ga7cb00296183a4a9f0269e6516ac8d708"><div>
             <h3>
-              using <a href="#ga01fcbc8d22735abb5d6780ea34f7f336" class="m-doc-self">CreateFlags</a> = Bitmask&lt;ECreateFlag, VkSwapchainCreateFlagsKHR&gt;
+              using <a href="#ga7cb00296183a4a9f0269e6516ac8d708" class="m-doc-self">CreateFlags</a> = Bitmask&lt;ESwapchainCreateFlag, VkSwapchainCreateFlagsKHR&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a></p>
