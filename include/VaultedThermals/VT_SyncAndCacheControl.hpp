@@ -758,16 +758,19 @@ namespace VaultedThermals
 		};
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-semaphores">Specification</a> 
-		 * 
-		 * @ingroup
-		 */
+		@brief Semaphores are a synchronization primitive that can be used to insert a dependency between queue operations or between a queue operation and the host. 
+		Binary semaphores have two states - signaled and unsignaled.
+		
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization-semaphores">Specification</a> 
+
+		@ingroup APISpec_Synchronization_and_Cache_Controls
+		*/
 		struct Semaphore : V0::Semaphore_Maker<V0::OS_Platform>
 		{
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreCreateInfo">Specification</a> APISpec_Synchronization_and_Cache_Control
 			 * 
-			 * @ingroup
+			 * @ingroup APISpec_Synchronization_and_Cache_Controls
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkSemaphoreCreateInfo, EStructureType::Semaphore_CreateInfo>
 			{

@@ -149,24 +149,22 @@ namespace VaultedThermals
 				*/
 			};
 
-			/** 
-			@brief  
-			Blending combines the incoming source fragment’s R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
+			/**
+			@ingroup APISpec_The_Framebuffer
+
+			@brief Blending combines the incoming source fragment’s R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
 			at the fragment’s (xf,yf) location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
 
 			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#framebuffer-blending">Specification</a> 
-
-			@ingroup APISpec_The_Framebuffer
 			*/
 			struct ColorBlendState
 			{
-				/** 
+				/**
+				@ingroup APISpec_The_Framebuffer
+
 				@brief Specifies per-target blending state for each individual color attachment.
 				
-				@details
-				<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendAttachmentState">Specification</a> 
-				
-				@ingroup APISpec_The_Framebuffer
+				@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendAttachmentState">Specification</a> 
 				*/
 				struct AttachmentState : V0::VKStruct_Base<VkPipelineColorBlendAttachmentState, EStructureType::Pipeline_ColorBlendAdvancedState_CreateInfo_EXT>
 				{
@@ -182,9 +180,11 @@ namespace VaultedThermals
 
 				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
-				/** 
-				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendStateCreateInfo">Specification</a> 
-				@ingroup APISpec_The_Framebuffer 
+				/**
+				@ingroup APISpec_The_Framebuffer
+
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendStateCreateInfo">Specification</a>
+
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineColorBlendStateCreateInfo, EStructureType::Pipeline_ColorBlendState_CreateInfo>
 				{
@@ -199,7 +199,7 @@ namespace VaultedThermals
 				};
 			};
 
-			/** 
+			/**
 			@brief Pipeline state controlling the depth bounds tests, stencil test, and depth test.
 
 			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fragops-ds-state">Specification</a> 
@@ -1039,6 +1039,10 @@ namespace VaultedThermals
 				using Parent::Destroy;
 			};
 
+			/**
+			@brief Blending combines the incoming source fragment’s R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
+			at the fragment’s (xf,yf) location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
+			*/
 			struct ColorBlendState : public Parent::ColorBlendState
 			{
 				/**
