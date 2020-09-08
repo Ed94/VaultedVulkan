@@ -44,16 +44,18 @@ namespace VaultedThermals
 		{
 			using EExternalHandleTypeFlag = EExternalFenceHandleTypeFlag;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
+			/** 
+			@ingroup APISpec_Synchronization_and_Cache_Control 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a> 
+			*/
 			using Handle = VkFence;
 		};
 
 		struct Semaphore_PlatformAgnostic
 		{
 			/**
-			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a> 
-
 			@ingroup APISpec_Synchronization_and_Cache_Control
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a> 
 			*/
 			using Handle = VkSemaphore;	
 

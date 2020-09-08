@@ -51,19 +51,19 @@ namespace VaultedThermals
 #endif
 {
 	/** 
+	@ingroup VaultedThermals
 	@defgroup Corridors
 	@{
 	
 	@brief Contains shared definitions between the vaults.
 
 	@details Namespace: Corridors
-
-	@ingroup VaultedThermals
 	*/
 	namespace Corridors {}
 	/** @} */
 
 	/** 
+	@ingroup VaultedThermals
 	@defgroup Vault_MagmaChamber
 	@{
 
@@ -73,61 +73,55 @@ namespace VaultedThermals
 
 	Namespace: Vault_MagmaChamber
 
-	@ingroup VaultedThermals
-
 	@todo #TODO Look into possibly implementing with the Volk library.
 	*/
 	namespace Vault_MagmaChamber {}
 	/** @} */
 
 	/** 
+	@ingroup VaultedThermals
 	@defgroup Vault_0
 	@{
 
 	@brief Backend vault for VaultedThermals
 
 	@details For now only abstracts away OS Platform details and basic meta-structure definitions.
-
-	@ingroup VaultedThermals
 	*/
 	namespace V0 { using namespace Corridors; }
 	/** @} */
 
 	/** 
+	@ingroup VaultedThermals
 	@defgroup Vault_1
 	@{
 
 	@brief 1:1 Wrapping of Vulkan API
 
 	@details 
-
-	@ingroup VaultedThermals
 	*/
 	namespace V1 { using namespace Corridors; }
 	/** @} */
 
 	/** 
+	@ingroup VaultedThermals
 	@defgroup Vault_2
 	@{
 
 	@brief Repetitive functionality wrapping.
 
 	@details 
-
-	@ingroup VaultedThermals
 	*/
 	namespace V2 { using namespace Corridors; }
 	/** @} */
 
 	/** 
+	@ingroup VaultedThermals
 	@defgroup Vault_3
 	@{
 
 	@brief Object-Oriented wrapping
 
 	@details 
-
-	@ingroup VaultedThermals
 	*/
 	namespace V3 { using namespace Corridors; }
 	/** @} */
@@ -135,21 +129,19 @@ namespace VaultedThermals
 #ifdef VT_Open_Vault_4
 
 	/** 
+	@ingroup VaultedThermals
 	@defgroup Vault_4
 	@{
 
 	@brief Object-Oriented bootstrapped backend
 
 	@details 
-
-	@ingroup VaultedThermals
 	*/
 	namespace V4 
-	{ 
-		using namespace Corridors;
-	}
+	{ using namespace Corridors; }
+	/** @} */
 
 #endif
-
-	/** @} */
 }
+
+

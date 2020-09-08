@@ -383,7 +383,7 @@ namespace VaultedThermals
 		/**
 		@brief
 
-		@ingroup
+		//@ingroup 
 
 		@todo 
 		#TODO: Add documentation.
