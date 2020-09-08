@@ -213,8 +213,8 @@
 */
 
 /**
-@defgroup APISpec_The_Framebuffer
 @ingroup API_Specification
+@defgroup APISpec_The_Framebuffer
 
 @brief Chapter 28: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap29.html">Specification</a>
 */

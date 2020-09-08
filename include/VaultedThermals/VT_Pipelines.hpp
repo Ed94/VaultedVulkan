@@ -149,13 +149,10 @@ namespace VaultedThermals
 				*/
 			};
 
-			/**
+			/*
 			@ingroup APISpec_The_Framebuffer
 
-			@brief Blending combines the incoming source fragment’s R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
-			at the fragment’s (xf,yf) location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
-
-			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#framebuffer-blending">Specification</a> 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#framebuffer-blending">Specification</a>
 			*/
 			struct ColorBlendState
 			{
@@ -184,7 +181,6 @@ namespace VaultedThermals
 				@ingroup APISpec_The_Framebuffer
 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineColorBlendStateCreateInfo">Specification</a>
-
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineColorBlendStateCreateInfo, EStructureType::Pipeline_ColorBlendState_CreateInfo>
 				{
@@ -747,14 +743,10 @@ namespace VaultedThermals
 				};
 			};
 
-			/** 
-			@brief The viewport transformation is determined by the selected viewport’s width and height in pixels, px and py, respectively, 
-			and its center (ox, oy) (also in pixels), as well as its depth range min and max determining a depth range scale value pz and 
-			a depth range bias value oz (defined below). 
+			/**
+			@ingroup APISpec_Fixed-Function_Vertex_Post-Processing
 
 			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vertexpostproc-viewport">Specification</a> 
-
-			@ingroup APISpec_Fixed-Function_Vertex_Post-Processing
 			*/
 			struct ViewportState
 			{
@@ -1040,8 +1032,8 @@ namespace VaultedThermals
 			};
 
 			/**
-			@brief Blending combines the incoming source fragment’s R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
-			at the fragment’s (xf,yf) location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
+			@brief Blending combines the incoming source fragments R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
+			at the fragments xf,yf location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
 			*/
 			struct ColorBlendState : public Parent::ColorBlendState
 			{
