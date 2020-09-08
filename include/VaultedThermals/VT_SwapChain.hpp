@@ -51,7 +51,7 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@ingroup  APISpec_Window_System_Integration_WSI
+		@ingroup APISpec_Window_System_Integration_WSI
 		
 		@brief A queue of images that can be presented to a surface.
 		
@@ -146,7 +146,6 @@ namespace VaultedThermals
 			* 
 			@details If the oldSwapchain parameter of pCreateInfo is a valid swapchain, which has exclusive full-screen access, that access is released from oldSwapchain.
 			If the command succeeds in this case, the newly created swapchain will automatically acquire exclusive full-screen access from oldSwapchain.
-			
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSwapchainKHR">Specification</a> 
 			*/
 			static EResult Create
@@ -161,20 +160,15 @@ namespace VaultedThermals
 			};
 
 			/**
-			 * @ingroup APISpec_Window_System_Integration_WSI
-			 * 
-			 * @brief Destroy a swapchain object.
-			 * 
-			 * @details
-			 * The application must not destroy a swapchain until after completion of all outstanding operations on images that were acquired from the swapchain. 
-			 * swapchain and all associated VkImage handles are destroyed, and must not be acquired or used any more by the application.
-			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySwapchainKHR">Specification</a> 
-			 * 
-			 * \param _deviceHandle
-			 * \param _swapChainToDestroy
-			 * \param _allocator
-			 */
+			@ingroup APISpec_Window_System_Integration_WSI
+			
+			@brief Destroy a swapchain object.
+			
+			@details
+			The application must not destroy a swapchain until after completion of all outstanding operations on images that were acquired from the swapchain. 
+			swapchain and all associated VkImage handles are destroyed, and must not be acquired or used any more by the application.
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySwapchainKHR">Specification</a> 
+			*/
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _swapChainToDestroy, const Memory::AllocationCallbacks* _allocator)
 			{
 				vkDestroySwapchainKHR(_deviceHandle, _swapChainToDestroy, *_allocator);
@@ -183,7 +177,7 @@ namespace VaultedThermals
 			/**
 			@ingroup APISpec_Window_System_Integration_WSI
 
-			@brief Query a swapchain’s status when rendering to a shared presentable image.
+			@brief Query a swapchains status when rendering to a shared presentable image.
 
 			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainStatusKHR">Specification</a> 
 			*/
@@ -275,7 +269,6 @@ namespace VaultedThermals
 
 			/**
 			@brief Provides all presentable images with the swapchain.
-			\return 
 			*/
 			static EResult GetImages
 			(
