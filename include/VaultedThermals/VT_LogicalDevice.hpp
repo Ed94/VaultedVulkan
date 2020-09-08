@@ -581,7 +581,7 @@ namespace VaultedThermals
 			{
 				using Parent = Parent::Queue;
 
-				Queue() { assignment = EQueueFlag::MaxEnum; }
+				Queue() { assignment = EQueueFlag::VT_SpecifyBitmaskable; }
 
 				void Assign(const LogicalDevice& _logicalDevice, uint32 _familyIndex, uint32 _queueIndex, EQueueFlag _type)
 				{
@@ -621,7 +621,7 @@ namespace VaultedThermals
 
 				bool FamilySpecified() const
 				{
-					return assignment != EQueueFlag::MaxEnum ? true : false;
+					return assignment != EQueueFlag::VT_SpecifyBitmaskable ? true : false;
 				}
 
 				EResult QueuePresentation(const PresentationInfo& _presentationInfo) const

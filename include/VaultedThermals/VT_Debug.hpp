@@ -94,9 +94,9 @@ namespace VaultedThermals
 			*/
 			struct Label : V0::VKStruct_Base<VkDebugUtilsLabelEXT, EStructureType::DebugUtils_Label_EXT>
 			{
-					  EType   SType   ;
-				const void*   Next    ;
-				const char*   Name    ;
+					  EType   SType    = STypeEnum;
+				const void*   Next     = nullptr  ;
+				const char*   Name     = nullptr  ;
 					  float32 Color[4];
 			};
 
@@ -110,11 +110,11 @@ namespace VaultedThermals
 			*/
 			struct ObjectInfo : V0::VKStruct_Base<VkDebugUtilsObjectNameInfoEXT, EStructureType::DebugUtils_ObjectName_Info_EXT>
 			{
-					  EType       SType ;
-				const void*       Next  ;
+					  EType       SType  = STypeEnum;
+				const void*       Next   = nullptr  ;
 					  EObjectType Type  ;
 					  uInt64      Handle;
-				const char*       Name  ;
+				const char*       Name   = nullptr  ;
 			};
 
 			/**
@@ -147,18 +147,18 @@ namespace VaultedThermals
 				{
 					using FlagsMask = Bitmask<EUndefined, Flags>;
 
-						  EType       SType               ;
-					const void*       Next                ;
+						  EType       SType                = STypeEnum;
+					const void*       Next                 = nullptr  ;
 						  FlagsMask   Flags               ;
-					const char*       MesssageIDName      ;
-						  sint32      MessageIDNumber     ;
-					const char*       Message             ;
-						  uint32      QueueLabelCount     ;
-					const Label*      QueueLabels         ;
-						  uint32      CMDBufferLabel_Count;
-					const Label*      CMDBufferLabels     ;
-						  uint32      ObjectCount         ;
-					const ObjectInfo* Objects             ;
+					const char*       MesssageIDName       = nullptr  ;
+						  sint32      MessageIDNumber      = 0        ;
+					const char*       Message              = nullptr  ;
+						  uint32      QueueLabelCount      = 0        ;
+					const Label*      QueueLabels          = nullptr  ;
+						  uint32      CMDBufferLabel_Count = 0        ;
+					const Label*      CMDBufferLabels      = nullptr  ;
+						  uint32      ObjectCount          = 0        ;
+					const ObjectInfo* Objects              = nullptr  ;
 				};
 
 				/** 
@@ -184,13 +184,13 @@ namespace VaultedThermals
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a> */
 				struct CreateInfo : V0::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
 				{ 
-						  EType                 SType       ;
-					const void*                 Next        ;
+						  EType                 SType        = STypeEnum;
+					const void*                 Next         = nullptr  ;
 						  CreateFlags           Flags       ;
 						  MessageServerityFlags Serverity   ;
 						  MessageTypeFlags      Type        ;
 						  CallbackDelegate      UserCallback;
-						  void*                 UserData    ;
+						  void*                 UserData     = nullptr  ;
 				};
 
 				/**
@@ -289,59 +289,9 @@ namespace VaultedThermals
 			/**
 			@brief Offers a default constructor.
 			*/
-			struct Label : public Parent::Label
-			{
-				Label()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-					Name  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ObjectInfo : public Parent::ObjectInfo
-			{
-				ObjectInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-					Name  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
 			struct Messenger : public Parent::Messenger
 			{
 				using Parent = Parent::Messenger;
-
-				/**
-				
-				*/
-				struct CallbackData : Parent::CallbackData
-				{
-					CallbackData()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : Parent::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
 
 				/**
 				@brief Create a debug messenger with the default memory allocator.
@@ -398,6 +348,21 @@ namespace VaultedThermals
 
 				using Parent = V2::DebugUtils::Messenger;
 
+				/*Messenger() : handle(Null<Handle>), app(nullptr), allocator(Memory::DefaultAllocator)
+				{}
+
+				Messenger(const AppInstance& _appInstance) : handle(Null<Handle>), app(&_appInstance), allocator(Memory::DefaultAllocator)
+				{}
+
+				Messenger(const AppInstance& _appInstance, const Memory::AllocationCallbacks& _allocator) :
+					handle(Null<Handle>), app(&_appInstance), allocator(&_allocator)
+				{}*/
+
+				/*~Messenger()
+				{
+					if (handle != Null<Handle>) Destroy();
+				}*/
+
 				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec)
 				{
 					app       = &_appInstance           ;
@@ -406,10 +371,10 @@ namespace VaultedThermals
 					return Parent::Create(*app, _createSpec, handle);
 				}
 
-				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec, const Memory::AllocationCallbacks* _allocator)
+				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec, const Memory::AllocationCallbacks& _allocator)
 				{
 					app       = &_appInstance;
-					allocator = _allocator   ;
+					allocator = &_allocator  ;
 
 					return Parent::Create(*app, _createSpec, allocator, handle);
 				}
@@ -417,6 +382,11 @@ namespace VaultedThermals
 				void Destroy()
 				{
 					Parent::Destroy(*app, handle, allocator);
+
+					handle = Null<Handle>;
+
+					app       = nullptr                 ;
+					allocator = Memory::DefaultAllocator;
 				}
 
 				operator Handle()

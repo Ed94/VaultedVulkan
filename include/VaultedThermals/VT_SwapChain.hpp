@@ -73,7 +73,7 @@ namespace VaultedThermals
 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a> 
 			*/
-			using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
+			using CreateFlags = Bitmask<ESwapchainCreateFlag, VkSwapchainCreateFlagsKHR >;
 
 			/**
 			@ingroup APISpec_Window_System_Integration_WSI

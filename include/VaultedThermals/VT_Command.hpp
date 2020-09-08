@@ -83,9 +83,9 @@ namespace VaultedThermals
 			*/
 			struct BufferImageRegion : V0::VKStruct_Base<VkBufferImageCopy>
 			{
-				DeviceSize               BufferOffset     ;
-				uint32                   BufferRowLength  ;
-				uint32                   BufferImageHeight;
+				DeviceSize               BufferOffset      = Memory::ZeroOffset;
+				uint32                   BufferRowLength   = 0                 ;
+				uint32                   BufferImageHeight = 0                 ;
 				Image::SubresourceLayers ImageSubresource ;
 				Offset3D                 ImageOffset      ;
 				Extent3D                 ImageExtent      ;
@@ -99,12 +99,12 @@ namespace VaultedThermals
 			*/
 			struct InheritanceWindow : V0::VKStruct_Base<VkCommandBufferInheritanceInfo, EStructureType::CommandBuffer_InheritanceInfo>
 			{
-				      EType                       SType               ;
-				const void*                       Next                ;
-				      RenderPass::Handle          RenderPass          ;
-				      uint32                      Subpass             ;
-				      Framebuffer::Handle         Framebuffer         ;
-				      Bool                        OcclusionQueryEnable;
+				      EType                       SType                = STypeEnum                ;
+				const void*                       Next                 = nullptr                  ;
+				      RenderPass::Handle          RenderPass           = Null<RenderPass::Handle> ;
+				      uint32                      Subpass              = 0                        ;
+				      Framebuffer::Handle         Framebuffer          = Null<Framebuffer::Handle>;
+				      Bool                        OcclusionQueryEnable = false                    ;
 				      QueryControlFlags           QueryFlags          ;
 				      QueryPipelineStatisticFlags PipelineStatistics  ;
 
@@ -116,25 +116,12 @@ namespace VaultedThermals
 				*/
 				struct ConditionalRenderingInfo : V0::VKStruct_Base<VkCommandBufferInheritanceConditionalRenderingInfoEXT, EStructureType::CommandBuffer_Inheritance_ConditionalRendering_Info_EXT>
 				{
-					      EType SType ;
-					const void* Next  ;
-					      Bool  Enable;
+					      EType SType  = STypeEnum;
+					const void* Next   = nullptr  ;
+					      Bool  Enable = false    ;
 
-					bool operator== (const ConditionalRenderingInfo& _other)
-					{
-						return
-						Next   == _other.Next   &&
-						Enable == _other.Enable
-						? true : false;
-					}
-
-					bool operator!= (const ConditionalRenderingInfo& _other)
-					{
-						return
-						Next   != _other.Next   &&
-						Enable != _other.Enable
-						? true : false;
-					}
+					bool operator== (const ConditionalRenderingInfo& _other) { return Next == _other.Next && Enable == _other.Enable ? true : false; }
+					bool operator!= (const ConditionalRenderingInfo& _other) { return Next != _other.Next && Enable != _other.Enable ? true : false; }
 				};
 
 				/**
@@ -147,9 +134,9 @@ namespace VaultedThermals
 				struct PassTransformInfo : V0::VKStruct_Base
 					<VkCommandBufferInheritanceRenderPassTransformInfoQCOM, EStructureType::CommandBufferInheritance_RenderPassTransform_Info_QCOM>
 				{
-					EType                 SType     ;
-					void*                 Next      ;
-					ESurfaceTransformFlag Transform ;
+					EType                 SType      = STypeEnum                      ;
+					void*                 Next       = nullptr                        ;
+					ESurfaceTransformFlag Transform  = ESurfaceTransformFlag::Identity;
 					Rect2D                RenderArea;
 				};
 			};	
@@ -163,10 +150,10 @@ namespace VaultedThermals
 			*/
 			struct BeginInfo : V0::VKStruct_Base<VkCommandBufferBeginInfo, EStructureType::CommandBuffer_BeginInfo>
 			{
-				      EType              SType          ;
-				const void*              Next           ;
+				      EType              SType           = STypeEnum;
+				const void*              Next            = nullptr  ;
 				      UsageFlags         Flags          ;
-				const InheritanceWindow* InheritanceInfo;
+				const InheritanceWindow* InheritanceInfo = nullptr  ;
 			};
 
 			/**
@@ -178,15 +165,15 @@ namespace VaultedThermals
 			*/
 			struct SubmitInfo : V0::VKStruct_Base<VkSubmitInfo, EStructureType::SubmitInfo>
 			{
-				      EType                 SType               ;
-				const void*                 Next                ;
-				      uint32                WaitSemaphoreCount  ;
-				const Semaphore::Handle*    WaitSemaphores      ;
-				const Pipeline::StageFlags* WaitDstStageMask    ;
-				      uint32                CommandBufferCount  ;
-				const Handle*               CommandBuffers      ;
-				      uint32                SignalSemaphoreCount;
-				const Semaphore::Handle*    SignalSemaphores    ;
+				      EType                 SType                = STypeEnum;
+				const void*                 Next                 = nullptr  ;
+				      uint32                WaitSemaphoreCount   = 0        ;
+				const Semaphore::Handle*    WaitSemaphores       = nullptr  ;
+				const Pipeline::StageFlags* WaitDstStageMask     = nullptr  ;
+				      uint32                CommandBufferCount   = 0        ;
+				const Handle*               CommandBuffers       = nullptr  ;
+				      uint32                SignalSemaphoreCount = 0        ;
+				const Semaphore::Handle*    SignalSemaphores     = nullptr  ;
 
 
 				/**
@@ -198,12 +185,12 @@ namespace VaultedThermals
 				*/
 				struct TimelineSemaphore : V0::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
 				{
-					      EType   SType                    ;
-					const void*   Next                     ;
-					      uint32  WaitSemaphoreValueCount  ;
-					const uInt64* WaitSemaphoreValues      ;
-					      uint32  SignalSemaphoreValueCount;
-					const uInt64* SignalSemaphoreValues    ;
+					      EType   SType                     = STypeEnum;
+					const void*   Next                      = nullptr  ;
+					      uint32  WaitSemaphoreValueCount   = 0        ;
+					const uInt64* WaitSemaphoreValues       = nullptr  ;
+					      uint32  SignalSemaphoreValueCount = 0        ;
+					const uInt64* SignalSemaphoreValues     = nullptr  ;
 				};	
 
 				/**
@@ -215,12 +202,12 @@ namespace VaultedThermals
 				*/
 				struct D3D12Fence : V0::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
 				{
-					      EType   SType                     ;
-					const void*   Next                      ;
-					      uint32  WaitSemaphoreValuesCount  ;
-					const uInt64* WaitSemaphoreValues       ;
-					      uint32  SignalSemaphoreValuesCount;
-					const uInt64* SignalSemaphoreValues     ;
+					      EType   SType                      = STypeEnum;
+					const void*   Next                       = nullptr  ;
+					      uint32  WaitSemaphoreValuesCount   = 0        ;
+					const uInt64* WaitSemaphoreValues        = nullptr  ;
+					      uint32  SignalSemaphoreValuesCount = 0        ;
+					const uInt64* SignalSemaphoreValues      = nullptr  ;
 				};
 
 				/**
@@ -232,15 +219,15 @@ namespace VaultedThermals
 				*/
 				struct Win32KeyedMutexAcquireRelease : V0::VKStruct_Base<VkWin32KeyedMutexAcquireReleaseInfoKHR>
 				{
-					      EType           SType          ;
-					const void*           Next           ;
-					      uint32          AcquireCount   ;
-					const Memory::Handle* AcquireSyncs   ;
-					const uInt64*         AcquireKeys    ;
-					const uint32*         AcquireTimeouts;
-					      uint32          ReleaseCount   ;
-					const Memory::Handle* ReleaseSyncs   ;
-					const uInt64*         ReleaseKeys    ;
+					      EType           SType           = STypeEnum;
+					const void*           Next            = nullptr  ;
+					      uint32          AcquireCount    = 0        ;
+					const Memory::Handle* AcquireSyncs    = nullptr  ;
+					const uInt64*         AcquireKeys     = nullptr  ;
+					const uint32*         AcquireTimeouts = nullptr  ;
+					      uint32          ReleaseCount    = 0        ;
+					const Memory::Handle* ReleaseSyncs    = nullptr  ;
+					const uInt64*         ReleaseKeys     = nullptr  ;
 				};
 
 				/**
@@ -250,9 +237,9 @@ namespace VaultedThermals
 				*/
 				struct Protected : V0::VKStruct_Base<VkProtectedSubmitInfo>
 				{
-					      EType SType          ;
-					const void* Next           ;
-					      Bool  ProtectedSubmit;
+					      EType SType           = STypeEnum;
+					const void* Next            = nullptr  ;
+					      Bool  ProtectedSubmit = false    ;
 
 					bool operator== (const Protected& _other) { return Next == _other.Next && ProtectedSubmit == _other.ProtectedSubmit ? true : false; }
 					bool operator!= (const Protected& _other) { return Next != _other.Next && ProtectedSubmit != _other.ProtectedSubmit ? true : false; }
@@ -267,14 +254,14 @@ namespace VaultedThermals
 				*/
 				struct DeviceGroup : V0::VKStruct_Base<VkDeviceGroupSubmitInfo>
 				{
-					      EType   SType                       ;
-					const void*   Next                        ;
-					      uint32  WaitSemaphoreCount          ;
-					const uint32* WaitSemaphoreDeviceIndices  ;
-					      uint32  CommandBufferCount          ;
-					const uint32* CommandBufferDeviceMasks    ;
-					      uint32  SignalSemaphoreCount        ;
-					const uint32* SignalSemaphoreDeviceIndices;
+					      EType   SType                        = STypeEnum;
+					const void*   Next                         = nullptr  ;
+					      uint32  WaitSemaphoreCount           = 0        ;
+					const uint32* WaitSemaphoreDeviceIndices   = nullptr  ;
+					      uint32  CommandBufferCount           = 0        ;
+					const uint32* CommandBufferDeviceMasks     = nullptr  ;
+					      uint32  SignalSemaphoreCount         = 0        ;
+					const uint32* SignalSemaphoreDeviceIndices = nullptr  ;
 				};
 
 				/**
@@ -286,9 +273,9 @@ namespace VaultedThermals
 				*/
 				struct PerformanceQuery : V0::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
 				{
-					      EType  Type            ;
-					const void*  Next            ;
-					      uint32 CounterPassIndex;
+					      EType  SType            = STypeEnum;
+					const void*  Next             = nullptr  ;
+					      uint32 CounterPassIndex = 0        ;
 				};
 			};
 
@@ -301,9 +288,9 @@ namespace VaultedThermals
 			*/
 			struct DeviceGroupBeginInfo : V0::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
 			{
-				      EType  SType     ;
-				const void*  Next      ;
-				      uint32 DeviceMask;
+				      EType  SType      = STypeEnum;
+				const void*  Next       = nullptr  ;
+				      uint32 DeviceMask = 0        ;
 			};
 
 
@@ -688,11 +675,11 @@ namespace VaultedThermals
 			 */
 			struct AllocateInfo : V0::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
 			{
-				      EType               SType      ;
-				const void*               Next       ;
-				      Handle              Pool       ;
-				      ECommandBufferLevel Level      ;
-				      uint32              BufferCount;
+				      EType               SType       = STypeEnum                   ;
+				const void*               Next        = nullptr                     ;
+				      Handle              Pool        = Null<Handle>                ;
+				      ECommandBufferLevel Level       = ECommandBufferLevel::Primary;
+				      uint32              BufferCount = 1                           ;
 			};
 
 			/** 
@@ -704,8 +691,8 @@ namespace VaultedThermals
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
 			{
-				      EType       SType           ;
-				const void*       Next            ;
+				      EType       SType            = STypeEnum;
+				const void*       Next             = nullptr  ;
 				      CreateFlgas Flags           ;
 				      uint32      QueueFamilyIndex;
 			};
@@ -858,38 +845,6 @@ namespace VaultedThermals
 			using CommandBuffer = V1::CommandBuffer;
 			
 			/**
-			@brief Offers a default constructor of the struct.
-
-			@details
-			Default Constructor:
-			Pool is set to null handle.
-			The command buffer level is set to Primary.
-			*/
-			struct AllocateInfo : public Parent::AllocateInfo
-			{
-				AllocateInfo()
-				{
-					SType       = STypeEnum                   ;
-					Next        = nullptr                     ;
-					Pool        = Null<Handle>                ;
-					Level       = ECommandBufferLevel::Primary;
-					BufferCount = 1                           ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor of the struct.
-			*/
-			struct CreateInfo : Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
 			@brief Uses the VulkanAPI's default allocator.
 			*/
 			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Handle& _commandPool)
@@ -989,102 +944,6 @@ namespace VaultedThermals
 		struct CommandBuffer : public V1::CommandBuffer
 		{
 			using Parent = V1::CommandBuffer;
-
-			/**
-			@brief Offers a default constructor of the struct.
-			*/
-			struct InheritanceWindow : public Parent::InheritanceWindow
-			{
-				using Parent = Parent::InheritanceWindow;
-
-				InheritanceWindow()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-
-				/**
-				@brief Offers a default constructor of the struct.
-				*/
-				struct ConditionalRenderingInfo : public Parent::ConditionalRenderingInfo
-				{
-					ConditionalRenderingInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/**
-				@brief Offers a default constructor of the struct.
-				*/
-				struct PassTransformInfo : public Parent::PassTransformInfo
-				{
-					PassTransformInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			/**
-			@brief Offers a default constructor of the struct.
-			*/
-			struct BeginInfo : public Parent::BeginInfo
-			{
-				BeginInfo()
-				{
-					SType           = STypeEnum;
-					Next            = nullptr  ;
-					InheritanceInfo = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor of the struct.
-			*/
-			struct SubmitInfo : public Parent::SubmitInfo
-			{
-				using Parent = Parent::SubmitInfo;
-
-				SubmitInfo()
-				{
-					SType                = STypeEnum;
-					Next                 = nullptr  ;
-					WaitSemaphoreCount   = 0        ;
-					WaitSemaphores       = nullptr  ;
-					WaitDstStageMask     = nullptr  ;
-					CommandBufferCount   = 0        ;
-					CommandBuffers       = 0        ;
-					SignalSemaphoreCount = 0        ;
-					SignalSemaphores     = nullptr  ;
-				}
-
-				/**
-				@brief Offers a default constructor of the struct.
-				*/
-				struct TimelineSemaphore : public Parent
-				{
-					TimelineSemaphore()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/**
-				@brief Offers a default constructor of the struct.
-				*/
-				struct D3D12Fence : public Parent
-				{
-					D3D12Fence()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
 
 			/** @brief Uses a single-time command buffer to copy a buffer */
 			static void CopyBuffer
@@ -1295,6 +1154,13 @@ namespace VaultedThermals
 			using Parent = V2::CommandBuffer;
 
 			using AllocateInfo = V2::CommandPool::AllocateInfo;
+
+			/*CommandBuffer() : handle(Null<Handle>), device(nullptr), info()
+			{}
+
+			CommandBuffer(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle) : 
+				device(&_device), handle(_handle), info(_info)
+			{}*/
 
 			void Assign(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle)
 			{
@@ -1653,7 +1519,7 @@ namespace VaultedThermals
 
 			const LogicalDevice* device;
 
-			AllocateInfo info;
+			AllocateInfo info;    ///< @todo move to V4?
 		};
 
 		/**
@@ -1667,6 +1533,21 @@ namespace VaultedThermals
 			using Parent = V2::CommandPool;
 
 			using CommandBuffer = V3::CommandBuffer;
+
+			/*CommandPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			CommandPool(const LogicalDevice& _device) : handle(Null<Handle>),  allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			CommandPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
+				handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}*/
+
+			/*~CommandPool()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
 
 			EResult Allocate(AllocateInfo& _info, CommandBuffer& _buffer)
 			{
@@ -1729,7 +1610,12 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(const CreateInfo& _info)
+			{
+				return Parent::Create(*device, _info, allocator, handle);
+			}
+
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
 				allocator = Memory::DefaultAllocator;
@@ -1748,6 +1634,10 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle    = Null<Handle>;
+				allocator = nullptr     ;
+				device    = nullptr     ;
 			}
 
 			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)

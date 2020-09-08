@@ -943,7 +943,7 @@ namespace VaultedThermals
 					{
 						case EImageTiling::Linear:
 						{
-							if (formatProperties.LinearTilingFeatures.HasOrEither(_features))
+							if (formatProperties.LinearTilingFeatures.CheckForEither(_features))
 							{
 								_format = possibleFormat;
 
@@ -954,7 +954,7 @@ namespace VaultedThermals
 						}
 						case EImageTiling::Optimal:
 						{
-							if (formatProperties.OptimalTilingFeatures.HasOrEither(_features))
+							if (formatProperties.OptimalTilingFeatures.CheckForEither(_features))
 							{
 								_format = possibleFormat;
 
@@ -1073,12 +1073,12 @@ namespace VaultedThermals
 					properties.LimitsSpec.FramebufferDepthSampleCounts
 				);
 
-				if (counts.Has(ESampleCount::_64)) return ESampleCount::_64;
-				if (counts.Has(ESampleCount::_32)) return ESampleCount::_32;
-				if (counts.Has(ESampleCount::_16)) return ESampleCount::_16;
-				if (counts.Has(ESampleCount::_8 )) return ESampleCount::_8 ;
-				if (counts.Has(ESampleCount::_4 )) return ESampleCount::_4 ;
-				if (counts.Has(ESampleCount::_2 )) return ESampleCount::_2 ;
+				if (counts.HasFlag(ESampleCount::_64)) return ESampleCount::_64;
+				if (counts.HasFlag(ESampleCount::_32)) return ESampleCount::_32;
+				if (counts.HasFlag(ESampleCount::_16)) return ESampleCount::_16;
+				if (counts.HasFlag(ESampleCount::_8 )) return ESampleCount::_8 ;
+				if (counts.HasFlag(ESampleCount::_4 )) return ESampleCount::_4 ;
+				if (counts.HasFlag(ESampleCount::_2 )) return ESampleCount::_2 ;
 
 				return ESampleCount::_1;
 			}
@@ -1238,12 +1238,12 @@ namespace VaultedThermals
 					properties.LimitsSpec.FramebufferDepthSampleCounts
 				);
 
-				if (counts.Has(ESampleCount::_64)) return ESampleCount::_64;
-				if (counts.Has(ESampleCount::_32)) return ESampleCount::_32;
-				if (counts.Has(ESampleCount::_16)) return ESampleCount::_16;
-				if (counts.Has(ESampleCount::_8 )) return ESampleCount::_8 ;
-				if (counts.Has(ESampleCount::_4 )) return ESampleCount::_4 ;
-				if (counts.Has(ESampleCount::_2 )) return ESampleCount::_2 ;
+				if (counts.HasFlag(ESampleCount::_64)) return ESampleCount::_64;
+				if (counts.HasFlag(ESampleCount::_32)) return ESampleCount::_32;
+				if (counts.HasFlag(ESampleCount::_16)) return ESampleCount::_16;
+				if (counts.HasFlag(ESampleCount::_8 )) return ESampleCount::_8 ;
+				if (counts.HasFlag(ESampleCount::_4 )) return ESampleCount::_4 ;
+				if (counts.HasFlag(ESampleCount::_2 )) return ESampleCount::_2 ;
 
 				return ESampleCount::_1;
 			}
