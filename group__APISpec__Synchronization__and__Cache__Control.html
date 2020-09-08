@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>API_Specification &raquo; APISpec_Synchronization_and_Cache_Control module | VaultedThermals</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedThermals</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+            <li><a href="modules.html">Modules</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="group__API__Specification.html">API_Specification</a> &raquo;</span>
+          APISpec_Synchronization_and_Cache_Control <span class="m-thin">module</span></h1>
+        <p>Chapter 6: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap7.html">Specification</a></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#enum-members">Enums</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Memory_1_1Barrier.html" class="m-doc">VT::V0::Memory::Barrier</a>
+            </dt>
+            <dd>Global memory barriers apply to memory accesses involving all memory objects that exist at the time of its execution..</dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">VT::V1::Buffer::Memory_Barrier</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferMemoryBarrier">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">VT::V1::Image::Memory_Barrier</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageMemoryBarrier">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Fence__Maker_3_01EOS_1_1Linux_01_4_1_1GetOS__HandleInfo.html" class="m-doc">VT::V0::Fence_Maker&lt;EOS::Linux&gt;::GetOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetFdInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Fence__Maker_3_01EOS_1_1Linux_01_4_1_1ImportOS__HandleInfo.html" class="m-doc">VT::V0::Fence_Maker&lt;EOS::Linux&gt;::ImportOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceFdInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Fence__Maker_3_01EOS_1_1Windows_01_4_1_1ExportableOS__HandleInfo.html" class="m-doc">VT::V0::Fence_Maker&lt;EOS::Windows&gt;::ExportableOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceWin32HandleInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Fence__Maker_3_01EOS_1_1Windows_01_4_1_1GetOS__HandleInfo.html" class="m-doc">VT::V0::Fence_Maker&lt;EOS::Windows&gt;::GetOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceGetWin32HandleInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Fence__Maker_3_01EOS_1_1Windows_01_4_1_1ImportOS__HandleInfo.html" class="m-doc">VT::V0::Fence_Maker&lt;EOS::Windows&gt;::ImportOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportFenceWin32HandleInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Semaphore__Maker_3_01EOS_1_1Linux_01_4_1_1GetOS__HandleInfo.html" class="m-doc">VT::V0::Semaphore_Maker&lt;EOS::Linux&gt;::GetOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetFdInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Semaphore__Maker_3_01EOS_1_1Linux_01_4_1_1ImportOS__HandleInfo.html" class="m-doc">VT::V0::Semaphore_Maker&lt;EOS::Linux&gt;::ImportOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreFdInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Semaphore__Maker_3_01EOS_1_1Windows_01_4_1_1ExportableOS__HandleInfo.html" class="m-doc">VT::V0::Semaphore_Maker&lt;EOS::Windows&gt;::ExportableOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportSemaphoreWin32HandleInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Semaphore__Maker_3_01EOS_1_1Windows_01_4_1_1GetOS__HandleInfo.html" class="m-doc">VT::V0::Semaphore_Maker&lt;EOS::Windows&gt;::GetOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreGetWin32HandleInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V0_1_1Semaphore__Maker_3_01EOS_1_1Windows_01_4_1_1ImportOS__HandleInfo.html" class="m-doc">VT::V0::Semaphore_Maker&lt;EOS::Windows&gt;::ImportOS_HandleInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImportSemaphoreWin32HandleInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Event_1_1CreateInfo.html" class="m-doc">VT::V1::Event::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEventCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Event.html" class="m-doc">VT::V1::Event</a>
+            </dt>
+            <dd>Events are a synchronization primitive that can be used to insert a fine-grained dependency between commands submitted to the same queue, or between the host and a queue. Events must not be used to insert a dependency between commands submitted to different queues. Events have two states - signaled and unsignaled.</dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">VT::V1::Fence::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Fence_1_1DeviceEventInfo.html" class="m-doc">VT::V1::Fence::DeviceEventInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventInfoEXT">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Fence_1_1DisplayEventInfo.html" class="m-doc">VT::V1::Fence::DisplayEventInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventInfoEXT">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Fence_1_1ExportCreateInfo.html" class="m-doc">VT::V1::Fence::ExportCreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExportFenceCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Fence.html" class="m-doc">VT::V1::Fence</a>
+            </dt>
+            <dd>Fences are a synchronization primitive that can be used to insert a dependency from a queue to the host. Fences have two states - signaled and unsignaled.</dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Semaphore_1_1SignalInfo.html" class="m-doc">VT::V1::Semaphore::SignalInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Semaphore_1_1TypeSpecifiedCreateInfo.html" class="m-doc">VT::V1::Semaphore::TypeSpecifiedCreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Semaphore_1_1WaitInfo.html" class="m-doc">VT::V1::Semaphore::WaitInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a></dd>
+          </dl>
+        </section>
+        <section id="enum-members">
+          <h2><a href="#enum-members">Enums</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga73c6a146fc1130eafd64e15b04f0fcab" class="m-doc">EAccessFlag</a> { </span><span class="m-doc-wrap"><a href="#gga73c6a146fc1130eafd64e15b04f0fcabad78cc6a0bcb5f70722885ed057a1f9a0" class="m-doc">IndirectCommandRead</a> = VK_ACCESS_INDIRECT_COMMAND_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba86314d767df3eec3286097d24bfd24a3" class="m-doc">IndexRead</a> = VK_ACCESS_INDEX_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba58fc4f995c9acd340c304aaf8b8be52a" class="m-doc">VertexAttributeRead</a> = VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabaa8c9eee9c2d4700f824356a9cdcdec34" class="m-doc">UniformRead</a> = VK_ACCESS_UNIFORM_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba37bc3fb1753f31a1bfd76b475531d179" class="m-doc">InputAttachmentRead</a> = VK_ACCESS_INPUT_ATTACHMENT_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba4ff313558b22c62a981845a543dd9c0c" class="m-doc">ShaderRead</a> = VK_ACCESS_SHADER_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabaca9438a8d82d1dc278fd9d44f13ed225" class="m-doc">ShaderWrite</a> = VK_ACCESS_SHADER_WRITE_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabadc1ab7b066bc545c5a83a8ee54fc4ffb" class="m-doc">ColorAttachmentRead</a> = VK_ACCESS_COLOR_ATTACHMENT_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabab6b7a60a832738d5e5d4e1e442a68cc5" class="m-doc">ColorAttachmentWrite</a> = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba35a30e5a6da75a4db202f65938e5189a" class="m-doc">DepthStencilAttachmentRead</a> = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabae2b1f5924289699c44b8ecba300a5de0" class="m-doc">DepthStencilAttachmentWrite</a> = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabab6a2d4a47c5bb061f68fb2e819f5d6b2" class="m-doc">TransferRead</a> = VK_ACCESS_TRANSFER_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabaf30a8160b082d15b6c85b9840f488d72" class="m-doc">TransferWrite</a> = VK_ACCESS_TRANSFER_WRITE_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabaa43bd7aae3f6e001a2ee1490421f8d90" class="m-doc">HostRead</a> = VK_ACCESS_HOST_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba509b9f909831ef70e6c1ec59a3b340e9" class="m-doc">HostWrite</a> = VK_ACCESS_HOST_WRITE_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba575da5d1d4109b111267b2e044af2aad" class="m-doc">MemoryRead</a> = VK_ACCESS_MEMORY_READ_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba5e932342aab40efaef1a503864403168" class="m-doc">MemoryWrite</a> = VK_ACCESS_MEMORY_WRITE_BIT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabae85201c0756773b31418d8e23a2f2886" class="m-doc">TransformFeedback_Write_EXT</a> = VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba6e4fdac76a244fcfc6bff0bc59ec9ad4" class="m-doc">TransformFeedback_CounterRead_EXT</a> = VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba4328e1bdfda3e9ee99c9935bb9727a10" class="m-doc">TransformFeedback_CounterWrite_EXT</a> = VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabaeef405f50d1b27cb507013da8f8f734a" class="m-doc">ConditionalRendering_Read_EXT</a> = VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabad36b10b09847498677638f6cf84a3507" class="m-doc">ColorAttachment_ReadNoncoherent_EXT</a> = VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba74dec663f841538b94c8bed7e2acf6e6" class="m-doc">AccelerationStructure_Read_KHR</a> = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba52d616accd4f1a727ebd7311c91addad" class="m-doc">AccelerationStructure_Write_KHR</a> = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba10460d7da28831d9da903d9618128ecd" class="m-doc">ShadingRateImage_Read_NV</a> = VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcabaa0ee44764e18f03ccf978c1f5e31ddb6" class="m-doc">FragmentDensityMap_Read_EXT</a> = VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba3010a85e5713ff811e396e0f2f210d32" class="m-doc">CommandPreprocess_Read_NV</a> = VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba67cee67cfb83807fcf4b62cfcedf7b0e" class="m-doc">CommandPreprocess_Write_NV</a> = VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba919f496a2a5c6bcf1b74ae2bdf4727cf" class="m-doc">AccelerationStructure_Read_NV</a> = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV,
+              <a href="#gga73c6a146fc1130eafd64e15b04f0fcaba6c437867b7e7f4d2fe07428d5fb9ab40" class="m-doc">AccelerationStructure_Write_NV</a> = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlagBits">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga3eb74b254105623d1f61988c5c774026" class="m-doc">EDependencyFlag</a> { </span><span class="m-doc-wrap"><a href="#gga3eb74b254105623d1f61988c5c774026a21c5a37fb90396ded78482643502dd1c" class="m-doc">ByRegion</a> = VK_DEPENDENCY_BY_REGION_BIT }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDependencyFlagBits">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga87b05fe8f034e0cd01470990c28e9905" class="m-doc">EDisplayEventType</a> { </span><span class="m-doc-wrap"><a href="#gga87b05fe8f034e0cd01470990c28e9905ab21d63d63e299aac23f3e297bd396c09" class="m-doc">FirstPixelOut_EXT</a> = VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventTypeEXT">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga21da2f2dab238a784928e9ed0c7884a8" class="m-doc">EFenceCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#gga21da2f2dab238a784928e9ed0c7884a8af666961fd3f122d43c101404d1aba5bf" class="m-doc">Signaled</a> = VK_FENCE_CREATE_SIGNALED_BIT }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlagBits">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga3846203bfb2651604ddc8d6ce9303028" class="m-doc">EFenceImportFlag</a> { </span><span class="m-doc-wrap"><a href="#gga3846203bfb2651604ddc8d6ce9303028a10d85d7664a911bcaec89732098c269a" class="m-doc">Temporary</a> = VK_FENCE_IMPORT_TEMPORARY_BIT,
+              <a href="#gga3846203bfb2651604ddc8d6ce9303028a669d3d3524eea1a088cee9f82a4ad12a" class="m-doc">Temporary_KHR</a> = VK_FENCE_IMPORT_TEMPORARY_BIT_KHR }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlagBits">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#gaf61657ceda0f4eaabf29abbd25f826fd" class="m-doc">EPipelineStageFlag</a> { </span><span class="m-doc-wrap"><a href="#ggaf61657ceda0f4eaabf29abbd25f826fda6c3f657e58e065f3ce859124a36e61ca" class="m-doc">TopOfPipe</a> = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda95b0e6b8c7aa6af632295afda7a926bc" class="m-doc">DrawIndirect</a> = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda9cd8956bef976d28daf75c3ef327137d" class="m-doc">VertexInput</a> = VK_PIPELINE_STAGE_VERTEX_INPUT_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fdaeb3ca4dac3e206977e0b7d998eefcc33" class="m-doc">VertexShader</a> = VK_PIPELINE_STAGE_VERTEX_SHADER_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fdae1bc6b887951aa3ad70f1cdebd02aa7c" class="m-doc">TessellationControlShader</a> = VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda8dbef1b4099311308f1297f6fb54c1b8" class="m-doc">TessellationEvaluationShader</a> = VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda87fd5b66e314d52345d46590e7124805" class="m-doc">GeometryShader</a> = VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda43501d4269726b4d8c10d13c9564c7a8" class="m-doc">FragementShader</a> = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda5ad09049db5ad41b32b78a92294484c7" class="m-doc">EarlyFragmentTests</a> = VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fdaeada3dda11ce9944c5f92e0d721f9394" class="m-doc">LateFragmentTests</a> = VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda7bd7f6eb17dd65b0920fe450b4a8c040" class="m-doc">ColorAttachmentOutput</a> = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda2216355d14abbc1a80dadd4f881c0f39" class="m-doc">ComputeShader</a> = VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda6950810f0d2bba97a6f710c7b965b84e" class="m-doc">Transfer</a> = VK_PIPELINE_STAGE_TRANSFER_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda59504c17c51b321c240a88a49ecb8cdf" class="m-doc">BottomOfPipe</a> = VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fdac2ca16d048ec66e04bca283eab048ec2" class="m-doc">Host</a> = VK_PIPELINE_STAGE_HOST_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fda576ad90e86113d352899b3369a9c5b15" class="m-doc">AllGraphics</a> = VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT,
+              <a href="#ggaf61657ceda0f4eaabf29abbd25f826fdacf92f78ac1cdeee1e78e8b2866abe474" class="m-doc">AllCommands</a> = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlagBits">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga7edcea6abf81bb9d46ba633090af1fef" class="m-doc">ESemaphoreType</a> { </span><span class="m-doc-wrap"><a href="#gga7edcea6abf81bb9d46ba633090af1fefa6ce976e8f061b2b5cfe4d0c50c3405dd" class="m-doc">Binary</a> = VK_SEMAPHORE_TYPE_BINARY,
+              <a href="#gga7edcea6abf81bb9d46ba633090af1fefa3d1f92a565d3b1a61880236e33c49bf3" class="m-doc">Timeline</a> = VK_SEMAPHORE_TYPE_TIMELINE,
+              <a href="#gga7edcea6abf81bb9d46ba633090af1fefa6807a3979e8b3c0aaed479a5beca32f7" class="m-doc">Binary_KHR</a> = VK_SEMAPHORE_TYPE_BINARY_KHR,
+              <a href="#gga7edcea6abf81bb9d46ba633090af1fefa21693dcf4e0b50ebcbfaed43c8c65f76" class="m-doc">Timeline_KHR</a> = VK_SEMAPHORE_TYPE_TIMELINE_KHR }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreType">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga8aa2b24f54520d013dd09c3ac3dc1e5b" class="m-doc">ESemaphoreWaitFlag</a> { </span><span class="m-doc-wrap"><a href="#gga8aa2b24f54520d013dd09c3ac3dc1e5baed36a1ef76a59ee3f15180e0441188ad" class="m-doc">Any</a> = VK_SEMAPHORE_WAIT_ANY_BIT,
+              <a href="#gga8aa2b24f54520d013dd09c3ac3dc1e5baeab748f981276f8737a1e6850880d74c" class="m-doc">Any_KHR</a> = VK_SEMAPHORE_WAIT_ANY_BIT_KHR }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlagBits">Specification</a></dd>
+          </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">StageFlags</a> = Bitmask&lt;EPipelineStageFlag, VkPipelineStageFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a></dd>
+            <dt>
+              using <a href="#ga2493e42a237586ec36c08f26563e77d0" class="m-doc">Handle</a> = VkFence
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a></dd>
+            <dt>
+              using <a href="#gad2cc87aee9cbf3d930a56549dc34fc46" class="m-doc">Handle</a> = VkSemaphore
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a></dd>
+            <dt>
+              using <a href="#ga526cf90d70b172ffc8a35d09e28624e5" class="m-doc">ImportFlags</a> = Bitmask&lt;ESemaphoreImportFlag, VkSemaphoreImportFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a></dd>
+            <dt>
+              using <a href="#gaed8e9cd5a2a5cf03ae6eec1ae65eeef4" class="m-doc">WaitFlags</a> = Bitmask&lt;ESemaphoreWaitFlag, VkSemaphoreWaitFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a></dd>
+            <dt>
+              using <a href="#ga85f166d926e9b651dace802a72537f82" class="m-doc">Handle</a> = VkEvent
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEvent">Specification</a></dd>
+            <dt>
+              using <a href="#ga5487108e024a497f3b8fa19da279fa6b" class="m-doc">CreateFlags</a> = Bitmask&lt;EFenceCreateFlag, VkFenceCreateFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a></dd>
+            <dt>
+              using <a href="#ga1157043eb8249ca71dcbcc44b8acd3f5" class="m-doc">ExternalHandleFlags</a> = Bitmask&lt;EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlags">Specification</a></dd>
+          </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gac179562fa0c79066b25b7bd009258976" class="m-doc">ResetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Event::Handle _event,
+              Pipeline::StageFlags _stageMask)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdResetEvent">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga6683649a49249172f1dc50fcefa0650a" class="m-doc">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Pipeline::StageFlags _sourceStageMask,
+              Pipeline::StageFlags _destinationStageMask,
+              DependencyFlags _dependencyFlags,
+              uint32 _memoryBarrierCount,
+              const Memory::Barrier* _memoryBarriers,
+              uint32 _bufferMemoryBarrierCount,
+              const Buffer::Memory_Barrier* _bufferMemoryBarriers,
+              uint32 _imageMemoryBarrierCount,
+              const Image::Memory_Barrier* _imageMemoryBarriers)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gaa928350ea0bb7837351d4a7eea18d871" class="m-doc">SetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Event::Handle _event,
+              Pipeline::StageFlags _stageMask)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga58927dda6739d1ae534052458e25e745" class="m-doc">WaitForEvents</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              uint32 _eventCount,
+              const Event::Handle* _events,
+              Pipeline::StageFlags _srcStageMask,
+              Pipeline::StageFlags _dstStageMask,
+              uint32 _memoryBarrierCount,
+              const Memory::Barrier* _memoryBarriers,
+              uint32 _bufferMemoryBarrierCount,
+              const Buffer::Memory_Barrier* _bufferMemoryBarriers,
+              uint32 _imageMemoryBarrierCount,
+              const Image::Memory_Barrier* _imageMemoryBarriers)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaf54b09173789b300d2aa86b9f724cf1c" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _queue) -&gt; EResult</span>
+            </dt>
+            <dd>To wait on the host for the completion of outstanding queue operations for a given queue.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga8ca8d08125c7395b133f477604b62722" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _device) -&gt; EResult</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDeviceWaitIdle">Specification</a> .</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaff9613f4b53a12c9f0817aa1281fda1f" class="m-doc">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _fdInfo,
+              OS_Handle* _fileDescriptor) -&gt; EResult</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga0a2c6b389a76fcf1cceb86cf083d8f54" class="m-doc">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importInfo) -&gt; EResult</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga06b6f7f124d6c856a3169db394239606" class="m-doc">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _getWin32HandleInfo,
+              OS_Handle&amp; _winHandle) -&gt; EResult</span>
+            </dt>
+            <dd>Export a Windows handle representing the state of a fence.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga74f2b2f69289fad0a875787cc5978627" class="m-doc">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importInfo) -&gt; EResult</span>
+            </dt>
+            <dd>Import a fence payload from a Windows handle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaef850eff40753722035b7a68b18dc1e8" class="m-doc">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _getInfo,
+              OS_Handle* _fileDescriptor) -&gt; EResult</span>
+            </dt>
+            <dd>Export a POSIX file descriptor representing the payload of a semaphore.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gafcd1597d9f063b87a0b152a02a78ed94" class="m-doc">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importPOSIX_Info) -&gt; EResult</span>
+            </dt>
+            <dd>Import a semaphore payload from a POSIX file descriptor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga97845626c1ed2937ac436f03bc582842" class="m-doc">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _getInfo,
+              OS_Handle&amp; _handle) -&gt; EResult</span>
+            </dt>
+            <dd>Export a Windows handle representing the payload of a semaphore.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gae9fdd389814b1bd8590af52191e21e2f" class="m-doc">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importHandleInfo) -&gt; EResult</span>
+            </dt>
+            <dd>Import a semaphore payload from a Windows handle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaaf8d016c269a69e0f2a7887d623c870f" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const Event::CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _event) -&gt; EResult</span>
+            </dt>
+            <dd>Create an <a href="structVT_1_1V1_1_1Event.html" class="m-doc">Event</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga0065e543bb41a9e7a7064dd51309cf74" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy an event.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga5e18cbc504389cace05fa210d622f3ac" class="m-doc">GetStatus</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event) -&gt; EResult</span>
+            </dt>
+            <dd>Query the state of an event from the host.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gab8b12ce79069ecebfd26ee828f2fc8a2" class="m-doc">Reset</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event) -&gt; EResult</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga160cb6b0722d38b5d22e671b2562e1c4" class="m-doc">Set</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event) -&gt; EResult</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gac4841ba28b3a849b7e203a22a6c8e69f" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _fence) -&gt; EResult</span>
+            </dt>
+            <dd>Create a fence.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gace1f4bdd0c635092f8b9a721fb86b349" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              Handle _fence,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a fence.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga7d8de2a30969093d7bf984bceb3f08b3" class="m-doc">GetStatus</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              Handle _fence) -&gt; EResult</span>
+            </dt>
+            <dd>Export a Windows handle representing the state of a fence.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gaa0ef9356320f98ae86f4935d260ffae2" class="m-doc">RegisterDeviceEvent</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const DeviceEventInfo&amp; _deviceEventInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _fence) -&gt; EResult</span>
+            </dt>
+            <dd>Create a fence that will be signaled when an event occurs on a device.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga35c95973d977041006ecabf04ae71736" class="m-doc">RegisterDisplayEvent</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Display::Handle _display,
+              const DisplayEventInfo&amp; _displayEventInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _fence) -&gt; EResult</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga84196032afe892f11dd2c556baa67569" class="m-doc">Reset</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              Handle* _fences,
+              uint32 _fenceCount) -&gt; EResult</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetFences">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gac7296ec4e979f63d3dad25cc1568d72e" class="m-doc">WaitForFences</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              uint32 _fenceCount,
+              const Handle* _fences,
+              Bool _waitAll,
+              uInt64 _timeout) -&gt; EResult</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga6bb729d61a2e296536bf53bd4b267130" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _semaphore) -&gt; EResult</span>
+            </dt>
+            <dd>Create a semaphore.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gaa663f6e1bf0396ac502ffc2fee916272" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _semaphore,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a semaphore.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gad116d91d8399768ecaad4cf2c16dbd9e" class="m-doc">GetCounterValue</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _semaphore,
+              uInt64&amp; _value) -&gt; EResult</span>
+            </dt>
+            <dd>Query the current counter value of a semaphore created with a SemaphoreType of Timeline from the host.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga8b9f95f7d109663c9e9a54c59d35f08c" class="m-doc">Signal</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const SignalInfo&amp; _signalInfo) -&gt; EResult</span>
+            </dt>
+            <dd>Signal a semaphore created with a SemaphoreType of Timeline with a particular counter value, on the host.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#gafc28764a8c1e15045b3f3f58ee25f637" class="m-doc">WaitFor</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const WaitInfo&amp; _waitInfo,
+              uInt64 _timeout) -&gt; EResult</span>
+            </dt>
+            <dd>Wait for a set of semaphores created with a VkSemaphoreType of VK_SEMAPHORE_TYPE_TIMELINE to reach particular counter values on the host.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="ga73c6a146fc1130eafd64e15b04f0fcab"><div>
+            <h3>
+              enum <a href="#ga73c6a146fc1130eafd64e15b04f0fcab" class="m-doc-self">EAccessFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlagBits">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga3eb74b254105623d1f61988c5c774026"><div>
+            <h3>
+              enum <a href="#ga3eb74b254105623d1f61988c5c774026" class="m-doc-self">EDependencyFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDependencyFlagBits">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga87b05fe8f034e0cd01470990c28e9905"><div>
+            <h3>
+              enum <a href="#ga87b05fe8f034e0cd01470990c28e9905" class="m-doc-self">EDisplayEventType</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventTypeEXT">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga21da2f2dab238a784928e9ed0c7884a8"><div>
+            <h3>
+              enum <a href="#ga21da2f2dab238a784928e9ed0c7884a8" class="m-doc-self">EFenceCreateFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlagBits">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga3846203bfb2651604ddc8d6ce9303028"><div>
+            <h3>
+              enum <a href="#ga3846203bfb2651604ddc8d6ce9303028" class="m-doc-self">EFenceImportFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlagBits">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaf61657ceda0f4eaabf29abbd25f826fd"><div>
+            <h3>
+              enum <a href="#gaf61657ceda0f4eaabf29abbd25f826fd" class="m-doc-self">EPipelineStageFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlagBits">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga7edcea6abf81bb9d46ba633090af1fef"><div>
+            <h3>
+              enum <a href="#ga7edcea6abf81bb9d46ba633090af1fef" class="m-doc-self">ESemaphoreType</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreType">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8aa2b24f54520d013dd09c3ac3dc1e5b"><div>
+            <h3>
+              enum <a href="#ga8aa2b24f54520d013dd09c3ac3dc1e5b" class="m-doc-self">ESemaphoreWaitFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlagBits">Specification</a></p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="gac7aacda0e58a9fc0a71892049d4b3e0d"><div>
+            <h3>
+              using <a href="#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc-self">StageFlags</a> = Bitmask&lt;EPipelineStageFlag, VkPipelineStageFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga2493e42a237586ec36c08f26563e77d0"><div>
+            <h3>
+              using <a href="#ga2493e42a237586ec36c08f26563e77d0" class="m-doc-self">Handle</a> = VkFence
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFence">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gad2cc87aee9cbf3d930a56549dc34fc46"><div>
+            <h3>
+              using <a href="#gad2cc87aee9cbf3d930a56549dc34fc46" class="m-doc-self">Handle</a> = VkSemaphore
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga526cf90d70b172ffc8a35d09e28624e5"><div>
+            <h3>
+              using <a href="#ga526cf90d70b172ffc8a35d09e28624e5" class="m-doc-self">ImportFlags</a> = Bitmask&lt;ESemaphoreImportFlag, VkSemaphoreImportFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaed8e9cd5a2a5cf03ae6eec1ae65eeef4"><div>
+            <h3>
+              using <a href="#gaed8e9cd5a2a5cf03ae6eec1ae65eeef4" class="m-doc-self">WaitFlags</a> = Bitmask&lt;ESemaphoreWaitFlag, VkSemaphoreWaitFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga85f166d926e9b651dace802a72537f82"><div>
+            <h3>
+              using <a href="#ga85f166d926e9b651dace802a72537f82" class="m-doc-self">Handle</a> = VkEvent
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEvent">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga5487108e024a497f3b8fa19da279fa6b"><div>
+            <h3>
+              using <a href="#ga5487108e024a497f3b8fa19da279fa6b" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EFenceCreateFlag, VkFenceCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga1157043eb8249ca71dcbcc44b8acd3f5"><div>
+            <h3>
+              using <a href="#ga1157043eb8249ca71dcbcc44b8acd3f5" class="m-doc-self">ExternalHandleFlags</a> = Bitmask&lt;EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlags">Specification</a></p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="gac179562fa0c79066b25b7bd009258976"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac179562fa0c79066b25b7bd009258976" class="m-doc-self">ResetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Event::Handle _event,
+              Pipeline::StageFlags _stageMask)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdResetEvent">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga6683649a49249172f1dc50fcefa0650a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6683649a49249172f1dc50fcefa0650a" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Pipeline::StageFlags _sourceStageMask,
+              Pipeline::StageFlags _destinationStageMask,
+              DependencyFlags _dependencyFlags,
+              uint32 _memoryBarrierCount,
+              const Memory::Barrier* _memoryBarriers,
+              uint32 _bufferMemoryBarrierCount,
+              const Buffer::Memory_Barrier* _bufferMemoryBarriers,
+              uint32 _imageMemoryBarrierCount,
+              const Image::Memory_Barrier* _imageMemoryBarriers)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaa928350ea0bb7837351d4a7eea18d871"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa928350ea0bb7837351d4a7eea18d871" class="m-doc-self">SetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Event::Handle _event,
+              Pipeline::StageFlags _stageMask)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga58927dda6739d1ae534052458e25e745"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga58927dda6739d1ae534052458e25e745" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              uint32 _eventCount,
+              const Event::Handle* _events,
+              Pipeline::StageFlags _srcStageMask,
+              Pipeline::StageFlags _dstStageMask,
+              uint32 _memoryBarrierCount,
+              const Memory::Barrier* _memoryBarriers,
+              uint32 _bufferMemoryBarrierCount,
+              const Buffer::Memory_Barrier* _bufferMemoryBarriers,
+              uint32 _imageMemoryBarrierCount,
+              const Image::Memory_Barrier* _imageMemoryBarriers)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdWaitEvents">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaf54b09173789b300d2aa86b9f724cf1c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf54b09173789b300d2aa86b9f724cf1c" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _queue)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__LogicalDevice_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>To wait on the host for the completion of outstanding queue operations for a given queue.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_queue</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkQueueWaitIdle">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8ca8d08125c7395b133f477604b62722"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8ca8d08125c7395b133f477604b62722" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap">Handle _device)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__LogicalDevice_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDeviceWaitIdle">Specification</a> .</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="gaff9613f4b53a12c9f0817aa1281fda1f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaff9613f4b53a12c9f0817aa1281fda1f" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _fdInfo,
+              OS_Handle* _fileDescriptor)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceFdKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga0a2c6b389a76fcf1cceb86cf083d8f54"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0a2c6b389a76fcf1cceb86cf083d8f54" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importInfo)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_importInfo</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceFdKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga06b6f7f124d6c856a3169db394239606"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga06b6f7f124d6c856a3169db394239606" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _getWin32HandleInfo,
+              OS_Handle&amp; _winHandle)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Export a Windows handle representing the state of a fence.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceWin32HandleKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga74f2b2f69289fad0a875787cc5978627"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga74f2b2f69289fad0a875787cc5978627" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importInfo)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Import a fence payload from a Windows handle.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportFenceWin32HandleKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaef850eff40753722035b7a68b18dc1e8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaef850eff40753722035b7a68b18dc1e8" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _getInfo,
+              OS_Handle* _fileDescriptor)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Export a POSIX file descriptor representing the payload of a semaphore.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreFdKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gafcd1597d9f063b87a0b152a02a78ed94"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gafcd1597d9f063b87a0b152a02a78ed94" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importPOSIX_Info)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Import a semaphore payload from a POSIX file descriptor.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreFdKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga97845626c1ed2937ac436f03bc582842"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga97845626c1ed2937ac436f03bc582842" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const GetOS_HandleInfo&amp; _getInfo,
+              OS_Handle&amp; _handle)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Export a Windows handle representing the payload of a semaphore.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreWin32HandleKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gae9fdd389814b1bd8590af52191e21e2f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae9fdd389814b1bd8590af52191e21e2f" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap">V1::LogicalDevice::Handle _device,
+              const ImportOS_HandleInfo&amp; _importHandleInfo)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Import a semaphore payload from a Windows handle.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkImportSemaphoreWin32HandleKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaaf8d016c269a69e0f2a7887d623c870f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaaf8d016c269a69e0f2a7887d623c870f" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const Event::CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _event)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Create an <a href="structVT_1_1V1_1_1Event.html" class="m-doc">Event</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_event</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateEvent">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga0065e543bb41a9e7a7064dd51309cf74"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0065e543bb41a9e7a7064dd51309cf74" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy an event.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_event</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyEvent">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga5e18cbc504389cace05fa210d622f3ac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga5e18cbc504389cace05fa210d622f3ac" class="m-doc-self">GetStatus</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Query the state of an event from the host.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetEventStatus">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gab8b12ce79069ecebfd26ee828f2fc8a2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gab8b12ce79069ecebfd26ee828f2fc8a2" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_event</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetEvent">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga160cb6b0722d38b5d22e671b2562e1c4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga160cb6b0722d38b5d22e671b2562e1c4" class="m-doc-self">Set</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _event)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_event</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkSetEvent">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gac4841ba28b3a849b7e203a22a6c8e69f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac4841ba28b3a849b7e203a22a6c8e69f" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _fence)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Create a fence.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_logicalDevice</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fence</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gace1f4bdd0c635092f8b9a721fb86b349"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gace1f4bdd0c635092f8b9a721fb86b349" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              Handle _fence,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a fence.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_logicalDevice</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fence</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFence">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga7d8de2a30969093d7bf984bceb3f08b3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7d8de2a30969093d7bf984bceb3f08b3" class="m-doc-self">GetStatus</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              Handle _fence)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Export a Windows handle representing the state of a fence.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_logicalDevice</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fence</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetFenceStatus">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaa0ef9356320f98ae86f4935d260ffae2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa0ef9356320f98ae86f4935d260ffae2" class="m-doc-self">RegisterDeviceEvent</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const DeviceEventInfo&amp; _deviceEventInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _fence)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Create a fence that will be signaled when an event occurs on a device.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDeviceEventEXT">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga35c95973d977041006ecabf04ae71736"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga35c95973d977041006ecabf04ae71736" class="m-doc-self">RegisterDisplayEvent</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Display::Handle _display,
+              const DisplayEventInfo&amp; _displayEventInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _fence)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga84196032afe892f11dd2c556baa67569"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga84196032afe892f11dd2c556baa67569" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
+              Handle* _fences,
+              uint32 _fenceCount)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetFences">Specification</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_logicalDevice</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fences</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fenceCount</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="gac7296ec4e979f63d3dad25cc1568d72e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac7296ec4e979f63d3dad25cc1568d72e" class="m-doc-self">WaitForFences</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              uint32 _fenceCount,
+              const Handle* _fences,
+              Bool _waitAll,
+              uInt64 _timeout)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkWaitForFences">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga6bb729d61a2e296536bf53bd4b267130"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6bb729d61a2e296536bf53bd4b267130" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const CreateInfo&amp; _createInfo,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _semaphore)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Create a semaphore.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSemaphore">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gaa663f6e1bf0396ac502ffc2fee916272"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa663f6e1bf0396ac502ffc2fee916272" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _semaphore,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a semaphore.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_semaphore</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySemaphore">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gad116d91d8399768ecaad4cf2c16dbd9e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad116d91d8399768ecaad4cf2c16dbd9e" class="m-doc-self">GetCounterValue</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _semaphore,
+              uInt64&amp; _value)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Query the current counter value of a semaphore created with a SemaphoreType of Timeline from the host.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSemaphoreCounterValue">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8b9f95f7d109663c9e9a54c59d35f08c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8b9f95f7d109663c9e9a54c59d35f08c" class="m-doc-self">Signal</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const SignalInfo&amp; _signalInfo)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Signal a semaphore created with a SemaphoreType of Timeline with a particular counter value, on the host.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkSignalSemaphore">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="gafc28764a8c1e15045b3f3f58ee25f637"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gafc28764a8c1e15045b3f3f58ee25f637" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              const WaitInfo&amp; _waitInfo,
+              uInt64 _timeout)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+            </h3>
+            <p>Wait for a set of semaphores created with a VkSemaphoreType of VK_SEMAPHORE_TYPE_TIMELINE to reach particular counter values on the host.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_waitInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_timeout</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkWaitSemaphores">Specification</a></p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>API_Specification &raquo; APISpec_Formats module | VaultedThermals</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedThermals</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+            <li><a href="modules.html">Modules</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="group__API__Specification.html">API_Specification</a> &raquo;</span>
+          APISpec_Formats <span class="m-thin">module</span></h1>
+        <p>Chapter 40: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap41.html">Specification</a></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#enum-members">Enums</a></li>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="enum-members">
+          <h2><a href="#enum-members">Enums</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a> { </span><span class="m-doc-wrap"><a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaec0fc0100c4fc1ce4eea230c3dc10360" class="m-doc">Undefined</a> = VK_FORMAT_UNDEFINED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae856e1833c53a91d19af137d33e7e465" class="m-doc">R4_G4_UNormalized_8Pack</a> = VK_FORMAT_R4G4_UNORM_PACK8,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab9f83ce0b25a781ebb7ae70851c4cc9f" class="m-doc">R4_G4_B4_A4_UNormalized_16Pack</a> = VK_FORMAT_R4G4B4A4_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad3469d74c1fa4117ffe952557c1338b9" class="m-doc">B4_G4_R4_A4_UNormalized_16Pack</a> = VK_FORMAT_B4G4R4A4_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8618c17e0350e8be666b84a5681be0ea" class="m-doc">R5_G6_B5_UNormalized_16Pack</a> = VK_FORMAT_R5G6B5_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa6b299cbcdb42a5803e385ba8cdd0d375" class="m-doc">B5_G6_R5_UNormalized_16Pack</a> = VK_FORMAT_B5G6R5_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4b7c07b6900ae1642448c4d6c2a1f615" class="m-doc">R5_G5_B5_1A_UNormalized_16Pack</a> = VK_FORMAT_R5G5B5A1_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaad5609622f8a8f77ba701476bc9df5f0" class="m-doc">B5_G5_R5_A1_UNormalized_16Pack</a> = VK_FORMAT_B5G5R5A1_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa84cc6899132b623ea0571eac4562e636" class="m-doc">A1_R5_G5_B5_UNormalized_16Pack</a> = VK_FORMAT_A1R5G5B5_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae5cbc1f40cf25678c4282a67a1c9337c" class="m-doc">R8_UNormalized</a> = VK_FORMAT_R8_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa60cb9c6b775f92f2de3427e46c598789" class="m-doc">R8_SNormalized</a> = VK_FORMAT_R8_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8877a185fe0a0b470faa2b082f4b59fa" class="m-doc">R8_UScaled</a> = VK_FORMAT_R8_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf024e9403a905e4a21b4329d76504d99" class="m-doc">R8_SScaled</a> = VK_FORMAT_R8_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2df6c91e5ad5379242e360aaa1981461" class="m-doc">R8_UInt</a> = VK_FORMAT_R8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad952b993eb4d439b0580d3191f76d6eb" class="m-doc">R8_SInt</a> = VK_FORMAT_R8_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8843e4734dea21b13b2ff0d5576255bb" class="m-doc">R8_SRGB</a> = VK_FORMAT_R8_SRGB,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0fa62c959dbe78e2088215fb7b549123" class="m-doc">R8_G8_UNormalized</a> = VK_FORMAT_R8G8_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa3f6cf6df9f9552f932374784b6d113a8" class="m-doc">R8_G8_SNormalized</a> = VK_FORMAT_R8G8_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0c70fa0f9f045a6512b0ef34d888cbe5" class="m-doc">R8_G8_UScaled</a> = VK_FORMAT_R8G8_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa37a9aa04b82cd121424e85abdd1278c1" class="m-doc">R8_G8_SScaled</a> = VK_FORMAT_R8G8_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4e3206180206344af58943569c061328" class="m-doc">R8_G8_UInt</a> = VK_FORMAT_R8G8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2b075eb49d14917233c3b0ec45df2f00" class="m-doc">R8_G8_SInt</a> = VK_FORMAT_R8G8_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad3d2af9b23ffa7150eaa7829106db802" class="m-doc">R8_G8_SRGB</a> = VK_FORMAT_R8G8_SRGB,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaca5a8bba4c9619d3b2376f5e8f25dd18" class="m-doc">R8_G8_B8_UNormalized</a> = VK_FORMAT_R8G8B8_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac53c55953aa9f608099412387280dd2d" class="m-doc">R8_G8_B8_SNormalized</a> = VK_FORMAT_R8G8B8_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa45fee563dca88793f68c067a7bab1287" class="m-doc">R8_G8_B8_UScaled</a> = VK_FORMAT_R8G8B8_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa81b7377f39ce2ba3d1ffe1bcbeb6c1f" class="m-doc">R8_G8_B8_SScaled</a> = VK_FORMAT_R8G8B8_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa632ee7f0d60597994c48d13551a5b151" class="m-doc">R8_G8_B8_UInt</a> = VK_FORMAT_R8G8B8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa550d2855a9760ab8479fadeef5a5c0e9" class="m-doc">R8_G8_B8_SInt</a> = VK_FORMAT_R8G8B8_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa11256b1030950c8c9e21231ff0934cdf" class="m-doc">R8_G8_B8_SRGB</a> = VK_FORMAT_R8G8B8_SRGB,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa1f84a7e7df2d50eb98d64eb602bde04d" class="m-doc">B8_G8_R8_UNormalized</a> = VK_FORMAT_B8G8R8_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa72e093a44acf8ba3afe4f730d19e87b6" class="m-doc">B8_G8_R8_SNormalized</a> = VK_FORMAT_B8G8R8_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0b43f68a61df76f88e7622d71cb9d0f3" class="m-doc">B8_G8_R8_UScaled</a> = VK_FORMAT_B8G8R8_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0318a59492b445cd1dde81037acde0cc" class="m-doc">B8_G8_R8_SScaled</a> = VK_FORMAT_B8G8R8_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa56c357dc93933a67b2f93b6dd3ad22af" class="m-doc">B8_G8_R8_UInt</a> = VK_FORMAT_B8G8R8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5f174ff826df91eac41f8771af728bc8" class="m-doc">B8_G8_R8_SInt</a> = VK_FORMAT_B8G8R8_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa35a33e692c510ea1bfb42eace30fddd1" class="m-doc">B8_G8_R8_SRGB</a> = VK_FORMAT_B8G8R8_SRGB,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa7214b253b8ec04877cb3466a39e0b95" class="m-doc">R8_G8_B8_A8_UNormalized</a> = VK_FORMAT_R8G8B8A8_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa64b53f3b64e5deefaf8d844e87fca818" class="m-doc">R8_G8_B8_A8_SNormalized</a> = VK_FORMAT_R8G8B8A8_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa6570cc354820e865b4b8ca1d1e5b9dd2" class="m-doc">R8_G8_B8_A8_UScaled</a> = VK_FORMAT_R8G8B8A8_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa361d5321261d3092ab3189c919f54b2a" class="m-doc">R8_G8_B8_A8_SScaled</a> = VK_FORMAT_R8G8B8A8_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aabe11f338a229bb79b75b5bc5abd7a528" class="m-doc">R8_G8_B8_A8_UInt</a> = VK_FORMAT_R8G8B8A8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa11a4743c608a98ede1e6e530c753f1c" class="m-doc">R8_G8_B8_A8_SInt</a> = VK_FORMAT_R8G8B8A8_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab750128c4e7a203a5dae9ca8e1cc7022" class="m-doc">R8_G8_B8_A8_SRGB</a> = VK_FORMAT_R8G8B8A8_SRGB,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5ec6816152403f6240a24cee53878d6d" class="m-doc">B8_G8_R8_A8_UNormalized</a> = VK_FORMAT_B8G8R8A8_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad9c3468b8a8da9bf12ec622c998e4bd4" class="m-doc">B8_G8_R8_A8_SNormalized</a> = VK_FORMAT_B8G8R8A8_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf6442f3250c67ecbd51a001ae363f35e" class="m-doc">B8_G8_R8_A8_UScaled</a> = VK_FORMAT_B8G8R8A8_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0a467870ced9e59bab0976334e416fad" class="m-doc">B8_G8_R8_A8_SScaled</a> = VK_FORMAT_B8G8R8A8_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab5cb962f3feee4089544f0c58f2d2573" class="m-doc">B8_G8_R8_A8_Uint</a> = VK_FORMAT_B8G8R8A8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa64a1570c4b8104eb3fd8d99bcd070fe1" class="m-doc">B8_G8_R8_A8_SInt</a> = VK_FORMAT_B8G8R8A8_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad99c64c250973d1417ea63deaefb596e" class="m-doc">B8_G8_R8_A8_SRGB</a> = VK_FORMAT_B8G8R8A8_SRGB,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa98958b45a1c4dc227acb76cb41b2bf91" class="m-doc">A8_B8_G8_R8_UNormalized_Pack32</a> = VK_FORMAT_A8B8G8R8_UNORM_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab53bfe4d0426a1a368c552f71fe38c53" class="m-doc">A8_B8_G8_R8_SNormalized_Pack32</a> = VK_FORMAT_A8B8G8R8_SNORM_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae86a9329adf8da6abe9f7015e757e4d2" class="m-doc">A8_B8_G8_R8_UScaled_Pack32</a> = VK_FORMAT_A8B8G8R8_USCALED_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4774d963e9088ace2a2f4deda48e4c22" class="m-doc">A8_B8_G8_R8_SScaled_Pack32</a> = VK_FORMAT_A8B8G8R8_SSCALED_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaee3649e04d6f09bd4b0040e70fa78528" class="m-doc">A8_B8_G8_R8_UInt_Pack32</a> = VK_FORMAT_A8B8G8R8_UINT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2a83d51fd9207864718e02085884ab2a" class="m-doc">A8_B8_G8_R8_SInt_Pack32</a> = VK_FORMAT_A8B8G8R8_SINT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa8262ab8b33140b98cc63d2c2312529e" class="m-doc">A8_B8_G8_R8_SRGB_Pack32</a> = VK_FORMAT_A8B8G8R8_SRGB_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa871b5403ad3899a45614e56a35f46e9c" class="m-doc">A2_R10_G10_B10_UNormalized_Pack32</a> = VK_FORMAT_A2R10G10B10_UNORM_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa84844ffd0f1f50fddb4cfd25c7b77d7f" class="m-doc">A2_R10_G10_B10_SNormalized_Pack32</a> = VK_FORMAT_A2R10G10B10_SNORM_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad514912df74577833526032fc795a14a" class="m-doc">A2_R10_G10_B10_UScaled_Pack32</a> = VK_FORMAT_A2R10G10B10_USCALED_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa1c58ed690ce0803c58663bbd5dff8f5d" class="m-doc">A2_R10_G10_B10_SScaled_Pack32</a> = VK_FORMAT_A2R10G10B10_SSCALED_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa19bf416b3e917d21e4a289f8a5a09eea" class="m-doc">A2_R10_G10_B10_UInt_Pack32</a> = VK_FORMAT_A2R10G10B10_UINT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae5cc3fee8c80c1a2e309bc3f79af97b9" class="m-doc">A2_R10_G10_B10_SInt_Pack32</a> = VK_FORMAT_A2R10G10B10_SINT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaaf4d2b19f6b2c1f5b0dc431a0c07773e" class="m-doc">A2_B10_G10_R10_UNormalized_Pack32</a> = VK_FORMAT_A2B10G10R10_UNORM_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0bcdd1b5baedd5f898d7fbd32d8d38d8" class="m-doc">A2_B10_G10_R10_SNormalized_Pack32</a> = VK_FORMAT_A2B10G10R10_SNORM_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa9acd0923d62376d24e9dfa644a6eef4" class="m-doc">A2_B10_G10_R10_UScaled_Pack32</a> = VK_FORMAT_A2B10G10R10_USCALED_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac708537c3c1ef6cd4181bab8c417c449" class="m-doc">A2_B10_G10_R10_SScaled_Pack32</a> = VK_FORMAT_A2B10G10R10_SSCALED_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa580b8ad409af2866d6e69bdfd88c9583" class="m-doc">A2_B10_G10_R10_UInt_Pack32</a> = VK_FORMAT_A2B10G10R10_UINT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa0bdd4bbc7d2f0c7c3e9a30f44cbed39" class="m-doc">A2_B10_G10_R10_SInt_Pack32</a> = VK_FORMAT_A2B10G10R10_SINT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa59824fb8b8c014edc7f7553603a7aa3f" class="m-doc">R16_UNormalized</a> = VK_FORMAT_R16_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5d131b08ed4c922bb3aa14873e97581e" class="m-doc">R16_SNormalized</a> = VK_FORMAT_R16_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2cc34109fb675aeaff0e85234071f2d5" class="m-doc">R16_UScaled</a> = VK_FORMAT_R16_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa34fefd001147e15dcfbe8c1e72bf0917" class="m-doc">R16_SScaled</a> = VK_FORMAT_R16_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7516a28233b67a247bc7f099225c5b69" class="m-doc">R16_UInt</a> = VK_FORMAT_R16_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaecc7fe63832c61dde80c8b427c3717df" class="m-doc">R16_SInt</a> = VK_FORMAT_R16_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0f79e63626c9b07027a947b078705e02" class="m-doc">R16_SFloat</a> = VK_FORMAT_R16_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2a1cdb1cf724d34b801d723fcef6328e" class="m-doc">R16_G16_UNormalized</a> = VK_FORMAT_R16G16_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aabefe6fcc6889397aedc8d220e2845549" class="m-doc">R16_G16_SNormalized</a> = VK_FORMAT_R16G16_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5d6340e1683ce5539ad0599e7d754a52" class="m-doc">R16_G16_UScaled</a> = VK_FORMAT_R16G16_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac41b59696bd20f2e832f63964a6122c6" class="m-doc">R16_G16_SScaled</a> = VK_FORMAT_R16G16_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac4c8bdfaedf29bfeddb47d58c0e06c0f" class="m-doc">R16_G16_UInt</a> = VK_FORMAT_R16G16_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa06c3925788ac74b51d50e24a1a0c787" class="m-doc">R16_G16_SInt</a> = VK_FORMAT_R16G16_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae11aa87e62eeed0684b7a77896e298e6" class="m-doc">R16_G16_SFloat</a> = VK_FORMAT_R16G16_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa9e3a4100eacc3f186b0b82edb7fbab9d" class="m-doc">R16_G16_B16_UNormalized</a> = VK_FORMAT_R16G16B16_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0cdf872b9a3d19d7d8b49367cab31f9c" class="m-doc">R16_G16_B16_SNormalized</a> = VK_FORMAT_R16G16B16_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa95c50ca0bd95911129b8d1b306707120" class="m-doc">R16_G16_B16_UScaled</a> = VK_FORMAT_R16G16B16_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa51a3ea1e0aa4f23389efda73a934d37f" class="m-doc">R16_G16_B16_SScaled</a> = VK_FORMAT_R16G16B16_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2efa6b54b27f8c992f8d6c74394c3401" class="m-doc">R16_G16_B16_UInt</a> = VK_FORMAT_R16G16B16_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa9fee17e5f6e8053e563658a0af744c3f" class="m-doc">R16_G16_B16_SInt</a> = VK_FORMAT_R16G16B16_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf1d101641aae80592c7d1de0a2b710d2" class="m-doc">R16_G16_B16_SFloat</a> = VK_FORMAT_R16G16B16_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab39729da5a8bc0c951889c67586dfad6" class="m-doc">R16_G16_B16_A16_UNormalized</a> = VK_FORMAT_R16G16B16A16_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa87dc4f6d4efb8e207e20a5eaaafb3251" class="m-doc">R16_G16_B16_A16_SNormalized</a> = VK_FORMAT_R16G16B16A16_SNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4605dadc19778a1523f40d43742fe3b6" class="m-doc">R16_G16_B16_A16_UScaled</a> = VK_FORMAT_R16G16B16A16_USCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa1a382906f980cf7751dbaa9bcba83bdd" class="m-doc">R16_G16_B16_A16_SScaled</a> = VK_FORMAT_R16G16B16A16_SSCALED,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa10e717fbfd944569ffaeda96ea51b388" class="m-doc">R16_G16_B16_A16_UInt</a> = VK_FORMAT_R16G16B16A16_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa141a8b3d35517b7f90150b1c6142ac37" class="m-doc">R16_G16_B16_A16_SInt</a> = VK_FORMAT_R16G16B16A16_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa654e0ec026e9ed19d722ee377c82676e" class="m-doc">R16_G16_B16_A16_SFloat</a> = VK_FORMAT_R16G16B16A16_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa6f7e88998dfd65663a080097955e705" class="m-doc">R32_UInt</a> = VK_FORMAT_R32_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa52b01725d21180562169b024b76114d2" class="m-doc">R32_SInt</a> = VK_FORMAT_R32_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa3751c276bdd9cc0e67a0e118b8967646" class="m-doc">R32_SFloat</a> = VK_FORMAT_R32_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa638f54a17931a3f9da0366dafa2cd1e7" class="m-doc">R32_G32_UInt</a> = VK_FORMAT_R32G32_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2cdc0439cc5287a944aa241b55a0d4a6" class="m-doc">R32_G32_SInt</a> = VK_FORMAT_R32G32_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaca643b881125f774983c6fe867c50dfd" class="m-doc">R32_G32_SFloat</a> = VK_FORMAT_R32G32_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7d5176d652baec9e3e2fc299bb9b90da" class="m-doc">R32_G32_B32_UInt</a> = VK_FORMAT_R32G32B32_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf2282d5b329677228fd24060a2a244c6" class="m-doc">R32_G32_B32_Sint</a> = VK_FORMAT_R32G32B32_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac36c6c209f4e92e9be870ca580aa3310" class="m-doc">R32_G32_B32_SFloat</a> = VK_FORMAT_R32G32B32_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8456b9e1cd289e0e02509e12d21b6618" class="m-doc">R32_G32_B32_A32_UInt</a> = VK_FORMAT_R32G32B32A32_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa6abc0bd7a5ecfcf3bf36a28a917679a2" class="m-doc">R32_G32_B32_A32_SInt</a> = VK_FORMAT_R32G32B32A32_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaffdb37865aa0907f554cc84d1c685a3e" class="m-doc">R32_G32_B32_A32_SFloat</a> = VK_FORMAT_R32G32B32A32_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaaec01bb018905fc5d28c419e342e6375" class="m-doc">R64_Uint</a> = VK_FORMAT_R64_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf50e255e6cd096b3d76c6fb94ad8f79a" class="m-doc">R64_SInt</a> = VK_FORMAT_R64_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aabb3c526a43a532e499fa72da2cddb723" class="m-doc">R64_SFloat</a> = VK_FORMAT_R64_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac1b64af2b334cc7a4e37f79cabc0cb3f" class="m-doc">R64_G64_UInt</a> = VK_FORMAT_R64G64_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0da18397fbfeb3f125d9d8f680a97e76" class="m-doc">R64_G64_SInt</a> = VK_FORMAT_R64G64_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aadbd100ef88cefe326354a6b02bacb73a" class="m-doc">R64_G64_SFloat</a> = VK_FORMAT_R64G64_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa17796e34e872879b94aea5a4740afc4c" class="m-doc">R64_G64_B64_UInt</a> = VK_FORMAT_R64G64B64_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4be6e6064805f0bd6713438aa21545bd" class="m-doc">R64_G64_B64_SInt</a> = VK_FORMAT_R64G64B64_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa01c80b6532bd3edfbb5fe5d798e3c763" class="m-doc">R64_G64_B64_SFloat</a> = VK_FORMAT_R64G64B64_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5e983b28a3322d68cdd7a5f6002d6673" class="m-doc">R64_G64_B64_A64_UInt</a> = VK_FORMAT_R64G64B64A64_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac75e2063cd13076e27e2620c70d035d6" class="m-doc">R64_G64_B64_A64_SInt</a> = VK_FORMAT_R64G64B64A64_SINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa35711518905ffd1de32f1452c43e5c5c" class="m-doc">R64_G64_B64_A64_SFloat</a> = VK_FORMAT_R64G64B64A64_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaaa4aa8ee13f1c57f056ce3ed9cb9fedf" class="m-doc">B10_G11_R11_UFloat_Pack32</a> = VK_FORMAT_B10G11R11_UFLOAT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aabcdd4f535e16b299c4ccbb5be1cf871e" class="m-doc">E5_B9_G9_R9_UFloat_Pack32</a> = VK_FORMAT_E5B9G9R9_UFLOAT_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa9b34c61b0bca8ecc03f60b4814ed2e1e" class="m-doc">D16_UNormalized</a> = VK_FORMAT_D16_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa3d9b021be5cac56c88e53adeea0ef01d" class="m-doc">X8_D24_UNormalized_Pack32</a> = VK_FORMAT_X8_D24_UNORM_PACK32,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa741b9289f8063134fb42f242c689b12c" class="m-doc">D32_SFloat</a> = VK_FORMAT_D32_SFLOAT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4272ef034936b05145cf0f7b56d962f5" class="m-doc">S8_UInt</a> = VK_FORMAT_S8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa40899c8056177767ac7eba6e5c37f11e" class="m-doc">D16_UNormalized_S8_UInt</a> = VK_FORMAT_D16_UNORM_S8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa45b97513670e3f62e119d005617d0174" class="m-doc">D24_UNormalized_S8_UInt</a> = VK_FORMAT_D24_UNORM_S8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4e5334434c70de772f708f051ad8c2c1" class="m-doc">D32_SFloat_S8_UInt</a> = VK_FORMAT_D32_SFLOAT_S8_UINT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7ea951758fa75b20197fa5955199723f" class="m-doc">BC1_RGB_UNormalized_Block</a> = VK_FORMAT_BC1_RGB_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa701b72f94ada417cf01d5cbf6ecadbd1" class="m-doc">BC1_RGB_SRGB_Block</a> = VK_FORMAT_BC1_RGB_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae6c4f261c9bc00519539e9cb136dbf2c" class="m-doc">BC1_RGBA_Unormalized_Block</a> = VK_FORMAT_BC1_RGBA_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaec47b138830bf1169739d01840735c7b" class="m-doc">BC1_RGBA_SRGB_Block</a> = VK_FORMAT_BC1_RGBA_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4ffbfc664ec96216f331b6092bf7eab0" class="m-doc">BC2_UNormalized_Block</a> = VK_FORMAT_BC2_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa730d03c80544072f5b5287e72cb3d9c4" class="m-doc">BC2_SRGB_Block</a> = VK_FORMAT_BC2_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa034793073d95676416d11329399d3f66" class="m-doc">BC3_UNormalized_Block</a> = VK_FORMAT_BC3_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa172df30802c19f342c5ac49207a26c50" class="m-doc">BC3_SRGB_Block</a> = VK_FORMAT_BC3_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa35d02973fd908791c6057923bbd7e175" class="m-doc">BC4_UNormalized_Block</a> = VK_FORMAT_BC4_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aacb445fd72ac004279a8f5d2f72823282" class="m-doc">BC4_SNormalized_Block</a> = VK_FORMAT_BC4_SNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac21992bd162c1f008f134456cfa82369" class="m-doc">BC5_UNormalized_Block</a> = VK_FORMAT_BC5_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7a4ae9946fcdea7963f3f13284ba3fff" class="m-doc">BC5_SNormalized_Block</a> = VK_FORMAT_BC5_SNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aafded8bd0217e6e4fe4a2de0b52e25fbd" class="m-doc">BC6H_UFloat_Block</a> = VK_FORMAT_BC6H_UFLOAT_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa90f6070a1da6bb08d82f81eb5d977a2" class="m-doc">BC6H_SFloat_Block</a> = VK_FORMAT_BC6H_SFLOAT_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa374fe0db52ff4924b833be4688381c77" class="m-doc">BC7_UNormalized_Block</a> = VK_FORMAT_BC7_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa9106f89aad1a86dab0eeb4bd159016c3" class="m-doc">BC7_SRGB_Block</a> = VK_FORMAT_BC7_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac6c127c093bc2dff995fc692ab93abb1" class="m-doc">ETC2_R8_G8_B8_UNormalized_Block</a> = VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa237f1a6834dcdec64af44bd896369cd9" class="m-doc">ETC2_R8_G8_B8_SRGB_Block</a> = VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac530cbc4dc19870cb8c8900f9ad8c67e" class="m-doc">ETC2_R8_G8_B8_A1_UNormalized_Block</a> = VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2a54c92de727650c4a8540aa7dd2886d" class="m-doc">ETC2_R8_G8_B8_A1_Block</a> = VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa1feb1f0cd42af93247b57c9b8c22af64" class="m-doc">ETC_2_R8_G8_B8_A8_UNormalized_Block</a> = VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa3f7e3ad76febbefd22eb7c61b78a084f" class="m-doc">ETC2_R8_G8_B8_A8_SRGB_Block</a> = VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aabf824e13d480e0ebfd1ad43a73fe31b4" class="m-doc">EAC_R11_UNormalized_Block</a> = VK_FORMAT_EAC_R11_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa32693374ef7ca19412b2a9dac72ddb25" class="m-doc">EAC_R11_SNormalized_Block</a> = VK_FORMAT_EAC_R11_SNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa04c1e5ccdcd03473e9e95b1f37023ae1" class="m-doc">EAC_R11_G11_UNormalized_Block</a> = VK_FORMAT_EAC_R11G11_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa78a781cb52a20c9fade1710b501b58fa" class="m-doc">EAC_R11_G11_SNormalized_Block</a> = VK_FORMAT_EAC_R11G11_SNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa72e929f826c865f8bfb2a4425922907e" class="m-doc">ASTC_4x4_UNormalized_Block</a> = VK_FORMAT_ASTC_4x4_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8a1d14ebfa8bf6b9bdddbcd75df46efc" class="m-doc">ASTC_4x4_SRGB_Block</a> = VK_FORMAT_ASTC_4x4_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa54e5150044e820a4804a5d202f8b9f50" class="m-doc">ASTC_5x4_UNormalized_Block</a> = VK_FORMAT_ASTC_5x4_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2907d9cd23af002c8b23cfc025ed466f" class="m-doc">ASTC_5x4_SRGB_Block</a> = VK_FORMAT_ASTC_5x4_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae223714da528faee5120bf29b4c24c5c" class="m-doc">ASTC_5x5_UNormalized_Block</a> = VK_FORMAT_ASTC_5x5_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa15b046cf3e7d0b30f227ea4a223ff3d5" class="m-doc">ASTC_5x5_SRGB_Block</a> = VK_FORMAT_ASTC_5x5_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa103c1e96d9f4f43a6c1d42f60c6cb1ef" class="m-doc">ASTC_6x5_UNormalized_Block</a> = VK_FORMAT_ASTC_6x5_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aadb30ce5fb1727ebb7bc66cf7be9913a4" class="m-doc">ASTC_6x5_SRGB_Block</a> = VK_FORMAT_ASTC_6x5_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aadc05530689ed80e015db636ae6f48c2b" class="m-doc">ASTC_6x6_UNormalized_Block</a> = VK_FORMAT_ASTC_6x6_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4cdbb317378fa45507c76ec3cd4c4e50" class="m-doc">ASTC_6x6_SRGB_Block</a> = VK_FORMAT_ASTC_6x6_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa958ff44304ddbffb565f29211391286" class="m-doc">ASTC_8x5_UNormalized_Block</a> = VK_FORMAT_ASTC_8x5_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8ac462f794fba22f506450c99f0e6ba9" class="m-doc">ASTC_8x5_SRGB_Block</a> = VK_FORMAT_ASTC_8x5_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa9f86a81e4093e07fab7de98f5653818a" class="m-doc">ASTC_8x6_UNormalized_Block</a> = VK_FORMAT_ASTC_8x6_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aacba27437e547bc7a9be2e14480d9b0bd" class="m-doc">ASTC_8x6_SRGB_Block</a> = VK_FORMAT_ASTC_8x6_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf600db2207200392e3db3b79bdb61716" class="m-doc">ASTC_8x8_UNormalized_Block</a> = VK_FORMAT_ASTC_8x8_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf7677256c7a1162fa798b14b59af192e" class="m-doc">ASTC_8x8_SRGB_Block</a> = VK_FORMAT_ASTC_8x8_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aabd7b6e3dd9fbf98f37eb2641cb5b45ce" class="m-doc">ASTC_10x5_UNormalized_Block</a> = VK_FORMAT_ASTC_10x5_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7121401a6f2f23075d443bed3329d742" class="m-doc">ASTC_10x5_SRGB_Block</a> = VK_FORMAT_ASTC_10x5_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa9eeb5101578e5b99b0c26d06b935e4a6" class="m-doc">ASTC_10x6_UNormalized_Block</a> = VK_FORMAT_ASTC_10x6_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0d222a8266d7de7a01e662c968487888" class="m-doc">ASTC_10x6_SRGB_Block</a> = VK_FORMAT_ASTC_10x6_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa00c628ea440d85a8c876f9aeab965784" class="m-doc">ASTC_10x8_UNormalized_Block</a> = VK_FORMAT_ASTC_10x8_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa86bf808a0ae2f62a3160e01d1d2ff801" class="m-doc">ASTC_10x8_SRGB_Block</a> = VK_FORMAT_ASTC_10x8_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5664ebd02d3da98cff77037c3dab9076" class="m-doc">ASTC_10x10_UNormalized_Block</a> = VK_FORMAT_ASTC_10x10_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa82ec914ebb1ec16bcbc291f96c14237f" class="m-doc">ASTC_10x10_SRGB_Block</a> = VK_FORMAT_ASTC_10x10_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5e7203335e24b1e3118f2b6beef10262" class="m-doc">ASTC_12x10_UNormalized_Block</a> = VK_FORMAT_ASTC_12x10_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf2204767e64d23dfdda106ba7211f005" class="m-doc">ASTC_12x10_SRGB_Block</a> = VK_FORMAT_ASTC_12x10_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa129d9295b9f781cd769192e4e4a375b5" class="m-doc">ASTC_12x12_UNormalize_Block</a> = VK_FORMAT_ASTC_12x12_UNORM_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa0871f2e0de3a9336e939fb7fdde1894e" class="m-doc">ASTC_12x12_SRGB_Block</a> = VK_FORMAT_ASTC_12x12_SRGB_BLOCK,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aabf5ff3033844cfb2d3fc33ead498fbd1" class="m-doc">G8_B8_G8_R8_422_UNormalized</a> = VK_FORMAT_G8B8G8R8_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aacf814e542c50243a42fd6cc73300e261" class="m-doc">B8_G8_R8_G8_422_UNormalized</a> = VK_FORMAT_B8G8R8G8_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa4dd04a04c42dcb27c22eeafcccf2b1a" class="m-doc">G8_B8_R8_3Plane_420_UNormalized</a> = VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaaa446603f84b3f4b8dbe8ce1a427a418" class="m-doc">G8_B8_R8_2Plane_420_UNormalized</a> = VK_FORMAT_G8_B8R8_2PLANE_420_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aafe7a9b22943a44f38cc0baaaceeb0856" class="m-doc">G8_B8_R8_3Plane_422_UNormalized</a> = VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5df141934103dd9ce4b3af390bd82581" class="m-doc">G8_B8_R8_2Plane_422_UNormalized</a> = VK_FORMAT_G8_B8R8_2PLANE_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2e9fc51fc7446e1b3865df91cfe1248d" class="m-doc">G8_B8_R8_3Plane_444_UNormalized</a> = VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8d45aa113ded81308a07a515b9d6f49c" class="m-doc">R10x6_UNormalized_Pack16</a> = VK_FORMAT_R10X6_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa85322486cbaf0be46a42405bff68c19f" class="m-doc">R10x6_G10x6_UNormalized_2Pack16</a> = VK_FORMAT_R10X6G10X6_UNORM_2PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5f3a7cee3a8059e72de00fba7bf2740f" class="m-doc">R10x6_G10x6_B10x6_A10x6_UNormalized_4Pack16</a> = VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5e7c6a9495839dd38d4c15b6fe30fe82" class="m-doc">G10x6_B10x6_G10x6_R10x6_422_UNormalized_4Pack16</a> = VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5964e7d1054127e7efb4b09daf5a9051" class="m-doc">B10x6_G10x6_R10x6_G10x6_422_UNormalized_4Pack16</a> = VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7c29545596acf0028d546c9efcc9ce59" class="m-doc">G10x6_B10x6_R10x6_3Plane_420_UNormalized_3Pack16</a> = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa198454b0cb736929eed23bdb4a87fdbc" class="m-doc">G10x6_B10x6_R10x6_2Plane_420_UNormalized_3Pack16</a> = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa1f87d48189890735d2352122f8b18bea" class="m-doc">G10x6_B10x6_R10x6_3Plane_422_UNormalized_3Pack16</a> = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa55e93ef9f9d947df6b00719c68050f97" class="m-doc">G10x6_B10x6_R10x6_2Plane_422_UNormalized_3Pack16</a> = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa33b32e97f41f9efb5027203deaa52fd8" class="m-doc">G10x6_B10x6_R10x6_3Plane_444_UNormalized_3Pack16</a> = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa25f63c5f5bb83d6d43d7a8ad1630a14c" class="m-doc">R12x4_UNormalized_Pack16</a> = VK_FORMAT_R12X4_UNORM_PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4eb60706f25a8c06f2f0a7277dbfc157" class="m-doc">R12x4_G12x4_UNormalized_2Pack16</a> = VK_FORMAT_R12X4G12X4_UNORM_2PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa70f33deaa584c2888472c8f68a7138b8" class="m-doc">R12x4_G12x4_B12x4_A12x4_UNormalized_4Pack16</a> = VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8ae3a799ae7133eb3bf167a2642f6f58" class="m-doc">G12x4_B12x4_G12x4_R12x4_422_UNormalized_4Pack16</a> = VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa627782d611268ec5b491993f17e765a2" class="m-doc">B12x4_G12x4_R12x4_G12x4_422_UNormalized_4Pack16</a> = VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab779ed570d1a3c30cd15f251294045b6" class="m-doc">G12x4_B12x4_R12x4_3Plane_420_UNormalized_3Pack16</a> = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa391cee93f2e5020f3d256dad623582da" class="m-doc">G12x4_B12x4_R12x4_2Plane_420_UNormalized_3Pack16</a> = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa2828f72840c6a9253d5fe2684c5d2f03" class="m-doc">G12x4_B12x4_R12x4_3Plane_422_UNormalized_3Pack16</a> = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa775d58b4f3a920e34893ebaa0920433" class="m-doc">G12x4_B12x4_R12x4_2Plane_422_UNormalized_3Pack16</a> = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaacddb440832c1b857d2fd50291f3ef1c" class="m-doc">G12x4_B12x4_R12x4_3Plane_444_UNormalized_3Pack16</a> = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa15e3bf2702d58bebaaf440bf388d301f" class="m-doc">G16_B16_G16_R16_422_UNormalized</a> = VK_FORMAT_G16B16G16R16_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa171601d79252f6c7bd6ea6c6e608b387" class="m-doc">B16_G16_R16_G16_422_UNormalized</a> = VK_FORMAT_B16G16R16G16_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaca3e54b248051da4e812d4c63a4225b0" class="m-doc">G16_B16_R16_3Plane_420_UNormalized</a> = VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa71e5f53426ac4371088f3acaacf58ba6" class="m-doc">G16_B16_R16_2Plane_420_UNormalized</a> = VK_FORMAT_G16_B16R16_2PLANE_420_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaaff219ae579ce26609bb8695aaca2ac4" class="m-doc">G16_B16_3Plane_422_UNormalized</a> = VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad67cf0773900ad5139475eca4b0417db" class="m-doc">G16_B16_R16_2Plane_422_UNormalized</a> = VK_FORMAT_G16_B16R16_2PLANE_422_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa137d7e1a2698fea453985db1864d661a" class="m-doc">G16_B16_R16_3Plane_444_UNormalized</a> = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa29fde082219cbcd107741cbecae0a7ce" class="m-doc">PVRTC1_2BPP_UNormalized_Block_Image</a> = VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7f7aaee6a4075f772a7b17679820c2cb" class="m-doc">PVRTC1_4BPP_UNormalized_Block_Image</a> = VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa48c8acc8134800d42cb3dc3760f0f77d" class="m-doc">PVRTC2_2BPP_UNormalized_Block_Image</a> = VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa1a007bf4937c7069cf8af5dc33c77975" class="m-doc">PVRTC2_4BPP_UNormalized_Block_Image</a> = VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa3ece0b64011e71019bd9eaa1bdd46f01" class="m-doc">PVRTC1_2BPP_SRGB_Block_Image</a> = VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab117265da35e339264da278abe73f8af" class="m-doc">PVRTC1_4BPP_SRGB_Block_Image</a> = VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa13765f1f601d67d00a6418d519902e36" class="m-doc">PVRTC2_2BPP_SRGB_Block_Image</a> = VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8bf98a993d2d3d988a932f8750f0f417" class="m-doc">PVRTC2_4BPP_SRGB_Block_Image</a> = VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa37d3296d26dc2f769a196502fe0ca00b" class="m-doc">ASTC_4x4_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaff63959c57dacaf0f24a80b1538bae5e" class="m-doc">ASTC_5x4_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaad1071a9faaec073524f64c917f3cd19" class="m-doc">ASTC_5x5_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf3cc58b3123118650acc1cc0af4a7529" class="m-doc">ASTC_6x5_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaf970de81d4105c2bc30bc1344c72588a" class="m-doc">ASTC_6x6_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab441f45ab4b7f45523ae03a913d48271" class="m-doc">ASTC_8x5_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aacfb9ada0a9fa0e45181bd416c780594a" class="m-doc">ASTC_8x6_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa069f78d3ceda78ce8d0793554d104514" class="m-doc">ASTC_8x8_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac32ac027660391285ed53d12db2edb6c" class="m-doc">ASTC_10x5_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aadc0f1a1aad3844a1e048b68f6a532e4b" class="m-doc">ASTC_10x6_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab47d7fe51a9a25d5a000353fb266a2f6" class="m-doc">ASTC_10x8_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa909d510c0f4478481d42650eb68eca70" class="m-doc">ASTC_10x10_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5d78d621acbeb5b0899f664c39b86bf8" class="m-doc">ASTC_12x10_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aada9ea728028c1a93a8618658d5626e40" class="m-doc">ASTC_12x12_SFloat_Block_EXT</a> = VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa9e770d85f36e91264098be1f2ee31894" class="m-doc">G8_B8_G8_R8_422_UNormalized_KHR</a> = VK_FORMAT_G8B8G8R8_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7f88356b2c5e4fa58635d110f6e00df3" class="m-doc">B8_G8_R8_G8_422_UNormalized_KHR</a> = VK_FORMAT_B8G8R8G8_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab97099354ba4a33606bdc834ab65921f" class="m-doc">G8_B8_R8_3Plane_420_UNormalized_KHR</a> = VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7a9a7de3b1c0e66da8c4e9988b1fafc1" class="m-doc">G8_B8_R8_2Plane_420_UNormalized_KHR</a> = VK_FORMAT_G8_B8R8_2PLANE_420_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaca78dc46a53f739410e80831563df80e" class="m-doc">G8_B8_R8_3Plane_422_UNormalized_KHR</a> = VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa77e1afde8f337569ad56cfa8f6cefbb4" class="m-doc">G8_B8_R8_2Plane_422_Unormalized_KHR</a> = VK_FORMAT_G8_B8R8_2PLANE_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa95f2054d8c51ae99ff32cbf0986dbe78" class="m-doc">G8_B8_R8_3Plane_444_UNormalized_KHR</a> = VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aae427412846e8b8b67304e478a9cd4c18" class="m-doc">R10x6_UNormalized_Pack16_KHR</a> = VK_FORMAT_R10X6_UNORM_PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa77f7ce574a7daebd9aca7cb3f20d8476" class="m-doc">R10x6_G10x6_UNormalized_2Pack16_KHR</a> = VK_FORMAT_R10X6G10X6_UNORM_2PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa94edc12dca8d4c95fcaa5e05320ebedf" class="m-doc">R10x6_G10x6_B10x6_A10x6_UNormalized_4Pack16_KHR</a> = VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aac4b65edeb5236464b41c899f907e619c" class="m-doc">G10x6_B10x6_G10x6_R10x6_422_UNormalized_4Pack16_KHR</a> = VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5bf3b0857b5be3759a5bda26802a015b" class="m-doc">B10x6_G10x6_R10x6_G10x6_422_UNormalized_4Pack16_KHR</a> = VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4ab1eb63a46cbbeecd9d06fa473072e1" class="m-doc">G10x6_B10x6_3Plane_420_UNormalized_3Pac16_KHR</a> = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7d90709e31bac473a64354b59c186748" class="m-doc">G10x6_B10x6_R10x6_2PLane_420_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa8759f8e6e2b1e26936c37eba9391c4e8" class="m-doc">G10x6_B10x6_R10x6_3Plane_422_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa340f6100858f2ef9a54426c91f5b0657" class="m-doc">G10x6_B10x6_R10x6_2Plane_422_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa36363b7e78896eb49409865f91318ebb" class="m-doc">G10x6_B10x6_R10x6_3Plane_444_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aacf2eace467088b2c64f98e3aa9a94191" class="m-doc">R12X4_UNormalized_Pack16_KHR</a> = VK_FORMAT_R12X4_UNORM_PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaa6565a8fb334f4fb923fc3ab756a1731" class="m-doc">R12x4_G12x4_UNormalized_2Pack16_KHR</a> = VK_FORMAT_R12X4G12X4_UNORM_2PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aad3d53d6adb4c8e16f2f0c259fe859f56" class="m-doc">R12x4_G12x4_B12x4_A12x4_UNormalized_4Pack16_KHR</a> = VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa1b8ce3a45a64e9c06eb9aa75e8e110ea" class="m-doc">G12x4_B12x4_G12x4_R12x4_422_UNormalized_4Pack16_KHR</a> = VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aafc3ffb6b285f597ac86ae4cdd04d421a" class="m-doc">B12x4_G12x4_R12x4_G12x4_422_UNormalized_4Pack16_KHR</a> = VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aada9087aed6396ed6e809aa715d20c6c9" class="m-doc">G12x4_B12x4_R12x4_3Plane_410_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaaf835a350c5648cc4b39cb82a484289d" class="m-doc">G12x4_B12x4_R12x4_2Plane_420_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa4f036cb5e9d116167864d496ae62b979" class="m-doc">G12x4_B12x4_R12x4_3Plane_422_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa66fdc8f51161763289340a9d93cd4c7f" class="m-doc">G12x4_B12x4_R12x4_2Plane_422_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa7be28efaeacf49648225c5c95e0341de" class="m-doc">G12x4_B12x4_R12x4_3Plane_444_UNormalized_3Pack16_KHR</a> = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa00c50d63793d27aaaa7deca30814207b" class="m-doc">G16_B16_G16_R16_422_UNormalized_KHR</a> = VK_FORMAT_G16B16G16R16_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aab5d434a0fd6000b0a876f02ed1d1d740" class="m-doc">B16_G16_R16_G16_422_UNormalized_KHR</a> = VK_FORMAT_B16G16R16G16_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa5261fb7be2230c4ab25f29f835cd124f" class="m-doc">G16_B16_R16_3Plane_420_UNormalized_KHR</a> = VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa032b6f819c19171566686d5e8fa0c424" class="m-doc">G16_B16_R16_2Plane_420_UNormalized_KHR</a> = VK_FORMAT_G16_B16R16_2PLANE_420_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa32cb4713e88439a1f24e34ba2d19c265" class="m-doc">G16_B16_R16_3Plane_422_UNormalized_KHR</a> = VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aaae519c3917a32f626b65816fce3cdf2a" class="m-doc">G16_B16_R16_2Plane_422_UNormalized_KHR</a> = VK_FORMAT_G16_B16R16_2PLANE_422_UNORM_KHR,
+              <a href="#gga46eee72a7b236b5cc31dc30bd2809f4aa66dc24693a036699231f2291be22f79d" class="m-doc">G16_B16_R16_3Plane_444_UNormalized_KHR</a> = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR }</span>
+            </dt>
+            <dd>Supported buffer and image formats.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga8ce25b0dc062c0ab5e79c823be587f61" class="m-doc">EFormatFeatureFlag</a> { </span><span class="m-doc-wrap"><a href="#gga8ce25b0dc062c0ab5e79c823be587f61a4520c597ce328c250d1ca5192047d71d" class="m-doc">SampledImage</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61aa078fa7ad769f9e7b53b8c42e3b7bbab" class="m-doc">StorageImage</a> = VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a25a214140c3b0297a3933eafe3a06a94" class="m-doc">ImageAtomic</a> = VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a4b43da703340c8273da56cf3445c6754" class="m-doc">UniformTexelBuffer</a> = VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a193afc87cf09642bf17511463c88a1db" class="m-doc">StroageTexelBuffer</a> = VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a33b5ec57cca988894c54506888cb24d3" class="m-doc">StorageTexelBufferAtomic</a> = VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a10461f19cdb5aadba2fc9986be6400bd" class="m-doc">VertexBuffer</a> = VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61afddd0a8661f380ee89f529eff813b03d" class="m-doc">ColorAttachment</a> = VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ac45527a231e72127d75dcac38f043488" class="m-doc">ColorAttachmentBlend</a> = VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a652fd1408b3de263e32147770a48931e" class="m-doc">DepthStencilAttachment</a> = VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ae67049ae12adc361177166c67d8800a1" class="m-doc">BlitSource</a> = VK_FORMAT_FEATURE_BLIT_SRC_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a0dddba5cbe8627e99375bbfab7c7f7e8" class="m-doc">BlitDestination</a> = VK_FORMAT_FEATURE_BLIT_DST_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a8cbac0c63b5641b69c7a25e2bded315b" class="m-doc">SampledImageFilterLinear</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a8c4df84c9e73cf86122034f85efac361" class="m-doc">TransferSource</a> = VK_FORMAT_FEATURE_TRANSFER_SRC_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a9cecc9065ff3b79e09391fcbfb7b9ce9" class="m-doc">TransferDestination</a> = VK_FORMAT_FEATURE_TRANSFER_DST_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ace2c045bfabb74955949bebf813f9143" class="m-doc">MidpointChromaSamples</a> = VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a7925043a8314efdcd2a1c5a6ef32dabe" class="m-doc">SampledImageYCBCR_ConversionLinearFilter</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a5a96ada7afacc6c4f680d0c7bc068f4f" class="m-doc">SampledImageYCBCR_ConversionSeparateReconstructionFilter</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ac80bfb8a4409f87d40d92b215817e1f1" class="m-doc">SampledImageYCBCR_ConversionChromaReconstructionExplicit</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a73d29f03fb22a7c600872562bb0be12b" class="m-doc">SampledImageYCBCR_ConversionChromaReconstructionExplictForcable</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a283bfcf8a8bdcf8394b2b04307cc7896" class="m-doc">Disjoint</a> = VK_FORMAT_FEATURE_DISJOINT_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ad58b6cde7af2af28b2eac57a5c2991c8" class="m-doc">CositedChromaSamples</a> = VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a425bf3a5b1701a5296e634cce7af6c07" class="m-doc">SampledImageFilterMinMax</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a50a554ac085a88deaff63bc2f9d49838" class="m-doc">SampledImageFilterCubic_IMG</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a4ec0050c2df1f84ea895e8998d49d1e1" class="m-doc">AccelerationStructureVertexBuffer_KHR</a> = VK_FORMAT_FEATURE_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a006286688b66b776797d132d39304159" class="m-doc">FragmentDensityMap_EXT</a> = VK_FORMAT_FEATURE_FRAGMENT_DENSITY_MAP_BIT_EXT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a4091660f86691effa803c70c02a54897" class="m-doc">TransferSource_KHR</a> = VK_FORMAT_FEATURE_TRANSFER_SRC_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61afe236cf6526d1232bb558330d07a4e63" class="m-doc">TransferDestination_KHR</a> = VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ae521c6cecd2ea62543dda226e152337f" class="m-doc">SampledImageFilterMinMax_EXT</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_MINMAX_BIT_EXT,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a9b1ffda0f73b5475a33ae17b77cf0ffe" class="m-doc">MidpointChromaSamples_KHR</a> = VK_FORMAT_FEATURE_MIDPOINT_CHROMA_SAMPLES_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ae459bba9a31e6f7dd424dbdab6af7e2c" class="m-doc">SampledImageYCBCR_ConversionLinearFilter_KHR</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ad33ea6506ed542f3148e01fe7be9714d" class="m-doc">SampledImageYCBCR_ConversionSeparateReconstructionFilter_KHR</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_SEPARATE_RECONSTRUCTION_FILTER_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ad2f248f28d8b24e27b631c02b6824a36" class="m-doc">SampledImageYCBCR_ConversionChromaReconstructionExplicit_KHR</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a9ea76d622fd7a7133b2e715bbb4d14e7" class="m-doc">SampledImageYCBCR_ConversionChromaReconstructionExplicit_Forcable_KHR</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_CHROMA_RECONSTRUCTION_EXPLICIT_FORCEABLE_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61ad369ae6b039d1c5116b75361387bc9cd" class="m-doc">Disjoint_KHR</a> = VK_FORMAT_FEATURE_DISJOINT_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61a1e804af79de0e900297dcd3be4df08ec" class="m-doc">CositedChromaSamples_KHR</a> = VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT_KHR,
+              <a href="#gga8ce25b0dc062c0ab5e79c823be587f61abcc30223b126fd3f6e36e6276e0c8ab2" class="m-doc">SampledImageFilterCubic_EXT</a> = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT }</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlagBits">Specification</a></dd>
+          </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gada11580cdc16363b186f9384a5f6d6d5" class="m-doc">GetFormatProperties</a>(</span><span class="m-doc-wrap">Handle _handle,
+              EFormat _format,
+              FormatProperties&amp; _properties)</span>
+            </dt>
+            <dd>Query supported format features which are properties of the physical device.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="ga46eee72a7b236b5cc31dc30bd2809f4a"><div>
+            <h3>
+              enum <a href="#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc-self">EFormat</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p>Supported buffer and image formats.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#formats">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8ce25b0dc062c0ab5e79c823be587f61"><div>
+            <h3>
+              enum <a href="#ga8ce25b0dc062c0ab5e79c823be587f61" class="m-doc-self">EFormatFeatureFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlagBits">Specification</a></p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="gada11580cdc16363b186f9384a5f6d6d5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gada11580cdc16363b186f9384a5f6d6d5" class="m-doc-self">GetFormatProperties</a>(</span><span class="m-doc-wrap">Handle _handle,
+              EFormat _format,
+              FormatProperties&amp; _properties)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__PhysicalDevice_8hpp.html">&lt;VaultedThermals/VT_PhysicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>Query supported format features which are properties of the physical device.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_handle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_format</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_properties</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceFormatProperties">Specification</a></p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

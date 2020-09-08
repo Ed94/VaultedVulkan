@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VT::V3::CommandBuffer class | VaultedThermals</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedThermals</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+            <li><a href="modules.html">Modules</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>CommandBuffer <span class="m-thin">class</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+        </h1>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-dim"><h4><a href="todo.html#_todo000015" class="m-doc">Todo</a></h4><p>#TODO: Needs documentation.</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structVT_1_1V2_1_1CommandBuffer.html" class="m-doc">VT::V2::CommandBuffer</a>
+            </dt>
+            <dd>Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a3e864af6100a263b6a58c16d4cbabbd4">
+              using <a href="#a3e864af6100a263b6a58c16d4cbabbd4" class="m-doc-self">Parent</a> = <a href="structVT_1_1V2_1_1CommandBuffer.html" class="m-doc">V2::<wbr />CommandBuffer</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a7a8bf490d0ab88e344cb4ac3b71d083e">
+              using <a href="#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc-self">AllocateInfo</a> = <a href="structVT_1_1V2_1_1CommandPool_1_1AllocateInfo.html" class="m-doc">V2::<wbr />CommandPool::<wbr />AllocateInfo</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a2aaad920f37a38b56bcec4f6147a1473">
+              <span class="m-doc-wrap-bumper"><a href="#a2aaad920f37a38b56bcec4f6147a1473" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9ec2e9a6e6ead6586f0282a5e86d28e8">
+              <span class="m-doc-wrap-bumper"><a href="#a9ec2e9a6e6ead6586f0282a5e86d28e8" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa69f4bdf4fdf88122e83d76f89d6d135">
+              <span class="m-doc-wrap-bumper"><a href="#aa69f4bdf4fdf88122e83d76f89d6d135" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a5ec8d3d421f040193a425f6250c25be3">
+              <span class="m-doc-wrap-bumper"><a href="#a5ec8d3d421f040193a425f6250c25be3" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a836139f4b10e300b26a327bb8c32dfa7">
+              <span class="m-doc-wrap-bumper">void <a href="#a836139f4b10e300b26a327bb8c32dfa7" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp; _info,
+              <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0238f9721b6400c5864959aaf8233420">
+              <span class="m-doc-wrap-bumper">auto <a href="#a0238f9721b6400c5864959aaf8233420" class="m-doc-self">BeginRecord</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1CommandBuffer_1_1BeginInfo.html" class="m-doc">BeginInfo</a>&amp; _info) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9b06f0dd8bbbb2b590b02f0152d80510">
+              <span class="m-doc-wrap-bumper">void <a href="#a9b06f0dd8bbbb2b590b02f0152d80510" class="m-doc-self">BeginRenderPass</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1RenderPass_1_1BeginInfo.html" class="m-doc">RenderPass::<wbr />BeginInfo</a>&amp; _info,
+              <a href="group__APISpec__Render__Pass.html#gaa0800b1b8c49d7e4596f342b06b4fa03" class="m-doc">ESubpassContents</a> _contents) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1b5c33ddbeabbb452a7ee3071d76c2f2">
+              <span class="m-doc-wrap-bumper">void <a href="#a1b5c33ddbeabbb452a7ee3071d76c2f2" class="m-doc-self">BindDescriptorSets</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Pipelines.html#gab55758599657a30863d8598d686d94d0" class="m-doc">EPipelineBindPoint</a> _bindPoint,
+              <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Pipeline::<wbr />Layout</a>&amp; _layout,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstSet,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descritporSetCount,
+              const <a href="group__APISpec__Resource__Descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aed7e6ed1aae176c4ecee92fa0c842e6f">
+              <span class="m-doc-wrap-bumper">void <a href="#aed7e6ed1aae176c4ecee92fa0c842e6f" class="m-doc-self">BindDescriptorSets</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Pipelines.html#gab55758599657a30863d8598d686d94d0" class="m-doc">EPipelineBindPoint</a> _bindPoint,
+              <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Pipeline::<wbr />Layout</a>&amp; _layout,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstSet,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descritporSetCount,
+              const <a href="group__APISpec__Resource__Descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _dynamicOffsetCount,
+              const <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _dynamicOffsets) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ad893a4dcf20409ec6f90fe3e493af2ba">
+              <span class="m-doc-wrap-bumper">void <a href="#ad893a4dcf20409ec6f90fe3e493af2ba" class="m-doc-self">BindIndexBuffer</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _buffer,
+              <a href="group__Common__Object__Types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
+              <a href="group__APISpec__Drawing__Commands.html#gaa8f6e3dfcded0cff8f43f5f210e596ef" class="m-doc">EIndexType</a> _type) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a152d6858a75053246069aa3fb4d730d5">
+              <span class="m-doc-wrap-bumper">void <a href="#a152d6858a75053246069aa3fb4d730d5" class="m-doc-self">BindVertexBuffers</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstBinding,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bindingCount,
+              const <a href="group__APISpec__Resource__Creation.html#ga6c9a4b68427349a760f9a371985418a5" class="m-doc">Buffer::<wbr />Handle</a>* _buffers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae607ed8e7a904696bcff90934901b162">
+              <span class="m-doc-wrap-bumper">void <a href="#ae607ed8e7a904696bcff90934901b162" class="m-doc-self">BindVertexBuffers</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstBinding,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bindingCount,
+              const <a href="group__APISpec__Resource__Creation.html#ga6c9a4b68427349a760f9a371985418a5" class="m-doc">Buffer::<wbr />Handle</a>* _buffers,
+              const <a href="group__Common__Object__Types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a>* _offsets) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a390e93b3e4396bff2d95b9c8fb462bba">
+              <span class="m-doc-wrap-bumper">void <a href="#a390e93b3e4396bff2d95b9c8fb462bba" class="m-doc-self">BindPipeline</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Pipelines.html#gab55758599657a30863d8598d686d94d0" class="m-doc">EPipelineBindPoint</a> _bindPoint,
+              <a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a>&amp; _pipeline) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a80e0cf4316bf9af8ff8f0642beef3090">
+              <span class="m-doc-wrap-bumper">void <a href="#a80e0cf4316bf9af8ff8f0642beef3090" class="m-doc-self">BlitImage</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a>&amp; _src,
+              <a href="group__APISpec__Resource__Creation.html#ga6dca5aa8bf2864759e93f8a122774274" class="m-doc">EImageLayout</a> _srcLayout,
+              <a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a>&amp; _dst,
+              <a href="group__APISpec__Resource__Creation.html#ga6dca5aa8bf2864759e93f8a122774274" class="m-doc">EImageLayout</a> _dstLayout,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _regionCount,
+              const <a href="structVT_1_1V1_1_1Image_1_1Blit.html" class="m-doc">Image::<wbr />Blit</a>* _regions,
+              <a href="group__APISpec__Samplers.html#gaa0c402e13df2c9df0efdf4b905916eb5" class="m-doc">EFilter</a> _filter) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3219a290a5edb8e3b5bd8be0d4a1142c">
+              <span class="m-doc-wrap-bumper">void <a href="#a3219a290a5edb8e3b5bd8be0d4a1142c" class="m-doc-self">CopyBuffer</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _sourceBuffer,
+              <a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _destinationBuffer,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _regionCount,
+              const <a href="structVT_1_1V1_1_1Buffer_1_1CopyInfo.html" class="m-doc">Buffer::<wbr />CopyInfo</a>* _regions) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a141de98b40eedf6e0637bd870331ac08">
+              <span class="m-doc-wrap-bumper">void <a href="#a141de98b40eedf6e0637bd870331ac08" class="m-doc-self">CopyBufferToImage</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _srcBuffer,
+              <a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a>&amp; _dstImage,
+              <a href="group__APISpec__Resource__Creation.html#ga6dca5aa8bf2864759e93f8a122774274" class="m-doc">EImageLayout</a> _dstImageLayout,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _regionCount,
+              const <a href="structVT_1_1V1_1_1CommandBuffer_1_1BufferImageRegion.html" class="m-doc">BufferImageRegion</a>* _regions) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9b4a36ca438fa94d13ebe20cc4d597a8">
+              <span class="m-doc-wrap-bumper">void <a href="#a9b4a36ca438fa94d13ebe20cc4d597a8" class="m-doc-self">Draw</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstVertex,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _vertexCount,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstInstance,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _instanceCount) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3d06caf4fbd9c1f10e3647cc29e3299b">
+              <span class="m-doc-wrap-bumper">void <a href="#a3d06caf4fbd9c1f10e3647cc29e3299b" class="m-doc-self">DrawIndexed</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _indexCount,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _instanceCount,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstIndex,
+              <a href="group__Corridors.html#ga3e1c4de9ef31a9187b6c141d773df1b1" class="m-doc">sint32</a> _vertexOffset,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstInstance) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3682323e9370b51b79e2cec03da9c127">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3682323e9370b51b79e2cec03da9c127" class="m-doc-self">EndRecord</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a35182d93d9087fc53d9e00b652852ec0">
+              <span class="m-doc-wrap-bumper">void <a href="#a35182d93d9087fc53d9e00b652852ec0" class="m-doc-self">EndRenderPass</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a1261b9b9c733e0fdab41f97bdbacb859">
+              <span class="m-doc-wrap-bumper">void <a href="#a1261b9b9c733e0fdab41f97bdbacb859" class="m-doc-self">Execute</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _secondaryBufferCount,
+              const <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>* _secondaryBuffers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="abc5304c69c9d263abd2cda4f034bad81">
+              <span class="m-doc-wrap-bumper">auto <a href="#abc5304c69c9d263abd2cda4f034bad81" class="m-doc-self">GetAllocateInfo</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a80bbaa42339777442a796359f0ef6a82">
+              <span class="m-doc-wrap-bumper">void <a href="#a80bbaa42339777442a796359f0ef6a82" class="m-doc-self">ResetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa7d6be2bece422153102595cdc61249f">
+              <span class="m-doc-wrap-bumper">void <a href="#aa7d6be2bece422153102595cdc61249f" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__Flags__and__Bitmasks.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
+              const <a href="structVT_1_1V2_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a40dd487ff9ab242626724220bd42b26f">
+              <span class="m-doc-wrap-bumper">void <a href="#a40dd487ff9ab242626724220bd42b26f" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__Flags__and__Bitmasks.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac78d99feabef097e7d1634441b893163">
+              <span class="m-doc-wrap-bumper">void <a href="#ac78d99feabef097e7d1634441b893163" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__Flags__and__Bitmasks.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2ef61ffe4c8f2c679ed3d2e000348ebb">
+              <span class="m-doc-wrap-bumper">void <a href="#a2ef61ffe4c8f2c679ed3d2e000348ebb" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__Flags__and__Bitmasks.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
+              const <a href="structVT_1_1V2_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa55a4c5761cc10a7dd49ac0d9ca7b3bd">
+              <span class="m-doc-wrap-bumper">void <a href="#aa55a4c5761cc10a7dd49ac0d9ca7b3bd" class="m-doc-self">SetDeviceMask</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _deviceMask) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="adc96fe51dfb1e4a28c5034ed8c234557">
+              <span class="m-doc-wrap-bumper">void <a href="#adc96fe51dfb1e4a28c5034ed8c234557" class="m-doc-self">SetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a096511c472ec0e9584c3a3c8e6993dc5">
+              <span class="m-doc-wrap-bumper">void <a href="#a096511c472ec0e9584c3a3c8e6993dc5" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
+              const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
+              const <a href="structVT_1_1V2_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aefb97e6dd87b153d8b3cf0e3090fb593">
+              <span class="m-doc-wrap-bumper">void <a href="#aefb97e6dd87b153d8b3cf0e3090fb593" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
+              const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ab43585dc45d5ab801db55e9fbf9d59ba">
+              <span class="m-doc-wrap-bumper">void <a href="#ab43585dc45d5ab801db55e9fbf9d59ba" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
+              const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a19a6aa40fe1a8228bfb14e1e3335d920">
+              <span class="m-doc-wrap-bumper">void <a href="#a19a6aa40fe1a8228bfb14e1e3335d920" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
+              const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
+              const <a href="structVT_1_1V2_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
+              const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a2820edb181025e480d6384b2d3f97eab">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2820edb181025e480d6384b2d3f97eab" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _other) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a09a6b31d5ac3a57d431a40812f6cd6be">
+              <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a> <a href="#a09a6b31d5ac3a57d431a40812f6cd6be" class="m-doc-self">handle</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a32ad7e8f484ed71450440dfe78226c70">
+              const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>* <a href="#a32ad7e8f484ed71450440dfe78226c70" class="m-doc-self">device</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a5bcaf369b56eaad76c6e553ddc6ea982">
+              <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a> <a href="#a5bcaf369b56eaad76c6e553ddc6ea982" class="m-doc-self">info</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>
