@@ -51,26 +51,31 @@ namespace VaultedThermals
 		*/
 
 		/**
+		 * @ingroup  APISpec_Window_System_Integration_WSI
 		 * @brief A queue of images that can be presented to a surface.
-		 * 
 		 * @details
 		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a>
-		 * 
-		 * @ingroup  APISpec_Window_System_Integration_WSI
 		 */
 		struct Swapchain
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
+			/** 
+			@ingroup APISpec_Window_System_Integration_WSI 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a> 
+			*/
 			using Handle = VkSwapchainKHR;
 
 			using ECreateFlag = ESwapchainCreateFlag;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
+			/** 
+			@ingroup APISpec_Window_System_Integration_WSI 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a> 
+			*/
 			using CreateFlags = Bitmask<ECreateFlag, VkSwapchainCreateFlagsKHR >;
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> @ingroup APISpec_Window_System_Integration_WSI
-			 */
+			@ingroup APISpec_Window_System_Integration_WSI
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a> 
+			*/
 			struct CreateInfo : V0::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
 			{
 				      EType                 SType                ;
