@@ -37,8 +37,6 @@ namespace VaultedThermals
 		*/
 		enum class EUndefined : uint32 {};
 
-		
-
 		/**
 		 * @enum Handle Enum
 		 */

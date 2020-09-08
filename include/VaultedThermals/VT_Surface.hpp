@@ -60,7 +60,11 @@ namespace VaultedThermals
 		{
 			using Image = V1::Image;
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
+			/** 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceKHR">Specification</a> 
+			
+			@ingroup APISpec_Window_System_Integration_WSI 
+			*/
 			using Handle = VkSurfaceKHR;
 
 			using ETransform = ESurfaceTransformFlag;

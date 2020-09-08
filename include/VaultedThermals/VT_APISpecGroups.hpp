@@ -241,8 +241,8 @@
 */
 
 /**
-@defgroup APISpec_Window_System_Integration_WSI
 @ingroup API_Specification
+@defgroup APISpec_Window_System_Integration_WSI
 
 @brief Chapter 32: <a href="https://vulkan.lunarg.com/doc/sdk/latest/windows/chunked_spec/chap33.html">Specification</a>
 */
