@@ -44,17 +44,15 @@ namespace VaultedThermals
 		*/
 
 		/**
-		 * @brief Construct an API version number.
-		 * 
-		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_MAKE_VERSION">Specification</a> 
-		 * 
-		 * \param _major
-		 * \param _minor
-		 * \param _patch
-		 * \return 
-		 * 
-		 * @ingroup Extending_Vulkan
-		 */
+		@ingroup Extending_Vulkan
+		@brief Construct an API version number.
+		
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_MAKE_VERSION">Specification</a> 
+
+		@param _major Major version number.
+		@param _minor Minor version number.
+		@param _patch Patch version number.
+		*/
 		inline uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
 		{
 			return VK_MAKE_VERSION(_major, _minor, _patch);
@@ -88,63 +86,52 @@ namespace VaultedThermals
 			using Memory = V0::Memory;
 
 			/**
-			 * @brief Opaque handle to an instance object.
-			 * 
-			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a>
-			 * 
-			 * @ingroup APISpec_Initialization
-			 */
+			@brief Opaque handle to an instance object.
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstance">Specification</a>
+			 
+			@ingroup APISpec_Initialization
+			*/
 			using Handle = VkInstance;
 
 			/**
-			 * @brief Reserved for future use...
-			 * 
-			 @details
-			 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a>
-
-			 @ingroup APISpec_Initialization
+			@ingroup APISpec_Initialization
+			@brief Reserved for future use...
+			 
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a>
 			 */
 			using CreateFlags = Bitmask<EUndefined, VkInstanceCreateFlags>;
 
 			/**
-			@brief 
-			A structure that specifies to the Vulkan driver information about an
-			application that will run an instance.
-
-			@details
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkApplicationInfo">Application Info Specification</a> 
-
 			@ingroup APISpec_Initialization
+			@brief A structure that specifies to the Vulkan driver information about an application that will run an instance.
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkApplicationInfo">Application Info Specification</a> 
 			*/
 			struct AppInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::ApplicationInformation>
 			{
-				      EType        SType        ;
-				const void*        Next         ;
-				      RoCStr       AppName      ;
-				      uint32       AppVersion   ;
-				      RoCStr       EngineName   ;
-				      uint32       EngineVersion;
-				      EAPI_Version API_Version  ;
+				      EType        SType         = STypeEnum         ;
+				const void*        Next          = nullptr           ;
+				      RoCStr       AppName       = nullptr           ;
+				      uint32       AppVersion    = 0                 ;
+				      RoCStr       EngineName    = nullptr           ;
+				      uint32       EngineVersion = 0                 ;
+				      EAPI_Version API_Version   = EAPI_Version::_1_2;
 			};
 
 			/**
-			@brief Structure specifying parameters of a newly created instance.
-
-			@details
-			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateInfo">Create Info Specification</a> 
-
 			@ingroup APISpec_Initialization
+			@brief Structure specifying parameters of a newly created instance.
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateInfo">Create Info Specification</a> 
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkInstanceCreateInfo, EStructureType::Instance_CreateInfo>
 			{
-				      EType             SType                ;
-				const void*             Next                 ;
+				      EType             SType                 = STypeEnum;
+				const void*             Next                  = nullptr  ;
 				      CreateFlags       Flags                ;
-				const AppInfo*          AppInfo              ;
-				      uint32            EnabledLayerCount    ;
-				      RoArray_of_RoCStr EnabledLayerNames    ;
-				      uint32            EnabledExtensionCount;
-					  RoArray_of_RoCStr EnabledExtensionNames;
+				const AppInfo*          AppInfo               = nullptr  ;
+				      uint32            EnabledLayerCount     = 0        ;
+				      RoArray_of_RoCStr EnabledLayerNames     = nullptr  ;
+				      uint32            EnabledExtensionCount = 0        ;
+					  RoArray_of_RoCStr EnabledExtensionNames = nullptr  ;
 			};
 
 			/**
@@ -157,12 +144,12 @@ namespace VaultedThermals
 			*/
 			struct ValidationFeatures : V0::VKStruct_Base<VkValidationFeaturesEXT, EStructureType::ValidationFeatures_EXT>
 			{
-					  EType                     SType                         ;
-				const void*                     Next                          ;
-					  uint32                    EnabledValidationFeatureCount ;
-				const EValidationFeatureEnable* EnabledValidationFeatures     ;
-					  uint32                    DisabledValidationFeatureCount;
-				const EValidationFeatureEnable* DisabledValidationFeatures    ;
+					  EType                     SType                          = STypeEnum;
+				const void*                     Next                           = nullptr  ;
+					  uint32                    EnabledValidationFeatureCount  = 0        ;
+				const EValidationFeatureEnable* EnabledValidationFeatures      = nullptr  ;
+					  uint32                    DisabledValidationFeatureCount = 0        ;
+				const EValidationFeatureEnable* DisabledValidationFeatures     = nullptr  ;
 			};
 
 			/**
@@ -175,10 +162,10 @@ namespace VaultedThermals
 			*/
 			struct ValidationFlags : V0::VKStruct_Base<VkValidationFlagsEXT, EStructureType::ValidationFlags_EXT>
 			{
-					  EType             SType                       ;
-				const void*             Next                        ;
-					  uint32            DisabledValidationCheckCount;
-				const EValidationCheck* DisabledValidationChecks    ;
+					  EType             SType                        = STypeEnum;
+				const void*             Next                         = nullptr  ;
+					  uint32            DisabledValidationCheckCount = 0        ;
+				const EValidationCheck* DisabledValidationChecks     = nullptr  ;
 			};
 
 			/**
@@ -347,52 +334,6 @@ namespace VaultedThermals
 			using Parent = V1::AppInstance;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct AppInfo : public Parent::AppInfo
-			{
-				AppInfo() 
-				{ 
-					SType = STypeEnum; 
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo() 
-				{
-					SType = STypeEnum; 
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ValidationFeatures : public Parent::ValidationFeatures
-			{
-				ValidationFeatures() 
-				{ 
-					SType = STypeEnum; 
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ValidationFlags : public Parent::ValidationFlags
-			{
-				ValidationFlags() 
-				{ 
-					SType = STypeEnum; 
-				}
-			};
-
-			/**
 			@brief Create a new Vulkan application instance. (Use default allocator)
 			*/
 			static EResult Create(const CreateInfo& _info, Handle& _handle)
@@ -544,6 +485,17 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::AppInstance;
 
+			AppInstance() : handle(Null<Handle>), allocator(Memory::DefaultAllocator)
+			{}
+
+			AppInstance(const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator)
+			{}
+
+			~AppInstance()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}
+
 			/**
 			 * @brief Create an application instance.
 			 * 
@@ -552,7 +504,7 @@ namespace VaultedThermals
 			 */
 			EResult Create(const AppInstance::CreateInfo& _createinfo)
 			{
-				allocator = nullptr;
+				allocator = Memory::DefaultAllocator;
 
 				return Parent::Create(_createinfo, handle);
 			}
@@ -577,6 +529,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(handle, allocator);
+
+				handle    = Null<Handle>;
+				allocator = nullptr     ;
 			}
 
 			/** 

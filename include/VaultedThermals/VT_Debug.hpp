@@ -363,6 +363,13 @@ namespace VaultedThermals
 					if (handle != Null<Handle>) Destroy();
 				}*/
 
+				EResult Create(const CreateInfo& _createSpec)
+				{
+					if (app == nullptr) return EResult::Not_Ready;
+
+					return Parent::Create(*app, _createSpec, handle);
+				}
+
 				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec)
 				{
 					app       = &_appInstance           ;

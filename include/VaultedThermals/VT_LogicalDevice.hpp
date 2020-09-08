@@ -39,89 +39,76 @@ namespace VaultedThermals
 		*/
 
 		/**
-		 * @brief Represent logical connections to physical devices. 
-		 * 
-		 * @details
-		 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-devices">Specification</a> 
-		 * 
-		 * @ingroup APISpec_Devices_and_Queues
-		 */
+		@ingroup APISpec_Devices_and_Queues
+		@brief Represent logical connections to physical devices. 
+		 
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-devices">Specification</a> 
+		*/
 		struct LogicalDevice
 		{
 			using Memory = V0::Memory;
 
 			/**
-			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevice">Specification</a> 
-			 
 			@ingroup APISpec_Devices_and_Queues
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDevice">Specification</a> 
 			*/
 			using Handle = VkDevice;
 
 			using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
 
 			/**
+			@ingroup APISpec_Devices_and_Queues
 			@brief 
 			When using the Nsight™ Aftermath SDK, to configure how device crash dumps are created, add a VkDeviceDiagnosticsConfigCreateInfoNV structure 
 			to the pNext chain of the VkDeviceCreateInfo structure.
 			 
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigCreateInfoNV">Specification</a> 
-			 
-			@ingroup APISpec_Devices_and_Queues
 			*/
 			struct DiagnosticsConfigCreateInfo : V0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
 			{
 				using ConfigFlags = Bitmask<EDeviceDiagnosticConfigFlag, VkDeviceDiagnosticsConfigFlagsNV>;
 
-				      EType       SType;
-				const void*       Next ;
+				      EType       SType = STypeEnum;
+				const void*       Next  = nullptr  ;
 				      ConfigFlags Flags;
 			};
 
 			/**
-			 * @brief Queues handle different types of batched commands for the GPU to complete.
-			 * 
-			 * @details 
-			 * Vulkan queues provide an interface to the execution engines of a device. 
-			 * Commands for these execution engines are recorded into command buffers ahead of execution time.
-			 * These command buffers are then submitted to queues with a queue submission command for execution in a number of batches. 
-			 * Once submitted to a queue, these commands will begin and complete execution without further application intervention,
-			 * though the order of this execution is dependent on a number of implicit and explicit ordering constraints.
-			 * 
-			 * <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-queueoperation">Specification</a> 
-			 * 
-			 * @ingroup APISpec_Devices_and_Queues
-			 */
+			@ingroup APISpec_Devices_and_Queues
+			@brief Queues handle different types of batched commands for the GPU to complete.
+			@details 
+			Vulkan queues provide an interface to the execution engines of a device. 
+			Commands for these execution engines are recorded into command buffers ahead of execution time.
+			These command buffers are then submitted to queues with a queue submission command for execution in a number of batches. 
+			Once submitted to a queue, these commands will begin and complete execution without further application intervention,
+			though the order of this execution is dependent on a number of implicit and explicit ordering constraints.
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-queueoperation">Specification</a> 
+			*/
 			struct Queue
 			{
 				/**
-				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueue">Specification</a> 
-
 				@ingroup APISpec_Devices_and_Queues
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueue">Specification</a> 
 				*/
 				using Handle = VkQueue;
 
 				using ECreateFlag = ELogicalDeviceQueueCreateFlag;
 
-				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a>  */
+				/** @ingroup APISpec_Devices_and_Queues @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a> */
 				using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
 
 				/**
-				@brief Used to specify parameters for a presentation.
-
-				@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a> 
-
 				@ingroup APISpec_Window_System_Integration_WSI
+				@brief Used to specify parameters for a presentation.
+				@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a> 
 				*/
 				using PresentationInfo = VkPresentInfoKHR;
 
 				/**
-				@brief Specifies a command buffer submission batch
-
-				@details 
-				<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a> 
-
 				@ingroup APISpec_Command_Buffers
+				@brief Specifies a command buffer submission batch
+				@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a> 
 				*/
 				using SubmitInfo = VkSubmitInfo;
 
@@ -131,23 +118,18 @@ namespace VaultedThermals
 				using Fence_Handle = VkFence;
 
 				/**
-				 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateInfo">Specification</a> 
-				 * 
-				 * @details
-				 * 
-				 * A queue is allocated by the family, as in each queue allocated must have their index in the family tracked.
-				 * This means that the logical device is passed a queue's create info by the family with its specified index,
-				 * queue count from that family to be associated with the logical device, and the family's priority.
-				 * 
-				 * If a queue family is to be used for a specific task (transfer, etc), it is advantageous that that queue family 
-				 * have as little flags for other functionality as possible.
-				 * 
-				 * @ingroup APISpec_Devices_and_Queues
-				 */
+				@ingroup APISpec_Devices_and_Queues
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateInfo">Specification</a> 
+				@details A queue is allocated by the family, as in each queue allocated must have their index in the family tracked.
+				This means that the logical device is passed a queue's create info by the family with its specified index,
+				queue count from that family to be associated with the logical device, and the family's priority.
+				If a queue family is to be used for a specific task (transfer, etc), it is advantageous that that queue family 
+				have as little flags for other functionality as possible.
+				*/
 				struct CreateInfo : V0::VKStruct_Base<VkDeviceQueueCreateInfo, EStructureType::DeviceQueue_CreateInfo>
 				{
-					      EType       SType           ;
-					const void*       Next            ;
+					      EType       SType            = STypeEnum       ;
+					const void*       Next             = nullptr         ;
 					      CreateFlags Flags           ;
 					      uint32      QueueFamilyIndex;
 					      uint32      QueueCount      ;
@@ -245,8 +227,8 @@ namespace VaultedThermals
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a> @ingroup APISpec_Devices_and_Queues */
 				using CreateFlags = Bitmask<EDeviceQueueCreateFlag ,VkDeviceQueueCreateFlags>;
 
-				      EType       SType           ;
-				const void*       Next            ;
+				      EType       SType            = STypeEnum;
+				const void*       Next             = nullptr  ;
 				      CreateFlags Flags           ;
 				      uint32      QueueFamilyIndex;
 				      uint32      QueueIndex      ;
@@ -276,10 +258,10 @@ namespace VaultedThermals
 			*/
 			struct GroupCreateInfo : V0::VKStruct_Base<VkDeviceGroupDeviceCreateInfo, EStructureType::Device_GroupDevice_CreateInfo>
 			{
-				      EType   SType              ;
-				const void*   Next               ;
-				      uint32  PhysicalDeviceCount;
-				const Handle* PhysicalDevices    ;
+				      EType   SType               = STypeEnum;
+				const void*   Next                = nullptr  ;
+				      uint32  PhysicalDeviceCount = 0        ;
+				const Handle* PhysicalDevices     = nullptr  ;
 			};
 
 			/**
@@ -290,9 +272,9 @@ namespace VaultedThermals
 			*/
 			struct MemoryOverallocationCreateInfo : V0::VKStruct_Base<VkDeviceMemoryOverallocationCreateInfoAMD, EStructureType::DeviceMemory_Overallocation_CreateInfo_AMD>
 			{
-				      EType                            SType                 ;
-				const void*                            Next                  ;
-				      EMemoryOverallocationBehaviorAMD OverallocationBehavior;
+				      EType                            SType                  = STypeEnum                                ;
+				const void*                            Next                   = nullptr                                  ;
+				      EMemoryOverallocationBehaviorAMD OverallocationBehavior = EMemoryOverallocationBehaviorAMD::Default;
 			};
 
 			/**
@@ -305,8 +287,8 @@ namespace VaultedThermals
 			*/
 			struct PrivateDataCreateInfo : V0::VKStruct_Base<VkDevicePrivateDataCreateInfoEXT, EStructureType::Device_PrivateData_CreateInfo_EXT>
 			{
-				      EType  SType                      ;
-				const void*  Next                       ;
+				      EType  SType                       = STypeEnum;
+				const void*  Next                        = nullptr  ;
 				      uint32 PrivateDataSlotRequestCount;
 			};
 
@@ -317,16 +299,16 @@ namespace VaultedThermals
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkDeviceCreateInfo, EStructureType::Device_CreateInfo>
 			{
-				      EType                     SType                ;
-				const void*                     Next                 ;
+				      EType                     SType                 = STypeEnum;
+				const void*                     Next                  = nullptr  ;
 				      CreateFlags               Flags                ;
-				      uint32                    QueueCreateInfoCount ;
-				const Queue::CreateInfo*        QueueCreateInfos     ;
-				      uint32                    EnabledLayerCount    ;
-					  RoArray_of_RoCStr         EnabledLayerNames    ;
-				      uint32                    EnabledExtensionCount;
-					  RoArray_of_RoCStr         EnabledExtensionNames;
-				const PhysicalDevice::Features* EnabledFeatures      ;
+				      uint32                    QueueCreateInfoCount  = 0        ;
+				const Queue::CreateInfo*        QueueCreateInfos      = nullptr  ;
+				      uint32                    EnabledLayerCount     = 0        ;
+					  RoArray_of_RoCStr         EnabledLayerNames     = nullptr  ;
+				      uint32                    EnabledExtensionCount = 0        ;
+					  RoArray_of_RoCStr         EnabledExtensionNames = nullptr  ;
+				const PhysicalDevice::Features* EnabledFeatures       = nullptr  ;
 			};
 
 			/**
@@ -440,91 +422,6 @@ namespace VaultedThermals
 			using Parent = V1::LogicalDevice;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct DiagnosticsConfigCreateInfo : public Parent::DiagnosticsConfigCreateInfo
-			{
-				DiagnosticsConfigCreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Queue : public Parent::Queue
-			{
-				struct CreateInfo : public Parent::Queue::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Queue2 : public Parent::Queue2
-			{
-				Queue2()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct GroupCreateInfo : public Parent::GroupCreateInfo
-			{
-				GroupCreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct MemoryOverallocationCreateInfo : public Parent::MemoryOverallocationCreateInfo
-			{
-				MemoryOverallocationCreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.	
-			*/
-			struct PrivateDataCreateInfo : public Parent::PrivateDataCreateInfo
-			{
-				PrivateDataCreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/** @brief Offers a default constructor. */
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
 			 * @brief A logical device is created as a connection to a physical device. (Uses default allocator)
 			 * 
 			 * \param _physicalDevice
@@ -583,15 +480,16 @@ namespace VaultedThermals
 
 				Queue() { assignment = EQueueFlag::VT_SpecifyBitmaskable; }
 
+				Queue(EQueueFlag _type, const LogicalDevice& _device, uint32 _familyIndex, uint32 _queueIndex) :
+					assignment(_type), device(&_device), familyIndex(_familyIndex), queueIndex(_queueIndex)
+				{}
+
 				void Assign(const LogicalDevice& _logicalDevice, uint32 _familyIndex, uint32 _queueIndex, EQueueFlag _type)
 				{
-					device = &_logicalDevice;
-
-					familyIndex = _familyIndex;
-
-					queueIndex = _queueIndex;
-
-					assignment = _type;
+					device      = &_logicalDevice;
+					familyIndex = _familyIndex   ;
+					queueIndex  = _queueIndex    ;
+					assignment  = _type          ;
 				}
 
 				uint32 GetFamilyIndex() const
@@ -670,13 +568,30 @@ namespace VaultedThermals
 				uint32 queueIndex;
 			};
 
-			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice)
+			/*LogicalDevice() : handle(Null<Handle>), physicalDevice(nullptr), allocator(Memory::DefaultAllocator)
+			{}
+
+			LogicalDevice(const PhysicalDevice& _physicalDevice) : handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(Memory::DefaultAllocator)
+			{}
+
+			LogicalDevice(const PhysicalDevice& _physicalDevice, const Memory::AllocationCallbacks& _allocator) : 
+				handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(&_allocator) 
+			{}
+
+			~LogicalDevice()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
+			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice) 
 			{
 				physicalDevice = &_physicalDevice;
 			}
 
 			EResult Create(CreateInfo& _createInfo)
 			{
+				if (physicalDevice == nullptr) return EResult::Not_Ready;
+
 				allocator = Memory::DefaultAllocator;
 
 				return Parent::Create(*physicalDevice, _createInfo, handle);
@@ -684,6 +599,8 @@ namespace VaultedThermals
 
 			EResult Create(CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
+				if (physicalDevice == nullptr) return EResult::Not_Ready;
+
 				allocator = &_allocator;
 
 				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
@@ -708,6 +625,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(handle, allocator);
+
+				handle    = Null<Handle>;
+				allocator = nullptr     ;
 			}
 
 			const Handle& GetHandle() const
@@ -766,8 +686,6 @@ namespace VaultedThermals
 		protected:
 
 			Handle handle;
-
-			Deque<void*> nextChain;
 
 			const PhysicalDevice* physicalDevice;
 

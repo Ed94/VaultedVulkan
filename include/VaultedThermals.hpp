@@ -89,8 +89,8 @@ Features that would be nice to have:
 
 
 
-#include "VaultedThermals/VT_APISpecGroups.hpp"
 #include "VaultedThermals/VT_Vaults.hpp"
+#include "VaultedThermals/VT_APISpecGroups.hpp"
 #include "VaultedThermals/VT_Platform.hpp"
 #include "VaultedThermals/VT_CPP_STL.hpp"
 #include "VaultedThermals/VT_Enums.hpp"

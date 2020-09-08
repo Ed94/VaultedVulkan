@@ -2319,64 +2319,7 @@ namespace VaultedThermals
 			Vertex   = VK_VERTEX_INPUT_RATE_VERTEX,
 			Instance = VK_VERTEX_INPUT_RATE_INSTANCE
 		};
-		
-
-
-		// Bitmask attribute specification
-
-		
     }
 
 	/** @} */
 }
-
-//SpecifyBitmaskable(VT::Corridors::EUndefined                        );
-//SpecifyBitmaskable(VT::Corridors::EAccessFlag                       );
-//SpecifyBitmaskable(VT::Corridors::EAttachmentDescriptionFlag        );
-//SpecifyBitmaskable(VT::Corridors::EBufferCreateFlag                 );
-//SpecifyBitmaskable(VT::Corridors::EBufferUsage                      );
-//SpecifyBitmaskable(VT::Corridors::EColorComponentFlag               );
-//SpecifyBitmaskable(VT::Corridors::ECommandBufferResetFlag           );
-//SpecifyBitmaskable(VT::Corridors::ECommandBufferUsageFlag           );
-//SpecifyBitmaskable(VT::Corridors::ECommandPoolCreateFlag            );
-//SpecifyBitmaskable(VT::Corridors::ECommandPoolResetFlags            );
-//SpecifyBitmaskable(VT::Corridors::ECompositeAlpha                   );
-//SpecifyBitmaskable(VT::Corridors::ECullModeFlag                     );
-//SpecifyBitmaskable(VT::Corridors::EDebugUtils_MessageSeverity       );
-//SpecifyBitmaskable(VT::Corridors::EDebugUtils_MessageType           );
-//SpecifyBitmaskable(VT::Corridors::EDependencyFlag                   );
-//SpecifyBitmaskable(VT::Corridors::EDescriptorBindingFlag            );
-//SpecifyBitmaskable(VT::Corridors::EDescriptorPoolCreateFlag         );
-//SpecifyBitmaskable(VT::Corridors::EDescriptorSetLayoutCreateFlag    );
-//SpecifyBitmaskable(VT::Corridors::EDeviceQueueCreateFlag            );
-//SpecifyBitmaskable(VT::Corridors::EDeviceDiagnosticConfigFlag       );
-//SpecifyBitmaskable(VT::Corridors::EExternalFenceHandleTypeFlag      );
-//SpecifyBitmaskable(VT::Corridors::EExternalSemaphoreHandleTypeFlag  );
-//SpecifyBitmaskable(VT::Corridors::EFenceCreateFlag                  );
-//SpecifyBitmaskable(VT::Corridors::EFenceImportFlag                  );
-//SpecifyBitmaskable(VT::Corridors::EFormatFeatureFlag                );
-//SpecifyBitmaskable(VT::Corridors::EFrameBufferCreateFlag            );
-//SpecifyBitmaskable(VT::Corridors::EImageAspect                      );
-//SpecifyBitmaskable(VT::Corridors::EImageCreateFlag                  );
-//SpecifyBitmaskable(VT::Corridors::EImageUsage                       );
-//SpecifyBitmaskable(VT::Corridors::EImageViewCreateFlag              );
-//SpecifyBitmaskable(VT::Corridors::ELogicalDeviceQueueCreateFlag     );
-//SpecifyBitmaskable(VT::Corridors::EMemoryHeapFlag                   );
-//SpecifyBitmaskable(VT::Corridors::EMemoryPropertyFlag               );
-//SpecifyBitmaskable(VT::Corridors::EPerformanceCounterDescriptionFlag);
-//SpecifyBitmaskable(VT::Corridors::EPipelineCacheCreateFlag          );
-//SpecifyBitmaskable(VT::Corridors::EPipelineCreateFlag               );
-//SpecifyBitmaskable(VT::Corridors::EPipelineShaderStageCreateFlag    );
-//SpecifyBitmaskable(VT::Corridors::EPipelineStageFlag                );
-//SpecifyBitmaskable(VT::Corridors::EQueryControlFlags                );
-//SpecifyBitmaskable(VT::Corridors::EQueueFlag                        );
-//SpecifyBitmaskable(VT::Corridors::EQueryPipelineStatisticFlag       );
-//SpecifyBitmaskable(VT::Corridors::EResolveModeFlags                 );
-//SpecifyBitmaskable(VT::Corridors::ESampleCount                      );
-//SpecifyBitmaskable(VT::Corridors::ESamplerCreateFlag                );
-//SpecifyBitmaskable(VT::Corridors::ESemaphoreImportFlag              );
-//SpecifyBitmaskable(VT::Corridors::ESemaphoreWaitFlag                );
-//SpecifyBitmaskable(VT::Corridors::EShaderStageFlag                  );
-//SpecifyBitmaskable(VT::Corridors::ESubpassDescriptionFlag           );
-//SpecifyBitmaskable(VT::Corridors::ESurfaceTransformFlag             );
-//SpecifyBitmaskable(VT::Corridors::ESwapchainCreateFlag              );

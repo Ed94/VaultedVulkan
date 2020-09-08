@@ -15,7 +15,6 @@
 
 
 // VT
-
 #include "VT_Vaults.hpp"
 #include "VT_APISpecGroups.hpp"
 #include "VT_Platform.hpp"
@@ -1162,7 +1161,13 @@ namespace VaultedThermals
 				device(&_device), handle(_handle), info(_info)
 			{}*/
 
-			void Assign(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle)
+			void Assign(const LogicalDevice& _device, Handle& _handle)
+			{
+				device = &_device;
+				handle = _handle ;
+			}
+
+			void Assign(const LogicalDevice& _device, const AllocateInfo& _info, Handle& _handle)
 			{
 				device = &_device ;
 				info   = _info    ;
@@ -1549,6 +1554,21 @@ namespace VaultedThermals
 				if (handle != Null<Handle>) Destroy();
 			}*/
 
+			EResult Allocate(CommandBuffer& _buffer)
+			{
+				CommandBuffer::Handle bufferHandle;
+
+				AllocateInfo info; info.Pool = handle;
+
+				EResult returnCode = Parent::Allocate(*device, info, &bufferHandle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				_buffer.Assign(*device, bufferHandle);
+
+				return returnCode;
+			}
+
 			EResult Allocate(AllocateInfo& _info, CommandBuffer& _buffer)
 			{
 				CommandBuffer::Handle bufferHandle;
@@ -1562,14 +1582,14 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
-			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _handles)
+			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _buffers)
 			{
-				EResult returnCode = Parent::Allocate(*device, _info, _handles);
+				EResult returnCode = Parent::Allocate(*device, _info, _buffers);
 
 				return returnCode;
 			}
 
-			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _handles)
+			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _buffers)
 			{
 				AllocateInfo allocInfo; 
 
@@ -1577,7 +1597,7 @@ namespace VaultedThermals
 				allocInfo.Pool        = handle;
 				allocInfo.BufferCount = _count;
 
-				EResult returnCode = Parent::Allocate(*device, allocInfo, _handles);
+				EResult returnCode = Parent::Allocate(*device, allocInfo, _buffers);
 
 				return returnCode;
 			}

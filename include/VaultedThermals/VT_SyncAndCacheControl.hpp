@@ -94,8 +94,8 @@ namespace VaultedThermals
 			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkFenceGetFdInfoKHR, EStructureType::Fence_Get_FD_Info_KHR>
 			{
-				      EType                   SType     ;
-				const void*                   Next      ;
+				      EType                   SType      = STypeEnum;
+				const void*                   Next       = nullptr  ;
 				      Handle                  Fence     ;
 					  EExternalHandleTypeFlag HandleType;
 			};
@@ -107,8 +107,8 @@ namespace VaultedThermals
 			 */
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportFenceFdInfoKHR, EStructureType::ImportFence_FD_Info_KHR>
 			{
-				      EType                   SType         ;
-				const void*                   Next          ;
+				      EType                   SType          = STypeEnum;
+				const void*                   Next           = nullptr  ;
 				      Handle                  Fence         ;
 				      FenceImportFlags        Flags         ;
 					  EExternalHandleTypeFlag HandleType    ;
@@ -169,8 +169,8 @@ namespace VaultedThermals
 			*/
 			struct ExportableOS_HandleInfo : V0::VKStruct_Base<VkExportFenceWin32HandleInfoKHR, EStructureType::ExportFence_Win32Handle_Info_KHR>
 			{
-				      EType                SType       ;
-				const void*                Next        ;
+				      EType                SType        = STypeEnum;
+				const void*                Next         = nullptr  ;
 				const SECURITY_ATTRIBUTES* Attributes  ;
 				      DWORD                AccessRights;
 					  LPCWSTR              Name        ;
@@ -183,8 +183,8 @@ namespace VaultedThermals
 			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkFenceGetWin32HandleInfoKHR, EStructureType::Fence_GetWin32Handle_Info_KHR>
 			{
-				      EType                   SType     ;
-				const void*                   Next      ;
+				      EType                   SType      = STypeEnum;
+				const void*                   Next       = nullptr  ;
 				      Handle                  Fence     ;
 					  EExternalHandleTypeFlag HandleType;
 			};
@@ -199,8 +199,8 @@ namespace VaultedThermals
 			 */
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportFenceWin32HandleInfoKHR, EStructureType::ImportFence_Win32Handle_Info_KHR>
 			{
-				      EType                   SType     ;
-				const void*                   Next      ;
+				      EType                   SType      = STypeEnum;
+				const void*                   Next       = nullptr  ;
 				      Handle                  Fence     ;
 					  FenceImportFlags        Flags     ;
 					  EExternalHandleTypeFlag HandleType;
@@ -258,8 +258,8 @@ namespace VaultedThermals
 			*/
 			struct ExportableOS_HandleInfo : V0::VKStruct_Base<DummyBase, EStructureType::Max_Enum>
 			{
-				      EType SType;
-				const void* Next ;
+				      EType SType = STypeEnum;
+				const void* Next  = nullptr  ;
 			};
 
 			/** 
@@ -269,8 +269,8 @@ namespace VaultedThermals
 			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkSemaphoreGetFdInfoKHR, EStructureType::Semaphore_Get_FD_Info_KHR>
 			{
-				      EType               SType     ;
-				const void*               Next      ;
+				      EType               SType      = STypeEnum;
+				const void*               Next       = nullptr  ;
 				      Handle              Semaphore ;
 				      EExternalHandleType HandleType;
 			};
@@ -282,8 +282,8 @@ namespace VaultedThermals
 			*/
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportSemaphoreFdInfoKHR, EStructureType::ImportSemaphore_FD_Info_KHR>
 			{
-				      EType               SType     ;
-				const void*               Next      ;
+				      EType               SType      = STypeEnum;
+				const void*               Next       = nullptr  ;
 				      Handle              Semaphore ;
 				      ImportFlags         Flags     ;
 				      EExternalHandleType HandleType;
@@ -341,9 +341,9 @@ namespace VaultedThermals
 			*/
 			struct ExportableOS_HandleInfo : V0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
 			{
-					  EType                SType       ;
-				const void*                Next        ;
-				const SECURITY_ATTRIBUTES* Attributes  ;
+					  EType                SType        = STypeEnum;
+				const void*                Next         = nullptr  ;
+				const SECURITY_ATTRIBUTES* Attributes   = nullptr  ;
 					  DWORD                AccessRights;
 					  LPCWSTR              Name        ;
 			};
@@ -355,8 +355,8 @@ namespace VaultedThermals
 			*/
 			struct GetOS_HandleInfo : V0::VKStruct_Base<VkSemaphoreGetWin32HandleInfoKHR, EStructureType::Semaphore_GetWin32Handle_Info_KHR>
 			{
-				      EType               SType     ;
-				const void*               Next      ;
+				      EType               SType      = STypeEnum;
+				const void*               Next       = nullptr  ;
 				      Handle              Semaphore ;
 				      EExternalHandleType HandleType;
 			};
@@ -368,8 +368,8 @@ namespace VaultedThermals
 			*/
 			struct ImportOS_HandleInfo : V0::VKStruct_Base<VkImportSemaphoreWin32HandleInfoKHR, EStructureType::ImportSemaphore_Win32Handle_Info_KHR>
 			{
-				      EType               SType     ;
-				const void*               Next      ;
+				      EType               SType      = STypeEnum;
+				const void*               Next       = nullptr  ;
 				      Handle              Semaphore ;
 				      ImportFlags         Flags     ;
 				      EExternalHandleType HandleType;
@@ -445,8 +445,8 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEventCreateInfo">Specification</a> @ingroup  APISpec_Synchronization_and_Cache_Control */
 			struct CreateInfo : V0::VKStruct_Base<VkEventCreateInfo, EStructureType::Event_CreateInfo>
 			{
-				      EType       SType;
-				const void*       Next ;
+				      EType       SType = STypeEnum;
+				const void*       Next  = nullptr  ;
 				      CreateFlags Flags;
 			};
 
@@ -568,8 +568,8 @@ namespace VaultedThermals
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkFenceCreateInfo, EStructureType::Fence_CreateInfo>
 			{
-				      EType       SType;
-				const void*       Next ;
+				      EType       SType = STypeEnum;
+				const void*       Next  = nullptr  ;
 				      CreateFlags Flags;
 			};
 
@@ -578,8 +578,8 @@ namespace VaultedThermals
 			*/
 			struct DeviceEventInfo : V0::VKStruct_Base<VkDeviceEventInfoEXT, EStructureType::Device_EventInfo_EXT>
 			{
-				      EType            SType      ;
-				const void*            Next       ;
+				      EType            SType       = STypeEnum;
+				const void*            Next        = nullptr  ;
 				      EDeviceEventType DeviceEvent;
 			};
 
@@ -588,8 +588,8 @@ namespace VaultedThermals
 			*/
 			struct DisplayEventInfo : V0::VKStruct_Base<VkDisplayEventInfoEXT, EStructureType::Display_EventInfo_EXT>
 			{
-				      EType             SType       ;
-				const void*             Next        ;
+				      EType             SType        = STypeEnum;
+				const void*             Next         = nullptr  ;
 				      EDisplayEventType DisplayEvent;
 			};
 
@@ -598,8 +598,8 @@ namespace VaultedThermals
 			 */
 			struct ExportCreateInfo : V0::VKStruct_Base<VkExportFenceCreateInfo, EStructureType::ExportFence_CreateInfo>
 			{
-				      EType               SType      ;
-				const void*               Next       ;
+				      EType               SType       = STypeEnum;
+				const void*               Next        = nullptr  ;
 				      ExternalHandleFlags HandleTypes;
 			};
 
@@ -776,8 +776,8 @@ namespace VaultedThermals
 			{
 				using CreateFlags = Bitmask<EUndefined, VkSemaphoreCreateFlags>;
 
-				      EType       SType;
-				const void*       Next ;
+				      EType       SType = STypeEnum;
+				const void*       Next  = nullptr  ;
 				      CreateFlags Flags;
 			};
 
@@ -786,16 +786,16 @@ namespace VaultedThermals
 			 */
 			struct ExportCreateInfo : V0::VKStruct_Base<VkExportSemaphoreCreateInfo, EStructureType::Export_Semaphore_CreateInfo_KHR>
 			{
-				      EType                   SType      ;
-				const void*                   Next       ;
+				      EType                   SType       = STypeEnum;
+				const void*                   Next        = nullptr  ;
 				      ExternalHandleTypeFlags HandleTypes;				
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			struct SignalInfo : V0::VKStruct_Base<VkSemaphoreSignalInfo, EStructureType::Semaphore_SignalInfo>
 			{
-				      EType  SType    ;
-				const void*  Next     ;
+				      EType  SType     = STypeEnum;
+				const void*  Next      = nullptr  ;
 				      Handle Semaphore;
 				      uInt64 Value    ;
 			};
@@ -803,8 +803,8 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			struct TypeSpecifiedCreateInfo : V0::VKStruct_Base<VkSemaphoreTypeCreateInfo, EStructureType::SemaphoreType_CreateInfo>
 			{
-				      EType  SType        ;
-				const void*  Next         ;
+				      EType  SType         = STypeEnum;
+				const void*  Next          = nullptr  ;
 				      Handle SemaphoreType;
 				      uInt64 InitialValue ;
 			};
@@ -812,12 +812,12 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			struct WaitInfo : V0::VKStruct_Base<VkSemaphoreWaitInfo, EStructureType::Semaphore_WaitInfo>
 			{
-				      EType     SType         ;
-				const void*     Next          ;
+				      EType     SType          = STypeEnum;
+				const void*     Next           = nullptr  ;
 				      WaitFlags Flags         ;
 				      uint32    SemaphoreCount;
-				const Handle*   Semaphores    ;
-				const uInt64*   Values        ;
+				const Handle*   Semaphores     = nullptr  ;
+				const uInt64*   Values         = nullptr  ;
 			};
 
 			/**
@@ -941,18 +941,6 @@ namespace VaultedThermals
 			using Parent = V1::Event;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
 			 * @brief Create an event (Default Allocator).
 			 * 
 			 * \param _device
@@ -992,90 +980,6 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Fence;
 			
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct DeviceEventInfo : Parent::DeviceEventInfo
-			{
-				DeviceEventInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct DisplayEventInfo : Parent::DisplayEventInfo
-			{
-				DisplayEventInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ExportableOS_HandleInfo : Parent::ExportableOS_HandleInfo
-			{
-				ExportableOS_HandleInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct GetOS_HandleInfo : Parent::GetOS_HandleInfo
-			{
-				GetOS_HandleInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ImportOS_HandleInfo : Parent::ImportOS_HandleInfo
-			{
-				ImportOS_HandleInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ExportCreateInfo : Parent::ExportCreateInfo
-			{
-				ExportCreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
 			/**
 			 * @brief Create a fence (Default Allocator).
 			 * 
@@ -1166,102 +1070,6 @@ namespace VaultedThermals
 			using Parent = V1::Semaphore;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ExportCreateInfo : Parent::ExportCreateInfo
-			{
-				ExportCreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ExportableOS_HandleInfo : Parent::ExportableOS_HandleInfo
-			{
-				ExportableOS_HandleInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct GetOS_HandleInfo : Parent::GetOS_HandleInfo
-			{
-				GetOS_HandleInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct ImportOS_HandleInfo : Parent::ImportOS_HandleInfo
-			{
-				ImportOS_HandleInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct SignalInfo : Parent::SignalInfo
-			{
-				SignalInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct TypeSpecifiedCreateInfo : Parent::TypeSpecifiedCreateInfo
-			{
-				TypeSpecifiedCreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct WaitInfo : Parent::WaitInfo
-			{
-				WaitInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
 			@brief Create a semaphore (Default Allocator).
 			*/
 			static EResult Create
@@ -1306,7 +1114,28 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Event;
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			/*Event() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			Event(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Event(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~Event()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, handle);
+			}
+
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
 				allocator = Memory::DefaultAllocator;
@@ -1314,7 +1143,7 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
 				allocator = &_allocator;

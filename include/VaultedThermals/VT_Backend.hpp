@@ -210,6 +210,9 @@ namespace VaultedThermals
 
 			Bitmask() : mask(0) {}
 
+			Bitmask(Representation _mask) : mask(_mask)
+			{}
+
 			template<typename... BitTypes>
 			Bitmask(const BitTypes... _bits) : mask(0)
 			{

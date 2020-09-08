@@ -85,6 +85,11 @@ namespace VaultedThermals
 				uInt8 Minor   ;
 				uInt8 Subminor;
 				uInt8 Patch   ;
+
+				bool operator==(const ConformanceVersion _other) 
+				{ return Major == _other.Major && Minor == _other.Minor && Subminor == _other.Subminor && Patch == _other.Patch ? true : false; }
+				bool operator!=(const ConformanceVersion _other) 
+				{ return Major != _other.Major && Minor != _other.Minor && Subminor != _other.Subminor && Patch != _other.Patch ? true : false; }
 			};
 
 			/**
@@ -166,8 +171,8 @@ namespace VaultedThermals
 			{
 				using DeviceListing = Handle[MaxDeviceGroupSize];
 
-				EType         SType              ;
-				void*         Next               ;
+				EType         SType               = STypeEnum;
+				void*         Next                = nullptr  ;
 				uint32        PhysicalDeviceCount;
 				DeviceListing PhysicalDevices    ;
 				Bool          SubsetAllocation   ;
@@ -312,8 +317,8 @@ namespace VaultedThermals
 			*/
 			struct PerformanceCounter : V0::VKStruct_Base<VkPerformanceCounterKHR, EStructureType::PerformacneCounter_KHR>
 			{
-				      EType                      SType      ;
-				const void*                      Next       ;
+				      EType                      SType       = STypeEnum;
+				const void*                      Next        = nullptr  ;
 				      EPerformanceCounterUnit    Unit       ;
 				      EPerformanceCounterScope   Scope      ;
 				      EPerformanceCounterStorage Storage    ;
@@ -330,8 +335,8 @@ namespace VaultedThermals
 				*/
 				struct Description : V0::VKStruct_Base<VkPerformanceCounterDescriptionKHR>
 				{
-					      EType            SType      ;
-					const void*            Next       ;
+					      EType            SType       = STypeEnum;
+					const void*            Next        = nullptr  ;
 					      DescriptionFlags Flags      ;
 					      DescrptionStr    Name       ;
 					      DescrptionStr    Category   ;
@@ -390,8 +395,8 @@ namespace VaultedThermals
 				*/
 				struct DeviceID : V0::VKStruct_Base<VkPhysicalDeviceIDProperties >
 				{
-					EType  SType          ;
-					void*  Next           ;
+					EType  SType           = STypeEnum;
+					void*  Next            = nullptr  ;
 					UUID   DeviceUUID     ;
 					UUID   DriverUUID     ;
 					UUID   DeviceLUID     ;
@@ -410,8 +415,8 @@ namespace VaultedThermals
 				*/
 				struct PCIBusInfo : V0::VKStruct_Base<VkPhysicalDevicePCIBusInfoPropertiesEXT, EStructureType::PhysicalDevice_PCI_BUS_Info_Properties_EXT>
 				{
-					EType  SType   ;
-					void*  Next    ;
+					EType  SType    = STypeEnum;
+					void*  Next     = nullptr  ;
 					uint32 Domain  ;
 					uint32 Bus     ;
 					uint32 Device  ;
@@ -431,8 +436,8 @@ namespace VaultedThermals
 				{
 					using ShaderStageFlags = Bitmask<EShaderStageFlag, VkShaderStageFlags>;
 
-					EType                  SType                            ;
-					void*                  Next                             ;
+					EType                  SType                             = STypeEnum;
+					void*                  Next                              = nullptr  ;
 					UUID                   DeviceUUID                       ;
 					UUID                   DriverUUID                       ;
 					UUID                   DeviceLUID                       ;
@@ -461,8 +466,8 @@ namespace VaultedThermals
 				*/
 				struct Vulkan12 : V0::VKStruct_Base<VkPhysicalDeviceVulkan12Properties, EStructureType::PhysicalDevice_Vulkan_1_2_Properties>
 				{
-					EType                           SType                                               ;
-					void*                           Next                                                ;
+					EType                           SType                                               = STypeEnum;
+					void*                           Next                                                = nullptr  ;
 					EDriverID                       DriverID                                            ;
 					DriverNameStr                   DriverName                                          ;
 					DriverInfoStr                   DriverInfo                                          ;
@@ -528,8 +533,8 @@ namespace VaultedThermals
 			 */
 			struct Properties2 : V0::VKStruct_Base<VkPhysicalDeviceProperties2, EStructureType::PhysicalDevice_Properties_2>
 			{
-				EType      SType     ;
-				void*      Next      ;
+				EType      SType      = STypeEnum;
+				void*      Next       = nullptr  ;
 				Properties Properties;
 			};
 
@@ -566,8 +571,8 @@ namespace VaultedThermals
 			*/
 			struct QueueFamilyProperties2 : V0::VKStruct_Base<VkQueueFamilyProperties2, EStructureType::QueueFamily_Properties_2>
 			{
-				EType                 SType     ;
-				void*                 Next      ;
+				EType                 SType      = STypeEnum;
+				void*                 Next       = nullptr  ;
 				QueueFamilyProperties Properties;
 
 				/**
@@ -583,8 +588,8 @@ namespace VaultedThermals
 				{
 					using Pipeline_StageFlags = Bitmask<EPipelineStageFlag, VkPipelineStageFlags>;   ///< Not defined yet. (See VT_Pipelines.hpp)
 
-					EType               SType                       ;
-					void*               Next                        ;
+					EType               SType                        = STypeEnum;
+					void*               Next                         = nullptr  ;
 					Pipeline_StageFlags CheckpointExecutionStageMask;
 				};
 			};
@@ -765,122 +770,6 @@ namespace VaultedThermals
 		struct PhysicalDevice : V1::PhysicalDevice
 		{
 			using Parent = V1::PhysicalDevice;
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Group : public Parent::Group
-			{
-				Group()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct PerformanceCounter : public Parent::PerformanceCounter
-			{
-				PerformanceCounter()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct Description : public Parent::PerformanceCounter::Description
-				{
-					Description()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Properties : public Parent::Properties
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct DeviceID : public Parent::Properties::DeviceID
-				{
-					DeviceID()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct PCIBusInfo : public Parent::Properties::PCIBusInfo
-				{
-					PCIBusInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/** @brief Offers a default constructor.  */
-				struct Vulkan11 : public Parent::Properties::Vulkan11
-				{
-					Vulkan11()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/** @brief Offers a default constructor.  */
-				struct Vulkan12 : public Parent::Properties::Vulkan12
-				{
-					Vulkan12()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			/** @brief Offers a default constructor. */
-			struct Properties2 : public Parent::Properties2
-			{
-				Properties2()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/** @brief Offers a default constructor. */
-			struct QueueFamilyProperties2 : public Parent::QueueFamilyProperties2
-			{
-				QueueFamilyProperties2()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-
-				/** @brief Offers a default constructor. */
-				struct Checkpoint : public Parent::QueueFamilyProperties2::Checkpoint
-				{
-					Checkpoint()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
 
 			/**
 			* @brief Checks to see if the specified extensions are supported by the physical device.
@@ -1100,9 +989,16 @@ namespace VaultedThermals
 
 			using Parent = V2::PhysicalDevice;
 			
-			PhysicalDevice()
+			PhysicalDevice() : handle(Null<Handle>)
+			{}
+
+			PhysicalDevice(Handle _handle) : handle(_handle)
 			{
-				handle = Null<Handle>;
+				Parent::GetFeatures        (handle, features        );
+				Parent::GetMemoryProperties(handle, memoryProperties);
+				Parent::GetProperties      (handle, properties      );
+				Parent::GetProperties      (handle, properties      );
+				Parent::GetProperties2     (handle, properties2     );
 			}
 
 			void AssignHandle(Handle _handle) 

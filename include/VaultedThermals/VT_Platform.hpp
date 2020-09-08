@@ -140,63 +140,51 @@ namespace VaultedThermals
 		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;
 
 		/** @} */
+
+		template<typename FunctionType, FunctionType*>
+		struct CallEnforcer_CallMaker;
+
+		/**
+		@brief Generates a wrapped call to the function passed to it.
+		*/
+		template
+			<
+			typename    ReturnType    ,
+			typename... ParameterTypes,
+
+			ReturnType(*FunctionPtr)(ParameterTypes...)
+			>
+			struct CallEnforcer_CallMaker<ReturnType(ParameterTypes...), FunctionPtr>
+		{
+			static VKAPI_ATTR ReturnType VKAPI_CALL Call(ParameterTypes... _parameters)
+			{
+				return FunctionPtr(std::forward<ParameterTypes>(_parameters)...);
+			}
+		};
+
+		template<typename FunctionType, FunctionType& _functionRef>
+		auto GetVulkanAPI_Call()
+		{
+			return &(CallEnforcer_CallMaker<FunctionType, &_functionRef>::Call);
+		}
+
+		/**
+		@brief Used to wrap a function with the vulkan calling convention specifiers.
+		Used for vulkan messaging callbacks.
+
+		@details
+		This is the only intended macro to be used by the user of this library.
+		If the user wishes to avoid using this ease of use macro, the actual function call can be made:
+
+		Enforced_Call<decltype(Function), Function>()
+		*/
+		#define EnforceVulkanCallingConvention(_FUNCTION) \
+		GetVulkanAPI_Call<decltype(_FUNCTION), _FUNCTION>()
 	}
 
 	namespace Corridors
 	{
-		using V0::OS_Platform;
+		using V0::GetVulkanAPI_Call;
+		using V0::OS_Platform      ;
 	}
-
-
-/**
-@addtogroup Vault_0
-@{
-*/
-
-	/**
-	I decided to make a hardcoded calling convention enforcer here just for the library. There used to be this fancy macro thing here...
-	Naturally it did not play well with other compilers...
-	*/
-
-	template<typename FunctionType, FunctionType*>
-	struct CallEnforcer_CallMaker;
-
-	/**
-	@brief Generates a wrapped call to the function passed to it.
-	*/
-	template
-	<
-		typename    ReturnType    ,
-		typename... ParameterTypes,
-
-		ReturnType(*FunctionPtr)(ParameterTypes...)
-	>
-	struct CallEnforcer_CallMaker<ReturnType(ParameterTypes...), FunctionPtr>
-	{
-		static VKAPI_ATTR ReturnType VKAPI_CALL Call(ParameterTypes... _parameters)
-		{
-			return FunctionPtr(std::forward<ParameterTypes>(_parameters)...);
-		}
-	};
-
-	template<typename FunctionType, FunctionType& _functionRef>
-	auto GetVulkanAPI_Call()
-	{
-		return &(CallEnforcer_CallMaker<FunctionType, &_functionRef>::Call);
-	}
-
-	/**
-	@brief Used to wrap a function with the vulkan calling convention specifiers.
-	Used for vulkan messaging callbacks.
-
-	@details
-	This is the only intended macro to be used by the user of this library.
-	If the user wishes to avoid using this ease of use macro, the actual function call can be made:
-
-	Enforced_Call<decltype(Function), Function>()
-	*/
-	#define EnforceVulkanCallingConvention(_FUNCTION) \
-	GetVulkanAPI_Call<decltype(_FUNCTION), _FUNCTION>()
-
-	/** @} */
 }

@@ -167,32 +167,6 @@ namespace VaultedThermals
 			using Parent = V1::Memory;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct AllocateInfo : public Parent::AllocateInfo
-			{
-				AllocateInfo() 
-				{ 
-					SType           = STypeEnum; 
-					Next            = nullptr  ;
-					AllocationSize  = 0        ;
-					MemoryTypeIndex = 0        ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Barrier : public Parent::Barrier
-			{
-				Barrier() 
-				{ 
-					SType = STypeEnum; 
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
 			* @brief Allocate memory objects using the default allocator.
 			* 
 			* \param _device
@@ -273,7 +247,28 @@ namespace VaultedThermals
 
 			using Parent = V2::Memory;
 
-			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo)
+			/*Memory() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			Memory(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Memory(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~Memory()
+			{
+				if (handle != Null<Handle>) Free();
+			}*/
+
+			EResult Allocate(const AllocateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Allocate(*device, _info, handle);
+			}
+
+			EResult Allocate(const LogicalDevice& _device, const AllocateInfo& _allocateInfo)
 			{
 				device    = &_device                ;
 				allocator = Memory::DefaultAllocator;
@@ -281,7 +276,7 @@ namespace VaultedThermals
 				return Parent::Allocate(*device, _allocateInfo, handle);
 			}
 
-			EResult Allocate(const LogicalDevice& _device, AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks& _allocator)
+			EResult Allocate(const LogicalDevice& _device, const AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
 				allocator = &_allocator;

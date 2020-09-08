@@ -103,8 +103,8 @@ namespace VaultedThermals
 			*/
 			struct AllocateInfo : V0::VKStruct_Base<VkMemoryAllocateInfo, EStructureType::MemoryAllocateInfo>
 			{
-				      EType      SType          ;
-				const void*      Next           ;
+				      EType      SType           = STypeEnum;
+				const void*      Next            = nullptr  ;
 				      DeviceSize AllocationSize ;
 				      uint32     MemoryTypeIndex;
 			};
@@ -144,8 +144,8 @@ namespace VaultedThermals
 			 */
 			struct Barrier : V0::VKStruct_Base<VkMemoryBarrier, EStructureType::Memory_Barrier>
 			{
-				      EType       SType        ;
-				const void*       Next         ;
+				      EType       SType         = STypeEnum;
+				const void*       Next          = nullptr  ;
 				      AccessFlags SrcAccessMask;
 				      AccessFlags DstAccessMask;
 			};

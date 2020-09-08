@@ -52,25 +52,22 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@brief Vulkan's boolean type.
-
-		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBool32">Specification</a> 
-
 		@ingroup APISpec_Fundamentals
+		@brief Vulkan's boolean type.
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBool32">Specification</a> 
 		*/
 		using Bool = VkBool32;
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
+		/** @ingroup APISpec_Fundamentals @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a>  */
 		using DeviceAddress = VkDeviceAddress;
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceSize.html">Specification</a>  */
+		/** @ingroup APISpec_Fundamentals @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceSize">Specification</a>  */
 		using DeviceSize = VkDeviceSize;
 
 		/**
+		* @ingroup APISpec_Fundamentals
 		* @brief Can be used to facilitate iterating through a read-only structure pointer chain.
-		* 
-		* @details
-		* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseInStructure.html">Specification</a> 
+		* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBaseInStructure">Specification</a> 
 		*/
 		struct Base_InStructure : V0::VKStruct_Base<VkBaseInStructure>
 		{
@@ -79,10 +76,9 @@ namespace VaultedThermals
 		};
 
 		/**
+		* @ingroup APISpec_Fundamentals
 		* @brief Can be used to facilitate iterating through a structure pointer chain that returns data back to the application.
-		* 
-		* @details
-		* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBaseOutStructure.html">Specification</a> 
+		* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBaseOutStructure">Specification</a> 
 		*/
 		struct Base_OutStructure : V0::VKStruct_Base<VkBaseOutStructure>
 		{
@@ -91,16 +87,13 @@ namespace VaultedThermals
 		};
 
 		/** 
-		@struct Offset2D
-
+		@ingroup APISpec_Fundamentals
 		@brief Structure specifying a two-dimensional offset.
 
 		@details
 		Offsets are used to describe a pixel location within an image or framebuffer, 
 		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
-
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets">Offsets Specification</a>
-		@link 
 		*/
 		struct Offset2D : V0::VKStruct_Base<VkOffset2D>
 		{
@@ -111,14 +104,11 @@ namespace VaultedThermals
 		};
 
 		/** 
-		@struct Offset3D
-
+		@ingroup APISpec_Fundamentals
 		@brief Structure specifying a three-dimensional offset.
-
 		@details
 		Offsets are used to describe a pixel location within an image or framebuffer, 
 		as an (x,y) location for two-dimensional images, or an (x,y,z) location for three-dimensional images.
-
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_offsets">Offsets Specification</a>
 		*/
 		struct Offset3D : V0::VKStruct_Base<VkOffset3D>
@@ -130,14 +120,11 @@ namespace VaultedThermals
 		};
 
 		/** 
-		@struct Extent2D
-
+		@ingroup APISpec_Fundamentals
 		@brief Structure specifying a two-dimensional extent.
-
 		@details
 		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
 		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
-
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent2D.html">Extent-2D Specification</a>
 		*/
 		struct Extent2D : V0::VKStruct_Base<VkExtent2D>
@@ -149,15 +136,11 @@ namespace VaultedThermals
 		};
 
 		/** 
-		@struct Extent3D
-
+		@ingroup APISpec_Fundamentals
 		@brief Structure specifying a three-dimensional extent.
-
 		@details
 		Extents are used to describe the size of a rectangular region of pixels within an image or framebuffer, 
 		as (width,height) for two-dimensional images, or as (width,height,depth) for three-dimensional images.
-
-		@link 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExtent3D.html">Extent-3D Specification</a>
 		*/
 		struct Extent3D : V0::VKStruct_Base<VkExtent3D>
@@ -169,13 +152,12 @@ namespace VaultedThermals
 		};
 
 		/** 
+		@ingroup APISpec_Fundamentals
 		@brief Structure specifying a two-dimensional subregion.
-
 		@details
 		Rectangles are used to describe a specified rectangular region of pixels within an image or framebuffer. 
 		Rectangles include both an offset and an extent of the same dimensionality, as described above. 
-
-		@link https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_rectangles
+		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_rectangles">Specification</a> 
 		*/
 		struct Rect2D : V0::VKStruct_Base<VkRect2D>
 		{
@@ -224,44 +206,45 @@ namespace VaultedThermals
 		*/
 
 		/**
-		 * @brief Used to represent bitmasks for Vulkan flag types.
-		 * 
-		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFlags">Specification</a> 
-		 */
+		@ingroup APISpec_Fundamentals
+		@brief Used to represent bitmasks for Vulkan flag types.
+		 
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFlags">Specification</a> 
+		*/
 		using Flags = VkFlags;
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
+		 * @ingroup APISpec_Synchronization_and_Cache_Control @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
 		 */
 		using AccessFlags = Bitmask<EAccessFlag, VkAccessFlags>;
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorComponentFlags">Specification</a>
+		 * @ingroup APISpec_The_Framebuffer @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorComponentFlags">Specification</a>
 		 */
 		using ColorComponentFlags = Bitmask<EColorComponentFlag, VkColorComponentFlags>;
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
+		 * @ingroup APISpec_Synchronization_and_Cache_Control @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
 		 */
 		using DependencyFlags = Bitmask<EDependencyFlag, VkDependencyFlags>;
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlags">Specification</a> 
+		 * @ingroup APISpec_Synchronization_and_Cache_Control @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlags">Specification</a> 
 		 */
 		using FenceImportFlags = Bitmask<EFenceImportFlag, VkFenceImportFlags>;
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlags">Specification</a> 
+		 * @ingroup APISpec_Formats @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlags">Specification</a> 
 		 */
 		using FormatFeatureFlags = Bitmask<EFormatFeatureFlag, VkFormatFeatureFlags>;
 
 		/**
-		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResolveModeFlags">Specification</a>
+		 * @ingroup APISpec_Render_Pass @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResolveModeFlags">Specification</a>
 		 */
 		using ResolveModeFlags = Bitmask<EResolveModeFlags, VkResolveModeFlags>;
 
 		/**
-		* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleCountFlags">Specification</a> 
+		* @ingroup APISpec_Limits @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleCountFlags">Specification</a> 
 		*/
 		using SampleCountFlags = Bitmask<ESampleCount, VkSampleCountFlags>;
 
@@ -286,6 +269,7 @@ namespace VaultedThermals
 		using VK_FPtr = ReturnType(VKAPI_PTR*)(ParameterTypes...);
 
 		/** 
+		@ingroup APISpec_Initialization
 		@brief Equivalent to VK_FPtr<void, void>.
 
 		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkVoidFunction">Specification</a> 
@@ -298,10 +282,10 @@ namespace VaultedThermals
 
 		// Misc
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearValue">Specification</a>  */
+		/** @ingroup APISpec_Clear_Commands @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearValue">Specification</a>  */
 		struct ClearValue
 		{
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearColorValue">Specification</a>  */
+			/** @ingroup APISpec_Clear_Commands @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearColorValue">Specification</a>  */
 			union UColor
 			{
 				float32 InFloat[4];
@@ -309,7 +293,7 @@ namespace VaultedThermals
 				uint32  InUInt [4];
 			};
 
-			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearDepthStencilValue">Specification</a>  */
+			/** @ingroup APISpec_Clear_Commands @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearDepthStencilValue">Specification</a>  */
 			struct UDepthStencil
 			{
 				float32 Depth  ;
@@ -324,6 +308,7 @@ namespace VaultedThermals
 		};
 
 		/** 
+		@ingroup APISpec_Resource_Creation
 		@brief Structure specifying a color component mapping.
 
 		@details
@@ -336,29 +321,18 @@ namespace VaultedThermals
 		*/
 		struct ComponentMapping : V0::VKStruct_Base<VkComponentMapping>
 		{
-			EComponentSwizzle R;
-			EComponentSwizzle G;
-			EComponentSwizzle B;
-			EComponentSwizzle A;
+			EComponentSwizzle R = EComponentSwizzle::R;
+			EComponentSwizzle G = EComponentSwizzle::G;
+			EComponentSwizzle B = EComponentSwizzle::B;
+			EComponentSwizzle A = EComponentSwizzle::A;
 
 			bool operator==(const ComponentMapping& _other) { return R == _other.R && G == _other.G && B == _other.B && A == _other.A ? true : false; }
 			bool operator!=(const ComponentMapping& _other) { return R != _other.R && G != _other.G && B != _other.B && A != _other.A ? true : false; }
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkConformanceVersion">Specification</a>  */
-		struct ConformanceVersion : V0::VKStruct_Base<VkConformanceVersion>
-		{
-			uInt8 Major, Minor, Subminor, Patch;
-
-			bool operator==(const ConformanceVersion _other) 
-			{ return Major == _other.Major && Minor == _other.Minor && Subminor == _other.Subminor && Patch == _other.Patch ? true : false; }
-			bool operator!=(const ConformanceVersion _other) 
-			{ return Major != _other.Major && Minor != _other.Minor && Subminor != _other.Subminor && Patch != _other.Patch ? true : false; }
-		};
-
 		/** 
-		@brief
-		Structure specifying an extension properties.
+		@ingroup APISpec_Extending_Vulkan
+		@brief Structure specifying an extension properties.
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a> 
 		*/
@@ -370,7 +344,7 @@ namespace VaultedThermals
 			// #TODO: Should offer default operator== ? (With strcmp?)
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
+		/** @ingroup APISpec_Formats @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
 		struct FormatProperties : V0::VKStruct_Base<VkFormatProperties>
 		{
 			FormatFeatureFlags    LinearTilingFeatures ;
@@ -396,7 +370,7 @@ namespace VaultedThermals
 			}
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
+		/** @ingroup APISpec_Extending_Vulkan @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLayerProperties">Specification</a>  */
 		struct LayerProperties : V0::VKStruct_Base<VkLayerProperties>
 		{
 			ExtensionNameStr Name                 ;
@@ -405,7 +379,7 @@ namespace VaultedThermals
 			DescrptionStr    Descrption           ;
 		};
 
-		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOpState">Specification</a>  */
+		/** @ingroup APISpec_Fragment_Operations @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOpState">Specification</a>  */
 		struct StencilOperationState : V0::VKStruct_Base<VkStencilOpState>
 		{
 			EStencilOperation FailOp     ;
@@ -444,10 +418,10 @@ namespace VaultedThermals
 		};
 
 		/**
-		 * @brief Surface viewing region.
-
-		 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkViewport">Specification</a> 
-		 */
+		@ingroup APISpec_Fixed-Function_Vertex_Post-Processing
+		@brief Surface viewing region.
+		@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkViewport">Specification</a> 
+		*/
 		struct Viewport : V0::VKStruct_Base<VkViewport>
 		{
 			float32 X       , Y       ;
@@ -497,8 +471,6 @@ namespace VaultedThermals
 
 		/**
 		* @brief Currently hard coded to use STL vector for extensions.
-		* 
-		* @todo Make the extensions container a template type with enforcement for IDynamicArray.
 		*/
 		struct LayerAndExtensionProperties
 		{
