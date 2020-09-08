@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V1.html">V1</a>::<wbr/></span>Swapchain <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>A queue of images that can be presented to a surface.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -67,6 +67,7 @@
             </li>
           </ul>
         </div>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#_wsi_swapchain">Specification</a></p>
         <section id="derived-classes">
           <h2><a href="#derived-classes">Derived classes</a></h2>
           <dl class="m-doc">
@@ -82,62 +83,62 @@
             <dt>
               struct <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a></dd>
             <dt>
               struct <a href="structVT_1_1V1_1_1Swapchain_1_1PresentationInfo.html" class="m-doc">PresentationInfo</a>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a2ff7bd22008434b38139fb5232205958">
-              using <a href="#a2ff7bd22008434b38139fb5232205958" class="m-doc-self">Handle</a> = VkSwapchainKHR
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a></dd>
+            <dt>
+              using <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> = VkSwapchainKHR
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a></dd>
             <dt id="a466e96d0f0ec51adcfd6867c299e2062">
               using <a href="#a466e96d0f0ec51adcfd6867c299e2062" class="m-doc-self">ECreateFlag</a> = <a href="group__APISpec__Window__System__Integration__WSI.html#ga88a860418fcfcaae97dfa8a5af4afb5c" class="m-doc">ESwapchainCreateFlag</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a01fcbc8d22735abb5d6780ea34f7f336">
-              using <a href="#a01fcbc8d22735abb5d6780ea34f7f336" class="m-doc-self">CreateFlags</a> = <a href="structVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__APISpec__Window__System__Integration__WSI.html#ga88a860418fcfcaae97dfa8a5af4afb5c" class="m-doc">ECreateFlag</a>, VkSwapchainCreateFlagsKHR&gt;
+            <dt>
+              using <a href="group__APISpec__Window__System__Integration__WSI.html#ga01fcbc8d22735abb5d6780ea34f7f336" class="m-doc">CreateFlags</a> = <a href="structVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__APISpec__Window__System__Integration__WSI.html#ga88a860418fcfcaae97dfa8a5af4afb5c" class="m-doc">ECreateFlag</a>, VkSwapchainCreateFlagsKHR&gt;
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a></dd>
           </dl>
         </section>
         <section id="pub-static-methods">
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
-            <dt id="a6e328f199f331121c923ca49b3a89d35">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a6e328f199f331121c923ca49b3a89d35" class="m-doc-self">AcquireNextImage</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapchain,
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga6e328f199f331121c923ca49b3a89d35" class="m-doc">AcquireNextImage</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapchain,
               <a href="group__Corridors.html#ga99afca8daad59df55c5258e67e4db0c7" class="m-doc">uInt64</a> _timeout,
               Semaphore::Handle _semaphore,
               Fence::Handle _fence,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _imageIndex) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a718f434a87c18b4b3833b6c2d5c2b2fc">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a718f434a87c18b4b3833b6c2d5c2b2fc" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+            <dd>Acquire an available presentable image to use, and retrieve the index of that image.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga718f434a87c18b4b3833b6c2d5c2b2fc" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a>&amp; _swapChain) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a>&amp; _swapChain) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a7d8edd9acedc746a0c3e003119d905a7">
-              <span class="m-doc-wrap-bumper">static void <a href="#a7d8edd9acedc746a0c3e003119d905a7" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChainToDestroy,
+            <dd>Create a swapchain.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Window__System__Integration__WSI.html#ga7d8edd9acedc746a0c3e003119d905a7" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChainToDestroy,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a8002faadde8558281669e9440f3d0d39">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a8002faadde8558281669e9440f3d0d39" class="m-doc-self">GetStatus</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapchain) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dd>Destroy a swapchain object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga8002faadde8558281669e9440f3d0d39" class="m-doc">GetStatus</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapchain) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a2a4bae58389f3e9be309bd3f8692a7bc">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a2a4bae58389f3e9be309bd3f8692a7bc" class="m-doc-self">QueryImages</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChain,
+            <dd>Query a swapchains status when rendering to a shared presentable image.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga2a4bae58389f3e9be309bd3f8692a7bc" class="m-doc">QueryImages</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChain,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numImages,
               <a href="group__APISpec__Resource__Creation.html#ga274108ac188cab9c25c90deb9a46be8c" class="m-doc">Image::<wbr />Handle</a>* _imagesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Obtain the array of presentable images associated with a swapchain.</dd>
           </dl>
         </section>
       </div>

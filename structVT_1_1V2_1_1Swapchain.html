@@ -74,7 +74,7 @@
             <dt>
               struct <a href="structVT_1_1V1_1_1Swapchain.html" class="m-doc">VT::V1::Swapchain</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>A queue of images that can be presented to a surface.</dd>
           </dl>
         </section>
         <section id="derived-classes">
@@ -92,11 +92,11 @@
             <dt>
               struct <a href="structVT_1_1V2_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt>
               struct <a href="structVT_1_1V2_1_1Swapchain_1_1PresentationInfo.html" class="m-doc">PresentationInfo</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Offers a default constructor.</dd>
             <dt id="ad481502c96e84696c03b3a318a4615f2">
               using <a href="#ad481502c96e84696c03b3a318a4615f2" class="m-doc-self">Parent</a> = <a href="structVT_1_1V1_1_1Swapchain.html" class="m-doc">V1::<wbr />Swapchain</a>
             </dt>
@@ -109,20 +109,20 @@
             <dt id="a5e61e00c4cf8b2c092b31b3c3d3fa6c0">
               <span class="m-doc-wrap-bumper">static auto <a href="#a5e61e00c4cf8b2c092b31b3c3d3fa6c0" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
               const <a href="structVT_1_1V2_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a>&amp; _swapChain) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a>&amp; _swapChain) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a swapchain (Default Allocator).</dd>
             <dt id="aaf1190687c294d4ec9fefb7ad7a389bc">
               <span class="m-doc-wrap-bumper">static void <a href="#aaf1190687c294d4ec9fefb7ad7a389bc" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChainToDestroy)</span>
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChainToDestroy)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy a swapchain (Default Allocator).</dd>
             <dt id="a16d74dd4e873af868ed3229fcbfad2ae">
               <span class="m-doc-wrap-bumper">static auto <a href="#a16d74dd4e873af868ed3229fcbfad2ae" class="m-doc-self">GetImages</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
-              <a href="structVT_1_1V1_1_1Swapchain.html#a2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChain,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> _swapChain,
               <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Resource__Creation.html#ga274108ac188cab9c25c90deb9a46be8c" class="m-doc">Image::<wbr />Handle</a>&gt;* _images) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides all presentable images with the swapchain.</dd>
           </dl>
         </section>
       </div>

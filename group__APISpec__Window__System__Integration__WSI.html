@@ -86,6 +86,18 @@
               struct <a href="structVT_1_1V1_1_1Surface.html" class="m-doc">VT::V1::Surface</a>
             </dt>
             <dd>Native platform surface or window objects are abstracted by surface objects.</dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">VT::V1::Swapchain::CreateInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Swapchain_1_1PresentationInfo.html" class="m-doc">VT::V1::Swapchain::PresentationInfo</a>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentInfoKHR">Specification</a></dd>
+            <dt>
+              struct <a href="structVT_1_1V1_1_1Swapchain.html" class="m-doc">VT::V1::Swapchain</a>
+            </dt>
+            <dd>A queue of images that can be presented to a surface.</dd>
           </dl>
         </section>
         <section id="enum-members">
@@ -167,6 +179,14 @@
               using <a href="#ga10f99dd8b77e3178cafc81c53465ae49" class="m-doc">CompositeAlphaFlags</a> = Bitmask&lt;ECompositeAlpha, VkCompositeAlphaFlagsKHR&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagsKHR">Specification</a></dd>
+            <dt>
+              using <a href="#ga2ff7bd22008434b38139fb5232205958" class="m-doc">Handle</a> = VkSwapchainKHR
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a></dd>
+            <dt>
+              using <a href="#ga01fcbc8d22735abb5d6780ea34f7f336" class="m-doc">CreateFlags</a> = Bitmask&lt;ECreateFlag, VkSwapchainCreateFlagsKHR&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a></dd>
           </dl>
         </section>
         <section id="func-members">
@@ -217,6 +237,40 @@
               EPresentationMode* _presentationModesContainer) -&gt; EResult</span>
             </dt>
             <dd>Query supported presentation modes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga6e328f199f331121c923ca49b3a89d35" class="m-doc">AcquireNextImage</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _swapchain,
+              uInt64 _timeout,
+              Semaphore::Handle _semaphore,
+              Fence::Handle _fence,
+              uint32&amp; _imageIndex) -&gt; EResult</span>
+            </dt>
+            <dd>Acquire an available presentable image to use, and retrieve the index of that image.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga718f434a87c18b4b3833b6c2d5c2b2fc" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _swapChain) -&gt; EResult</span>
+            </dt>
+            <dd>Create a swapchain.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#ga7d8edd9acedc746a0c3e003119d905a7" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _swapChainToDestroy,
+              const Memory::AllocationCallbacks* _allocator)</span>
+            </dt>
+            <dd>Destroy a swapchain object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga8002faadde8558281669e9440f3d0d39" class="m-doc">GetStatus</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _swapchain) -&gt; EResult</span>
+            </dt>
+            <dd>Query a swapchains status when rendering to a shared presentable image.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga2a4bae58389f3e9be309bd3f8692a7bc" class="m-doc">QueryImages</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _swapChain,
+              uint32&amp; _numImages,
+              Image::Handle* _imagesContainer) -&gt; EResult</span>
+            </dt>
+            <dd>Obtain the array of presentable images associated with a swapchain.</dd>
           </dl>
         </section>
         <section>
@@ -287,6 +341,20 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Surface_8hpp.html">&lt;VaultedThermals/VT_Surface.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagsKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga2ff7bd22008434b38139fb5232205958"><div>
+            <h3>
+              using <a href="#ga2ff7bd22008434b38139fb5232205958" class="m-doc-self">Handle</a> = VkSwapchainKHR
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga01fcbc8d22735abb5d6780ea34f7f336"><div>
+            <h3>
+              using <a href="#ga01fcbc8d22735abb5d6780ea34f7f336" class="m-doc-self">CreateFlags</a> = Bitmask&lt;ECreateFlag, VkSwapchainCreateFlagsKHR&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagsKHR">Specification</a></p>
           </div></section>
         </section>
         <section>
@@ -508,6 +576,60 @@
               </tbody>
             </table>
 <p>If pPresentModes is NULL, then the number of presentation modes supported for the given surface is returned in pPresentModeCount. Otherwise, pPresentModeCount must point to a variable set by the user to the number of elements in the pPresentModes array, and on return the variable is overwritten with the number of values actually written to pPresentModes.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfacePresentModesKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga6e328f199f331121c923ca49b3a89d35"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6e328f199f331121c923ca49b3a89d35" class="m-doc-self">AcquireNextImage</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _swapchain,
+              uInt64 _timeout,
+              Semaphore::Handle _semaphore,
+              Fence::Handle _fence,
+              uint32&amp; _imageIndex)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
+            </h3>
+            <p>Acquire an available presentable image to use, and retrieve the index of that image.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkAcquireNextImageKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga718f434a87c18b4b3833b6c2d5c2b2fc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga718f434a87c18b4b3833b6c2d5c2b2fc" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _info,
+              const Memory::AllocationCallbacks* _allocator,
+              Handle&amp; _swapChain)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
+            </h3>
+            <p>Create a swapchain.</p>
+<p>If the oldSwapchain parameter of pCreateInfo is a valid swapchain, which has exclusive full-screen access, that access is released from oldSwapchain. If the command succeeds in this case, the newly created swapchain will automatically acquire exclusive full-screen access from oldSwapchain. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSwapchainKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga7d8edd9acedc746a0c3e003119d905a7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7d8edd9acedc746a0c3e003119d905a7" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _swapChainToDestroy,
+              const Memory::AllocationCallbacks* _allocator)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
+            </h3>
+            <p>Destroy a swapchain object.</p>
+<p>The application must not destroy a swapchain until after completion of all outstanding operations on images that were acquired from the swapchain. swapchain and all associated VkImage handles are destroyed, and must not be acquired or used any more by the application. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySwapchainKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8002faadde8558281669e9440f3d0d39"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8002faadde8558281669e9440f3d0d39" class="m-doc-self">GetStatus</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              Handle _swapchain)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
+            </h3>
+            <p>Query a swapchains status when rendering to a shared presentable image.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainStatusKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga2a4bae58389f3e9be309bd3f8692a7bc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2a4bae58389f3e9be309bd3f8692a7bc" class="m-doc-self">QueryImages</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              Handle _swapChain,
+              uint32&amp; _numImages,
+              Image::Handle* _imagesContainer)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SwapChain_8hpp.html">&lt;VaultedThermals/VT_SwapChain.hpp&gt;</a></div>
+            </h3>
+            <p>Obtain the array of presentable images associated with a swapchain.</p>
+<p>If pSwapchainImages is NULL, then the number of presentable images for swapchain is returned in pSwapchainImageCount. Otherwise, pSwapchainImageCount must point to a variable set by the user to the number of elements in the pSwapchainImages array, and on return the variable is overwritten with the number of structures actually written to pSwapchainImages.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainImagesKHR">Specification</a></p>
           </div></section>
         </section>
       </div>
