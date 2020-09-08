@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::V2::Fence::DeviceEventInfo struct | VaultedThermals</title>
+  <title>VT::V0::CallEnforcer_CallMaker&lt;ReturnType(ParameterTypes...), FunctionPtr&gt; struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -50,36 +50,27 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V2.html">V2</a>::<wbr/></span><span class="m-breadcrumb"><a href="structVT_1_1V2_1_1Fence.html">Fence</a>::<wbr/></span>DeviceEventInfo <span class="m-thin">struct</span>
-          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Platform_8hpp.html">&lt;VaultedThermals/VT_Platform.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;typename ReturnType, typename... ParameterTypes, ReturnType(*)(ParameterTypes...) FunctionPtr&gt;</div>
+          <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V0.html">V0</a>::<wbr/></span>CallEnforcer_CallMaker&lt;ReturnType(ParameterTypes...), FunctionPtr&gt; <span class="m-thin">struct</span>
         </h1>
-        <p>Offers a default constructor.</p>
+        <p>Generates a wrapped call to the function passed to it.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
-                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
-            <dt>
-              struct <a href="structVT_1_1V1_1_1Fence_1_1DeviceEventInfo.html" class="m-doc">VT::V1::Fence::DeviceEventInfo</a>
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventInfoEXT">Specification</a></dd>
-          </dl>
-        </section>
-        <section id="typeless-methods">
-          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
-          <dl class="m-doc">
-            <dt id="a2d878cbab0a0aa2c0a0146e545a265f1">
-              <span class="m-doc-wrap-bumper"><a href="#a2d878cbab0a0aa2c0a0146e545a265f1" class="m-doc-self">DeviceEventInfo</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="ac1be21ec4b0a4d281ee754637d0e7dc3">
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac1be21ec4b0a4d281ee754637d0e7dc3" class="m-doc-self">Call</a>(</span><span class="m-doc-wrap">ParameterTypes... _parameters) -&gt; VKAPI_ATTR ReturnType VKAPI_CALL</span>
             </dt>
             <dd><span></span></dd>
           </dl>

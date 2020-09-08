@@ -60,7 +60,6 @@
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
@@ -69,20 +68,11 @@
             </li>
           </ul>
         </div>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              struct <a href="structVT_1_1V2_1_1LogicalDevice_1_1Queue.html" class="m-doc">VT::V2::LogicalDevice::Queue</a>
-            </dt>
-            <dd>Offers a default constructor.</dd>
-          </dl>
-        </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
             <dt id="aeacdd20128a18d115d752d078afa0ce0">
-              using <a href="#aeacdd20128a18d115d752d078afa0ce0" class="m-doc-self">Parent</a> = <a href="structVT_1_1V1_1_1LogicalDevice_1_1Queue.html" class="m-doc">Parent::<wbr />Queue</a>
+              using <a href="#aeacdd20128a18d115d752d078afa0ce0" class="m-doc-self">Parent</a> = Parent::Queue
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -92,6 +82,13 @@
           <dl class="m-doc">
             <dt id="a00d3b53187eea74023f38b60e21609b9">
               <span class="m-doc-wrap-bumper"><a href="#a00d3b53187eea74023f38b60e21609b9" class="m-doc-self">Queue</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a80953fd8452b54985a1c93e1b2a475b8">
+              <span class="m-doc-wrap-bumper"><a href="#a80953fd8452b54985a1c93e1b2a475b8" class="m-doc-self">Queue</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga4eb36b9291c4b1535dac7792dadf1311" class="m-doc">EQueueFlag</a> _type,
+              const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _familyIndex,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueIndex)</span>
             </dt>
             <dd><span></span></dd>
             <dt id="a63c8712c22a3fe640a2643ce42aa51e8">
@@ -119,7 +116,7 @@
             </dt>
             <dd><span></span></dd>
             <dt id="acafcf36683f00f785353fbbe69f60acd">
-              <span class="m-doc-wrap-bumper">auto <a href="#acafcf36683f00f785353fbbe69f60acd" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">Handle</a>&amp;</span>
+              <span class="m-doc-wrap-bumper">auto <a href="#acafcf36683f00f785353fbbe69f60acd" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp;</span>
             </dt>
             <dd><span></span></dd>
             <dt id="a60761992cc4956cafaf569c2be3a5db8">
@@ -135,7 +132,7 @@
             </dt>
             <dd><span></span></dd>
             <dt id="a57ccbf27d858690bf660b0c9e9f372fe">
-              <span class="m-doc-wrap-bumper">auto <a href="#a57ccbf27d858690bf660b0c9e9f372fe" class="m-doc-self">QueuePresentation</a>(</span><span class="m-doc-wrap">const <a href="group__APISpec__Window__System__Integration__WSI.html#gafb8f2f93555a878911078874b160f133" class="m-doc">PresentationInfo</a>&amp; _presentationInfo) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a57ccbf27d858690bf660b0c9e9f372fe" class="m-doc-self">QueuePresentation</a>(</span><span class="m-doc-wrap">const PresentationInfo&amp; _presentationInfo) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt>
@@ -145,8 +142,8 @@
             <dd></dd>
             <dt id="a69020981d718b9ac71187d97a1ba2cfb">
               <span class="m-doc-wrap-bumper">auto <a href="#a69020981d718b9ac71187d97a1ba2cfb" class="m-doc-self">SubmitToQueue</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _submitCount,
-              const <a href="group__APISpec__Command__Buffers.html#ga13106f4efe079db094a20309ebf46bb7" class="m-doc">SubmitInfo</a>* _submissions,
-              <a href="structVT_1_1V1_1_1LogicalDevice_1_1Queue.html#a2aca1c6595d1a229d03db6b43fbd9ffc" class="m-doc">Fence_<wbr />Handle</a> _fence) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const SubmitInfo* _submissions,
+              Fence_Handle _fence) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd><span></span></dd>
             <dt id="a952abf8f25384d8eac0939b22754dc6e">
@@ -159,7 +156,7 @@
           <h2><a href="#pro-attribs">Protected variables</a></h2>
           <dl class="m-doc">
             <dt id="ab1a2508793e368ae6b10186e75e467a5">
-              <a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">Handle</a> <a href="#ab1a2508793e368ae6b10186e75e467a5" class="m-doc-self">handle</a>
+              <a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a> <a href="#ab1a2508793e368ae6b10186e75e467a5" class="m-doc-self">handle</a>
             </dt>
             <dd><span></span></dd>
             <dt id="ac4da0df7d458726c6c7f26f85e18c0e5">

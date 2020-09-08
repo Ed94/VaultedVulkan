@@ -89,14 +89,6 @@
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
-            <dt>
-              struct <a href="structVT_1_1V2_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>
-            </dt>
-            <dd>Offers a default constructor.</dd>
-            <dt>
-              struct <a href="structVT_1_1V2_1_1Memory_1_1Barrier.html" class="m-doc">Barrier</a>
-            </dt>
-            <dd>Offers a default constructor.</dd>
             <dt id="a52de1673891185017e8ece12b4669a30">
               using <a href="#a52de1673891185017e8ece12b4669a30" class="m-doc-self">Parent</a> = <a href="structVT_1_1V1_1_1Memory.html" class="m-doc">V1::<wbr />Memory</a>
             </dt>
@@ -108,7 +100,7 @@
           <dl class="m-doc">
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#a9bb3681c7871ec350813ecb0b9ff9393" class="m-doc">Allocate</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              const <a href="structVT_1_1V2_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
+              const <a href="structVT_1_1V0_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               <a href="structVT_1_1V1_1_1Memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a>&amp; _memory) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Allocate memory objects using the default allocator.</dd>
@@ -120,8 +112,8 @@
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#ac3505af7ec3ff446b591a4e8dc70f5b1" class="m-doc">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="structVT_1_1V1_1_1Memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory,
-              <a href="group__Common__Object__Types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
-              <a href="group__Common__Object__Types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
+              <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
+              <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
               <a href="structVT_1_1V0_1_1Memory.html#a91f3c69aac7bac662617ff8986dd4d38" class="m-doc">MapFlags</a> _flags,
               const <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data)</span>
             </dt>
@@ -133,7 +125,7 @@
           <section class="m-doc-details" id="a9bb3681c7871ec350813ecb0b9ff9393"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9bb3681c7871ec350813ecb0b9ff9393" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              const <a href="structVT_1_1V2_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
+              const <a href="structVT_1_1V0_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               <a href="structVT_1_1V1_1_1Memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a>&amp; _memory)</span></span>
             </h3>
             <p>Allocate memory objects using the default allocator.</p>
@@ -183,8 +175,8 @@
             <h3>
               <span class="m-doc-wrap-bumper">static void VT::<wbr />V2::<wbr />Memory::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3505af7ec3ff446b591a4e8dc70f5b1" class="m-doc-self">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
               <a href="structVT_1_1V1_1_1Memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a> _memory,
-              <a href="group__Common__Object__Types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
-              <a href="group__Common__Object__Types.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
+              <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
+              <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
               <a href="structVT_1_1V0_1_1Memory.html#a91f3c69aac7bac662617ff8986dd4d38" class="m-doc">MapFlags</a> _flags,
               const <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data)</span></span>
             </h3>

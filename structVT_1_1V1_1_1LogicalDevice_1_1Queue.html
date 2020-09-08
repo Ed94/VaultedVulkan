@@ -60,23 +60,13 @@
             <li>
               Reference
               <ul>
-                <li><a href="#derived-classes">Derived classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#pub-static-methods">Public static functions</a></li>
               </ul>
             </li>
           </ul>
         </div>
-<p>Vulkan queues provide an interface to the execution engines of a device. Commands for these execution engines are recorded into command buffers ahead of execution time. These command buffers are then submitted to queues with a queue submission command for execution in a number of batches. Once submitted to a queue, these commands will begin and complete execution without further application intervention, though the order of this execution is dependent on a number of implicit and explicit ordering constraints.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-queueoperation">Specification</a></p>
-        <section id="derived-classes">
-          <h2><a href="#derived-classes">Derived classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              struct <a href="structVT_1_1V2_1_1LogicalDevice_1_1Queue.html" class="m-doc">VT::V2::LogicalDevice::Queue</a>
-            </dt>
-            <dd>Offers a default constructor.</dd>
-          </dl>
-        </section>
+<p>Vulkan queues provide an interface to the execution engines of a device. Commands for these execution engines are recorded into command buffers ahead of execution time. These command buffers are then submitted to queues with a queue submission command for execution in a number of batches. Once submitted to a queue, these commands will begin and complete execution without further application intervention, though the order of this execution is dependent on a number of implicit and explicit ordering constraints. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-queueoperation">Specification</a></p>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
@@ -92,10 +82,6 @@
               using <a href="#a6604da054edc8364f7495669e6feb123" class="m-doc-self">ECreateFlag</a> = <a href="group__APISpec__Devices__and__Queues.html#ga4ae31b866a5cd4553f48c1413ed88295" class="m-doc">ELogicalDeviceQueueCreateFlag</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="ae3c3a9b132b73838f8066f02f2397092">
-              using <a href="#ae3c3a9b132b73838f8066f02f2397092" class="m-doc-self">CreateFlags</a> = <a href="structVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__APISpec__Devices__and__Queues.html#ga4ae31b866a5cd4553f48c1413ed88295" class="m-doc">ECreateFlag</a>, VkDeviceQueueCreateFlags&gt;
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a></dd>
             <dt>
               using <a href="group__APISpec__Window__System__Integration__WSI.html#gafb8f2f93555a878911078874b160f133" class="m-doc">PresentationInfo</a> = VkPresentInfoKHR
             </dt>

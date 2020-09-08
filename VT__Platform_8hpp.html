@@ -98,12 +98,12 @@
             <dd>Defines Windows specific types.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename FunctionType, FunctionType*&gt;</div>
-              struct <a href="structVT_1_1CallEnforcer__CallMaker.html" class="m-doc">VT::CallEnforcer_CallMaker</a>
+              struct <a href="structVT_1_1V0_1_1CallEnforcer__CallMaker.html" class="m-doc">VT::V0::CallEnforcer_CallMaker</a>
             </dt>
-            <dd></dd>
+            <dd><span></span></dd>
             <dt>
               <div class="m-doc-template">template&lt;typename ReturnType, typename... ParameterTypes, ReturnType(*)(ParameterTypes...) FunctionPtr&gt;</div>
-              struct <a href="structVT_1_1CallEnforcer__CallMaker_3_01ReturnType_07ParameterTypes_8_8_8_08_00_01FunctionPtr_01_4.html" class="m-doc">VT::CallEnforcer_CallMaker&lt;ReturnType(ParameterTypes...), FunctionPtr&gt;</a>
+              struct <a href="structVT_1_1V0_1_1CallEnforcer__CallMaker_3_01ReturnType_07ParameterTypes_8_8_8_08_00_01FunctionPtr_01_4.html" class="m-doc">VT::V0::CallEnforcer_CallMaker&lt;ReturnType(ParameterTypes...), FunctionPtr&gt;</a>
             </dt>
             <dd>Generates a wrapped call to the function passed to it.</dd>
           </dl>
@@ -116,7 +116,7 @@
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">#define <a href="group__Vault__0.html#gad8e454f3684aa8cd1b2634dc9b073534" class="m-doc">EnforceVulkanCallingConvention</a>(</span><span class="m-doc-wrap">_FUNCTION)</span>
+              <span class="m-doc-wrap-bumper">#define <a href="#ad8e454f3684aa8cd1b2634dc9b073534" class="m-doc">EnforceVulkanCallingConvention</a>(</span><span class="m-doc-wrap">_FUNCTION)</span>
             </dt>
             <dd>Used to wrap a function with the vulkan calling convention specifiers. Used for vulkan messaging callbacks.</dd>
           </dl>
@@ -128,6 +128,13 @@
               <span class="m-doc-wrap-bumper">#define <a href="#aaf4dcde735865d08a24f56033627897f" class="m-doc-self">VT_VULKAN_INCLUDEGUARD</a></span>
             </h3>
 <aside class="m-note m-dim"><h4><a href="todo.html#_todo000032" class="m-doc">Todo</a></h4><p>This guard is necessary to prevent redefinition errors. I am not entirely sure with pragma once specified, why this is required.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad8e454f3684aa8cd1b2634dc9b073534"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">#define <a href="#ad8e454f3684aa8cd1b2634dc9b073534" class="m-doc-self">EnforceVulkanCallingConvention</a>(</span><span class="m-doc-wrap">_FUNCTION)</span>
+            </h3>
+            <p>Used to wrap a function with the vulkan calling convention specifiers. Used for vulkan messaging callbacks.</p>
+<p>This is the only intended macro to be used by the user of this library. If the user wishes to avoid using this ease of use macro, the actual function call can be made:</p><p>Enforced_Call&lt;decltype(Function), Function&gt;()</p>
           </div></section>
         </section>
       </div>

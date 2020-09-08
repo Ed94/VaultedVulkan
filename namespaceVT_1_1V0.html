@@ -77,6 +77,16 @@
             </dt>
             <dd><span></span></dd>
             <dt>
+              <div class="m-doc-template">template&lt;typename FunctionType, FunctionType*&gt;</div>
+              struct <a href="structVT_1_1V0_1_1CallEnforcer__CallMaker.html" class="m-doc">CallEnforcer_CallMaker</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename ReturnType, typename... ParameterTypes, ReturnType(*)(ParameterTypes...) FunctionPtr&gt;</div>
+              struct <a href="structVT_1_1V0_1_1CallEnforcer__CallMaker_3_01ReturnType_07ParameterTypes_8_8_8_08_00_01FunctionPtr_01_4.html" class="m-doc">CallEnforcer_CallMaker&lt;ReturnType(ParameterTypes...), FunctionPtr&gt;</a>
+            </dt>
+            <dd>Generates a wrapped call to the function passed to it.</dd>
+            <dt>
               struct <a href="structVT_1_1V0_1_1DummyBase.html" class="m-doc">DummyBase</a>
             </dt>
             <dd>Used when creating fake VulkanAPI structures for platform abstraction uses.</dd>
@@ -210,6 +220,11 @@
               <span class="m-doc-wrap-bumper">auto <a href="#ga2679eafd9f3ef86102e76e9c18796bee" class="m-doc">Bitmaskable</a>(</span><span class="m-doc-wrap">) -&gt; std::enable_if&lt;!<a href="structVT_1_1V0_1_1IsBitmaskable.html" class="m-doc">IsBitmaskable</a>&lt;Enum&gt;::value, bool&gt;::type <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
             <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename FunctionType, FunctionType&amp; _functionRef&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3751b02b484a54490f8df8bfdf706531" class="m-doc">GetVulkanAPI_Call</a>(</span><span class="m-doc-wrap">) -&gt; auto</span>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="var-members">
@@ -230,6 +245,16 @@
                 template&lt;typename Enum&gt;
               </div>
               <span class="m-doc-wrap-bumper">std::enable_if&lt;!<a href="structVT_1_1V0_1_1IsBitmaskable.html" class="m-doc">IsBitmaskable</a>&lt;Enum&gt;::value, bool&gt;::type VT::<wbr />V0::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2679eafd9f3ef86102e76e9c18796bee" class="m-doc-self">Bitmaskable</a>(</span><span class="m-doc-wrap">) <span class="m-label m-primary">constexpr</span> <span class="m-label m-success">noexcept</span></span></span>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="a3751b02b484a54490f8df8bfdf706531"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Platform_8hpp.html">&lt;VaultedThermals/VT_Platform.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename FunctionType, FunctionType&amp; _functionRef&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">auto VT::<wbr />V0::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3751b02b484a54490f8df8bfdf706531" class="m-doc-self">GetVulkanAPI_Call</a>(</span><span class="m-doc-wrap">)</span></span>
             </h3>
             <p><span></span></p>
           </div></section>
