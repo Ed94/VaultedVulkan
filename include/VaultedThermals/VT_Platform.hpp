@@ -75,8 +75,8 @@ namespace VaultedThermals
 		@{
 		*/
 
-		/** @enum EOS_Platform
-			@brief Enum specifies operating system platform.
+		/**
+		@brief Enum specifies operating system platform.
 		*/
 		enum class EOS
 		{
@@ -85,9 +85,8 @@ namespace VaultedThermals
 
 		#ifdef _WIN32
 
-			/** @var OS_Platform
-
-				@brief Contains the definition of the OS_Platform. (Set to windows)
+			/**
+			@brief Contains the definition of the OS_Platform. (Set to windows)
 			 */
 			constexpr EOS OS_Platform = EOS::Windows;
 
@@ -95,8 +94,7 @@ namespace VaultedThermals
 
 		#ifdef __MACH__
 
-			/** @var OS_Platform
-
+			/**
 			@brief Contains the definition of the OS_Platform. (Set to Mac)
 			*/
 			constexpr EOS OS = EOS::Mac;
@@ -105,8 +103,7 @@ namespace VaultedThermals
 
 		#ifdef __linux__
 
-			/** @var OS_Platform
-
+			/**
 			@brief Contains the definition of the OS_Platform. (Set to Linux)
 			*/
 			constexpr EOS OS = EOS::Linux;
@@ -114,8 +111,6 @@ namespace VaultedThermals
 		#endif 
 
 		/**  
-		@struct PlatformTypes_Maker
-
 		@brief Defines maker of platform struct that defines operating system types.
 		*/
 		template<EOS>
@@ -129,8 +124,6 @@ namespace VaultedThermals
 
 
 		/** 
-		@struct PlatformTypes_Maker_WindowsImplementation
-
 		@brief Defines Windows specific types.
 		*/	
 		template<>
@@ -142,8 +135,6 @@ namespace VaultedThermals
 		};
 
 		/** 
-		 * @struct PlatformTypes
-		 * 
 		 * @brief A structure containing the types for the detected platform.
 		 */
 		using PlatformTypes = PlatformTypes_Maker<OS_Platform>;

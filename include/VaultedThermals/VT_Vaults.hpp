@@ -143,5 +143,3 @@ namespace VaultedThermals
 
 #endif
 }
-
-
