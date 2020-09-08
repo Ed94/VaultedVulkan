@@ -45,7 +45,7 @@ namespace VaultedThermals
 {
 	namespace V1
 	{
-		/*
+		/**
 		@addtogroup Vault_1
 		@{
 		*/
@@ -218,12 +218,12 @@ namespace VaultedThermals
 			}
 		};
 
-		/* @} */
+		/** @} */
 	}
 
 	namespace V2
 	{
-		/*
+		/**
 		@addtogroup Vault_2
 		@{
 		*/
@@ -315,7 +315,7 @@ namespace VaultedThermals
 
 	namespace V3
 	{
-		/*
+		/**
 		@addtogroup Vault_3
 		@{
 		*/
@@ -417,6 +417,6 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
-		/* @} */
+		/** @} */
 	}
 }

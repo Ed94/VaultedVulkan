@@ -149,10 +149,13 @@ namespace VaultedThermals
 				*/
 			};
 
-			/*
+			/**
 			@ingroup APISpec_The_Framebuffer
 
-			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#framebuffer-blending">Specification</a>
+			@brief Blending combines the incoming source fragments R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer
+			at the fragments xf,yf location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
+			
+			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#framebuffer-blending">Specification</a>
 			*/
 			struct ColorBlendState
 			{
@@ -746,7 +749,7 @@ namespace VaultedThermals
 			/**
 			@ingroup APISpec_Fixed-Function_Vertex_Post-Processing
 
-			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vertexpostproc-viewport">Specification</a> 
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vertexpostproc-viewport">Specification</a> 
 			*/
 			struct ViewportState
 			{
