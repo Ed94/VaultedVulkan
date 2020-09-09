@@ -485,7 +485,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::AppInstance;
 
-			AppInstance() : handle(Null<Handle>), allocator(Memory::DefaultAllocator)
+			/*AppInstance() : handle(Null<Handle>), allocator(Memory::DefaultAllocator)
 			{}
 
 			AppInstance(const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator)
@@ -494,7 +494,7 @@ namespace VaultedThermals
 			~AppInstance()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}
+			}*/
 
 			/**
 			 * @brief Create an application instance.

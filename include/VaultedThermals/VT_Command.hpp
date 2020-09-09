@@ -120,7 +120,7 @@ namespace VaultedThermals
 					      Bool  Enable = false    ;
 
 					bool operator== (const ConditionalRenderingInfo& _other) { return Next == _other.Next && Enable == _other.Enable ? true : false; }
-					bool operator!= (const ConditionalRenderingInfo& _other) { return Next != _other.Next && Enable != _other.Enable ? true : false; }
+					bool operator!= (const ConditionalRenderingInfo& _other) { return Next != _other.Next || Enable != _other.Enable ? true : false; }
 				};
 
 				/**
@@ -1172,6 +1172,12 @@ namespace VaultedThermals
 				device = &_device ;
 				info   = _info    ;
 				handle = _handle  ;
+			}
+
+			void Clear()
+			{
+				device = nullptr     ;
+				handle = Null<Handle>;
 			}
 
 			EResult BeginRecord(const BeginInfo& _info) const

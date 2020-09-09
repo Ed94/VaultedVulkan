@@ -89,11 +89,11 @@ namespace VaultedThermals
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateInfo">Specification</a> @ingroup APISpec_Pipelines */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineCacheCreateInfo, EStructureType::Pipeline_Cache_CreateInfo>
 				{
-					      EType       SType          ;
-					const void*       Next           ;
+					      EType       SType           = STypeEnum;
+					const void*       Next            = nullptr  ;
 					      CreateFlags Flags          ;
 					      WordSize    InitialDataSize;
-					const void*       InitialData    ;
+					const void*       InitialData     = nullptr  ;
 				};
 
 				/**
@@ -187,13 +187,13 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineColorBlendStateCreateInfo, EStructureType::Pipeline_ColorBlendState_CreateInfo>
 				{
-					      EType            SType                ;
-					const void*            Next                 ;
+					      EType            SType                 = STypeEnum;
+					const void*            Next                  = nullptr  ;
 					      CreateFlags      Flags                ;
 					      Bool             EnableLogicOperations;
 					      ELogicOperation  LogicOperation       ;
-					      uint32           AttachmentCount      ;
-					const AttachmentState* Attachments          ;
+					      uint32           AttachmentCount       = 0        ;
+					const AttachmentState* Attachments           = nullptr  ;
 					      float32          BlendConstants[4]    ;
 				};
 			};
@@ -219,8 +219,8 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineDepthStencilStateCreateInfo, EStructureType::Pipeline_DepthStencilState_CreateInfo>
 				{
-					      EType                 SType                ;
-					const void*                 Next                 ;
+					      EType                 SType                 = STypeEnum;
+					const void*                 Next                  = nullptr  ;
 					      CreateFlags           Flags                ;
 					      Bool                  DepthTestEnable      ;
 					      Bool                  DepthWriteEnable     ;
@@ -251,11 +251,11 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineDynamicStateCreateInfo, EStructureType::Pipeline_DynamicState_CreateInfo>
 				{
-					      EType          SType     ;
-					const void*          Next      ;
+					      EType          SType      = STypeEnum;
+					const void*          Next       = nullptr  ;
 					      CreateFlags    Flags     ;
-					      uint32         StateCount;
-					const EDynamicState* States    ;
+					      uint32         StateCount = 0        ;
+					const EDynamicState* States     = nullptr  ;
 				};
 			};
 
@@ -277,8 +277,8 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineInputAssemblyStateCreateInfo, EStructureType::Pipeline_InputAssemblyState_CreateInfo>
 				{
-					      EType              SType                 ;
-					const void*              Next                  ;
+					      EType              SType                  = STypeEnum;
+					const void*              Next                   = nullptr  ;
 					      CreateFlags        Flags                 ;
 					      EPrimitiveTopology Topology              ;
 					      Bool               PrimitiveRestartEnable;
@@ -355,10 +355,10 @@ namespace VaultedThermals
 						*/
 						struct FlagsCreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutBindingFlagsCreateInfo, EStructureType::Descriptor_SetLayoutBindingFlags_CreateInfo>
 						{
-							      EType       SType        ;
-							const void*        Next        ;
-							      uint32       BindingCount;
-							const CreateFlags* BindingFlags;
+							      EType        SType        = STypeEnum;
+							const void*        Next         = nullptr  ;
+							      uint32       BindingCount = 0        ;
+							const CreateFlags* BindingFlags = nullptr  ;
 						};
 					};
 
@@ -375,11 +375,11 @@ namespace VaultedThermals
 					*/
 					struct CreateInfo : V0::VKStruct_Base<VkDescriptorSetLayoutCreateInfo, EStructureType::Descriptor_SetLayout_CreateInfo>
 					{
-						      EType       SType       ;
-						const void*       Next        ;
+						      EType       SType        = STypeEnum;
+						const void*       Next         = nullptr  ;
 						      CreateFlags Flags       ;
-						      uint32      BindingCount;
-						const Binding*    Bindings    ;
+						      uint32      BindingCount = 0        ;
+						const Binding*    Bindings     = nullptr  ;
 					};
 
 					/** 
@@ -389,8 +389,8 @@ namespace VaultedThermals
 					*/
 					struct Support : V0::VKStruct_Base<VkDescriptorSetLayoutSupport, EStructureType::Descriptor_SetLayoutSupport>
 					{
-						EType SType    ;
-						void* Next     ;
+						EType SType     = STypeEnum;
+						void* Next      = nullptr  ;
 						Bool  Supported;
 
 						/** 
@@ -400,8 +400,8 @@ namespace VaultedThermals
 						*/
 						struct SetVariableCount : V0::VKStruct_Base<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
 						{
-							EType  SType           ;
-							void*  Next            ;
+							EType  SType            = STypeEnum;
+							void*  Next             = nullptr  ;
 							uint32 MaxVariableCount;
 						};
 					};
@@ -475,13 +475,13 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineLayoutCreateInfo, EStructureType::Pipeline_Layout_CreateInfo>
 				{
-					      EType                  SType                 ;
-					const void*                  Next                  ;
+					      EType                  SType                  = STypeEnum;
+					const void*                  Next                   = nullptr  ;
 					      CreateFlags            Flags                 ;
 					      uint32                 SetLayoutCount        ;
-					const DescriptorSet::Handle* SetLayouts            ;
-					      uint32                 PushConstantRangeCount;
-					const PushConstantRange*     PushConstantRanges    ;
+					const DescriptorSet::Handle* SetLayouts             = nullptr  ;
+					      uint32                 PushConstantRangeCount = 0        ;
+					const PushConstantRange*     PushConstantRanges     = nullptr  ;
 				};
 
 				/**
@@ -552,13 +552,13 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineMultisampleStateCreateInfo, EStructureType::Pipeline_MultisampleState_CreateInfo>
 				{
-					      EType        SType                ;
-					const void*        Next                 ;
+					      EType        SType                 = STypeEnum;
+					const void*        Next                  = nullptr  ;
 					      CreateFlags  Flags                ;
 					      ESampleCount RasterizationSamples ;
 					      Bool         EnableSampleShading  ;
 					      float32      MinSampleShading     ;
-					const SampleMask*  SampleMask           ;
+					const SampleMask*  SampleMask            = nullptr  ;
 					      Bool         EnableAlphaToCoverage;
 					      Bool         EnableAlphaToOne     ;
 				};
@@ -585,8 +585,8 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineRasterizationStateCreateInfo, EStructureType::Pipeline_RasterizationState_CreateInfo>
 				{
-					      EType         SType                  ;
-					const void*         Next                   ;
+					      EType         SType                   = STypeEnum;
+					const void*         Next                    = nullptr  ;
 					      CreateFlags   Flags                  ;
 					      Bool          EnableDepthClamp       ;
 					      Bool          EnableRasterizerDiscard;
@@ -631,10 +631,10 @@ namespace VaultedThermals
 				*/
 				struct Info : V0::VKStruct_Base<VkSpecializationInfo>
 				{
-					      uint32    MapEntryCount;
-					const MapEntry* MapEntires   ;
-					      WordSize  SizeOfData   ;
-					const void*     Data         ;
+					      uint32    MapEntryCount = 0      ;
+					const MapEntry* MapEntires    = nullptr;
+					      WordSize  SizeOfData    = 0      ;
+					const void*     Data          = nullptr;
 				};
 			};
 
@@ -657,13 +657,13 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineShaderStageCreateInfo , EStructureType::Pipeline_ShaderStage_CreateInfo>
 				{
-					      EType                 SType         ;
-					const void*                 Next          ;
+					      EType                 SType          = STypeEnum;
+					const void*                 Next           = nullptr  ;
 					      CreateFlags           Flags         ;
 					      EShaderStageFlag      Stage         ;
 					      ShaderModule::Handle  Module        ;
 					      RoCStr                Name          ;
-					const Specialization::Info* Specialization;
+					const Specialization::Info* Specialization = nullptr  ;
 				};
 			};
 			
@@ -692,8 +692,8 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineTessellationStateCreateInfo, EStructureType::Pipeline_TessellationState_CreateInfo>
 				{
-					      EType       SType             ;
-					const void*       Next              ;
+					      EType       SType              = STypeEnum;
+					const void*       Next               = nullptr  ;
 					      CreateFlags Flags             ;
 					      uint32      PatchControlPoints;
 				};
@@ -736,13 +736,13 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineVertexInputStateCreateInfo, EStructureType::Pipeline_VertexInputState_CreateInfo>
 				{
-					      EType                 SType                        ;
-					const void*                 Next                         ;
+					      EType                 SType                         = STypeEnum;
+					const void*                 Next                          = nullptr  ;
 					      CreateFlags           Flags                        ;
-					      uint32                VertexBindingDescriptionCount;
-					const BindingDescription*   BindingDescriptions          ;
-					      uint32                AttributeDescriptionCount    ;
-					const AttributeDescription* AttributeDescription         ;
+					      uint32                VertexBindingDescriptionCount = 0        ;
+					const BindingDescription*   BindingDescriptions           = nullptr  ;
+					      uint32                AttributeDescriptionCount     = 0        ;
+					const AttributeDescription* AttributeDescription          = nullptr  ;
 				};
 			};
 
@@ -761,13 +761,13 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineViewportStateCreateInfo, EStructureType::Pipeline_ViewportState_CreateInfo>
 				{
-					      EType       SType        ;
-					const void*       Next         ;
+					      EType       SType         = STypeEnum;
+					const void*       Next          = nullptr  ;
 					      CreateFlags Flags        ;
-					      uint32      ViewportCount;
-					const Viewport*   Viewports    ;
-					      uint32      ScissorCount ;
-					const Rect2D*     Scissors     ;
+					      uint32      ViewportCount = 0        ;
+					const Viewport*   Viewports     = nullptr  ;
+					      uint32      ScissorCount  = 0        ;
+					const Rect2D*     Scissors      = nullptr  ;
 				};
 			};
 
@@ -793,8 +793,8 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkComputePipelineCreateInfo, EStructureType::ComputePipeline_CreateInfo>
 				{
-					      EType                   SType             ;
-					const void*                   Next              ;
+					      EType                   SType              = STypeEnum;
+					const void*                   Next               = nullptr  ;
 					      CreateFlags             Flags             ;
 					      ShaderStage::CreateInfo ShaderStage       ;
 					      Layout::Handle          Layout            ;
@@ -855,20 +855,20 @@ namespace VaultedThermals
 				{
 					using RenderPass_Handle = VkRenderPass;   // RenderPass::Handle not defined yet. (Defined in VT_RenderPass.hpp)
 
-					      EType                           SType             ;
-					const void*                           Next              ;
+					      EType                           SType              = STypeEnum;
+					const void*                           Next               = nullptr  ;
 					      CreateFlags                     Flags             ;
-					      uint32                          StageCount        ;
-					const ShaderStage::CreateInfo*        Stages            ;
-					const VertexInputState::CreateInfo*   VertexInputState  ;
-					const InputAssemblyState::CreateInfo* InputAssemblyState;
-					const TessellationState::CreateInfo*  TessellationState ;
-					const ViewportState::CreateInfo*      ViewportState     ;
-					const RasterizationState::CreateInfo* RasterizationState;
-					const MultiSampleState::CreateInfo*   MultisampleState  ;
-					const DepthStencilState::CreateInfo*  DepthStencilState ;
-					const ColorBlendState::CreateInfo*    ColorBlendState   ;
-					const DynamicState::CreateInfo*       DynamicState      ;
+					      uint32                          StageCount         = 0        ;
+					const ShaderStage::CreateInfo*        Stages             = nullptr  ;
+					const VertexInputState::CreateInfo*   VertexInputState   = nullptr  ;
+					const InputAssemblyState::CreateInfo* InputAssemblyState = nullptr  ;
+					const TessellationState::CreateInfo*  TessellationState  = nullptr  ;
+					const ViewportState::CreateInfo*      ViewportState      = nullptr  ;
+					const RasterizationState::CreateInfo* RasterizationState = nullptr  ;
+					const MultiSampleState::CreateInfo*   MultisampleState   = nullptr  ;
+					const DepthStencilState::CreateInfo*  DepthStencilState  = nullptr  ;
+					const ColorBlendState::CreateInfo*    ColorBlendState    = nullptr  ;
+					const DynamicState::CreateInfo*       DynamicState       = nullptr  ;
 					      Pipeline::Layout::Handle        Layout            ;
 					      RenderPass_Handle               RenderPass        ;
 					      uint32                          Subpass           ;
@@ -897,12 +897,12 @@ namespace VaultedThermals
 					*/
 					struct CreateInfo : V0::VKStruct_Base<VkGraphicsShaderGroupCreateInfoNV, EStructureType::GraphicsShaderGroup_CreateInfo_NV>
 					{
-						      EType                          SType            ;
-						const void*                          Next             ;
-						      uint32                         StageCount       ;
-						const ShaderStage::CreateInfo*       Stages           ;
-						const VertexInputState::CreateInfo*  VertexInputState ;
-						const TessellationState::CreateInfo* TessellationState;
+						      EType                          SType             = STypeEnum;
+						const void*                          Next              = nullptr  ;
+						      uint32                         StageCount        = 0        ;
+						const ShaderStage::CreateInfo*       Stages            = nullptr  ;
+						const VertexInputState::CreateInfo*  VertexInputState  = nullptr  ;
+						const TessellationState::CreateInfo* TessellationState = nullptr  ;
 					};
 
 					/** 
@@ -911,12 +911,12 @@ namespace VaultedThermals
 					*/
 					struct MultipleCreateInfo : V0::VKStruct_Base<VkGraphicsPipelineShaderGroupsCreateInfoNV, EStructureType::GraphicsPipeline_ShaderGroups_CreateInfo_NV>
 					{
-						      EType             SType;
-						const void*             Next;
-						      uint32            GroupCount;
-						const CreateInfo*       Groups;
-						      uint32            PipelineCount;
-						const Pipeline::Handle* Pipelines;
+						      EType             SType         = STypeEnum;
+						const void*             Next          = nullptr  ;
+						      uint32            GroupCount    = 0        ;
+						const CreateInfo*       Groups        = nullptr  ;
+						      uint32            PipelineCount = 0        ;
+						const Pipeline::Handle* Pipelines     = nullptr  ;
 					};
 				};
 
@@ -987,18 +987,6 @@ namespace VaultedThermals
 				using Parent = Parent::Cache;
 
 				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::Cache::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/**
 				* @brief Create a pipeline cache (Uses the default allocator).
 				* 
 				* \param _deviceHandle
@@ -1034,73 +1022,6 @@ namespace VaultedThermals
 				using Parent::Destroy;
 			};
 
-			/**
-			@brief Blending combines the incoming source fragments R, G, B, and A values with the destination R, G, B, and A values of each sample stored in the framebuffer 
-			at the fragments xf,yf location. Blending is performed for each color sample covered by the fragment, rather than just once for each fragment.
-			*/
-			struct ColorBlendState : public Parent::ColorBlendState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::ColorBlendState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			struct DepthStencilState : public Parent::DepthStencilState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::DepthStencilState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-						
-						MinDepthBounds = 0;
-						MaxDepthBounds = 0;
-					}
-				};
-			};
-			
-			struct DynamicState : public Parent::DynamicState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::DynamicState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			struct InputAssemblyState : public Parent::InputAssemblyState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::InputAssemblyState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
 			struct Layout : public Parent::Layout
 			{
 				using Parent = Parent::Layout;
@@ -1108,57 +1029,6 @@ namespace VaultedThermals
 				struct DescriptorSet : public Parent::DescriptorSet
 				{
 					using Parent = Parent::DescriptorSet;
-
-					struct Binding : public Parent::Binding
-					{
-						/**
-						@brief Offers a default constructor.
-						*/
-						struct FlagsCreateInfo : public Parent::Binding::FlagsCreateInfo
-						{
-							FlagsCreateInfo()
-							{
-								SType = STypeEnum;
-								Next  = nullptr  ;
-							}
-						};
-					};
-
-					/**
-					@brief Offers a default constructor.
-					*/
-					struct CreateInfo : public Parent::CreateInfo
-					{
-						CreateInfo()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
-
-					/**
-					@brief Offers a default constructor.
-					*/
-					struct Support : public Parent::Support
-					{
-						Support()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-
-						/**
-						@brief Offers a default constructor.
-						*/
-						struct SetVariableCount : public Parent::Support::SetVariableCount
-						{
-							SetVariableCount()
-							{
-								SType = STypeEnum;
-								Next  = nullptr  ;
-							}
-						};
-					};
 
 					/**
 					 * @brief Create a descriptor set layout.
@@ -1199,18 +1069,6 @@ namespace VaultedThermals
 				};
 
 				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::Layout::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-
-				/**
 				* @brief Create a pipeline layout.
 				* 
 				* @details
@@ -1248,114 +1106,9 @@ namespace VaultedThermals
 				using Parent::Destroy;
 			};
 
-			struct MultiSampleState : public Parent::MultiSampleState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::MultiSampleState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			struct RasterizationState : public Parent::RasterizationState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::RasterizationState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			struct ShaderStage : public Parent::ShaderStage
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::ShaderStage::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType          = STypeEnum;
-						Next           = nullptr  ;
-						Module         = Null<ShaderModule::Handle>;
-						Name           = nullptr;
-						Specialization = nullptr;
-					}
-				};
-			};
-
-			struct TessellationState : public Parent::TessellationState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::TessellationState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			struct VertexInputState : public Parent::VertexInputState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::VertexInputState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
-			struct ViewportState : public Parent::ViewportState
-			{
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::ViewportState::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
-			};
-
 			struct Compute : public Parent::Compute
 			{
 				using Parent = Parent::Compute;
-
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::Compute::CreateInfo
-				{
-					CreateInfo()
-					{
-						SType = STypeEnum;
-						Next  = nullptr  ;
-					}
-				};
 
 				/**
 				 * @brief Create a compute pipeline.
@@ -1387,61 +1140,6 @@ namespace VaultedThermals
 			struct Graphics : public Parent::Graphics
 			{
 				using Parent = Parent::Graphics;
-
-				/**
-				@brief Offers a default constructor.
-				*/
-				struct CreateInfo : public Parent::Graphics::CreateInfo
-				{
-					CreateInfo() 
-					{
-						SType              = STypeEnum;
-						Next               = nullptr  ;
-						StageCount         = 0;
-						Stages             = nullptr;
-						VertexInputState   = nullptr;
-						InputAssemblyState = nullptr;
-						TessellationState  = nullptr;
-						ViewportState      = nullptr;
-						RasterizationState = nullptr;
-						MultisampleState   = nullptr;
-						DepthStencilState  = nullptr;
-						ColorBlendState    = nullptr;
-						DynamicState       = nullptr;
-						Layout             = Null<Layout::Handle>   ;
-						RenderPass         = Null<RenderPass_Handle>;
-						Subpass            = 0                      ;
-						BasePipelineHandle = Null<Pipeline::Handle> ;
-						BasePipelineIndex  = 0                      ;
-					}
-				};
-
-				struct ShaderGroup : public Parent::Graphics::ShaderGroup
-				{
-					/**
-					@brief Offers a default constructor.
-					*/
-					struct CreateInfo : public Parent::Graphics::ShaderGroup::CreateInfo
-					{
-						CreateInfo()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
-
-					/**
-					@brief Offers a default constructor.
-					*/
-					struct MultipleCreateInfo : public Parent::Graphics::ShaderGroup::MultipleCreateInfo
-					{
-						MultipleCreateInfo()
-						{
-							SType = STypeEnum;
-							Next  = nullptr  ;
-						}
-					};
-				};
 
 				/**
 				 * @brief Create a graphics pipeline.

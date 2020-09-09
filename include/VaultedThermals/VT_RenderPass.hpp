@@ -79,12 +79,12 @@ namespace VaultedThermals
 			{
 				using RenderPass_Handle = VkRenderPass;   // RenderPass::Handle not defined yet. (Defined later in the file)
 
-				      EType              SType          ;
-				const void*              Next           ;
+				      EType              SType           = STypeEnum;
+				const void*              Next            = nullptr  ;
 				      CreateFlags        Flags          ;
 					  RenderPass_Handle  RenderPass     ;
-				      uint32             AttachmentCount;
-				const ImageView::Handle* Attachments    ;
+				      uint32             AttachmentCount = 0        ;
+				const ImageView::Handle* Attachments     = nullptr  ;
 				      uint32             Width          ;
 				      uint32             Height         ;
 				      uint32             Layers         ;
@@ -176,13 +176,13 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassBeginInfo">Specification</a> @ingroup APISpec_Render_Pass */
 			struct BeginInfo : V0::VKStruct_Base<VkRenderPassBeginInfo, EStructureType::RenderPass_BeginInfo>
 			{
-				      EType               SType          ;
-				const void*               Next           ;
+				      EType               SType           = STypeEnum;
+				const void*               Next            = nullptr  ;
 				      RenderPass::Handle  RenderPass     ;
 				      Framebuffer::Handle Framebuffer    ;
 				      Rect2D              RenderArea     ;
 				      uint32              ClearValueCount;
-				const ClearValue*         ClearValues    ;
+				const ClearValue*         ClearValues     = nullptr  ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescription">Specification</a> @ingroup APISpec_Render_Pass */
@@ -191,13 +191,13 @@ namespace VaultedThermals
 				      SubpassDesriptionFlags Flags                  ;
 				      EPipelineBindPoint     PipelineBindPoint      ;
 				      uint32                 InputAttachmentCount   ;
-				const AttachmentReference*   InputAttachments       ;
+				const AttachmentReference*   InputAttachments        = nullptr;
 				      uint32                 ColorAttachmentCount   ;
-				const AttachmentReference*   ColorAttachments       ;
-				const AttachmentReference*   ResolveAttachments     ;
-				const AttachmentReference*   DepthStencilAttachment ;
+				const AttachmentReference*   ColorAttachments        = nullptr;
+				const AttachmentReference*   ResolveAttachments      = nullptr;
+				const AttachmentReference*   DepthStencilAttachment  = nullptr;
 				      uint32                 PreserveAttachmentCount;
-				const uint32*                PreserveAttachments    ;
+				const uint32*                PreserveAttachments     = nullptr;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a> @ingroup APISpec_Render_Pass */
@@ -215,15 +215,15 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateInfo">Specification</a> @ingroup APISpec_Render_Pass */
 			struct CreateInfo : V0::VKStruct_Base<VkRenderPassCreateInfo, EStructureType::RenderPass_CreateInfo>
 			{
-				      EType                  SType          ;
-				const void*                  Next           ;
+				      EType                  SType           = STypeEnum;
+				const void*                  Next            = nullptr  ;
 				      CreateFlags            Flags          ;
-				      uint32                 AttachmentCount;
-				const AttachmentDescription* Attachments    ;
-				      uint32                 SubpassCount   ;
-				const SubpassDescription*    Subpasses     ;
-				      uint32                 DependencyCount;
-				const SubpassDependency*     Dependencies   ;
+				      uint32                 AttachmentCount = 0        ;
+				const AttachmentDescription* Attachments     = nullptr  ;
+				      uint32                 SubpassCount    = 0        ;
+				const SubpassDescription*    Subpasses       = nullptr  ;
+				      uint32                 DependencyCount = 0        ;
+				const SubpassDependency*     Dependencies    = nullptr  ;
 			};
 
 			/**
@@ -287,18 +287,6 @@ namespace VaultedThermals
 			using Parent = V1::Framebuffer;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
 			 * @brief Creates a framebuffer.
 			 * 
 			 * @details
@@ -338,33 +326,6 @@ namespace VaultedThermals
 		{
 			using Parent = V1::RenderPass;
 
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct BeginInfo : public Parent::BeginInfo
-			{
-				BeginInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/*struct AttachmentDescription : public Parent::AttachmentDescription
-			{
-			};*/
 
 			/**
 			@brief Offers a default constructor.
@@ -441,7 +402,28 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Framebuffer;
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			/*Framebuffer() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			Framebuffer(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Framebuffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~Framebuffer()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, allocator, handle);
+			}
+
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
 				allocator = Memory::DefaultAllocator;
@@ -449,7 +431,7 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
-			EResult Create(const LogicalDevice* _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
+			EResult Create(const LogicalDevice* _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = _device    ;
 				allocator = &_allocator;
@@ -460,6 +442,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			operator Handle()
@@ -501,6 +486,20 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::RenderPass;
 
+			/*RenderPass() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			RenderPass(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			RenderPass(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~RenderPass()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
@@ -520,6 +519,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			operator Handle()

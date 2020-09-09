@@ -1215,6 +1215,20 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Fence;
 
+			/*Fence() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			Fence(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Fence(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~Fence()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{
 				device    = &_device                ;
@@ -1341,6 +1355,8 @@ namespace VaultedThermals
 		{
 		public:
 			using Parent = V2::Semaphore;
+
+
 
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
 			{

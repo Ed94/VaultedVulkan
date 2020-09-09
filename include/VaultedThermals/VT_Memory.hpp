@@ -287,6 +287,9 @@ namespace VaultedThermals
 			void Free()
 			{
 				Parent::Free(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			const Handle& GetHandle() const

@@ -390,8 +390,7 @@ namespace VaultedThermals
 				{
 					Parent::Destroy(*app, handle, allocator);
 
-					handle = Null<Handle>;
-
+					handle    = Null<Handle>            ;
 					app       = nullptr                 ;
 					allocator = Memory::DefaultAllocator;
 				}

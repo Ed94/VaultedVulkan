@@ -82,8 +82,8 @@ namespace VaultedThermals
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkBufferCreateInfo, EStructureType::Buffer_CreateInfo>
 			{
-				      EType        SType                ;
-				const void*        Next                 ;
+				      EType        SType                 = STypeEnum;
+				const void*        Next                  = nullptr  ;
 				      CreateFlags  Flags                ;
 					  DeviceSize   Size                 ;
 					  UsageFlags   Usage                ;
@@ -94,9 +94,9 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCopy">Specification</a> @ingroup APISpec_Copy_Commands */
 			struct CopyInfo : V0::VKStruct_Base<VkBufferCopy>
 			{
-				DeviceSize SourceOffset;
+				DeviceSize SourceOffset     ;
 				DeviceSize DestinationOffset;
-				DeviceSize Size;
+				DeviceSize Size             ;
 			};
 
 			/**
@@ -105,8 +105,8 @@ namespace VaultedThermals
 			 */
 			struct Memory_Barrier : V0::VKStruct_Base<VkBufferMemoryBarrier, EStructureType::BufferMemory_Barrier>
 			{
-				      EType       SType              ;
-				const void*       Next               ;
+				      EType       SType               = STypeEnum;
+				const void*       Next                = nullptr  ;
 				      AccessFlags SrcAccessMask      ;
 				      AccessFlags DstAccessMask      ;
 				      uint32      SrcQueueFamilyIndex;
@@ -226,8 +226,8 @@ namespace VaultedThermals
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkBufferViewCreateInfo, EStructureType::BufferView_CreateInfo>
 			{
-				      EType          SType  ;
-				const void*          Next   ;
+				      EType          SType   = STypeEnum;
+				const void*          Next    = nullptr  ;
 				      CreateFlags    Flags  ;
 				      Buffer::Handle VBuffer;
 				      EFormat        Format ;
@@ -306,21 +306,21 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a> @ingroup APISpec_Resource_Creation */
 			struct CreateInfo : V0::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
 			{
-				      EType        SType                ;
-				const void*        Next                 ;
+				      EType        SType                 = STypeEnum              ;
+				const void*        Next                  = nullptr                ;
 				      CreateFlags  Flags                ;
-				      EImageType   ImageType            ;
+				      EImageType   ImageType             = EImageType::_2D        ;
 				      EFormat      Format               ;
 				      Extent3D     Extent               ;
-				      uint32       MipmapLevels         ;
+				      uint32       MipmapLevels          = 0                      ;
 				      uint32       ArrayLayers          ;
-				      ESampleCount Samples              ;
-				      ETiling      Tiling               ;
+				      ESampleCount Samples               = ESampleCount::_1       ;
+				      ETiling      Tiling                = EImageTiling::Optimal  ;
 					  UsageFlags   Usage                ;
-				      ESharingMode SharingMode          ;
-				      uint32       QueueFamilyIndexCount;
-				const uint32*      QueueFamilyIndices   ;
-					  EImageLayout InitalLayout         ;
+				      ESharingMode SharingMode           = ESharingMode::Exclusive;
+				      uint32       QueueFamilyIndexCount = 0                      ;
+				const uint32*      QueueFamilyIndices    = nullptr                ;
+					  EImageLayout InitalLayout          = EImageLayout::Undefined;
 			};
 
 			/** 
@@ -354,8 +354,8 @@ namespace VaultedThermals
 			*/
 			struct Memory_Barrier : V0::VKStruct_Base<VkImageMemoryBarrier, EStructureType::ImageMemory_Barrier>
 			{
-				      EType            SType              ;
-				const void*            Next               ;
+				      EType            SType               = STypeEnum;
+				const void*            Next                = nullptr  ;
 				      AccessFlags      SrcAccessMask      ;
 				      AccessFlags      DstAccessMask      ;
 				      EImageLayout     OldLayout          ;
@@ -469,8 +469,8 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a> @ingroup APISpec_Resource_Creation */
 			struct CreateInfo : V0::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
 			{
-				      EType                   SType           ;			
-				const void*                   Next            ;
+				      EType                   SType            = STypeEnum;			
+				const void*                   Next             = nullptr  ;
 				      CreateFlags             Flags           ;
 				      Image::Handle           Image           ;
 				      EViewType               ViewType        ;
@@ -552,8 +552,8 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCopyDescriptorSet">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct Copy : V0::VKStruct_Base<VkCopyDescriptorSet>
 			{
-				      EType  SType          ;
-				const void*  Next           ;
+				      EType  SType           = STypeEnum;
+				const void*  Next            = nullptr  ;
 				      Handle SrcSet         ;
 				      uint32 SrcBinding     ;
 				      uint32 SrcArrayElement;
@@ -574,16 +574,16 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWriteDescriptorSet">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct Write : V0::VKStruct_Base<VkWriteDescriptorSet, EStructureType::WriteDescriptor_Set>
 			{
-				      EType               SType          ;
-				const void*               Next           ;
+				      EType               SType           = STypeEnum;
+				const void*               Next            = nullptr  ;
 				      Handle              DstSet         ;
 				      uint32              DstBinding     ;
 				      uint32              DstArrayElement;
 				      uint32              DescriptorCount;
 				      EDescriptorType     DescriptorType ;
-				const ImageInfo*          ImageInfo      ;
-				const BufferInfo*         BufferInfo     ;
-				const BufferView::Handle* TexelBufferView;
+				const ImageInfo*          ImageInfo       = nullptr  ;
+				const BufferInfo*         BufferInfo      = nullptr  ;
+				const BufferView::Handle* TexelBufferView = nullptr  ;
 			};
 
 			/**
@@ -634,8 +634,8 @@ namespace VaultedThermals
 			{
 				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
 
-					  EType                              SType             ;
-				const void*                              Next              ;
+					  EType                              SType              = STypeEnum;
+				const void*                              Next               = nullptr  ;
 					  Handle                             DescriptorPool    ;
 					  uint32                             DescriptorSetCount;
 				const PipelineLayoutDescriptorSetHandle* SetLayouts        ;
@@ -651,12 +651,12 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct CreateInfo : V0::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
 			{
-					  EType       SType        ;
-				const void*       Next         ;
+					  EType       SType         = STypeEnum;
+				const void*       Next          = nullptr  ;
 					  CreateFlags Flags        ;
 					  uint32      MaxSets      ;
-					  uint32      PoolSizeCount;
-				const Size*       PoolSizes    ;
+					  uint32      PoolSizeCount = 0        ;
+				const Size*       PoolSizes     = nullptr  ;
 			};
 
 			/**
@@ -778,17 +778,14 @@ namespace VaultedThermals
 			using Parent = V1::Buffer;
 
 			/**
-			@brief Offers a default constructor.
+			@brief Offers alternative constructor.
 			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
-				CreateInfo() 
-				{
-					SType                 = STypeEnum;
-					Next                  = nullptr  ;
-					Size                  = 0        ;
-					QueueFamilyIndexCount = 0        ;
-				}
+				using Parent = Parent::CreateInfo;
+
+				CreateInfo() : Parent()
+				{}
 
 				CreateInfo(UsageFlags _usage, ESharingMode _sharingMode)
 				{
@@ -798,19 +795,6 @@ namespace VaultedThermals
 					Usage                 = _usage      ;
 					SharingMode           = _sharingMode;
 					QueueFamilyIndexCount = 0           ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Memory_Barrier : Parent::Memory_Barrier
-			{
-				Memory_Barrier()
-				{
-					SType = STypeEnum;
-
-					Next = nullptr;
 				}
 			};
 
@@ -944,18 +928,6 @@ namespace VaultedThermals
 			using Parent = V1::BufferView;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
 			* @brief Create a new buffer view object.
 			* 
 			* \param _deviceHandle
@@ -990,29 +962,6 @@ namespace VaultedThermals
 		{
 			using Parent = V1::Image;
 
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Memory_Barrier : public Parent::Memory_Barrier
-			{
-				Memory_Barrier()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
 
 			/**  
 			 * @brief  Create an image object.
@@ -1140,22 +1089,6 @@ namespace VaultedThermals
 		{
 			using Parent = V1::ImageView;
 
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-
-					Components.R = Corridors::EComponentSwizzle::R;
-					Components.G = Corridors::EComponentSwizzle::G;
-					Components.B = Corridors::EComponentSwizzle::B;
-					Components.A = Corridors::EComponentSwizzle::A;
-				}
-			};
 
 			/**
 			 * @brief Create an image view object.
@@ -1197,62 +1130,12 @@ namespace VaultedThermals
 			using Parent::Destroy;
 		};
 
-		struct DescriptorSet : public V1::DescriptorSet
-		{
-			using Parent = V1::DescriptorSet;
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Copy : public Parent::Copy
-			{
-				Copy()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct Write : public Parent::Write
-			{
-				Write()
-				{
-					SType = STypeEnum;
-					Next  = nullptr;
-				}
-			};
-		};
+		using V1::DescriptorSet;
 
 		struct DescriptorPool : public V1::DescriptorPool
 		{
 			using Parent = V1::DescriptorPool;
 
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct AllocateInfo : public Parent::AllocateInfo
-			{
-				AllocateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
 
 			/**
 			 * \param _device
@@ -1313,6 +1196,38 @@ namespace VaultedThermals
 		public:
 
 			using Parent = V2::Buffer;
+
+			/*Buffer() : 
+				handle            (Null<Handle>), 
+				device            (nullptr)     , 
+				memory            (nullptr)     , 
+				memoryOffset      (0)           , 
+				memoryRequirements()            , 
+				allocator         (nullptr)
+			{}
+
+			Buffer(const LogicalDevice& _device) : 
+				handle            (Null<Handle>), 
+				device            (&_device)    , 
+				memory            (nullptr)     , 
+				memoryOffset      (0)           , 
+				memoryRequirements()            , 
+				allocator         (nullptr)
+			{}
+
+			Buffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
+				handle            (Null<Handle>), 
+				device            (&_device)    , 
+				memory            (nullptr)     , 
+				memoryOffset      (0)           , 
+				memoryRequirements()            , 
+				allocator         (&_allocator)
+			{}
+
+			~Buffer()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
 
 			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
@@ -1378,6 +1293,8 @@ namespace VaultedThermals
 
 				BindMemory(_memory, Memory::ZeroOffset);
 
+				memory = &_memory;
+
 				return returnCode;
 			}
 
@@ -1412,12 +1329,17 @@ namespace VaultedThermals
 
 				BindMemory(_memory, Memory::ZeroOffset);
 
+				memory = &_memory;
+
 				return returnCode;
 			}
 
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			const Memory::Requirements& GetMemoryRequirements() const
@@ -1454,8 +1376,6 @@ namespace VaultedThermals
 
 			Handle handle;
 
-			//CreateInfo info;
-
 			const LogicalDevice* device;
 
 			const Memory* memory;
@@ -1471,6 +1391,21 @@ namespace VaultedThermals
 		{
 		public:
 			using Parent = V2::BufferView;
+
+
+			/*BufferView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			BufferView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			BufferView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~BufferView()
+			{
+				if (handle = Null<Handle>) Destroy();
+			}*/
 
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1491,6 +1426,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			operator Handle()
@@ -1522,11 +1460,9 @@ namespace VaultedThermals
 
 			Handle handle;
 
-			//CreateInfo info;
+			const Memory::AllocationCallbacks* allocator;
 
 			const LogicalDevice* device;
-
-			const Memory::AllocationCallbacks* allocator;
 		};
 
 		class Image : public V2::Image
@@ -1535,10 +1471,49 @@ namespace VaultedThermals
 			using Parent = V2::Image;
 
 
+			/*Image() : 
+				handle            (Null<Handle>), 
+				device            (nullptr)     , 
+				memory            (nullptr)     , 
+				memoryOffset      (0)           , 
+				memoryRequirements()            , 
+				allocator         (nullptr)
+			{}
+
+			Image(const LogicalDevice& _device) : 
+				handle            (Null<Handle>), 
+				device            (&_device)    , 
+				memory            (nullptr)     , 
+				memoryOffset      (0)           , 
+				memoryRequirements()            , 
+				allocator         (nullptr)
+			{}
+
+			Image(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
+				handle            (Null<Handle>), 
+				device            (&_device)    , 
+				memory            (nullptr)     , 
+				memoryOffset      (0)           , 
+				memoryRequirements()            , 
+				allocator         (&_allocator)
+			{}
+
+			~Image()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
+
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
 				device = &_device;
-				handle = _handle;
+				handle = _handle ;
+			}
+
+			void Clear()
+			{
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
@@ -1586,12 +1561,6 @@ namespace VaultedThermals
 				device    = &_device                ;
 				allocator = Memory::DefaultAllocator;
 
-				//EResult returnCode = Parent::Create(*device, _info, allocator, handle);
-
-				//if (returnCode != EResult::Success) return returnCode;
-
-				//Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
-
 				EResult returnCode = Create(_device, _info);
 
 				Memory::AllocateInfo allocationInfo{};
@@ -1606,6 +1575,8 @@ namespace VaultedThermals
 				if (returnCode != EResult::Success) return returnCode;
 
 				BindMemory(_memory, Memory::ZeroOffset);
+
+				memory = &_memory;
 
 				return returnCode;
 			}
@@ -1622,12 +1593,6 @@ namespace VaultedThermals
 				device    = &_device  ;
 				allocator = _allocator;
 
-				/*EResult returnCode = Parent::Create(*device, _info, allocator, handle);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);*/
-
 				EResult returnCode = Create(_device, _info, *allocator);
 
 				Memory::AllocateInfo allocationInfo{};
@@ -1643,12 +1608,16 @@ namespace VaultedThermals
 
 				BindMemory(_memory, Memory::ZeroOffset);
 
+				memory = &_memory;
+
 				return returnCode;
 			}
 
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				Clear();
 			}
 
 			const Memory::Requirements& GetMemoryRequirements() const
@@ -1687,8 +1656,6 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 
-			//CreateInfo info;
-
 			const Memory* memory;
 
 			DeviceSize memoryOffset;
@@ -1702,6 +1669,22 @@ namespace VaultedThermals
 		{
 		public:
 			using Parent = V2::ImageView;
+
+
+			/*ImageView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			ImageView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			ImageView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~ImageView()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
 
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1722,6 +1705,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			operator Handle()
@@ -1755,8 +1741,6 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 
-			//CreateInfo info;
-
 			const LogicalDevice* device;
 		};
 
@@ -1765,10 +1749,27 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::DescriptorSet;
 
+
+			/*DescriptorSet() : handle(Null<Handle>), device(nullptr)
+			{}
+
+			DescriptorSet(Handle _handle, const LogicalDevice& _device) : handle(_handle), device(&_device)
+			{}
+
+			~DescriptorSet()
+			{}*/
+
+
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
 				device = &_device;
 				handle = _handle ;
+			}
+
+			void Clear()
+			{
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 			
 			const Handle& GetHandle() const
@@ -1825,6 +1826,21 @@ namespace VaultedThermals
 			using Parent = V2::DescriptorPool;
 
 
+			/*DescriptorPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			DescriptorPool(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			DescriptorPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			~DescriptorPool()
+			{
+				if (handle = Null<Handle>) Destroy();
+			}*/
+
+
 			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
 			{
 				return Parent::Allocate(*device, _info, _handlesContainer);
@@ -1870,6 +1886,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			EResult Free(uint32 _count, DescriptorSet::Handle* _handles)

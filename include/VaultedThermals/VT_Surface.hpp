@@ -113,14 +113,14 @@ namespace VaultedThermals
 				bool operator!= (const Capabilities& _other)
 				{
 					return
-						MinImageCount           != _other.MinImageCount           &&
-						MaxImageCount           != _other.MaxImageCount           &&
-						CurrentExtent           != _other.CurrentExtent           &&
-						MinImageExtent          != _other.MinImageExtent          &&
-						MaxImageExtent          != _other.MaxImageExtent          &&
-						MaxImageArrayLayers     != _other.MaxImageArrayLayers     &&
-						SupportedTransforms     != _other.SupportedTransforms     &&
-						SupportedCompositeAlpha != _other.SupportedCompositeAlpha &&
+						MinImageCount           != _other.MinImageCount           ||
+						MaxImageCount           != _other.MaxImageCount           ||
+						CurrentExtent           != _other.CurrentExtent           ||
+						MinImageExtent          != _other.MinImageExtent          ||
+						MaxImageExtent          != _other.MaxImageExtent          ||
+						MaxImageArrayLayers     != _other.MaxImageArrayLayers     ||
+						SupportedTransforms     != _other.SupportedTransforms     ||
+						SupportedCompositeAlpha != _other.SupportedCompositeAlpha ||
 						SupportedUsageFlags     != _other.SupportedUsageFlags 
 						? true : false;
 				}

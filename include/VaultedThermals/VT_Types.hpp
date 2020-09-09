@@ -100,7 +100,7 @@ namespace VaultedThermals
 			sint32 X, Y;
 
 			bool operator==(const Offset2D _other) {  return X == _other.X && Y == _other.Y ? true : false; }
-			bool operator!=(const Offset2D _other) {  return X != _other.X && Y != _other.Y ? true : false; }
+			bool operator!=(const Offset2D _other) {  return X != _other.X || Y != _other.Y ? true : false; }
 		};
 
 		/** 
@@ -116,7 +116,7 @@ namespace VaultedThermals
 			sint32 X, Y, Z;
 
 			bool operator==(const Offset3D& _other) { return X == _other.X && Y == _other.Y && Z == _other.Z ? true : false; }
-			bool operator!=(const Offset3D& _other) { return X != _other.X && Y != _other.Y && Z != _other.Z ? true : false; }
+			bool operator!=(const Offset3D& _other) { return X != _other.X || Y != _other.Y || Z != _other.Z ? true : false; }
 		};
 
 		/** 
@@ -132,7 +132,7 @@ namespace VaultedThermals
 			uint32 Width, Height;
 
 			bool operator==(const Extent2D _other) { return Width == _other.Width && Height == _other.Height ? true : false; }
-			bool operator!=(const Extent2D _other) { return Width != _other.Width && Height != _other.Height ? true : false; }
+			bool operator!=(const Extent2D _other) { return Width != _other.Width || Height != _other.Height ? true : false; }
 		};
 
 		/** 
@@ -148,7 +148,7 @@ namespace VaultedThermals
 			uint32 Width, Height, Depth;
 
 			bool operator==(const Extent3D& _other) { return Width == _other.Width && Height == _other.Height && Depth == _other.Depth ? true : false; }
-			bool operator!=(const Extent3D& _other) { return Width != _other.Width && Height != _other.Height && Depth == _other.Depth ? true : false; }
+			bool operator!=(const Extent3D& _other) { return Width != _other.Width || Height != _other.Height || Depth == _other.Depth ? true : false; }
 		};
 
 		/** 
@@ -165,7 +165,7 @@ namespace VaultedThermals
 			Extent2D Extent;
 
 			bool operator==(const Rect2D& _other) { Offset == _other.Offset && Extent == _other.Extent ? true : false; }
-			bool operator!=(const Rect2D& _other) { Offset != _other.Offset && Extent != _other.Extent ? true : false; }
+			bool operator!=(const Rect2D& _other) { Offset != _other.Offset || Extent != _other.Extent ? true : false; }
 		};
 
 		/**
@@ -327,7 +327,7 @@ namespace VaultedThermals
 			EComponentSwizzle A = EComponentSwizzle::A;
 
 			bool operator==(const ComponentMapping& _other) { return R == _other.R && G == _other.G && B == _other.B && A == _other.A ? true : false; }
-			bool operator!=(const ComponentMapping& _other) { return R != _other.R && G != _other.G && B != _other.B && A != _other.A ? true : false; }
+			bool operator!=(const ComponentMapping& _other) { return R != _other.R || G != _other.G || B != _other.B || A != _other.A ? true : false; }
 		};
 
 		/** 
@@ -363,8 +363,8 @@ namespace VaultedThermals
 			bool operator!= (const FormatProperties& _other)
 			{ 
 				return 
-				LinearTilingFeatures  != _other.LinearTilingFeatures  && 
-				OptimalTilingFeatures != _other.OptimalTilingFeatures && 
+				LinearTilingFeatures  != _other.LinearTilingFeatures  || 
+				OptimalTilingFeatures != _other.OptimalTilingFeatures ||
 				BufferFeatures        != _other.BufferFeatures 
 				? true : false; 
 			}
@@ -406,12 +406,12 @@ namespace VaultedThermals
 			bool operator!= (const StencilOperationState& _other)
 			{
 				return
-				FailOp      != _other.FailOp      &&
-				PassOp      != _other.PassOp      &&
-				DepthFailOp != _other.DepthFailOp &&
-				CompareOp   != _other.CompareOp   &&
-				CompareMask != _other.CompareMask &&
-				WriteMask   != _other.WriteMask   &&
+				FailOp      != _other.FailOp      ||
+				PassOp      != _other.PassOp      ||
+				DepthFailOp != _other.DepthFailOp ||
+				CompareOp   != _other.CompareOp   ||
+				CompareMask != _other.CompareMask ||
+				WriteMask   != _other.WriteMask   ||
 				Reference   != _other.Reference 
 				? true : false;
 			}
@@ -440,9 +440,9 @@ namespace VaultedThermals
 			bool operator!= (const Viewport& _other) 
 			{
 				return
-					X        != _other.X        && Y        != _other.Y        &&
-					Width    != _other.Width    && Height   != _other.Height   &&
-					MinDepth != _other.MinDepth && MaxDepth != _other.MaxDepth
+					X        != _other.X        || Y        != _other.Y        ||
+					Width    != _other.Width    || Height   != _other.Height   ||
+					MinDepth != _other.MinDepth || MaxDepth != _other.MaxDepth
 					? true : false;
 			}
 		};
