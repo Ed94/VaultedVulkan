@@ -989,9 +989,15 @@ namespace VaultedThermals
 
 			using Parent = V2::PhysicalDevice;
 			
+			/**
+
+			*/
 			PhysicalDevice() : handle(Null<Handle>)
 			{}
 
+			/**
+
+			*/
 			PhysicalDevice(Handle _handle) : handle(_handle)
 			{
 				Parent::GetFeatures        (handle, features        );
@@ -1001,6 +1007,9 @@ namespace VaultedThermals
 				Parent::GetProperties2     (handle, properties2     );
 			}
 
+			/**
+
+			*/
 			void AssignHandle(Handle _handle) 
 			{ 
 				handle = _handle; 
@@ -1061,6 +1070,9 @@ namespace VaultedThermals
 				return isSupported;
 			}
 
+			/**
+
+			*/
 			uint32 FindMemoryType(uint32 _typeFilter, Memory::PropertyFlags _properties) const
 			{
 				for (uint32 index = 0; index < memoryProperties.TypeCount; index++)
@@ -1084,16 +1096,25 @@ namespace VaultedThermals
 				return 4294967295;
 			}
 
+			/**
+
+			*/
 			EResult FindSupportedFormat(const DynamicArray<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format) const
 			{
 				return Parent::FindSupportedFormat(handle, _canidates, _tiling, _features, _format);
 			}
 
+			/**
+
+			*/
 			EResult GetAvailableExtensions(RoCStr _layerName, DynamicArray<ExtensionProperties>& _extensionListing) const
 			{
 				return EResult(Parent::GetAvailableLayerExtensions(handle, _layerName, _extensionListing));
 			}
 
+			/**
+
+			*/
 			DynamicArray<QueueFamilyProperties> GetAvailableQueueFamilies() const
 			{
 				DynamicArray<QueueFamilyProperties> queryResult; uint32 count;
@@ -1107,11 +1128,17 @@ namespace VaultedThermals
 				return queryResult;
 			}
 
+			/**
+
+			*/
 			const Features& GetFeatures() const
 			{
 				return features;
 			}
 
+			/**
+
+			*/
 			FormatProperties GetFormatProperties(EFormat _format) const
 			{
 				FormatProperties formatProperties;
@@ -1121,11 +1148,9 @@ namespace VaultedThermals
 				return formatProperties;
 			}
 
-			Handle GetHandle() const
-			{
-				return handle;
-			}
+			/**
 
+			*/
 			ESampleCount GetMaxSampleCount_ColorAndDepth() const
 			{
 				SampleCountFlags counts
@@ -1144,36 +1169,57 @@ namespace VaultedThermals
 				return ESampleCount::_1;
 			}
 
+			/**
+
+			*/
 			const MemoryProperties& GetMemoryProperties() const
 			{
 				return memoryProperties;
 			}
 
+			/**
+
+			*/
 			const Properties& GetProperties() const
 			{
 				return properties;
 			}
 
+			/**
+
+			*/
 			const Properties2& GetProperties2() const
 			{
 				return properties2;
 			}
 
+			/**
+
+			*/
 			EResult QueryExtensionProperties(RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer) const
 			{
 				return Parent::QueryExtensionProperties(handle, _layerName, _numExtensions, _extensionPropertiesContainer);
 			}
 
+			/**
+
+			*/
 			void QueryQueueFamilyProperties(uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies) const
 			{
 				return Parent::QueryQueueFamilyProperties(handle, _numQueueFamilies, _queueFamilies);
 			}
 
+			/**
+
+			*/
 			void QueryQueueFamilyProperties2(uint32* _numProperties, QueueFamilyProperties2* _properties) const
 			{
 				return Parent::QueryQueueFamilyProperties2(handle, _numProperties, _properties);
 			}
 
+			/**
+
+			*/
 			EResult QueryPerfomranceQueryCounters
 			(
 				uint32                           _queueFamilyIndex   ,
@@ -1185,26 +1231,33 @@ namespace VaultedThermals
 				return Parent::QueryPerfomranceQueryCounters(handle, _queueFamilyIndex, _numCounters, _counters, _counterDescriptions);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a pointer to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const PhysicalDevice& _other) const
 			{
 				return handle == _other.handle;

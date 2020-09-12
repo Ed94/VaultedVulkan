@@ -169,30 +169,32 @@ namespace VaultedThermals
 			};
 
 			/**
+			@ingroup APISpec_Initialization
 			@brief Create a new Vulkan application instance.
 
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a> 
 
-			@ingroup APISpec_Initialization
+			@param _info      The creation specification structure to use.
+			@param _allocator Allocator desired (Memory::DefaultAllocator if default desired).
+			@param _handle    Reference to object that will have the created object's handle written to (if successful).
+
+			@return Returns EResult code (Indicating how the creation went).
 			*/
-			static EResult Create
-			(
-				const CreateInfo&                  _info     ,
-				const Memory::AllocationCallbacks* _allocator,
-				      Handle&                      _handle
-			)
+			static EResult Create(const CreateInfo& _info, const Memory::AllocationCallbacks* _allocator, Handle& _handle)
 			{
 				return EResult(vkCreateInstance( _info, *_allocator, &_handle));
 			}
 
 			/**
+			@ingroup APISpec_Initialization
 			@brief Destroy an application instance of Vulkan.
 
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a> 
 
-			@ingroup APISpec_Initialization
+			@param _handle    Handle of the AppInstance.
+			@param _allocator Optional: Allocator to use (Memory::DefaultAllocator if default desired).
 			*/
 			static void Destroy(Handle _handle , const Memory::AllocationCallbacks* _allocator)
 			{
@@ -207,8 +209,9 @@ namespace VaultedThermals
 			 * 
 			 * @ingroup APISpec_Initialization
 			 * 
-			 * \param _versionContainer
-			 * \return 
+			 * @param _versionContainer The value of version will be written to this object referenced.
+			 * 
+			 * @return Returns EResult code (Indicating the version was able to be retrieved).
 			 */
 			static EResult GetVersion(uint32& _versionContainer)
 			{
@@ -216,12 +219,17 @@ namespace VaultedThermals
 			}
 
 			/** 
+			@ingroup APISpec_Extending_Vulkan
 			@brief Query the available layers.
 
 			@details
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a>  
 
-			@ingroup APISpec_Extending_Vulkan
+			@param _numContainer         Referenced object that will either specify the number of available layers to retrieve (if _propertiesContainer is not null), 
+			                             or be written to with the number of available layers (if _propertiesContainer is null).
+			@param _propertiesContainer	 Pointer to a properties container array that will be populated if the pointer is not null.
+
+			@return Returns EResult code (Indicating whether query was successful)
 			*/
 			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
 			{
@@ -229,13 +237,13 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief Query the available instance extensions.
+			@ingroup APISpec_Extending_Vulkan
+			* @brief Query the available instance extensions.
 			 
-			 @details 
-			 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a>.
+			@details 
+			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a>.
 			  
-			 @ingroup APISpec_Extending_Vulkan
-			 */
+			*/
 			static EResult QueryAvailableAppExtensions(RoCStr _layerName, uint32& _numProperties, ExtensionProperties* _propertiesContainer)
 			{
 				return EResult(vkEnumerateInstanceExtensionProperties(_layerName, &_numProperties, *_propertiesContainer));
@@ -516,8 +524,8 @@ namespace VaultedThermals
 			/**
 			 * @brief Create an application instance.
 			 * 
-			 * \param _appInfo
-			 * \param _creationSpec
+			 * @param _appInfo
+			 * @param _creationSpec
 			 */
 			EResult Create(const AppInstance::CreateInfo& _createinfo)
 			{
@@ -529,9 +537,9 @@ namespace VaultedThermals
 			/**
 			 * @brief Create an application instance.
 			 * 
-			 * \param _appInfo
-			 * \param _creationSpec
-			 * \param _allocator
+			 * @param _appInfo
+			 * @param _creationSpec
+			 * @param _allocator
 			 */
 			EResult Create(const AppInstance::CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -645,19 +653,11 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a copy of its handle.
+			@brief Implicit conversion to give a reference to its handle.
 			*/
-			operator Handle()
+			operator Handle&()
 			{
 				return handle;
-			}
-
-			/**
-			@brief Implicit conversion to give a pointer to its handle.
-			*/
-			operator Handle*()
-			{
-				return &handle;
 			}
 
 			/**

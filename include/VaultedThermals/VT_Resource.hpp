@@ -1191,12 +1191,18 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+
+		*/
 		class Buffer : public V2::Buffer
 		{
 		public:
 
 			using Parent = V2::Buffer;
 
+			/**
+
+			*/
 			Buffer() : 
 				handle            (Null<Handle>), 
 				allocator         (nullptr)     ,
@@ -1206,6 +1212,9 @@ namespace VaultedThermals
 				memoryRequirements()            
 			{}
 
+			/**
+
+			*/
 			Buffer(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
 				allocator         (nullptr)     ,
@@ -1215,6 +1224,9 @@ namespace VaultedThermals
 				memoryRequirements()   
 			{}
 
+			/**
+
+			*/
 			Buffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle            (Null<Handle>),
 				allocator         (&_allocator) ,
@@ -1224,6 +1236,9 @@ namespace VaultedThermals
 				memoryRequirements()
 			{}
 
+			/**
+
+			*/
 			Buffer(Buffer&& _other) noexcept :
 				handle   (_other.handle   ),
 				allocator(_other.allocator),
@@ -1240,6 +1255,9 @@ namespace VaultedThermals
 				_other.memoryOffset = 0;
 			}
 
+			/**
+
+			*/
 			~Buffer()
 			{
 				if (handle != Null<Handle>) Destroy();
@@ -1254,6 +1272,9 @@ namespace VaultedThermals
 				return Parent::BindMemory(*device, handle, *memory, memoryOffset);
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1266,6 +1287,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
@@ -1278,6 +1302,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1361,6 +1388,7 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			// #TODO: Move to V4 buffer package.
 			EResult CreateAndBind
 			(
 				const LogicalDevice&               _device        ,  
@@ -1397,6 +1425,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -1405,27 +1436,34 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
+			/**
+
+			*/
 			const Memory::Requirements& GetMemoryRequirements() const
 			{
 				return memoryRequirements;
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle*()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
@@ -1435,6 +1473,9 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Buffer& operator= (Buffer&& _other) noexcept
 			{
 				if (this == &_other)
@@ -1473,20 +1514,35 @@ namespace VaultedThermals
 
 		};
 
+		/**
+
+		*/
 		class BufferView : public V2::BufferView
 		{
 		public:
 			using Parent = V2::BufferView;
 
+			/**
+
+			*/
 			BufferView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			BufferView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			BufferView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			BufferView(BufferView&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -1495,11 +1551,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~BufferView()
 			{
 				if (handle = Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1507,6 +1569,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
@@ -1514,6 +1579,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1522,6 +1590,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -1530,31 +1601,41 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const BufferView& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			BufferView& operator= (BufferView&& _other) noexcept
 			{
 				if (this == &_other)
@@ -1580,11 +1661,17 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
+		/**
+
+		*/
 		class Image : public V2::Image
 		{
 		public:
 			using Parent = V2::Image;
 
+			/**
+
+			*/
 			Image() : 
 				handle            (Null<Handle>), 
 				allocator         (nullptr)     ,
@@ -1594,6 +1681,9 @@ namespace VaultedThermals
 				memoryRequirements() 
 			{}
 
+			/**
+
+			*/
 			Image(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
 				allocator         (nullptr)     ,
@@ -1603,6 +1693,9 @@ namespace VaultedThermals
 				memoryRequirements()  
 			{}
 
+			/**
+
+			*/
 			Image(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle            (Null<Handle>),
 				allocator         (&_allocator) ,
@@ -1612,6 +1705,9 @@ namespace VaultedThermals
 				memoryRequirements()
 			{}
 
+			/**
+
+			*/
 			Image(Image&& _other) noexcept :
 				handle   (_other.handle   ),
 				allocator(_other.allocator),
@@ -1628,17 +1724,26 @@ namespace VaultedThermals
 				_other.memoryOffset = 0;
 			}
 
+			/**
+
+			*/
 			~Image()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
 				device = &_device;
 				handle = _handle ;
 			}
 
+			/**
+
+			*/
 			void Clear()
 			{
 				handle = Null<Handle>;
@@ -1654,6 +1759,9 @@ namespace VaultedThermals
 				return Parent::BindMemory(*device, handle, *memory, memoryOffset);
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1664,6 +1772,9 @@ namespace VaultedThermals
 					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
@@ -1678,6 +1789,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1797,31 +1911,41 @@ namespace VaultedThermals
 				return memoryRequirements;
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Image& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Image& operator= (Image&& _other) noexcept
 			{
 				if (this == &_other)
@@ -1861,21 +1985,35 @@ namespace VaultedThermals
 			Memory::Requirements memoryRequirements;
 		};
 
+		/**
+
+		*/
 		class ImageView : public V2::ImageView
 		{
 		public:
 			using Parent = V2::ImageView;
 
+			/**
 
+			*/
 			ImageView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			ImageView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			ImageView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			ImageView(ImageView&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -1884,11 +2022,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~ImageView()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1896,6 +2040,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
@@ -1905,6 +2052,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1913,6 +2063,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -1921,31 +2074,41 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const ImageView& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			ImageView& operator= (ImageView&& _other) noexcept
 			{
 				if (this == &_other)
@@ -1971,35 +2134,47 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
+		/**
+
+		*/
 		class DescriptorSet : public V2::DescriptorSet
 		{
 		public:
 			using Parent = V2::DescriptorSet;
 
+			/**
 
+			*/
 			DescriptorSet() : handle(Null<Handle>), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			DescriptorSet(Handle _handle, const LogicalDevice& _device) : handle(_handle), device(&_device)
 			{}
 
+			/**
+
+			*/
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
 				device = &_device;
 				handle = _handle ;
 			}
 
+			/**
+
+			*/
 			void Clear()
 			{
 				handle = Null<Handle>;
 				device = nullptr     ;
 			}
 			
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
+			/**
 
+			*/
 			void Update
 			(
 				      uint32                _descriptorWriteCount,
@@ -2011,26 +2186,33 @@ namespace VaultedThermals
 				Parent::Update(*device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const DescriptorSet& _other) const
 			{
 				return handle == _other.handle;
@@ -2043,20 +2225,35 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
+		/**
+
+		*/
 		class DescriptorPool : public V2::DescriptorPool
 		{
 		public:
 			using Parent = V2::DescriptorPool;
 
+			/**
+
+			*/
 			DescriptorPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			DescriptorPool(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			DescriptorPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			DescriptorPool(DescriptorPool&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -2065,16 +2262,25 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~DescriptorPool()
 			{
 				if (handle = Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
 			{
 				return Parent::Allocate(*device, _info, _handlesContainer);
 			}
 
+			/**
+
+			*/
 			EResult Allocate
 			(
 				AllocateInfo&                        _info   ,
@@ -2096,6 +2302,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -2103,6 +2312,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
@@ -2112,6 +2324,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -2120,6 +2335,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -2128,46 +2346,65 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
+			/**
+
+			*/
 			EResult Free(uint32 _count, DescriptorSet::Handle* _handles)
 			{
 				return Parent::Free(*device, handle, _count, _handles);
 			}
 
+			/**
+
+			*/
 			EResult Free(DynamicArray<DescriptorSet::Handle> _handles)
 			{
 				return Parent::Free(*device, handle, static_cast<uint32>(_handles.size()), _handles.data());
 			}
 
+			/**
+
+			*/
 			EResult Reset(ResetFlags& _flags)
 			{
 				return Parent::Reset(*device, handle, _flags);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const DescriptorPool& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			DescriptorPool& operator= (DescriptorPool&& _other) noexcept
 			{
 				if (this == &_other)

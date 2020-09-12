@@ -1109,20 +1109,35 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+
+		*/
 		class Event : public V2::Event
 		{
 		public:
 			using Parent = V2::Event;
 
+			/**
+
+			*/
 			Event() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			Event(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Event(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Event(Event&& _other) noexcept : 
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -1131,11 +1146,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~Event()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1143,6 +1164,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
@@ -1151,6 +1175,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1159,56 +1186,81 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
 			}
 
+			/**
+
+			*/
 			const Handle& GetHandle() const
 			{
 				return handle;
 			}
 
+			/**
+
+			*/
 			EResult GetStatus()
 			{
 				return Parent::GetStatus(*device, handle);
 			}
 
+			/**
+
+			*/
 			EResult Reset()
 			{
 				return Parent::Reset(*device, handle);
 			}
 
+			/**
+
+			*/
 			EResult Set()
 			{
 				return Parent::Set(*device, handle);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Event& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Event& operator= (Event&& _other) noexcept
 			{
 				if (this == &_other)
@@ -1234,20 +1286,35 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
+		/**
+
+		*/
 		class Fence : public V2::Fence
 		{
 		public:
 			using Parent = V2::Fence;
 
+			/**
+
+			*/
 			Fence() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			Fence(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Fence(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Fence(Fence&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -1256,11 +1323,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~Fence()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1268,6 +1341,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
@@ -1276,6 +1352,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1284,51 +1363,81 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
 			}
 
+			/**
+
+			*/
 			LogicalDevice::Handle GetDeviceHandle() const
 			{
 				return *device;
 			}
 
+			/**
+
+			*/
 			const Handle& GetHandle() const
 			{
 				return handle;
 			}
 
+			/**
+
+			*/
 			EResult GetStatus()
 			{
 				return Parent::GetStatus(*device, handle);
 			}
 
+			/**
+
+			*/
 			EResult GetOS_Handle(const GetOS_HandleInfo& _win32Info, OS_Handle & _winHandle)
 			{
 				return Parent::GetOS_Handle(*device, _win32Info, _winHandle);
 			}
 
+			/**
+
+			*/
 			EResult ImportOS_Handle(const ImportOS_HandleInfo& _importInfo)
 			{
 				return Parent::ImportOS_Handle(*device, _importInfo);
 			}
 
+			/**
+
+			*/
 			EResult RegisterDeviceEvent(const DeviceEventInfo _eventInfo)
 			{
 				return Parent::RegisterDeviceEvent(*device, _eventInfo, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult RegisterDisplayEvent(Display::Handle _display, const DisplayEventInfo& _eventInfo)
 			{
 				return Parent::RegisterDisplayEvent(*device, _display, _eventInfo, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Reset()
 			{
 				return Parent::Reset(*device, &handle, 1);
 			}
 
+			/**
+
+			*/
 			static EResult Reset(DynamicArray<Fence> _fences)
 			{
 				auto device = _fences[0].GetDeviceHandle();
@@ -1340,11 +1449,17 @@ namespace VaultedThermals
 				return Parent::Reset(device, handles.data(), static_cast<uint32>(_fences.size()));
 			}
 
+			/**
+
+			*/
 			EResult WaitFor(uInt64 _timeout)
 			{
 				return Parent::WaitForFences(*device, 1, &handle, false, _timeout);
 			}
 
+			/**
+			
+			*/
 			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, uInt64 _timeout)
 			{
 				auto device = _fences[0].GetDeviceHandle();
@@ -1356,31 +1471,41 @@ namespace VaultedThermals
 				return Parent::WaitForFences(device, static_cast<uint32>(_fences.size()), handles.data(), _waitForAll, _timeout);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Fence& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Fence& operator= (Fence&& _other) noexcept
 			{
 				if (this == &_other)
@@ -1406,20 +1531,35 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
+		/**
+
+		*/
 		class Semaphore : public V2::Semaphore
 		{
 		public:
 			using Parent = V2::Semaphore;
 
+			/**
+
+			*/
 			Semaphore() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			Semaphore(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Semaphore(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Semaphore(Semaphore&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -1428,11 +1568,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~Semaphore()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1440,6 +1586,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device  ;
@@ -1448,6 +1597,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1456,6 +1608,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -1464,56 +1619,81 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
+			/**
+
+			*/
 			EResult GetCounterValue(uInt64& _value)
 			{
 				return Parent::GetCounterValue(*device, handle, _value);
 			}
 
+			/**
+
+			*/
 			EResult GetOS_Handle(const GetOS_HandleInfo& _getInfo, OS_Handle& _osHandle)
 			{
 				return Parent::GetOS_Handle(*device, _getInfo, _osHandle);
 			}
 
+			/**
+
+			*/
 			EResult ImportOS_Handle(const ImportOS_HandleInfo& _importPOSIX_Info)
 			{
 				return Parent::ImportOS_Handle(*device, _importPOSIX_Info);
 			}
 
+			/**
+
+			*/
 			EResult Signal(const SignalInfo& _info)
 			{
 				return Parent::Signal(*device, _info);
 			}
 
+			/**
+
+			*/
 			EResult WaitFor(const WaitInfo& _info, uInt64 _timeout)
 			{
 				return Parent::WaitFor(*device, _info, _timeout);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Semaphore& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Semaphore& operator= (Semaphore&& _other) noexcept
 			{
 				if (this == &_other)

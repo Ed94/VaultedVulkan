@@ -277,21 +277,36 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		
+		*/
 		class Swapchain : public V2::Swapchain
 		{
 		public:
 
 			using Parent = V2::Swapchain;
 
+			/**
+			
+			*/
 			Swapchain() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+			
+			*/
 			Swapchain(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+			
+			*/
 			Swapchain(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+			
+			*/
 			Swapchain(Swapchain&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -300,11 +315,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+			
+			*/
 			~Swapchain()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+			
+			*/
 			EResult AcquireNextImage
 			(
 				uInt64                _timeout   ,
@@ -316,6 +337,9 @@ namespace VaultedThermals
 				return Parent::AcquireNextImage(*device, handle, _timeout, _semaphore, _fence, _imageIndex);
 			}
 
+			/**
+			
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -323,6 +347,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+			
+			*/
 			EResult Create(const LogicalDevice& _deviceHandle, const CreateInfo& _info)
 			{
 				device    = &_deviceHandle          ;
@@ -331,6 +358,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+			
+			*/
 			EResult Create(const LogicalDevice& _deviceHandle, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_deviceHandle;
@@ -339,6 +369,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+			
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle);
@@ -347,6 +380,9 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
+			/**
+			
+			*/
 			EResult GetImages(DynamicArray<Image>& _images)
 			{
 				uint32 numImages;
@@ -367,36 +403,49 @@ namespace VaultedThermals
 				return result;
 			}
 
+			/**
+			
+			*/
 			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
 			{
 				return Parent::QueryImages(*device, handle, _numImages, _imagesContainer);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Swapchain& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Swapchain& operator= (Swapchain&& _other) noexcept
 			{
 				if (this == &_other)

@@ -397,20 +397,35 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+
+		*/
 		class Framebuffer : public V2::Framebuffer
 		{
 		public:
 			using Parent = V2::Framebuffer;
 
+			/**
+
+			*/
 			Framebuffer() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			Framebuffer(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Framebuffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Framebuffer(Framebuffer&& _other) noexcept :
 				handle(_other.handle), allocator(_other.allocator), device(_other.device)
 			{
@@ -419,11 +434,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~Framebuffer()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -431,6 +452,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
@@ -439,6 +463,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice* _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = _device    ;
@@ -447,6 +474,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -455,22 +485,26 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
@@ -480,6 +514,9 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Framebuffer& operator= (Framebuffer&& _other) noexcept
 			{
 				if (this == &_other)
@@ -505,20 +542,35 @@ namespace VaultedThermals
 			const LogicalDevice* device;
 		};
 
+		/**
+
+		*/
 		class RenderPass : public V2::RenderPass
 		{
 		public:
 			using Parent = V2::RenderPass;
 
+			/**
+
+			*/
 			RenderPass() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			RenderPass(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			RenderPass(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			RenderPass(RenderPass&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -527,11 +579,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~RenderPass()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -539,6 +597,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
@@ -546,6 +607,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -554,6 +618,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+			
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -562,31 +629,41 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const RenderPass& _other)
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			RenderPass& operator= (RenderPass&& _other) noexcept
 			{
 				if (this == &_other)

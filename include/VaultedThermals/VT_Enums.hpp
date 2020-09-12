@@ -85,11 +85,10 @@ namespace VaultedThermals
 		};
 
 		/**
+		 * @ingroup APISpec_Extending_Vulkan
 		 * @enum API_Version
 		 * 
 		 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#extendingvulkan-coreversions-versionnumbers">Specification</a> 
-		 * 
-		 * @ingroup APISpec_Extending_Vulkan
 		 */
 		enum class EAPI_Version
 		{

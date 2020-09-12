@@ -247,15 +247,27 @@ namespace VaultedThermals
 
 			using Parent = V2::Memory;
 
+			/**
+
+			*/
 			Memory() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			Memory(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Memory(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Memory(Memory&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
 			{
@@ -264,11 +276,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~Memory()
 			{
 				if (handle != Null<Handle>) Free();
 			}
 
+			/**
+
+			*/
 			EResult Allocate(const AllocateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -276,6 +294,9 @@ namespace VaultedThermals
 				return Parent::Allocate(*device, _info, handle);
 			}
 
+			/**
+
+			*/
 			EResult Allocate(const LogicalDevice& _device, const AllocateInfo& _allocateInfo)
 			{
 				device    = &_device                ;
@@ -284,6 +305,9 @@ namespace VaultedThermals
 				return Parent::Allocate(*device, _allocateInfo, handle);
 			}
 
+			/**
+
+			*/
 			EResult Allocate(const LogicalDevice& _device, const AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -292,6 +316,9 @@ namespace VaultedThermals
 				return Parent::Allocate(*device, _allocateInfo, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Free()
 			{
 				Parent::Free(*device, handle, allocator);
@@ -300,51 +327,65 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
+			/**
 
+			*/
 			EResult Map(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
 				return Parent::Map(*device, handle, _offset, _size, _flags, _data);
 			}
 
+			/**
+
+			*/
 			void Unmap()
 			{
 				Parent::Unmap(*device, handle);
 			}
 
+			/**
+
+			*/
 			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
 				Parent::WriteToGPU(*device, handle, _offset, _size, _flags, _data);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Memory& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Memory& operator= (Memory&& _other) noexcept
 			{
 				if (this == &_other)

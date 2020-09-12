@@ -442,29 +442,50 @@ namespace VaultedThermals
 		@addtogroup Vault_3
 		*/
 
+		/**
+		
+		*/
 		class Surface : public V2::Surface
 		{
 		public:
 
 			using Parent = V2::Surface;
 
+			/**
+			
+			*/
 			Surface() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(nullptr), physicalDevice(nullptr)
 			{}
 
+			/**
+			
+			*/
 			Surface(const AppInstance& _app) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(&_app), physicalDevice(nullptr)
 			{}
 
+			/**
+			
+			*/
 			Surface(const AppInstance& _app, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), app(&_app), physicalDevice(nullptr)
 			{}
 
+			/**
+			
+			*/
 			Surface(const AppInstance& _app, const PhysicalDevice& _physicalDevice) :
 				handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(&_app), physicalDevice(&_physicalDevice)
 			{}
 
+			/**
+			
+			*/
 			Surface(const AppInstance& _app, const PhysicalDevice& _physicalDevice, const Memory::AllocationCallbacks& _allocator) :
 				handle(Null<Handle>), allocator(&_allocator), app(&_app), physicalDevice(&_physicalDevice)
 			{}
 
+			/**
+			
+			*/
 			Surface(Surface&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), app(std::move(_other.app)), physicalDevice(std::move(_other.physicalDevice))
 			{
@@ -474,16 +495,25 @@ namespace VaultedThermals
 				_other.physicalDevice = nullptr                 ;
 			}
 
+			/**
+			
+			*/
 			~Surface()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+			
+			*/
 			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice)
 			{
 				physicalDevice = &_physicalDevice;
 			}
 
+			/**
+			
+			*/
 			EResult Create(OS_WindowHandle _window)
 			{
 				CreateInfo geninfo {}; geninfo.OSWinHandle = _window;
@@ -491,6 +521,9 @@ namespace VaultedThermals
 				return Parent::Create(*app, geninfo, handle);
 			}
 
+			/**
+			
+			*/
 			EResult Create(const CreateInfo&  _info)
 			{
 				if (app == nullptr) return EResult::Not_Ready;
@@ -498,6 +531,9 @@ namespace VaultedThermals
 				return Parent::Create(*app, _info, handle);
 			}
 
+			/**
+			
+			*/
 			EResult Create(const AppInstance& _app, OS_WindowHandle _window)
 			{
 				CreateInfo geninfo {}; geninfo.OSWinHandle = _window;
@@ -510,6 +546,9 @@ namespace VaultedThermals
 				return Parent::Create(*app, geninfo, handle);
 			}
 
+			/**
+			
+			*/
 			EResult Create(const AppInstance& _appHandle, const CreateInfo&  _info)
 			{
 				app = &_appHandle;
@@ -519,6 +558,9 @@ namespace VaultedThermals
 				return Parent::Create(*app, _info, handle);
 			}
 
+			/**
+			
+			*/
 			EResult Create(const AppInstance& _appHandle, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				app       = &_appHandle;
@@ -527,11 +569,17 @@ namespace VaultedThermals
 				return Parent::Create(*app, _info, allocator, handle);
 			}
 
+			/**
+			
+			*/
 			EResult CheckPhysicalDeviceSupport(uint32 _queueFamilyIndex, Bool& _checkResult)
 			{
 				return Parent::CheckPhysicalDeviceSupport(*physicalDevice, _queueFamilyIndex, handle, _checkResult);
 			}
 
+			/**
+			
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*app, handle);
@@ -541,46 +589,65 @@ namespace VaultedThermals
 				handle         = Null<Handle>;
 			}
 
+			/**
+			
+			*/
 			EResult GetAvailableFormats(DynamicArray<Format>& _formatsContainer) const
 			{
 				return Parent::GetAvailableFormats(*physicalDevice, handle, _formatsContainer);
 			}
 
+			/**
+			
+			*/
 			EResult GetPhysicalDeviceCapabilities(Capabilities& _result) const
 			{
 				return Parent::GetPhysicalDeviceCapabilities(*physicalDevice, handle, _result);
 			}
 
+			/**
+			
+			*/
 			EResult GetSupportedPresentationModes(DynamicArray<EPresentationMode>& _presentationModesContainer) const
 			{
 				return Parent::GetSupportedPresentationModes(*physicalDevice, handle, _presentationModesContainer);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Surface& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Surface& operator= (Surface&& _other) noexcept
 			{
 				if (this == &_other)

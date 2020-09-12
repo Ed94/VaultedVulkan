@@ -287,7 +287,9 @@ namespace VaultedThermals
 			using Parent = V1::DebugUtils;
 
 			/**
-			@brief Offers a default constructor.
+			@brief 
+			Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information.
+			Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.
 			*/
 			struct Messenger : public Parent::Messenger
 			{
@@ -331,33 +333,49 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@brief
+		@ingroup APISpec_Debugging
+		@brief Debug Utilities: Flexible utilities for debugging an application.
 
-		//@ingroup 
-
-		@todo 
-		#TODO: Add documentation.
+		@details
+		Currently only defines the object-oriented version of the Debug messenger.
 		*/
 		struct DebugUtils : public V2::DebugUtils 
 		{
 			using Parent = V2::DebugUtils;
 
+			/**
+			@brief 
+			Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information.
+			Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.
+			*/
 			class Messenger : public Parent::Messenger
 			{
 			public:
 
 				using Parent = V2::DebugUtils::Messenger;
 
+				/**
+				@brief Default constructor.
+				*/
 				Messenger() : handle(Null<Handle>), app(nullptr), allocator(Memory::DefaultAllocator)
 				{}
 
+				/**
+				@brief Default constructor with app instance specified.
+				*/
 				Messenger(const AppInstance& _appInstance) : handle(Null<Handle>), app(&_appInstance), allocator(Memory::DefaultAllocator)
 				{}
 
+				/**
+				@brief Default constructor with app instance and allocator specified.
+				*/
 				Messenger(const AppInstance& _appInstance, const Memory::AllocationCallbacks& _allocator) :
 					handle(Null<Handle>), app(&_appInstance), allocator(&_allocator)
 				{}
 
+				/**
+				@brief Performs a move operation to transfer ownership of the device object to this host object.
+				*/
 				Messenger(Messenger&& _other) noexcept :
 					handle(std::move(_other.handle)), app(std::move(_other.app)), allocator(std::move(_other.allocator))
 				{
@@ -366,11 +384,17 @@ namespace VaultedThermals
 					_other.allocator = Memory::DefaultAllocator;
 				}
 
+				/**
+				@brief If the handle is found to not be null, this device will attempt to destroy the device object that corresponds to it.
+				*/
 				~Messenger()
 				{
 					if (handle != Null<Handle>) Destroy();
 				}
 
+				/**
+				@brief Create a debug messenger.
+				*/
 				EResult Create(const CreateInfo& _createSpec)
 				{
 					if (app == nullptr) return EResult::Not_Ready;
@@ -378,6 +402,9 @@ namespace VaultedThermals
 					return Parent::Create(*app, _createSpec, handle);
 				}
 
+				/**
+				@brief Create a debug messenger. (Specify app instance)
+				*/
 				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec)
 				{
 					app       = &_appInstance           ;
@@ -386,6 +413,9 @@ namespace VaultedThermals
 					return Parent::Create(*app, _createSpec, handle);
 				}
 
+				/**
+				@brief Create a debug messenger. (Specify app instance and allocator)
+				*/
 				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec, const Memory::AllocationCallbacks& _allocator)
 				{
 					app       = &_appInstance;
@@ -394,6 +424,9 @@ namespace VaultedThermals
 					return Parent::Create(*app, _createSpec, allocator, handle);
 				}
 
+				/**
+				@brief Destroy a debug messenger.	
+				*/
 				void Destroy()
 				{
 					Parent::Destroy(*app, handle, allocator);
@@ -403,31 +436,41 @@ namespace VaultedThermals
 					allocator = Memory::DefaultAllocator;
 				}
 
-				operator Handle()
+				/**
+				@brief Implicit conversion to give a reference to its handle.
+				*/
+				operator Handle&()
 				{
 					return handle;
 				}
 
-				operator Handle*()
-				{
-					return &handle;
-				}
-
+				/**
+				@brief Implicit conversion to give a readonly reference to its handle.
+				*/
 				operator const Handle&() const
 				{
 					return handle;
 				}
 
+				/**
+				@brief Implicit conversion to give a pointers to its handle.
+				*/
 				operator const Handle*() const
 				{
 					return &handle;
 				}
 
+				/**
+				@brief Checks to see if its the same object by checking to see if its the same handle.
+				*/
 				bool operator== (const Messenger& _other) const
 				{
 					return handle == _other.handle;
 				}
 
+				/**
+				@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+				*/
 				Messenger& operator= (Messenger&& _other) noexcept
 				{
 					if (this == &_other)

@@ -194,22 +194,36 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+
+		*/
         class Sampler : public V2::Sampler
         {
         public:
 
             using Parent = V2::Sampler;
 
+			/**
 
+			*/
 			Sampler() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			Sampler(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Sampler(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			Sampler(Sampler&& _other) noexcept :
 				handle(_other.handle), allocator(_other.allocator), device(_other.device)
 			{
@@ -218,11 +232,17 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~Sampler()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -230,6 +250,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
             EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
             {
                 device = &_device;
@@ -239,6 +262,9 @@ namespace VaultedThermals
                 return Parent::Create(*device, _info, allocator, handle);
             }
 
+			/**
+
+			*/
             EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
             {
                 device    = &_device   ;
@@ -247,6 +273,9 @@ namespace VaultedThermals
                 return Parent::Create(*device, _info, allocator, handle);
             }
 
+			/**
+
+			*/
             void Destroy()
             {
                 Parent::Destroy(*device, handle, allocator);
@@ -255,31 +284,41 @@ namespace VaultedThermals
 				device = nullptr     ;
             }
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Sampler& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			Sampler& operator= (Sampler&& _other) noexcept
 			{
 				if (this == &_other)

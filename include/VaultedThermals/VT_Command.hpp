@@ -1143,8 +1143,7 @@ namespace VaultedThermals
 
 		/**
 		@ingroup APISpec_Command_Buffers
-
-		@todo #TODO: Needs documentation.
+		@brief Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.
 		*/
 		class CommandBuffer : public V2::CommandBuffer
 		{
@@ -1154,19 +1153,31 @@ namespace VaultedThermals
 
 			using AllocateInfo = V2::CommandPool::AllocateInfo;
 
+			/**
+			
+			*/
 			CommandBuffer() : handle(Null<Handle>), device(nullptr), info()
 			{}
 
+			/**
+			
+			*/
 			CommandBuffer(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle) :
 				device(&_device), handle(_handle), info(_info)
 			{}
 
+			/**
+			
+			*/
 			void Assign(const LogicalDevice& _device, Handle& _handle)
 			{
 				device = &_device;
 				handle = _handle ;
 			}
 
+			/**
+			
+			*/
 			void Assign(const LogicalDevice& _device, const AllocateInfo& _info, Handle& _handle)
 			{
 				device = &_device ;
@@ -1174,22 +1185,34 @@ namespace VaultedThermals
 				handle = _handle  ;
 			}
 
+			/**
+			
+			*/
 			void Clear()
 			{
 				device = nullptr     ;
 				handle = Null<Handle>;
 			}
 
+			/**
+			
+			*/
 			EResult BeginRecord(const BeginInfo& _info) const
 			{
 				return Parent::BeginRecord(handle, _info);
 			}
 
+			/**
+			
+			*/
 			void BeginRenderPass(const RenderPass::BeginInfo& _info, ESubpassContents _contents) const
 			{
 				Parent::BeginRenderPass(handle, _info, _contents);
 			}
 
+			/**
+			
+			*/
 			void BindDescriptorSets
 			(
 				      EPipelineBindPoint     _bindPoint         ,
@@ -1202,6 +1225,9 @@ namespace VaultedThermals
 				Parent::BindDescriptorSets(handle, _bindPoint, _layout, _firstSet, _descritporSetCount, _descriptorSets, 0, nullptr);
 			}
 
+			/**
+			
+			*/
 			void BindDescriptorSets
 			(
 				      EPipelineBindPoint     _bindPoint         ,
@@ -1216,36 +1242,57 @@ namespace VaultedThermals
 				Parent::BindDescriptorSets(handle, _bindPoint, _layout, _firstSet, _descritporSetCount, _descriptorSets, _dynamicOffsetCount, _dynamicOffsets);
 			}
 
+			/**
+			
+			*/
 			void BindIndexBuffer(Buffer& _buffer, DeviceSize _offset, EIndexType _type) const
 			{
 				Parent::BindIndexBuffer(handle, _buffer, _offset, _type);
 			}
 
+			/**
+			
+			*/
 			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers) const
 			{
 				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, 0);
 			}
 
+			/**
+			
+			*/
 			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers, const DeviceSize* _offsets) const
 			{
 				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, _offsets);
 			}
 
+			/**
+			
+			*/
 			void BindPipeline(EPipelineBindPoint _bindPoint, Pipeline& _pipeline) const
 			{
 				Parent::BindPipeline(handle, _bindPoint, _pipeline);
 			}
 
+			/**
+			
+			*/
 			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, uint32 _regionCount, const Image::Blit* _regions, EFilter _filter) const
 			{
 				Parent::BlitImage(handle, _src, _srcLayout, _dst, _dstLayout, _regionCount, _regions, _filter);
 			}
 
+			/**
+			
+			*/
 			void CopyBuffer(Buffer& _sourceBuffer, Buffer& _destinationBuffer, uint32 _regionCount, const Buffer::CopyInfo* _regions) const
 			{
 				Parent::Parent::CopyBuffer(handle, _sourceBuffer, _destinationBuffer, _regionCount, _regions);
 			}
 
+			/**
+			
+			*/
 			void CopyBufferToImage
 			(
 				      Buffer&            _srcBuffer     ,
@@ -1258,11 +1305,17 @@ namespace VaultedThermals
 				Parent::CopyBufferToImage(handle, _srcBuffer, _dstImage, _dstImageLayout, _regionCount, _regions);
 			}
 
+			/**
+			
+			*/
 			void Draw(uint32 _firstVertex, uint32 _vertexCount, uint32 _firstInstance, uint32 _instanceCount) const
 			{
 				Parent::Draw(handle, _firstVertex, _vertexCount, _firstInstance, _instanceCount);
 			}
 
+			/**
+			
+			*/
 			void DrawIndexed
 			(
 				uint32 _indexCount   ,
@@ -1275,23 +1328,38 @@ namespace VaultedThermals
 				Parent::DrawIndexed(handle, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
 			}
 
+			/**
+			
+			*/
 			EResult EndRecord() const
 			{
 				return Parent::EndRecord(handle);
 			}
 
+			/**
+			
+			*/
 			void EndRenderPass() const
 			{
 				Parent::EndRenderPass(handle);
 			}
 
+			/**
+			
+			*/
 			void Execute(uint32 _secondaryBufferCount, const Handle* _secondaryBuffers) const
 			{
 				Parent::Execute(handle, _secondaryBufferCount, _secondaryBuffers);
 			}
 
+			/**
+			
+			*/
 			const AllocateInfo& GetAllocateInfo() const { return info; }
 
+			/**
+			
+			*/
 			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
 				Parent::ResetEvent(handle, _event.GetHandle(), _stageMask);
@@ -1299,6 +1367,9 @@ namespace VaultedThermals
 
 		#pragma region SubmitPipelineBarrier_OO
 
+			/**
+
+			*/
 			void SubmitPipelineBarrier
 			(
 				      Pipeline::StageFlags    _sourceStageMask         ,
@@ -1319,6 +1390,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+
+			*/
 			void SubmitPipelineBarrier
 			(
 				      Pipeline::StageFlags    _sourceStageMask         ,
@@ -1339,6 +1413,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+
+			*/
 			void SubmitPipelineBarrier
 			(
 				      Pipeline::StageFlags    _sourceStageMask         ,
@@ -1359,6 +1436,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+
+			*/
 			void SubmitPipelineBarrier
 			(
 				      Pipeline::StageFlags    _sourceStageMask         ,
@@ -1389,11 +1469,17 @@ namespace VaultedThermals
 
 		#pragma endregion SubmitPipelineBarrier_OO
 
+			/**
+
+			*/
 			void SetDeviceMask(uint32 _deviceMask) const
 			{
 				Parent::SetDeviceMask(handle, _deviceMask);
 			}
 
+			/**
+
+			*/
 			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
 				Parent::SetEvent(handle, _event.GetHandle(), _stageMask);
@@ -1401,6 +1487,9 @@ namespace VaultedThermals
 
 		#pragma region WaitForEvents_OO
 
+			/**
+
+			*/
 			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
@@ -1423,6 +1512,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+
+			*/
 			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
@@ -1445,6 +1537,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+
+			*/
 			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
@@ -1467,6 +1562,9 @@ namespace VaultedThermals
 				);
 			}
 
+			/**
+
+			*/
 			void WaitForEvents
 			(
 				      uint32                  _eventCount              ,
@@ -1499,26 +1597,33 @@ namespace VaultedThermals
 
 		#pragma endregion WaitForEvents_OO
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle*()
-			{
-				return &handle;
-			}
-
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
 			operator const Handle&() const
 			{
 				return handle;
 			}
 
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
 			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const CommandBuffer& _other) const
 			{
 				return handle == _other.handle;
@@ -1535,8 +1640,7 @@ namespace VaultedThermals
 
 		/**
 		@ingroup APISpec_Command_Buffers
-
-		@todo #TODO: Add documentation.
+		@brief
 		*/
 		class CommandPool : public V2::CommandPool
 		{
@@ -1545,16 +1649,28 @@ namespace VaultedThermals
 
 			using CommandBuffer = V3::CommandBuffer;
 
+			/**
+
+			*/
 			CommandPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			/**
+
+			*/
 			CommandPool(const LogicalDevice& _device) : handle(Null<Handle>),  allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			CommandPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			/**
+
+			*/
 			CommandPool(CommandPool&& _poolToMove) noexcept : 
 				handle(std::move(_poolToMove.handle)), allocator(std::move(_poolToMove.allocator)), device(std::move(_poolToMove.device))
 			{
@@ -1563,11 +1679,17 @@ namespace VaultedThermals
 				_poolToMove.device    = nullptr                 ;
 			}
 
+			/**
+
+			*/
 			~CommandPool()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			EResult Allocate(CommandBuffer& _buffer)
 			{
 				CommandBuffer::Handle bufferHandle;
@@ -1583,6 +1705,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Allocate(AllocateInfo& _info, CommandBuffer& _buffer)
 			{
 				CommandBuffer::Handle bufferHandle;
@@ -1596,6 +1721,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _buffers)
 			{
 				EResult returnCode = Parent::Allocate(*device, _info, _buffers);
@@ -1603,6 +1731,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _buffers)
 			{
 				AllocateInfo allocInfo; 
@@ -1616,6 +1747,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Allocate
 			(
 				ECommandBufferLevel                  _level         ,
@@ -1644,6 +1778,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _info)
 			{
 				if (device == nullptr) return EResult::Not_Ready;
@@ -1651,6 +1788,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
@@ -1658,6 +1798,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);	
 			}
 
+			/**
+
+			*/
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
@@ -1666,6 +1809,9 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, allocator, handle);	
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -1675,26 +1821,41 @@ namespace VaultedThermals
 				device    = nullptr     ;
 			}
 
+			/**
+
+			*/
 			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
 			{
 				Parent::Free(*device, handle, _bufferCount, _commandBuffers);
 			}
 
+			/**
+
+			*/
 			void Free(const AllocateInfo& _info, const CommandBuffer::Handle* _commandBuffers)
 			{
 				Parent::Free(*device, handle, _info.BufferCount, _commandBuffers);	
 			}
 
+			/**
+
+			*/
 			void Free(CommandBuffer& _commandBuffer)
 			{
 				Parent::Free(*device, handle, 1, _commandBuffer);
 			}
 
+			/**
+			
+			*/
 			EResult Reset(ResetFlags _flags)
 			{
 				return Parent::Reset(*device, handle, _flags);
 			}
 
+			/**
+			
+			*/
 			void Trim(TrimFlags _flags)
 			{
 				Parent::Trim(*device, handle, _flags);
@@ -1761,6 +1922,9 @@ namespace VaultedThermals
 				return result;
 			}
 
+			/**
+			
+			*/
 			EResult CopyBuffer
 			(
 				      Buffer&               _sourceBuffer     , 
@@ -1784,31 +1948,41 @@ namespace VaultedThermals
 
 		#pragma endregion SingleTimeCommands
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a reference of its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle*()
-			{
-				return &handle;
-			}
-
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
 			operator const Handle&() const
 			{
 				return handle;
 			}
 
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
 			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const CommandPool& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			CommandPool& operator= (CommandPool&& _other) noexcept
 			{
 				if (this == &_other)

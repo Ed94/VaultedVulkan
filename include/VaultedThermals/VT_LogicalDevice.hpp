@@ -474,16 +474,28 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::LogicalDevice;
 
+			/**
+
+			*/
 			struct Queue : public Parent::Queue
 			{
 				using Parent = Parent::Queue;
 
+				/**
+
+				*/
 				Queue() { assignment = EQueueFlag::VT_SpecifyBitmaskable; }
 
+				/**
+
+				*/
 				Queue(EQueueFlag _type, const LogicalDevice& _device, uint32 _familyIndex, uint32 _queueIndex) :
 					assignment(_type), device(&_device), familyIndex(_familyIndex), queueIndex(_queueIndex)
 				{}
 
+				/**
+
+				*/
 				void Assign(const LogicalDevice& _logicalDevice, uint32 _familyIndex, uint32 _queueIndex, EQueueFlag _type)
 				{
 					device      = &_logicalDevice;
@@ -492,36 +504,57 @@ namespace VaultedThermals
 					assignment  = _type          ;
 				}
 
+				/**
+
+				*/
 				uint32 GetFamilyIndex() const
 				{
 					return familyIndex;
 				}
 
+				/**
+
+				*/
 				uint32 GetQueueIndex() const
 				{
 					return queueIndex;
 				}
 
+				/**
+
+				*/
 				const Handle& GetHandle() const
 				{
 					return handle;
 				}
 
+				/**
+
+				*/
 				const EQueueFlag& GetType() const
 				{
 					return assignment;
 				}
 
+				/**
+
+				*/
 				void Retrieve()
 				{
 					Parent::Get(*device, familyIndex, queueIndex, handle);
 				}
 
+				/**
+
+				*/
 				bool FamilySpecified() const
 				{
 					return assignment != EQueueFlag::VT_SpecifyBitmaskable ? true : false;
 				}
 
+				/**
+
+				*/
 				EResult QueuePresentation(const PresentationInfo& _presentationInfo) const
 				{
 					return Parent::QueuePresentation(handle, _presentationInfo);
@@ -540,16 +573,25 @@ namespace VaultedThermals
 					assignment = _type ;
 				}
 
+				/**
+
+				*/
 				EResult SubmitToQueue(uint32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence) const
 				{
 					return Parent::SubmitToQueue(handle, _submitCount, _submissions, _fence);
 				}
 
+				/**
+
+				*/
 				EResult WaitUntilIdle() const
 				{
 					return Parent::WaitUntilIdle(handle);
 				}
 
+				/**
+
+				*/
 				operator const Handle&() const
 				{
 					return handle;
@@ -568,16 +610,28 @@ namespace VaultedThermals
 				uint32 queueIndex;
 			};
 
+			/**
+
+			*/
 			LogicalDevice() : handle(Null<Handle>), physicalDevice(nullptr), allocator(Memory::DefaultAllocator)
 			{}
 
+			/**
+
+			*/
 			LogicalDevice(const PhysicalDevice& _physicalDevice) : handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(Memory::DefaultAllocator)
 			{}
 
+			/**
+
+			*/
 			LogicalDevice(const PhysicalDevice& _physicalDevice, const Memory::AllocationCallbacks& _allocator) : 
 				handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(&_allocator) 
 			{}
 
+			/**
+
+			*/
 			LogicalDevice(LogicalDevice&& _other) noexcept :
 				handle(std::move(_other.handle)), physicalDevice(std::move(_other.physicalDevice)), allocator(std::move(_other.allocator))
 			{
@@ -586,16 +640,25 @@ namespace VaultedThermals
 				_other.allocator      = nullptr     ;
 			}
 
+			/**
+
+			*/
 			~LogicalDevice()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
+			/**
+
+			*/
 			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice) 
 			{
 				physicalDevice = &_physicalDevice;
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _createInfo)
 			{
 				if (physicalDevice == nullptr) return EResult::Not_Ready;
@@ -605,6 +668,9 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
 				if (physicalDevice == nullptr) return EResult::Not_Ready;
@@ -614,6 +680,9 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const PhysicalDevice& _physicalDevice, const CreateInfo& _createInfo)
 			{
 				physicalDevice = &_physicalDevice        ;
@@ -622,6 +691,9 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
+			/**
+
+			*/
 			EResult Create(const PhysicalDevice& _physicalDevice, const CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
 				physicalDevice = &_physicalDevice;
@@ -630,6 +702,9 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
 			}
 
+			/**
+
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(handle, allocator);
@@ -638,22 +713,26 @@ namespace VaultedThermals
 				allocator = nullptr     ;
 			}
 
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
+			/**
 
+			*/
 			const PhysicalDevice& GetPhysicalDevice() const
 			{
 				return *physicalDevice;
 			}
 
+			/**
+
+			*/
 			EResult WaitUntilIdle() const
 			{
 				return Parent::WaitUntilIdle(handle);
 			}
 			
 			template<typename ReturnType>
+			/**
+
+			*/
 			typename std::enable_if
 			<
 			std::bool_constant
@@ -666,31 +745,41 @@ namespace VaultedThermals
 				return Parent::GetProcedureAddress<ReturnType>(handle, _procedurename);
 			}
 
-			operator Handle()
+			/**
+			@brief Implicit conversion to give a pointer to its handle.
+			*/
+			operator Handle&()
 			{
 				return handle;
 			}
 
-			operator Handle* ()
-			{
-				return &handle;
-			}
-
-			operator const Handle& () const
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
+			operator const Handle&() const
 			{
 				return handle;
 			}
 
-			operator const Handle* () const
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
+			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const LogicalDevice& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			LogicalDevice& operator= (LogicalDevice&& _other) noexcept
 			{
 				if (this == &_other)
