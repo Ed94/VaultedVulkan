@@ -473,10 +473,8 @@ namespace VaultedThermals
 		@brief An object that manages the represented application process state within the GPU.
 
 		@details
-		Other Name: Application State Container
-
-		Vulkan has no global state reference: 
-		Every application must keep track of their state using an instance object.
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 
 		@ingroup APISpec_Initialization
 		*/
@@ -485,12 +483,21 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::AppInstance;
 
+			/**
+			@brief Will construct an AppInstance host object with a null handle and allocator set to default.
+			*/
 			AppInstance() : handle(Null<Handle>), allocator(Memory::DefaultAllocator)
 			{}
 
+			/**
+			@brief Will construct an AppInstance host object with a null handle a the allocator set to the specified allocator.
+			*/
 			AppInstance(const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator)
 			{}
 
+			/**
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
+			*/
 			AppInstance(AppInstance&& _other) noexcept :
 				handle(_other.handle), allocator(_other.allocator)
 			{
@@ -498,6 +505,9 @@ namespace VaultedThermals
 				_other.allocator = Memory::DefaultAllocator;
 			}
 
+			/**
+			@brief If the handle is found to not be null, this device will attempt to destroy the device object that corresponds to it.
+			*/
 			~AppInstance()
 			{
 				if (handle != Null<Handle>) Destroy();
@@ -634,31 +644,49 @@ namespace VaultedThermals
 				return Parent::QueryPhysicalDeviceGroups(handle, _numGroups, _groupProperties);
 			}
 
+			/**
+			@brief Implicit conversion to give a copy of its handle.
+			*/
 			operator Handle()
 			{
 				return handle;
 			}
 
+			/**
+			@brief Implicit conversion to give a pointer to its handle.
+			*/
 			operator Handle*()
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Implicit conversion to give a readonly reference to its handle.
+			*/
 			operator const Handle&() const
 			{
 				return handle;
 			}
 
+			/**
+			@brief Implicit conversion to give a pointers to its handle.
+			*/
 			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const AppInstance& _other) const
 			{
 				return handle == _other.handle;
 			}
 
+			/**
+			@brief Performs a move assignment operation to transfer ownership of the device object to this host object.
+			*/
 			AppInstance& operator= (AppInstance&& _other) noexcept
 			{
 				if (this == &_other)
