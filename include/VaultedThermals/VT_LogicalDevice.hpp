@@ -578,6 +578,14 @@ namespace VaultedThermals
 				handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(&_allocator) 
 			{}
 
+			LogicalDevice(LogicalDevice&& _other) noexcept :
+				handle(std::move(_other.handle)), physicalDevice(std::move(_other.physicalDevice)), allocator(std::move(_other.allocator))
+			{
+				_other.handle         = Null<Handle>;
+				_other.physicalDevice = nullptr     ;
+				_other.allocator      = nullptr     ;
+			}
+
 			~LogicalDevice()
 			{
 				if (handle != Null<Handle>) Destroy();
@@ -681,6 +689,22 @@ namespace VaultedThermals
 			bool operator== (const LogicalDevice& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			LogicalDevice& operator= (LogicalDevice&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle         = std::move(_other.handle        );
+				physicalDevice = std::move(_other.physicalDevice);
+				allocator      = std::move(_other.allocator     );
+
+				_other.handle         = Null<Handle>;
+				_other.physicalDevice = nullptr     ;
+				_other.allocator      = nullptr     ;
+
+				return *this;
 			}
 
 		protected:

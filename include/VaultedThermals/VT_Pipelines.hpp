@@ -1202,6 +1202,28 @@ namespace VaultedThermals
 			public:
 				using Parent = V2::Pipeline::Cache;
 
+				/*Cache() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+				{}
+
+				Cache(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+				{}
+
+				Cache(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+				{}
+
+				Cache(Cache&& _other) noexcept :
+					handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+				{
+					_other.handle    = Null<Handle>            ;
+					_other.allocator = Memory::DefaultAllocator;
+					_other.device    = nullptr                 ;
+				}
+
+				~Cache()
+				{
+					if (handle != Null<Handle>) Destroy();
+				}*/
+
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
 					device    = &_device                ;
@@ -1221,6 +1243,9 @@ namespace VaultedThermals
 				void Destroy()
 				{
 					Parent::Destroy(*device, handle, allocator);
+
+					handle = Null<Handle>;
+					device = nullptr     ;
 				}
 
 				operator Handle()
@@ -1248,6 +1273,22 @@ namespace VaultedThermals
 					return handle == _other.handle;
 				}
 
+				/*Cache& operator= (Cache&& _other) noexcept
+				{
+					if (this == &_other)
+						return *this;
+
+					handle    = std::move(_other.handle   );
+					allocator = std::move(_other.allocator);
+					device    = std::move(_other.device   );
+
+					_other.handle    = Null<Handle>            ;
+					_other.allocator = Memory::DefaultAllocator;
+					_other.device    = nullptr                 ;
+
+					return *this;
+				}*/
+
 			protected:
 
 				Handle handle;
@@ -1266,6 +1307,29 @@ namespace VaultedThermals
 				{
 				public:
 					using Parent = V2::Pipeline::Layout::DescriptorSet;
+
+					/*DescriptorSet() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+					{}
+
+					DescriptorSet(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+					{}
+
+					DescriptorSet(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) :
+						handle(Null<Handle>), allocator(&_allocator), device(&_device)
+					{}
+
+					DescriptorSet(DescriptorSet&& _other) noexcept :
+						handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+					{
+						_other.handle    = Null<Handle>            ;
+						_other.allocator = Memory::DefaultAllocator;
+						_other.device    = nullptr                 ;
+					}
+
+					~DescriptorSet()
+					{
+						if (handle != Null<Handle>) Destroy();
+					}*/
 
 					void Assign(const LogicalDevice& _device, const CreateInfo& _info)
 					{
@@ -1293,6 +1357,10 @@ namespace VaultedThermals
 					void Destroy()
 					{
 						Parent::Destroy(*device, handle, allocator);
+
+						handle    = Null<Handle>            ;
+						allocator = Memory::DefaultAllocator;
+						device    = nullptr                 ;
 					}
 
 					const Support& GetSupport() const
@@ -1325,6 +1393,22 @@ namespace VaultedThermals
 						return handle == _other.handle;
 					}
 
+					/*DescriptorSet& operator= (DescriptorSet&& _other) noexcept
+					{
+						if (this == &_other)
+							return *this;
+
+						handle    = std::move(_other.handle   );
+						allocator = std::move(_other.allocator);
+						device    = std::move(_other.device   );
+
+						_other.handle    = Null<Handle>            ;
+						_other.allocator = Memory::DefaultAllocator;
+						_other.device    = nullptr                 ;
+
+						return *this;
+					}*/
+
 				protected:
 
 					Handle handle;
@@ -1337,6 +1421,28 @@ namespace VaultedThermals
 
 					Support support;
 				};
+
+				/*Layout() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+				{}
+
+				Layout(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+				{}
+
+				Layout(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+				{}
+
+				Layout(Layout&& _other) noexcept :
+					handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+				{
+					_other.handle    = Null<Handle>            ;
+					_other.allocator = Memory::DefaultAllocator;
+					_other.device    = nullptr                 ;
+				}
+
+				~Layout()
+				{
+					if (handle != Null<Handle>) Destroy();
+				}*/
 
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
@@ -1384,6 +1490,22 @@ namespace VaultedThermals
 					return handle == _other.handle;
 				}
 
+				/*Layout& operator= (Layout&& _other) noexcept
+				{
+					if (this == &_other)
+						return *this;
+
+					handle    = std::move(_other.handle   );
+					allocator = std::move(_other.allocator);
+					device    = std::move(_other.device   );
+
+					_other.handle    = Null<Handle>            ;
+					_other.allocator = Memory::DefaultAllocator;
+					_other.device    = nullptr                 ;
+
+					return *this;
+				}*/
+
 			protected:
 
 				Handle handle;
@@ -1393,9 +1515,42 @@ namespace VaultedThermals
 				const LogicalDevice* device;
 			};
 
+			/*Pipeline() : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			Pipeline(const LogicalDevice& _device) : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Pipeline(const LogicalDevice& _device, const Cache& _cache) : handle(Null<Handle>), cache(&_cache), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Pipeline(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), cache(nullptr), allocator(&_allocator), device(&_device)
+			{}
+
+			Pipeline(const LogicalDevice& _device, const Cache& _cache, const Memory::AllocationCallbacks& _allocator) : 
+				handle(Null<Handle>), cache(&_cache), allocator(&_allocator), device(&_device)
+			{}
+
+			Pipeline(Pipeline&& _other) noexcept :
+				handle(std::move(_other.handle)), cache(std::move(_other.cache)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.cache     = nullptr                 ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
+			~Pipeline()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			operator Handle()
@@ -1422,6 +1577,24 @@ namespace VaultedThermals
 			{
 				return handle == _other.handle;
 			}
+
+			/*Pipeline& operator= (Pipeline&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				cache     = std::move(_other.cache    );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.cache     = nullptr                 ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
+			}*/
 
 		protected:
 
@@ -1452,6 +1625,21 @@ namespace VaultedThermals
 				allocator = _allocator;
 				cache     = &_cache   ;
 				device    = &_device  ;
+			}
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Parent::Compute::Create
+				(
+					*device            ,
+					Null<Cache::Handle>,
+					1                  ,
+					&_info             ,
+					allocator          ,
+					&handle
+				);
 			}
 
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
@@ -1540,7 +1728,7 @@ namespace VaultedThermals
 
 				int index = 0;
 
-				for (auto pipeline : _pipelines)
+				for (auto& pipeline : _pipelines)
 				{
 					pipeline.Assign(_device, _cache, _allocator, handles[index]);
 				}
@@ -1566,6 +1754,21 @@ namespace VaultedThermals
 				allocator = _allocator;
 				cache     = &_cache   ;
 				device    = &_device  ;
+			}
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Parent::Graphics::Create
+				(
+					*device            ,
+					Null<Cache::Handle>,
+					1                  ,
+					&_info             ,
+					allocator          ,
+					&handle
+				);
 			}
 
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
@@ -1654,7 +1857,7 @@ namespace VaultedThermals
 
 				int index = 0;
 
-				for (auto pipeline : _pipelines)
+				for (auto& pipeline : _pipelines)
 				{
 					pipeline.Assign(_device, _cache, _allocator, handles[index]);
 				}

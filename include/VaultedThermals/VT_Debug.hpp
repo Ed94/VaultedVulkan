@@ -358,6 +358,14 @@ namespace VaultedThermals
 					handle(Null<Handle>), app(&_appInstance), allocator(&_allocator)
 				{}
 
+				Messenger(Messenger&& _other) noexcept :
+					handle(std::move(_other.handle)), app(std::move(_other.app)), allocator(std::move(_other.allocator))
+				{
+					_other.handle    = Null<Handle>            ;
+					_other.app       = nullptr                 ;
+					_other.allocator = Memory::DefaultAllocator;
+				}
+
 				~Messenger()
 				{
 					if (handle != Null<Handle>) Destroy();
@@ -418,6 +426,22 @@ namespace VaultedThermals
 				bool operator== (const Messenger& _other) const
 				{
 					return handle == _other.handle;
+				}
+
+				Messenger& operator= (Messenger&& _other) noexcept
+				{
+					if (this == &_other)
+						return *this;
+
+					handle    = std::move(_other.handle   );
+					app       = std::move(_other.app      );
+					allocator = std::move(_other.allocator);
+
+					_other.handle    = Null<Handle>            ;
+					_other.app       = nullptr                 ;
+					_other.allocator = Memory::DefaultAllocator;
+
+					return *this;
 				}
 
 			protected:

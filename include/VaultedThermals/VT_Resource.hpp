@@ -1936,7 +1936,6 @@ namespace VaultedThermals
 				if (handle = Null<Handle>) Destroy();
 			}*/
 
-
 			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
 			{
 				return Parent::Allocate(*device, _info, _handlesContainer);

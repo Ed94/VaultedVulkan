@@ -448,7 +448,7 @@ namespace VaultedThermals
 
 			using Parent = V2::Surface;
 
-			/*Surface() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(nullptr), physicalDevice(nullptr)
+			Surface() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(nullptr), physicalDevice(nullptr)
 			{}
 
 			Surface(const AppInstance& _app) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(&_app), physicalDevice(nullptr)
@@ -465,10 +465,19 @@ namespace VaultedThermals
 				handle(Null<Handle>), allocator(&_allocator), app(&_app), physicalDevice(&_physicalDevice)
 			{}
 
+			Surface(Surface&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), app(std::move(_other.app)), physicalDevice(std::move(_other.physicalDevice))
+			{
+				_other.handle         = Null<Handle>            ;
+				_other.allocator      = Memory::DefaultAllocator;
+				_other.app            = nullptr                 ;
+				_other.physicalDevice = nullptr                 ;
+			}
+
 			~Surface()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice)
 			{
@@ -570,6 +579,24 @@ namespace VaultedThermals
 			bool operator== (const Surface& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			Surface& operator= (Surface&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle         = std::move(_other.handle        );
+				allocator      = std::move(_other.allocator     );
+				app            = std::move(_other.app           );
+				physicalDevice = std::move(_other.physicalDevice);
+
+				_other.handle         = Null<Handle>            ;
+				_other.allocator      = Memory::DefaultAllocator;
+				_other.app            = nullptr                 ;
+				_other.physicalDevice = nullptr                 ;
+
+				return *this;
 			}
 
 		protected:

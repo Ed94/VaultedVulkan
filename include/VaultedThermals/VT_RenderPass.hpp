@@ -402,7 +402,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Framebuffer;
 
-			/*Framebuffer() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			Framebuffer() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			Framebuffer(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -411,10 +411,18 @@ namespace VaultedThermals
 			Framebuffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			Framebuffer(Framebuffer&& _other) noexcept :
+				handle(_other.handle), allocator(_other.allocator), device(_other.device)
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~Framebuffer()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Create(const CreateInfo& _info)
 			{
@@ -472,6 +480,22 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			Framebuffer& operator= (Framebuffer&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = _other.handle   ;
+				allocator = _other.allocator;
+				device    = _other.device   ;
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
+			}
+
 		protected:
 
 			Handle handle;
@@ -486,7 +510,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::RenderPass;
 
-			/*RenderPass() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			RenderPass() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			RenderPass(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -495,10 +519,18 @@ namespace VaultedThermals
 			RenderPass(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			RenderPass(RenderPass&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;	
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~RenderPass()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Create(const CreateInfo& _info)
 			{
@@ -553,6 +585,22 @@ namespace VaultedThermals
 			bool operator== (const RenderPass& _other)
 			{
 				return handle == _other.handle;
+			}
+
+			RenderPass& operator= (RenderPass&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
 			}
 
 		protected:

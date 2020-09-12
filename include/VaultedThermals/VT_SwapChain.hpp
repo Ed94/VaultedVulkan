@@ -283,7 +283,7 @@ namespace VaultedThermals
 
 			using Parent = V2::Swapchain;
 
-			/*Swapchain() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			Swapchain() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			Swapchain(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -292,10 +292,18 @@ namespace VaultedThermals
 			Swapchain(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			Swapchain(Swapchain&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~Swapchain()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult AcquireNextImage
 			(
@@ -387,6 +395,22 @@ namespace VaultedThermals
 			bool operator== (const Swapchain& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			Swapchain& operator= (Swapchain&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
 			}
 
 		protected:

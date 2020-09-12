@@ -247,7 +247,7 @@ namespace VaultedThermals
 
 			using Parent = V2::Memory;
 
-			/*Memory() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			Memory() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			Memory(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -256,10 +256,18 @@ namespace VaultedThermals
 			Memory(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			Memory(Memory&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;	
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~Memory()
 			{
 				if (handle != Null<Handle>) Free();
-			}*/
+			}
 
 			EResult Allocate(const AllocateInfo& _info)
 			{
@@ -335,6 +343,22 @@ namespace VaultedThermals
 			bool operator== (const Memory& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			Memory& operator= (Memory&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
 			}
 
 		protected:

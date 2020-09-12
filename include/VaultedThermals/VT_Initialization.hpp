@@ -491,6 +491,13 @@ namespace VaultedThermals
 			AppInstance(const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator)
 			{}
 
+			AppInstance(AppInstance&& _other) noexcept :
+				handle(_other.handle), allocator(_other.allocator)
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+			}
+
 			~AppInstance()
 			{
 				if (handle != Null<Handle>) Destroy();
@@ -650,6 +657,20 @@ namespace VaultedThermals
 			bool operator== (const AppInstance& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			AppInstance& operator= (AppInstance&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = _other.handle   ;
+				allocator = _other.allocator;
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+
+				return *this;
 			}
 
 		protected:

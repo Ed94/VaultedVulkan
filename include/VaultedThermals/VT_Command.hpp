@@ -1555,9 +1555,13 @@ namespace VaultedThermals
 				handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
-			/*CommandPool(CommandPool&& _poolToMove) noexcept : 
+			CommandPool(CommandPool&& _poolToMove) noexcept : 
 				handle(std::move(_poolToMove.handle)), allocator(std::move(_poolToMove.allocator)), device(std::move(_poolToMove.device))
-			{}*/
+			{
+				_poolToMove.handle    = Null<Handle>            ;
+				_poolToMove.allocator = Memory::DefaultAllocator;
+				_poolToMove.device    = nullptr                 ;
+			}
 
 			~CommandPool()
 			{
@@ -1803,6 +1807,22 @@ namespace VaultedThermals
 			bool operator== (const CommandPool& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			CommandPool& operator= (CommandPool&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
 			}
 
 		protected:
