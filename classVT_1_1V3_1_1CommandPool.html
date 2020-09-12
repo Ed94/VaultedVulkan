@@ -53,6 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>CommandPool <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
         </h1>
+        <p><span></span></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -68,7 +69,6 @@
             </li>
           </ul>
         </div>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000016" class="m-doc">Todo</a></h4><p>#TODO: Add documentation.</p></aside>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -115,22 +115,18 @@
               <span class="m-doc-wrap-bumper"><a href="#a107b196f47b953d95092420f956cbd45" class="m-doc-self">~CommandPool</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a6e3d092dfccd9fa5460a5fd73d579bf1">
-              <span class="m-doc-wrap-bumper"><a href="#a6e3d092dfccd9fa5460a5fd73d579bf1" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="af8325237d388ab998262af630abc8829">
+              <span class="m-doc-wrap-bumper"><a href="#af8325237d388ab998262af630abc8829" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="aa07acec18fd5e43917e11751f09f2197">
-              <span class="m-doc-wrap-bumper"><a href="#aa07acec18fd5e43917e11751f09f2197" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a reference of its handle.</dd>
             <dt id="aeae9902c7ab8f676ad974c55474f5730">
               <span class="m-doc-wrap-bumper"><a href="#aeae9902c7ab8f676ad974c55474f5730" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
             <dt id="aa7d43ac83983bf22ced42337db9be00d">
               <span class="m-doc-wrap-bumper"><a href="#aa7d43ac83983bf22ced42337db9be00d" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a pointers to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -223,11 +219,11 @@
             <dt id="a570b44ac7d594c8fd2d2c95d715956c7">
               <span class="m-doc-wrap-bumper">auto <a href="#a570b44ac7d594c8fd2d2c95d715956c7" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1CommandPool.html" class="m-doc">CommandPool</a>&amp; _other) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if its the same object by checking to see if its the same handle.</dd>
             <dt id="a5f2b75d73af81c404ab8666f7ea76ec5">
               <span class="m-doc-wrap-bumper">auto <a href="#a5f2b75d73af81c404ab8666f7ea76ec5" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1CommandPool.html" class="m-doc">CommandPool</a>&amp;&amp; _other) -&gt; <a href="classVT_1_1V3_1_1CommandPool.html" class="m-doc">CommandPool</a>&amp; <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move assignment operation to transfer ownership of the device object to this host object.</dd>
           </dl>
         </section>
         <section id="pro-attribs">

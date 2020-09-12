@@ -110,6 +110,27 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
             </h3>
             <p>Query the available layers.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_numContainer</td>
+                  <td>Referenced object that will either specify the number of available layers to retrieve (if _propertiesContainer is not null), or be written to with the number of available layers (if _propertiesContainer is null).</td>
+                </tr>
+                <tr>
+                  <td>_propertiesContainer</td>
+                  <td>Pointer to a properties container array that will be populated if the pointer is not null.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Returns EResult code (Indicating whether query was successful)</td>
+                </tr>
+              </tfoot>
+            </table>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceLayerProperties">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga20807f88fcf490596d0d8ae14716d361"><div>

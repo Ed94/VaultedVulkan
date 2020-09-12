@@ -53,6 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>CommandBuffer <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
         </h1>
+        <p>Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -68,7 +69,6 @@
             </li>
           </ul>
         </div>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000015" class="m-doc">Todo</a></h4><p>#TODO: Needs documentation.</p></aside>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -104,22 +104,18 @@
               <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a2aaad920f37a38b56bcec4f6147a1473">
-              <span class="m-doc-wrap-bumper"><a href="#a2aaad920f37a38b56bcec4f6147a1473" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="a28a34b777825f5a1a7c67c8122a3f252">
+              <span class="m-doc-wrap-bumper"><a href="#a28a34b777825f5a1a7c67c8122a3f252" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a9ec2e9a6e6ead6586f0282a5e86d28e8">
-              <span class="m-doc-wrap-bumper"><a href="#a9ec2e9a6e6ead6586f0282a5e86d28e8" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a reference to its handle.</dd>
             <dt id="aa69f4bdf4fdf88122e83d76f89d6d135">
               <span class="m-doc-wrap-bumper"><a href="#aa69f4bdf4fdf88122e83d76f89d6d135" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
             <dt id="a5ec8d3d421f040193a425f6250c25be3">
               <span class="m-doc-wrap-bumper"><a href="#a5ec8d3d421f040193a425f6250c25be3" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a pointers to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -341,7 +337,7 @@
             <dt id="a2820edb181025e480d6384b2d3f97eab">
               <span class="m-doc-wrap-bumper">auto <a href="#a2820edb181025e480d6384b2d3f97eab" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _other) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if its the same object by checking to see if its the same handle.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -367,7 +363,7 @@
             <h3>
               <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a> VT::<wbr />V3::<wbr />CommandBuffer::<wbr /><a href="#a5bcaf369b56eaad76c6e553ddc6ea982" class="m-doc-self">info</a> <span class="m-label m-warning">protected</span>
             </h3>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000017" class="m-doc">Todo</a></h4><p>move to <a href="namespaceVT_1_1V4.html" class="m-doc">V4</a>?</p></aside>
+<aside class="m-note m-dim"><h4><a href="todo.html#_todo000015" class="m-doc">Todo</a></h4><p>move to <a href="namespaceVT_1_1V4.html" class="m-doc">V4</a>?</p></aside>
           </div></section>
         </section>
       </div>

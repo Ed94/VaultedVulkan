@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span><span class="m-breadcrumb"><a href="structVT_1_1V3_1_1DebugUtils.html">DebugUtils</a>::<wbr/></span>Messenger <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information. Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -103,40 +103,36 @@
             <dt id="a24788ebcbe40b06466fa46a293fbaa3f">
               <span class="m-doc-wrap-bumper"><a href="#a24788ebcbe40b06466fa46a293fbaa3f" class="m-doc-self">Messenger</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="abbb41417794d78b91dc43ba01e761236">
               <span class="m-doc-wrap-bumper"><a href="#abbb41417794d78b91dc43ba01e761236" class="m-doc-self">Messenger</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp; _appInstance)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor with app instance specified.</dd>
             <dt id="ad555812bcf88272e00f2b5865f435dd9">
               <span class="m-doc-wrap-bumper"><a href="#ad555812bcf88272e00f2b5865f435dd9" class="m-doc-self">Messenger</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp; _appInstance,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor with app instance and allocator specified.</dd>
             <dt id="ac547c4e3db062c4e254d07f8a3b403f5">
               <span class="m-doc-wrap-bumper"><a href="#ac547c4e3db062c4e254d07f8a3b403f5" class="m-doc-self">Messenger</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1DebugUtils_1_1Messenger.html" class="m-doc">Messenger</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move operation to transfer ownership of the device object to this host object.</dd>
             <dt id="a9638ff49ab025153c3c6aeb384133722">
               <span class="m-doc-wrap-bumper"><a href="#a9638ff49ab025153c3c6aeb384133722" class="m-doc-self">~Messenger</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a77095c86b0c5cb4a0149c0644deace1d">
-              <span class="m-doc-wrap-bumper"><a href="#a77095c86b0c5cb4a0149c0644deace1d" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
+            <dd>If the handle is found to not be null, this device will attempt to destroy the device object that corresponds to it.</dd>
+            <dt id="ab222a4adcd1533165158dd7fe3b6e590">
+              <span class="m-doc-wrap-bumper"><a href="#ab222a4adcd1533165158dd7fe3b6e590" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="acbdf1be9bb3f0ebffc9f13f381e5b2b5">
-              <span class="m-doc-wrap-bumper"><a href="#acbdf1be9bb3f0ebffc9f13f381e5b2b5" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a reference to its handle.</dd>
             <dt id="a74e851f97f88ac5b67cdb2eb09e4f99c">
               <span class="m-doc-wrap-bumper"><a href="#a74e851f97f88ac5b67cdb2eb09e4f99c" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
             <dt id="a75444e4f45114949c19b5c0065fcbaf8">
               <span class="m-doc-wrap-bumper"><a href="#a75444e4f45114949c19b5c0065fcbaf8" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a pointers to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -145,30 +141,30 @@
             <dt id="aa41289b9705ae84738a28e5a097d7534">
               <span class="m-doc-wrap-bumper">auto <a href="#aa41289b9705ae84738a28e5a097d7534" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a debug messenger.</dd>
             <dt id="a804aefb4a1ab8c271d9f67228822bdc9">
               <span class="m-doc-wrap-bumper">auto <a href="#a804aefb4a1ab8c271d9f67228822bdc9" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp; _appInstance,
               const <a href="structVT_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a debug messenger. (Specify app instance)</dd>
             <dt id="a3f39915b531098aa1e50985fd7639590">
               <span class="m-doc-wrap-bumper">auto <a href="#a3f39915b531098aa1e50985fd7639590" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp; _appInstance,
               const <a href="structVT_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a debug messenger. (Specify app instance and allocator)</dd>
             <dt id="a1c016f93dc6ad17d9fc784bb080c9e3e">
               <span class="m-doc-wrap-bumper">void <a href="#a1c016f93dc6ad17d9fc784bb080c9e3e" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy a debug messenger.</dd>
             <dt id="a24be2e8806d9d7f472526ada22d6dd6a">
               <span class="m-doc-wrap-bumper">auto <a href="#a24be2e8806d9d7f472526ada22d6dd6a" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1DebugUtils_1_1Messenger.html" class="m-doc">Messenger</a>&amp; _other) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if its the same object by checking to see if its the same handle.</dd>
             <dt id="a949fc4dcd653072f05355874815ffcfd">
               <span class="m-doc-wrap-bumper">auto <a href="#a949fc4dcd653072f05355874815ffcfd" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1DebugUtils_1_1Messenger.html" class="m-doc">Messenger</a>&amp;&amp; _other) -&gt; <a href="classVT_1_1V3_1_1DebugUtils_1_1Messenger.html" class="m-doc">Messenger</a>&amp; <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move assignment operation to transfer ownership of the device object to this host object.</dd>
           </dl>
         </section>
         <section id="pro-attribs">

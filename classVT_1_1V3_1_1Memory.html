@@ -68,7 +68,7 @@
             </li>
           </ul>
         </div>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000027" class="m-doc">Todo</a></h4><p>#TODO: Add documentation.</p></aside>
+<aside class="m-note m-dim"><h4><a href="todo.html#_todo000024" class="m-doc">Todo</a></h4><p>#TODO: Add documentation.</p></aside>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -111,22 +111,18 @@
               <span class="m-doc-wrap-bumper"><a href="#a3ddfcbe08cdbf6d0db135776b9790756" class="m-doc-self">~Memory</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a8d4f6a4e39922e4229c539ddbc1e9c56">
-              <span class="m-doc-wrap-bumper"><a href="#a8d4f6a4e39922e4229c539ddbc1e9c56" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="a9ee1b62779ffa09d10a4a49aeb28f725">
+              <span class="m-doc-wrap-bumper"><a href="#a9ee1b62779ffa09d10a4a49aeb28f725" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="aaa195c8f9fed976212a539750ea72483">
-              <span class="m-doc-wrap-bumper"><a href="#aaa195c8f9fed976212a539750ea72483" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a reference to its handle.</dd>
             <dt id="a1c67648c27a6874c020f014a51630840">
               <span class="m-doc-wrap-bumper"><a href="#a1c67648c27a6874c020f014a51630840" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
             <dt id="a3790b7cde3af9380e82871b9f844d626">
               <span class="m-doc-wrap-bumper"><a href="#a3790b7cde3af9380e82871b9f844d626" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a pointers to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -151,10 +147,6 @@
               <span class="m-doc-wrap-bumper">void <a href="#a82c651a75b613f92ee3fbb1884c1e39f" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="acc545bb9d6cc40c282dbff948f133d13">
-              <span class="m-doc-wrap-bumper">auto <a href="#acc545bb9d6cc40c282dbff948f133d13" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="structVT_1_1V1_1_1Memory.html#a4e5a8d77fdf7b88c08fdd5dbf4400c21" class="m-doc">Handle</a>&amp;</span>
-            </dt>
-            <dd><span></span></dd>
             <dt id="aab2282cbb18dc64a521d5735c046631d">
               <span class="m-doc-wrap-bumper">auto <a href="#aab2282cbb18dc64a521d5735c046631d" class="m-doc-self">Map</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
@@ -176,11 +168,11 @@
             <dt id="aba8aaaa9b7e1b31e8cc95a48850d6812">
               <span class="m-doc-wrap-bumper">auto <a href="#aba8aaaa9b7e1b31e8cc95a48850d6812" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp; _other) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if its the same object by checking to see if its the same handle.</dd>
             <dt id="a0003cc03829d609d63ea7f95930c469c">
               <span class="m-doc-wrap-bumper">auto <a href="#a0003cc03829d609d63ea7f95930c469c" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp;&amp; _other) -&gt; <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp; <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move assignment operation to transfer ownership of the device object to this host object.</dd>
           </dl>
         </section>
         <section id="pro-attribs">

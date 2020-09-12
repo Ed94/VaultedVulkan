@@ -99,22 +99,18 @@
               const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a8ccf5a38f4894b494b7bac4c5b497ff8">
-              <span class="m-doc-wrap-bumper"><a href="#a8ccf5a38f4894b494b7bac4c5b497ff8" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="ab7f2fc409f8370a3502783d9934292c7">
+              <span class="m-doc-wrap-bumper"><a href="#ab7f2fc409f8370a3502783d9934292c7" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a523ee9b502bc61409f248b9e5fa535f5">
-              <span class="m-doc-wrap-bumper"><a href="#a523ee9b502bc61409f248b9e5fa535f5" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a reference to its handle.</dd>
             <dt id="a733167f8d644c35e57c1bfee044e679c">
               <span class="m-doc-wrap-bumper"><a href="#a733167f8d644c35e57c1bfee044e679c" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
             <dt id="a2ba8b5a88072a2048b4a8af3e9556624">
               <span class="m-doc-wrap-bumper"><a href="#a2ba8b5a88072a2048b4a8af3e9556624" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a pointers to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -129,10 +125,6 @@
               <span class="m-doc-wrap-bumper">void <a href="#a40291c4592e9c4ad9b18cb994ac44482" class="m-doc-self">Clear</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd><span></span></dd>
-            <dt id="a320e12d12d10f6f990965a407849b544">
-              <span class="m-doc-wrap-bumper">auto <a href="#a320e12d12d10f6f990965a407849b544" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="group__APISpec__Resource__Descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">Handle</a>&amp;</span>
-            </dt>
-            <dd><span></span></dd>
             <dt id="a815f8a4657f1eb87cf5ff6c7be6c647b">
               <span class="m-doc-wrap-bumper">void <a href="#a815f8a4657f1eb87cf5ff6c7be6c647b" class="m-doc-self">Update</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorWriteCount,
               const <a href="structVT_1_1V1_1_1DescriptorSet_1_1Write.html" class="m-doc">Write</a>* _descriptorWrites,
@@ -143,7 +135,7 @@
             <dt id="ae7998396d5480ddaeacae1706b32dea7">
               <span class="m-doc-wrap-bumper">auto <a href="#ae7998396d5480ddaeacae1706b32dea7" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a>&amp; _other) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if its the same object by checking to see if its the same handle.</dd>
           </dl>
         </section>
         <section id="pro-attribs">

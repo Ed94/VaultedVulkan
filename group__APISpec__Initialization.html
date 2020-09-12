@@ -208,6 +208,31 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
             </h3>
             <p>Create a new Vulkan application instance.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_info</td>
+                  <td>The creation specification structure to use.</td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td>Allocator desired (<a href="structVT_1_1V0_1_1Memory.html#ade4c23636f7cce1b03766c1e049f130a" class="m-doc">Memory::<wbr />DefaultAllocator</a> if default desired).</td>
+                </tr>
+                <tr>
+                  <td>_handle</td>
+                  <td>Reference to object that will have the created object&#x27;s handle written to (if successful).</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Returns EResult code (Indicating how the creation went).</td>
+                </tr>
+              </tfoot>
+            </table>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga62cbd52d407729daf8007fd112935a4b"><div>
@@ -217,6 +242,21 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Initialization_8hpp.html">&lt;VaultedThermals/VT_Initialization.hpp&gt;</a></div>
             </h3>
             <p>Destroy an application instance of Vulkan.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_handle</td>
+                  <td>Handle of the <a href="structVT_1_1V1_1_1AppInstance.html" class="m-doc">AppInstance</a>.</td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td>Optional: Allocator to use (<a href="structVT_1_1V0_1_1Memory.html#ade4c23636f7cce1b03766c1e049f130a" class="m-doc">Memory::<wbr />DefaultAllocator</a> if default desired).</td>
+                </tr>
+              </tbody>
+            </table>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gae481e0c8f306e13a339969fc62186a3b"><div>
@@ -232,9 +272,15 @@
               <tbody>
                 <tr>
                   <td style="width: 1%">_versionContainer</td>
-                  <td></td>
+                  <td>The value of version will be written to this object referenced.</td>
                 </tr>
               </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Returns EResult code (Indicating the version was able to be retrieved).</td>
+                </tr>
+              </tfoot>
             </table>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceVersion">Specification</a></p>
           </div></section>
