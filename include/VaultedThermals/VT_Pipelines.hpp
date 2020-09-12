@@ -1202,7 +1202,7 @@ namespace VaultedThermals
 			public:
 				using Parent = V2::Pipeline::Cache;
 
-				/*Cache() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+				Cache() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 				{}
 
 				Cache(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1222,7 +1222,7 @@ namespace VaultedThermals
 				~Cache()
 				{
 					if (handle != Null<Handle>) Destroy();
-				}*/
+				}
 
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
@@ -1273,7 +1273,7 @@ namespace VaultedThermals
 					return handle == _other.handle;
 				}
 
-				/*Cache& operator= (Cache&& _other) noexcept
+				Cache& operator= (Cache&& _other) noexcept
 				{
 					if (this == &_other)
 						return *this;
@@ -1287,7 +1287,7 @@ namespace VaultedThermals
 					_other.device    = nullptr                 ;
 
 					return *this;
-				}*/
+				}
 
 			protected:
 
@@ -1308,7 +1308,7 @@ namespace VaultedThermals
 				public:
 					using Parent = V2::Pipeline::Layout::DescriptorSet;
 
-					/*DescriptorSet() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+					DescriptorSet() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 					{}
 
 					DescriptorSet(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1329,7 +1329,7 @@ namespace VaultedThermals
 					~DescriptorSet()
 					{
 						if (handle != Null<Handle>) Destroy();
-					}*/
+					}
 
 					void Assign(const LogicalDevice& _device, const CreateInfo& _info)
 					{
@@ -1393,7 +1393,7 @@ namespace VaultedThermals
 						return handle == _other.handle;
 					}
 
-					/*DescriptorSet& operator= (DescriptorSet&& _other) noexcept
+					DescriptorSet& operator= (DescriptorSet&& _other) noexcept
 					{
 						if (this == &_other)
 							return *this;
@@ -1407,7 +1407,7 @@ namespace VaultedThermals
 						_other.device    = nullptr                 ;
 
 						return *this;
-					}*/
+					}
 
 				protected:
 
@@ -1422,7 +1422,7 @@ namespace VaultedThermals
 					Support support;
 				};
 
-				/*Layout() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+				Layout() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 				{}
 
 				Layout(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1442,7 +1442,7 @@ namespace VaultedThermals
 				~Layout()
 				{
 					if (handle != Null<Handle>) Destroy();
-				}*/
+				}
 
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
@@ -1490,7 +1490,7 @@ namespace VaultedThermals
 					return handle == _other.handle;
 				}
 
-				/*Layout& operator= (Layout&& _other) noexcept
+				Layout& operator= (Layout&& _other) noexcept
 				{
 					if (this == &_other)
 						return *this;
@@ -1504,7 +1504,7 @@ namespace VaultedThermals
 					_other.device    = nullptr                 ;
 
 					return *this;
-				}*/
+				}
 
 			protected:
 
@@ -1515,7 +1515,7 @@ namespace VaultedThermals
 				const LogicalDevice* device;
 			};
 
-			/*Pipeline() : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(nullptr)
+			Pipeline() : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			Pipeline(const LogicalDevice& _device) : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1543,7 +1543,7 @@ namespace VaultedThermals
 			~Pipeline()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			void Destroy()
 			{
@@ -1578,7 +1578,7 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
-			/*Pipeline& operator= (Pipeline&& _other) noexcept
+			Pipeline& operator= (Pipeline&& _other) noexcept
 			{
 				if (this == &_other)
 					return *this;
@@ -1594,7 +1594,7 @@ namespace VaultedThermals
 				_other.device    = nullptr                 ;
 
 				return *this;
-			}*/
+			}
 
 		protected:
 

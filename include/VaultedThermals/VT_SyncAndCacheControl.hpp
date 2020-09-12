@@ -1114,7 +1114,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Event;
 
-			/*Event() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			Event() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			Event(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1123,10 +1123,18 @@ namespace VaultedThermals
 			Event(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			Event(Event&& _other) noexcept : 
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~Event()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1201,6 +1209,22 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			Event& operator= (Event&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
+			}
+
 		protected:
 
 			Handle handle;
@@ -1215,7 +1239,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Fence;
 
-			/*Fence() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			Fence() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			Fence(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1224,10 +1248,18 @@ namespace VaultedThermals
 			Fence(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			Fence(Fence&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~Fence()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1303,7 +1335,7 @@ namespace VaultedThermals
 
 				DynamicArray<Fence::Handle> handles;
 
-				for (auto fence : _fences) handles.push_back(fence.GetHandle());
+				for (auto& fence : _fences) handles.push_back(fence.GetHandle());
 
 				return Parent::Reset(device, handles.data(), static_cast<uint32>(_fences.size()));
 			}
@@ -1319,7 +1351,7 @@ namespace VaultedThermals
 
 				DynamicArray<Fence::Handle> handles;
 
-				for (auto fence : _fences) handles.push_back(fence.GetHandle());
+				for (auto& fence : _fences) handles.push_back(fence.GetHandle());
 
 				return Parent::WaitForFences(device, static_cast<uint32>(_fences.size()), handles.data(), _waitForAll, _timeout);
 			}
@@ -1349,6 +1381,22 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			Fence& operator= (Fence&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
+			}
+
 		protected:
 
 			Handle handle;
@@ -1363,7 +1411,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Semaphore;
 
-			/*Semaphore() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			Semaphore() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			Semaphore(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1372,10 +1420,18 @@ namespace VaultedThermals
 			Semaphore(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			Semaphore(Semaphore&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~Semaphore()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1456,6 +1512,22 @@ namespace VaultedThermals
 			bool operator== (const Semaphore& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			Semaphore& operator= (Semaphore&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
 			}
 
 		protected:

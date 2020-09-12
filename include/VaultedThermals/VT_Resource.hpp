@@ -1197,38 +1197,55 @@ namespace VaultedThermals
 
 			using Parent = V2::Buffer;
 
-			/*Buffer() : 
+			Buffer() : 
 				handle            (Null<Handle>), 
+				allocator         (nullptr)     ,
 				device            (nullptr)     , 
 				memory            (nullptr)     , 
 				memoryOffset      (0)           , 
-				memoryRequirements()            , 
-				allocator         (nullptr)
+				memoryRequirements()            
 			{}
 
 			Buffer(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
+				allocator         (nullptr)     ,
 				device            (&_device)    , 
 				memory            (nullptr)     , 
 				memoryOffset      (0)           , 
-				memoryRequirements()            , 
-				allocator         (nullptr)
+				memoryRequirements()   
 			{}
 
 			Buffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
-				handle            (Null<Handle>), 
-				device            (&_device)    , 
-				memory            (nullptr)     , 
-				memoryOffset      (0)           , 
-				memoryRequirements()            , 
-				allocator         (&_allocator)
+				handle            (Null<Handle>),
+				allocator         (&_allocator) ,
+				device            (&_device)    ,
+				memory            (nullptr)     ,
+				memoryOffset      (0)           ,
+				memoryRequirements()
 			{}
+
+			Buffer(Buffer&& _other) noexcept :
+				handle   (_other.handle   ),
+				allocator(_other.allocator),
+				device   (_other.device   ),
+				memory            (_other.memory            ),
+				memoryOffset      (_other.memoryOffset      ),
+				memoryRequirements(_other.memoryRequirements)
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				_other.memory       = nullptr;
+				_other.memoryOffset = 0;
+			}
 
 			~Buffer()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
+			// #TODO: Move to v4 buffer package.
 			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
 				memory       = &_memory     ;
@@ -1274,6 +1291,7 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			// #TODO: Move to V4 buffer package.
 			EResult CreateAndBind
 			(
 				const CreateInfo&           _info          ,  
@@ -1307,6 +1325,7 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			// #TODO: Move to v4 buffer package.
 			EResult CreateAndBind
 			(
 				const LogicalDevice&        _device        ,  
@@ -1416,19 +1435,42 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			Buffer& operator= (Buffer&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				memory       = std::move(_other.memory      );
+				memoryOffset = std::move(_other.memoryOffset);
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				_other.memory       = nullptr;
+				_other.memoryOffset = 0      ;
+
+				return *this;
+			}
+
 		protected:
 
 			Handle handle;
 
+			const Memory::AllocationCallbacks* allocator;
+
 			const LogicalDevice* device;
 
-			const Memory* memory;
+			const Memory* memory;   // #TODO: Move out to V4 buffer package.
 
-			DeviceSize memoryOffset;
+			DeviceSize memoryOffset;   // #TODO: Move out to V4 buffer package.
 
 			Memory::Requirements memoryRequirements;
 
-			const Memory::AllocationCallbacks* allocator;
 		};
 
 		class BufferView : public V2::BufferView
@@ -1436,8 +1478,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::BufferView;
 
-
-			/*BufferView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			BufferView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			BufferView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1446,10 +1487,18 @@ namespace VaultedThermals
 			BufferView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			BufferView(BufferView&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~BufferView()
 			{
 				if (handle = Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1506,6 +1555,22 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			BufferView& operator= (BufferView&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
+			}
+
 		protected:
 
 			Handle handle;
@@ -1520,39 +1585,53 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Image;
 
-
-			/*Image() : 
+			Image() : 
 				handle            (Null<Handle>), 
+				allocator         (nullptr)     ,
 				device            (nullptr)     , 
 				memory            (nullptr)     , 
 				memoryOffset      (0)           , 
-				memoryRequirements()            , 
-				allocator         (nullptr)
+				memoryRequirements() 
 			{}
 
 			Image(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
+				allocator         (nullptr)     ,
 				device            (&_device)    , 
 				memory            (nullptr)     , 
 				memoryOffset      (0)           , 
-				memoryRequirements()            , 
-				allocator         (nullptr)
+				memoryRequirements()  
 			{}
 
 			Image(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
-				handle            (Null<Handle>), 
-				device            (&_device)    , 
-				memory            (nullptr)     , 
-				memoryOffset      (0)           , 
-				memoryRequirements()            , 
-				allocator         (&_allocator)
+				handle            (Null<Handle>),
+				allocator         (&_allocator) ,
+				device            (&_device)    ,
+				memory            (nullptr)     ,
+				memoryOffset      (0)           ,
+				memoryRequirements()
 			{}
+
+			Image(Image&& _other) noexcept :
+				handle   (_other.handle   ),
+				allocator(_other.allocator),
+				device   (_other.device   ),
+				memory            (_other.memory            ),
+				memoryOffset      (_other.memoryOffset      ),
+				memoryRequirements(_other.memoryRequirements)
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				_other.memory       = nullptr;
+				_other.memoryOffset = 0;
+			}
 
 			~Image()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
-
+			}
 
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
@@ -1566,6 +1645,7 @@ namespace VaultedThermals
 				device = nullptr     ;
 			}
 
+			// #TODO: Move to V4 buffer package.
 			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
 				memory       = &_memory     ;
@@ -1611,6 +1691,7 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			// #TODO: Move to V4 buffer package.
 			EResult CreateAndBind
 			(
 				const CreateInfo&           _info       ,  
@@ -1640,6 +1721,7 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			// #TODO: Move to V4 buffer package.
 			EResult CreateAndBind
 			(
 				const LogicalDevice&        _device     ,  
@@ -1670,6 +1752,7 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			// #TODO: Move to V4 buffer package.
 			EResult CreateAndBind
 			(
 				const LogicalDevice&               _device        ,  
@@ -1739,19 +1822,43 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			Image& operator= (Image&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				memory       = std::move(_other.memory      );
+				memoryOffset = std::move(_other.memoryOffset);
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				_other.memory       = nullptr;
+				_other.memoryOffset = 0      ;
+
+				return *this;
+			}
+
 		protected:
 
 			Handle handle;
 
 			const Memory::AllocationCallbacks* allocator;
 
+			const LogicalDevice* device;
+
+			// #TODO: Move to V4 buffer package.
 			const Memory* memory;
 
+			// #TODO: Move to V4 buffer package.
 			DeviceSize memoryOffset;
 
 			Memory::Requirements memoryRequirements;
-
-			const LogicalDevice* device;
 		};
 
 		class ImageView : public V2::ImageView
@@ -1760,7 +1867,7 @@ namespace VaultedThermals
 			using Parent = V2::ImageView;
 
 
-			/*ImageView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			ImageView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			ImageView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
@@ -1769,10 +1876,18 @@ namespace VaultedThermals
 			ImageView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
+			ImageView(ImageView&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~ImageView()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1831,6 +1946,22 @@ namespace VaultedThermals
 				return handle == _other.handle;
 			}
 
+			ImageView& operator= (ImageView&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
+			}
+
 		protected:	
 
 			Handle handle;
@@ -1846,15 +1977,11 @@ namespace VaultedThermals
 			using Parent = V2::DescriptorSet;
 
 
-			/*DescriptorSet() : handle(Null<Handle>), device(nullptr)
+			DescriptorSet() : handle(Null<Handle>), device(nullptr)
 			{}
 
 			DescriptorSet(Handle _handle, const LogicalDevice& _device) : handle(_handle), device(&_device)
 			{}
-
-			~DescriptorSet()
-			{}*/
-
 
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
@@ -1921,8 +2048,7 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::DescriptorPool;
 
-
-			/*DescriptorPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			DescriptorPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			DescriptorPool(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
@@ -1931,10 +2057,18 @@ namespace VaultedThermals
 			DescriptorPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
+			DescriptorPool(DescriptorPool&& _other) noexcept :
+				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
+			{
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+			}
+
 			~DescriptorPool()
 			{
 				if (handle = Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
 			{
@@ -2032,6 +2166,22 @@ namespace VaultedThermals
 			bool operator== (const DescriptorPool& _other) const
 			{
 				return handle == _other.handle;
+			}
+
+			DescriptorPool& operator= (DescriptorPool&& _other) noexcept
+			{
+				if (this == &_other)
+					return *this;
+
+				handle    = std::move(_other.handle   );
+				allocator = std::move(_other.allocator);
+				device    = std::move(_other.device   );
+
+				_other.handle    = Null<Handle>            ;
+				_other.allocator = Memory::DefaultAllocator;
+				_other.device    = nullptr                 ;
+
+				return *this;
 			}
 
 		protected:
