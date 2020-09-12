@@ -504,7 +504,7 @@ namespace VaultedThermals
 			 */
 			EResult Create(const AppInstance::CreateInfo& _createinfo)
 			{
-				allocator = Memory::DefaultAllocator;
+				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 
 				return Parent::Create(_createinfo, handle);
 			}

@@ -592,7 +592,7 @@ namespace VaultedThermals
 			{
 				if (physicalDevice == nullptr) return EResult::Not_Ready;
 
-				allocator = Memory::DefaultAllocator;
+				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 
 				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}

@@ -239,7 +239,7 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    =  &_device               ;
-				allocator = Memory::DefaultAllocator;
+				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 
 				return Parent::Create(*device, _info, handle);
 			}

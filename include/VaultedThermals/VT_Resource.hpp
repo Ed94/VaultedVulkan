@@ -416,7 +416,7 @@ namespace VaultedThermals
 			 */
 			static EResult Create(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, const Memory::AllocationCallbacks* _allocator, Handle& _imageHandle)
 			{
-				return EResult(vkCreateImage(_deviceHandle, _createInfo.operator const VkImageCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_imageHandle));
+				return EResult(vkCreateImage(_deviceHandle, _createInfo, *_allocator, &_imageHandle));
 			}
 
 			/** 
@@ -431,7 +431,7 @@ namespace VaultedThermals
 			 */
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _image, const Memory::AllocationCallbacks* _allocator)
 			{
-				vkDestroyImage(_deviceHandle, _image, _allocator->operator const VkAllocationCallbacks*());
+				vkDestroyImage(_deviceHandle, _image, *_allocator);
 			}
 
 			/**
@@ -1588,6 +1588,8 @@ namespace VaultedThermals
 			{
 				device = &_device;
 
+				allocator = nullptr;   // #TODO: Delete this.
+
 				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
 
 				if (returnCode == EResult::Success)
@@ -1781,8 +1783,9 @@ namespace VaultedThermals
 
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
+
+				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 
 				return Parent::Create(*device, _info, allocator, handle);
 			}
@@ -1970,6 +1973,8 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
+
+				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 
 				return Parent::Create(*device, _info, allocator, handle);
 			}
