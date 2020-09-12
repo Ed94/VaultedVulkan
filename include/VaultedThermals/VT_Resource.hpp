@@ -1237,7 +1237,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			Buffer(Buffer&& _other) noexcept :
 				handle   (_other.handle   ),
@@ -1541,7 +1541,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			BufferView(BufferView&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
@@ -1706,7 +1706,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			Image(Image&& _other) noexcept :
 				handle   (_other.handle   ),
@@ -2012,7 +2012,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			ImageView(ImageView&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
@@ -2252,7 +2252,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			DescriptorPool(DescriptorPool&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))

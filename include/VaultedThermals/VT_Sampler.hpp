@@ -222,7 +222,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			Sampler(Sampler&& _other) noexcept :
 				handle(_other.handle), allocator(_other.allocator), device(_other.device)

@@ -800,9 +800,9 @@ namespace VaultedThermals
 			 * 
 			 * @ingroup APISpec_Command_Buffers
 			 * 
-			 * \param _deviceHandle
-			 * \param _commandPool
-			 * \param _flags
+			 * @param _deviceHandle
+			 * @param _commandPool
+			 * @param _flags
 			 */
 			static void Trim
 			(
@@ -876,13 +876,13 @@ namespace VaultedThermals
 		#pragma region SingleTimeCommands
 
 			/**
-			 * @brief Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer. 
-			 * 
-			 * @details
-			 * The handle to the command buffer will be returned.
-			 * 
-			 * Expected to be used with the EndSingleTimeCommands function (defined below it).
-			 */
+			* @brief Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer. 
+			* 
+			* @details
+			* The handle to the command buffer will be returned.
+			* 
+			* Expected to be used with the EndSingleTimeCommands function (defined below it).
+			*/
 			static CommandBuffer::Handle BeginSingleTimeCommands(LogicalDevice::Handle _device, CommandPool::Handle _commandPool)
 			{
 				AllocateInfo allocationInfo{};
@@ -903,13 +903,13 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.
-			 * 
-			 * @details
-			 * Will wait until the queue is idle that the commands were submitted to. Will also free the command buffer after completion.
-			 * 
-			 * Expected to be used with the BeginSingleTimeCommands function (defined above it).
-			 */
+			* @brief Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.
+			* 
+			* @details
+			* Will wait until the queue is idle that the commands were submitted to. Will also free the command buffer after completion.
+			* 
+			* Expected to be used with the BeginSingleTimeCommands function (defined above it).
+			*/
 			static void EndSingleTimeCommands
 			(
 				CommandBuffer       ::Handle _commandBuffer, 
@@ -1154,7 +1154,7 @@ namespace VaultedThermals
 			using AllocateInfo = V2::CommandPool::AllocateInfo;
 
 			/**
-			
+			@brief Default constructor
 			*/
 			CommandBuffer() : handle(Null<Handle>), device(nullptr), info()
 			{}
@@ -1640,7 +1640,16 @@ namespace VaultedThermals
 
 		/**
 		@ingroup APISpec_Command_Buffers
-		@brief
+		@brief Command pools are opaque objects that command buffer memory is allocated from,
+		and which allow the implementation to amortize the cost of resource creation across multiple command buffers.
+
+		@details
+		Command pools are externally synchronized, meaning that a command pool must not be used concurrently in multiple threads.
+		That includes use via recording commands on any command buffers allocated from the pool, as well as operations that allocate,
+		free, and reset command buffers or the pool itself.
+
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class CommandPool : public V2::CommandPool
 		{
@@ -1650,26 +1659,26 @@ namespace VaultedThermals
 			using CommandBuffer = V3::CommandBuffer;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			CommandPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief Default constructor, logical device defined.
 			*/
 			CommandPool(const LogicalDevice& _device) : handle(Null<Handle>),  allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief Default constructor, logical device and allocator defined.
 			*/
 			CommandPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			CommandPool(CommandPool&& _poolToMove) noexcept : 
 				handle(std::move(_poolToMove.handle)), allocator(std::move(_poolToMove.allocator)), device(std::move(_poolToMove.device))
@@ -1680,7 +1689,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Call the destroy for the device object if the host object's handle is not null.
 			*/
 			~CommandPool()
 			{
@@ -1688,7 +1697,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate a command buffer.
 			*/
 			EResult Allocate(CommandBuffer& _buffer)
 			{
@@ -1706,7 +1715,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate a command buffer with the specified allocation info.
 			*/
 			EResult Allocate(AllocateInfo& _info, CommandBuffer& _buffer)
 			{
@@ -1722,7 +1731,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate command buffers based on the allocate info.
 			*/
 			EResult Allocate(AllocateInfo& _info, CommandBuffer::Handle* _buffers)
 			{
@@ -1732,7 +1741,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate command buffers with the specified count and level.
 			*/
 			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _buffers)
 			{
@@ -1748,7 +1757,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate command buffers and their handles into dynamic arrays. based on the count provided and the level desired.
 			*/
 			EResult Allocate
 			(
@@ -1779,7 +1788,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a command pool.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1789,7 +1798,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a command pool (device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1799,7 +1808,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a command pool (device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1810,7 +1819,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy a command pool.
 			*/
 			void Destroy()
 			{
@@ -1822,7 +1831,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Free the command buffers based on the count and handle container provided.
 			*/
 			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
 			{
@@ -1830,7 +1839,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Free the command buffers based on the allocate info and handle container provided.
 			*/
 			void Free(const AllocateInfo& _info, const CommandBuffer::Handle* _commandBuffers)
 			{
@@ -1838,7 +1847,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Free a command buffer.
 			*/
 			void Free(CommandBuffer& _commandBuffer)
 			{
@@ -1846,7 +1855,8 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Resetting a command pool recycles all of the resources from all of the command buffers allocated from the command pool back to the command pool. 
+			All command buffers that have been allocated from the command pool are put in the initial state.
 			*/
 			EResult Reset(ResetFlags _flags)
 			{
@@ -1854,7 +1864,8 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Trimming a command pool recycles unused memory from the command pool back to the system. 
+			Command buffers allocated from the pool are not affected by the command.
 			*/
 			void Trim(TrimFlags _flags)
 			{
@@ -1864,8 +1875,13 @@ namespace VaultedThermals
 		#pragma region SingleTimeCommands
 
 			/**
-			 * @brief.
-			 */
+			* @brief Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer. 
+			* 
+			* @details
+			* The handle to the command buffer will be returned.
+			* 
+			* Expected to be used with the EndSingleTimeCommands function (defined below it).
+			*/
 			CommandBuffer BeginSingleTimeCommands(EResult& _result)
 			{
 				AllocateInfo allocationInfo{};
@@ -1890,8 +1906,13 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief.
-			 */
+			* @brief Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.
+			* 
+			* @details
+			* Will wait until the queue is idle that the commands were submitted to. Will also free the command buffer after completion.
+			* 
+			* Expected to be used with the BeginSingleTimeCommands function (defined above it).
+			*/
 			EResult EndSingleTimeCommands
 			(
 				      CommandBuffer&        _commandBuffer, 
@@ -1923,7 +1944,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Uses a single time command buffer to copy a buffer with the provided queue and copy info.
 			*/
 			EResult CopyBuffer
 			(

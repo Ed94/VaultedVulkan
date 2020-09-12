@@ -484,7 +484,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-			
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			Surface(Surface&& _other) noexcept :
 				handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), app(std::move(_other.app)), physicalDevice(std::move(_other.physicalDevice))

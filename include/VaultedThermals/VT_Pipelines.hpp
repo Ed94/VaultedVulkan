@@ -1227,7 +1227,7 @@ namespace VaultedThermals
 				{}
 
 				/**
-
+				@brief Performs a move operation to transfer ownership of the device object to this host object.
 				*/
 				Cache(Cache&& _other) noexcept :
 					handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
@@ -1374,7 +1374,7 @@ namespace VaultedThermals
 					{}
 
 					/**
-
+					@brief Performs a move operation to transfer ownership of the device object to this host object.
 					*/
 					DescriptorSet(DescriptorSet&& _other) noexcept :
 						handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
@@ -1527,7 +1527,7 @@ namespace VaultedThermals
 				{}
 
 				/**
-
+				@brief Performs a move operation to transfer ownership of the device object to this host object.
 				*/
 				Layout(Layout&& _other) noexcept :
 					handle(std::move(_other.handle)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
@@ -1660,7 +1660,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			Pipeline(const LogicalDevice& _device, const Cache& _cache, const Memory::AllocationCallbacks& _allocator) : 
 				handle(Null<Handle>), cache(&_cache), allocator(&_allocator), device(&_device)

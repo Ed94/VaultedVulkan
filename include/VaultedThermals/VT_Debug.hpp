@@ -347,6 +347,10 @@ namespace VaultedThermals
 			@brief 
 			Vulkan allows an application to register multiple callbacks with any Vulkan component wishing to report debug information.
 			Some callbacks may log the information to a file, others may cause a debug break point or other application defined behavior.
+
+			@details
+			This object represents a device created object on the host. As such ownership is tied to this host object.
+			Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 			*/
 			class Messenger : public Parent::Messenger
 			{
