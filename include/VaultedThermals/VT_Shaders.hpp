@@ -74,11 +74,11 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a> @ingroup APISpec_Shaders */
 			struct CreateInfo : V0::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>
 			{
-				      EType             SType    ;
-				const void*             Next     ;
+				      EType             SType     = STypeEnum;
+				const void*             Next      = nullptr  ;
 				      CreateFlags       Flags    ;
-				      WordSize          CodeSize ;
-				const SPIR_V::Bytecode* Code     ;
+				      WordSize          CodeSize  = 0        ;
+				const SPIR_V::Bytecode* Code      = nullptr  ;
 			};
 
 			/**
@@ -103,7 +103,7 @@ namespace VaultedThermals
 				      Handle&                      _shaderModule
 			)
 			{
-				return EResult(vkCreateShaderModule(_deviceHandle, _creationSpec.operator const VkShaderModuleCreateInfo*(), _allocator->operator const VkAllocationCallbacks*(), &_shaderModule));
+				return EResult(vkCreateShaderModule(_deviceHandle, _creationSpec, *_allocator, &_shaderModule));
 			}
 
 			/**
@@ -120,7 +120,7 @@ namespace VaultedThermals
 			 */
 			static void Destroy(LogicalDevice::Handle _deviceHandle, Handle _moduleHandle, const Memory::AllocationCallbacks* _allocator)
 			{
-				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, _allocator->operator const VkAllocationCallbacks*());
+				return vkDestroyShaderModule(_deviceHandle, _moduleHandle, *_allocator);
 			}
 		};
 
@@ -143,13 +143,10 @@ namespace VaultedThermals
 			*/
 			struct CreateInfo : public Parent::CreateInfo
 			{
-				CreateInfo()
-				{
-					SType    = STypeEnum;
-					Next     = nullptr  ;
-					CodeSize = 0        ;
-					Code     = nullptr  ;
-				}
+				using Parent = Parent::CreateInfo;
+
+				CreateInfo() : Parent::CreateInfo()
+				{}
 
 				CreateInfo(RoCStr _code, WordSize _codeSize)
 				{
@@ -218,6 +215,27 @@ namespace VaultedThermals
 			
 			using Parent = V2::ShaderModule;
 
+			/*ShaderModule() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			ShaderModule(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			ShaderModule(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~ShaderModule()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, handle);
+			}
+
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    =  &_device               ;
@@ -237,6 +255,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ; 
 			}
 
 			operator Handle()

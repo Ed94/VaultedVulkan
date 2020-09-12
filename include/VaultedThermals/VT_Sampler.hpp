@@ -61,8 +61,8 @@ namespace VaultedThermals
             /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateInfo">Specification</a> @ingroup APISpec_Samplers */
 			struct CreateInfo : V0::VKStruct_Base<VkSamplerCreateInfo, EStructureType::Sampler_CreateInfo>
 			{
-                      EType             SType                  ;
-                const void*             Next                   ;
+                      EType             SType                   = STypeEnum;
+                const void*             Next                    = nullptr  ;
                       CreateFlags       Flags                  ;
                       EFilter           MagnificationFilter    ;
                       EFilter           MinimumFilter          ;
@@ -145,18 +145,6 @@ namespace VaultedThermals
         {
             using Parent = V1::Sampler;
 
-			/**
-			@brief Offers a default constructor.
-			*/
-            struct CreateInfo : public Parent::CreateInfo
-            {
-                CreateInfo()
-                {
-                    SType = STypeEnum;
-                    Next  = nullptr  ;
-                }
-            };
-
             /**
              * @brief Create a sampler object (Default Allocator).
 
@@ -212,10 +200,30 @@ namespace VaultedThermals
 
             using Parent = V2::Sampler;
 
+			/*Sampler() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			Sampler(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Sampler(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~Sampler()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, allocator, handle);
+			}
+
             EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
             {
-                device    = &_device                ;
-                allocator = Memory::DefaultAllocator;
+                device = &_device;
 
                 return Parent::Create(*device, _info, allocator, handle);
             }
@@ -231,6 +239,9 @@ namespace VaultedThermals
             void Destroy()
             {
                 Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
             }
 
 			operator Handle()

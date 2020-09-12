@@ -1237,10 +1237,21 @@ namespace VaultedThermals
 				return Parent::BindMemory(*device, handle, *memory, memoryOffset);
 			}
 
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				EResult returnCode = Parent::Parent::Create(*device, _info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
+
+				return returnCode;
+			}
+
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				EResult returnCode = Parent::Parent::Create(*device, _info, allocator, handle);
 
@@ -1265,6 +1276,39 @@ namespace VaultedThermals
 
 			EResult CreateAndBind
 			(
+				const CreateInfo&           _info          ,  
+				      Memory::PropertyFlags _memoryFlags   ,
+				      Memory&               _memory
+			)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+
+				allocationInfo.MemoryTypeIndex = 
+					device->GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				returnCode = _memory.Allocate(*device, allocationInfo, *allocator);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				BindMemory(_memory, Memory::ZeroOffset);
+
+				memory = &_memory;
+
+				return returnCode;
+			}
+
+			EResult CreateAndBind
+			(
 				const LogicalDevice&        _device        ,  
 				const CreateInfo&           _info          ,  
 				      Memory::PropertyFlags _memoryFlags   ,
@@ -1274,7 +1318,7 @@ namespace VaultedThermals
 				device    = &_device                ;
 				allocator = Memory::DefaultAllocator;
 
-				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
+				EResult returnCode = Parent::Create(_device, _info, allocator, handle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
@@ -1310,7 +1354,7 @@ namespace VaultedThermals
 				device    = &_device   ;
 				allocator = _allocator ;
 
-				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
+				EResult returnCode = Parent::Create(_device, _info, allocator, handle);
 
 				if (returnCode != EResult::Success) return returnCode;
 
@@ -1407,10 +1451,16 @@ namespace VaultedThermals
 				if (handle = Null<Handle>) Destroy();
 			}*/
 
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, allocator, handle);
+			}
+
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				return Parent::Create(*device, _info, allocator, handle);
 			}
@@ -1524,10 +1574,19 @@ namespace VaultedThermals
 				return Parent::BindMemory(*device, handle, *memory, memoryOffset);
 			}
 
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
+
+				if (returnCode == EResult::Success)
+					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
+			}
+
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
 
@@ -1552,14 +1611,42 @@ namespace VaultedThermals
 
 			EResult CreateAndBind
 			(
+				const CreateInfo&           _info       ,  
+				      Memory::PropertyFlags _memoryFlags,
+				      Memory&               _memory
+			)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				EResult returnCode = Create(*device, _info);
+
+				Memory::AllocateInfo allocationInfo{};
+
+				allocationInfo.AllocationSize = memoryRequirements.Size;
+
+				allocationInfo.MemoryTypeIndex = 
+					device->GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
+
+				returnCode = _memory.Allocate(*device, allocationInfo, *allocator);
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				BindMemory(_memory, Memory::ZeroOffset);
+
+				memory = &_memory;
+
+				return returnCode;
+			}
+
+			EResult CreateAndBind
+			(
 				const LogicalDevice&        _device     ,  
 				const CreateInfo&           _info       ,  
 				      Memory::PropertyFlags _memoryFlags,
 				      Memory&               _memory
 			)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				EResult returnCode = Create(_device, _info);
 
@@ -1685,6 +1772,12 @@ namespace VaultedThermals
 				if (handle != Null<Handle>) Destroy();
 			}*/
 
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, allocator, handle);
+			}
 
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1867,10 +1960,16 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, allocator, handle);
+			}
+
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				return Parent::Create(*device, _info, allocator, handle);
 			}

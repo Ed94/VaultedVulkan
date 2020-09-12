@@ -82,8 +82,8 @@ namespace VaultedThermals
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkSwapchainCreateInfoKHR, EStructureType::SwapChain_CreateInfo_KHR>
 			{
-				      EType                 SType                ;
-				const void*                 Next                 ;
+				      EType                 SType                 = STypeEnum;
+				const void*                 Next                  = nullptr  ;
 				      CreateFlags           Flags                ;
 				      Surface::Handle       Surface              ;
 				      uint32                MinImageCount        ;
@@ -93,8 +93,8 @@ namespace VaultedThermals
 				      uint32                ImageArrayLayers     ;
 				      Image::UsageFlags	    ImageUsage           ;
 				      ESharingMode          ImageSharingMode     ;
-				      uint32                QueueFamilyIndexCount;
-				const uint32*               QueueFamilyIndices   ;
+				      uint32                QueueFamilyIndexCount = 0        ;
+				const uint32*               QueueFamilyIndices    = nullptr  ;
 				      ESurfaceTransformFlag PreTransform         ;
 				      ECompositeAlpha       CompositeAlpha       ;
 				      EPresentationMode     PresentationMode     ;
@@ -109,14 +109,14 @@ namespace VaultedThermals
 			*/
 			struct PresentationInfo : V0::VKStruct_Base<VkPresentInfoKHR, EStructureType::PresentInfo_KHR>
 			{
-				      EType              SType             ;
-				const void*              Next              ;
-				      uint32             WaitSemaphoreCount;
-				const Semaphore::Handle* WaitSemaphores    ;
-				      uint32             SwapchainCount    ;
-				const Handle*            Swapchains        ;
-				const uint32*            ImageIndices      ;
-				      EResult*           Results           ;
+				      EType              SType              = STypeEnum;
+				const void*              Next               = nullptr  ;
+				      uint32             WaitSemaphoreCount = 0        ;
+				const Semaphore::Handle* WaitSemaphores     = nullptr  ;
+				      uint32             SwapchainCount     = 0        ;
+				const Handle*            Swapchains         = nullptr  ;
+				const uint32*            ImageIndices       = nullptr  ;
+				      EResult*           Results            = nullptr  ;
 			};
 
 			/**
@@ -219,30 +219,6 @@ namespace VaultedThermals
 			using Parent = V1::Swapchain;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-
-			/**
-			@brief Offers a default constructor.
-			*/
-			struct PresentationInfo : Parent::PresentationInfo
-			{
-				PresentationInfo()
-				{
-					SType = STypeEnum;
-					Next  = nullptr  ;
-				}
-			};
-			
-			/**
 			@brief Create a swapchain (Default Allocator).
 			*/
 			static EResult Create
@@ -307,6 +283,20 @@ namespace VaultedThermals
 
 			using Parent = V2::Swapchain;
 
+			/*Swapchain() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
+
+			Swapchain(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
+
+			Swapchain(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~Swapchain()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
 			EResult AcquireNextImage
 			(
 				uInt64                _timeout   ,
@@ -316,6 +306,13 @@ namespace VaultedThermals
 			)
 			{
 				return Parent::AcquireNextImage(*device, handle, _timeout, _semaphore, _fence, _imageIndex);
+			}
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, handle);
 			}
 
 			EResult Create(const LogicalDevice& _deviceHandle, const CreateInfo& _info)
@@ -337,6 +334,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			EResult GetImages(DynamicArray<Image>& _images)

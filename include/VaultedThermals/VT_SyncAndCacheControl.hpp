@@ -1229,7 +1229,14 @@ namespace VaultedThermals
 				if (handle != Null<Handle>) Destroy();
 			}*/
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, handle);
+			}
+
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device                ;
 				allocator = Memory::DefaultAllocator;
@@ -1237,7 +1244,7 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
 				allocator = &_allocator;
@@ -1356,9 +1363,28 @@ namespace VaultedThermals
 		public:
 			using Parent = V2::Semaphore;
 
+			/*Semaphore() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			{}
 
+			Semaphore(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
+			{}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info)
+			Semaphore(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			~Semaphore()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, handle);
+			}
+
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device  ;
 				allocator = Memory::DefaultAllocator;
@@ -1366,7 +1392,7 @@ namespace VaultedThermals
 				return Parent::Create(*device, _info, handle);
 			}
 
-			EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
+			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
 				device    = &_device   ;
 				allocator = &_allocator;
@@ -1377,6 +1403,9 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			EResult GetCounterValue(uInt64& _value)

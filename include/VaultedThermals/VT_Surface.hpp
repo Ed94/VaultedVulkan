@@ -161,10 +161,10 @@ namespace VaultedThermals
 			{
 				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
 
-				      EType           SType      ;
-				const void*           Next       ;
+				      EType           SType       = STypeEnum        ;
+				const void*           Next        = nullptr          ;
 				      CreateFlags     Flags      ;
-				      OS_AppHandle    OSAppHandle;
+				      OS_AppHandle    OSAppHandle = GetOS_AppHandle();
 				      OS_WindowHandle OSWinHandle;
 			};
 
@@ -357,19 +357,6 @@ namespace VaultedThermals
 			using Parent = V1::Surface;
 
 			/**
-			@brief Offers a default constructor.
-			*/
-			struct CreateInfo : public Parent::CreateInfo
-			{
-				CreateInfo()
-				{
-					SType       = STypeEnum        ;
-					Next        = nullptr          ;
-					OSAppHandle = GetOS_AppHandle();
-				}
-			};
-
-			/**
 			@brief Create a surface (Default Allocator).
 			*/
 			static EResult Create(AppInstance::Handle _appHandle, const CreateInfo& _createInfo, Handle& _surfaceHandle)
@@ -461,25 +448,59 @@ namespace VaultedThermals
 
 			using Parent = V2::Surface;
 
+			/*Surface() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(nullptr), physicalDevice(nullptr)
+			{}
+
+			Surface(const AppInstance& _app) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(&_app), physicalDevice(nullptr)
+			{}
+
+			Surface(const AppInstance& _app, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), app(&_app), physicalDevice(nullptr)
+			{}
+
+			Surface(const AppInstance& _app, const PhysicalDevice& _physicalDevice) :
+				handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(&_app), physicalDevice(&_physicalDevice)
+			{}
+
+			Surface(const AppInstance& _app, const PhysicalDevice& _physicalDevice, const Memory::AllocationCallbacks& _allocator) :
+				handle(Null<Handle>), allocator(&_allocator), app(&_app), physicalDevice(&_physicalDevice)
+			{}
+
+			~Surface()
+			{
+				if (handle != Null<Handle>) Destroy();
+			}*/
+
 			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice)
 			{
 				physicalDevice = &_physicalDevice;
+			}
+
+			EResult Create(OS_WindowHandle _window)
+			{
+				CreateInfo geninfo {}; geninfo.OSWinHandle = _window;
+
+				return Parent::Create(*app, geninfo, handle);
+			}
+
+			EResult Create(const CreateInfo&  _info)
+			{
+				if (app == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*app, _info, handle);
 			}
 
 			EResult Create(const AppInstance& _app, OS_WindowHandle _window)
 			{
 				CreateInfo geninfo {}; geninfo.OSWinHandle = _window;
 
-				app       = &_app                   ;
-				allocator = Memory::DefaultAllocator;
+				app = &_app;
 
 				return Parent::Create(*app, geninfo, handle);
 			}
 
 			EResult Create(const AppInstance& _appHandle, const CreateInfo&  _info)
 			{
-				app       = &_appHandle             ;
-				allocator = Memory::DefaultAllocator;
+				app = &_appHandle;
 				
 				return Parent::Create(*app, _info, handle);
 			}
@@ -500,6 +521,10 @@ namespace VaultedThermals
 			void Destroy()
 			{
 				Parent::Destroy(*app, handle);
+				
+				app            = nullptr     ;
+				physicalDevice = nullptr     ;
+				handle         = Null<Handle>;
 			}
 
 			EResult GetAvailableFormats(DynamicArray<Format>& _formatsContainer) const

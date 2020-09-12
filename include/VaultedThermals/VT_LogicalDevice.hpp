@@ -588,7 +588,7 @@ namespace VaultedThermals
 				physicalDevice = &_physicalDevice;
 			}
 
-			EResult Create(CreateInfo& _createInfo)
+			EResult Create(const CreateInfo& _createInfo)
 			{
 				if (physicalDevice == nullptr) return EResult::Not_Ready;
 
@@ -597,7 +597,7 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
-			EResult Create(CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
+			EResult Create(const CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
 				if (physicalDevice == nullptr) return EResult::Not_Ready;
 
@@ -606,7 +606,7 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, allocator, handle);
 			}
 
-			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo)
+			EResult Create(const PhysicalDevice& _physicalDevice, const CreateInfo& _createInfo)
 			{
 				physicalDevice = &_physicalDevice        ;
 				allocator      = Memory::DefaultAllocator;
@@ -614,7 +614,7 @@ namespace VaultedThermals
 				return Parent::Create(*physicalDevice, _createInfo, handle);
 			}
 
-			EResult Create(const PhysicalDevice& _physicalDevice, CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
+			EResult Create(const PhysicalDevice& _physicalDevice, const CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
 				physicalDevice = &_physicalDevice;
 				allocator      = &_allocator     ;

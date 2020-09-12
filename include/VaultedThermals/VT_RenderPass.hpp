@@ -500,10 +500,16 @@ namespace VaultedThermals
 				if (handle != Null<Handle>) Destroy();
 			}*/
 
+			EResult Create(const CreateInfo& _info)
+			{
+				if (device == nullptr) return EResult::Not_Ready;
+
+				return Parent::Create(*device, _info, handle);
+			}
+
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				return Parent::Create(*device, _info, handle);
 			}
