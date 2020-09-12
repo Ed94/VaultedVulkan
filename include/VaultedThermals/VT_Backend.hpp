@@ -171,21 +171,34 @@ namespace VaultedThermals
 		};
 
 		template<typename Enum, typename = void>
+		/**
+		@brief Used when the enum does not meet the criteria for bitmaskable.
+		*/
 		struct IsBitmaskable : std::false_type
 		{};
 
 		template<typename Enum>
+		/**
+		@brief Will be defined with a true_type when enum has the VT_SpecifyBitmaskable enum value.
+		*/
 		struct IsBitmaskable<Enum, decltype(static_cast<void>(Enum::VT_SpecifyBitmaskable))> : std::is_enum<Enum>
 		{};
 
 		template <typename Enum>
+		/**
+		@brief Returns true if IsBitmaskable is false.
+		*/
 		constexpr typename std::enable_if<IsBitmaskable<Enum>::value, bool>::
 		type Bitmaskable() noexcept
 		{
 			return static_cast<WordSize>(Enum::VT_SpecifyBitmaskable) > WordSize(0) ? true : false;
 		}
 
-		template <typename Enum> constexpr typename std::enable_if<!IsBitmaskable<Enum>::value, bool>::
+		template <typename Enum> 
+		/**
+		@brief Returns false if bitmaskable is false (Default case).
+		*/
+		constexpr typename std::enable_if<!IsBitmaskable<Enum>::value, bool>::
 		type Bitmaskable() noexcept
 		{
 			return false;
@@ -267,14 +280,45 @@ namespace VaultedThermals
 				mask ^= (Representation(_bits) | ...);
 			}
 
-			_ThisType& operator= (const BitmaskRepresentation _mask) { mask = _mask; return *this; }
-
 			operator Representation() const { return mask; }
 
+			_ThisType& operator= (const Representation _mask ) { mask = _mask      ; return *this; }
+			_ThisType& operator= (const _ThisType      _other) { mask = _other.mask; return *this; }
+
+			_ThisType& operator&= (const Representation _mask ) { mask &= mask       ; return *this; }
+			_ThisType& operator&= (const _ThisType      _other) { mask &= _other.mask; return *this; }
+
+			_ThisType& operator|= (const Representation _mask ) { mask |= mask       ; return *this; }
+			_ThisType& operator|= (const _ThisType      _other) { mask |= _other.mask; return *this; }	
+
+			_ThisType& operator^= (const Representation _mask ) { mask ^= mask       ; return *this; }
+			_ThisType& operator^= (const _ThisType      _other) { mask ^= _other.mask; return *this; }	
+
+			_ThisType& operator<<= (const Representation _mask ) { mask <<= mask       ; return *this; }
+			_ThisType& operator>>= (const _ThisType      _other) { mask >>= _other.mask; return *this; }	
+
+			_ThisType operator~ () const { return ~mask; }
+
+			Representation operator& (const Representation _other) const { return mask & _other     ; }
+			_ThisType      operator& (const _ThisType      _other) const { return mask & _other.mask; }
+
+			Representation operator| (const Representation _other) const { return mask | _other     ; }
+			_ThisType      operator| (const _ThisType      _other) const { return mask | _other.mask; }
+
+			Representation operator^ (const Representation _other) const { return mask ^ _other     ; }
+			_ThisType      operator^ (const _ThisType      _other) const { return mask ^ _other.mask; }
+
+			Representation operator<< (const Representation _other) const { return mask << _other     ; }
+			_ThisType      operator>> (const _ThisType      _other) const { return mask >> _other.mask; }
+
 			bool operator== (const Representation _other) const { return mask == _other     ; }
-			bool operator== (const _ThisType&     _other) const { return mask == _other.mask; }
+			bool operator== (const _ThisType      _other) const { return mask == _other.mask; }
+
+			bool operator!= (const Representation _other) const { return mask != _other     ; }
+			bool operator!= (const _ThisType      _other) const { return mask != _other.mask; }
 
 		private:
+
 			Representation mask;
 		};
 
