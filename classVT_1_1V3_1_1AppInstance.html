@@ -70,7 +70,7 @@
             </li>
           </ul>
         </div>
-<p>Other Name: Application State Container</p><p>Vulkan has no global state reference: Every application must keep track of their state using an instance object.</p>
+<p>This object represents a device created object on the host. As such ownership is tied to this host object. Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -104,35 +104,35 @@
             <dt id="a8d5fbd3b4f1364dab51144fa01fe82e0">
               <span class="m-doc-wrap-bumper"><a href="#a8d5fbd3b4f1364dab51144fa01fe82e0" class="m-doc-self">AppInstance</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Will construct an <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a> host object with a null handle and allocator set to default.</dd>
             <dt id="a7ac8600d9aecf8c3f5e3ff045da7d393">
               <span class="m-doc-wrap-bumper"><a href="#a7ac8600d9aecf8c3f5e3ff045da7d393" class="m-doc-self">AppInstance</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Will construct an <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a> host object with a null handle a the allocator set to the specified allocator.</dd>
             <dt id="a869dc6b7a4ea3ca840b8bbd981c774d8">
               <span class="m-doc-wrap-bumper"><a href="#a869dc6b7a4ea3ca840b8bbd981c774d8" class="m-doc-self">AppInstance</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move operation to transfer ownership of the device object to this host object.</dd>
             <dt id="ace215d64bfa4825ab081159bb7641424">
               <span class="m-doc-wrap-bumper"><a href="#ace215d64bfa4825ab081159bb7641424" class="m-doc-self">~AppInstance</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>If the handle is found to not be null, this device will attempt to destroy the device object that corresponds to it.</dd>
             <dt id="aa04a48eaff108e0ff657cd684a0a48a6">
               <span class="m-doc-wrap-bumper"><a href="#aa04a48eaff108e0ff657cd684a0a48a6" class="m-doc-self">operator Handle</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a copy of its handle.</dd>
             <dt id="aabd856ce8455ce043f83383e35aefb86">
               <span class="m-doc-wrap-bumper"><a href="#aabd856ce8455ce043f83383e35aefb86" class="m-doc-self">operator Handle*</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a pointer to its handle.</dd>
             <dt id="ae59fa37161b0ff2026165b66e01297ae">
               <span class="m-doc-wrap-bumper"><a href="#ae59fa37161b0ff2026165b66e01297ae" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
             <dt id="a23be17d5e3c958073395fffa88d22bb7">
               <span class="m-doc-wrap-bumper"><a href="#a23be17d5e3c958073395fffa88d22bb7" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a pointers to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -177,11 +177,11 @@
             <dt id="a475210475ed385008756d139a798845a">
               <span class="m-doc-wrap-bumper">auto <a href="#a475210475ed385008756d139a798845a" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp; _other) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if its the same object by checking to see if its the same handle.</dd>
             <dt id="a37710e4717b4c8892b6321856a9ef78f">
               <span class="m-doc-wrap-bumper">auto <a href="#a37710e4717b4c8892b6321856a9ef78f" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp;&amp; _other) -&gt; <a href="classVT_1_1V3_1_1AppInstance.html" class="m-doc">AppInstance</a>&amp; <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move assignment operation to transfer ownership of the device object to this host object.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
