@@ -118,12 +118,12 @@
               <div class="m-doc-template">template&lt;typename Enum, typename = void&gt;</div>
               struct <a href="structVT_1_1V0_1_1IsBitmaskable.html" class="m-doc">IsBitmaskable</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Used when the enum does not meet the criteria for bitmaskable.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename Enum&gt;</div>
               struct <a href="structVT_1_1V0_1_1IsBitmaskable_3_01Enum_00_01decltype_07static__cast_3_01void_01_4_07Enum_1_1VT__SpecifyBitmaskable_08_08_4.html" class="m-doc">IsBitmaskable&lt;Enum, decltype(static_cast&lt;void&gt;(Enum::VT_SpecifyBitmaskable))&gt;</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Will be defined with a true_type when enum has the VT_SpecifyBitmaskable enum value.</dd>
             <dt>
               struct <a href="structVT_1_1V0_1_1Memory.html" class="m-doc">Memory</a>
             </dt>
@@ -214,12 +214,12 @@
               <div class="m-doc-template">template&lt;typename Enum&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="group__Vault__0.html#ga2679eafd9f3ef86102e76e9c18796bee" class="m-doc">Bitmaskable</a>(</span><span class="m-doc-wrap">) -&gt; std::enable_if&lt;<a href="structVT_1_1V0_1_1IsBitmaskable.html" class="m-doc">IsBitmaskable</a>&lt;Enum&gt;::value, bool&gt;::type <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Returns true if <a href="structVT_1_1V0_1_1IsBitmaskable.html" class="m-doc">IsBitmaskable</a> is false.</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename Enum&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#ga2679eafd9f3ef86102e76e9c18796bee" class="m-doc">Bitmaskable</a>(</span><span class="m-doc-wrap">) -&gt; std::enable_if&lt;!<a href="structVT_1_1V0_1_1IsBitmaskable.html" class="m-doc">IsBitmaskable</a>&lt;Enum&gt;::value, bool&gt;::type <span class="m-label m-flat m-primary">constexpr</span> <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Returns false if bitmaskable is false (Default case).</dd>
             <dt>
               <div class="m-doc-template">template&lt;typename FunctionType, FunctionType&amp; _functionRef&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#a3751b02b484a54490f8df8bfdf706531" class="m-doc">GetVulkanAPI_Call</a>(</span><span class="m-doc-wrap">) -&gt; auto</span>
@@ -246,7 +246,7 @@
               </div>
               <span class="m-doc-wrap-bumper">std::enable_if&lt;!<a href="structVT_1_1V0_1_1IsBitmaskable.html" class="m-doc">IsBitmaskable</a>&lt;Enum&gt;::value, bool&gt;::type VT::<wbr />V0::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2679eafd9f3ef86102e76e9c18796bee" class="m-doc-self">Bitmaskable</a>(</span><span class="m-doc-wrap">) <span class="m-label m-primary">constexpr</span> <span class="m-label m-success">noexcept</span></span></span>
             </h3>
-            <p><span></span></p>
+            <p>Returns false if bitmaskable is false (Default case).</p>
           </div></section>
           <section class="m-doc-details" id="a3751b02b484a54490f8df8bfdf706531"><div>
             <h3>
