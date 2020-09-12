@@ -1154,12 +1154,12 @@ namespace VaultedThermals
 
 			using AllocateInfo = V2::CommandPool::AllocateInfo;
 
-			/*CommandBuffer() : handle(Null<Handle>), device(nullptr), info()
+			CommandBuffer() : handle(Null<Handle>), device(nullptr), info()
 			{}
 
-			CommandBuffer(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle) : 
+			CommandBuffer(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle) :
 				device(&_device), handle(_handle), info(_info)
-			{}*/
+			{}
 
 			void Assign(const LogicalDevice& _device, Handle& _handle)
 			{
@@ -1545,7 +1545,7 @@ namespace VaultedThermals
 
 			using CommandBuffer = V3::CommandBuffer;
 
-			/*CommandPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			CommandPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			CommandPool(const LogicalDevice& _device) : handle(Null<Handle>),  allocator(Memory::DefaultAllocator), device(&_device)
@@ -1553,12 +1553,16 @@ namespace VaultedThermals
 
 			CommandPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			{}
+
+			/*CommandPool(CommandPool&& _poolToMove) noexcept : 
+				handle(std::move(_poolToMove.handle)), allocator(std::move(_poolToMove.allocator)), device(std::move(_poolToMove.device))
 			{}*/
 
-			/*~CommandPool()
+			~CommandPool()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			EResult Allocate(CommandBuffer& _buffer)
 			{
@@ -1645,8 +1649,7 @@ namespace VaultedThermals
 
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
+				device = &_device;
 
 				return Parent::Create(*device, _info, handle);	
 			}
@@ -1706,19 +1709,19 @@ namespace VaultedThermals
 				allocationInfo.Pool        = handle                      ;
 				allocationInfo.BufferCount = 1                           ;
 
-				CommandBuffer commandBuffer;
+				CommandBuffer::Handle handle;
 
-				_result = Allocate(allocationInfo, commandBuffer);
+				_result = Allocate(allocationInfo, &handle);
 
-				if (_result != EResult::Success) return commandBuffer;
+				if (_result != EResult::Success) return CommandBuffer();
 
 				CommandBuffer::BeginInfo beginInfo{};
 
 				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
 
-				_result = commandBuffer.BeginRecord(beginInfo);
+				_result = CommandBuffer::Parent::BeginRecord(handle, beginInfo);
 
-				return commandBuffer;
+				return CommandBuffer(*device, allocationInfo, handle);
 			}
 
 			/**
