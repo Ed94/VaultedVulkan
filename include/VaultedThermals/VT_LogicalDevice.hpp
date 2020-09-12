@@ -568,7 +568,7 @@ namespace VaultedThermals
 				uint32 queueIndex;
 			};
 
-			/*LogicalDevice() : handle(Null<Handle>), physicalDevice(nullptr), allocator(Memory::DefaultAllocator)
+			LogicalDevice() : handle(Null<Handle>), physicalDevice(nullptr), allocator(Memory::DefaultAllocator)
 			{}
 
 			LogicalDevice(const PhysicalDevice& _physicalDevice) : handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(Memory::DefaultAllocator)
@@ -581,7 +581,7 @@ namespace VaultedThermals
 			~LogicalDevice()
 			{
 				if (handle != Null<Handle>) Destroy();
-			}*/
+			}
 
 			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice) 
 			{

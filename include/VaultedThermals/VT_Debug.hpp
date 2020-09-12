@@ -348,7 +348,7 @@ namespace VaultedThermals
 
 				using Parent = V2::DebugUtils::Messenger;
 
-				/*Messenger() : handle(Null<Handle>), app(nullptr), allocator(Memory::DefaultAllocator)
+				Messenger() : handle(Null<Handle>), app(nullptr), allocator(Memory::DefaultAllocator)
 				{}
 
 				Messenger(const AppInstance& _appInstance) : handle(Null<Handle>), app(&_appInstance), allocator(Memory::DefaultAllocator)
@@ -356,12 +356,12 @@ namespace VaultedThermals
 
 				Messenger(const AppInstance& _appInstance, const Memory::AllocationCallbacks& _allocator) :
 					handle(Null<Handle>), app(&_appInstance), allocator(&_allocator)
-				{}*/
+				{}
 
-				/*~Messenger()
+				~Messenger()
 				{
 					if (handle != Null<Handle>) Destroy();
-				}*/
+				}
 
 				EResult Create(const CreateInfo& _createSpec)
 				{
