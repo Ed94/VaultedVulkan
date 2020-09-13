@@ -77,8 +77,6 @@ namespace VaultedThermals
 			/** 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferImageCopy">Specification</a> 
 			@ingroup APISpec_Copy_Commands 
-			
-			@todo #TODO: Make == and != operators
 			*/
 			struct BufferImageRegion : V0::VKStruct_Base<VkBufferImageCopy>
 			{
@@ -93,8 +91,6 @@ namespace VaultedThermals
 			/** 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceInfo">Specification</a> 
 			@ingroup APISpec_Command_Buffers
-
-			@todo #TODO: Make == and != operators
 			*/
 			struct InheritanceWindow : V0::VKStruct_Base<VkCommandBufferInheritanceInfo, EStructureType::CommandBuffer_InheritanceInfo>
 			{
@@ -127,8 +123,6 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">Specification</a> 
 
 				@ingroup APISpec_Command_Buffers
-
-				@todo #TODO: Make == and != operators
 				*/
 				struct PassTransformInfo : V0::VKStruct_Base
 					<VkCommandBufferInheritanceRenderPassTransformInfoQCOM, EStructureType::CommandBufferInheritance_RenderPassTransform_Info_QCOM>
@@ -144,8 +138,6 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferBeginInfo">Specification</a>
 
 			@ingroup APISpec_Command_Buffers
-
-			@todo #TODO: Make == and != operators
 			*/
 			struct BeginInfo : V0::VKStruct_Base<VkCommandBufferBeginInfo, EStructureType::CommandBuffer_BeginInfo>
 			{
@@ -159,8 +151,6 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubmitInfo">Specification</a>
 			
 			@ingroup APISpec_Command_Buffers
-
-			@todo #TODO: Make == and != operators
 			*/
 			struct SubmitInfo : V0::VKStruct_Base<VkSubmitInfo, EStructureType::SubmitInfo>
 			{
@@ -179,8 +169,6 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkTimelineSemaphoreSubmitInfo">Specification</a>
 
 				@ingroup APISpec_Command_Buffers
-
-				@todo #TODO: Make == and != operators
 				*/
 				struct TimelineSemaphore : V0::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
 				{
@@ -196,8 +184,6 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a>	
 
 				@ingroup APISpec_Command_Buffers
-
-				@todo #TODO: Make == and != operators
 				*/
 				struct D3D12Fence : V0::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
 				{
@@ -213,8 +199,6 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32KeyedMutexAcquireReleaseInfoKHR">Specification</a> 
 
 				@ingroup APISpec_Command_Buffers
-
-				@todo #TODO: Make == and != operators
 				*/
 				struct Win32KeyedMutexAcquireRelease : V0::VKStruct_Base<VkWin32KeyedMutexAcquireReleaseInfoKHR>
 				{
@@ -248,8 +232,6 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupSubmitInfo">Specification</a>
 
 				@ingroup APISpec_Command_Buffers
-
-				@todo #TODO: Make == and != operators
 				*/
 				struct DeviceGroup : V0::VKStruct_Base<VkDeviceGroupSubmitInfo>
 				{
@@ -267,8 +249,6 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceQuerySubmitInfoKHR">Specification</a>
 
 				@ingroup APISpec_Command_Buffers
-
-				@todo #TODO: Make == and != operators
 				*/
 				struct PerformanceQuery : V0::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
 				{
@@ -282,8 +262,6 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceGroupCommandBufferBeginInfo">Specification</a> 
 			
 			@ingroup APISpec_Command_Buffers
-
-			@todo #TODO: Make == and != operators
 			*/
 			struct DeviceGroupBeginInfo : V0::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
 			{
@@ -666,12 +644,10 @@ namespace VaultedThermals
 			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> 
-			 * 
-			 * @ingroup APISpec_Command_Buffers
-			 * 
-			@todo #TODO: Make == and != operators.
-			 */
+			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> 
+			 
+			@ingroup APISpec_Command_Buffers
+			*/
 			struct AllocateInfo : V0::VKStruct_Base<VkCommandBufferAllocateInfo, EStructureType::CommandBuffer_AllocateInfo>
 			{
 				      EType               SType       = STypeEnum                   ;
@@ -685,8 +661,6 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateInfo">Specification</a> 
 			
 			@ingroup APISpec_Command_Buffers 
-
-			@todo #TODO: Make == and != operators.
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkCommandPoolCreateInfo, EStructureType::CommandPool_CreateInfo>
 			{
@@ -841,8 +815,6 @@ namespace VaultedThermals
 		{
 			using Parent = V1::CommandPool;
 
-			using CommandBuffer = V1::CommandBuffer;
-			
 			/**
 			@brief Uses the VulkanAPI's default allocator.
 			*/
@@ -866,7 +838,7 @@ namespace VaultedThermals
 			/**
 			@brief Allows for the passing of the allocate info to specify the pool and buffer count alternatively.
 			*/
-			static void Free(LogicalDevice::Handle _device, const AllocateInfo& _info, const CommandBuffer::Handle* _commandBuffers)
+			static void Free(LogicalDevice::Handle _device, const AllocateInfo& _info, const V1::CommandBuffer::Handle* _commandBuffers)
 			{
 				Parent::Free(_device, _info.Pool, _info.BufferCount, _commandBuffers);	
 			}
@@ -883,21 +855,21 @@ namespace VaultedThermals
 			* 
 			* Expected to be used with the EndSingleTimeCommands function (defined below it).
 			*/
-			static CommandBuffer::Handle BeginSingleTimeCommands(LogicalDevice::Handle _device, CommandPool::Handle _commandPool)
+			static V1::CommandBuffer::Handle BeginSingleTimeCommands(LogicalDevice::Handle _device, CommandPool::Handle _commandPool)
 			{
 				AllocateInfo allocationInfo{};
 
 				allocationInfo.Pool = _commandPool;
 
-				CommandBuffer::Handle commandBuffer;
+				V1::CommandBuffer::Handle commandBuffer;
 
 				Allocate(_device, allocationInfo, &commandBuffer);
 
-				CommandBuffer::BeginInfo beginInfo{};
+				V1::CommandBuffer::BeginInfo beginInfo{};
 
 				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
 
-				CommandBuffer::BeginRecord(commandBuffer, beginInfo);
+				V1::CommandBuffer::BeginRecord(commandBuffer, beginInfo);
 
 				return commandBuffer;
 			}
@@ -912,15 +884,15 @@ namespace VaultedThermals
 			*/
 			static void EndSingleTimeCommands
 			(
-				CommandBuffer       ::Handle _commandBuffer, 
+				V1::CommandBuffer   ::Handle _commandBuffer, 
 				CommandPool         ::Handle _commandPool  , 
 				LogicalDevice       ::Handle _device       , 
 				LogicalDevice::Queue::Handle _queue
 			)
 			{
-				CommandBuffer::EndRecord(_commandBuffer);
+				V1::CommandBuffer::EndRecord(_commandBuffer);
 
-				CommandBuffer::SubmitInfo submitInfo{};
+				V1::CommandBuffer::SubmitInfo submitInfo{};
 
 				submitInfo.CommandBufferCount = 1              ;
 				submitInfo.CommandBuffers     = &_commandBuffer;
@@ -1159,14 +1131,14 @@ namespace VaultedThermals
 			/**
 			@brief Default constructor.
 			*/
-			CommandBuffer() : handle(Null<Handle>), device(nullptr), info()
+			CommandBuffer() : handle(Null<Handle>), device(nullptr)
 			{}
 
 			/**
 			@brief Constructor with logical device, allocate info, and handle specified (acts as an Assign() call)
 			*/
-			CommandBuffer(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle) :
-				device(&_device), handle(_handle), info(_info)
+			CommandBuffer(const LogicalDevice& _device, Handle& _handle) :
+				device(&_device), handle(_handle)
 			{}
 
 			/**
@@ -1176,16 +1148,6 @@ namespace VaultedThermals
 			{
 				device = &_device;
 				handle = _handle ;
-			}
-
-			/**
-			@brief Assign a device, allocate info, and handle.
-			*/
-			void Assign(const LogicalDevice& _device, const AllocateInfo& _info, Handle& _handle)
-			{
-				device = &_device ;
-				info   = _info    ;
-				handle = _handle  ;
 			}
 
 			/**
@@ -1357,11 +1319,6 @@ namespace VaultedThermals
 			{
 				Parent::Execute(handle, _secondaryBufferCount, _secondaryBuffers);
 			}
-
-			/**
-			@todo #TODO: Move to V4 command buffer...
-			*/
-			const AllocateInfo& GetAllocateInfo() const { return info; }
 
 			/**
 			@brief Set the state of an event to unsignaled from a device.
@@ -1640,8 +1597,6 @@ namespace VaultedThermals
 			Handle handle;
 
 			const LogicalDevice* device;
-
-			AllocateInfo info;    ///< @todo move to V4?
 		};
 
 		/**
@@ -1661,8 +1616,6 @@ namespace VaultedThermals
 		{
 		public:
 			using Parent = V2::CommandPool;
-
-			using CommandBuffer = V3::CommandBuffer;
 
 			/**
 			@brief Default constructor.
@@ -1731,7 +1684,7 @@ namespace VaultedThermals
 
 				if (returnCode != EResult::Success) return returnCode;
 
-				_buffer.Assign(*device, _info, bufferHandle);
+				_buffer.Assign(*device, bufferHandle);
 
 				return returnCode;
 			}
@@ -1762,6 +1715,38 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+/**
+			@brief Allocate command buffers and their handles into dynamic arrays. based on the count provided and the level desired.
+			*/
+			EResult Allocate
+			(
+				ECommandBufferLevel          _level         ,
+				uint32                       _count         ,
+				DynamicArray<CommandBuffer>& _commandBuffers
+			)
+			{
+				AllocateInfo allocInfo; 
+				
+				allocInfo.Level       = _level;
+				allocInfo.Pool        = handle;
+				allocInfo.BufferCount = _count;
+
+				DynamicArray<CommandBuffer::Handle> handles(_count);
+
+				_commandBuffers.resize(_count);
+
+				EResult returnCode = Parent::Allocate(*device, allocInfo, handles.data());
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				for (DeviceSize index = 0; index < _count; index++)
+				{
+					_commandBuffers[index].Assign(*device, handles[index]);
+				}
+
+				return returnCode;
+			}
+
 			/**
 			@brief Allocate command buffers and their handles into dynamic arrays. based on the count provided and the level desired.
 			*/
@@ -1787,7 +1772,7 @@ namespace VaultedThermals
 
 				for (DeviceSize index = 0; index < _count; index++)
 				{
-					_commandBuffers[index].Assign(*device, allocInfo, _handles[index]);
+					_commandBuffers[index].Assign(*device, _handles[index]);
 				}
 
 				return returnCode;
@@ -1890,25 +1875,23 @@ namespace VaultedThermals
 			*/
 			CommandBuffer BeginSingleTimeCommands(EResult& _result)
 			{
-				AllocateInfo allocationInfo{};
+				AllocateInfo allocationInfo;
 
-				allocationInfo.Level       = ECommandBufferLevel::Primary;
-				allocationInfo.Pool        = handle                      ;
-				allocationInfo.BufferCount = 1                           ;
+				allocationInfo.Pool = handle;
 
-				CommandBuffer::Handle handle;
+				CommandBuffer::Handle bufferHandle;
 
-				_result = Allocate(allocationInfo, &handle);
+				_result = Allocate(allocationInfo, &bufferHandle);
 
 				if (_result != EResult::Success) return CommandBuffer();
 
-				CommandBuffer::BeginInfo beginInfo{};
+				CommandBuffer::BeginInfo beginInfo;
 
 				beginInfo.Flags = ECommandBufferUsageFlag::OneTimeSubmit;
 
-				_result = CommandBuffer::Parent::BeginRecord(handle, beginInfo);
+				_result = CommandBuffer::Parent::BeginRecord(bufferHandle, beginInfo);
 
-				return CommandBuffer(*device, allocationInfo, handle);
+				return CommandBuffer(*device, bufferHandle);
 			}
 
 			/**
@@ -1931,7 +1914,7 @@ namespace VaultedThermals
 
 				if (result != EResult::Success) return result;
 
-				CommandBuffer::SubmitInfo submitInfo{};
+				CommandBuffer::SubmitInfo submitInfo;
 
 				submitInfo.CommandBufferCount = 1             ;
 				submitInfo.CommandBuffers     = _commandBuffer;

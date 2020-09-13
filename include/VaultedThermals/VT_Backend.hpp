@@ -77,30 +77,6 @@ namespace VaultedThermals
 		/** @brief Determines whether to return an result code for a function based on if STL exceptions are enabled. */
 		using ShouldUse_EResult = typename std::conditional<V0::UseSTL_Exceptions, void, EResult>::type;
 
-		template<typename Type>
-		/**
-		 * @brief A custom dynamic container from the default can be used with specific functionality in the library.
-		 * 
-		 * @details Have a container that supports the following functions (They are equivalent to those used in std::vector)
-		 * 
-		 * @todo Add support for IDynamic?
-		 */
-		class IDynamicArray   // #TODO: Add support for IDynamic?
-		{
-		public:
-			~IDynamicArray() {};
-
-			virtual Type at(WordSize _index) = NULL;
-
-			virtual Type data() = NULL;
-
-			virtual void push_back() = NULL;
-
-			virtual void resize(WordSize _size) = NULL;
-
-			virtual WordSize size() = NULL;
-		};
-
 		/**
 		@brief Used when creating fake VulkanAPI structures for platform abstraction uses.
 		*/
@@ -204,11 +180,10 @@ namespace VaultedThermals
 			return false;
 		}
 
-		template
-		<
-			typename EnumType             ,
-			typename BitmaskRepresentation
-		>
+		template<typename EnumType, typename BitmaskRepresentation>
+		/**
+		A wrapper object for bitmasks that allows for typesafe bitmask operations.
+		*/
 		class Bitmask
 		{
 		private:
