@@ -53,7 +53,6 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>Framebuffer <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__RenderPass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -69,6 +68,7 @@
             </li>
           </ul>
         </div>
+<p>This object represents a device created object on the host. As such ownership is tied to this host object. Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -122,7 +122,7 @@
             <dt id="a65e6137b4a342b43002addbac817a3cf">
               <span class="m-doc-wrap-bumper"><a href="#a65e6137b4a342b43002addbac817a3cf" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd>Implicit conversion to give a pointers to its handle.</dd>
+            <dd>Implicit conversion to give a pointer to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -150,7 +150,7 @@
             <dt id="a778134582a622743a263f3fe75cf94bd">
               <span class="m-doc-wrap-bumper">auto <a href="#a778134582a622743a263f3fe75cf94bd" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Framebuffer.html" class="m-doc">Framebuffer</a>&amp; _other) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Checks to see if its the same object by checking to see if its the same handle.</dd>
             <dt id="af959891451c3359619549636daec6a70">
               <span class="m-doc-wrap-bumper">auto <a href="#af959891451c3359619549636daec6a70" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Framebuffer.html" class="m-doc">Framebuffer</a>&amp;&amp; _other) -&gt; <a href="classVT_1_1V3_1_1Framebuffer.html" class="m-doc">Framebuffer</a>&amp; <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>

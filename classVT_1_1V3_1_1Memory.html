@@ -53,6 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>Memory <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Memory_8hpp.html">&lt;VaultedThermals/VT_Memory.hpp&gt;</a></div>
         </h1>
+        <p>General memory structures and functionality for device memory.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -68,7 +69,7 @@
             </li>
           </ul>
         </div>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000025" class="m-doc">Todo</a></h4><p>#TODO: Add documentation.</p></aside>
+<p>This object represents a device created object on the host. As such ownership is tied to this host object. Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -93,16 +94,16 @@
             <dt id="a94eed860063773e6572944ce8112a08f">
               <span class="m-doc-wrap-bumper"><a href="#a94eed860063773e6572944ce8112a08f" class="m-doc-self">Memory</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="ac2733ef041fad775526cce25bb5bd223">
               <span class="m-doc-wrap-bumper"><a href="#ac2733ef041fad775526cce25bb5bd223" class="m-doc-self">Memory</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Constructor with logical device specified.</dd>
             <dt id="a5f3a9b84b711b3912c9212678b6ab6f8">
               <span class="m-doc-wrap-bumper"><a href="#a5f3a9b84b711b3912c9212678b6ab6f8" class="m-doc-self">Memory</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a> _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Constructor with logical device and allocator specified.</dd>
             <dt id="ad87ef49934654662c3b7ff82a32aafaa">
               <span class="m-doc-wrap-bumper"><a href="#ad87ef49934654662c3b7ff82a32aafaa" class="m-doc-self">Memory</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
@@ -110,7 +111,7 @@
             <dt id="a3ddfcbe08cdbf6d0db135776b9790756">
               <span class="m-doc-wrap-bumper"><a href="#a3ddfcbe08cdbf6d0db135776b9790756" class="m-doc-self">~Memory</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destructor will destroy the device object if handle is not null.</dd>
             <dt id="a9ee1b62779ffa09d10a4a49aeb28f725">
               <span class="m-doc-wrap-bumper"><a href="#a9ee1b62779ffa09d10a4a49aeb28f725" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -122,7 +123,7 @@
             <dt id="a3790b7cde3af9380e82871b9f844d626">
               <span class="m-doc-wrap-bumper"><a href="#a3790b7cde3af9380e82871b9f844d626" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd>Implicit conversion to give a pointers to its handle.</dd>
+            <dd>Implicit conversion to give a pointer to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -131,40 +132,40 @@
             <dt id="a651922280084eeea4fcb07ba3382d5dc">
               <span class="m-doc-wrap-bumper">auto <a href="#a651922280084eeea4fcb07ba3382d5dc" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V0_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Allocate memory objects.</dd>
             <dt id="a9addb6f83b5800e0e0dd7ca00e60e2ce">
               <span class="m-doc-wrap-bumper">auto <a href="#a9addb6f83b5800e0e0dd7ca00e60e2ce" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Allocate memory objects. (Device specified)</dd>
             <dt id="a4104084a47888b924ce0f0e9931c42a9">
               <span class="m-doc-wrap-bumper">auto <a href="#a4104084a47888b924ce0f0e9931c42a9" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _allocateInfo,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Allocate memory objects. (Device and allocator specified)</dd>
             <dt id="a82c651a75b613f92ee3fbb1884c1e39f">
               <span class="m-doc-wrap-bumper">void <a href="#a82c651a75b613f92ee3fbb1884c1e39f" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Free a memory object.</dd>
             <dt id="aab2282cbb18dc64a521d5735c046631d">
               <span class="m-doc-wrap-bumper">auto <a href="#aab2282cbb18dc64a521d5735c046631d" class="m-doc-self">Map</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
               <a href="structVT_1_1V0_1_1Memory.html#a91f3c69aac7bac662617ff8986dd4d38" class="m-doc">MapFlags</a> _flags,
               <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Retrieve a host virtual address pointer to a region of a mappable memory object.</dd>
             <dt id="ae094b8d56d1a3c7344e8af6807ba2e06">
               <span class="m-doc-wrap-bumper">void <a href="#ae094b8d56d1a3c7344e8af6807ba2e06" class="m-doc-self">Unmap</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Unmap a memory object once host access to it is no longer needed by the application.</dd>
             <dt id="af9c601e566c2d174d4a9a5e56561b242">
               <span class="m-doc-wrap-bumper">void <a href="#af9c601e566c2d174d4a9a5e56561b242" class="m-doc-self">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
               <a href="structVT_1_1V0_1_1Memory.html#a91f3c69aac7bac662617ff8986dd4d38" class="m-doc">MapFlags</a> _flags,
               <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Writes to GPU memory by mapping to device memory specified by a handle and then using memcpy to copy data specified in _data.</dd>
             <dt id="aba8aaaa9b7e1b31e8cc95a48850d6812">
               <span class="m-doc-wrap-bumper">auto <a href="#aba8aaaa9b7e1b31e8cc95a48850d6812" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp; _other) const -&gt; bool</span>
             </dt>

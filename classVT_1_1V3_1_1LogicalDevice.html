@@ -53,6 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>LogicalDevice <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__LogicalDevice_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
         </h1>
+        <p>Represent logical connections to physical devices.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -69,7 +70,7 @@
             </li>
           </ul>
         </div>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000022" class="m-doc">Todo</a></h4><p>#TODO: Add documentation.</p></aside>
+<p>This object represents a device created object on the host. As such ownership is tied to this host object. Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -94,7 +95,7 @@
             <dt>
               struct <a href="structVT_1_1V3_1_1LogicalDevice_1_1Queue.html" class="m-doc">Queue</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Queues handle different types of batched commands for the GPU to complete.</dd>
             <dt id="a35c13a2e3ce80390c060bb19bd1c25d0">
               using <a href="#a35c13a2e3ce80390c060bb19bd1c25d0" class="m-doc-self">Parent</a> = <a href="structVT_1_1V2_1_1LogicalDevice.html" class="m-doc">V2::<wbr />LogicalDevice</a>
             </dt>
@@ -107,16 +108,16 @@
             <dt id="a5a1b0c560b9b8eaa18f8e8617a952b02">
               <span class="m-doc-wrap-bumper"><a href="#a5a1b0c560b9b8eaa18f8e8617a952b02" class="m-doc-self">LogicalDevice</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a68d4262b5e29fac9b0bbd1edec864008">
               <span class="m-doc-wrap-bumper"><a href="#a68d4262b5e29fac9b0bbd1edec864008" class="m-doc-self">LogicalDevice</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>&amp; _physicalDevice)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Constructor with physical device specified.</dd>
             <dt id="a908c705b7d0b7059ee5f32fce5fba87b">
               <span class="m-doc-wrap-bumper"><a href="#a908c705b7d0b7059ee5f32fce5fba87b" class="m-doc-self">LogicalDevice</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>&amp; _physicalDevice,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Constructor with physical device and allocator specified.</dd>
             <dt id="afb7c8737e6d56d8a563d5ef4b88476b7">
               <span class="m-doc-wrap-bumper"><a href="#afb7c8737e6d56d8a563d5ef4b88476b7" class="m-doc-self">LogicalDevice</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
@@ -124,11 +125,11 @@
             <dt id="abe1a1a06ddcdd54f3d86e39466c2b73e">
               <span class="m-doc-wrap-bumper"><a href="#abe1a1a06ddcdd54f3d86e39466c2b73e" class="m-doc-self">~LogicalDevice</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destructor for logical device. (Will destroy the device object if handle is not null)</dd>
             <dt id="ab55addc09a97c2967f685b55e7e47c7b">
               <span class="m-doc-wrap-bumper"><a href="#ab55addc09a97c2967f685b55e7e47c7b" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd>Implicit conversion to give a pointer to its handle.</dd>
+            <dd>Implicit conversion to give a reference to its handle.</dd>
             <dt id="a7f4ff5403dd9e9c5da7a53dddb42c830">
               <span class="m-doc-wrap-bumper"><a href="#a7f4ff5403dd9e9c5da7a53dddb42c830" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
@@ -136,7 +137,7 @@
             <dt id="ab196b79769234652825e9b88356c5e5c">
               <span class="m-doc-wrap-bumper"><a href="#ab196b79769234652825e9b88356c5e5c" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd>Implicit conversion to give a pointers to its handle.</dd>
+            <dd>Implicit conversion to give a pointer to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -145,44 +146,44 @@
             <dt id="ac279ab1f4bfee3a38432a44bc64f84ae">
               <span class="m-doc-wrap-bumper">void <a href="#ac279ab1f4bfee3a38432a44bc64f84ae" class="m-doc-self">AssignPhysicalDevice</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>&amp; _physicalDevice)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assigns a physical device.</dd>
             <dt id="afd6af56bb0383b21b9d4d09e11ce5c15">
               <span class="m-doc-wrap-bumper">auto <a href="#afd6af56bb0383b21b9d4d09e11ce5c15" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1LogicalDevice_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create logical device.</dd>
             <dt id="aaed2733b5e4c70cac962fc851f178483">
               <span class="m-doc-wrap-bumper">auto <a href="#aaed2733b5e4c70cac962fc851f178483" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1LogicalDevice_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a logical device (allocator specified).</dd>
             <dt id="a17e7d10ded616708577ee3a17c1d50c7">
               <span class="m-doc-wrap-bumper">auto <a href="#a17e7d10ded616708577ee3a17c1d50c7" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>&amp; _physicalDevice,
               const <a href="structVT_1_1V1_1_1LogicalDevice_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a logical device (physical device specified).</dd>
             <dt id="aadf2e6ea19da698c676c30536e287167">
               <span class="m-doc-wrap-bumper">auto <a href="#aadf2e6ea19da698c676c30536e287167" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>&amp; _physicalDevice,
               const <a href="structVT_1_1V1_1_1LogicalDevice_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a logical device (physical device and allocator specified).</dd>
             <dt id="ad06f0442dc855aa321d254d45a5178ed">
               <span class="m-doc-wrap-bumper">void <a href="#ad06f0442dc855aa321d254d45a5178ed" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy a logical device.</dd>
             <dt id="a4d13663c57c5df9af1e96d4bcd3c5ac5">
               <span class="m-doc-wrap-bumper">auto <a href="#a4d13663c57c5df9af1e96d4bcd3c5ac5" class="m-doc-self">GetPhysicalDevice</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>provides a readonly reference to a physical device host object.</dd>
             <dt id="a3182a3ada21022b507daed7bc5105d5b">
               <span class="m-doc-wrap-bumper">auto <a href="#a3182a3ada21022b507daed7bc5105d5b" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Wait on the host for the completion of outstanding queue operations for all queues on a given logical device.</dd>
             <dt id="add1644e565d1f103171068ee596703f5">
               <div class="m-doc-template">template&lt;typename ReturnType&gt;</div>
               <span class="m-doc-wrap-bumper">auto <a href="#add1644e565d1f103171068ee596703f5" class="m-doc-self">GetProcedureAddress</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _procedurename) const -&gt; std::enable_if&lt;std::bool_constant&lt;std::is_pointer&lt;ReturnType&gt;::value &amp;&amp; std::is_function&lt;typename std::remove_pointer&lt;ReturnType&gt;::type&gt;::value&gt;::value, ReturnType&gt;::type</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>In order to support systems with multiple Vulkan implementations, the function pointers returned by vkGetInstanceProcAddr may point to dispatch code that calls a different real implementation for different VkDevice objects or their child objects. The overhead of the internal dispatch for VkDevice objects can be avoided by obtaining device-specific function pointers for any commands that use a device or device-child object as their dispatchable object.</dd>
             <dt id="a8b917137c1c8dbef8726b77579cd1886">
               <span class="m-doc-wrap-bumper">auto <a href="#a8b917137c1c8dbef8726b77579cd1886" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _other) const -&gt; bool</span>
             </dt>

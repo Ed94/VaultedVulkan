@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>PhysicalDevice <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__PhysicalDevice_8hpp.html">&lt;VaultedThermals/VT_PhysicalDevice.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Represents a physical device.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -70,6 +70,7 @@
             </li>
           </ul>
         </div>
+<p>This object only acts as a host interface to a given device object&#x27;s handle.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -103,15 +104,15 @@
             <dt id="a1c879e55c14cd84b0188ca915509683a">
               <span class="m-doc-wrap-bumper"><a href="#a1c879e55c14cd84b0188ca915509683a" class="m-doc-self">PhysicalDevice</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="add2b66f93c2b53f540ff4702818a0bc5">
               <span class="m-doc-wrap-bumper"><a href="#add2b66f93c2b53f540ff4702818a0bc5" class="m-doc-self">PhysicalDevice</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor with handle specified.</dd>
             <dt id="a949f1030afd9e832afe0bcb48ed3314d">
               <span class="m-doc-wrap-bumper"><a href="#a949f1030afd9e832afe0bcb48ed3314d" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd>Implicit conversion to give a pointer to its handle.</dd>
+            <dd>Implicit conversion to give a reference to its handle.</dd>
             <dt id="af7a51b72e097bdbca95d6a5ae707e19b">
               <span class="m-doc-wrap-bumper"><a href="#af7a51b72e097bdbca95d6a5ae707e19b" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
@@ -119,7 +120,7 @@
             <dt id="a6359ecce54f0f79c3690aae2764c7f8e">
               <span class="m-doc-wrap-bumper"><a href="#a6359ecce54f0f79c3690aae2764c7f8e" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd>Implicit conversion to give a pointers to its handle.</dd>
+            <dd>Implicit conversion to give a pointer to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -128,83 +129,83 @@
             <dt id="a531207a2c18c6843eeb81dee0bce786d">
               <span class="m-doc-wrap-bumper">void <a href="#a531207a2c18c6843eeb81dee0bce786d" class="m-doc-self">AssignHandle</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assigns the handle.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a348a7302766ad1f363a2e28def7cb22d" class="m-doc">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _extensionSpecified) const -&gt; bool</span>
             </dt>
             <dd>Checks to see if the specified extensions are supported by the physical device.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a00127a5fb173bf5b8d424e395ece9e23" class="m-doc">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a>&gt; _extensionsSpecified) const -&gt; bool</span>
+            <dt id="a00127a5fb173bf5b8d424e395ece9e23">
+              <span class="m-doc-wrap-bumper">auto <a href="#a00127a5fb173bf5b8d424e395ece9e23" class="m-doc-self">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a>&gt; _extensionsSpecified) const -&gt; bool</span>
             </dt>
-            <dd></dd>
+            <dd>Checks to see if the extensions specified are supported.</dd>
             <dt id="a279885e3d42e8290ad2c92de757f7b97">
               <span class="m-doc-wrap-bumper">auto <a href="#a279885e3d42e8290ad2c92de757f7b97" class="m-doc-self">FindMemoryType</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _typeFilter,
               <a href="structVT_1_1V0_1_1Memory.html#a86acc27847a79e66573d32b766cef916" class="m-doc">Memory::<wbr />PropertyFlags</a> _properties) const -&gt; <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Find the suitable memory type for the type filter and properties specified.</dd>
             <dt id="a9e9add45ab3cd62c432492e76c8ff23c">
               <span class="m-doc-wrap-bumper">auto <a href="#a9e9add45ab3cd62c432492e76c8ff23c" class="m-doc-self">FindSupportedFormat</a>(</span><span class="m-doc-wrap">const <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Formats.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a>&gt;&amp; _canidates,
               <a href="group__APISpec__Resource__Creation.html#gaf7d840a01ee04d8d618a5ad82dd738fd" class="m-doc">EImageTiling</a> _tiling,
               <a href="group__APISpec__Formats.html#gaac0a11aa04f9059d313bb40cce445275" class="m-doc">FormatFeatureFlags</a> _features,
               <a href="group__APISpec__Formats.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a>&amp; _format) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the queue families for the respective device.</dd>
             <dt id="a7e55896daec371cfc0da0523d571cf66">
               <span class="m-doc-wrap-bumper">auto <a href="#a7e55896daec371cfc0da0523d571cf66" class="m-doc-self">GetAvailableExtensions</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
               <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="structVT_1_1Corridors_1_1ExtensionProperties.html" class="m-doc">ExtensionProperties</a>&gt;&amp; _extensionListing) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assigns the handle.</dd>
             <dt id="a652d1ce3b947ecfb691a14dd5c97dcff">
               <span class="m-doc-wrap-bumper">auto <a href="#a652d1ce3b947ecfb691a14dd5c97dcff" class="m-doc-self">GetAvailableQueueFamilies</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="structVT_1_1V1_1_1PhysicalDevice_1_1QueueFamilyProperties.html" class="m-doc">QueueFamilyProperties</a>&gt;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the available queue families in a dynamic array.</dd>
             <dt id="a8f8885e38b6895ceb19a6d17246dbd1d">
               <span class="m-doc-wrap-bumper">auto <a href="#a8f8885e38b6895ceb19a6d17246dbd1d" class="m-doc-self">GetFeatures</a>(</span><span class="m-doc-wrap">) const -&gt; const Features&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides features.</dd>
             <dt id="aa64e8e64d7bc95c4642e6a84e718e18e">
               <span class="m-doc-wrap-bumper">auto <a href="#aa64e8e64d7bc95c4642e6a84e718e18e" class="m-doc-self">GetFormatProperties</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Formats.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a> _format) const -&gt; <a href="structVT_1_1Corridors_1_1FormatProperties.html" class="m-doc">FormatProperties</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Query supported format features which are properties of the physical device.</dd>
             <dt id="a15697727e21887fcc9380e300ccb10b1">
               <span class="m-doc-wrap-bumper">auto <a href="#a15697727e21887fcc9380e300ccb10b1" class="m-doc-self">GetMaxSampleCount_ColorAndDepth</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__APISpec__Limits.html#ga120d43f406f754c7941d5d9cc2b34959" class="m-doc">ESampleCount</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Gets the max sample count between color and depth.</dd>
             <dt id="af8f812af56d39f09e7cba26c81cc2e82">
               <span class="m-doc-wrap-bumper">auto <a href="#af8f812af56d39f09e7cba26c81cc2e82" class="m-doc-self">GetMemoryProperties</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="structVT_1_1V1_1_1PhysicalDevice_1_1MemoryProperties.html" class="m-doc">MemoryProperties</a>&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the memory properties.</dd>
             <dt id="a16f0796d39c5f0c9f87c095d05bf87c1">
               <span class="m-doc-wrap-bumper">auto <a href="#a16f0796d39c5f0c9f87c095d05bf87c1" class="m-doc-self">GetProperties</a>(</span><span class="m-doc-wrap">) const -&gt; const Properties&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the properties.</dd>
             <dt id="a0b0a180eb37bf6b8f220bfe35ab4435a">
               <span class="m-doc-wrap-bumper">auto <a href="#a0b0a180eb37bf6b8f220bfe35ab4435a" class="m-doc-self">GetProperties2</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="structVT_1_1V1_1_1PhysicalDevice_1_1Properties2.html" class="m-doc">Properties2</a>&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the properties 2.</dd>
             <dt id="ab4079eb1861dd89efa94976aa472c009">
               <span class="m-doc-wrap-bumper">auto <a href="#ab4079eb1861dd89efa94976aa472c009" class="m-doc-self">QueryExtensionProperties</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numExtensions,
               <a href="structVT_1_1Corridors_1_1ExtensionProperties.html" class="m-doc">ExtensionProperties</a>* _extensionPropertiesContainer) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Query properties of queues available on a physical device. Reports properties of the queues of the specified physical device.</dd>
             <dt id="ad89e2a6dd80257ed2a52b43cbb4679f3">
               <span class="m-doc-wrap-bumper">void <a href="#ad89e2a6dd80257ed2a52b43cbb4679f3" class="m-doc-self">QueryQueueFamilyProperties</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numQueueFamilies,
               <a href="structVT_1_1V1_1_1PhysicalDevice_1_1QueueFamilyProperties.html" class="m-doc">QueueFamilyProperties</a>* _queueFamilies) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Query properties of queues available on a physical device.</dd>
             <dt id="aafa761b7034fbe0f3e6763f7f0fc8f54">
               <span class="m-doc-wrap-bumper">void <a href="#aafa761b7034fbe0f3e6763f7f0fc8f54" class="m-doc-self">QueryQueueFamilyProperties2</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numProperties,
               <a href="structVT_1_1V1_1_1PhysicalDevice_1_1QueueFamilyProperties2.html" class="m-doc">QueueFamilyProperties2</a>* _properties) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Query properties of queues available on a physical device.</dd>
             <dt id="a66967338239d2ff229af0136fda23b44">
               <span class="m-doc-wrap-bumper">auto <a href="#a66967338239d2ff229af0136fda23b44" class="m-doc-self">QueryPerfomranceQueryCounters</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numCounters,
               <a href="structVT_1_1V1_1_1PhysicalDevice_1_1PerformanceCounter.html" class="m-doc">PerformanceCounter</a>* _counters,
               PerformanceCounter::Description* _counterDescriptions) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Enumerate the performance query counters available on a queue family of a physical device.</dd>
             <dt id="a78414ed1c7fa015bb9ff6e71515430e8">
               <span class="m-doc-wrap-bumper">auto <a href="#a78414ed1c7fa015bb9ff6e71515430e8" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>&amp; _other) const -&gt; bool</span>
             </dt>
@@ -255,13 +256,7 @@
               <span class="m-doc-wrap-bumper">bool VT::<wbr />V3::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a348a7302766ad1f363a2e28def7cb22d" class="m-doc-self">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _extensionSpecified) const</span></span>
             </h3>
             <p>Checks to see if the specified extensions are supported by the physical device.</p>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000026" class="m-doc">Todo</a></h4><p>make the extensions specified container generic using an interface.</p></aside>
-          </div></section>
-          <section class="m-doc-details" id="a00127a5fb173bf5b8d424e395ece9e23"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">bool VT::<wbr />V3::<wbr />PhysicalDevice::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a00127a5fb173bf5b8d424e395ece9e23" class="m-doc-self">CheckExtensionSupport</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a>&gt; _extensionsSpecified) const</span></span>
-            </h3>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000027" class="m-doc">Todo</a></h4><p>make the extensions specified container generic using an interface.</p></aside>
+<aside class="m-note m-dim"><h4><a href="todo.html#_todo000023" class="m-doc">Todo</a></h4><p>make the extensions specified container generic using an interface.</p></aside>
           </div></section>
         </section>
       </div>

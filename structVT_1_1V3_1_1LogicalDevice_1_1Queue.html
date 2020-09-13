@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span><span class="m-breadcrumb"><a href="classVT_1_1V3_1_1LogicalDevice.html">LogicalDevice</a>::<wbr/></span>Queue <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__LogicalDevice_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Queues handle different types of batched commands for the GPU to complete.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -68,6 +68,7 @@
             </li>
           </ul>
         </div>
+<p>Vulkan queues provide an interface to the execution engines of a device. Commands for these execution engines are recorded into command buffers ahead of execution time. These command buffers are then submitted to queues with a queue submission command for execution in a number of batches. Once submitted to a queue, these commands will begin and complete execution without further application intervention, though the order of this execution is dependent on a number of implicit and explicit ordering constraints.</p><p>Note: This object only acts as a host interface to a given device object&#x27;s handle. The logical device of the queue manages the device object lifetime.</p>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
@@ -83,18 +84,18 @@
             <dt id="a00d3b53187eea74023f38b60e21609b9">
               <span class="m-doc-wrap-bumper"><a href="#a00d3b53187eea74023f38b60e21609b9" class="m-doc-self">Queue</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a80953fd8452b54985a1c93e1b2a475b8">
               <span class="m-doc-wrap-bumper"><a href="#a80953fd8452b54985a1c93e1b2a475b8" class="m-doc-self">Queue</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga4eb36b9291c4b1535dac7792dadf1311" class="m-doc">EQueueFlag</a> _type,
               const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _familyIndex,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueIndex)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs an assignment on construction.</dd>
             <dt id="a63c8712c22a3fe640a2643ce42aa51e8">
               <span class="m-doc-wrap-bumper"><a href="#a63c8712c22a3fe640a2643ce42aa51e8" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -106,50 +107,41 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueIndex,
               <a href="group__APISpec__Devices__and__Queues.html#ga4eb36b9291c4b1535dac7792dadf1311" class="m-doc">EQueueFlag</a> _type)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assigns the queue info.</dd>
             <dt id="a58f18a6d1d4f1e3ac4da18fba0e374d3">
               <span class="m-doc-wrap-bumper">auto <a href="#a58f18a6d1d4f1e3ac4da18fba0e374d3" class="m-doc-self">GetFamilyIndex</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the queue family index.</dd>
             <dt id="ae9f8fa809b41cd9668773114e156f4d8">
               <span class="m-doc-wrap-bumper">auto <a href="#ae9f8fa809b41cd9668773114e156f4d8" class="m-doc-self">GetQueueIndex</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="acafcf36683f00f785353fbbe69f60acd">
-              <span class="m-doc-wrap-bumper">auto <a href="#acafcf36683f00f785353fbbe69f60acd" class="m-doc-self">GetHandle</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">Handle</a>&amp;</span>
-            </dt>
-            <dd><span></span></dd>
+            <dd>Provides the queue index in the queue family.</dd>
             <dt id="a60761992cc4956cafaf569c2be3a5db8">
               <span class="m-doc-wrap-bumper">auto <a href="#a60761992cc4956cafaf569c2be3a5db8" class="m-doc-self">GetType</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="group__APISpec__Devices__and__Queues.html#ga4eb36b9291c4b1535dac7792dadf1311" class="m-doc">EQueueFlag</a>&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Provides the queue type.</dd>
             <dt id="aa3e49c6c0430a179fce668c13648cc2c">
               <span class="m-doc-wrap-bumper">void <a href="#aa3e49c6c0430a179fce668c13648cc2c" class="m-doc-self">Retrieve</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Retrieve a handle to a VkQueue object.</dd>
             <dt id="a9b1647e7d77a83c640830296c3efa74a">
               <span class="m-doc-wrap-bumper">auto <a href="#a9b1647e7d77a83c640830296c3efa74a" class="m-doc-self">FamilySpecified</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Informs if family was specified.</dd>
             <dt id="a57ccbf27d858690bf660b0c9e9f372fe">
               <span class="m-doc-wrap-bumper">auto <a href="#a57ccbf27d858690bf660b0c9e9f372fe" class="m-doc-self">QueuePresentation</a>(</span><span class="m-doc-wrap">const PresentationInfo&amp; _presentationInfo) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">void <a href="#afef3ca8e2e98a971bd738c7db7e8a734" class="m-doc">SpecifyFamily</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _index,
-              <a href="group__APISpec__Devices__and__Queues.html#ga4eb36b9291c4b1535dac7792dadf1311" class="m-doc">EQueueFlag</a> _type)</span>
-            </dt>
-            <dd></dd>
+            <dd>After queuing all rendering commands and transitioning the image to the correct layout, to queue an image for presentation.</dd>
             <dt id="a69020981d718b9ac71187d97a1ba2cfb">
               <span class="m-doc-wrap-bumper">auto <a href="#a69020981d718b9ac71187d97a1ba2cfb" class="m-doc-self">SubmitToQueue</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _submitCount,
               const SubmitInfo* _submissions,
               Fence_Handle _fence) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Submit command buffers to a queue.</dd>
             <dt id="a952abf8f25384d8eac0939b22754dc6e">
               <span class="m-doc-wrap-bumper">auto <a href="#a952abf8f25384d8eac0939b22754dc6e" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Wait on the host for the completion of outstanding queue operations for a given queue.</dd>
           </dl>
         </section>
         <section id="pro-attribs">
@@ -176,31 +168,6 @@
             </dt>
             <dd><span></span></dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="afef3ca8e2e98a971bd738c7db7e8a734"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">void VT::<wbr />V3::<wbr />LogicalDevice::<wbr />Queue::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afef3ca8e2e98a971bd738c7db7e8a734" class="m-doc-self">SpecifyFamily</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _index,
-              <a href="group__APISpec__Devices__and__Queues.html#ga4eb36b9291c4b1535dac7792dadf1311" class="m-doc">EQueueFlag</a> _type)</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">_index</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>_type</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000023" class="m-doc">Todo</a></h4><p>remove.</p></aside>
-          </div></section>
         </section>
       </div>
     </div>

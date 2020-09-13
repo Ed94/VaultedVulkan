@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>Sampler <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Sampler_8hpp.html">&lt;VaultedThermals/VT_Sampler.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -69,6 +69,7 @@
             </li>
           </ul>
         </div>
+<p>This object represents a device created object on the host. As such ownership is tied to this host object. Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -93,16 +94,16 @@
             <dt id="a4da0c9cd80ecff0decec8294e25c4643">
               <span class="m-doc-wrap-bumper"><a href="#a4da0c9cd80ecff0decec8294e25c4643" class="m-doc-self">Sampler</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a5c4b92e5c3a94a5d4ac0833e0d0a59e8">
               <span class="m-doc-wrap-bumper"><a href="#a5c4b92e5c3a94a5d4ac0833e0d0a59e8" class="m-doc-self">Sampler</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device specified.</dd>
             <dt id="a1bee483df0c0bad53729cc9c94d861cc">
               <span class="m-doc-wrap-bumper"><a href="#a1bee483df0c0bad53729cc9c94d861cc" class="m-doc-self">Sampler</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const Memory::AllocationCallbacks _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device and allocator specified.</dd>
             <dt id="a17c791e6bb04502611f56af8a5e3eee5">
               <span class="m-doc-wrap-bumper"><a href="#a17c791e6bb04502611f56af8a5e3eee5" class="m-doc-self">Sampler</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Sampler.html" class="m-doc">Sampler</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
@@ -110,7 +111,7 @@
             <dt id="a5ec053498a99bb6612a53f54b7f910b5">
               <span class="m-doc-wrap-bumper"><a href="#a5ec053498a99bb6612a53f54b7f910b5" class="m-doc-self">~Sampler</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the sampler.</dd>
             <dt id="a15acf7a0b3602cca30457f46a59cc1dd">
               <span class="m-doc-wrap-bumper"><a href="#a15acf7a0b3602cca30457f46a59cc1dd" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -122,7 +123,7 @@
             <dt id="a19b354eac955e8094f525732ac2a35fb">
               <span class="m-doc-wrap-bumper"><a href="#a19b354eac955e8094f525732ac2a35fb" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd>Implicit conversion to give a pointers to its handle.</dd>
+            <dd>Implicit conversion to give a pointer to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -131,22 +132,22 @@
             <dt id="a52032bbf359b0a4e6367d21bbd0217d3">
               <span class="m-doc-wrap-bumper">auto <a href="#a52032bbf359b0a4e6367d21bbd0217d3" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Sampler_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the sampler.</dd>
             <dt id="abfc23769f25596f5862f1702f2a1bf8c">
               <span class="m-doc-wrap-bumper">auto <a href="#abfc23769f25596f5862f1702f2a1bf8c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Sampler_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the sampler (logical device specified).</dd>
             <dt id="a146d4c58e22fad182bdb4b92339c88b1">
               <span class="m-doc-wrap-bumper">auto <a href="#a146d4c58e22fad182bdb4b92339c88b1" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Sampler_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const Memory::AllocationCallbacks&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the sampler (logical device and allocator) specified.</dd>
             <dt id="a8b2ffedaf57fb3812ee68b3a77d65848">
               <span class="m-doc-wrap-bumper">void <a href="#a8b2ffedaf57fb3812ee68b3a77d65848" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the sampler.</dd>
             <dt id="a1a254c7d13bc7b1e42ce832ca4a0243d">
               <span class="m-doc-wrap-bumper">auto <a href="#a1a254c7d13bc7b1e42ce832ca4a0243d" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Sampler.html" class="m-doc">Sampler</a>&amp; _other) const -&gt; bool</span>
             </dt>

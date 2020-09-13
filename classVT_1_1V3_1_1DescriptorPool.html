@@ -53,7 +53,6 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>DescriptorPool <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -69,6 +68,7 @@
             </li>
           </ul>
         </div>
+<p>This object represents a device created object on the host. As such ownership is tied to this host object. Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -122,7 +122,7 @@
             <dt id="ae63a20ad576a8630d09f324405c9c186">
               <span class="m-doc-wrap-bumper"><a href="#ae63a20ad576a8630d09f324405c9c186" class="m-doc-self">operator const Handle*</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd>Implicit conversion to give a pointers to its handle.</dd>
+            <dd>Implicit conversion to give a pointer to its handle.</dd>
           </dl>
         </section>
         <section id="pub-methods">
