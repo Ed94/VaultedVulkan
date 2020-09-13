@@ -513,7 +513,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief 
+			 * @brief Set the state of an event to unsignaled from the host.
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkResetEvent">Specification</a> 
 			 * 
@@ -689,7 +689,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief 
+			 * @brief Create a fence that will be signaled when an event occurs on a Display object.
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a> 
 			 * 
@@ -731,7 +731,7 @@ namespace VaultedThermals
 
 			/**
 			 * 
-			 * @brief .
+			 * @brief Wait for one or more fences to enter the signaled state on the host.
 			 * 
 			 * @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkWaitForFences">Specification</a> 
 			 * 
@@ -938,6 +938,9 @@ namespace VaultedThermals
 
 		/**
 		@brief
+		Events are a synchronization primitive that can be used to insert a fine-grained dependency between commands submitted to the same queue,
+		or between the host and a queue. Events must not be used to insert a dependency between commands submitted to different queues.
+		Events have two states - signaled and unsignaled.
 		*/
 		struct Event : public V1::Event
 		{
@@ -980,7 +983,7 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief 
+		@brief Fences are a synchronization primitive that can be used to insert a dependency from a queue to the host. Fences have two states - signaled and unsignaled.
 		*/
 		struct Fence : public V1::Fence
 		{
@@ -1072,7 +1075,8 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief 
+		@brief Semaphores are a synchronization primitive that can be used to insert a dependency between queue operations or between a queue operation and the host.
+		Binary semaphores have two states - signaled and unsignaled.
 		*/
 		struct Semaphore : public V1::Semaphore
 		{
@@ -1119,6 +1123,11 @@ namespace VaultedThermals
 		*/
 
 		/**
+		@brief
+		Events are a synchronization primitive that can be used to insert a fine-grained dependency between commands submitted to the same queue,
+		or between the host and a queue. Events must not be used to insert a dependency between commands submitted to different queues.
+		Events have two states - signaled and unsignaled.
+		 
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
 		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
@@ -1129,19 +1138,19 @@ namespace VaultedThermals
 			using Parent = V2::Event;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			Event() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief Logical device specified.
 			*/
 			Event(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief Logical device and allocator specified.
 			*/
 			Event(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -1158,7 +1167,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy the event if the handle is not null.
 			*/
 			~Event()
 			{
@@ -1166,7 +1175,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create an event.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1176,7 +1185,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create an event (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1187,7 +1196,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create an event (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1198,23 +1207,18 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy an event.
 			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			/**
-
-			*/
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
-
-			/**
-
+			@brief Query the state of an event from the host.
 			*/
 			EResult GetStatus()
 			{
@@ -1222,7 +1226,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Set the state of an event to unsignaled from the host.
 			*/
 			EResult Reset()
 			{
@@ -1230,7 +1234,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Set the state of an event to signaled from the host.
 			*/
 			EResult Set()
 			{
@@ -1298,6 +1302,8 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief Fences are a synchronization primitive that can be used to insert a dependency from a queue to the host. Fences have two states - signaled and unsignaled.
+		
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
 		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
@@ -1308,19 +1314,19 @@ namespace VaultedThermals
 			using Parent = V2::Fence;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			Fence() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief Logical device specified.
 			*/
 			Fence(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief Logical device and allocator specified.
 			*/
 			Fence(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -1337,7 +1343,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy a fence if handle is not null.
 			*/
 			~Fence()
 			{
@@ -1345,7 +1351,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a fence.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1355,7 +1361,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a fence (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1366,7 +1372,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a fence (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1377,15 +1383,18 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy a fence.
 			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
+
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			/**
-
+			@brief Provides the logical device handle.
 			*/
 			LogicalDevice::Handle GetDeviceHandle() const
 			{
@@ -1393,15 +1402,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
-			*/
-			const Handle& GetHandle() const
-			{
-				return handle;
-			}
-
-			/**
-
+			@brief Query the status of a fence from the host
 			*/
 			EResult GetStatus()
 			{
@@ -1409,7 +1410,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Platform agnostic way to export the os handle of the fence.
 			*/
 			EResult GetOS_Handle(const GetOS_HandleInfo& _win32Info, OS_Handle & _winHandle)
 			{
@@ -1417,7 +1418,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Import a fence payload from a os handle.
 			*/
 			EResult ImportOS_Handle(const ImportOS_HandleInfo& _importInfo)
 			{
@@ -1425,7 +1426,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a fence that will be signaled when an event occurs on a device.
 			*/
 			EResult RegisterDeviceEvent(const DeviceEventInfo _eventInfo)
 			{
@@ -1433,7 +1434,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a fence that will be signaled when an event occurs on a Display object.
 			*/
 			EResult RegisterDisplayEvent(Display::Handle _display, const DisplayEventInfo& _eventInfo)
 			{
@@ -1441,7 +1442,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Set the state of fences to unsignaled from the host.
 			*/
 			EResult Reset()
 			{
@@ -1449,7 +1450,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Reset the fences in the provided container.
 			*/
 			static EResult Reset(DynamicArray<Fence> _fences)
 			{
@@ -1457,13 +1458,13 @@ namespace VaultedThermals
 
 				DynamicArray<Fence::Handle> handles;
 
-				for (auto& fence : _fences) handles.push_back(fence.GetHandle());
+				for (auto& fence : _fences) handles.push_back(fence);
 
 				return Parent::Reset(device, handles.data(), static_cast<uint32>(_fences.size()));
 			}
 
 			/**
-
+			@brief Wait for the fence to enter the signaled state on the host.
 			*/
 			EResult WaitFor(uInt64 _timeout)
 			{
@@ -1471,7 +1472,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Wait for one or more fences to enter the signaled state on the host.
 			*/
 			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, uInt64 _timeout)
 			{
@@ -1479,7 +1480,7 @@ namespace VaultedThermals
 
 				DynamicArray<Fence::Handle> handles;
 
-				for (auto& fence : _fences) handles.push_back(fence.GetHandle());
+				for (auto& fence : _fences) handles.push_back(fence);
 
 				return Parent::WaitForFences(device, static_cast<uint32>(_fences.size()), handles.data(), _waitForAll, _timeout);
 			}
@@ -1545,6 +1546,9 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief Semaphores are a synchronization primitive that can be used to insert a dependency between queue operations or between a queue operation and the host.
+		Binary semaphores have two states - signaled and unsignaled.
+
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
 		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
@@ -1555,19 +1559,19 @@ namespace VaultedThermals
 			using Parent = V2::Semaphore;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			Semaphore() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief Logical device specified.
 			*/
 			Semaphore(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief Logical device and allocator specified.
 			*/
 			Semaphore(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -1584,7 +1588,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy the semaphore if the handle is not null.
 			*/
 			~Semaphore()
 			{
@@ -1592,7 +1596,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a semaphore.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1602,7 +1606,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a semaphore (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1613,7 +1617,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a semaphore (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1624,7 +1628,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy a semaphore.
 			*/
 			void Destroy()
 			{
@@ -1635,7 +1639,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Query the current counter value of a semaphore created with a SemaphoreType of Timeline from the host.
 			*/
 			EResult GetCounterValue(uInt64& _value)
 			{
@@ -1643,7 +1647,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Export an os handle representing the payload of a semaphore.
 			*/
 			EResult GetOS_Handle(const GetOS_HandleInfo& _getInfo, OS_Handle& _osHandle)
 			{
@@ -1651,7 +1655,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Import a semaphore payload from an os handle.
 			*/
 			EResult ImportOS_Handle(const ImportOS_HandleInfo& _importPOSIX_Info)
 			{
@@ -1659,7 +1663,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Signal a semaphore created with a SemaphoreType of Timeline with a particular counter value, on the host.
 			*/
 			EResult Signal(const SignalInfo& _info)
 			{
@@ -1667,7 +1671,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Wait for a set of semaphores created with a VkSemaphoreType of VK_SEMAPHORE_TYPE_TIMELINE to reach particular counter values on the host.
 			*/
 			EResult WaitFor(const WaitInfo& _info, uInt64 _timeout)
 			{

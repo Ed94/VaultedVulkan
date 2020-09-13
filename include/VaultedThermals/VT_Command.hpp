@@ -1368,7 +1368,7 @@ namespace VaultedThermals
 			*/
 			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
-				Parent::ResetEvent(handle, _event.GetHandle(), _stageMask);
+				Parent::ResetEvent(handle, _event, _stageMask);
 			}
 
 		#pragma region SubmitPipelineBarrier_OO
@@ -1488,7 +1488,7 @@ namespace VaultedThermals
 			*/
 			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
-				Parent::SetEvent(handle, _event.GetHandle(), _stageMask);
+				Parent::SetEvent(handle, _event, _stageMask);
 			}
 
 		#pragma region WaitForEvents_OO

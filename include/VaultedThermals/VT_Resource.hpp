@@ -926,6 +926,9 @@ namespace VaultedThermals
 			}
 		};
 
+		/**
+		@brief A buffer view represents a contiguous range of a buffer and a specific format to be used to interpret the data.
+		*/
 		struct BufferView : public V1::BufferView
 		{
 			using Parent = V1::BufferView;
@@ -961,6 +964,12 @@ namespace VaultedThermals
 			using Parent::Destroy;
 		};
 
+		/**
+		@brief 
+		Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes
+		(e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets,
+		or by directly specifying them as parameters to certain commands.
+		*/
 		struct Image : public V1::Image
 		{
 			using Parent = V1::Image;
@@ -1088,6 +1097,10 @@ namespace VaultedThermals
 			}
 		};
 
+		/**
+		@brief An object that represents an image subresource range of a specific image,
+		and state that controls how the contents are interpreted.
+		*/
 		struct ImageView : public V1::ImageView
 		{
 			using Parent = V1::ImageView;
@@ -1220,7 +1233,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-			@brief
+			@brief Logical device specified.
 			*/
 			Buffer(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
@@ -1232,7 +1245,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-			@brief
+			@brief Logical device and allocator specified.
 			*/
 			Buffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle            (Null<Handle>),
@@ -1263,7 +1276,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroys the buffer if the handle is null.
 			*/
 			~Buffer()
 			{
@@ -1283,7 +1296,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a buffer.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1298,7 +1311,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a buffer (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1313,7 +1326,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a buffer (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1456,7 +1469,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Provides the memory requirements for the buffer.
 			*/
 			const Memory::Requirements& GetMemoryRequirements() const
 			{
@@ -1537,7 +1550,7 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief
+		@brief A buffer view represents a contiguous range of a buffer and a specific format to be used to interpret the data.
 
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
@@ -1549,19 +1562,19 @@ namespace VaultedThermals
 			using Parent = V2::BufferView;
 
 			/**
-			@brief
+			@brief Default constructor.
 			*/
 			BufferView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			@brief
+			@brief Logical specified.
 			*/
 			BufferView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Logical device and allocator specified.
 			*/
 			BufferView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -1578,7 +1591,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the buffer view if the handle is null.
 			*/
 			~BufferView()
 			{
@@ -1586,7 +1599,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a buffer view.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1596,7 +1609,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a buffer view (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1606,7 +1619,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a buffer view (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1617,7 +1630,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy a buffer view.
 			*/
 			void Destroy()
 			{
@@ -1688,11 +1701,17 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief
+		@brief 
+		Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes
+		(e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets,
+		or by directly specifying them as parameters to certain commands.
 
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
 		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
+		
+		Note: If the image belongs to a swapchain, the swapchain handles the objects lifetime and should not be destroyed by this object,
+		instead Clear() should be called before object's destruction to make sure that the device object is destroyed by this host object.
 		*/
 		class Image : public V2::Image
 		{
@@ -1700,7 +1719,7 @@ namespace VaultedThermals
 			using Parent = V2::Image;
 
 			/**
-			@brief
+			@brief Default constructor.
 			*/
 			Image() : 
 				handle            (Null<Handle>), 
@@ -1712,7 +1731,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-			@brief
+			@brief Specifies logical device.
 			*/
 			Image(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
@@ -1724,7 +1743,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-			@brief
+			@brief Specifies logical device and allocator.
 			*/
 			Image(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle            (Null<Handle>),
@@ -1755,7 +1774,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the image if the handle is not null.
 			*/
 			~Image()
 			{
@@ -1763,7 +1782,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Assign the logical device and handle.
 			*/
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
@@ -1772,7 +1791,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Clear the logical device and handle.
 			*/
 			void Clear()
 			{
@@ -1793,7 +1812,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create an image.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1806,7 +1825,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create an image (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1823,7 +1842,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create an image (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1942,17 +1961,18 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy an image.
 			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
 
-				Clear();
+				handle = Null<Handle>;
+				device = nullptr     ;
 			}
 
 			/**
-			@brief
+			@brief Provides the memory requirements.
 			*/
 			const Memory::Requirements& GetMemoryRequirements() const
 			{
@@ -2034,7 +2054,8 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief
+		@brief An object that represents an image subresource range of a specific image,
+		and state that controls how the contents are interpreted.
 
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
@@ -2046,19 +2067,19 @@ namespace VaultedThermals
 			using Parent = V2::ImageView;
 
 			/**
-			@brief
+			@brief Default constructor.
 			*/
 			ImageView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			@brief
+			@brief Specifies the logical device.
 			*/
 			ImageView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Specifies the logical device and allocator.
 			*/
 			ImageView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -2075,7 +2096,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the image view if handle is not null.
 			*/
 			~ImageView()
 			{
@@ -2083,7 +2104,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create an image view.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -2093,7 +2114,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create an image view (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -2105,7 +2126,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create an image view (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -2116,7 +2137,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the image view.
 			*/
 			void Destroy()
 			{
@@ -2187,9 +2208,10 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief
+		@brief Descriptors are grouped together into descriptor set objects. A descriptor set object is an opaque object containing storage for a set of descriptors,
+		where the types and number of descriptors is defined by a descriptor set layout.
 
-		@detaisl This object only acts as a host interface to a given device object's handle. The descriptor pool mangages the descriptor set's lifetime.
+		@detaisl This object only acts as a host interface to a given device object's handle. The descriptor pool manages the descriptor set's lifetime.
 		*/
 		class DescriptorSet : public V2::DescriptorSet
 		{
@@ -2197,19 +2219,19 @@ namespace VaultedThermals
 			using Parent = V2::DescriptorSet;
 
 			/**
-			@brief
+			@brief Default allocator.
 			*/
 			DescriptorSet() : handle(Null<Handle>), device(nullptr)
 			{}
 
 			/**
-			@brief
+			@brief Logical device and handle assigned.
 			*/
 			DescriptorSet(Handle _handle, const LogicalDevice& _device) : handle(_handle), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Assigns the logical device and handle.
 			*/
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
@@ -2218,7 +2240,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Clears the logical device and handle.
 			*/
 			void Clear()
 			{
@@ -2227,7 +2249,7 @@ namespace VaultedThermals
 			}
 			
 			/**
-			@brief
+			@brief Once allocated, descriptor sets can be updated with a combination of write and copy operations.
 			*/
 			void Update
 			(
@@ -2292,19 +2314,19 @@ namespace VaultedThermals
 			using Parent = V2::DescriptorPool;
 
 			/**
-			@brief 
+			@brief Default constructor
 			*/
 			DescriptorPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			@brief 
+			@brief Specifies logical device.
 			*/
 			DescriptorPool(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			@brief 
+			@brief Specifies logical device and allocator.
 			*/
 			DescriptorPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
@@ -2321,7 +2343,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Destroys a descriptor pool.
 			*/
 			~DescriptorPool()
 			{
@@ -2329,7 +2351,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Allocates descriptor sets based on allocate info and provided via the handles container.
 			*/
 			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
 			{
@@ -2337,7 +2359,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Allocates descriptor sets based on allocate info and provided via the descriptor set dynamic array and handle array.
 			*/
 			EResult Allocate
 			(
@@ -2361,7 +2383,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Create a descriptor pool.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -2371,7 +2393,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Create a descriptor pool (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -2383,7 +2405,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Create a descriptor pool (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -2394,7 +2416,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy a descriptor set.
 			*/
 			void Destroy()
 			{
@@ -2405,7 +2427,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Free descriptor sets within the specified handles container.
 			*/
 			EResult Free(uint32 _count, DescriptorSet::Handle* _handles)
 			{
@@ -2413,7 +2435,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Free descriptor sets specified in the dynamic array.
 			*/
 			EResult Free(DynamicArray<DescriptorSet::Handle> _handles)
 			{
@@ -2421,7 +2443,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Return all descriptor sets allocated from a given pool to the pool, rather than freeing individual descriptor sets.
 			*/
 			EResult Reset(ResetFlags& _flags)
 			{

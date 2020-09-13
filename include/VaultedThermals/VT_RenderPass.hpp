@@ -398,7 +398,7 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@brief
+		@brief Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.
 
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
@@ -410,25 +410,25 @@ namespace VaultedThermals
 			using Parent = V2::Framebuffer;
 
 			/**
-			@brief
+			@brief Default constructor.
 			*/
 			Framebuffer() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			@brief
+			@brief Logical device specified.
 			*/
 			Framebuffer(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Logical device and allocator specified.
 			*/
 			Framebuffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			Framebuffer(Framebuffer&& _other) noexcept :
 				handle(_other.handle), allocator(_other.allocator), device(_other.device)
@@ -439,7 +439,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the framebuffer.
 			*/
 			~Framebuffer()
 			{
@@ -447,7 +447,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create the framebuffer.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -457,7 +457,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create the framebuffer (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -468,7 +468,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create the framebuffer (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice* _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -479,7 +479,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the framebuffer.
 			*/
 			void Destroy()
 			{
@@ -562,19 +562,19 @@ namespace VaultedThermals
 			using Parent = V2::RenderPass;
 
 			/**
-			@brief
+			@brief Default constructor.
 			*/
 			RenderPass() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			@brief
+			@brief Logical device specified.
 			*/
 			RenderPass(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Logical device and allocator specified.
 			*/
 			RenderPass(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -591,7 +591,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy a renderpass.
 			*/
 			~RenderPass()
 			{
@@ -599,7 +599,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a render pass.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -609,7 +609,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a render pass (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -619,7 +619,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a render pass (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -630,7 +630,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy a render pass.
 			*/
 			void Destroy()
 			{
