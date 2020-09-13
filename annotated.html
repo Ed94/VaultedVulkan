@@ -537,15 +537,15 @@
                   <li>struct <a href="structVT_1_1V2_1_1Memory.html" class="m-doc">Memory</a> <span class="m-doc">General memory structures and functionality for device memory.</span></li>
                   <li>struct <a href="structVT_1_1V2_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device.</span></li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">struct</a> <a href="structVT_1_1V2_1_1Pipeline.html" class="m-doc">Pipeline</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">struct</a> <a href="structVT_1_1V2_1_1Pipeline.html" class="m-doc">Pipeline</a> <span class="m-doc">A monolithic object describing the entire graphics, raytracing, or compute pipeline.</span>
                     <ul class="m-doc">
-                      <li>struct <a href="structVT_1_1V2_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a> <span class="m-doc"><span></span></span></li>
+                      <li>struct <a href="structVT_1_1V2_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a> <span class="m-doc"><a href="structVT_1_1V2_1_1Pipeline.html" class="m-doc">Pipeline</a> cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.</span></li>
                       <li>struct <a href="structVT_1_1V2_1_1Pipeline_1_1Compute.html" class="m-doc">Compute</a> <span class="m-doc"><span></span></span></li>
                       <li>struct <a href="structVT_1_1V2_1_1Pipeline_1_1Graphics.html" class="m-doc">Graphics</a> <span class="m-doc"><span></span></span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">struct</a> <a href="structVT_1_1V2_1_1Pipeline_1_1Layout.html" class="m-doc">Layout</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">struct</a> <a href="structVT_1_1V2_1_1Pipeline_1_1Layout.html" class="m-doc">Layout</a> <span class="m-doc">Access to descriptor sets from a pipeline is accomplished through a pipeline layout.</span>
                         <ul class="m-doc">
-                          <li>struct <a href="structVT_1_1V2_1_1Pipeline_1_1Layout_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a> <span class="m-doc"><span></span></span></li>
+                          <li>struct <a href="structVT_1_1V2_1_1Pipeline_1_1Layout_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a> <span class="m-doc"></span></li>
                         </ul>
                       </li>
                     </ul>
@@ -577,7 +577,7 @@
                   <li>class <a href="classVT_1_1V3_1_1BufferView.html" class="m-doc">BufferView</a> <span class="m-doc">A buffer view represents a contiguous range of a buffer and a specific format to be used to interpret the data.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a> <span class="m-doc">Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1CommandPool.html" class="m-doc">CommandPool</a> <span class="m-doc">Command pools are opaque objects that command buffer memory is allocated from, and which allow the implementation to amortize the cost of resource creation across multiple command buffers.</span></li>
-                  <li>class <a href="classVT_1_1V3_1_1ComputePipeline.html" class="m-doc">ComputePipeline</a> <span class="m-doc"><span></span></span></li>
+                  <li>class <a href="classVT_1_1V3_1_1ComputePipeline.html" class="m-doc">ComputePipeline</a> <span class="m-doc">The compute pipeline represents a compute shader.</span></li>
                   <li class="m-doc-collapsible collapsed">
                     <a href="#" onclick="return toggle(this)">struct</a> <a href="structVT_1_1V3_1_1DebugUtils.html" class="m-doc">DebugUtils</a> <span class="m-doc">Debug Utilities: Flexible utilities for debugging an application.</span>
                     <ul class="m-doc">
@@ -589,7 +589,7 @@
                   <li>class <a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a> <span class="m-doc">Events are a synchronization primitive that can be used to insert a fine-grained dependency between commands submitted to the same queue, or between the host and a queue. Events must not be used to insert a dependency between commands submitted to different queues. Events have two states - signaled and unsignaled.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1Fence.html" class="m-doc">Fence</a> <span class="m-doc">Fences are a synchronization primitive that can be used to insert a dependency from a queue to the host. Fences have two states - signaled and unsignaled.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1Framebuffer.html" class="m-doc">Framebuffer</a> <span class="m-doc">Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.</span></li>
-                  <li>class <a href="classVT_1_1V3_1_1GraphicsPipeline.html" class="m-doc">GraphicsPipeline</a> <span class="m-doc"><span></span></span></li>
+                  <li>class <a href="classVT_1_1V3_1_1GraphicsPipeline.html" class="m-doc">GraphicsPipeline</a> <span class="m-doc">Graphics pipelines consist of multiple shader stages, multiple fixed-function pipeline stages, and a pipeline layout.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a> <span class="m-doc">Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes (e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, or by directly specifying them as parameters to certain commands.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1ImageView.html" class="m-doc">ImageView</a> <span class="m-doc">An object that represents an image subresource range of a specific image, and state that controls how the contents are interpreted.</span></li>
                   <li class="m-doc-collapsible collapsed">
@@ -601,18 +601,18 @@
                   <li>class <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a> <span class="m-doc">General memory structures and functionality for device memory.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a> <span class="m-doc">Represents a physical device.</span></li>
                   <li class="m-doc-collapsible collapsed">
-                    <a href="#" onclick="return toggle(this)">class</a> <a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a> <span class="m-doc"><span></span></span>
+                    <a href="#" onclick="return toggle(this)">class</a> <a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a> <span class="m-doc">A monolithic object describing the entire graphics, raytracing, or compute pipeline.</span>
                     <ul class="m-doc">
-                      <li>class <a href="classVT_1_1V3_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a> <span class="m-doc"><span></span></span></li>
+                      <li>class <a href="classVT_1_1V3_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a> <span class="m-doc"><a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a> cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.</span></li>
                       <li class="m-doc-collapsible collapsed">
-                        <a href="#" onclick="return toggle(this)">class</a> <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Layout</a> <span class="m-doc"><span></span></span>
+                        <a href="#" onclick="return toggle(this)">class</a> <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Layout</a> <span class="m-doc">Access to descriptor sets from a pipeline is accomplished through a pipeline layout.</span>
                         <ul class="m-doc">
-                          <li>class <a href="classVT_1_1V3_1_1Pipeline_1_1Layout_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a> <span class="m-doc"><span></span></span></li>
+                          <li>class <a href="classVT_1_1V3_1_1Pipeline_1_1Layout_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a> <span class="m-doc">Descriptors are grouped together into descriptor set objects.</span></li>
                         </ul>
                       </li>
                     </ul>
                   </li>
-                  <li>class <a href="classVT_1_1V3_1_1RenderPass.html" class="m-doc">RenderPass</a> <span class="m-doc"></span></li>
+                  <li>class <a href="classVT_1_1V3_1_1RenderPass.html" class="m-doc">RenderPass</a> <span class="m-doc">A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1Sampler.html" class="m-doc">Sampler</a> <span class="m-doc">Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1Semaphore.html" class="m-doc">Semaphore</a> <span class="m-doc">Semaphores are a synchronization primitive that can be used to insert a dependency between queue operations or between a queue operation and the host. Binary semaphores have two states - signaled and unsignaled.</span></li>
                   <li>class <a href="classVT_1_1V3_1_1ShaderModule.html" class="m-doc">ShaderModule</a> <span class="m-doc">Shader modules contain shader code and one or more entry points.</span></li>

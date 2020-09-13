@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>ComputePipeline <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>The compute pipeline represents a compute shader.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -74,7 +74,7 @@
             <dt>
               class <a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>A monolithic object describing the entire graphics, raytracing, or compute pipeline.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -97,7 +97,7 @@
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
               <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1ComputePipeline.html" class="m-doc">ComputePipeline</a>&gt;&amp; _pipelines) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create multiple compute pipelines that will be returned by the given dynamic array container of _pipelines.</dd>
           </dl>
         </section>
         <section id="pub-methods">
@@ -109,29 +109,29 @@
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
               <a href="group__APISpec__Pipelines.html#gac3cd41e887e44ddb63f3dfb7248c3a64" class="m-doc">Handle</a> _handle)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assign the logical device, cache, allocator and handle to the compute pipeline.</dd>
             <dt id="a069fd43b9eeeffd249695b2597f60101">
               <span class="m-doc-wrap-bumper">auto <a href="#a069fd43b9eeeffd249695b2597f60101" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1ComputePipeline.html#a0e82bbf4568bde1724be1e1b0e00cff6" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a compute pipeline.</dd>
             <dt id="a749285f8423b2a20b34bddc57184f49c">
               <span class="m-doc-wrap-bumper">auto <a href="#a749285f8423b2a20b34bddc57184f49c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="classVT_1_1V3_1_1ComputePipeline.html#a0e82bbf4568bde1724be1e1b0e00cff6" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a compute pipeline (logical device specified).</dd>
             <dt id="ade7439df8611bdc36551fd10ecf8de42">
               <span class="m-doc-wrap-bumper">auto <a href="#ade7439df8611bdc36551fd10ecf8de42" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a>&amp; _cache,
               const <a href="classVT_1_1V3_1_1ComputePipeline.html#a0e82bbf4568bde1724be1e1b0e00cff6" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a compute pipeline (logical device and cache specified).</dd>
             <dt id="a44a6d4c696abaec860ed14a6b1f19155">
               <span class="m-doc-wrap-bumper">auto <a href="#a44a6d4c696abaec860ed14a6b1f19155" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a>&amp; _cache,
               const <a href="classVT_1_1V3_1_1ComputePipeline.html#a0e82bbf4568bde1724be1e1b0e00cff6" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a compute pipeline (logical device, cache, and allocator specified).</dd>
           </dl>
         </section>
       </div>

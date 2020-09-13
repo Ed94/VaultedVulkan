@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span><span class="m-breadcrumb"><a href="classVT_1_1V3_1_1Pipeline.html">Pipeline</a>::<wbr/></span>Cache <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p><a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a> cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -69,13 +69,14 @@
             </li>
           </ul>
         </div>
+<p>Reuse between pipelines is achieved by passing the same pipeline cache object when creating multiple related pipelines. Reuse across runs of an application is achieved by retrieving pipeline cache contents in one run of an application, saving the contents, and using them to preinitialize a pipeline cache on a subsequent run. The contents of the pipeline cache objects are managed by the implementation. Applications can manage the host memory consumed by a pipeline cache object and control the amount of data retrieved from a pipeline cache object.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
               struct <a href="structVT_1_1V2_1_1Pipeline_1_1Cache.html" class="m-doc">VT::V2::Pipeline::Cache</a>
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="structVT_1_1V2_1_1Pipeline.html" class="m-doc">Pipeline</a> cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -93,16 +94,16 @@
             <dt id="a205221185d93d51fb851e5606ce65fae">
               <span class="m-doc-wrap-bumper"><a href="#a205221185d93d51fb851e5606ce65fae" class="m-doc-self">Cache</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="af7efcee0d4bf682c919a23ae887c5725">
               <span class="m-doc-wrap-bumper"><a href="#af7efcee0d4bf682c919a23ae887c5725" class="m-doc-self">Cache</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device specified.</dd>
             <dt id="a7900a345262aecf853f584904ce7a986">
               <span class="m-doc-wrap-bumper"><a href="#a7900a345262aecf853f584904ce7a986" class="m-doc-self">Cache</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const Memory::AllocationCallbacks&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device and allocator specified.</dd>
             <dt id="a817dc1c0fc367f8b079311d2fb21d14f">
               <span class="m-doc-wrap-bumper"><a href="#a817dc1c0fc367f8b079311d2fb21d14f" class="m-doc-self">Cache</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
@@ -110,7 +111,7 @@
             <dt id="a00dc0dbe4e9a62e00cbc8aa4e02a2676">
               <span class="m-doc-wrap-bumper"><a href="#a00dc0dbe4e9a62e00cbc8aa4e02a2676" class="m-doc-self">~Cache</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroys the cache if handle is null.</dd>
             <dt id="a7c597353c003e40600e7888a2e7d9d5a">
               <span class="m-doc-wrap-bumper"><a href="#a7c597353c003e40600e7888a2e7d9d5a" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -128,21 +129,25 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
+            <dt id="a89f8af17cc6a64577914b4ca125a0cbf">
+              <span class="m-doc-wrap-bumper">auto <a href="#a89f8af17cc6a64577914b4ca125a0cbf" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Pipeline_1_1Cache_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a cache.</dd>
             <dt id="a0094a0541ca04073ce693c291bc8c859">
               <span class="m-doc-wrap-bumper">auto <a href="#a0094a0541ca04073ce693c291bc8c859" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Pipeline_1_1Cache_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a cache (logical device specified).</dd>
             <dt id="a7ef7d64bf69c6508f211a0def6c7a20b">
               <span class="m-doc-wrap-bumper">auto <a href="#a7ef7d64bf69c6508f211a0def6c7a20b" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="structVT_1_1V1_1_1Pipeline_1_1Cache_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const Memory::AllocationCallbacks&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a cache (logical device and allocator specified).</dd>
             <dt id="a1d4b9133dbb5b70fdb90efbaa90ab9a8">
               <span class="m-doc-wrap-bumper">void <a href="#a1d4b9133dbb5b70fdb90efbaa90ab9a8" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy a cache.</dd>
             <dt id="aabfe42bb6e6f3a3b2e1e3657e9e76656">
               <span class="m-doc-wrap-bumper">auto <a href="#aabfe42bb6e6f3a3b2e1e3657e9e76656" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a>&amp; _other) const -&gt; bool</span>
             </dt>

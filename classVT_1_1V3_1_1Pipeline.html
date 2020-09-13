@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>Pipeline <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>A monolithic object describing the entire graphics, raytracing, or compute pipeline.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -76,7 +76,7 @@
             <dt>
               struct <a href="structVT_1_1V2_1_1Pipeline.html" class="m-doc">VT::V2::Pipeline</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>A monolithic object describing the entire graphics, raytracing, or compute pipeline.</dd>
           </dl>
         </section>
         <section id="derived-classes">
@@ -85,11 +85,11 @@
             <dt>
               class <a href="classVT_1_1V3_1_1ComputePipeline.html" class="m-doc">ComputePipeline</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>The compute pipeline represents a compute shader.</dd>
             <dt>
               class <a href="classVT_1_1V3_1_1GraphicsPipeline.html" class="m-doc">GraphicsPipeline</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Graphics pipelines consist of multiple shader stages, multiple fixed-function pipeline stages, and a pipeline layout.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -98,11 +98,11 @@
             <dt>
               class <a href="classVT_1_1V3_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a>
             </dt>
-            <dd><span></span></dd>
+            <dd><a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a> cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.</dd>
             <dt>
               class <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Layout</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Access to descriptor sets from a pipeline is accomplished through a pipeline layout.</dd>
             <dt id="af4a6aed2f2af9fcef17025cfb62ae98a">
               using <a href="#af4a6aed2f2af9fcef17025cfb62ae98a" class="m-doc-self">Parent</a> = <a href="structVT_1_1V2_1_1Pipeline.html" class="m-doc">V2::<wbr />Pipeline</a>
             </dt>
@@ -115,35 +115,35 @@
             <dt id="a856f0463aa9e3e1d5f9b707774fcf30b">
               <span class="m-doc-wrap-bumper"><a href="#a856f0463aa9e3e1d5f9b707774fcf30b" class="m-doc-self">Pipeline</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a06207a325160e9fa44373a91ae53d7a4">
               <span class="m-doc-wrap-bumper"><a href="#a06207a325160e9fa44373a91ae53d7a4" class="m-doc-self">Pipeline</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Specify logical device.</dd>
             <dt id="ab9195735c1020e943c57f7d0fd1cffd5">
               <span class="m-doc-wrap-bumper"><a href="#ab9195735c1020e943c57f7d0fd1cffd5" class="m-doc-self">Pipeline</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="classVT_1_1V3_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a>&amp; _cache)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Specify logical device and cache.</dd>
             <dt id="a2ef858fec78a73edc9405e37cf6af658">
               <span class="m-doc-wrap-bumper"><a href="#a2ef858fec78a73edc9405e37cf6af658" class="m-doc-self">Pipeline</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Specify logical device and allocator.</dd>
             <dt id="a498cea223625af095fb7c4306e22c0c9">
               <span class="m-doc-wrap-bumper"><a href="#a498cea223625af095fb7c4306e22c0c9" class="m-doc-self">Pipeline</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="classVT_1_1V3_1_1Pipeline_1_1Cache.html" class="m-doc">Cache</a>&amp; _cache,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd>Performs a move operation to transfer ownership of the device object to this host object.</dd>
+            <dd>Specify the logical device, cache, and allocator.</dd>
             <dt id="a07afcb572bd3a43e299aa327928bff09">
               <span class="m-doc-wrap-bumper"><a href="#a07afcb572bd3a43e299aa327928bff09" class="m-doc-self">Pipeline</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move operation to transfer ownership of the device object to this host object.</dd>
             <dt id="aae626e7129318b6624ef963f09e204e7">
               <span class="m-doc-wrap-bumper"><a href="#aae626e7129318b6624ef963f09e204e7" class="m-doc-self">~Pipeline</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the pipeline if the handle is not null.</dd>
             <dt id="a0d3fb771f9bf94679bb86f0286dfd462">
               <span class="m-doc-wrap-bumper"><a href="#a0d3fb771f9bf94679bb86f0286dfd462" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -164,7 +164,7 @@
             <dt id="ad6454652ce5fb8de7c790c3fec21428c">
               <span class="m-doc-wrap-bumper">void <a href="#ad6454652ce5fb8de7c790c3fec21428c" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the pipeline.</dd>
             <dt id="a5dc83b92ef3712d9f3009cac7c1dbdba">
               <span class="m-doc-wrap-bumper">auto <a href="#a5dc83b92ef3712d9f3009cac7c1dbdba" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a>&amp; _other) const -&gt; bool</span>
             </dt>

@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span><span class="m-breadcrumb"><a href="classVT_1_1V3_1_1Pipeline.html">Pipeline</a>::<wbr/></span>Layout <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
         </h1>
-        <p><span></span></p>
+        <p>Access to descriptor sets from a pipeline is accomplished through a pipeline layout.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -84,7 +84,7 @@
             <dt>
               class <a href="classVT_1_1V3_1_1Pipeline_1_1Layout_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Descriptors are grouped together into descriptor set objects.</dd>
             <dt id="aee76f3ab6a124d1dc8d2f3136efe700b">
               using <a href="#aee76f3ab6a124d1dc8d2f3136efe700b" class="m-doc-self">Parent</a> = <a href="structVT_1_1V2_1_1Pipeline_1_1Layout.html" class="m-doc">V2::<wbr />Pipeline::<wbr />Layout</a>
             </dt>
@@ -97,16 +97,16 @@
             <dt id="a1c60714968c94e94255fd72bc767e2e7">
               <span class="m-doc-wrap-bumper"><a href="#a1c60714968c94e94255fd72bc767e2e7" class="m-doc-self">Layout</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a50da13ec532251d6f914fa5455db1449">
               <span class="m-doc-wrap-bumper"><a href="#a50da13ec532251d6f914fa5455db1449" class="m-doc-self">Layout</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Specify logical device.</dd>
             <dt id="a7a849547dd3b06ad739bdc5ced8587f2">
               <span class="m-doc-wrap-bumper"><a href="#a7a849547dd3b06ad739bdc5ced8587f2" class="m-doc-self">Layout</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const Memory::AllocationCallbacks&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Specify logical device and allocator.</dd>
             <dt id="a2af12400d0e336f43986b2df81d67cc5">
               <span class="m-doc-wrap-bumper"><a href="#a2af12400d0e336f43986b2df81d67cc5" class="m-doc-self">Layout</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Layout</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
@@ -114,7 +114,7 @@
             <dt id="a5128fa4508b6c69da0688d79788586a0">
               <span class="m-doc-wrap-bumper"><a href="#a5128fa4508b6c69da0688d79788586a0" class="m-doc-self">~Layout</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the pipeline layout if the handle is null.</dd>
             <dt id="ace192287ec3119da912b9f55251d8d47">
               <span class="m-doc-wrap-bumper"><a href="#ace192287ec3119da912b9f55251d8d47" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -132,21 +132,25 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
+            <dt id="a81f443fa243e095a763f527e8d7d8762">
+              <span class="m-doc-wrap-bumper">auto <a href="#a81f443fa243e095a763f527e8d7d8762" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Pipeline_1_1Layout_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a pipeline layout.</dd>
             <dt id="a5cc671b7a7b8cd4863267857dd552724">
               <span class="m-doc-wrap-bumper">auto <a href="#a5cc671b7a7b8cd4863267857dd552724" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Pipeline_1_1Layout_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the pipeline layout (logical device specified).</dd>
             <dt id="a3f3329f6577febd300e53c330567a7e9">
               <span class="m-doc-wrap-bumper">auto <a href="#a3f3329f6577febd300e53c330567a7e9" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Pipeline_1_1Layout_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const Memory::AllocationCallbacks&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the pipeline layout (logical device and allocator specified).</dd>
             <dt id="ab42c83a1d88bfdf1aadd221a4c0e3e33">
               <span class="m-doc-wrap-bumper">void <a href="#ab42c83a1d88bfdf1aadd221a4c0e3e33" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the pipeline layout.</dd>
             <dt id="a21b3596191ff73fd52725d7a278f9647">
               <span class="m-doc-wrap-bumper">auto <a href="#a21b3596191ff73fd52725d7a278f9647" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Layout</a>&amp; _other) const -&gt; bool</span>
             </dt>
