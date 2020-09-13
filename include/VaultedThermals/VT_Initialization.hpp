@@ -669,7 +669,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

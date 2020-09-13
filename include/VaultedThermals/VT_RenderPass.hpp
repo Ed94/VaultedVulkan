@@ -398,7 +398,11 @@ namespace VaultedThermals
 		*/
 
 		/**
+		@brief
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Framebuffer : public V2::Framebuffer
 		{
@@ -406,25 +410,25 @@ namespace VaultedThermals
 			using Parent = V2::Framebuffer;
 
 			/**
-
+			@brief
 			*/
 			Framebuffer() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief
 			*/
 			Framebuffer(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			Framebuffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			Framebuffer(Framebuffer&& _other) noexcept :
 				handle(_other.handle), allocator(_other.allocator), device(_other.device)
@@ -435,7 +439,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			~Framebuffer()
 			{
@@ -443,7 +447,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -453,7 +457,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -464,7 +468,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice* _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -475,7 +479,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Destroy()
 			{
@@ -502,13 +506,16 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Framebuffer& _other) const
 			{
 				return handle == _other.handle;
@@ -543,7 +550,11 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class RenderPass : public V2::RenderPass
 		{
@@ -551,19 +562,19 @@ namespace VaultedThermals
 			using Parent = V2::RenderPass;
 
 			/**
-
+			@brief
 			*/
 			RenderPass() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief
 			*/
 			RenderPass(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			RenderPass(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -580,7 +591,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			~RenderPass()
 			{
@@ -588,7 +599,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -598,7 +609,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -608,7 +619,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -619,7 +630,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief
 			*/
 			void Destroy()
 			{
@@ -646,7 +657,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

@@ -983,6 +983,11 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief Represents a physical device.
+
+		@details This object only acts as a host interface to a given device object's handle. 
+		*/
 		class PhysicalDevice : public V2::PhysicalDevice
 		{
 		public:
@@ -990,13 +995,13 @@ namespace VaultedThermals
 			using Parent = V2::PhysicalDevice;
 			
 			/**
-
+			@brief Default constructor.
 			*/
 			PhysicalDevice() : handle(Null<Handle>)
 			{}
 
 			/**
-
+			@brief Default constructor with handle specified.
 			*/
 			PhysicalDevice(Handle _handle) : handle(_handle)
 			{
@@ -1008,7 +1013,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Assigns the handle.
 			*/
 			void AssignHandle(Handle _handle) 
 			{ 
@@ -1046,10 +1051,8 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @todo make the extensions specified container generic using an interface.
-			 * 
-			 * \param _handle
-			 */
+			@brief Checks to see if the extensions specified are supported.
+			*/
 			bool CheckExtensionSupport(DynamicArray<RoCStr> _extensionsSpecified) const
 			{
 				DynamicArray<ExtensionProperties> availableExtensions;
@@ -1071,7 +1074,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Find the suitable memory type for the type filter and properties specified.
 			*/
 			uint32 FindMemoryType(uint32 _typeFilter, Memory::PropertyFlags _properties) const
 			{
@@ -1097,7 +1100,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Provides the queue families for the respective device.
 			*/
 			EResult FindSupportedFormat(const DynamicArray<EFormat>& _canidates, EImageTiling _tiling, FormatFeatureFlags _features, EFormat& _format) const
 			{
@@ -1105,7 +1108,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Assigns the handle.
 			*/
 			EResult GetAvailableExtensions(RoCStr _layerName, DynamicArray<ExtensionProperties>& _extensionListing) const
 			{
@@ -1113,7 +1116,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Provides the available queue families in a dynamic array.
 			*/
 			DynamicArray<QueueFamilyProperties> GetAvailableQueueFamilies() const
 			{
@@ -1129,7 +1132,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Provides features.
 			*/
 			const Features& GetFeatures() const
 			{
@@ -1137,7 +1140,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Query supported format features which are properties of the physical device.
 			*/
 			FormatProperties GetFormatProperties(EFormat _format) const
 			{
@@ -1149,7 +1152,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Gets the max sample count between color and depth.
 			*/
 			ESampleCount GetMaxSampleCount_ColorAndDepth() const
 			{
@@ -1170,7 +1173,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Provides the memory properties
 			*/
 			const MemoryProperties& GetMemoryProperties() const
 			{
@@ -1178,7 +1181,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Provides the properties.
 			*/
 			const Properties& GetProperties() const
 			{
@@ -1186,7 +1189,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Provides the properties 2.
 			*/
 			const Properties2& GetProperties2() const
 			{
@@ -1194,7 +1197,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Query properties of queues available on a physical device. Reports properties of the queues of the specified physical device.
 			*/
 			EResult QueryExtensionProperties(RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer) const
 			{
@@ -1202,7 +1205,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Query properties of queues available on a physical device.
 			*/
 			void QueryQueueFamilyProperties(uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies) const
 			{
@@ -1210,7 +1213,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Query properties of queues available on a physical device.
 			*/
 			void QueryQueueFamilyProperties2(uint32* _numProperties, QueueFamilyProperties2* _properties) const
 			{
@@ -1218,7 +1221,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Enumerate the performance query counters available on a queue family of a physical device.
 			*/
 			EResult QueryPerfomranceQueryCounters
 			(
@@ -1232,7 +1235,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointer to its handle.
+			@brief Implicit conversion to give a reference to its handle.
 			*/
 			operator Handle&()
 			{
@@ -1248,7 +1251,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

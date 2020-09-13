@@ -1976,7 +1976,7 @@ namespace VaultedThermals
 		#pragma endregion SingleTimeCommands
 
 			/**
-			@brief Implicit conversion to give a reference of its handle.
+			@brief Implicit conversion to give a reference to its handle.
 			*/
 			operator Handle&()
 			{
@@ -1992,7 +1992,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

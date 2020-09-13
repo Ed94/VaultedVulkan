@@ -936,6 +936,9 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief
+		*/
 		struct Event : public V1::Event
 		{
 			using Parent = V1::Event;
@@ -976,6 +979,9 @@ namespace VaultedThermals
 			using Parent::Destroy;
 		};
 
+		/**
+		@brief 
+		*/
 		struct Fence : public V1::Fence
 		{
 			using Parent = V1::Fence;
@@ -1065,6 +1071,9 @@ namespace VaultedThermals
 			using Parent::RegisterDisplayEvent;
 		};
 
+		/**
+		@brief 
+		*/
 		struct Semaphore : public V1::Semaphore
 		{
 			using Parent = V1::Semaphore;
@@ -1110,7 +1119,9 @@ namespace VaultedThermals
 		*/
 
 		/**
-
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Event : public V2::Event
 		{
@@ -1243,7 +1254,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
@@ -1287,7 +1298,9 @@ namespace VaultedThermals
 		};
 
 		/**
-
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Fence : public V2::Fence
 		{
@@ -1488,7 +1501,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
@@ -1532,7 +1545,9 @@ namespace VaultedThermals
 		};
 
 		/**
-
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Semaphore : public V2::Semaphore
 		{
@@ -1676,7 +1691,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

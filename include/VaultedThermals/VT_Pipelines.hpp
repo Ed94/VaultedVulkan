@@ -1193,7 +1193,7 @@ namespace VaultedThermals
 		*/
 
 		/**
-
+		@brief 
 		*/
 		class Pipeline : public V2::Pipeline
 		{
@@ -1201,7 +1201,7 @@ namespace VaultedThermals
 			using Parent = V2::Pipeline;
 
 			/**
-
+			@brief 
 			*/
 			class Cache : public Parent::Cache
 			{
@@ -1209,19 +1209,19 @@ namespace VaultedThermals
 				using Parent = V2::Pipeline::Cache;
 
 				/**
-
+				@brief 
 				*/
 				Cache() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 				{}
 
 				/**
-
+				@brief
 				*/
 				Cache(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 				{}
 
 				/**
-
+				@brief
 				*/
 				Cache(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 				{}
@@ -1238,7 +1238,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				~Cache()
 				{
@@ -1246,7 +1246,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
@@ -1257,7 +1257,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 				{
@@ -1268,7 +1268,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				void Destroy()
 				{
@@ -1295,7 +1295,7 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief Implicit conversion to give a pointers to its handle.
+				@brief Implicit conversion to give a pointer to its handle.
 				*/
 				operator const Handle*() const
 				{
@@ -1339,7 +1339,7 @@ namespace VaultedThermals
 			};
 
 			/**
-
+			@brief
 			*/
 			class Layout : public Parent::Layout
 			{
@@ -1347,7 +1347,7 @@ namespace VaultedThermals
 				using Parent = V2::Pipeline::Layout;
 
 				/**
-
+				@brief
 				*/
 				class DescriptorSet : public Parent::DescriptorSet
 				{
@@ -1355,19 +1355,19 @@ namespace VaultedThermals
 					using Parent = V2::Pipeline::Layout::DescriptorSet;
 
 					/**
-
+					@brief
 					*/
 					DescriptorSet() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 					{}
 
 					/**
-
+					@brief
 					*/
 					DescriptorSet(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 					{}
 
 					/**
-
+					@brief
 					*/
 					DescriptorSet(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) :
 						handle(Null<Handle>), allocator(&_allocator), device(&_device)
@@ -1385,7 +1385,7 @@ namespace VaultedThermals
 					}
 
 					/**
-
+					@brief
 					*/
 					~DescriptorSet()
 					{
@@ -1393,7 +1393,7 @@ namespace VaultedThermals
 					}
 
 					/**
-
+					@brief
 					*/
 					void Assign(const LogicalDevice& _device, const CreateInfo& _info)
 					{
@@ -1405,7 +1405,7 @@ namespace VaultedThermals
 					}
 
 					/**
-
+					@brief
 					*/
 					void Assign(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 					{
@@ -1417,7 +1417,7 @@ namespace VaultedThermals
 					}
 
 					/**
-
+					@brief
 					*/
 					EResult Create()
 					{
@@ -1425,7 +1425,7 @@ namespace VaultedThermals
 					}
 
 					/**
-
+					@brief
 					*/
 					void Destroy()
 					{
@@ -1437,7 +1437,7 @@ namespace VaultedThermals
 					}
 
 					/**
-
+					@brief
 					*/
 					const Support& GetSupport() const
 					{
@@ -1461,7 +1461,7 @@ namespace VaultedThermals
 					}
 
 					/**
-					@brief Implicit conversion to give a pointers to its handle.
+					@brief Implicit conversion to give a pointer to its handle.
 					*/
 					operator const Handle*() const
 					{
@@ -1509,19 +1509,19 @@ namespace VaultedThermals
 				};
 
 				/**
-
+				@brief
 				*/
 				Layout() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 				{}
 
 				/**
-
+				@brief
 				*/
 				Layout(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 				{}
 
 				/**
-
+				@brief
 				*/
 				Layout(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 				{}
@@ -1538,7 +1538,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				~Layout()
 				{
@@ -1546,7 +1546,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 				{
@@ -1557,7 +1557,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 				{
@@ -1568,7 +1568,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief
 				*/
 				void Destroy()
 				{
@@ -1592,7 +1592,7 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief Implicit conversion to give a pointers to its handle.
+				@brief Implicit conversion to give a pointer to its handle.
 				*/
 				operator const Handle*() const
 				{
@@ -1636,25 +1636,25 @@ namespace VaultedThermals
 			};
 
 			/**
-
+			@brief
 			*/
 			Pipeline() : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief
 			*/
 			Pipeline(const LogicalDevice& _device) : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			Pipeline(const LogicalDevice& _device, const Cache& _cache) : handle(Null<Handle>), cache(&_cache), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			Pipeline(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), cache(nullptr), allocator(&_allocator), device(&_device)
 			{}
@@ -1667,7 +1667,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief
 			*/
 			Pipeline(Pipeline&& _other) noexcept :
 				handle(std::move(_other.handle)), cache(std::move(_other.cache)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
@@ -1679,7 +1679,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			~Pipeline()
 			{
@@ -1687,7 +1687,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Destroy()
 			{
@@ -1714,7 +1714,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
@@ -1762,7 +1762,7 @@ namespace VaultedThermals
 		};
 
 		/**
-
+		@brief
 		*/
 		class ComputePipeline : public Pipeline
 		{
@@ -1771,7 +1771,7 @@ namespace VaultedThermals
 			using CreateInfo = Parent::Compute::CreateInfo;
 
 			/**
-
+			@brief
 			*/
 			void Assign
 			(
@@ -1788,7 +1788,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1806,7 +1806,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1826,7 +1826,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const Cache& _cache, const CreateInfo& _info)
 			{
@@ -1846,7 +1846,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create
 			(
@@ -1872,7 +1872,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			static EResult Create
 			(
@@ -1913,7 +1913,7 @@ namespace VaultedThermals
 		};
 
 		/**
-
+		@brief 
 		*/
 		class GraphicsPipeline : public Pipeline
 		{
@@ -1921,7 +1921,7 @@ namespace VaultedThermals
 			using CreateInfo = Parent::Graphics::CreateInfo;
 
 			/**
-
+			@brief 
 			*/
 			void Assign
 			(
@@ -1938,7 +1938,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1956,7 +1956,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1976,7 +1976,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Create(const LogicalDevice& _device, Cache& _cache, const CreateInfo& _info)
 			{
@@ -1996,7 +1996,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create
 			(
@@ -2022,7 +2022,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			static EResult Create
 			(

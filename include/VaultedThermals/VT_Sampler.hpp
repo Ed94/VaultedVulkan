@@ -195,7 +195,11 @@ namespace VaultedThermals
 		*/
 
 		/**
+		@brief Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
         class Sampler : public V2::Sampler
         {
@@ -204,19 +208,19 @@ namespace VaultedThermals
             using Parent = V2::Sampler;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			Sampler() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief Logical device specified.
 			*/
 			Sampler(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief Logical device and allocator specified.
 			*/
 			Sampler(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -233,7 +237,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy the sampler.
 			*/
 			~Sampler()
 			{
@@ -241,7 +245,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create the sampler.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -251,7 +255,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create the sampler (logical device specified).
 			*/
             EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
             {
@@ -263,7 +267,7 @@ namespace VaultedThermals
             }
 
 			/**
-
+			@brief Create the sampler (logical device and allocator) specified.
 			*/
             EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
             {
@@ -274,7 +278,7 @@ namespace VaultedThermals
             }
 
 			/**
-
+			@brief Destroy the sampler.
 			*/
             void Destroy()
             {
@@ -301,7 +305,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

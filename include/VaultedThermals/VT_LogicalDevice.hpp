@@ -467,7 +467,11 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@todo #TODO: Add documentation.
+		@ingroup APISpec_Devices_and_Queues
+		@brief Represent logical connections to physical devices. 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class LogicalDevice : public V2::LogicalDevice
 		{
@@ -475,26 +479,36 @@ namespace VaultedThermals
 			using Parent = V2::LogicalDevice;
 
 			/**
+			@ingroup APISpec_Devices_and_Queues
+			@brief Queues handle different types of batched commands for the GPU to complete.
 
+			@details 
+			Vulkan queues provide an interface to the execution engines of a device.
+			Commands for these execution engines are recorded into command buffers ahead of execution time.
+			These command buffers are then submitted to queues with a queue submission command for execution in a number of batches.
+			Once submitted to a queue, these commands will begin and complete execution without further application intervention,
+			though the order of this execution is dependent on a number of implicit and explicit ordering constraints.
+
+			Note: This object only acts as a host interface to a given device object's handle. The logical device of the queue manages the device object lifetime.
 			*/
 			struct Queue : public Parent::Queue
 			{
 				using Parent = Parent::Queue;
 
 				/**
-
+				@brief Default constructor.
 				*/
 				Queue() { assignment = EQueueFlag::VT_SpecifyBitmaskable; }
 
 				/**
-
+				@brief Performs an assignment on construction.
 				*/
 				Queue(EQueueFlag _type, const LogicalDevice& _device, uint32 _familyIndex, uint32 _queueIndex) :
 					assignment(_type), device(&_device), familyIndex(_familyIndex), queueIndex(_queueIndex)
 				{}
 
 				/**
-
+				@brief Assigns the queue info.
 				*/
 				void Assign(const LogicalDevice& _logicalDevice, uint32 _familyIndex, uint32 _queueIndex, EQueueFlag _type)
 				{
@@ -505,7 +519,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief Provides the queue family index.
 				*/
 				uint32 GetFamilyIndex() const
 				{
@@ -513,7 +527,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief Provides the queue index in the queue family.
 				*/
 				uint32 GetQueueIndex() const
 				{
@@ -521,15 +535,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
-				*/
-				const Handle& GetHandle() const
-				{
-					return handle;
-				}
-
-				/**
-
+				@brief Provides the queue type.
 				*/
 				const EQueueFlag& GetType() const
 				{
@@ -537,7 +543,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief Retrieve a handle to a VkQueue object.
 				*/
 				void Retrieve()
 				{
@@ -545,7 +551,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief Informs if family was specified.
 				*/
 				bool FamilySpecified() const
 				{
@@ -553,7 +559,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief After queuing all rendering commands and transitioning the image to the correct layout, to queue an image for presentation.
 				*/
 				EResult QueuePresentation(const PresentationInfo& _presentationInfo) const
 				{
@@ -561,20 +567,7 @@ namespace VaultedThermals
 				}
 
 				/**
-				 * 
-				 * @todo remove.
-				 * 
-				 * \param _index
-				 * \param _type
-				 */
-				void SpecifyFamily(uint32 _index, EQueueFlag _type)
-				{
-					queueIndex = _index; 
-					assignment = _type ;
-				}
-
-				/**
-
+				@brief Submit command buffers to a queue.
 				*/
 				EResult SubmitToQueue(uint32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence) const
 				{
@@ -582,7 +575,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief Wait on the host for the completion of outstanding queue operations for a given queue.
 				*/
 				EResult WaitUntilIdle() const
 				{
@@ -590,7 +583,7 @@ namespace VaultedThermals
 				}
 
 				/**
-
+				@brief Implicit conversion to give a readonly reference to its handle.
 				*/
 				operator const Handle&() const
 				{
@@ -611,19 +604,19 @@ namespace VaultedThermals
 			};
 
 			/**
-
+			@brief Default constructor.
 			*/
 			LogicalDevice() : handle(Null<Handle>), physicalDevice(nullptr), allocator(Memory::DefaultAllocator)
 			{}
 
 			/**
-
+			@brief Constructor with physical device specified.
 			*/
 			LogicalDevice(const PhysicalDevice& _physicalDevice) : handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(Memory::DefaultAllocator)
 			{}
 
 			/**
-
+			@brief Constructor with physical device and allocator specified.
 			*/
 			LogicalDevice(const PhysicalDevice& _physicalDevice, const Memory::AllocationCallbacks& _allocator) : 
 				handle(Null<Handle>), physicalDevice(&_physicalDevice), allocator(&_allocator) 
@@ -641,15 +634,15 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destructor for logical device. (Will destroy the device object if handle is not null)
 			*/
 			~LogicalDevice()
 			{
 				if (handle != Null<Handle>) Destroy();
 			}
 
-			/**
-
+			/** 
+			@brief Assigns a physical device.
 			*/
 			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice) 
 			{
@@ -657,7 +650,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create logical device.
 			*/
 			EResult Create(const CreateInfo& _createInfo)
 			{
@@ -669,7 +662,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a logical device (allocator specified).
 			*/
 			EResult Create(const CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -681,7 +674,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a logical device (physical device specified).
 			*/
 			EResult Create(const PhysicalDevice& _physicalDevice, const CreateInfo& _createInfo)
 			{
@@ -692,7 +685,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Create a logical device (physical device and allocator specified).
 			*/
 			EResult Create(const PhysicalDevice& _physicalDevice, const CreateInfo& _createInfo, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -703,7 +696,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy a logical device.
 			*/
 			void Destroy()
 			{
@@ -714,7 +707,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief provides a readonly reference to a physical device host object.
 			*/
 			const PhysicalDevice& GetPhysicalDevice() const
 			{
@@ -722,7 +715,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Wait on the host for the completion of outstanding queue operations for all queues on a given logical device.
 			*/
 			EResult WaitUntilIdle() const
 			{
@@ -731,7 +724,10 @@ namespace VaultedThermals
 			
 			template<typename ReturnType>
 			/**
-
+			@brief In order to support systems with multiple Vulkan implementations, the function pointers returned by vkGetInstanceProcAddr 
+			may point to dispatch code that calls a different real implementation for different VkDevice objects or their child objects. 
+			The overhead of the internal dispatch for VkDevice objects can be avoided by obtaining device-specific function pointers for 
+			any commands that use a device or device-child object as their dispatchable object. 
 			*/
 			typename std::enable_if
 			<
@@ -746,7 +742,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointer to its handle.
+			@brief Implicit conversion to give a reference to its handle.
 			*/
 			operator Handle&()
 			{
@@ -762,7 +758,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

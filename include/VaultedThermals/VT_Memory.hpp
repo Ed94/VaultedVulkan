@@ -239,7 +239,12 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@todo #TODO: Add documentation.
+		@ingroup APISpec_Memory_Allocation
+		@brief General memory structures and functionality for device memory.
+
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Memory : public V2::Memory
 		{
@@ -248,19 +253,19 @@ namespace VaultedThermals
 			using Parent = V2::Memory;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			Memory() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief Constructor with logical device specified.
 			*/
 			Memory(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief Constructor with logical device and allocator specified.
 			*/
 			Memory(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -277,7 +282,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destructor will destroy the device object if handle is not null.
 			*/
 			~Memory()
 			{
@@ -285,7 +290,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate memory objects.
 			*/
 			EResult Allocate(const AllocateInfo& _info)
 			{
@@ -295,7 +300,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate memory objects. (Device specified)
 			*/
 			EResult Allocate(const LogicalDevice& _device, const AllocateInfo& _allocateInfo)
 			{
@@ -306,7 +311,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Allocate memory objects. (Device and allocator specified)
 			*/
 			EResult Allocate(const LogicalDevice& _device, const AllocateInfo& _allocateInfo, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -317,7 +322,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Free a memory object.
 			*/
 			void Free()
 			{
@@ -328,7 +333,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Retrieve a host virtual address pointer to a region of a mappable memory object.
 			*/
 			EResult Map(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
@@ -336,7 +341,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Unmap a memory object once host access to it is no longer needed by the application.
 			*/
 			void Unmap()
 			{
@@ -344,7 +349,8 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Writes to GPU memory by mapping to device memory specified by a
+			handle and then using memcpy to copy data specified in _data.
 			*/
 			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
 			{
@@ -368,7 +374,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

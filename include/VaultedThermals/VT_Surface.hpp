@@ -443,7 +443,11 @@ namespace VaultedThermals
 		*/
 
 		/**
-		
+		@brief Surfaces hook onto a window to use as a rendering target.
+
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Surface : public V2::Surface
 		{
@@ -452,32 +456,32 @@ namespace VaultedThermals
 			using Parent = V2::Surface;
 
 			/**
-			
+			@brief Default constructor.
 			*/
 			Surface() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(nullptr), physicalDevice(nullptr)
 			{}
 
 			/**
-			
+			@brief Specifies the app instance.
 			*/
 			Surface(const AppInstance& _app) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(&_app), physicalDevice(nullptr)
 			{}
 
 			/**
-			
+			@brief Specifies the app instance, and allocator.
 			*/
 			Surface(const AppInstance& _app, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), app(&_app), physicalDevice(nullptr)
 			{}
 
 			/**
-			
+			@brief Specifies the app instance and physical device.
 			*/
 			Surface(const AppInstance& _app, const PhysicalDevice& _physicalDevice) :
 				handle(Null<Handle>), allocator(Memory::DefaultAllocator), app(&_app), physicalDevice(&_physicalDevice)
 			{}
 
 			/**
-			
+			@brief Specifies the app instance, physical device, allocator.
 			*/
 			Surface(const AppInstance& _app, const PhysicalDevice& _physicalDevice, const Memory::AllocationCallbacks& _allocator) :
 				handle(Null<Handle>), allocator(&_allocator), app(&_app), physicalDevice(&_physicalDevice)
@@ -496,7 +500,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Destroys the surface if handle is not null.
 			*/
 			~Surface()
 			{
@@ -504,7 +508,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Assign the physical device.
 			*/
 			void AssignPhysicalDevice(const PhysicalDevice& _physicalDevice)
 			{
@@ -512,7 +516,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a surface with the provided window handle.
 			*/
 			EResult Create(OS_WindowHandle _window)
 			{
@@ -522,7 +526,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a surface with the specified create info.
 			*/
 			EResult Create(const CreateInfo&  _info)
 			{
@@ -532,7 +536,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a surface with the specified app instance and widow handle.
 			*/
 			EResult Create(const AppInstance& _app, OS_WindowHandle _window)
 			{
@@ -540,16 +544,15 @@ namespace VaultedThermals
 
 				app = &_app;
 
-
 				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 
 				return Parent::Create(*app, geninfo, handle);
 			}
 
 			/**
-			
+			@brief Create a surface with the specified app instance and create info.
 			*/
-			EResult Create(const AppInstance& _appHandle, const CreateInfo&  _info)
+			EResult Create(const AppInstance& _appHandle, const CreateInfo& _info)
 			{
 				app = &_appHandle;
 
@@ -559,7 +562,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a surface with the specified app handle, create info, and allocator.
 			*/
 			EResult Create(const AppInstance& _appHandle, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -570,7 +573,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Query if presentation is supported.
 			*/
 			EResult CheckPhysicalDeviceSupport(uint32 _queueFamilyIndex, Bool& _checkResult)
 			{
@@ -578,7 +581,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Destroy the surface.
 			*/
 			void Destroy()
 			{
@@ -590,7 +593,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Provides the available surface formats.
 			*/
 			EResult GetAvailableFormats(DynamicArray<Format>& _formatsContainer) const
 			{
@@ -598,7 +601,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Query surface capabilities.
 			*/
 			EResult GetPhysicalDeviceCapabilities(Capabilities& _result) const
 			{
@@ -606,7 +609,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Provides the supported presentation modes.
 			*/
 			EResult GetSupportedPresentationModes(DynamicArray<EPresentationMode>& _presentationModesContainer) const
 			{
@@ -630,7 +633,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

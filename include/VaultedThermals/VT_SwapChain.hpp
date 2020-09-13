@@ -214,6 +214,9 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief A queue of images that can be presented to a surface.
+		*/
 		struct Swapchain : V1::Swapchain
 		{
 			using Parent = V1::Swapchain;
@@ -278,7 +281,11 @@ namespace VaultedThermals
 		*/
 
 		/**
-		
+		@brief A queue of images that can be presented to a surface.
+
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Swapchain : public V2::Swapchain
 		{
@@ -287,19 +294,19 @@ namespace VaultedThermals
 			using Parent = V2::Swapchain;
 
 			/**
-			
+			@brief Default constructor.
 			*/
 			Swapchain() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			
+			@brief Specifies the logical device.
 			*/
 			Swapchain(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			
+			@brief Specifies the logical device and allocator.
 			*/
 			Swapchain(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -316,7 +323,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Destroy a swapchain if the handle is null.
 			*/
 			~Swapchain()
 			{
@@ -324,7 +331,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Acquire an available presentable image to use, and retrieve the index of that image.
 			*/
 			EResult AcquireNextImage
 			(
@@ -338,7 +345,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a swapchain with the specified create info.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -348,7 +355,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a swapchain with the specified logical device and create info.
 			*/
 			EResult Create(const LogicalDevice& _deviceHandle, const CreateInfo& _info)
 			{
@@ -359,7 +366,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a swapchain with the specified logical device, create info, and allocator.
 			*/
 			EResult Create(const LogicalDevice& _deviceHandle, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -370,7 +377,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Destroy a swapchain.
 			*/
 			void Destroy()
 			{
@@ -381,7 +388,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Gets the available swapchain images and stores them in the provided dynamic array container.
 			*/
 			EResult GetImages(DynamicArray<Image>& _images)
 			{
@@ -404,7 +411,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Obtain the array of presentable images associated with a swapchain.
 			*/
 			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
 			{
@@ -428,7 +435,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

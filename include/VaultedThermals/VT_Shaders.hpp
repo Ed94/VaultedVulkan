@@ -134,6 +134,9 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief Shader modules contain shader code and one or more entry points. 
+		*/
 		struct ShaderModule : public V1::ShaderModule
 		{
 			using Parent = V1::ShaderModule;
@@ -210,7 +213,11 @@ namespace VaultedThermals
 		*/
 
 		/**
-		
+		@brief Shader modules contain shader code and one or more entry points. 
+
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class ShaderModule : public V2::ShaderModule
 		{
@@ -219,19 +226,19 @@ namespace VaultedThermals
 			using Parent = V2::ShaderModule;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			ShaderModule() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			
+			@brief Specifies the logical device.
 			*/
 			ShaderModule(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			
+			@brief Specifies the logical device and allocator.
 			*/
 			ShaderModule(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -248,7 +255,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Destroy the shader module if the handle is not null.
 			*/
 			~ShaderModule()
 			{
@@ -256,7 +263,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a shader module.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -266,7 +273,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a shader module (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -277,7 +284,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Create a shader module (logical device and allocator specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -288,7 +295,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Destroy a shader module.
 			*/
 			void Destroy()
 			{
@@ -315,7 +322,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{

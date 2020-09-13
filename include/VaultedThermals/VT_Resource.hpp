@@ -773,6 +773,9 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief A linear array of data.
+		*/
 		struct Buffer : V1::Buffer
 		{
 			using Parent = V1::Buffer;
@@ -1192,7 +1195,11 @@ namespace VaultedThermals
 		*/
 
 		/**
+		@brief A linear array of data.
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Buffer : public V2::Buffer
 		{
@@ -1201,7 +1208,7 @@ namespace VaultedThermals
 			using Parent = V2::Buffer;
 
 			/**
-
+			@brief Default constructor.
 			*/
 			Buffer() : 
 				handle            (Null<Handle>), 
@@ -1213,7 +1220,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief
 			*/
 			Buffer(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
@@ -1225,7 +1232,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief
 			*/
 			Buffer(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle            (Null<Handle>),
@@ -1256,7 +1263,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			~Buffer()
 			{
@@ -1264,6 +1271,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to v4 buffer package.
+			/**
+			@brief
+			*/
 			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
 				memory       = &_memory     ;
@@ -1273,7 +1283,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1288,7 +1298,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1303,7 +1313,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1319,6 +1329,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to V4 buffer package.
+			/**
+			@brief
+			*/
 			EResult CreateAndBind
 			(
 				const CreateInfo&           _info          ,  
@@ -1353,6 +1366,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to v4 buffer package.
+			/**
+			@brief
+			*/
 			EResult CreateAndBind
 			(
 				const LogicalDevice&        _device        ,  
@@ -1389,6 +1405,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to V4 buffer package.
+			/**
+			@brief
+			*/
 			EResult CreateAndBind
 			(
 				const LogicalDevice&               _device        ,  
@@ -1426,7 +1445,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Destroy the buffer.
 			*/
 			void Destroy()
 			{
@@ -1437,7 +1456,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			const Memory::Requirements& GetMemoryRequirements() const
 			{
@@ -1461,13 +1480,16 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
 				return &handle;
 			}
 
+			/**
+			@brief Checks to see if its the same object by checking to see if its the same handle.
+			*/
 			bool operator== (const Buffer& _other) const 
 			{
 				return handle == _other.handle;
@@ -1515,7 +1537,11 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class BufferView : public V2::BufferView
 		{
@@ -1523,19 +1549,19 @@ namespace VaultedThermals
 			using Parent = V2::BufferView;
 
 			/**
-
+			@brief
 			*/
 			BufferView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief
 			*/
 			BufferView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			BufferView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -1552,7 +1578,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			~BufferView()
 			{
@@ -1560,7 +1586,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1570,7 +1596,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1580,7 +1606,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1591,7 +1617,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Destroy()
 			{
@@ -1618,7 +1644,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
@@ -1662,7 +1688,11 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class Image : public V2::Image
 		{
@@ -1670,7 +1700,7 @@ namespace VaultedThermals
 			using Parent = V2::Image;
 
 			/**
-
+			@brief
 			*/
 			Image() : 
 				handle            (Null<Handle>), 
@@ -1682,7 +1712,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief
 			*/
 			Image(const LogicalDevice& _device) : 
 				handle            (Null<Handle>), 
@@ -1694,7 +1724,7 @@ namespace VaultedThermals
 			{}
 
 			/**
-
+			@brief
 			*/
 			Image(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : 
 				handle            (Null<Handle>),
@@ -1725,7 +1755,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			~Image()
 			{
@@ -1733,7 +1763,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
@@ -1742,7 +1772,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Clear()
 			{
@@ -1751,6 +1781,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to V4 buffer package.
+			/**
+			@brief
+			*/
 			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
 				memory       = &_memory     ;
@@ -1760,7 +1793,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1773,7 +1806,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -1790,7 +1823,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -1806,6 +1839,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to V4 buffer package.
+			/**
+			@brief
+			*/
 			EResult CreateAndBind
 			(
 				const CreateInfo&           _info       ,  
@@ -1836,6 +1872,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to V4 buffer package.
+			/**
+			@brief
+			*/
 			EResult CreateAndBind
 			(
 				const LogicalDevice&        _device     ,  
@@ -1867,6 +1906,9 @@ namespace VaultedThermals
 			}
 
 			// #TODO: Move to V4 buffer package.
+			/**
+			@brief
+			*/
 			EResult CreateAndBind
 			(
 				const LogicalDevice&               _device        ,  
@@ -1899,6 +1941,9 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
+			/**
+			@brief
+			*/
 			void Destroy()
 			{
 				Parent::Destroy(*device, handle, allocator);
@@ -1906,6 +1951,9 @@ namespace VaultedThermals
 				Clear();
 			}
 
+			/**
+			@brief
+			*/
 			const Memory::Requirements& GetMemoryRequirements() const
 			{
 				return memoryRequirements;
@@ -1928,7 +1976,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
@@ -1986,7 +2034,11 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class ImageView : public V2::ImageView
 		{
@@ -1994,19 +2046,19 @@ namespace VaultedThermals
 			using Parent = V2::ImageView;
 
 			/**
-
+			@brief
 			*/
 			ImageView() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief
 			*/
 			ImageView(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			ImageView(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
@@ -2023,7 +2075,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			~ImageView()
 			{
@@ -2031,7 +2083,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -2041,7 +2093,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -2053,7 +2105,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -2064,7 +2116,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Destroy()
 			{
@@ -2091,7 +2143,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
@@ -2135,7 +2187,9 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief
 
+		@detaisl This object only acts as a host interface to a given device object's handle. The descriptor pool mangages the descriptor set's lifetime.
 		*/
 		class DescriptorSet : public V2::DescriptorSet
 		{
@@ -2143,19 +2197,19 @@ namespace VaultedThermals
 			using Parent = V2::DescriptorSet;
 
 			/**
-
+			@brief
 			*/
 			DescriptorSet() : handle(Null<Handle>), device(nullptr)
 			{}
 
 			/**
-
+			@brief
 			*/
 			DescriptorSet(Handle _handle, const LogicalDevice& _device) : handle(_handle), device(&_device)
 			{}
 
 			/**
-
+			@brief
 			*/
 			void Assign(const LogicalDevice& _device, Handle _handle)
 			{
@@ -2164,7 +2218,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Clear()
 			{
@@ -2173,7 +2227,7 @@ namespace VaultedThermals
 			}
 			
 			/**
-
+			@brief
 			*/
 			void Update
 			(
@@ -2203,7 +2257,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
@@ -2226,7 +2280,11 @@ namespace VaultedThermals
 		};
 
 		/**
+		@brief 
 
+		@details
+		This object represents a device created object on the host. As such ownership is tied to this host object.
+		Due to this design, the object has no copy-construction allowed. Instead, default move constructor and assignment has been defined.
 		*/
 		class DescriptorPool : public V2::DescriptorPool
 		{
@@ -2234,19 +2292,19 @@ namespace VaultedThermals
 			using Parent = V2::DescriptorPool;
 
 			/**
-
+			@brief 
 			*/
 			DescriptorPool() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief 
 			*/
 			DescriptorPool(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-
+			@brief 
 			*/
 			DescriptorPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
@@ -2263,7 +2321,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			~DescriptorPool()
 			{
@@ -2271,7 +2329,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
 			{
@@ -2279,7 +2337,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Allocate
 			(
@@ -2303,7 +2361,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -2313,7 +2371,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
@@ -2325,7 +2383,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 			{
@@ -2336,7 +2394,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			void Destroy()
 			{
@@ -2347,7 +2405,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief 
 			*/
 			EResult Free(uint32 _count, DescriptorSet::Handle* _handles)
 			{
@@ -2355,7 +2413,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Free(DynamicArray<DescriptorSet::Handle> _handles)
 			{
@@ -2363,7 +2421,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief
 			*/
 			EResult Reset(ResetFlags& _flags)
 			{
@@ -2387,7 +2445,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief Implicit conversion to give a pointers to its handle.
+			@brief Implicit conversion to give a pointer to its handle.
 			*/
 			operator const Handle*() const
 			{
