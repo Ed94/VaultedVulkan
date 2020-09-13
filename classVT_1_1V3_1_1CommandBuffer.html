@@ -69,6 +69,7 @@
             </li>
           </ul>
         </div>
+<p>This object only acts as a host interface to a given device object&#x27;s handle. Since command pools handle the lifetime of a command buffer, The command buffer can only clear its references to the device object.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -103,7 +104,7 @@
               <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp; _info,
               <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Constructor with logical device, allocate info, and handle specified (acts as an <a href="classVT_1_1V3_1_1CommandBuffer.html#a94661f7079689527cd3e5b925d0670d9" class="m-doc">Assign()</a> call)</dd>
             <dt id="a28a34b777825f5a1a7c67c8122a3f252">
               <span class="m-doc-wrap-bumper"><a href="#a28a34b777825f5a1a7c67c8122a3f252" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -125,26 +126,26 @@
               <span class="m-doc-wrap-bumper">void <a href="#a94661f7079689527cd3e5b925d0670d9" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assign a device and handle.</dd>
             <dt id="a6781458ec87cba172daf068b72355e31">
               <span class="m-doc-wrap-bumper">void <a href="#a6781458ec87cba172daf068b72355e31" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp; _info,
               <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assign a device, allocate info, and handle.</dd>
             <dt id="a03dbbe8b2efdd5df001df42b0df70195">
               <span class="m-doc-wrap-bumper">void <a href="#a03dbbe8b2efdd5df001df42b0df70195" class="m-doc-self">Clear</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="a0238f9721b6400c5864959aaf8233420">
-              <span class="m-doc-wrap-bumper">auto <a href="#a0238f9721b6400c5864959aaf8233420" class="m-doc-self">BeginRecord</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1CommandBuffer_1_1BeginInfo.html" class="m-doc">BeginInfo</a>&amp; _info) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dd>Clear references to related device objects.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0238f9721b6400c5864959aaf8233420" class="m-doc">BeginRecord</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1CommandBuffer_1_1BeginInfo.html" class="m-doc">BeginInfo</a>&amp; _info) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Begin recording commands to the buffer.</dd>
             <dt id="a9b06f0dd8bbbb2b590b02f0152d80510">
               <span class="m-doc-wrap-bumper">void <a href="#a9b06f0dd8bbbb2b590b02f0152d80510" class="m-doc-self">BeginRenderPass</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1RenderPass_1_1BeginInfo.html" class="m-doc">RenderPass::<wbr />BeginInfo</a>&amp; _info,
               <a href="group__APISpec__Render__Pass.html#gaa0800b1b8c49d7e4596f342b06b4fa03" class="m-doc">ESubpassContents</a> _contents) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Begin recording a render pass set of commands into the buffer.</dd>
             <dt id="a1b5c33ddbeabbb452a7ee3071d76c2f2">
               <span class="m-doc-wrap-bumper">void <a href="#a1b5c33ddbeabbb452a7ee3071d76c2f2" class="m-doc-self">BindDescriptorSets</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Pipelines.html#gab55758599657a30863d8598d686d94d0" class="m-doc">EPipelineBindPoint</a> _bindPoint,
               <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Pipeline::<wbr />Layout</a>&amp; _layout,
@@ -152,7 +153,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descritporSetCount,
               const <a href="group__APISpec__Resource__Descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">DescriptorSet::<wbr />Handle</a>* _descriptorSets) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Bind one or more descriptor sets to a command buffer. (No dynamic offsets)</dd>
             <dt id="aed7e6ed1aae176c4ecee92fa0c842e6f">
               <span class="m-doc-wrap-bumper">void <a href="#aed7e6ed1aae176c4ecee92fa0c842e6f" class="m-doc-self">BindDescriptorSets</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Pipelines.html#gab55758599657a30863d8598d686d94d0" class="m-doc">EPipelineBindPoint</a> _bindPoint,
               <a href="classVT_1_1V3_1_1Pipeline_1_1Layout.html" class="m-doc">Pipeline::<wbr />Layout</a>&amp; _layout,
@@ -162,31 +163,31 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _dynamicOffsetCount,
               const <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _dynamicOffsets) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Bind one or more descriptor sets to a command buffer.</dd>
             <dt id="ad893a4dcf20409ec6f90fe3e493af2ba">
               <span class="m-doc-wrap-bumper">void <a href="#ad893a4dcf20409ec6f90fe3e493af2ba" class="m-doc-self">BindIndexBuffer</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _buffer,
               <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group__APISpec__Drawing__Commands.html#gaa8f6e3dfcded0cff8f43f5f210e596ef" class="m-doc">EIndexType</a> _type) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Bind an index buffer to a command buffer.</dd>
             <dt id="a152d6858a75053246069aa3fb4d730d5">
               <span class="m-doc-wrap-bumper">void <a href="#a152d6858a75053246069aa3fb4d730d5" class="m-doc-self">BindVertexBuffers</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstBinding,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bindingCount,
               const <a href="group__APISpec__Resource__Creation.html#ga6c9a4b68427349a760f9a371985418a5" class="m-doc">Buffer::<wbr />Handle</a>* _buffers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Bind vertex buffers to a command buffer for use in subsequent draw commands. (No offsets)</dd>
             <dt id="ae607ed8e7a904696bcff90934901b162">
               <span class="m-doc-wrap-bumper">void <a href="#ae607ed8e7a904696bcff90934901b162" class="m-doc-self">BindVertexBuffers</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstBinding,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bindingCount,
               const <a href="group__APISpec__Resource__Creation.html#ga6c9a4b68427349a760f9a371985418a5" class="m-doc">Buffer::<wbr />Handle</a>* _buffers,
               const <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a>* _offsets) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Bind vertex buffers to a command buffer for use in subsequent draw commands.</dd>
             <dt id="a390e93b3e4396bff2d95b9c8fb462bba">
               <span class="m-doc-wrap-bumper">void <a href="#a390e93b3e4396bff2d95b9c8fb462bba" class="m-doc-self">BindPipeline</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Pipelines.html#gab55758599657a30863d8598d686d94d0" class="m-doc">EPipelineBindPoint</a> _bindPoint,
               <a href="classVT_1_1V3_1_1Pipeline.html" class="m-doc">Pipeline</a>&amp; _pipeline) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Bind a pipeline to a command buffer for use in subsequent commands. (Until another pipeline is bound)</dd>
             <dt id="a80e0cf4316bf9af8ff8f0642beef3090">
               <span class="m-doc-wrap-bumper">void <a href="#a80e0cf4316bf9af8ff8f0642beef3090" class="m-doc-self">BlitImage</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a>&amp; _src,
               <a href="group__APISpec__Resource__Creation.html#ga6dca5aa8bf2864759e93f8a122774274" class="m-doc">EImageLayout</a> _srcLayout,
@@ -196,14 +197,14 @@
               const <a href="structVT_1_1V1_1_1Image_1_1Blit.html" class="m-doc">Image::<wbr />Blit</a>* _regions,
               <a href="group__APISpec__Samplers.html#gaa0c402e13df2c9df0efdf4b905916eb5" class="m-doc">EFilter</a> _filter) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Copy regions of a source image into a destination image, potentially performing format conversion, arbitrary scaling, and filtering.</dd>
             <dt id="a3219a290a5edb8e3b5bd8be0d4a1142c">
               <span class="m-doc-wrap-bumper">void <a href="#a3219a290a5edb8e3b5bd8be0d4a1142c" class="m-doc-self">CopyBuffer</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _sourceBuffer,
               <a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _destinationBuffer,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _regionCount,
               const <a href="structVT_1_1V1_1_1Buffer_1_1CopyInfo.html" class="m-doc">Buffer::<wbr />CopyInfo</a>* _regions) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Copy data between buffer objects.</dd>
             <dt id="a141de98b40eedf6e0637bd870331ac08">
               <span class="m-doc-wrap-bumper">void <a href="#a141de98b40eedf6e0637bd870331ac08" class="m-doc-self">CopyBufferToImage</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Buffer.html" class="m-doc">Buffer</a>&amp; _srcBuffer,
               <a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a>&amp; _dstImage,
@@ -211,14 +212,14 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _regionCount,
               const <a href="structVT_1_1V1_1_1CommandBuffer_1_1BufferImageRegion.html" class="m-doc">BufferImageRegion</a>* _regions) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Copy data from a buffer object to an image object.</dd>
             <dt id="a9b4a36ca438fa94d13ebe20cc4d597a8">
               <span class="m-doc-wrap-bumper">void <a href="#a9b4a36ca438fa94d13ebe20cc4d597a8" class="m-doc-self">Draw</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstVertex,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _vertexCount,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstInstance,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _instanceCount) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Record a non-indexed draw.</dd>
             <dt id="a3d06caf4fbd9c1f10e3647cc29e3299b">
               <span class="m-doc-wrap-bumper">void <a href="#a3d06caf4fbd9c1f10e3647cc29e3299b" class="m-doc-self">DrawIndexed</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _indexCount,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _instanceCount,
@@ -226,29 +227,29 @@
               <a href="group__Corridors.html#ga3e1c4de9ef31a9187b6c141d773df1b1" class="m-doc">sint32</a> _vertexOffset,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _firstInstance) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Record an indexed draw.</dd>
             <dt id="a3682323e9370b51b79e2cec03da9c127">
               <span class="m-doc-wrap-bumper">auto <a href="#a3682323e9370b51b79e2cec03da9c127" class="m-doc-self">EndRecord</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>complete recording of a command buffer.</dd>
             <dt id="a35182d93d9087fc53d9e00b652852ec0">
               <span class="m-doc-wrap-bumper">void <a href="#a35182d93d9087fc53d9e00b652852ec0" class="m-doc-self">EndRenderPass</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>record a command to end a render pass instance after recording the commands for the last subpass.</dd>
             <dt id="a1261b9b9c733e0fdab41f97bdbacb859">
               <span class="m-doc-wrap-bumper">void <a href="#a1261b9b9c733e0fdab41f97bdbacb859" class="m-doc-self">Execute</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _secondaryBufferCount,
               const <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>* _secondaryBuffers) const</span>
             </dt>
-            <dd><span></span></dd>
-            <dt id="abc5304c69c9d263abd2cda4f034bad81">
-              <span class="m-doc-wrap-bumper">auto <a href="#abc5304c69c9d263abd2cda4f034bad81" class="m-doc-self">GetAllocateInfo</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp;</span>
+            <dd>A secondary command buffer must not be directly submitted to a queue. Instead, secondary command buffers are recorded to execute as part of a primary command buffer..</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abc5304c69c9d263abd2cda4f034bad81" class="m-doc">GetAllocateInfo</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp;</span>
             </dt>
-            <dd><span></span></dd>
+            <dd></dd>
             <dt id="a80bbaa42339777442a796359f0ef6a82">
               <span class="m-doc-wrap-bumper">void <a href="#a80bbaa42339777442a796359f0ef6a82" class="m-doc-self">ResetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Set the state of an event to unsignaled from a device.</dd>
             <dt id="aa7d6be2bece422153102595cdc61249f">
               <span class="m-doc-wrap-bumper">void <a href="#aa7d6be2bece422153102595cdc61249f" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
@@ -256,7 +257,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
               const <a href="structVT_1_1V0_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of SubmitPipelineBarrier where only a set of regular memory barriers are submitted.</dd>
             <dt id="a40dd487ff9ab242626724220bd42b26f">
               <span class="m-doc-wrap-bumper">void <a href="#a40dd487ff9ab242626724220bd42b26f" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
@@ -264,7 +265,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version where only a set of buffer memory barriers are submitted.</dd>
             <dt id="ac78d99feabef097e7d1634441b893163">
               <span class="m-doc-wrap-bumper">void <a href="#ac78d99feabef097e7d1634441b893163" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
@@ -272,7 +273,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of SubmitPipelineBarrier where only a set of image memory barriers are submitted.</dd>
             <dt id="a2ef61ffe4c8f2c679ed3d2e000348ebb">
               <span class="m-doc-wrap-bumper">void <a href="#a2ef61ffe4c8f2c679ed3d2e000348ebb" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
@@ -284,16 +285,16 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Record a pipeline barrier.</dd>
             <dt id="aa55a4c5761cc10a7dd49ac0d9ca7b3bd">
               <span class="m-doc-wrap-bumper">void <a href="#aa55a4c5761cc10a7dd49ac0d9ca7b3bd" class="m-doc-self">SetDeviceMask</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _deviceMask) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Update the current device mask of a command buffer.</dd>
             <dt id="adc96fe51dfb1e4a28c5034ed8c234557">
               <span class="m-doc-wrap-bumper">void <a href="#adc96fe51dfb1e4a28c5034ed8c234557" class="m-doc-self">SetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Set the state of an event to signaled from a device.</dd>
             <dt id="a096511c472ec0e9584c3a3c8e6993dc5">
               <span class="m-doc-wrap-bumper">void <a href="#a096511c472ec0e9584c3a3c8e6993dc5" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
@@ -302,7 +303,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _memoryBarrierCount,
               const <a href="structVT_1_1V0_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of WaitForEvents where only a set of memory barriers are waited on.</dd>
             <dt id="aefb97e6dd87b153d8b3cf0e3090fb593">
               <span class="m-doc-wrap-bumper">void <a href="#aefb97e6dd87b153d8b3cf0e3090fb593" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
@@ -311,7 +312,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _bufferMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of WaitForEvents where only a set of buffer memory barriers are waited on.</dd>
             <dt id="ab43585dc45d5ab801db55e9fbf9d59ba">
               <span class="m-doc-wrap-bumper">void <a href="#ab43585dc45d5ab801db55e9fbf9d59ba" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
@@ -320,7 +321,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>A version of WaitForEvents where only a set of image memory barriers are waited on.</dd>
             <dt id="a19a6aa40fe1a8228bfb14e1e3335d920">
               <span class="m-doc-wrap-bumper">void <a href="#a19a6aa40fe1a8228bfb14e1e3335d920" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
@@ -333,7 +334,7 @@
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _imageMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Wait for one or more events to enter the signaled state on a device.</dd>
             <dt id="a2820edb181025e480d6384b2d3f97eab">
               <span class="m-doc-wrap-bumper">auto <a href="#a2820edb181025e480d6384b2d3f97eab" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _other) const -&gt; bool</span>
             </dt>
@@ -358,12 +359,28 @@
           </dl>
         </section>
         <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a0238f9721b6400c5864959aaf8233420"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />CommandBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0238f9721b6400c5864959aaf8233420" class="m-doc-self">BeginRecord</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1CommandBuffer_1_1BeginInfo.html" class="m-doc">BeginInfo</a>&amp; _info) const</span></span>
+            </h3>
+            <p>Begin recording commands to the buffer.</p>
+<p>Command buffer recording follows an immediate design. Calls done related to this buffer will be recorded by the buffer.</p>
+          </div></section>
+          <section class="m-doc-details" id="abc5304c69c9d263abd2cda4f034bad81"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp; VT::<wbr />V3::<wbr />CommandBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc5304c69c9d263abd2cda4f034bad81" class="m-doc-self">GetAllocateInfo</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<aside class="m-note m-dim"><h4><a href="todo.html#_todo000015" class="m-doc">Todo</a></h4><p>#TODO: Move to <a href="namespaceVT_1_1V4.html" class="m-doc">V4</a> command buffer...</p></aside>
+          </div></section>
+        </section>
+        <section>
           <h2>Variable documentation</h2>
           <section class="m-doc-details" id="a5bcaf369b56eaad76c6e553ddc6ea982"><div>
             <h3>
               <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a> VT::<wbr />V3::<wbr />CommandBuffer::<wbr /><a href="#a5bcaf369b56eaad76c6e553ddc6ea982" class="m-doc-self">info</a> <span class="m-label m-warning">protected</span>
             </h3>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000015" class="m-doc">Todo</a></h4><p>move to <a href="namespaceVT_1_1V4.html" class="m-doc">V4</a>?</p></aside>
+<aside class="m-note m-dim"><h4><a href="todo.html#_todo000016" class="m-doc">Todo</a></h4><p>move to <a href="namespaceVT_1_1V4.html" class="m-doc">V4</a>?</p></aside>
           </div></section>
         </section>
       </div>
