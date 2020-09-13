@@ -87,7 +87,7 @@
             </dt>
             <dd><span></span></dd>
             <dt id="a7a8bf490d0ab88e344cb4ac3b71d083e">
-              using <a href="#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc-self">AllocateInfo</a> = V2::CommandPool::AllocateInfo
+              using <a href="#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc-self">AllocateInfo</a> = <a href="structVT_1_1V1_1_1CommandPool_1_1AllocateInfo.html" class="m-doc">V2::<wbr />CommandPool::<wbr />AllocateInfo</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -99,9 +99,8 @@
               <span class="m-doc-wrap-bumper"><a href="#ad1d7e93f55f1c5554a9a64937c178c76" class="m-doc-self">CommandBuffer</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Default constructor.</dd>
-            <dt id="a354c74d6993c96f62f5470daada93528">
-              <span class="m-doc-wrap-bumper"><a href="#a354c74d6993c96f62f5470daada93528" class="m-doc-self">CommandBuffer</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp; _info,
+            <dt id="a6f268eb341037d5c83bdc7394d8c6095">
+              <span class="m-doc-wrap-bumper"><a href="#a6f268eb341037d5c83bdc7394d8c6095" class="m-doc-self">CommandBuffer</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
             </dt>
             <dd>Constructor with logical device, allocate info, and handle specified (acts as an <a href="classVT_1_1V3_1_1CommandBuffer.html#a94661f7079689527cd3e5b925d0670d9" class="m-doc">Assign()</a> call)</dd>
@@ -127,12 +126,6 @@
               <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
             </dt>
             <dd>Assign a device and handle.</dd>
-            <dt id="a6781458ec87cba172daf068b72355e31">
-              <span class="m-doc-wrap-bumper">void <a href="#a6781458ec87cba172daf068b72355e31" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp; _info,
-              <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>&amp; _handle)</span>
-            </dt>
-            <dd>Assign a device, allocate info, and handle.</dd>
             <dt id="a03dbbe8b2efdd5df001df42b0df70195">
               <span class="m-doc-wrap-bumper">void <a href="#a03dbbe8b2efdd5df001df42b0df70195" class="m-doc-self">Clear</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -241,10 +234,6 @@
               const <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">Handle</a>* _secondaryBuffers) const</span>
             </dt>
             <dd>A secondary command buffer must not be directly submitted to a queue. Instead, secondary command buffers are recorded to execute as part of a primary command buffer..</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#abc5304c69c9d263abd2cda4f034bad81" class="m-doc">GetAllocateInfo</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp;</span>
-            </dt>
-            <dd></dd>
             <dt id="a80bbaa42339777442a796359f0ef6a82">
               <span class="m-doc-wrap-bumper">void <a href="#a80bbaa42339777442a796359f0ef6a82" class="m-doc-self">ResetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
@@ -352,10 +341,6 @@
               const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>* <a href="#a32ad7e8f484ed71450440dfe78226c70" class="m-doc-self">device</a>
             </dt>
             <dd><span></span></dd>
-            <dt>
-              <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a> <a href="#a5bcaf369b56eaad76c6e553ddc6ea982" class="m-doc">info</a>
-            </dt>
-            <dd></dd>
           </dl>
         </section>
         <section>
@@ -366,21 +351,6 @@
             </h3>
             <p>Begin recording commands to the buffer.</p>
 <p>Command buffer recording follows an immediate design. Calls done related to this buffer will be recorded by the buffer.</p>
-          </div></section>
-          <section class="m-doc-details" id="abc5304c69c9d263abd2cda4f034bad81"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">const <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a>&amp; VT::<wbr />V3::<wbr />CommandBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc5304c69c9d263abd2cda4f034bad81" class="m-doc-self">GetAllocateInfo</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000015" class="m-doc">Todo</a></h4><p>#TODO: Move to <a href="namespaceVT_1_1V4.html" class="m-doc">V4</a> command buffer...</p></aside>
-          </div></section>
-        </section>
-        <section>
-          <h2>Variable documentation</h2>
-          <section class="m-doc-details" id="a5bcaf369b56eaad76c6e553ddc6ea982"><div>
-            <h3>
-              <a href="classVT_1_1V3_1_1CommandBuffer.html#a7a8bf490d0ab88e344cb4ac3b71d083e" class="m-doc">AllocateInfo</a> VT::<wbr />V3::<wbr />CommandBuffer::<wbr /><a href="#a5bcaf369b56eaad76c6e553ddc6ea982" class="m-doc-self">info</a> <span class="m-label m-warning">protected</span>
-            </h3>
-<aside class="m-note m-dim"><h4><a href="todo.html#_todo000016" class="m-doc">Todo</a></h4><p>move to <a href="namespaceVT_1_1V4.html" class="m-doc">V4</a>?</p></aside>
           </div></section>
         </section>
       </div>

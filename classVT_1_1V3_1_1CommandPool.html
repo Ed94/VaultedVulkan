@@ -86,10 +86,6 @@
               using <a href="#a2187fd5ed303e5afc9b9ade91b2625fa" class="m-doc-self">Parent</a> = <a href="structVT_1_1V2_1_1CommandPool.html" class="m-doc">V2::<wbr />CommandPool</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="ad9272c8d337191f3cee7117bc077b789">
-              using <a href="#ad9272c8d337191f3cee7117bc077b789" class="m-doc-self">CommandBuffer</a> = <a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">V3::<wbr />CommandBuffer</a>
-            </dt>
-            <dd><span></span></dd>
           </dl>
         </section>
         <section id="typeless-methods">
@@ -134,12 +130,12 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt id="a3a434acb8d01f282fe35334b5867564c">
-              <span class="m-doc-wrap-bumper">auto <a href="#a3a434acb8d01f282fe35334b5867564c" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a>&amp; _buffer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3a434acb8d01f282fe35334b5867564c" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _buffer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Allocate a command buffer.</dd>
             <dt id="a545b56d8178fa7966dec408ea25b5a10">
               <span class="m-doc-wrap-bumper">auto <a href="#a545b56d8178fa7966dec408ea25b5a10" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="structVT_1_1V1_1_1CommandPool_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _info,
-              <a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a>&amp; _buffer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _buffer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Allocate a command buffer with the specified allocation info.</dd>
             <dt id="aa27581e4468a5919bcfc36c8faacaa50">
@@ -153,10 +149,16 @@
               <a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a>* _buffers) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Allocate command buffers with the specified count and level.</dd>
+            <dt id="a0f392c6f9cf08544c691fbecddca73bf">
+              <span class="m-doc-wrap-bumper">auto <a href="#a0f392c6f9cf08544c691fbecddca73bf" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Command__Buffers.html#ga56520949b303c0b5933bfc690c598cea" class="m-doc">ECommandBufferLevel</a> _level,
+              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _count,
+              <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&gt;&amp; _commandBuffers) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Allocate command buffers and their handles into dynamic arrays. based on the count provided and the level desired.</dd>
             <dt id="a4a9648fe86bf78e3143a268ec82073ba">
               <span class="m-doc-wrap-bumper">auto <a href="#a4a9648fe86bf78e3143a268ec82073ba" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Command__Buffers.html#ga56520949b303c0b5933bfc690c598cea" class="m-doc">ECommandBufferLevel</a> _level,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _count,
-              <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a>&gt;&amp; _commandBuffers,
+              <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&gt;&amp; _commandBuffers,
               <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Command__Buffers.html#gaf0a8597c8f3cf3884e9eab563d18ed9d" class="m-doc">CommandBuffer::<wbr />Handle</a>&gt;&amp; _handles) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Allocate command buffers and their handles into dynamic arrays. based on the count provided and the level desired.</dd>
@@ -190,7 +192,7 @@
             </dt>
             <dd>Free the command buffers based on the allocate info and handle container provided.</dd>
             <dt id="ae97e42be201fb18ded68060e8c4f39fc">
-              <span class="m-doc-wrap-bumper">void <a href="#ae97e42be201fb18ded68060e8c4f39fc" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a>&amp; _commandBuffer)</span>
+              <span class="m-doc-wrap-bumper">void <a href="#ae97e42be201fb18ded68060e8c4f39fc" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _commandBuffer)</span>
             </dt>
             <dd>Free a command buffer.</dd>
             <dt id="a41209d32b1ef77e7d64d70bfa4f3af05">
@@ -202,11 +204,11 @@
             </dt>
             <dd>Trimming a command pool recycles unused memory from the command pool back to the system. Command buffers allocated from the pool are not affected by the command.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#ad0c444d3302340da306bd441924f0067" class="m-doc">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a>&amp; _result) -&gt; <a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad0c444d3302340da306bd441924f0067" class="m-doc">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a>&amp; _result) -&gt; <a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a></span>
             </dt>
             <dd>Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#aca6d2261736f516e40eac44b0769d921" class="m-doc">EndSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a>&amp; _commandBuffer,
+              <span class="m-doc-wrap-bumper">auto <a href="#aca6d2261736f516e40eac44b0769d921" class="m-doc">EndSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _commandBuffer,
               const <a href="structVT_1_1V3_1_1LogicalDevice_1_1Queue.html" class="m-doc">LogicalDevice::<wbr />Queue</a>&amp; _queue) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.</dd>
@@ -248,14 +250,14 @@
           <h2>Function documentation</h2>
           <section class="m-doc-details" id="ad0c444d3302340da306bd441924f0067"><div>
             <h3>
-              <span class="m-doc-wrap-bumper"><a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a> VT::<wbr />V3::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0c444d3302340da306bd441924f0067" class="m-doc-self">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a>&amp; _result)</span></span>
+              <span class="m-doc-wrap-bumper"><a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a> VT::<wbr />V3::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0c444d3302340da306bd441924f0067" class="m-doc-self">BeginSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a>&amp; _result)</span></span>
             </h3>
             <p>Will auto-allocate a command buffer on the specified pool and begin recording commands on the buffer.</p>
 <p>The handle to the command buffer will be returned.</p><p>Expected to be used with the EndSingleTimeCommands function (defined below it).</p>
           </div></section>
           <section class="m-doc-details" id="aca6d2261736f516e40eac44b0769d921"><div>
             <h3>
-              <span class="m-doc-wrap-bumper"><a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aca6d2261736f516e40eac44b0769d921" class="m-doc-self">EndSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="structVT_1_1V2_1_1CommandPool.html#a796fce17dfaf3107efb0544db846a8d5" class="m-doc">CommandBuffer</a>&amp; _commandBuffer,
+              <span class="m-doc-wrap-bumper"><a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aca6d2261736f516e40eac44b0769d921" class="m-doc-self">EndSingleTimeCommands</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>&amp; _commandBuffer,
               const <a href="structVT_1_1V3_1_1LogicalDevice_1_1Queue.html" class="m-doc">LogicalDevice::<wbr />Queue</a>&amp; _queue)</span></span>
             </h3>
             <p>Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.</p>
