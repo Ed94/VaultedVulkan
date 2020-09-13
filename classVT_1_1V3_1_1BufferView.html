@@ -53,6 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>BufferView <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
         </h1>
+        <p>A buffer view represents a contiguous range of a buffer and a specific format to be used to interpret the data.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -75,7 +76,7 @@
             <dt>
               struct <a href="structVT_1_1V2_1_1BufferView.html" class="m-doc">VT::V2::BufferView</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>A buffer view represents a contiguous range of a buffer and a specific format to be used to interpret the data.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -93,16 +94,16 @@
             <dt id="a20b3169321d3a6b35237f6e7cf15f825">
               <span class="m-doc-wrap-bumper"><a href="#a20b3169321d3a6b35237f6e7cf15f825" class="m-doc-self">BufferView</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a77b150323e46132cffddf98e3dcb5959">
               <span class="m-doc-wrap-bumper"><a href="#a77b150323e46132cffddf98e3dcb5959" class="m-doc-self">BufferView</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical specified.</dd>
             <dt id="a5441a761390d67a98e172e554f46982d">
               <span class="m-doc-wrap-bumper"><a href="#a5441a761390d67a98e172e554f46982d" class="m-doc-self">BufferView</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device and allocator specified.</dd>
             <dt id="a924ab533642e453b471abffa42342db3">
               <span class="m-doc-wrap-bumper"><a href="#a924ab533642e453b471abffa42342db3" class="m-doc-self">BufferView</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1BufferView.html" class="m-doc">BufferView</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
@@ -110,7 +111,7 @@
             <dt id="a6762fc4b5f432951069586d4997dffb1">
               <span class="m-doc-wrap-bumper"><a href="#a6762fc4b5f432951069586d4997dffb1" class="m-doc-self">~BufferView</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the buffer view if the handle is null.</dd>
             <dt id="a2813a0fbc6bc728e9c1a23ec1ad6c1a8">
               <span class="m-doc-wrap-bumper"><a href="#a2813a0fbc6bc728e9c1a23ec1ad6c1a8" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -131,22 +132,22 @@
             <dt id="a00e90cb2c112431bffde87edbfaef53f">
               <span class="m-doc-wrap-bumper">auto <a href="#a00e90cb2c112431bffde87edbfaef53f" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1BufferView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a buffer view.</dd>
             <dt id="a124624ca04ccbf6efdbeb5a93ad18849">
               <span class="m-doc-wrap-bumper">auto <a href="#a124624ca04ccbf6efdbeb5a93ad18849" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1BufferView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a buffer view (logical device specified).</dd>
             <dt id="a3705c657a5499c342f34a97af1310b11">
               <span class="m-doc-wrap-bumper">auto <a href="#a3705c657a5499c342f34a97af1310b11" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1BufferView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create a buffer view (logical device and allocator specified).</dd>
             <dt id="a7b2edfb5b6292208ed5c2e1b11ec6c47">
               <span class="m-doc-wrap-bumper">void <a href="#a7b2edfb5b6292208ed5c2e1b11ec6c47" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy a buffer view.</dd>
             <dt id="ad1423d00dfc240f7a58144368c7006f0">
               <span class="m-doc-wrap-bumper">auto <a href="#ad1423d00dfc240f7a58144368c7006f0" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1BufferView.html" class="m-doc">BufferView</a>&amp; _other) const -&gt; bool</span>
             </dt>

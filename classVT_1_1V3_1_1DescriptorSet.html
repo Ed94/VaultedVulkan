@@ -53,7 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>DescriptorSet <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
         </h1>
-        <p>This object only acts as a host interface to a given device object&#x27;s handle. The descriptor pool mangages the descriptor set&#x27;s lifetime.</p>
+        <p>Descriptors are grouped together into descriptor set objects. A descriptor set object is an opaque object containing storage for a set of descriptors, where the types and number of descriptors is defined by a descriptor set layout.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -69,6 +69,7 @@
             </li>
           </ul>
         </div>
+<p>This object only acts as a host interface to a given device object&#x27;s handle. The descriptor pool manages the descriptor set&#x27;s lifetime.</p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
@@ -93,12 +94,12 @@
             <dt id="a41870e97c1492bf3959a11edd04a2f48">
               <span class="m-doc-wrap-bumper"><a href="#a41870e97c1492bf3959a11edd04a2f48" class="m-doc-self">DescriptorSet</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default allocator.</dd>
             <dt id="ab17ee2ec8ee2f4427125f87c65e94003">
               <span class="m-doc-wrap-bumper"><a href="#ab17ee2ec8ee2f4427125f87c65e94003" class="m-doc-self">DescriptorSet</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Resource__Descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">Handle</a> _handle,
               const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device and handle assigned.</dd>
             <dt id="ab7f2fc409f8370a3502783d9934292c7">
               <span class="m-doc-wrap-bumper"><a href="#ab7f2fc409f8370a3502783d9934292c7" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -120,18 +121,18 @@
               <span class="m-doc-wrap-bumper">void <a href="#a3ed7cacf29b636dc2816a68194def8c6" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               <a href="group__APISpec__Resource__Descriptors.html#ga919d5708835c743707d39fa067ab85d7" class="m-doc">Handle</a> _handle)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Assigns the logical device and handle.</dd>
             <dt id="a40291c4592e9c4ad9b18cb994ac44482">
               <span class="m-doc-wrap-bumper">void <a href="#a40291c4592e9c4ad9b18cb994ac44482" class="m-doc-self">Clear</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Clears the logical device and handle.</dd>
             <dt id="a815f8a4657f1eb87cf5ff6c7be6c647b">
               <span class="m-doc-wrap-bumper">void <a href="#a815f8a4657f1eb87cf5ff6c7be6c647b" class="m-doc-self">Update</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorWriteCount,
               const <a href="structVT_1_1V1_1_1DescriptorSet_1_1Write.html" class="m-doc">Write</a>* _descriptorWrites,
               <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _descriptorCopyCount,
               const <a href="structVT_1_1V1_1_1DescriptorSet_1_1Copy.html" class="m-doc">Copy</a>* _descriptorCopies)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Once allocated, descriptor sets can be updated with a combination of write and copy operations.</dd>
             <dt id="ae7998396d5480ddaeacae1706b32dea7">
               <span class="m-doc-wrap-bumper">auto <a href="#ae7998396d5480ddaeacae1706b32dea7" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a>&amp; _other) const -&gt; bool</span>
             </dt>

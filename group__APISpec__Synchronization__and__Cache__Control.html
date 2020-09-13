@@ -422,7 +422,7 @@
               <span class="m-doc-wrap-bumper">static auto <a href="#gab8b12ce79069ecebfd26ee828f2fc8a2" class="m-doc">Reset</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
               Handle _event) -&gt; EResult</span>
             </dt>
-            <dd></dd>
+            <dd>Set the state of an event to unsignaled from the host.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#ga160cb6b0722d38b5d22e671b2562e1c4" class="m-doc">Set</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
               Handle _event) -&gt; EResult</span>
@@ -460,7 +460,7 @@
               const Memory::AllocationCallbacks* _allocator,
               Handle&amp; _fence) -&gt; EResult</span>
             </dt>
-            <dd></dd>
+            <dd>Create a fence that will be signaled when an event occurs on a Display object.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#ga84196032afe892f11dd2c556baa67569" class="m-doc">Reset</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _logicalDevice,
               Handle* _fences,
@@ -474,7 +474,7 @@
               Bool _waitAll,
               uInt64 _timeout) -&gt; EResult</span>
             </dt>
-            <dd></dd>
+            <dd>Wait for one or more fences to enter the signaled state on the host.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="#ga6bb729d61a2e296536bf53bd4b267130" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
               const CreateInfo&amp; _createInfo,
@@ -903,6 +903,7 @@
               Handle _event)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
+            <p>Set the state of an event to unsignaled from the host.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -1050,6 +1051,7 @@
               Handle&amp; _fence)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
+            <p>Create a fence that will be signaled when an event occurs on a Display object.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga84196032afe892f11dd2c556baa67569"><div>
@@ -1089,6 +1091,7 @@
               uInt64 _timeout)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
+            <p>Wait for one or more fences to enter the signaled state on the host.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkWaitForFences">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga6bb729d61a2e296536bf53bd4b267130"><div>

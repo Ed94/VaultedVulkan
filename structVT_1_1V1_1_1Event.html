@@ -74,7 +74,7 @@
             <dt>
               struct <a href="structVT_1_1V2_1_1Event.html" class="m-doc">VT::V2::Event</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>Events are a synchronization primitive that can be used to insert a fine-grained dependency between commands submitted to the same queue, or between the host and a queue. Events must not be used to insert a dependency between commands submitted to different queues. Events have two states - signaled and unsignaled.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -115,6 +115,11 @@
               <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Handle</a> _event) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query the state of an event from the host.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Synchronization__and__Cache__Control.html#gab8b12ce79069ecebfd26ee828f2fc8a2" class="m-doc">Reset</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Handle</a> _event) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Set the state of an event to unsignaled from the host.</dd>
           </dl>
         </section>
       </div>

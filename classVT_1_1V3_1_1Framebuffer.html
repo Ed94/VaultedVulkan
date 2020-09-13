@@ -53,6 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>Framebuffer <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__RenderPass_8hpp.html">&lt;VaultedThermals/VT_RenderPass.hpp&gt;</a></div>
         </h1>
+        <p>Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -93,24 +94,24 @@
             <dt id="ae1e38dde3e0e4b491238af43d92d8a0d">
               <span class="m-doc-wrap-bumper"><a href="#ae1e38dde3e0e4b491238af43d92d8a0d" class="m-doc-self">Framebuffer</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a04266c6416e614da33d299ddf28541c4">
               <span class="m-doc-wrap-bumper"><a href="#a04266c6416e614da33d299ddf28541c4" class="m-doc-self">Framebuffer</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device specified.</dd>
             <dt id="a37015359b3f6681c82b0d84ef624ee92">
               <span class="m-doc-wrap-bumper"><a href="#a37015359b3f6681c82b0d84ef624ee92" class="m-doc-self">Framebuffer</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Logical device and allocator specified.</dd>
             <dt id="a4ddc3ec2d46c7a1a2827b9587f38fd95">
               <span class="m-doc-wrap-bumper"><a href="#a4ddc3ec2d46c7a1a2827b9587f38fd95" class="m-doc-self">Framebuffer</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Framebuffer.html" class="m-doc">Framebuffer</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Performs a move operation to transfer ownership of the device object to this host object.</dd>
             <dt id="a2efd772ac20eaa995b281ee0c4eab711">
               <span class="m-doc-wrap-bumper"><a href="#a2efd772ac20eaa995b281ee0c4eab711" class="m-doc-self">~Framebuffer</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the framebuffer.</dd>
             <dt id="a83bc978d7e9fab3ef7b7a73843d092ad">
               <span class="m-doc-wrap-bumper"><a href="#a83bc978d7e9fab3ef7b7a73843d092ad" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -131,22 +132,22 @@
             <dt id="a1db51aed47629d7621764a30f8cfc731">
               <span class="m-doc-wrap-bumper">auto <a href="#a1db51aed47629d7621764a30f8cfc731" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Framebuffer_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the framebuffer.</dd>
             <dt id="afb6869a59da747af2719da9bd1c4d523">
               <span class="m-doc-wrap-bumper">auto <a href="#afb6869a59da747af2719da9bd1c4d523" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Framebuffer_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the framebuffer (logical device specified).</dd>
             <dt id="a0876c27d08116edd5c54d52db339c02c">
               <span class="m-doc-wrap-bumper">auto <a href="#a0876c27d08116edd5c54d52db339c02c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>* _device,
               const <a href="structVT_1_1V1_1_1Framebuffer_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create the framebuffer (logical device and allocator specified).</dd>
             <dt id="aa4d11f3199368d564fbce02409fedf19">
               <span class="m-doc-wrap-bumper">void <a href="#aa4d11f3199368d564fbce02409fedf19" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the framebuffer.</dd>
             <dt id="a778134582a622743a263f3fe75cf94bd">
               <span class="m-doc-wrap-bumper">auto <a href="#a778134582a622743a263f3fe75cf94bd" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Framebuffer.html" class="m-doc">Framebuffer</a>&amp; _other) const -&gt; bool</span>
             </dt>

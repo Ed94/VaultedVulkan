@@ -53,6 +53,7 @@
           <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1V3.html">V3</a>::<wbr/></span>ImageView <span class="m-thin">class</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
         </h1>
+        <p>An object that represents an image subresource range of a specific image, and state that controls how the contents are interpreted.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -75,7 +76,7 @@
             <dt>
               struct <a href="structVT_1_1V2_1_1ImageView.html" class="m-doc">VT::V2::ImageView</a>
             </dt>
-            <dd><span></span></dd>
+            <dd>An object that represents an image subresource range of a specific image, and state that controls how the contents are interpreted.</dd>
           </dl>
         </section>
         <section id="pub-types">
@@ -93,16 +94,16 @@
             <dt id="a5ac4b485884dc68296487bdcb4a3228e">
               <span class="m-doc-wrap-bumper"><a href="#a5ac4b485884dc68296487bdcb4a3228e" class="m-doc-self">ImageView</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Default constructor.</dd>
             <dt id="a64225029f2b42f40c76f9575e60e7966">
               <span class="m-doc-wrap-bumper"><a href="#a64225029f2b42f40c76f9575e60e7966" class="m-doc-self">ImageView</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Specifies the logical device.</dd>
             <dt id="a5f4dc6ebe5a66b081eb80fffab99094d">
               <span class="m-doc-wrap-bumper"><a href="#a5f4dc6ebe5a66b081eb80fffab99094d" class="m-doc-self">ImageView</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Specifies the logical device and allocator.</dd>
             <dt id="a0de97c86cab96b39afa3926781a59fbf">
               <span class="m-doc-wrap-bumper"><a href="#a0de97c86cab96b39afa3926781a59fbf" class="m-doc-self">ImageView</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1ImageView.html" class="m-doc">ImageView</a>&amp;&amp; _other) <span class="m-label m-flat m-success">noexcept</span></span>
             </dt>
@@ -110,7 +111,7 @@
             <dt id="a247f80840610006c1c3649af1aedb342">
               <span class="m-doc-wrap-bumper"><a href="#a247f80840610006c1c3649af1aedb342" class="m-doc-self">~ImageView</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the image view if handle is not null.</dd>
             <dt id="a523253762a50a8605fb3c5d952f1064a">
               <span class="m-doc-wrap-bumper"><a href="#a523253762a50a8605fb3c5d952f1064a" class="m-doc-self">operator Handle&amp;</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
@@ -131,22 +132,22 @@
             <dt id="a0b19ce140745e678dc82c73ee22b31fc">
               <span class="m-doc-wrap-bumper">auto <a href="#a0b19ce140745e678dc82c73ee22b31fc" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1ImageView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create an image view.</dd>
             <dt id="a5206d3d281ff5f7336ff4d36bc046565">
               <span class="m-doc-wrap-bumper">auto <a href="#a5206d3d281ff5f7336ff4d36bc046565" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1ImageView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create an image view (logical device specified).</dd>
             <dt id="ad930bf02bd5095ed9a58d56238869450">
               <span class="m-doc-wrap-bumper">auto <a href="#ad930bf02bd5095ed9a58d56238869450" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1ImageView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Create an image view (logical device and allocator specified).</dd>
             <dt id="a7c02e0de178cd17bba4bd47ee9c99341">
               <span class="m-doc-wrap-bumper">void <a href="#a7c02e0de178cd17bba4bd47ee9c99341" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Destroy the image view.</dd>
             <dt id="a24237b3beabf89dc241ef2b20d9774a6">
               <span class="m-doc-wrap-bumper">auto <a href="#a24237b3beabf89dc241ef2b20d9774a6" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1ImageView.html" class="m-doc">ImageView</a>&amp; _other) const -&gt; bool</span>
             </dt>
