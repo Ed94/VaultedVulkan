@@ -209,7 +209,7 @@ namespace VaultedThermals
 			typename EnumType             ,
 			typename BitmaskRepresentation
 		>
-		struct Bitmask
+		class Bitmask
 		{
 		private:
 			static_assert(Bitmaskable<EnumType>(), "EnumType must be of Bitmaskable type.");
@@ -317,7 +317,7 @@ namespace VaultedThermals
 			bool operator!= (const Representation _other) const { return mask != _other     ; }
 			bool operator!= (const _ThisType      _other) const { return mask != _other.mask; }
 
-		private:
+		protected:
 
 			Representation mask;
 		};

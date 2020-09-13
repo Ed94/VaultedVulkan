@@ -1144,6 +1144,9 @@ namespace VaultedThermals
 		/**
 		@ingroup APISpec_Command_Buffers
 		@brief Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.
+
+		@details This object only acts as a host interface to a given device object's handle. Since command pools handle the lifetime
+		of a command buffer, The command buffer can only clear its references to the device object.
 		*/
 		class CommandBuffer : public V2::CommandBuffer
 		{
@@ -1154,20 +1157,20 @@ namespace VaultedThermals
 			using AllocateInfo = V2::CommandPool::AllocateInfo;
 
 			/**
-			@brief Default constructor
+			@brief Default constructor.
 			*/
 			CommandBuffer() : handle(Null<Handle>), device(nullptr), info()
 			{}
 
 			/**
-			
+			@brief Constructor with logical device, allocate info, and handle specified (acts as an Assign() call)
 			*/
 			CommandBuffer(const LogicalDevice& _device, AllocateInfo& _info, Handle& _handle) :
 				device(&_device), handle(_handle), info(_info)
 			{}
 
 			/**
-			
+			@brief Assign a device and handle.
 			*/
 			void Assign(const LogicalDevice& _device, Handle& _handle)
 			{
@@ -1176,7 +1179,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Assign a device, allocate info, and handle.
 			*/
 			void Assign(const LogicalDevice& _device, const AllocateInfo& _info, Handle& _handle)
 			{
@@ -1186,7 +1189,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Clear references to related device objects.
 			*/
 			void Clear()
 			{
@@ -1195,7 +1198,9 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Begin recording commands to the buffer.
+
+			@details Command buffer recording follows an immediate design. Calls done related to this buffer will be recorded by the buffer.
 			*/
 			EResult BeginRecord(const BeginInfo& _info) const
 			{
@@ -1203,7 +1208,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Begin recording a render pass set of commands into the buffer.
 			*/
 			void BeginRenderPass(const RenderPass::BeginInfo& _info, ESubpassContents _contents) const
 			{
@@ -1211,7 +1216,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Bind one or more descriptor sets to a command buffer. (No dynamic offsets)
 			*/
 			void BindDescriptorSets
 			(
@@ -1226,7 +1231,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Bind one or more descriptor sets to a command buffer. 
 			*/
 			void BindDescriptorSets
 			(
@@ -1243,7 +1248,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Bind an index buffer to a command buffer.
 			*/
 			void BindIndexBuffer(Buffer& _buffer, DeviceSize _offset, EIndexType _type) const
 			{
@@ -1251,7 +1256,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Bind vertex buffers to a command buffer for use in subsequent draw commands. (No offsets)
 			*/
 			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers) const
 			{
@@ -1259,7 +1264,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Bind vertex buffers to a command buffer for use in subsequent draw commands. 
 			*/
 			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers, const DeviceSize* _offsets) const
 			{
@@ -1267,7 +1272,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Bind a pipeline to a command buffer for use in subsequent commands. (Until another pipeline is bound)
 			*/
 			void BindPipeline(EPipelineBindPoint _bindPoint, Pipeline& _pipeline) const
 			{
@@ -1275,7 +1280,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Copy regions of a source image into a destination image, potentially performing format conversion, arbitrary scaling, and filtering.
 			*/
 			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, uint32 _regionCount, const Image::Blit* _regions, EFilter _filter) const
 			{
@@ -1283,7 +1288,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Copy data between buffer objects.
 			*/
 			void CopyBuffer(Buffer& _sourceBuffer, Buffer& _destinationBuffer, uint32 _regionCount, const Buffer::CopyInfo* _regions) const
 			{
@@ -1291,7 +1296,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Copy data from a buffer object to an image object.
 			*/
 			void CopyBufferToImage
 			(
@@ -1306,7 +1311,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Record a non-indexed draw.
 			*/
 			void Draw(uint32 _firstVertex, uint32 _vertexCount, uint32 _firstInstance, uint32 _instanceCount) const
 			{
@@ -1314,7 +1319,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief Record an indexed draw.
 			*/
 			void DrawIndexed
 			(
@@ -1329,7 +1334,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief complete recording of a command buffer.
 			*/
 			EResult EndRecord() const
 			{
@@ -1337,7 +1342,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief record a command to end a render pass instance after recording the commands for the last subpass.
 			*/
 			void EndRenderPass() const
 			{
@@ -1345,7 +1350,8 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@brief A secondary command buffer must not be directly submitted to a queue. 
+			Instead, secondary command buffers are recorded to execute as part of a primary command buffer..
 			*/
 			void Execute(uint32 _secondaryBufferCount, const Handle* _secondaryBuffers) const
 			{
@@ -1353,12 +1359,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			
+			@todo #TODO: Move to V4 command buffer...
 			*/
 			const AllocateInfo& GetAllocateInfo() const { return info; }
 
 			/**
-			
+			@brief Set the state of an event to unsignaled from a device.
 			*/
 			void ResetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
@@ -1368,7 +1374,7 @@ namespace VaultedThermals
 		#pragma region SubmitPipelineBarrier_OO
 
 			/**
-
+			@brief A version of SubmitPipelineBarrier where only a set of regular memory barriers are submitted.
 			*/
 			void SubmitPipelineBarrier
 			(
@@ -1391,7 +1397,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief A version where only a set of buffer memory barriers are submitted.
 			*/
 			void SubmitPipelineBarrier
 			(
@@ -1414,7 +1420,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief A version of SubmitPipelineBarrier where only a set of image memory barriers are submitted.
 			*/
 			void SubmitPipelineBarrier
 			(
@@ -1437,7 +1443,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Record a pipeline barrier.
 			*/
 			void SubmitPipelineBarrier
 			(
@@ -1470,7 +1476,7 @@ namespace VaultedThermals
 		#pragma endregion SubmitPipelineBarrier_OO
 
 			/**
-
+			@brief Update the current device mask of a command buffer.
 			*/
 			void SetDeviceMask(uint32 _deviceMask) const
 			{
@@ -1478,7 +1484,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Set the state of an event to signaled from a device.
 			*/
 			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
 			{
@@ -1488,7 +1494,7 @@ namespace VaultedThermals
 		#pragma region WaitForEvents_OO
 
 			/**
-
+			@brief A version of WaitForEvents where only a set of memory barriers are waited on.
 			*/
 			void WaitForEvents
 			(
@@ -1513,7 +1519,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief A version of WaitForEvents where only a set of buffer memory barriers are waited on.
 			*/
 			void WaitForEvents
 			(
@@ -1538,7 +1544,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief A version of WaitForEvents where only a set of image memory barriers are waited on.
 			*/
 			void WaitForEvents
 			(
@@ -1563,7 +1569,7 @@ namespace VaultedThermals
 			}
 
 			/**
-
+			@brief Wait for one or more events to enter the signaled state on a device.
 			*/
 			void WaitForEvents
 			(
