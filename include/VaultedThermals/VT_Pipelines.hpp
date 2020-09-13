@@ -978,10 +978,22 @@ namespace VaultedThermals
 		@{
 		*/
 
+		/**
+		@brief A monolithic object describing the entire graphics, raytracing, or compute pipeline.
+		*/
 		struct Pipeline : public V1::Pipeline
 		{
 			using Parent = V1::Pipeline;
 
+			/**
+			@brief Pipeline cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.
+
+			@details
+			Reuse between pipelines is achieved by passing the same pipeline cache object when creating multiple related pipelines.
+			Reuse across runs of an application is achieved by retrieving pipeline cache contents in one run of an application, saving the contents,
+			and using them to preinitialize a pipeline cache on a subsequent run. The contents of the pipeline cache objects are managed by the implementation.
+			Applications can manage the host memory consumed by a pipeline cache object and control the amount of data retrieved from a pipeline cache object.
+			*/
 			struct Cache : public Parent::Cache
 			{
 				using Parent = Parent::Cache;
@@ -1022,10 +1034,20 @@ namespace VaultedThermals
 				using Parent::Destroy;
 			};
 
+			/**
+			@brief Access to descriptor sets from a pipeline is accomplished through a pipeline layout.
+			*/
 			struct Layout : public Parent::Layout
 			{
 				using Parent = Parent::Layout;
 
+				/**
+				Descriptors are grouped together into descriptor set objects.
+
+				@details
+				A descriptor set object is an opaque object containing storage for a set of descriptors,
+				where the types and number of descriptors is defined by a descriptor set layout.
+				*/
 				struct DescriptorSet : public Parent::DescriptorSet
 				{
 					using Parent = Parent::DescriptorSet;
@@ -1193,7 +1215,7 @@ namespace VaultedThermals
 		*/
 
 		/**
-		@brief 
+		@brief A monolithic object describing the entire graphics, raytracing, or compute pipeline.
 		*/
 		class Pipeline : public V2::Pipeline
 		{
@@ -1201,7 +1223,13 @@ namespace VaultedThermals
 			using Parent = V2::Pipeline;
 
 			/**
-			@brief 
+			@brief Pipeline cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application.
+			
+			@details
+			Reuse between pipelines is achieved by passing the same pipeline cache object when creating multiple related pipelines.
+			Reuse across runs of an application is achieved by retrieving pipeline cache contents in one run of an application, saving the contents,
+			and using them to preinitialize a pipeline cache on a subsequent run. The contents of the pipeline cache objects are managed by the implementation.
+			Applications can manage the host memory consumed by a pipeline cache object and control the amount of data retrieved from a pipeline cache object.
 			*/
 			class Cache : public Parent::Cache
 			{
@@ -1209,19 +1237,19 @@ namespace VaultedThermals
 				using Parent = V2::Pipeline::Cache;
 
 				/**
-				@brief 
+				@brief Default constructor.
 				*/
 				Cache() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 				{}
 
 				/**
-				@brief
+				@brief Logical device specified.
 				*/
 				Cache(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 				{}
 
 				/**
-				@brief
+				@brief Logical device and allocator specified.
 				*/
 				Cache(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 				{}
@@ -1238,7 +1266,7 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief
+				@brief Destroys the cache if handle is null.
 				*/
 				~Cache()
 				{
@@ -1246,18 +1274,27 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief
+				@brief Create a cache.
 				*/
-				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
+				EResult Create(const CreateInfo& _info)
 				{
-					device    = &_device                ;
-					allocator = Memory::DefaultAllocator;
+					if (device == nullptr) return EResult::Not_Ready;
 
 					return Parent::Create(*device, _info, allocator, handle);
 				}
 
 				/**
-				@brief
+				@brief Create a cache (logical device specified).
+				*/
+				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
+				{
+					device = &_device;
+
+					return Parent::Create(*device, _info, allocator, handle);
+				}
+
+				/**
+				@brief Create a cache (logical device and allocator specified).
 				*/
 				EResult Create(const LogicalDevice& _device, CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 				{
@@ -1268,7 +1305,7 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief
+				@brief Destroy a cache.
 				*/
 				void Destroy()
 				{
@@ -1339,7 +1376,7 @@ namespace VaultedThermals
 			};
 
 			/**
-			@brief
+			@brief Access to descriptor sets from a pipeline is accomplished through a pipeline layout.
 			*/
 			class Layout : public Parent::Layout
 			{
@@ -1347,7 +1384,11 @@ namespace VaultedThermals
 				using Parent = V2::Pipeline::Layout;
 
 				/**
-				@brief
+				@brief Descriptors are grouped together into descriptor set objects.
+				
+				@details
+				A descriptor set object is an opaque object containing storage for a set of descriptors,
+				where the types and number of descriptors is defined by a descriptor set layout.
 				*/
 				class DescriptorSet : public Parent::DescriptorSet
 				{
@@ -1355,19 +1396,19 @@ namespace VaultedThermals
 					using Parent = V2::Pipeline::Layout::DescriptorSet;
 
 					/**
-					@brief
+					@brief Default constructor.
 					*/
 					DescriptorSet() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 					{}
 
 					/**
-					@brief
+					@brief Specify the logical device.
 					*/
 					DescriptorSet(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 					{}
 
 					/**
-					@brief
+					@brief Specify the logical device and allocator.
 					*/
 					DescriptorSet(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) :
 						handle(Null<Handle>), allocator(&_allocator), device(&_device)
@@ -1385,7 +1426,7 @@ namespace VaultedThermals
 					}
 
 					/**
-					@brief
+					@brief Destroy the descriptor set layout if the handle is null.
 					*/
 					~DescriptorSet()
 					{
@@ -1393,19 +1434,28 @@ namespace VaultedThermals
 					}
 
 					/**
-					@brief
+					@brief Assign the create info.
 					*/
-					void Assign(const LogicalDevice& _device, const CreateInfo& _info)
+					void Assign(const CreateInfo& _info)
 					{
-						device    = &_device                ;
-						info      = _info                   ;
-						allocator = Memory::DefaultAllocator;
+						info = _info;
 
 						Parent::GetSupport(*device, info, support);
 					}
 
 					/**
-					@brief
+					@brief Assign the device and create info.
+					*/
+					void Assign(const LogicalDevice& _device, const CreateInfo& _info)
+					{
+						device    = &_device                ;
+						info      = _info                   ;
+
+						Parent::GetSupport(*device, info, support);
+					}
+
+					/**
+					@brief Assign the logical device, create info, and allocator.
 					*/
 					void Assign(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 					{
@@ -1417,15 +1467,17 @@ namespace VaultedThermals
 					}
 
 					/**
-					@brief
+					@brief Create the descriptor set layout.
 					*/
 					EResult Create()
 					{
+						if (device == nullptr) return EResult::Not_Ready;
+
 						return Parent::Create(*device, info, allocator, handle);
 					}
 
 					/**
-					@brief
+					@brief Destroy the descriptor set layout.
 					*/
 					void Destroy()
 					{
@@ -1437,7 +1489,7 @@ namespace VaultedThermals
 					}
 
 					/**
-					@brief
+					@brief Provides the layout support.
 					*/
 					const Support& GetSupport() const
 					{
@@ -1509,19 +1561,19 @@ namespace VaultedThermals
 				};
 
 				/**
-				@brief
+				@brief Default constructor.
 				*/
 				Layout() : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
 				{}
 
 				/**
-				@brief
+				@brief Specify logical device.
 				*/
 				Layout(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 				{}
 
 				/**
-				@brief
+				@brief Specify logical device and allocator.
 				*/
 				Layout(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 				{}
@@ -1538,7 +1590,7 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief
+				@brief Destroy the pipeline layout if the handle is null.
 				*/
 				~Layout()
 				{
@@ -1546,18 +1598,27 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief
+				@brief Create a pipeline layout.
 				*/
-				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
+				EResult Create(const CreateInfo& _info)
 				{
-					device    = &_device                ;
-					allocator = Memory::DefaultAllocator;
+					if (device == nullptr) return EResult::Not_Ready;
 
 					return Parent::Create(*device, _info, allocator, handle);
 				}
 
 				/**
-				@brief
+				@brief Create the pipeline layout (logical device specified).
+				*/
+				EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
+				{
+					device = &_device;
+
+					return Parent::Create(*device, _info, allocator, handle);
+				}
+
+				/**
+				@brief Create the pipeline layout (logical device and allocator specified).
 				*/
 				EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 				{
@@ -1568,7 +1629,7 @@ namespace VaultedThermals
 				}
 
 				/**
-				@brief
+				@brief Destroy the pipeline layout.
 				*/
 				void Destroy()
 				{
@@ -1636,38 +1697,38 @@ namespace VaultedThermals
 			};
 
 			/**
-			@brief
+			@brief Default constructor.
 			*/
 			Pipeline() : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(nullptr)
 			{}
 
 			/**
-			@brief
+			@brief Specify logical device.
 			*/
 			Pipeline(const LogicalDevice& _device) : handle(Null<Handle>), cache(nullptr), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Specify logical device and cache.
 			*/
 			Pipeline(const LogicalDevice& _device, const Cache& _cache) : handle(Null<Handle>), cache(&_cache), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Specify logical device and allocator.
 			*/
 			Pipeline(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), cache(nullptr), allocator(&_allocator), device(&_device)
 			{}
 
 			/**
-			@brief Performs a move operation to transfer ownership of the device object to this host object.
-			*/
+			@brief Specify the logical device, cache, and allocator.
+			*/	
 			Pipeline(const LogicalDevice& _device, const Cache& _cache, const Memory::AllocationCallbacks& _allocator) : 
 				handle(Null<Handle>), cache(&_cache), allocator(&_allocator), device(&_device)
 			{}
 
 			/**
-			@brief
+			@brief Performs a move operation to transfer ownership of the device object to this host object.
 			*/
 			Pipeline(Pipeline&& _other) noexcept :
 				handle(std::move(_other.handle)), cache(std::move(_other.cache)), allocator(std::move(_other.allocator)), device(std::move(_other.device))
@@ -1679,7 +1740,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the pipeline if the handle is not null.
 			*/
 			~Pipeline()
 			{
@@ -1687,7 +1748,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Destroy the pipeline.
 			*/
 			void Destroy()
 			{
@@ -1762,7 +1823,7 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief
+		@brief The compute pipeline represents a compute shader.
 		*/
 		class ComputePipeline : public Pipeline
 		{
@@ -1771,7 +1832,7 @@ namespace VaultedThermals
 			using CreateInfo = Parent::Compute::CreateInfo;
 
 			/**
-			@brief
+			@brief Assign the logical device, cache, allocator and handle to the compute pipeline.
 			*/
 			void Assign
 			(
@@ -1788,7 +1849,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a compute pipeline.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1806,13 +1867,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a compute pipeline (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = nullptr ;
-				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Compute::Create
 				(
@@ -1826,13 +1886,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a compute pipeline (logical device and cache specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const Cache& _cache, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = &_cache ;
-				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Compute::Create
 				(
@@ -1846,7 +1905,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a compute pipeline (logical device, cache, and allocator specified).
 			*/
 			EResult Create
 			(
@@ -1872,7 +1931,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create multiple compute pipelines that will be returned by the given dynamic array container of _pipelines.
 			*/
 			static EResult Create
 			(
@@ -1913,7 +1972,7 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief 
+		@brief Graphics pipelines consist of multiple shader stages, multiple fixed-function pipeline stages, and a pipeline layout.
 		*/
 		class GraphicsPipeline : public Pipeline
 		{
@@ -1921,7 +1980,7 @@ namespace VaultedThermals
 			using CreateInfo = Parent::Graphics::CreateInfo;
 
 			/**
-			@brief 
+			@brief Assign the logical device, cache, allocator and handle to the graphics pipeline.
 			*/
 			void Assign
 			(
@@ -1938,7 +1997,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Create a graphics pipeline.
 			*/
 			EResult Create(const CreateInfo& _info)
 			{
@@ -1956,13 +2015,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Create a graphics pipeline (logical device specified).
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = nullptr ;
-				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Graphics::Create
 				(
@@ -1976,13 +2034,12 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief 
+			@brief Create a graphics pipeline (logical device and cache specified).
 			*/
 			EResult Create(const LogicalDevice& _device, Cache& _cache, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = &_cache ;
-				allocator = Memory::DefaultAllocator;
 
 				return Parent::Parent::Graphics::Create
 				(
@@ -1996,7 +2053,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create a graphics pipeline (logical device, cache, and allocator specified).
 			*/
 			EResult Create
 			(
@@ -2022,7 +2079,7 @@ namespace VaultedThermals
 			}
 
 			/**
-			@brief
+			@brief Create multiple graphics pipelines that will be returned by the given dynamic array container of _pipelines.
 			*/
 			static EResult Create
 			(

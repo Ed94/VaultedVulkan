@@ -304,8 +304,7 @@ namespace VaultedThermals
 			*/
 			EResult Allocate(const LogicalDevice& _device, const AllocateInfo& _allocateInfo)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				return Parent::Allocate(*device, _allocateInfo, handle);
 			}

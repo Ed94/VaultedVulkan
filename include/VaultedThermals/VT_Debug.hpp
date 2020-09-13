@@ -411,8 +411,7 @@ namespace VaultedThermals
 				*/
 				EResult Create(const AppInstance& _appInstance, const CreateInfo& _createSpec)
 				{
-					app       = &_appInstance           ;
-					allocator = Memory::DefaultAllocator;
+					app = &_appInstance;
 
 					return Parent::Create(*app, _createSpec, handle);
 				}

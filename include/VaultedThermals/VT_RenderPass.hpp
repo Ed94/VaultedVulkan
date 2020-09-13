@@ -461,8 +461,7 @@ namespace VaultedThermals
 			*/
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
+				device = &_device;
 
 				return Parent::Create(*device, _info, handle);
 			}
@@ -550,7 +549,7 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief
+		@brief A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.
 
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.

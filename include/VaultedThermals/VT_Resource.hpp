@@ -1831,8 +1831,6 @@ namespace VaultedThermals
 			{
 				device = &_device;
 
-				allocator = nullptr;   // #TODO: Delete this.
-
 				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
 
 				if (returnCode == EResult::Success)
@@ -2120,8 +2118,6 @@ namespace VaultedThermals
 			{
 				device = &_device;
 
-				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
-
 				return Parent::Create(*device, _info, allocator, handle);
 			}
 
@@ -2398,8 +2394,6 @@ namespace VaultedThermals
 			EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 			{
 				device = &_device;
-
-				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 
 				return Parent::Create(*device, _info, allocator, handle);
 			}

@@ -544,8 +544,6 @@ namespace VaultedThermals
 
 				app = &_app;
 
-				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
-
 				return Parent::Create(*app, geninfo, handle);
 			}
 
@@ -555,8 +553,6 @@ namespace VaultedThermals
 			EResult Create(const AppInstance& _appHandle, const CreateInfo& _info)
 			{
 				app = &_appHandle;
-
-				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
 				
 				return Parent::Create(*app, _info, handle);
 			}

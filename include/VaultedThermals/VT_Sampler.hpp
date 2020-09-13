@@ -261,8 +261,6 @@ namespace VaultedThermals
             {
                 device = &_device;
 
-				allocator = Memory::DefaultAllocator;   // #TODO: Delete this.
-
                 return Parent::Create(*device, _info, allocator, handle);
             }
 
