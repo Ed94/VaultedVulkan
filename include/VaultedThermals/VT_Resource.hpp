@@ -1148,6 +1148,10 @@ namespace VaultedThermals
 
 		using V1::DescriptorSet;
 
+		/**
+		@brief A descriptor pool maintains a pool of descriptors, from which descriptor sets are allocated. Descriptor pools are externally synchronized,
+		meaning that the application must not allocate and/or free descriptor sets from the same pool in multiple threads simultaneously.
+		*/
 		struct DescriptorPool : public V1::DescriptorPool
 		{
 			using Parent = V1::DescriptorPool;
@@ -2298,7 +2302,8 @@ namespace VaultedThermals
 		};
 
 		/**
-		@brief 
+		@brief A descriptor pool maintains a pool of descriptors, from which descriptor sets are allocated. Descriptor pools are externally synchronized,
+		meaning that the application must not allocate and/or free descriptor sets from the same pool in multiple threads simultaneously.
 
 		@details
 		This object represents a device created object on the host. As such ownership is tied to this host object.
