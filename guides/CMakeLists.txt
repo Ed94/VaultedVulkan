@@ -90,73 +90,136 @@ endif()
 # Sources
 get_filename_component(PARENT_DIR ../ ABSOLUTE)
 
-// VT 
-file(GLOB_RECURSE FILE_SOURCES RELATIVE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/HelloTri_Seed/*.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/HelloTri_Seed/*.h
-    ${PARENT_DIR}/include/*.hpp
-)
-
 include_directories(${PARENT_DIR}/include/)
 
-# Solution Filters
-foreach(source IN LISTS FILE_SOURCES)
-    get_filename_component(source_path "${source}" PATH)
-    string(REPLACE "/" "\\" source_path_msvc "${source_path}")
-    string(REPLACE "HelloTri_Seed" "" source_path_final "${source_path_msvc}")
-    source_group("${source_path_final}" FILES "${source}")
-endforeach()
+# VT Guide: Triangle Seed
+    file(GLOB_RECURSE FILE_SOURCES_TriSeed RELATIVE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/Tri_Seed/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Tri_Seed/*.h
+        ${PARENT_DIR}/include/*.hpp
+    )
+    
+    # Solution Filters
+    foreach(source IN LISTS FILE_SOURCES_TriSeed)
+        get_filename_component(source_path "${source}" PATH)
+        string(REPLACE "/" "\\" source_path_msvc "${source_path}")
+        string(REPLACE "Tri_Seed" "" source_path_final "${source_path_msvc}")
+        source_group("${source_path_final}" FILES "${source}")
+    endforeach()
+    
+# VT Guide: User Space
+    file(GLOB_RECURSE FILE_SOURCES_UserSpace RELATIVE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/UserSpace/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/UserSpace/*.h
+        ${PARENT_DIR}/include/*.hpp
+    )
+
+    # Solution Filters
+    foreach(source IN LISTS FILE_SOURCES_UserSpace)
+        get_filename_component(source_path "${source}" PATH)
+        string(REPLACE "/" "\\" source_path_msvc "${source_path}")
+        string(REPLACE "UserSpace" "" source_path_final "${source_path_msvc}")
+        source_group("${source_path_final}" FILES "${source}")
+    endforeach()
 
 # =============================================================
 
 # Finalize App
 
+# VT Guide: Triangle Seed
 xwin_add_executable(
-    ${PROJECT_NAME}
-    "${FILE_SOURCES}"
+    "${PROJECT_NAME}_TriSeed"
+    "${FILE_SOURCES_TriSeed}"
+)
+
+# VT Guide: User Space
+xwin_add_executable(
+    "${PROJECT_NAME}_UserSpace"
+    "${FILE_SOURCES_UserSpace}"
 )
 
 # =============================================================
 
 # Finish Dependencies
 
-target_link_libraries(
-    ${PROJECT_NAME}
-    ${XGFX_LIBRARY}
-    #CrossWindowGraphics
-    CrossWindow
-    glm_static
-)
+# VT Guide: Triangle Seed
+    target_link_libraries(
+        "${PROJECT_NAME}_TriSeed"
+        ${XGFX_LIBRARY}
+        #CrossWindowGraphics
+        CrossWindow
+        glm_static
+    )
 
-target_include_directories(
-  ${PROJECT_NAME}
-  PUBLIC _ThirdParty/glm
-  PUBLIC ${VULKAN_INCLUDE_DIR}
-)
+    target_include_directories(
+        "${PROJECT_NAME}_TriSeed"
+    PUBLIC _ThirdParty/glm
+    PUBLIC ${VULKAN_INCLUDE_DIR}
+    )
 
-add_dependencies(
-    ${PROJECT_NAME}
-    #CrossWindowGraphics
-    CrossWindow
-    glm_static
-)
+    add_dependencies(
+        "${PROJECT_NAME}_TriSeed"
+        #CrossWindowGraphics
+        CrossWindow
+        glm_static
+    )
 
-target_compile_definitions(
-  ${PROJECT_NAME} 
-  PUBLIC XGFX_${XGFX_API}=1
-)
+    target_compile_definitions(
+        "${PROJECT_NAME}_TriSeed"
+    PUBLIC XGFX_${XGFX_API}=1
+    )
+
+# VT Guide: User Space
+    target_link_libraries(
+        "${PROJECT_NAME}_UserSpace"
+        ${XGFX_LIBRARY}
+        #CrossWindowGraphics
+        CrossWindow
+        glm_static
+    )
+
+    target_include_directories(
+        "${PROJECT_NAME}_UserSpace"
+    PUBLIC _ThirdParty/glm
+    PUBLIC ${VULKAN_INCLUDE_DIR}
+    )
+
+    add_dependencies(
+        "${PROJECT_NAME}_UserSpace"
+        #CrossWindowGraphics
+        CrossWindow
+        glm_static
+    )
+
+    target_compile_definitions(
+        "${PROJECT_NAME}_UserSpace"
+    PUBLIC XGFX_${XGFX_API}=1
+    )
 
 # =============================================================
 
 # Finish Settings
 
-# Change output dir to bin
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-)
-# Change working directory to top dir to access `assets/shaders/` folder
-if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    set_property(TARGET ${PROJECT_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/..)
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
-endif()
+# VT Guide: Triangle Seed
+    # Change output dir to bin
+    set_target_properties("${PROJECT_NAME}_TriSeed" PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    )
+    # Change working directory to top dir to access `assets/shaders/` folder
+    if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        set_property(TARGET "${PROJECT_NAME}_TriSeed" PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/..)
+        set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}_TriSeed")
+    endif()
+    
+# VT Guide: Triangle Seed
+    # Change output dir to bin
+    set_target_properties("${PROJECT_NAME}_UserSpace" PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    )
+    # Change working directory to top dir to access `assets/shaders/` folder
+    if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+        set_property(TARGET "${PROJECT_NAME}_UserSpace" PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/..)
+        set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}_UserSpace")
+    endif()

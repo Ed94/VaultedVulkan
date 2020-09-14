@@ -1,15 +1,13 @@
 #include "CrossWindow/CrossWindow.h"
 #include "Renderer.hpp"
 
-#include <iostream>
-
 
 
 void xmain(int argc, const char** argv)
 {
     // 🖼 Create Window
     xwin::WindowDesc wdesc;
-    wdesc.title = "VT Seed: Hello Triangle";
+    wdesc.title = "VT Guide: Hello Triangle";
     wdesc.name = "MainWindow";
     wdesc.visible = true;
     wdesc.width = 640;

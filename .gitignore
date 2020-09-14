@@ -379,3 +379,4 @@ out/build/x64-Debug/Doxyfile.out
 out/build/x64-Debug/VSInheritEnvironments.txt
 CMakeSettings.json
 guides/.vscode/settings.json
+guides/build
