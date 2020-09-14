@@ -1,0 +1,6 @@
+[submodule "guides/_ThirdParty_/CrossWindow-Graphics"]
+	path = guides/_ThirdParty_/CrossWindow-Graphics
+	url = https://github.com/alaingalvan/CrossWindow-Graphics
+[submodule "guides/_ThirdParty_/CrossWindow"]
+	path = guides/_ThirdParty_/CrossWindow
+	url = https://github.com/alaingalvan/CrossWindow
