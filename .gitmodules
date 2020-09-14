@@ -1,0 +1,6 @@
+[submodule "guides/_ThirdParty/glm"]
+	path = guides/_ThirdParty/glm
+	url = https://github.com/g-truc/glm
+[submodule "guides/_ThirdParty/CrossWindow"]
+	path = guides/_ThirdParty/CrossWindow
+	url = https://github.com/alaingalvan/CrossWindow
