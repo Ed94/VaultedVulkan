@@ -51,8 +51,8 @@ add_subdirectory(_ThirdParty/crosswindow)
 set_property(TARGET CrossWindow PROPERTY FOLDER "Dependencies")
 
 # CrossWindow-Graphics
-message(STATUS "Installing crosswindow-graphics via submodule")
-add_subdirectory(_ThirdParty/crosswindow-graphics)
+#message(STATUS "Installing crosswindow-graphics via submodule")
+#add_subdirectory(_ThirdParty/crosswindow-graphics)
 
 # GLM
 message(STATUS "Installing glm via submodule")
@@ -87,17 +87,13 @@ endif()
 
 # =============================================================
 
-# VT Include
-
-
-# =============================================================
-
 # Sources
 
 file(GLOB_RECURSE FILE_SOURCES RELATIVE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/guides/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/guides/*.h
+	${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp
 )
 
 # Solution Filters
@@ -124,23 +120,22 @@ xwin_add_executable(
 target_link_libraries(
     ${PROJECT_NAME}
     ${XGFX_LIBRARY}
-    CrossWindowGraphics
+    #CrossWindowGraphics
     CrossWindow
     glm_static
 )
 
 target_include_directories(
   ${PROJECT_NAME}
-  PUBLIC external/glm
+  PUBLIC _ThirdParty/glm
   PUBLIC ${VULKAN_INCLUDE_DIR}
 )
 
 add_dependencies(
     ${PROJECT_NAME}
-    CrossWindowGraphics
+    #CrossWindowGraphics
     CrossWindow
     glm_static
-    
 )
 
 target_compile_definitions(
