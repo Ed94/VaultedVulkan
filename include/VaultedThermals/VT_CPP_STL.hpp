@@ -70,10 +70,6 @@ namespace VaultedThermals
 		using VoidPtr  = void*  ;
 		using PtrArray = void*[];
 
-		using WordSize = std::size_t   ;
-		using sIntPtr  = std::intptr_t ;
-		using uIntPtr  = std::uintptr_t;
-
 		// RawStrings
 
 		using CStr              =       char*       ;

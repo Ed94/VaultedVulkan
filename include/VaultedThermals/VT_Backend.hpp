@@ -167,7 +167,7 @@ namespace VaultedThermals
 		constexpr typename std::enable_if<IsBitmaskable<Enum>::value, bool>::
 		type Bitmaskable() noexcept
 		{
-			return static_cast<WordSize>(Enum::VT_SpecifyBitmaskable) > WordSize(0) ? true : false;
+			return static_cast<std::size_t>(Enum::VT_SpecifyBitmaskable) > std::size_t(0) ? true : false;
 		}
 
 		template <typename Enum> 

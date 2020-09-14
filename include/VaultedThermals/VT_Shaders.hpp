@@ -77,7 +77,7 @@ namespace VaultedThermals
 				      EType             SType     = STypeEnum;
 				const void*             Next      = nullptr  ;
 				      CreateFlags       Flags    ;
-				      WordSize          CodeSize  = 0        ;
+					  std::size_t       CodeSize  = 0        ;
 				const SPIR_V::Bytecode* Code      = nullptr  ;
 			};
 
@@ -151,7 +151,7 @@ namespace VaultedThermals
 				CreateInfo() : Parent::CreateInfo()
 				{}
 
-				CreateInfo(RoCStr _code, WordSize _codeSize)
+				CreateInfo(RoCStr _code, std::size_t _codeSize)
 				{
 					using SPIR_V::Bytecode;
 

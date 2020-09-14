@@ -1231,8 +1231,6 @@ namespace VaultedThermals
 				handle            (Null<Handle>), 
 				allocator         (nullptr)     ,
 				device            (nullptr)     , 
-				memory            (nullptr)     , 
-				memoryOffset      (0)           , 
 				memoryRequirements()            
 			{}
 
@@ -1243,8 +1241,6 @@ namespace VaultedThermals
 				handle            (Null<Handle>), 
 				allocator         (nullptr)     ,
 				device            (&_device)    , 
-				memory            (nullptr)     , 
-				memoryOffset      (0)           , 
 				memoryRequirements()   
 			{}
 
@@ -1255,8 +1251,6 @@ namespace VaultedThermals
 				handle            (Null<Handle>),
 				allocator         (&_allocator) ,
 				device            (&_device)    ,
-				memory            (nullptr)     ,
-				memoryOffset      (0)           ,
 				memoryRequirements()
 			{}
 
@@ -1267,16 +1261,11 @@ namespace VaultedThermals
 				handle   (_other.handle   ),
 				allocator(_other.allocator),
 				device   (_other.device   ),
-				memory            (_other.memory            ),
-				memoryOffset      (_other.memoryOffset      ),
 				memoryRequirements(_other.memoryRequirements)
 			{
 				_other.handle    = Null<Handle>            ;
 				_other.allocator = Memory::DefaultAllocator;
 				_other.device    = nullptr                 ;
-
-				_other.memory       = nullptr;
-				_other.memoryOffset = 0;
 			}
 
 			/**
@@ -1287,17 +1276,13 @@ namespace VaultedThermals
 				if (handle != Null<Handle>) Destroy();
 			}
 
-			// #TODO: Move to v4 buffer package.
 			/**
-			@brief
+			@brief Attach memory to a buffer object.
 			*/
 			EResult BindMemory(const Memory& _memory, DeviceSize _memoryOffset)
 			{
-				memory       = &_memory     ;
-				memoryOffset = _memoryOffset;
-
-				return Parent::BindMemory(*device, handle, *memory, memoryOffset);
-			}
+				return Parent::BindMemory(*device, handle, _memory, _memoryOffset);
+			}	
 
 			/**
 			@brief Create a buffer.
@@ -1345,122 +1330,6 @@ namespace VaultedThermals
 				return returnCode;
 			}
 
-			// #TODO: Move to V4 buffer package.
-			/**
-			@brief
-			*/
-			EResult CreateAndBind
-			(
-				const CreateInfo&           _info          ,  
-				      Memory::PropertyFlags _memoryFlags   ,
-				      Memory&               _memory
-			)
-			{
-				if (device == nullptr) return EResult::Not_Ready;
-
-				EResult returnCode = Parent::Create(*device, _info, allocator, handle);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
-
-				Memory::AllocateInfo allocationInfo{};
-
-				allocationInfo.AllocationSize = memoryRequirements.Size;
-
-				allocationInfo.MemoryTypeIndex = 
-					device->GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
-
-				returnCode = _memory.Allocate(*device, allocationInfo, *allocator);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				BindMemory(_memory, Memory::ZeroOffset);
-
-				memory = &_memory;
-
-				return returnCode;
-			}
-
-			// #TODO: Move to v4 buffer package.
-			/**
-			@brief
-			*/
-			EResult CreateAndBind
-			(
-				const LogicalDevice&        _device        ,  
-				const CreateInfo&           _info          ,  
-				      Memory::PropertyFlags _memoryFlags   ,
-				      Memory&               _memory
-			)
-			{
-				device    = &_device                ;
-				allocator = Memory::DefaultAllocator;
-
-				EResult returnCode = Parent::Create(_device, _info, allocator, handle);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
-
-				Memory::AllocateInfo allocationInfo{};
-
-				allocationInfo.AllocationSize = memoryRequirements.Size;
-
-				allocationInfo.MemoryTypeIndex = 
-					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
-
-				returnCode = _memory.Allocate(*device, allocationInfo, *allocator);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				BindMemory(_memory, Memory::ZeroOffset);
-
-				memory = &_memory;
-
-				return returnCode;
-			}
-
-			// #TODO: Move to V4 buffer package.
-			/**
-			@brief
-			*/
-			EResult CreateAndBind
-			(
-				const LogicalDevice&               _device        ,  
-				const CreateInfo&                  _info          , 
-				      Memory::PropertyFlags        _memoryFlags   ,
-				      Memory&                      _memory        ,
-				const Memory::AllocationCallbacks* _allocator
-			)
-			{
-				device    = &_device   ;
-				allocator = _allocator ;
-
-				EResult returnCode = Parent::Create(_device, _info, allocator, handle);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
-
-				Memory::AllocateInfo allocationInfo{};
-
-				allocationInfo.AllocationSize = memoryRequirements.Size;
-
-				allocationInfo.MemoryTypeIndex = 
-					_device.GetPhysicalDevice().FindMemoryType(memoryRequirements.MemoryTypeBits, _memoryFlags);
-
-				returnCode = _memory.Allocate(*device, allocationInfo, *allocator);
-
-				if (returnCode != EResult::Success) return returnCode;
-
-				BindMemory(_memory, Memory::ZeroOffset);
-
-				memory = &_memory;
-
-				return returnCode;
-			}
-
 			/**
 			@brief Destroy the buffer.
 			*/
@@ -1470,6 +1339,11 @@ namespace VaultedThermals
 
 				handle = Null<Handle>;
 				device = nullptr     ;
+			}
+
+			const LogicalDevice& GetDevice()
+			{
+				return *device;
 			}
 
 			/**
@@ -1524,15 +1398,9 @@ namespace VaultedThermals
 				allocator = std::move(_other.allocator);
 				device    = std::move(_other.device   );
 
-				memory       = std::move(_other.memory      );
-				memoryOffset = std::move(_other.memoryOffset);
-
 				_other.handle    = Null<Handle>            ;
 				_other.allocator = Memory::DefaultAllocator;
 				_other.device    = nullptr                 ;
-
-				_other.memory       = nullptr;
-				_other.memoryOffset = 0      ;
 
 				return *this;
 			}
@@ -1545,12 +1413,7 @@ namespace VaultedThermals
 
 			const LogicalDevice* device;
 
-			const Memory* memory;   // #TODO: Move out to V4 buffer package.
-
-			DeviceSize memoryOffset;   // #TODO: Move out to V4 buffer package.
-
 			Memory::Requirements memoryRequirements;
-
 		};
 
 		/**

@@ -219,8 +219,6 @@ namespace VaultedThermals
 			* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueInfo2">Specification</a> 
 			* 
 			* @ingroup APISpec_Devices_and_Queues
-			* 
-			* @todo #TODO: Add a brief comment.
 			*/
 			struct Queue2 : V0::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
 			{

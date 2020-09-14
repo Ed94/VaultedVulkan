@@ -323,7 +323,7 @@ namespace VaultedThermals
 			/**
 			@brief Free a memory object.
 			*/
-			void Free()
+			void Free() 
 			{
 				Parent::Free(*device, handle, allocator);
 
@@ -334,7 +334,7 @@ namespace VaultedThermals
 			/**
 			@brief Retrieve a host virtual address pointer to a region of a mappable memory object.
 			*/
-			EResult Map(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
+			EResult Map(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data) const
 			{
 				return Parent::Map(*device, handle, _offset, _size, _flags, _data);
 			}
@@ -342,7 +342,7 @@ namespace VaultedThermals
 			/**
 			@brief Unmap a memory object once host access to it is no longer needed by the application.
 			*/
-			void Unmap()
+			void Unmap() const
 			{
 				Parent::Unmap(*device, handle);
 			}
@@ -351,7 +351,7 @@ namespace VaultedThermals
 			@brief Writes to GPU memory by mapping to device memory specified by a
 			handle and then using memcpy to copy data specified in _data.
 			*/
-			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data)
+			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data) const
 			{
 				Parent::WriteToGPU(*device, handle, _offset, _size, _flags, _data);
 			}

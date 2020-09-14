@@ -92,7 +92,7 @@ namespace VaultedThermals
 					      EType       SType           = STypeEnum;
 					const void*       Next            = nullptr  ;
 					      CreateFlags Flags          ;
-					      WordSize    InitialDataSize;
+						  std::size_t InitialDataSize;
 					const void*       InitialData     = nullptr  ;
 				};
 
@@ -620,9 +620,9 @@ namespace VaultedThermals
 				*/
 				struct MapEntry : V0::VKStruct_Base<VkSpecializationMapEntry>
 				{
-					uint32   ConstantID;
-					uint32   Offset    ;
-					WordSize Size      ;
+					uint32      ConstantID;
+					uint32      Offset    ;
+					std::size_t Size      ;
 				};
 
 				/** 
@@ -631,10 +631,10 @@ namespace VaultedThermals
 				*/
 				struct Info : V0::VKStruct_Base<VkSpecializationInfo>
 				{
-					      uint32    MapEntryCount = 0      ;
-					const MapEntry* MapEntires    = nullptr;
-					      WordSize  SizeOfData    = 0      ;
-					const void*     Data          = nullptr;
+					      uint32      MapEntryCount = 0      ;
+					const MapEntry*   MapEntires    = nullptr;
+					      std::size_t SizeOfData    = 0      ;
+					const void*       Data          = nullptr;
 				};
 			};
 
