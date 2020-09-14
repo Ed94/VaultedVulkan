@@ -88,19 +88,22 @@ endif()
 # =============================================================
 
 # Sources
+get_filename_component(PARENT_DIR ../ ABSOLUTE)
 
 file(GLOB_RECURSE FILE_SOURCES RELATIVE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/guides/*.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/guides/*.h
-	${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/HelloTri_Seed/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/HelloTri_Seed/*.h
+    ${PARENT_DIR}/include/*.hpp
 )
+
+include_directories(${PARENT_DIR}/include/)
 
 # Solution Filters
 foreach(source IN LISTS FILE_SOURCES)
     get_filename_component(source_path "${source}" PATH)
     string(REPLACE "/" "\\" source_path_msvc "${source_path}")
-    string(REPLACE "guides" "" source_path_final "${source_path_msvc}")
+    string(REPLACE "HelloTri_Seed" "" source_path_final "${source_path_msvc}")
     source_group("${source_path_final}" FILES "${source}")
 endforeach()
 
