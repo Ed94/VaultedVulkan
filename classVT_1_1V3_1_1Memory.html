@@ -148,22 +148,22 @@
               <span class="m-doc-wrap-bumper">void <a href="#a82c651a75b613f92ee3fbb1884c1e39f" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Free a memory object.</dd>
-            <dt id="aab2282cbb18dc64a521d5735c046631d">
-              <span class="m-doc-wrap-bumper">auto <a href="#aab2282cbb18dc64a521d5735c046631d" class="m-doc-self">Map</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
+            <dt id="a28669c71ae1418808be190dfccb8e7ed">
+              <span class="m-doc-wrap-bumper">auto <a href="#a28669c71ae1418808be190dfccb8e7ed" class="m-doc-self">Map</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
               <a href="structVT_1_1V0_1_1Memory.html#a91f3c69aac7bac662617ff8986dd4d38" class="m-doc">MapFlags</a> _flags,
-              <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data) const -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Retrieve a host virtual address pointer to a region of a mappable memory object.</dd>
-            <dt id="ae094b8d56d1a3c7344e8af6807ba2e06">
-              <span class="m-doc-wrap-bumper">void <a href="#ae094b8d56d1a3c7344e8af6807ba2e06" class="m-doc-self">Unmap</a>(</span><span class="m-doc-wrap">)</span>
+            <dt id="a7b9033721645df3e51d5b488d4796d21">
+              <span class="m-doc-wrap-bumper">void <a href="#a7b9033721645df3e51d5b488d4796d21" class="m-doc-self">Unmap</a>(</span><span class="m-doc-wrap">) const</span>
             </dt>
             <dd>Unmap a memory object once host access to it is no longer needed by the application.</dd>
-            <dt id="af9c601e566c2d174d4a9a5e56561b242">
-              <span class="m-doc-wrap-bumper">void <a href="#af9c601e566c2d174d4a9a5e56561b242" class="m-doc-self">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
+            <dt id="a47f09854014cac8272d8444d363bcccc">
+              <span class="m-doc-wrap-bumper">void <a href="#a47f09854014cac8272d8444d363bcccc" class="m-doc-self">WriteToGPU</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _offset,
               <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _size,
               <a href="structVT_1_1V0_1_1Memory.html#a91f3c69aac7bac662617ff8986dd4d38" class="m-doc">MapFlags</a> _flags,
-              <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data)</span>
+              <a href="group__Corridors.html#ga74350c5dc979ba81457e29c7afc88f01" class="m-doc">VoidPtr</a>&amp; _data) const</span>
             </dt>
             <dd>Writes to GPU memory by mapping to device memory specified by a handle and then using memcpy to copy data specified in _data.</dd>
             <dt id="aba8aaaa9b7e1b31e8cc95a48850d6812">

@@ -133,7 +133,7 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a047fa78f723f5a2f295bbfe313cd95be" class="m-doc-self">BindMemory</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp; _memory,
               <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> _memoryOffset) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Attach memory to a buffer object.</dd>
             <dt id="aa8ef0454e7251b1dd5e31d656b75d0e4">
               <span class="m-doc-wrap-bumper">auto <a href="#aa8ef0454e7251b1dd5e31d656b75d0e4" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Buffer_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
@@ -149,31 +149,14 @@
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a buffer (logical device and allocator specified).</dd>
-            <dt id="a822bf2e03389783c9712aa450d1ef8d3">
-              <span class="m-doc-wrap-bumper">auto <a href="#a822bf2e03389783c9712aa450d1ef8d3" class="m-doc-self">CreateAndBind</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Buffer_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
-              <a href="structVT_1_1V0_1_1Memory.html#a86acc27847a79e66573d32b766cef916" class="m-doc">Memory::<wbr />PropertyFlags</a> _memoryFlags,
-              <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp; _memory) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a97420110784f1843fa7443b88a378089">
-              <span class="m-doc-wrap-bumper">auto <a href="#a97420110784f1843fa7443b88a378089" class="m-doc-self">CreateAndBind</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              const <a href="structVT_1_1V1_1_1Buffer_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
-              <a href="structVT_1_1V0_1_1Memory.html#a86acc27847a79e66573d32b766cef916" class="m-doc">Memory::<wbr />PropertyFlags</a> _memoryFlags,
-              <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp; _memory) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="aa51b568bb0beb3f1e3d5bef9738f68f4">
-              <span class="m-doc-wrap-bumper">auto <a href="#aa51b568bb0beb3f1e3d5bef9738f68f4" class="m-doc-self">CreateAndBind</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              const <a href="structVT_1_1V1_1_1Buffer_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
-              <a href="structVT_1_1V0_1_1Memory.html#a86acc27847a79e66573d32b766cef916" class="m-doc">Memory::<wbr />PropertyFlags</a> _memoryFlags,
-              <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>&amp; _memory,
-              const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
-            </dt>
-            <dd><span></span></dd>
             <dt id="ae24a5f4b3b884503ba5d940486202194">
               <span class="m-doc-wrap-bumper">void <a href="#ae24a5f4b3b884503ba5d940486202194" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Destroy the buffer.</dd>
+            <dt id="a64a7c5be85789df765e278819d3cdc3f">
+              <span class="m-doc-wrap-bumper">auto <a href="#a64a7c5be85789df765e278819d3cdc3f" class="m-doc-self">GetDevice</a>(</span><span class="m-doc-wrap">) -&gt; const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
             <dt id="ad0c859c986c5e77332da2671f89d39f1">
               <span class="m-doc-wrap-bumper">auto <a href="#ad0c859c986c5e77332da2671f89d39f1" class="m-doc-self">GetMemoryRequirements</a>(</span><span class="m-doc-wrap">) const -&gt; const Memory::Requirements&amp;</span>
             </dt>
@@ -201,14 +184,6 @@
             <dd><span></span></dd>
             <dt id="a47f1c3e45ccb078f8e24014ccd392720">
               const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>* <a href="#a47f1c3e45ccb078f8e24014ccd392720" class="m-doc-self">device</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a9b52ad3076b4eeb1b3bb3d25f954c545">
-              const <a href="classVT_1_1V3_1_1Memory.html" class="m-doc">Memory</a>* <a href="#a9b52ad3076b4eeb1b3bb3d25f954c545" class="m-doc-self">memory</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="a3e5a993b27edc18a0765f7279394b9aa">
-              <a href="group__APISpec__Fundamentals.html#ga0f1f8872d12dd9074591a7945fdc2e35" class="m-doc">DeviceSize</a> <a href="#a3e5a993b27edc18a0765f7279394b9aa" class="m-doc-self">memoryOffset</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a6511b8a66f5c14df58322caa27dfdc06">
