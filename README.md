@@ -20,3 +20,7 @@ Currently the library can be used to bootstrap a vulkan backend, however a good 
 
 My current intentions is to get this going as far as I like in conjunction with following various vulkan guides, and making my engine mvp. 
 After that is done, this will be publicly released with some sort of open source license.
+
+## Guides
+
+Head on over to ![guides](https://github.com/Ed94/VaultedThermals/tree/master/guides) to get started.
