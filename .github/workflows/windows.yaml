@@ -58,10 +58,12 @@ jobs:
       - name: Build
         shell: pwsh
         run: |
+          cd guides
           cmake --build build ${{ matrix.config.cmake_build_options }}
       - name: Prepare upload
         shell: pwsh
         run: |
+          cd guides
           7z a -tzip ${{ matrix.config.artifact }} build/*
       - name: Upload
         uses: actions/upload-artifact@v1
