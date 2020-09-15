@@ -115,7 +115,7 @@
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">#define <a href="#ad8e454f3684aa8cd1b2634dc9b073534" class="m-doc">EnforceVulkanCallingConvention</a>(</span><span class="m-doc-wrap">_FUNCTION)</span>
+              <span class="m-doc-wrap-bumper">#define <a href="#af7f5b83ea9e6fab4b7b735ae64591698" class="m-doc">GetVTAPI_Call</a>(</span><span class="m-doc-wrap">_FUNCTION)</span>
             </dt>
             <dd>Used to wrap a function with the vulkan calling convention specifiers. Used for vulkan messaging callbacks.</dd>
           </dl>
@@ -128,9 +128,9 @@
             </h3>
 <aside class="m-note m-dim"><h4><a href="todo.html#_todo000009" class="m-doc">Todo</a></h4><p>This guard is necessary to prevent redefinition errors. I am not entirely sure with pragma once specified, why this is required.</p></aside>
           </div></section>
-          <section class="m-doc-details" id="ad8e454f3684aa8cd1b2634dc9b073534"><div>
+          <section class="m-doc-details" id="af7f5b83ea9e6fab4b7b735ae64591698"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">#define <a href="#ad8e454f3684aa8cd1b2634dc9b073534" class="m-doc-self">EnforceVulkanCallingConvention</a>(</span><span class="m-doc-wrap">_FUNCTION)</span>
+              <span class="m-doc-wrap-bumper">#define <a href="#af7f5b83ea9e6fab4b7b735ae64591698" class="m-doc-self">GetVTAPI_Call</a>(</span><span class="m-doc-wrap">_FUNCTION)</span>
             </h3>
             <p>Used to wrap a function with the vulkan calling convention specifiers. Used for vulkan messaging callbacks.</p>
 <p>This is the only intended macro to be used by the user of this library. If the user wishes to avoid using this ease of use macro, the actual function call can be made:</p><p>Enforced_Call&lt;decltype(Function), Function&gt;()</p>
