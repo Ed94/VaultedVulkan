@@ -1,57 +1,76 @@
+// Cross platform window managing library.
 #include "CrossWindow/CrossWindow.h"
+
+// Renderer barebones boostrap.
 #include "Renderer.hpp"
 
 
 
+// This is cross-window's main function, it called on the platform dependent entrypoint.
 void xmain(int argc, const char** argv)
 {
-    // 🖼 Create Window
-    xwin::WindowDesc wdesc;
-    wdesc.title = "VT Guide: Hello Triangle";
-    wdesc.name = "MainWindow";
-    wdesc.visible = true;
-    wdesc.width = 640;
-    wdesc.height = 64;
+    xwin::EventQueue eventQueue;
+    xwin::WindowDesc wdesc     ;
+    xwin::Window     window    ;
+    
+    // Setup the window creation parameters. 
+    wdesc.title      = "VT Guide: Hello Triangle";
+    wdesc.name       = "MainWindow";
+    wdesc.visible    = true;
+    wdesc.width      = 640;
+    wdesc.height     = 64;
     wdesc.fullscreen = false;
 
-    xwin::Window window;
-    xwin::EventQueue eventQueue;
-
-    if (!window.create(wdesc, eventQueue))
-    { return; }
-
-    // Engine Loop
-    bool isRunning = true;
-
-    while (isRunning)
+    try
     {
-        // bool shouldRender = true;
+        // 🖼 Create Window
+        if (!window.create(wdesc, eventQueue))
+            return;   // Exit if window fails to create.
 
-        eventQueue.update();
+        // Engine Loop
 
-        while (!eventQueue.empty())
+        bool isRunning = true;   // Sentinel for engine loop.
+
+        while (isRunning)
         {
-            const xwin::Event& event = eventQueue.front();
+            // bool shouldRender = true;
 
-            if (event.type == xwin::EventType::Resize)
+            // Update the event queue for the window.
+            eventQueue.update();   
+
+            // Process events.
+            while (!eventQueue.empty())   
             {
-                const xwin::ResizeData data = event.data.resize;
+                // Get the latest event.
+                const xwin::Event& event = eventQueue.front();   
 
-                // renderer.resize(data.width, data.height);
+                // Handle window resizing.
+                if (event.type == xwin::EventType::Resize)
+                {
+                    const xwin::ResizeData data = event.data.resize;
 
-                // shouldRender = false;                
-            }
+                    // renderer.resize(data.width, data.height);
 
-            if (event.type == xwin::EventType::Close)
-            {
-                window.close();
+                    // shouldRender = false;                
+                }
 
-                // shouldRender = false;
+                // Handle window closing.
+                if (event.type == xwin::EventType::Close)
+                {
+                    window.close();
 
-                isRunning = false;
-            }
+                    // shouldRender = false;
 
-            eventQueue.pop();
-        }        
+                    isRunning = false;
+                }
+
+                // Remove the event from the queue.
+                eventQueue.pop();
+            }        
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
 }
