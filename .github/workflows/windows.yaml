@@ -66,7 +66,7 @@ jobs:
           cd guides
           7z a -tzip ${{ matrix.config.artifact }} build/*
       - name: Upload
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
-          path: ${{ matrix.config.artifact }}
+          path: ${{ guides/matrix.config.artifact }}
           name: ${{ matrix.config.artifact }}
