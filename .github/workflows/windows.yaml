@@ -1,0 +1,70 @@
+name: Windows Build
+on: [push, pull_request]
+
+jobs:
+  windows:
+    name: ${{ matrix.config.name }}
+    runs-on: windows-latest
+    env:
+      vt_build_type: "Release"
+      vt_vulkan_sdk: "$GITHUB_WORKSPACE/vulkan_sdk/"
+      vt_vulkan_version: "1.2.148.1"
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {
+            name: "Windows MSVC",
+            artifact: "windows-msvc.zip",
+            cc: "cl", cxx: "cl",
+            cmake_build_options: "--config Release",
+            cmake_configure_options: '-G "Visual Studio 16 2019" -A x64',
+            conan_profile_update: 'conan profile update settings.compiler="Visual Studio" default; conan profile update settings.compiler.version=16 default',
+          }
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Update environment
+        shell: pwsh
+        run: |
+          pip3 install wheel setuptools
+          pip3 install conan
+          choco install ninja
+      - name: Install Vulkan SDK
+        shell: pwsh
+        run: |
+          curl -LS -o vulkansdk.exe `
+            https://vulkan.lunarg.com/sdk/download/${{ env.vt_vulkan_version }}/windows/VulkanSDK-${{ env.vt_vulkan_version }}-Installer.exe?Human=true
+          7z x vulkansdk.exe -o"${{ env.vt_vulkan_sdk }}"
+      - name: Configure CMake
+        shell: pwsh
+        run: |
+          $env:CC="${{ matrix.config.cc }}"
+          $env:CXX="${{ matrix.config.cxx }}"
+          $env:Path += ";${{ env.vt_vulkan_sdk }}\;${{ env.vt_vulkan_sdk }}\Bin\"
+          # Setup conan
+          conan profile new default --detect --force
+          ${{ matrix.config.conan_profile_update }}
+          # Configure CMake
+          cd guides
+          cmake . `
+            -Bbuild `
+            -DCMAKE_BUILD_TYPE=${{ env.vt_build_type }} `
+            ${{ matrix.config.cmake_configure_options }}
+      - name: Build
+        shell: pwsh
+        run: |
+          cmake --build build ${{ matrix.config.cmake_build_options }}
+      - name: Prepare upload
+        shell: pwsh
+        run: |
+          7z a -tzip ${{ matrix.config.artifact }} build/*
+      - name: Upload
+        uses: actions/upload-artifact@v1
+        with:
+          path: ${{ matrix.config.artifact }}
+          name: ${{ matrix.config.artifact }}
