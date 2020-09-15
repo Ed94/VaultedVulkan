@@ -117,27 +117,27 @@ namespace Backend
 		/*constexpr*/ const std::vector<uint32> Indicies = { 0, 1, 2 };
 	};
 
-	class Renderer
+	class VKGPU
 	{
 	public:
 		
-		Renderer(Window& _window);
+		VKGPU(Window& _window);
 		
-		~Renderer();
+		~VKGPU();
 		
 		// Render onto the render target.
 		void Render();
 
 		// Resize the window and internal data structures
-		void Resize(uint32 _width, uint32 _height);
+		void Recalibrate(uint32 _width, uint32 _height);
 
 	protected:   // Functions
 
 		// Initialize your Graphics API
-		void InitializeAPI(Window& _window);
+		void InitalizeCommunication(Window& _window);
 
 		// Destroy any Graphics API data structures used in this example
-		void DestroyAPI();
+		void CeaseCommunication();
 
 		// Initialize any resources such as VBOs, IBOs, used in this example
 		void InitializeResources();
@@ -155,7 +155,7 @@ namespace Backend
 		void DestroyCommands();
 
 		// Set up the FrameBuffer
-		void InitFrameBuffer();
+		void InitializeFrameBuffer();
 
 		void DestroyFrameBuffer();
 
@@ -170,5 +170,65 @@ namespace Backend
 	protected:   // Variables
 
 		std::chrono::time_point<std::chrono::steady_clock> start, end;   // 
+
+		std::chrono::duration<double> elapsedTime;
+		
+
+		// GPU Commmunication
+
+		AppInstance    appGPU;
+		PhysicalDevice phsycialDevice;
+		LogicalDevice  device;
+
+		LogicalDevice::Queue queue;
+		float                queuePriority;
+		uint32               queueFamily;
+
+		// Renderer
+
+		Surface   surface  ;
+		Swapchain swapchain;
+
+		Extent2D surfaceSize;
+		Rect2D   renderArea ;		
+
+		Viewport viewport;
+
+		RenderPass renderPass;
+
+		Pipeline::Cache pipelineCache;
+		Pipeline::Layout pipelineLayout;
+
+		GraphicsPipeline graphicsPipeline;
+
+		std::vector<Fence> waitFences;
+
+		Semaphore swapAquisitionStatus, presentSubmitStatus;
+
+		// Commands
+
+		CommandPool                commandPool   ;
+		std::vector<CommandBuffer> commandBuffers;
+		uint32                     currentBuffer ;
+
+		// Resources
+
+		EFormat     surfaceColorFormat;
+		EColorSpace surfaceColorSpace ;
+		EFormat     surfaceDepthFormat;
+		Image       depthImage        ;
+		Memory      depthImageMemory  ;
+
+		DescriptorPool descriptorPool;
+
+		std::vector<Pipeline::Layout::DescriptorSet> descriptorSetLayouts;
+		std::vector<DescriptorSet> descriptorSets;
+
+		ShaderModule vertModule;
+		ShaderModule fragModule;
+
+		Buffer vertBuffer;
+		Buffer fragBuffer;
+
 	};
 }

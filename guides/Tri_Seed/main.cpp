@@ -9,7 +9,7 @@
 // This is cross-window's main function, it called on the platform dependent entrypoint.
 void xmain(int argc, const char** argv)
 {
-    using Backend::Renderer;
+    using Backend::VKGPU;
 
     xwin::EventQueue eventQueue;   // Window event queue.
     xwin::WindowDesc wdesc     ;   // Window description.
@@ -29,7 +29,7 @@ void xmain(int argc, const char** argv)
         if (!window.create(wdesc, eventQueue))
             return;   // Exit if window fails to create.
 
-        Renderer renderer();
+        VKGPU gpu(window);
 
         // Engine Loop
 
@@ -37,7 +37,7 @@ void xmain(int argc, const char** argv)
 
         while (isRunning)
         {
-            // bool shouldRender = true;
+             bool shouldRender = true;
 
             // Update the event queue for the window.
             eventQueue.update();   
@@ -53,9 +53,9 @@ void xmain(int argc, const char** argv)
                 {
                     const xwin::ResizeData data = event.data.resize;
 
-                    // renderer.resize(data.width, data.height);
+                    //  gpu.Recalibrate(data.width, data.height);
 
-                    // shouldRender = false;                
+                     shouldRender = false;                
                 }
 
                 // Handle window closing.
@@ -63,14 +63,17 @@ void xmain(int argc, const char** argv)
                 {
                     window.close();
 
-                    // shouldRender = false;
+                    shouldRender = false;
 
                     isRunning = false;
                 }
 
                 // Remove the event from the queue.
                 eventQueue.pop();
-            }        
+            }   
+
+            // Process Rendering
+            // gpu.render();     
         }
     }
     catch(const std::exception& e)
