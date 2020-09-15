@@ -37,15 +37,15 @@ enum class EGetCwdChoice
 #endif
 
 template<EGetCwdChoice ChoosenCwd = CwdChoice>
-inline typename std::enable_if<ChoosenCwd == EGetCwdChoice::WinCwd, 
-char* >::type GetCwd(char* _buffer, int _bufferSize)
+inline typename std::enable_if<ChoosenCwd == EGetCwdChoice::WinCwd, char* >::type 
+GetCwd(char* _buffer, int _bufferSize)
 {
 	return _getcwd(_buffer, _bufferSize);
 };
 
 template<EGetCwdChoice ChoosenCwd = CwdChoice>
-inline typename std::enable_if<ChoosenCwd == EGetCwdChoice::Regular, 
-char* >::type GetCwd(char* _buffer, int _bufferSize)
+inline typename std::enable_if<ChoosenCwd == EGetCwdChoice::Regular, char* >::type 
+GetCwd(char* _buffer, int _bufferSize)
 {   
     return getcwd(_buffer, _bufferSize);
 };

@@ -178,7 +178,7 @@ namespace VaultedThermals
 
 		Enforced_Call<decltype(Function), Function>()
 		*/
-		#define EnforceVulkanCallingConvention(_FUNCTION) \
+		#define GetVTAPI_Call(_FUNCTION) \
 		GetVulkanAPI_Call<decltype(_FUNCTION), _FUNCTION>()
 	}
 

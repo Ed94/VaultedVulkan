@@ -118,7 +118,10 @@ namespace Backend
 	class VKGPU
 	{
 	public:
-		
+		/* 
+		The vulkan backend is designed to setup the device with surface rendering support right on creation,
+		so it needs an existing window to make sure that there is an available gpu that can present to it.
+		*/
 		VKGPU(Window& _window);
 		
 		~VKGPU();
@@ -178,6 +181,8 @@ namespace Backend
 		AppInstance    appGPU;
 		PhysicalDevice phsycialDevice;
 		LogicalDevice  device;
+
+		DebugUtils::Messenger messenger;
 
 		Queue  queue;
 		float  queuePriority;

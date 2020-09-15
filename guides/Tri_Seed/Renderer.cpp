@@ -161,8 +161,10 @@ namespace Backend
 
     // VKGPU
 
-    VKGPU::VKGPU(Window& _window)
+    VKGPU::VKGPU(Window& _window) : messenger(appGPU)
     {
+		std::cout << "Creating Vulkan GPU backend." << std::endl;
+
         InitalizeCommunication(_window);
 
         // InitalizeResources();
@@ -185,6 +187,8 @@ namespace Backend
 
     void VKGPU::InitalizeCommunication(Window& _window)
     {
+
+
         std::vector<LayerAndExtensionProperties> installedAppExtensions;
 
         AppInstance::GetAvailableLayersAndExtensions(installedAppExtensions);
@@ -193,7 +197,7 @@ namespace Backend
         {
             InstanceExt::DebugUtility,   // Enables debugging features.
             InstanceExt::Surface     ,   // Enables surface presentation support.
-            Surface    ::OSSurface       // Enables os specific surface support.
+            Surface    ::OS_Extension    // Enables os specific surface support.
         };
 
         std::vector<const char*> desiredDeviceExtensions = 
@@ -226,8 +230,27 @@ namespace Backend
         info.EnabledLayerCount = static_cast<uint32>(desiredLayers.size());
         info.EnabledLayerNames = desiredLayers.data();
 
+		Messenger::CreateInfo messengerInfo;
 
+		using EServerity   = Messenger::EServerity  ;
+		using EMessageType = Messenger::EMessageType;
+
+		messengerInfo.Serverity.Set(EServerity  ::Verbose, EServerity  ::Warning   , EServerity  ::Error      );
+		messengerInfo.Type     .Set(EMessageType::General, EMessageType::Validation, EMessageType::Performance);
+
+		messengerInfo.UserCallback = GetVTAPI_Call(DebugCallback);
+		messengerInfo.UserData     = nullptr;
+
+		EResult returnCode = appGPU.Create(info);
+
+		if (returnCode != EResult::Success) throw std::runtime_error("Failed to create the vulkan application instance.");
+
+		returnCode = messenger.Create(messengerInfo);
+
+		if (returnCode != EResult::Success) throw std::runtime_error("Failed to create the debug messenger.");	
 
         std::vector<const char*> deviceExtensions;
+
+		std::cout << "Vulkan application handshake complete!" << std::endl;
     }
 }

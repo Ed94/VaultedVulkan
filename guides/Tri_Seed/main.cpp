@@ -9,6 +9,8 @@
 // This is cross-window's main function, it called on the platform dependent entrypoint.
 void xmain(int argc, const char** argv)
 {
+    std::cout << "Entered CrossWindow execution: xmain" << std::endl;
+
     using Backend::VKGPU;
 
     xwin::EventQueue eventQueue;   // Window event queue.
@@ -28,10 +30,12 @@ void xmain(int argc, const char** argv)
         // 🖼 Create Window
         if (!window.create(wdesc, eventQueue))
             return;   // Exit if window fails to create.
+        else std::cout << "Window created." << std::endl;
 
         VKGPU gpu(window);
 
         // Engine Loop
+        std::cout << "Entering engine loop." << std::endl;
 
         bool isRunning = true;   // Sentinel for engine loop.
 
@@ -78,6 +82,6 @@ void xmain(int argc, const char** argv)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Error: " << e.what() << '\n';
     }
 }

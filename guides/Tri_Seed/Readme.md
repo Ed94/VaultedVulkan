@@ -1,6 +1,6 @@
 # Hello Triangle - VT Seed
 
-[This is a guide that closely follows Alain Galvan's Raw Vulkan guide.](https://alain.xyz/blog/raw-vulkan)
+[Based off Alain* Galvan's Raw Vulkan guide.](https://alain.xyz/blog/raw-vulkan)
 
 ## Summary:
 

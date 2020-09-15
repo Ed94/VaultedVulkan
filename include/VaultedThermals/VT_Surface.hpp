@@ -150,7 +150,7 @@ namespace VaultedThermals
 			using OS_AppHandle    = PlatformTypes::OS_AppHandle   ;
 			using OS_WindowHandle = PlatformTypes::OS_WindowHandle;
 
-			static constexpr RoCStr OSSurface = InstanceExt::Win32Surface;
+			static constexpr RoCStr OS_Extension = InstanceExt::Win32Surface;
 
 			/** 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a> 

@@ -30,14 +30,15 @@ If you stumbled upon this library while looking for vulkan resources on github, 
 
 ### Recommended Vulkan C/C++ API Tutorials
 
-C++:
+C++ :   
 
-[Raw Vulkan](https://alain.xyz/blog/raw-vulkan)
+[Raw Vulkan](https://alain.xyz/blog/raw-vulkan)   
 This is what the Tri_Seeed guide is based off of and will kick start you well with the Vulkan-Hpp library.
 
-C:
-[Vulkan Tutorial](https://vulkan-tutorial.com/Introduction)
-This was the first tutorial I engaged with and got the job done. It goes quite in depth, I kinda wish there was a C++ equivalent for Vulkan-Hpp.
+C :   
 
-[Intel's API without Secrets: Introduction to Vulkan](https://software.intel.com/content/www/us/en/develop/articles/api-without-secrets-introduction-to-vulkan-part-1.html)
+[Vulkan Tutorial](https://vulkan-tutorial.com/Introduction)
+This was the first tutorial I engaged with and got the job done. It goes quite in depth, I kinda wish there was a C++ equivalent for Vulkan-Hpp.   
+
+[Intel's API without Secrets: Introduction to Vulkan](https://software.intel.com/content/www/us/en/develop/articles/api-without-secrets-introduction-to-vulkan-part-1.html)   
 This one has the most depth of the ones described here. If you want details, this is the place.
