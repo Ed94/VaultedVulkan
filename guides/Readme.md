@@ -40,4 +40,4 @@ C:
 This was the first tutorial I engaged with and got the job done. It goes quite in depth, I kinda wish there was a C++ equivalent for Vulkan-Hpp.
 
 [Intel's API without Secrets: Introduction to Vulkan](https://software.intel.com/content/www/us/en/develop/articles/api-without-secrets-introduction-to-vulkan-part-1.html)
-This one has teh most depth of the ones described here. If you want details, this is the place.
+This one has the most depth of the ones described here. If you want details, this is the place.

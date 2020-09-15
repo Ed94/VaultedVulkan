@@ -398,6 +398,11 @@ namespace VaultedThermals
 			}
 		};
 
+		/**
+		@brief Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.
+		*/
+		using Queue = LogicalDevice::Queue;
+
 		/** @} */
 	}
 
@@ -453,6 +458,11 @@ namespace VaultedThermals
 
 			using Parent::Destroy;
 		};
+
+		/**
+		@brief Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.
+		*/
+		using Queue = LogicalDevice::Queue;
 
 		/** @} */
 	}
@@ -796,6 +806,11 @@ namespace VaultedThermals
 
 			const Memory::AllocationCallbacks* allocator;
 		};
+
+		/**
+		@brief Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.
+		*/
+		using Queue = LogicalDevice::Queue;
 
 		/** @} */
 	}

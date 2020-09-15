@@ -313,7 +313,7 @@ namespace VaultedThermals
 
 
 				/**
-				 * @brief Descriptors are grouped together into descriptor set objects. 
+				 * @brief Defines the types and number of descriptor sets used in a pipeline.
 				 * 
 				 * @details
 				 * A descriptor set object is an opaque object containing storage for a set of descriptors, 
@@ -968,6 +968,21 @@ namespace VaultedThermals
 			}
 		};
 
+		/**
+		using Typedef of descriptor set layout in more recognizable form.
+		*/
+		using DescriptorSetLayout = Pipeline::Layout::DescriptorSet;
+
+		/** 
+		using Typedef of pipeline cache in a more recognizable form.
+		*/
+		using PipelineCache = Pipeline::Cache;
+
+		/**
+		@brief Typedef pipeline layout in more recognizable form.
+		*/
+		using PipelineLayout = Pipeline::Layout;
+
 		/** @} */
 	}
 
@@ -1203,6 +1218,21 @@ namespace VaultedThermals
 				Parent::Destroy(_deviceHandle, _pipeline, Memory::DefaultAllocator);
 			}
 		};
+
+		/**
+		using Typedef of descriptor set layout in more recognizable form.
+		*/
+		using DescriptorSetLayout = Pipeline::Layout::DescriptorSet;
+
+		/** 
+		using Typedef of pipeline cache in a more recognizable form.
+		*/
+		using PipelineCache = Pipeline::Cache;
+
+		/**
+		@brief Typedef pipeline layout in more recognizable form.
+		*/
+		using PipelineLayout = Pipeline::Layout;
 
 		/** @} */
 	}
@@ -2118,6 +2148,21 @@ namespace VaultedThermals
 				return returnCode;
 			}
 		};
+
+		/**
+		using Typedef of descriptor set layout in more recognizable form.
+		*/
+		using DescriptorSetLayout = Pipeline::Layout::DescriptorSet;
+
+		/** 
+		using Typedef of pipeline cache in a more recognizable form.
+		*/
+		using PipelineCache = Pipeline::Cache;
+
+		/**
+		@brief Typedef pipeline layout in more recognizable form.
+		*/
+		using PipelineLayout = Pipeline::Layout;
 
 		/** @} */
 	}

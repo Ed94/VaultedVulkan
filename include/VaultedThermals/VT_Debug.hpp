@@ -58,32 +58,6 @@ namespace VaultedThermals
 		*/
 		struct DebugUtils
 		{
-			using EMessageServerity = EDebugUtils_MessageSeverity;
-			using EMessageType      = EDebugUtils_MessageType    ;
-
-			/** 
-			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a>  
-			@ingroup APISpec_Debugging 
-			*/
-			using MessageServerityFlags = Bitmask<EMessageServerity, VkDebugUtilsMessageSeverityFlagsEXT>;
-
-			/** 
-			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  
-			@ingorup APISpec_Debugging 
-			*/
-			using MessageTypeFlags = Bitmask<EMessageType , VkDebugUtilsMessageTypeFlagsEXT>;
-
-			/** 
-			@brief Pointer to the create debug messenger function.
-
-			@details
-			The create messenger function is not provided automatically from the Vulkan API and must be
-			retrieved with AppInstance's GetProcedureAddress function.
-
-			@ingroup APISpec_Debugging
-			*/ 
-			using FPtr_CreateMessenger = PFN_vkCreateDebugUtilsMessengerEXT;
-
 			/** 
 			@brief Used in conjunction with labeling queues, and commands.
 			
@@ -142,6 +116,41 @@ namespace VaultedThermals
 
 				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
 
+				using EServerity   = EDebugUtils_MessageSeverity;
+				using EMessageType = EDebugUtils_MessageType    ;
+
+				/** 
+				@ingroup APISpec_Debugging
+				@brief Pointer to the create debug messenger function.
+
+				@details
+				The create messenger function is not provided automatically from the Vulkan API and must be
+				retrieved with AppInstance's GetProcedureAddress function.
+				*/ 
+				using FPtr_Create = PFN_vkCreateDebugUtilsMessengerEXT;
+
+				/**
+				@ingroup APISpec_Debugging
+				@brief Pointer to the destroy debug messenger function.
+
+				@details
+				The destroy messenger function is not provided automatically from the Vulkan API and must be
+				retrieved with AppInstance's GetProcedureAddress function.
+				*/
+				using FPtr_Destroy = PFN_vkDestroyDebugUtilsMessengerEXT;
+
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a>  
+				@ingroup APISpec_Debugging 
+				*/
+				using ServerityFlags = Bitmask<EServerity, VkDebugUtilsMessageSeverityFlagsEXT>;
+
+				/** 
+				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  
+				@ingorup APISpec_Debugging 
+				*/
+				using TypeFlags = Bitmask<EMessageType, VkDebugUtilsMessageTypeFlagsEXT>;
+
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a> @ingroup APISpec_Debugging */
 				struct CallbackData : V0::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
 				{
@@ -172,6 +181,8 @@ namespace VaultedThermals
 				{
 					using Delegate = PFN_vkDebugUtilsMessengerCallbackEXT;
 
+					using VT_Type = VK_FPtr<Bool, EServerity, EMessageType, TypeFlags, const CallbackData*, void* >;
+
 					template<typename FuncType>
 					void operator=(FuncType _function) 
 					{
@@ -184,13 +195,13 @@ namespace VaultedThermals
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCreateInfoEXT">Specification</a> */
 				struct CreateInfo : V0::VKStruct_Base<VkDebugUtilsMessengerCreateInfoEXT, EStructureType::DebugUtils_Messenger_CreateInfo_EXT>
 				{ 
-						  EType                 SType        = STypeEnum;
-					const void*                 Next         = nullptr  ;
-						  CreateFlags           Flags       ;
-						  MessageServerityFlags Serverity   ;
-						  MessageTypeFlags      Type        ;
-						  CallbackDelegate      UserCallback;
-						  void*                 UserData     = nullptr  ;
+						  EType            SType        = STypeEnum;
+					const void*            Next         = nullptr  ;
+						  CreateFlags      Flags       ;
+						  ServerityFlags   Serverity   ;
+						  TypeFlags        Type        ;
+						  CallbackDelegate UserCallback;
+						  void*            UserData     = nullptr  ;
 				};
 
 				/**
@@ -213,9 +224,9 @@ namespace VaultedThermals
 						  Handle&                      _messenger
 				)
 				{
-					static FPtr_CreateMessenger delegate = nullptr;
+					static FPtr_Create delegate = nullptr;
 
-					if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_CreateMessenger>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
+					if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_Create>(_appInstance, "vkCreateDebugUtilsMessengerEXT");
 
 					if (delegate != nullptr)
 					{
@@ -253,11 +264,9 @@ namespace VaultedThermals
 					const Memory::AllocationCallbacks* _allocator
 				)
 				{
-					using FPtr_DestroyMessenger = PFN_vkDestroyDebugUtilsMessengerEXT;
-
-					static FPtr_DestroyMessenger delegate = nullptr;
+					static FPtr_Destroy delegate = nullptr;
 					
-					if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_DestroyMessenger>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
+					if (delegate == nullptr) delegate = AppInstance::GetProcedureAddress<FPtr_Destroy>(_appInstance, "vkDestroyDebugUtilsMessengerEXT");
 
 					if (delegate != nullptr)
 					{

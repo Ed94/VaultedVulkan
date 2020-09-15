@@ -141,15 +141,17 @@ namespace Backend
 		}
 	}
 
+	using Messenger = DebugUtils::Messenger;
+
     Bool DebugCallback
 	(
-		      DebugUtils::MessageServerityFlags   _messageServerity, 
-		      DebugUtils::MessageTypeFlags        /*_messageType*/ ,
-		const DebugUtils::Messenger::CallbackData _callbackData    , 
-		      void*                               /*_userData*/
+		      Messenger::ServerityFlags  _messageServerity, 
+		      Messenger::TypeFlags       /*_messageType*/ ,
+		const Messenger::CallbackData    _callbackData    , 
+		      void*                                  /*_userData*/
 	)
 	{
-		using ESeverity = EDebugUtils_MessageSeverity;
+		using EServerity = Messenger::EServerity;
 
 		std::cerr << _callbackData.Message << std::endl;
 

@@ -24,7 +24,6 @@ namespace Backend
 	using namespace VT::V3;
 	using namespace VT::SPIR_V;
 
-
 	struct UniformBufferObject
 	{
 		alignas(16) glm::mat4 ModelSpace;
@@ -90,7 +89,6 @@ namespace Backend
 			return result;
 		}
 	};
-
 
 	struct Triangle
 	{
@@ -169,20 +167,21 @@ namespace Backend
 
 	protected:   // Variables
 
+		// Timing
+
 		std::chrono::time_point<std::chrono::steady_clock> start, end;   // 
 
 		std::chrono::duration<double> elapsedTime;
 		
-
 		// GPU Commmunication
 
 		AppInstance    appGPU;
 		PhysicalDevice phsycialDevice;
 		LogicalDevice  device;
 
-		LogicalDevice::Queue queue;
-		float                queuePriority;
-		uint32               queueFamily;
+		Queue  queue;
+		float  queuePriority;
+		uint32 queueFamily;
 
 		// Renderer
 
@@ -196,8 +195,8 @@ namespace Backend
 
 		RenderPass renderPass;
 
-		Pipeline::Cache pipelineCache;
-		Pipeline::Layout pipelineLayout;
+		PipelineCache  pipelineCache;
+		PipelineLayout pipelineLayout;
 
 		GraphicsPipeline graphicsPipeline;
 
@@ -221,14 +220,13 @@ namespace Backend
 
 		DescriptorPool descriptorPool;
 
-		std::vector<Pipeline::Layout::DescriptorSet> descriptorSetLayouts;
-		std::vector<DescriptorSet> descriptorSets;
+		std::vector<DescriptorSetLayout> descriptorSetLayouts;
+		std::vector<DescriptorSet      > descriptorSets;
 
 		ShaderModule vertModule;
 		ShaderModule fragModule;
 
 		Buffer vertBuffer;
 		Buffer fragBuffer;
-
 	};
 }
