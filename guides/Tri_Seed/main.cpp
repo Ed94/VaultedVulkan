@@ -9,10 +9,12 @@
 // This is cross-window's main function, it called on the platform dependent entrypoint.
 void xmain(int argc, const char** argv)
 {
-    xwin::EventQueue eventQueue;
-    xwin::WindowDesc wdesc     ;
-    xwin::Window     window    ;
-    
+    using Backend::Renderer;
+
+    xwin::EventQueue eventQueue;   // Window event queue.
+    xwin::WindowDesc wdesc     ;   // Window description.
+    xwin::Window     window    ;   // Window object.
+
     // Setup the window creation parameters. 
     wdesc.title      = "VT Guide: Hello Triangle";
     wdesc.name       = "MainWindow";
@@ -26,6 +28,8 @@ void xmain(int argc, const char** argv)
         // 🖼 Create Window
         if (!window.create(wdesc, eventQueue))
             return;   // Exit if window fails to create.
+
+        Renderer renderer();
 
         // Engine Loop
 

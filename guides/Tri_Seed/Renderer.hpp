@@ -16,7 +16,6 @@
 
 
 
-
 namespace Backend
 {
 	using namespace xwin;
@@ -93,6 +92,31 @@ namespace Backend
 	};
 
 
+	struct Triangle
+	{
+		/*constexpr*/ const std::vector<Vertex> Verticies = 
+		{
+			// Vert1
+			{
+				{ 0.0f, -0.5f, 0.0f }, 
+				{ 1.0f,  0.0f, 0.0f }
+			},
+			// Vert 2
+			{
+				{ 0.5f, 0.5f, 0.0f }, 
+				{ 0.0f, 1.0f, 0.0f }
+			},
+
+			// Vert 3
+			{
+				{ -0.5f, 0.5f, 0.0f }, 
+				{  0.0f, 0.0f, 1.0f }
+			}
+		};
+
+		/*constexpr*/ const std::vector<uint32> Indicies = { 0, 1, 2 };
+	};
+
 	class Renderer
 	{
 	public:
@@ -107,7 +131,7 @@ namespace Backend
 		// Resize the window and internal data structures
 		void Resize(uint32 _width, uint32 _height);
 
-	protected:
+	protected:   // Functions
 
 		// Initialize your Graphics API
 		void InitializeAPI(Window& _window);
@@ -142,5 +166,9 @@ namespace Backend
 
 		// Set up the swapchain
 		void SetupSwapchain(uint32 _width, uint32 _height);
+
+	protected:   // Variables
+
+		std::chrono::time_point<std::chrono::steady_clock> start, end;   // 
 	};
 }
