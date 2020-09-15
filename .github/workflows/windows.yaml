@@ -20,6 +20,7 @@ jobs:
             cmake_build_options: "--config Release",
             cmake_configure_options: '-G "Visual Studio 16 2019" -A x64',
             conan_profile_update: 'conan profile update settings.compiler="Visual Studio" default; conan profile update settings.compiler.version=16 default',
+            build_dir: 'guides'
           }
 
     steps:
@@ -68,5 +69,5 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          path: ${{ guides/matrix.config.artifact }}
+          path: ${{ matrix.config.build_dir }}/${{ matrix.config.artifact }}
           name: ${{ matrix.config.artifact }}
