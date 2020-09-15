@@ -11,8 +11,10 @@
 
 
 // C++
+#include <array>
 #include <cstddef>
 #include <cstdint>
+#include <set>
 #include <stdexcept>
 #include <typeinfo>
 #include <type_traits>

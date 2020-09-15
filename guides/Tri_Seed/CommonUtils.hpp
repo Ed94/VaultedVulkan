@@ -56,10 +56,19 @@ GetCwd(char* _buffer, int _bufferSize)
     return getcwd(_buffer, _bufferSize);
 };
 
+// Clang-CL does not like window's offsetof macro.
+template<typename StructType, typename StructMemberType>
+constexpr std::size_t TOffsetOf(StructMemberType StructType::* _member)
+{
+	return reinterpret_cast<std::size_t>(&((StructType*)(0)->*_member));
+}
+
+#define OffsetOf(_MEMBEER) TOffsetOf(&_MEMBEER);
+
 template<std::size_t size = 1> 
 using CharBuffer = char[size];
 
-inline std::vector<char> readFile(const std::string& filename) 
+inline std::vector<char> ReadFile(const std::string& filename) 
 {
     constexpr std::size_t BufferSize = 1024;
 
