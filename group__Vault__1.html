@@ -161,41 +161,52 @@
           <h2><a href="#typedef-members">Typedefs</a></h2>
           <dl class="m-doc">
             <dt>
-              using <a href="#gadfa276132f54a09834750a9feb49c24a" class="m-doc">EMessageServerity</a> = EDebugUtils_MessageSeverity
+              using <a href="#gae0800cd644c3143ebdd8b0fa99de194c" class="m-doc">Queue</a> = LogicalDevice::Queue
             </dt>
-            <dd><span></span></dd>
+            <dd>Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.</dd>
             <dt>
-              using <a href="#gac73bf2a162d453e6b4b8518942b0de7d" class="m-doc">EMessageType</a> = EDebugUtils_MessageType
+              using <a href="#ga6a63f3ad907291e229161d24537e89a2" class="m-doc">DescriptorSetLayout</a> = Pipeline::Layout::DescriptorSet
             </dt>
-            <dd><span></span></dd>
+            <dd></dd>
             <dt>
-              using <a href="#gab46a2b595b9ab4a96fba5c175a5df06b" class="m-doc">MessageTypeFlags</a> = Bitmask&lt;EMessageType, VkDebugUtilsMessageTypeFlagsEXT&gt;
+              using <a href="#ga45b316805ecd09b3bd9f90c918f16036" class="m-doc">PipelineCache</a> = Pipeline::Cache
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  APISpec_Debugging</dd>
+            <dd></dd>
+            <dt>
+              using <a href="#ga47a7ed335538eff92031c5176f32b97a" class="m-doc">PipelineLayout</a> = Pipeline::Layout
+            </dt>
+            <dd>Typedef pipeline layout in more recognizable form.</dd>
           </dl>
         </section>
         <section>
           <h2>Typedef documentation</h2>
-          <section class="m-doc-details" id="gadfa276132f54a09834750a9feb49c24a"><div>
+          <section class="m-doc-details" id="gae0800cd644c3143ebdd8b0fa99de194c"><div>
             <h3>
-              using <a href="#gadfa276132f54a09834750a9feb49c24a" class="m-doc-self">EMessageServerity</a> = EDebugUtils_MessageSeverity
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
+              using <a href="#gae0800cd644c3143ebdd8b0fa99de194c" class="m-doc-self">Queue</a> = LogicalDevice::Queue
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__LogicalDevice_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
             </h3>
-            <p><span></span></p>
+            <p>Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.</p>
           </div></section>
-          <section class="m-doc-details" id="gac73bf2a162d453e6b4b8518942b0de7d"><div>
+          <section class="m-doc-details" id="ga6a63f3ad907291e229161d24537e89a2"><div>
             <h3>
-              using <a href="#gac73bf2a162d453e6b4b8518942b0de7d" class="m-doc-self">EMessageType</a> = EDebugUtils_MessageType
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
+              using <a href="#ga6a63f3ad907291e229161d24537e89a2" class="m-doc-self">DescriptorSetLayout</a> = Pipeline::Layout::DescriptorSet
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
-            <p><span></span></p>
+<p>using Typedef of descriptor set layout in more recognizable form.</p>
           </div></section>
-          <section class="m-doc-details" id="gab46a2b595b9ab4a96fba5c175a5df06b"><div>
+          <section class="m-doc-details" id="ga45b316805ecd09b3bd9f90c918f16036"><div>
             <h3>
-              using <a href="#gab46a2b595b9ab4a96fba5c175a5df06b" class="m-doc-self">MessageTypeFlags</a> = Bitmask&lt;EMessageType, VkDebugUtilsMessageTypeFlagsEXT&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
+              using <a href="#ga45b316805ecd09b3bd9f90c918f16036" class="m-doc-self">PipelineCache</a> = Pipeline::Cache
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  APISpec_Debugging</p>
+<p>using Typedef of pipeline cache in a more recognizable form.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga47a7ed335538eff92031c5176f32b97a"><div>
+            <h3>
+              using <a href="#ga47a7ed335538eff92031c5176f32b97a" class="m-doc-self">PipelineLayout</a> = Pipeline::Layout
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
+            </h3>
+            <p>Typedef pipeline layout in more recognizable form.</p>
           </div></section>
         </section>
       </div>

@@ -60,6 +60,7 @@
               <ul>
                 <li><a href="#namespaces">Namespaces</a></li>
                 <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
               </ul>
             </li>
           </ul>
@@ -167,6 +168,58 @@
             </dt>
             <dd>Currently hard coded to use STL vector for extensions.</dd>
           </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#gaa9f2d5dd9750ef6423e28b1ef733eefd" class="m-doc">Queue</a> = LogicalDevice::Queue
+            </dt>
+            <dd>Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.</dd>
+            <dt>
+              using <a href="#ga48f1bcf1cdc18cfc86c27874a8f81c28" class="m-doc">DescriptorSetLayout</a> = Pipeline::Layout::DescriptorSet
+            </dt>
+            <dd></dd>
+            <dt>
+              using <a href="#ga4da7001114c35ebe53b44abb0fa617c6" class="m-doc">PipelineCache</a> = Pipeline::Cache
+            </dt>
+            <dd></dd>
+            <dt>
+              using <a href="#gac75cd789eecc9db4f09798d87122c024" class="m-doc">PipelineLayout</a> = Pipeline::Layout
+            </dt>
+            <dd>Typedef pipeline layout in more recognizable form.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="gaa9f2d5dd9750ef6423e28b1ef733eefd"><div>
+            <h3>
+              using <a href="#gaa9f2d5dd9750ef6423e28b1ef733eefd" class="m-doc-self">Queue</a> = LogicalDevice::Queue
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__LogicalDevice_8hpp.html">&lt;VaultedThermals/VT_LogicalDevice.hpp&gt;</a></div>
+            </h3>
+            <p>Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga48f1bcf1cdc18cfc86c27874a8f81c28"><div>
+            <h3>
+              using <a href="#ga48f1bcf1cdc18cfc86c27874a8f81c28" class="m-doc-self">DescriptorSetLayout</a> = Pipeline::Layout::DescriptorSet
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
+            </h3>
+<p>using Typedef of descriptor set layout in more recognizable form.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga4da7001114c35ebe53b44abb0fa617c6"><div>
+            <h3>
+              using <a href="#ga4da7001114c35ebe53b44abb0fa617c6" class="m-doc-self">PipelineCache</a> = Pipeline::Cache
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
+            </h3>
+<p>using Typedef of pipeline cache in a more recognizable form.</p>
+          </div></section>
+          <section class="m-doc-details" id="gac75cd789eecc9db4f09798d87122c024"><div>
+            <h3>
+              using <a href="#gac75cd789eecc9db4f09798d87122c024" class="m-doc-self">PipelineLayout</a> = Pipeline::Layout
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
+            </h3>
+            <p>Typedef pipeline layout in more recognizable form.</p>
+          </div></section>
         </section>
       </div>
     </div>

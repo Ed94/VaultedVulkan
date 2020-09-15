@@ -172,17 +172,21 @@
           <h2><a href="#typedef-members">Typedefs</a></h2>
           <dl class="m-doc">
             <dt>
-              using <a href="#ga1785cbf699d0d8faf59c2e328a637417" class="m-doc">MessageServerityFlags</a> = Bitmask&lt;EMessageServerity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a></dd>
-            <dt>
-              using <a href="#gac61712d6d9311782a43a5540e2ea826e" class="m-doc">FPtr_CreateMessenger</a> = PFN_vkCreateDebugUtilsMessengerEXT
-            </dt>
-            <dd>Pointer to the create debug messenger function.</dd>
-            <dt>
               using <a href="#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a> = VkDebugUtilsMessengerEXT
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a></dd>
+            <dt>
+              using <a href="#ga8236bbe3ae8ebdb4498dbf55ac2c530f" class="m-doc">FPtr_Create</a> = PFN_vkCreateDebugUtilsMessengerEXT
+            </dt>
+            <dd>Pointer to the create debug messenger function.</dd>
+            <dt>
+              using <a href="#ga9a09671ca2cfbb9701942407befc7b82" class="m-doc">FPtr_Destroy</a> = PFN_vkDestroyDebugUtilsMessengerEXT
+            </dt>
+            <dd>Pointer to the destroy debug messenger function.</dd>
+            <dt>
+              using <a href="#gaac8a220cce554575bc0ae26809af634a" class="m-doc">ServerityFlags</a> = Bitmask&lt;EServerity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a></dd>
           </dl>
         </section>
         <section>
@@ -211,27 +215,35 @@
         </section>
         <section>
           <h2>Typedef documentation</h2>
-          <section class="m-doc-details" id="ga1785cbf699d0d8faf59c2e328a637417"><div>
-            <h3>
-              using <a href="#ga1785cbf699d0d8faf59c2e328a637417" class="m-doc-self">MessageServerityFlags</a> = Bitmask&lt;EMessageServerity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="gac61712d6d9311782a43a5540e2ea826e"><div>
-            <h3>
-              using <a href="#gac61712d6d9311782a43a5540e2ea826e" class="m-doc-self">FPtr_CreateMessenger</a> = PFN_vkCreateDebugUtilsMessengerEXT
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
-            </h3>
-            <p>Pointer to the create debug messenger function.</p>
-<p>The create messenger function is not provided automatically from the Vulkan API and must be retrieved with <a href="structVT_1_1V1_1_1AppInstance.html" class="m-doc">AppInstance</a>&#x27;s GetProcedureAddress function.</p>
-          </div></section>
           <section class="m-doc-details" id="gacd7cacbf36f05442406cfcbd508e9112"><div>
             <h3>
               using <a href="#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc-self">Handle</a> = VkDebugUtilsMessengerEXT
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="ga8236bbe3ae8ebdb4498dbf55ac2c530f"><div>
+            <h3>
+              using <a href="#ga8236bbe3ae8ebdb4498dbf55ac2c530f" class="m-doc-self">FPtr_Create</a> = PFN_vkCreateDebugUtilsMessengerEXT
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
+            </h3>
+            <p>Pointer to the create debug messenger function.</p>
+<p>The create messenger function is not provided automatically from the Vulkan API and must be retrieved with <a href="structVT_1_1V1_1_1AppInstance.html" class="m-doc">AppInstance</a>&#x27;s GetProcedureAddress function.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga9a09671ca2cfbb9701942407befc7b82"><div>
+            <h3>
+              using <a href="#ga9a09671ca2cfbb9701942407befc7b82" class="m-doc-self">FPtr_Destroy</a> = PFN_vkDestroyDebugUtilsMessengerEXT
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
+            </h3>
+            <p>Pointer to the destroy debug messenger function.</p>
+<p>The destroy messenger function is not provided automatically from the Vulkan API and must be retrieved with <a href="structVT_1_1V1_1_1AppInstance.html" class="m-doc">AppInstance</a>&#x27;s GetProcedureAddress function.</p>
+          </div></section>
+          <section class="m-doc-details" id="gaac8a220cce554575bc0ae26809af634a"><div>
+            <h3>
+              using <a href="#gaac8a220cce554575bc0ae26809af634a" class="m-doc-self">ServerityFlags</a> = Bitmask&lt;EServerity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Debug_8hpp.html">&lt;VaultedThermals/VT_Debug.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a></p>
           </div></section>
         </section>
       </div>
