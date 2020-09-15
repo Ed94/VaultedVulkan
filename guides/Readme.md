@@ -1,16 +1,16 @@
 # These are a set of walk-through guides for getting started with the library.
 
-In the guides directory:
+## Current Guides:
 
-<img src="https://i.imgur.com/sMRnKBK.png" alt="guide-directory-pic" width="700">
+**Hello Triangle Seed:** Get VT setup with a barebones renderer with Vault 3, showing a the classic rainbow triangle.
 
-There will be a getting started readme that will explain how to setup the guides directory with [CMake](https://cmake.org/), and [Visual Studio Code](https://code.visualstudio.com/).
+## UserSpace
 
-Git will be used within Visual Studio Code, if that is not desired github has a nice [guide](https://docs.github.com/en/github/getting-started-with-github/set-up-git) on how to get that going.
+This is a workspace area that has been setup for the library user to work on the guides with.
 
-# Setup
+## Setup
 
-## Installation CMake / Visual Studio Code
+### Installation CMake / Visual Studio Code
 
 [Windows](https://github.com/Ed94/VaultedThermals/wiki/VT-Guides:-WIndows-Setup)
 
@@ -18,4 +18,9 @@ Linux
 
 Mac
 
-# 
+## Thirdparty libraries used:
+
+[CrossWindow](https://github.com/alaingalvan/CrossWindow/tree/master): A basic cross platform system abstraction library for managing windows and performing OS tasks.
+
+[GLM](https://github.com/g-truc/glm/tree/master): Math library popular for use with OpenGL, using at the math library for the guides.
+    
