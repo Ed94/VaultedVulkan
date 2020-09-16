@@ -11,6 +11,7 @@ Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/inde
 - Ease of use functionality for bootstrapping (See Vaults_02/3/4), but without the extra non-gpu API related clutter (Asset Loading, Camera, Entity, etc)
 - Leveled abstraction namespacing and optional implementation wrapped in macros to allow easy discretion of features desired.
 - Full doxygen documentation presented nicely in a nice web format thanks to ModernC++Starter.
+- Single header version available (see the single-header branch)
 - Handwritten.
 
 ## State
