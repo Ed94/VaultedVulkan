@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VT::Corridors::ExtensionProperties struct | VaultedThermals</title>
+  <title>VT::Corridors::ComponentMapping struct | VaultedThermals</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -49,10 +49,10 @@
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1Corridors.html">Corridors</a>::<wbr/></span>ExtensionProperties <span class="m-thin">struct</span>
+          <span class="m-breadcrumb"><a href="namespaceVT.html">VT</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVT_1_1Corridors.html">Corridors</a>::<wbr/></span>ComponentMapping <span class="m-thin">struct</span>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Types_8hpp.html">&lt;VaultedThermals/VT_Types.hpp&gt;</a></div>
         </h1>
-        <p>Structure specifying an extension properties.</p>
+        <p>Structure specifying a color component mapping.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -60,31 +60,53 @@
               Reference
               <ul>
                 <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
                 <li><a href="#pub-attribs">Public variables</a></li>
               </ul>
             </li>
           </ul>
         </div>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExtensionProperties">Extension Properties Specification</a></p>
+<p>The VkComponentMapping components member describes a remapping from components of the image to components of the vector returned by shader image instructions. This remapping must be the identity swizzle for storage image descriptors, input attachment descriptors, framebuffer attachments, and any VkImageView used with a combined image sampler that enables sampler Y�CBCR conversion.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentMapping.html">Component Mapping Specification</a></p>
         <section id="base-classes">
           <h2><a href="#base-classes">Base classes</a></h2>
           <dl class="m-doc">
             <dt>
               <div class="m-doc-template">template&lt;typename VulkanType, <a href="group__APISpec__Fundamentals.html#gacd13528f982c0cebc4759562268d1f2e" class="m-doc">EStructureType</a> TemplateSpecifiedStype = EStructureType::Max_Enum&gt;</div>
-              struct <a href="structVT_1_1V0_1_1VKStruct__Base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkExtensionProperties&gt;</a>
+              struct <a href="structVT_1_1V0_1_1VKStruct__Base.html" class="m-doc">VT::V0::VKStruct_Base&lt;VkComponentMapping&gt;</a>
             </dt>
             <dd>Base struct for wrapping Vulkan native C API Structs.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a766e1355ff33c6279140671abc049c2c">
+              <span class="m-doc-wrap-bumper">auto <a href="#a766e1355ff33c6279140671abc049c2c" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1Corridors_1_1ComponentMapping.html" class="m-doc">ComponentMapping</a>&amp; _other) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac907f9465188ad0356cb859f8d754763">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac907f9465188ad0356cb859f8d754763" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1Corridors_1_1ComponentMapping.html" class="m-doc">ComponentMapping</a>&amp; _other) -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
           </dl>
         </section>
         <section id="pub-attribs">
           <h2><a href="#pub-attribs">Public variables</a></h2>
           <dl class="m-doc">
-            <dt id="af0332cf640b8d1aec18fb51723a254e3">
-              <a href="group__CommonStrings.html#gad4b4b35a8639d98a03687a3f4c0c01a5" class="m-doc">ExtensionNameStr</a> <a href="#af0332cf640b8d1aec18fb51723a254e3" class="m-doc-self">Name</a>
+            <dt id="a2d5b64229de9028854a98d8b1a073fcb">
+              <a href="group__APISpec__Resource__Creation.html#ga4347ec14fe20d17fb3a7f5c6cf6072b4" class="m-doc">EComponentSwizzle</a> <a href="#a2d5b64229de9028854a98d8b1a073fcb" class="m-doc-self">R</a>
             </dt>
             <dd><span></span></dd>
-            <dt id="a21e92f46129f1d8b6a9cd8581470c7b6">
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> <a href="#a21e92f46129f1d8b6a9cd8581470c7b6" class="m-doc-self">SpecVersion</a>
+            <dt id="a90deaad362857302489b85b564c1957b">
+              <a href="group__APISpec__Resource__Creation.html#ga4347ec14fe20d17fb3a7f5c6cf6072b4" class="m-doc">EComponentSwizzle</a> <a href="#a90deaad362857302489b85b564c1957b" class="m-doc-self">G</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a305848371c84e8179c288396b4a6efeb">
+              <a href="group__APISpec__Resource__Creation.html#ga4347ec14fe20d17fb3a7f5c6cf6072b4" class="m-doc">EComponentSwizzle</a> <a href="#a305848371c84e8179c288396b4a6efeb" class="m-doc-self">B</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aecb9764e62244b2a0127caf1d25bdb57">
+              <a href="group__APISpec__Resource__Creation.html#ga4347ec14fe20d17fb3a7f5c6cf6072b4" class="m-doc">EComponentSwizzle</a> <a href="#aecb9764e62244b2a0127caf1d25bdb57" class="m-doc-self">A</a>
             </dt>
             <dd><span></span></dd>
           </dl>
