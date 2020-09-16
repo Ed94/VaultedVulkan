@@ -2,15 +2,8 @@
 
 
 
-// Cross Window + Utils
-#include "CrossWindow/CrossWindow.h"
+// Utils
 #include "Utils.hpp"
-
-// GLM
-#define GLM_FORCE_SSE42 1
-#define GLM_FORCE_DEFAULT_ALIGNED_GENTYPES 1
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
 
 // VT
 #include "VaultedThermals.hpp"
@@ -19,7 +12,6 @@
 
 namespace Backend
 {
-    using namespace xwin  ;
     using namespace VT    ;
     using namespace VT::V3;
 
@@ -43,9 +35,9 @@ namespace Backend
 
         // GPU Communication
 
-        AppInstance   appVk ;
-        LogicalDevice device;    
+        AppInstance appVk;   // Represents the application in the vulkan API.
 
+        // Container for physical gpu information.
         struct PhysicalGPU
         {
             PhysicalGPU(PhysicalDevice& _physicalDevice, std::vector<LayerAndExtensionProperties>& _properties):
@@ -57,8 +49,8 @@ namespace Backend
             std::vector<QueueFamilyProperties>       QueueFamilyProperties;
         };
 
-        std::vector<PhysicalGPU> gpus;
+        std::vector<PhysicalGPU> gpus;   // Listing of all physical gpus.
 
-        DebugUtils::Messenger messenger;
+        DebugUtils::Messenger messenger;   // Debug messenger used for vulkan logging.
     };
 }

@@ -1,3 +1,4 @@
+// Parent Header
 #include "Renderer.hpp"
 
 
@@ -267,8 +268,6 @@ namespace Backend
         if (returnCode != EResult::Success) throw std::runtime_error("Failed to get any physical devices.");
 
         LOG("\nSupported physical devices aquired:");
-
-        // gpus.resize(phsyicalDevices.size());
 
         std::stringstream gpuHandle;
 

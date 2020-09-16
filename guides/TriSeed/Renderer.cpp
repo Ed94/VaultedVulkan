@@ -211,10 +211,12 @@ namespace Backend
         std::vector<const char*> desiredLayers;
 
         // Get the validation layer support for the debug messenger callbacks.
-        AquireSupportedValidationLayers(installedAppExtensions, desiredLayers);
+        AquireSupportedValidationLayers(installedLayerAndExtensions, desiredLayers);
 
 		// Make sure the layers we are going to use are available to enable.
-        CheckLayerSupport(installedAppExtensions, desiredLayers);
+        if (CheckLayerSupport(installedLayerAndExtensions, desiredLayers)) LOG("Layers desired supported!");
+
+        else throw std::runtime_error("Error: Layers desired not supported.");
 
         AppInstance::AppInfo appInfo;
 
@@ -246,17 +248,59 @@ namespace Backend
 		messengerInfo.UserCallback = GetVTAPI_Call(DebugCallback);
 		                             // A debug callback must follow the vulkan calling convention.
 
-		EResult returnCode = appGPU.Create(info);   // Create the application instance.
+		EResult 
+        returnCode = appVk.Create(info);   // Create the application instance.
 
 		if (returnCode != EResult::Success) throw std::runtime_error("Failed to create the vulkan application instance.");
+
+        LOG("Vulkan application instance created!");
 
 		returnCode = messenger.Create(messengerInfo);   // Create the messenger object.
 
 		if (returnCode != EResult::Success) throw std::runtime_error("Failed to create the debug messenger.");	
 
+        LOG("Debug messenger created!");
+
 		// Populating physical devices...
 
-		
+        std::vector<PhysicalDevice> physicalDevices;
+
+		returnCode = appVk.GetAvailablePhysicalDevices(physicalDevices);
+
+        if (returnCode != EResult::Success) throw std::runtime_error("Failed to get any physical devices.");
+
+        LOG("\nSupported physical devices aquired:");
+
+        // gpus.resize(phsyicalDevices.size());
+
+        std::stringstream gpuHandle;
+
+        // Cycle through the gpu listing and populate/print out some information.
+        for (auto& physicalDevice : physicalDevices)
+        {
+            gpus.push_back( PhysicalGPU(physicalDevice, installedLayerAndExtensions) );
+
+            // Populate information
+
+            auto& gpu = gpus.back();
+
+            returnCode = EResult::Incomplete;
+
+            for (auto& layerAndExtensions : gpu.LayersAndExtensions)
+            {
+                physicalDevice.GetAvailableExtensions(layerAndExtensions.Layer.Name, layerAndExtensions.Extensions);
+            }
+
+            gpu.QueueFamilyProperties = physicalDevice.GetAvailableQueueFamilies();
+
+            // Log info
+
+            gpuHandle.str(std::string());
+
+            gpuHandle << physicalDevice;
+
+            LOG(physicalDevice.GetProperties().Name + std::string(" Handle: ") + gpuHandle.str() + std::string("\n"));
+        }
 
 		LOG("Vulkan application handshake complete!");
     }
