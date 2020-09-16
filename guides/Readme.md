@@ -1,6 +1,6 @@
 # These are a set of walk-through guides for getting started with the library.
 
-My rule of thumb with guides is to be as explict as possible, and try to guide through with some redundancy. For expereinced programmers, this may feel too verbose, but if thats the case your most likely better off just looking at the guides source. You'll be happy to find that its just as clean as the library and filled with comments.
+My rule of thumb with guides is to be as explict as possible, and try to guide through with some redundancy. For experienced programmers, this may feel too verbose, but if thats the case your most likely better off just looking at the guides source. You'll be happy to find that its just as clean as the library and filled with comments.
 
 ## Setup
 
