@@ -2,18 +2,6 @@
 
 My rule of thumb with guides is to be as explict as possible, and try to guide through with some redundancy. For expereinced programmers, this may feel too verbose, but if thats the case your most likely better off just looking at the guides source. You'll be happy to find that its just as clean as the library and filled with comments.
 
-## Current Guides:
-
-**[1_Intro:](https://github.com/Ed94/VaultedThermals/tree/master/guides/1_Intro)** Learn about the guide's workspace.
-
-**2_ApplicationHandshake:** Setup vulkan <-> application communiction. Gather information about your machine's GPU capabilities, and learn how to setup validation the layer/s for debugging.
-
-**TriSeed:** Get VT setup with a barebones renderer with Vault 3, showing a the classic rainbow triangle.
-
-## UserSpace
-
-This is a workspace area that has been setup for the library user to work on the guides with.
-
 ## Setup
 
 ### Installation CMake / Visual Studio Code
@@ -23,6 +11,18 @@ This is a workspace area that has been setup for the library user to work on the
 Linux 
 
 Mac
+
+## Current Guides:
+
+**[1_Intro:](https://github.com/Ed94/VaultedThermals/tree/master/guides/1_Intro)** Learn about the guide's workspace.
+
+**[2_ApplicationHandshake](https://github.com/Ed94/VaultedThermals/tree/master/guides/2_ApplicationHandshake)** Setup vulkan <-> application communiction. Gather information about your machine's GPU capabilities, and learn how to setup validation the layer/s for debugging.
+
+**TriSeed:** Get VT setup with a barebones renderer with Vault 3, showing a the classic rainbow triangle.
+
+## UserSpace
+
+This is a workspace area that has been setup for the library user to work on the guides with.
 
 ## Thirdparty libraries used:
 
