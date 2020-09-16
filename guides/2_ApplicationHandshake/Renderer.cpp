@@ -193,28 +193,19 @@ namespace Backend
             {
                 LOG(extension.Name);
             }
+			
             LOG("");
         }
+
+		std::vector<const char*> desiredLayers;
+
+		// Get the validation layer support for the debug messenger callbacks.
+        AquireSupportedValidationLayers(installedLayerAndExtensions, desiredLayers);
 
         std::vector<const char*> desiredExtensions =
         {
             InstanceExt::DebugUtility   // Enables debugging features.
         };
-
-        std::vector<const char*> desiredDeviceExtensions = 
-        {
-            DeviceExt::Swapchain
-        };
-
-        std::vector<const char*> desiredLayers;
-
-        // Get the validation layer support for the debug messenger callbacks.
-        AquireSupportedValidationLayers(installedLayerAndExtensions, desiredLayers);
-
-		// Make sure the layers we are going to use are available to enable.
-        if (CheckLayerSupport(installedLayerAndExtensions, desiredLayers)) LOG("Layers desired supported!");
-
-        else throw std::runtime_error("Error: Layers desired not supported.");
 
         AppInstance::AppInfo appInfo;
 
@@ -230,9 +221,6 @@ namespace Backend
 
         info.EnabledExtensionCount = static_cast<uint32>(desiredExtensions.size());
         info.EnabledExtensionNames = desiredExtensions.data();
-
-        info.EnabledLayerCount = static_cast<uint32>(desiredLayers.size());
-        info.EnabledLayerNames = desiredLayers.data();
 
 		// Were going to add a debug call back for vulkan related validation logs.
 		Messenger::CreateInfo messengerInfo;

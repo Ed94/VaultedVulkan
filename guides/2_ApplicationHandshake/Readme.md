@@ -32,17 +32,15 @@ namespace Backend
 
         VKGPU();
 
-        ~VKGPU();
-
-        void Render();        
+        ~VKGPU();     
 
     protected:
 
         // Initialize your Graphics API (Application/Device Handshake)
-		void StartCommunication();
+	void StartCommunication();
 
-		// Destroy the Application instance and debug messenger
-		void CeaseCommunication();
+	// Destroy the Application instance and debug messenger
+	void CeaseCommunication();
 
         // GPU Communication
 
@@ -77,6 +75,7 @@ Lets break this down:
 
 `messenger : DebugUtils::Messenger` will be setup using the Vulkan Layers (specifically with validation layers) to be able to get a feed from the Vulkan API on how things are going with our requested execution within its scope.
 
+Now in the Renderer.cpp setup the implementation skeleton:   
 ```cpp
 // Parent Header
 #include "Renderer.hpp"
@@ -91,7 +90,7 @@ namespace Backend
 
     VKGPU::VKGPU() : messenger(appVk)
     {
-		StartCommunication();
+	StartCommunication();
     }
 
     VKGPU::~VKGPU()
@@ -101,14 +100,75 @@ namespace Backend
 
     void VKGPU::StartCommunication()
     {
-		LOG("Preparing for GPU app handshake...");
+	LOG("Preparing for GPU app handshake...");
 
 
     }
 
-	void VKGPU::CeaseCommunication()
-	{
+    void VKGPU::CeaseCommunication()
+    {
 
-	}
+    }
 }
 ```
+
+The first thing we'll do in start communication is find out some information about the available layers and their extensions at the Vulkan application level:   
+```cpp
+void VKGPU::StartCommunication()
+{
+    LOG("Preparing for GPU app handshake...");
+
+    std::vector<LayerAndExtensionProperties> installedLayerAndExtensions;
+
+    // Gives us all available layers and extensions for all vulkan compatible devices on this machine.
+    AppInstance::GetAvailableLayersAndExtensions(installedLayerAndExtensions);
+
+    LOG("\nLayers Available:");
+
+    for (auto& layerAndExtensions : installedLayerAndExtensions)
+    {
+        LOG(layerAndExtensions.Layer.Name);
+            
+        LOG("Extensions:");
+
+        for (auto& extension : layerAndExtensions.Extensions)
+        {
+            LOG(extension.Name);
+        }
+        
+        LOG("");
+    }
+}
+```
+Now had over to main.cpp and add VKGPU to the execution:   
+![img](https://i.imgur.com/tPFAarS.png)
+
+The output of your program should now look like this:   
+![img](https://i.imgur.com/SV0DXPm.png)
+
+So I've been talking about these things called layers but without much explanation. Essentially layers are an API entrypoint interception framework. Under these different layers, extensions to the baseline API (the vulkan API itself) can be extended. We'll be using a couple of these later but the ones we need right now are those related to validation layers. These add functionality for debugging that we'll need for our messenger.
+
+If you are on a modern version of vulkan, adding a the validation layer could be as easy as adding a vector with the Khronos validation layer specified:
+
+```cpp
+std::vector<const char*> desiredLayers = 
+{
+    Layer::Khronos_Validation
+}
+```
+
+But... there are occasions that some machine will not have the latest vulkan so its safer to have a more robust sweep of fallback cases just in case:   
+[pastebin](https://pastebin.com/xM82kZhU) (100 lines so I just put it here for you)
+
+Simply use it in the following way now to populate desiredLayers a validation layer:   
+![img](https://i.imgur.com/D7SDUKC.png)
+
+Next we'll need to setup the desiredExtensions to have DebugUtility specified:   
+```cpp
+std::vector<const char*> desiredExtensions =
+{
+    InstanceExt::DebugUtility   // Enables debugging features.
+};
+```
+This provides the necessary extension to setup our debug messenger.
+
