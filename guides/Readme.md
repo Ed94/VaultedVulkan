@@ -2,7 +2,11 @@
 
 ## Current Guides:
 
-**Hello Triangle Seed:** Get VT setup with a barebones renderer with Vault 3, showing a the classic rainbow triangle.
+**1_Intro:** Learn about the guide's workspace.
+
+**2_ApplicationHandshake:** Setup vulkan <-> application communiction. Gather information about your machine's GPU capabilities, and learn how to setup validation the layer/s for debugging.
+
+**TriSeed:** Get VT setup with a barebones renderer with Vault 3, showing a the classic rainbow triangle.
 
 ## UserSpace
 
@@ -33,7 +37,7 @@ If you stumbled upon this library while looking for vulkan resources on github, 
 C++ :   
 
 [Raw Vulkan](https://alain.xyz/blog/raw-vulkan)   
-This is what the Tri_Seeed guide is based off of and will kick start you well with the Vulkan-Hpp library.
+This will kick start you well with the Vulkan-Hpp library. It also has some of the nicest explanations of many vulkan concepts.
 
 C :   
 

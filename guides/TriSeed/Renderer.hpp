@@ -3,7 +3,7 @@
 
 
 // Cross Window + Utils
-#include "CommonUtils.hpp"
+#include "Utils.hpp"
 
 // GLM
 #define GLM_FORCE_SSE42 1
@@ -132,13 +132,17 @@ namespace Backend
 		// Resize the window and internal data structures
 		void Recalibrate(uint32 _width, uint32 _height);
 
-	protected:   // Functions
+	protected:   
+	// Functions
 
-		// Initialize your Graphics API
-		void InitalizeCommunication(Window& _window);
+		// Initialize your Graphics API (Application/Device Handshake)
+		void StartCommunication();
 
-		// Destroy any Graphics API data structures used in this example
+		// Destroy the Application instance and debug messenger
 		void CeaseCommunication();
+
+		// Engage the vulkan gpu that supports presenting to the provided window.
+		void EngageSuitableDevice(Window& _window);
 
 		// Initialize any resources such as VBOs, IBOs, used in this example
 		void InitializeResources();
@@ -168,7 +172,7 @@ namespace Backend
 		// Set up the swapchain
 		void SetupSwapchain(uint32 _width, uint32 _height);
 
-	protected:   // Variables
+	// Variables
 
 		// Timing
 

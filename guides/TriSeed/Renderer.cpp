@@ -5,7 +5,7 @@
 
 namespace Backend
 {
-    // Utility Functions
+    // Utility Functions (Don't be afraid to take these with you!)
 
     void AquireSupportedValidationLayers
     (
@@ -23,7 +23,7 @@ namespace Backend
 			{
 				_desiredLayers.push_back(Layer::Khronos_Validation);
 
-				std::cout << "Validation Layer Enabled: Khronos" << std::endl;
+				LOG("Validation Layer Enabled: Khronos");
 
 				found = true;
 
@@ -41,7 +41,7 @@ namespace Backend
 				{
 					_desiredLayers.push_back(Layer::LunarG_StandardValidation);
 
-					std::cout << "Validation Layer Enabled: LunarG Standard" << std::endl;
+					LOG("Validation Layer Enabled: LunarG Standard");
 
 					found = true;
 
@@ -83,7 +83,7 @@ namespace Backend
 				{
 					_desiredLayers.push_back(validationLayerName);
 
-					std::cout << "Validation Layer Enabled: " + std::string(validationLayerName) << std::endl;
+					LOG(std::string("Validation Layer Enabled: ") + std::string(validationLayerName));
 				}
 
 				found = true;
@@ -100,7 +100,7 @@ namespace Backend
 				{
 					_desiredLayers.push_back(Layer::LunarG_CoreValidation);
 
-					std::cout << "Validation Layer Enabled: LunarG Core" << std::endl;
+					LOG("Validation Layer Enabled: LunarG Core");
 
 					found = true;
 
@@ -148,12 +148,12 @@ namespace Backend
 		      Messenger::ServerityFlags  _messageServerity, 
 		      Messenger::TypeFlags       /*_messageType*/ ,
 		const Messenger::CallbackData    _callbackData    , 
-		      void*                                  /*_userData*/
+		      void*                      /*_userData*/
 	)
 	{
 		using EServerity = Messenger::EServerity;
 
-		std::cerr << _callbackData.Message << std::endl;
+		Log(_callbackData.Message);
 
 		return EBool::True;
 	}
@@ -163,9 +163,11 @@ namespace Backend
 
     VKGPU::VKGPU(Window& _window) : messenger(appGPU)
     {
-		std::cout << "Creating Vulkan GPU backend." << std::endl;
+		Log("Creating Vulkan GPU backend.");
 
-        InitalizeCommunication(_window);
+		StartCommunication();
+
+		EngageSuitableDevice(_window);
 
         // InitalizeResources();
 
@@ -182,15 +184,16 @@ namespace Backend
 
         // DestroyResources();
 
-        // DestroyAPI();
+        CeaseCommunication();
     }
 
-    void VKGPU::InitalizeCommunication(Window& _window)
+    void VKGPU::StartCommunication()
     {
-
+		Log("Preparing for GPU app handshake...");
 
         std::vector<LayerAndExtensionProperties> installedAppExtensions;
 
+		// Gives us all available layers and extensions for all vulkan compatible devices on this machine.
         AppInstance::GetAvailableLayersAndExtensions(installedAppExtensions);
 
         std::vector<const char*> desiredExtensions =
@@ -210,6 +213,7 @@ namespace Backend
         // Get the validation layer support for the debug messenger callbacks.
         AquireSupportedValidationLayers(installedAppExtensions, desiredLayers);
 
+		// Make sure the layers we are going to use are available to enable.
         CheckLayerSupport(installedAppExtensions, desiredLayers);
 
         AppInstance::AppInfo appInfo;
@@ -230,6 +234,7 @@ namespace Backend
         info.EnabledLayerCount = static_cast<uint32>(desiredLayers.size());
         info.EnabledLayerNames = desiredLayers.data();
 
+		// Were going to add a debug call back for vulkan related validation logs.
 		Messenger::CreateInfo messengerInfo;
 
 		using EServerity   = Messenger::EServerity  ;
@@ -239,18 +244,30 @@ namespace Backend
 		messengerInfo.Type     .Set(EMessageType::General, EMessageType::Validation, EMessageType::Performance);
 
 		messengerInfo.UserCallback = GetVTAPI_Call(DebugCallback);
-		messengerInfo.UserData     = nullptr;
+		                             // A debug callback must follow the vulkan calling convention.
 
-		EResult returnCode = appGPU.Create(info);
+		EResult returnCode = appGPU.Create(info);   // Create the application instance.
 
 		if (returnCode != EResult::Success) throw std::runtime_error("Failed to create the vulkan application instance.");
 
-		returnCode = messenger.Create(messengerInfo);
+		returnCode = messenger.Create(messengerInfo);   // Create the messenger object.
 
 		if (returnCode != EResult::Success) throw std::runtime_error("Failed to create the debug messenger.");	
 
-        std::vector<const char*> deviceExtensions;
+		// Populating physical devices...
+
+		
 
 		std::cout << "Vulkan application handshake complete!" << std::endl;
     }
+
+	void VKGPU::CeaseCommunication()
+	{
+
+	}
+
+	void VKGPU::EngageSuitableDevice(Window& _window)
+	{
+        std::vector<const char*> deviceExtensions;
+	}
 }
