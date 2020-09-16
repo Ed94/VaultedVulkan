@@ -16,7 +16,7 @@ Each guide will have a Readme.md file that is intended to be read on the library
 
 ## Now that your familiar with the setup lets move on to the guide itself: ##
 
-While completing this guide, use the [UserSpace](NeedsLink] to follow along. The guides are designed to build off from each other, so that once directory can be used for the entire set of guides here.
+While completing this guide, use the [UserSpace](https://github.com/Ed94/VaultedThermals/tree/master/guides/UserSpace) to follow along. The guides are designed to build off from each other, so that once directory can be used for the entire set of guides here.
 
 **Now as with all the other guides its good to test to make sure that the guides source builds and runs on your machine so go ahead and do that:**   
 ![gif](https://i.imgur.com/8clt5Xh.gif)
@@ -39,7 +39,7 @@ Go ahead and include it right after cross window:
 If you run the project now you should see your log pop up to the side with your message:   
 ![img](https://i.imgur.com/O1ATSca.png)
 
-Once we get through this guide, you will have a console open, however this log can your fallback just in case the program fails.
+Once we get through this guide, you will have a console open, however this log can be your fallback just in case the program fails.
 
 ## xmain
 
@@ -64,7 +64,7 @@ Next for the purposes of these guides, the entire execution from now on will be 
 
 Now within the try block, create the window and provide it the wdesc, and eventqueue objects:   
 ![img](https://i.imgur.com/86mPYdf.png)   
-The create function will return if the window creation succeed so wrap it in an if else as well.
+The create function will return if the window creation succeeds so wrap it in an if else as well.
 
 The rest of the code is the engine loop that currently only updates on events and detects when a window should close:   
 ![img](https://i.imgur.com/tdUT8fS.png)

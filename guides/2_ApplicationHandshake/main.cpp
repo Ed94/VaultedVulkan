@@ -4,12 +4,17 @@
 // Helper implementation
 #include "Utils.hpp"
 
+// Renderer
+#include "Renderer.hpp"
+
 
 
 // This is cross-window's main function, it called on the platform dependent entrypoint.
 void xmain(int argc, const char** argv)
 {
     LOG("Entered CrossWindow execution: xmain");
+
+    using Backend::VKGPU;    
 
     xwin::EventQueue eventQueue;   // Window event queue.
     xwin::WindowDesc wdesc     ;   // Window description.
@@ -29,6 +34,9 @@ void xmain(int argc, const char** argv)
         if (!window.create(wdesc, eventQueue))
             return;   // Exit if window fails to create.
         else LOG("Window created.");
+
+        // Make the vulkan gpu interface
+        VKGPU gpu;
 
         LOG("Entering engine loop.");
 

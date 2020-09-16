@@ -315,7 +315,7 @@ namespace VaultedThermals
 		The VkComponentMapping components member describes a remapping from components of the image to components of the vector 
 		returned by shader image instructions. This remapping must be the identity swizzle for storage image descriptors, 
 		input attachment descriptors, framebuffer attachments, and any VkImageView used with a combined image sampler that 
-		enables sampler Y’CBCR conversion.
+		enables sampler Yï¿½CBCR conversion.
 
 		<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentMapping.html">Component Mapping Specification</a> 
 		*/
@@ -338,10 +338,8 @@ namespace VaultedThermals
 		*/
 		struct ExtensionProperties : V0::VKStruct_Base<VkExtensionProperties>
 		{
-			ExtensionNameStr ExtensionName;
-			uint32           SpecVersion  ;
-
-			// #TODO: Should offer default operator== ? (With strcmp?)
+			ExtensionNameStr Name       ;
+			uint32           SpecVersion;
 		};
 
 		/** @ingroup APISpec_Formats @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */

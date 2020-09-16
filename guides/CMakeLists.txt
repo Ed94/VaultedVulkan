@@ -166,5 +166,6 @@ endmacro()
 
 # Make all the guides.
 MakeGuide(1_Intro)
+MakeGuide(2_ApplicationHandshake)
 MakeGuide(TriSeed)
 MakeGuide(UserSpace)

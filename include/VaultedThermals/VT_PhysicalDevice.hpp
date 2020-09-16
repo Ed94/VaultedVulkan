@@ -784,7 +784,7 @@ namespace VaultedThermals
 
 				for (const auto& extension : availableExtensions)
 				{
-					if (strcmp(extension.ExtensionName, _extensionSpecified) == 0)
+					if (strcmp(extension.Name, _extensionSpecified) == 0)
 					{
 						isSupported = true;
 					}
@@ -808,7 +808,7 @@ namespace VaultedThermals
 
 				for (const auto& extension : availableExtensions)
 				{
-					requiredExtensions.erase(extension.ExtensionName);
+					requiredExtensions.erase(extension.Name);
 				}
 
 				bool isSupported = requiredExtensions.empty();
@@ -1041,7 +1041,7 @@ namespace VaultedThermals
 
 				for (const auto& extension : availableExtensions)
 				{
-					if (strcmp(extension.ExtensionName, _extensionSpecified) == 0)
+					if (strcmp(extension.Name, _extensionSpecified) == 0)
 					{
 						isSupported = true;
 					}
@@ -1065,7 +1065,7 @@ namespace VaultedThermals
 
 				for (const auto& extension : availableExtensions)
 				{
-					requiredExtensions.erase(extension.ExtensionName);
+					requiredExtensions.erase(extension.Name);
 				}
 
 				bool isSupported = requiredExtensions.empty();

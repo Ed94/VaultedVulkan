@@ -6,4 +6,4 @@ It like the other places in the guides directory have access to the all the depe
 
 The only thing defined in the main.cpp is the CrossWindow library header and its associated main function.
 
-[1_Intro](NeedsLink] will give an idea of how to move foward with it.
+[1_Intro](https://github.com/Ed94/VaultedThermals/tree/master/guides/1_Intro) will give an idea of how to move foward with it.

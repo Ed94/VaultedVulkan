@@ -16,12 +16,6 @@
 // Cross Window
 #include "CrossWindow/CrossWindow.h"
 
-#if defined(XWIN_WIN32)
-    #include <direct.h>
-#else
-    #include <unistd.h>
-#endif
-
 enum class EPlatform
 {
 	EverythingElse = 0,
@@ -29,6 +23,16 @@ enum class EPlatform
 	// Only windows is special for now...
     Win32 = XWIN_WIN32
 };
+
+#if defined(XWIN_WIN32)
+    #include <direct.h>
+
+	constexpr auto XPlatform = EPlatform::Win32;
+#else
+    #include <unistd.h>
+
+	constexpr auto XPlatform = EPlatform::EverythingElse;
+#endif
 
 template<EPlatform = EverythingElse>
 struct PlatformSpecific
@@ -52,12 +56,13 @@ struct PlatformSpecific<EPlatform::Win32>
 	static constexpr const char* PathDivider = "\\";
 };
 
-constexpr auto GetCwd      = PlatformSpecific<EPlatform(XWIN_WIN32)>::GetCwd     ;
-constexpr auto PathDivider = PlatformSpecific<EPlatform(XWIN_WIN32)>::PathDivider;
+constexpr auto GetCwd      = PlatformSpecific<XPlatform>::GetCwd     ;
+constexpr auto PathDivider = PlatformSpecific<XPlatform>::PathDivider;
 
 // Clang-CL does not like window's offsetof macro.
 template<typename StructType, typename StructMemberType>
-constexpr std::size_t TOffsetOf(StructMemberType StructType::* _member)
+constexpr 
+std::size_t TOffsetOf(StructMemberType StructType::* _member)
 {
 	return reinterpret_cast<std::size_t>(&((StructType*)(0)->*_member));
 }
@@ -129,8 +134,6 @@ public:
 
 	~LogFile()
 	{
-		
-		
 		file.close();
 	}
 
@@ -146,9 +149,9 @@ private:
 // Simple wrapped logger...
 inline void LOG(std::string _whatToLog)
 {
-	static LogFile logFile;
+	static LogFile _LogFile;
 
 	std::cout << _whatToLog << std::endl;
 
-	logFile.Write(_whatToLog);
+	_LogFile.Write(_whatToLog);
 }
