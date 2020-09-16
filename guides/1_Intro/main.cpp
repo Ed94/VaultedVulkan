@@ -1,7 +1,7 @@
 // Cross platform window managing library.
 #include "CrossWindow/CrossWindow.h"
 
-// Renderer barebones boostrap.
+// Helper implementation
 #include "Utils.hpp"
 
 

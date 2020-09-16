@@ -69,4 +69,4 @@ The create function will return if the window creation succeed so wrap it in an 
 The rest of the code is the engine loop that currently only updates on events and detects when a window should close:   
 ![img](https://i.imgur.com/tdUT8fS.png)
 
-This is Everything required before getting our hands dirty. Next guide is completing a Vulkan application handshake.
+This is everything required before getting our hands dirty. Next guide is completing a Vulkan application handshake.

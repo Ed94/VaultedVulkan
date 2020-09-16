@@ -153,7 +153,7 @@ namespace Backend
 	{
 		using EServerity = Messenger::EServerity;
 
-		Log(_callbackData.Message);
+		LOG(_callbackData.Message);
 
 		return EBool::True;
 	}
@@ -163,7 +163,7 @@ namespace Backend
 
     VKGPU::VKGPU(Window& _window) : messenger(appGPU)
     {
-		Log("Creating Vulkan GPU backend.");
+		LOG("Creating Vulkan GPU backend.");
 
 		StartCommunication();
 
@@ -189,7 +189,7 @@ namespace Backend
 
     void VKGPU::StartCommunication()
     {
-		Log("Preparing for GPU app handshake...");
+		LOG("Preparing for GPU app handshake...");
 
         std::vector<LayerAndExtensionProperties> installedAppExtensions;
 
@@ -258,7 +258,7 @@ namespace Backend
 
 		
 
-		std::cout << "Vulkan application handshake complete!" << std::endl;
+		LOG("Vulkan application handshake complete!");
     }
 
 	void VKGPU::CeaseCommunication()
