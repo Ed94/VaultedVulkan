@@ -1,8 +1,10 @@
 # These are a set of walk-through guides for getting started with the library.
 
+My rule of thumb with guides is to be as explict as possible, and try to guide through with some redundancy. For expereinced programmers, this may feel too verbose, but if thats the case your most likely better off just looking at the guides source. You'll be happy to find that its just as clean as the library and filled with comments.
+
 ## Current Guides:
 
-**1_Intro:** Learn about the guide's workspace.
+**[1_Intro:](https://github.com/Ed94/VaultedThermals/tree/master/guides/1_Intro)** Learn about the guide's workspace.
 
 **2_ApplicationHandshake:** Setup vulkan <-> application communiction. Gather information about your machine's GPU capabilities, and learn how to setup validation the layer/s for debugging.
 
@@ -30,7 +32,7 @@ Mac
     
 ## Important Note:
 
-If you stumbled upon this library while looking for vulkan resources on github, I would recommend completing at least a few guides on the regular Vulkan C/C++ API before using this library. While this library aims to be a replacement for those, its not offical and should not be taken as a tool a user can get away with not learning the offical library.
+If you stumbled upon this library while looking for vulkan resources on github, I would recommend completing at least a few guides on the regular Vulkan C/C++ API before/after using this library. While this library aims to be a replacement for those, its not offical and should not be taken as a tool a user can get away with not learning the offical library.
 
 ### Recommended Vulkan C/C++ API Tutorials
 

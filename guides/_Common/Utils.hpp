@@ -129,6 +129,8 @@ public:
 
 	~LogFile()
 	{
+		
+		
 		file.close();
 	}
 

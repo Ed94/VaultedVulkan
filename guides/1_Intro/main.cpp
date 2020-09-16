@@ -16,7 +16,7 @@ void xmain(int argc, const char** argv)
     xwin::Window     window    ;   // Window object.
 
     // Setup the window creation parameters. 
-    wdesc.title      = "Hello Cross Window!";
+    wdesc.title      = "Hello CrossWindow!";
     wdesc.name       = "MainWindow";
     wdesc.visible    = true;
     wdesc.width      = 640;

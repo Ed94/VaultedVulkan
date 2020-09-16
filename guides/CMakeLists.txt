@@ -93,128 +93,7 @@ get_filename_component(PARENT_DIR ../ ABSOLUTE)
 include_directories(${PARENT_DIR}/include/)
 include_directories(_Common/)
 
-# # TriSeed
-#     file(GLOB_RECURSE FILE_SOURCES_TriSeed RELATIVE
-#         ${CMAKE_CURRENT_SOURCE_DIR}
-#         ${CMAKE_CURRENT_SOURCE_DIR}/_Common/*.hpp
-#         ${CMAKE_CURRENT_SOURCE_DIR}/TriSeed/*.cpp
-#         ${CMAKE_CURRENT_SOURCE_DIR}/TriSeed/*.h
-#         ${PARENT_DIR}/include/*.hpp
-#     )
-    
-#     # Solution Filters
-#     foreach(source IN LISTS FILE_SOURCES_TriSeed)
-#         get_filename_component(source_path "${source}" PATH)
-#         string(REPLACE "/" "\\" source_path_msvc "${source_path}")
-#         string(REPLACE "TriSeed" "" source_path_final "${source_path_msvc}")
-#         source_group("${source_path_final}" FILES "${source}")
-#     endforeach()
-    
-# # UserSpace
-#     file(GLOB_RECURSE FILE_SOURCES_UserSpace RELATIVE
-#         ${CMAKE_CURRENT_SOURCE_DIR}
-#         ${CMAKE_CURRENT_SOURCE_DIR}/_Common/*.hpp
-#         ${CMAKE_CURRENT_SOURCE_DIR}/UserSpace/*.cpp
-#         ${CMAKE_CURRENT_SOURCE_DIR}/UserSpace/*.h
-#         ${PARENT_DIR}/include/*.hpp
-#     )
-
-#     # Solution Filters
-#     foreach(source IN LISTS FILE_SOURCES_UserSpace)
-#         get_filename_component(source_path "${source}" PATH)
-#         string(REPLACE "/" "\\" source_path_msvc "${source_path}")
-#         string(REPLACE "UserSpace" "" source_path_final "${source_path_msvc}")
-#         source_group("${source_path_final}" FILES "${source}")
-#     endforeach()
-
-# # =============================================================
-
-# # Finalize App
-
-# # VT Guide: Triangle Seed
-# xwin_add_executable(
-#     "${PROJECT_NAME}_TriSeed"
-#     "${FILE_SOURCES_TriSeed}"
-# )
-
-# # VT Guide: User Space
-# xwin_add_executable(
-#     "${PROJECT_NAME}_UserSpace"
-#     "${FILE_SOURCES_UserSpace}"
-# )
-
-# # =============================================================
-
-# # Finish Dependencies
-
-# # TriSeed
-#     target_link_libraries("${PROJECT_NAME}_TriSeed"
-#         ${XGFX_LIBRARY}
-#         CrossWindow
-#         glm_static
-#     )
-
-#     target_include_directories("${PROJECT_NAME}_TriSeed"
-#     PUBLIC _ThirdParty/glm
-#     PUBLIC ${VULKAN_INCLUDE_DIR}
-#     )
-
-#     add_dependencies("${PROJECT_NAME}_TriSeed"
-#         CrossWindow
-#         glm_static
-#     )
-
-#     target_compile_definitions("${PROJECT_NAME}_TriSeed"
-#     PUBLIC XGFX_${XGFX_API}=1
-#     )
-
-# # UserSpace
-#     target_link_libraries("${PROJECT_NAME}_UserSpace"
-#         ${XGFX_LIBRARY}
-#         CrossWindow
-#         glm_static
-#     )
-
-#     target_include_directories("${PROJECT_NAME}_UserSpace"
-#     PUBLIC _ThirdParty/glm
-#     PUBLIC ${VULKAN_INCLUDE_DIR}
-#     )
-
-#     add_dependencies("${PROJECT_NAME}_UserSpace"
-#         CrossWindow
-#         glm_static
-#     )
-
-#     target_compile_definitions("${PROJECT_NAME}_UserSpace"
-#     PUBLIC XGFX_${XGFX_API}=1
-#     )
-
-# # =============================================================
-
-# # Finish Settings
-
-# # TriSeed
-#     # Change output dir to bin
-#     set_target_properties("${PROJECT_NAME}_TriSeed" PROPERTIES
-#         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-#     )
-#     # Change working directory to top dir to access `assets/shaders/` folder
-#     if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-#         set_property(TARGET "${PROJECT_NAME}_TriSeed" PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/..)
-#         set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}_TriSeed")
-#     endif()
-    
-# # UserSpace
-#     # Change output dir to bin
-#     set_target_properties("${PROJECT_NAME}_UserSpace" PROPERTIES
-#         RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-#     )
-#     # Change working directory to top dir to access `assets/shaders/` folder
-#     if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-#         set_property(TARGET "${PROJECT_NAME}_UserSpace" PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/..)
-#         set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}_UserSpace")
-#     endif()
-
+# Make Guide project macro.
 macro(MakeGuide guide)
 
     set(guide "${PROJECT_NAME}_${guide}")
@@ -285,6 +164,7 @@ macro(MakeGuide guide)
 
 endmacro()
 
+# Make all the guides.
 MakeGuide(1_Intro)
 MakeGuide(TriSeed)
 MakeGuide(UserSpace)
