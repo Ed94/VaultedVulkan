@@ -222,6 +222,9 @@ namespace Backend
         info.EnabledExtensionCount = static_cast<uint32>(desiredExtensions.size());
         info.EnabledExtensionNames = desiredExtensions.data();
 
+        info.EnabledLayerCount = static_cast<uint32>(desiredLayers.size());
+        info.EnabledLayerNames = desiredLayers.data();
+
 		// Were going to add a debug call back for vulkan related validation logs.
 		Messenger::CreateInfo messengerInfo;
 
@@ -291,6 +294,8 @@ namespace Backend
 
 	void VKGPU::CeaseCommunication()
 	{
+		messenger.Destroy();
 
+		appVk.Destroy();
 	}
 }

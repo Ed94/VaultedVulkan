@@ -4,6 +4,9 @@ This guide will go through all the necessary information reguarding the setup us
 
 ## First lets go over the setup being used here for the tutorial:  
 
+So the editor being used for the tutorial is Visual Studio Code, check out these tips and tricks if your new to it:   
+![img](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+
 The directories used in all the buildables are _Common and _Thirdparty. 
 
 _Common provides helper implementation for going through the guides more helpful.

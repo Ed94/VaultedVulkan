@@ -1,5 +1,5 @@
 # VaultedThermals
-A vulkan wrapper.
+A vulkan wrapper. 
 
 Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/index.html
 (Documentation is updated usually with implementation or if not during refactoring periods)
@@ -14,7 +14,7 @@ Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/inde
 - Handwritten.
 
 ## State
-WIP. See milestones in issues.
+WIP. See milestones / projects tab.
 
 Currently the library can be used to bootstrap a vulkan backend, however a good amount of the C-API has not been wrapped.
 
@@ -24,3 +24,4 @@ After that is done, this will be publicly released with some sort of open source
 ## Guides
 
 Head on over to ![guides](https://github.com/Ed94/VaultedThermals/tree/master/guides) to get started.
+

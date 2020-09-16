@@ -323,7 +323,9 @@ namespace Backend
 
 	void VKGPU::CeaseCommunication()
 	{
+		messenger.Destroy();
 
+		appVk.Destroy();
 	}
 
 	void VKGPU::EngageSuitableDevice(Window& _window)
