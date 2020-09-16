@@ -19,7 +19,7 @@ Each guide will have a Readme.md file that is intended to be read on the library
 
 ## Now that your familiar with the setup lets move on to the guide itself: ##
 
-While completing this guide, use the [UserSpace](https://github.com/Ed94/VaultedThermals/tree/master/guides/UserSpace) to follow along. The guides are designed to build off from each other, so that once directory can be used for the entire set of guides here.
+While completing this guide, use the [UserSpace](https://github.com/Ed94/VaultedThermals/tree/master/guides/UserSpace) to follow along. The guides are designed to build off from each other, so that one directory can be used for the entire set of guides here.
 ![img](https://i.imgur.com/RUMR6d3.png)
 
 **Now as with all the other guides its good to test to make sure that the guides source builds and runs on your machine so go ahead and do that:**   

@@ -46,7 +46,9 @@ This will include all V4 object implementation.
 @mainpage VaultedThermals
 
 # VaultedThermals
-A vulkan wrapper. <a href="https://github.com/Ed94/VaultedThermals">Github</a> 
+A vulkan wrapper. 
+
+https://github.com/Ed94/VaultedThermals
 
 Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/index.html
 (Documentation is updated usually with implementation or if not during refactoring periods)
@@ -70,7 +72,7 @@ After that is done, this will be publicly released with some sort of open source
 
 ## Guides
 
-Head on over to ![guides](https://github.com/Ed94/VaultedThermals/tree/master/guides) to get started.
+Head on over to https://github.com/Ed94/VaultedThermals/tree/master/guides to get started.
 */
 
 

@@ -157,7 +157,7 @@ std::vector<const char*> desiredLayers =
 }
 ```
 
-But... there are occasions that some machine will not have the latest vulkan so its safer to have a more robust sweep of fallback cases just in case:   
+But... there are occasions that some machines will not have the latest vulkan so its safer to have a more robust sweep of fallback cases just in case:   
 [pastebin](https://pastebin.com/xM82kZhU) (100 lines so I just put it here for you)
 
 Simply use it in the following way now to populate desiredLayers a validation layer:   
