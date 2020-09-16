@@ -49,11 +49,12 @@ namespace Backend
         struct PhysicalGPU
         {
             PhysicalGPU(PhysicalDevice& _physicalDevice, std::vector<LayerAndExtensionProperties>& _properties):
-                physicalDevice(_physicalDevice), layersAndExtensions(_properties)
+                PhysicalDevice(_physicalDevice), LayersAndExtensions(_properties)
             {}
 
-            PhysicalDevice                            physicalDevice     ;
-            std::vector<LayerAndExtensionProperties>& layersAndExtensions;
+            V3::PhysicalDevice                       PhysicalDevice       ;
+            std::vector<LayerAndExtensionProperties> LayersAndExtensions  ;
+            std::vector<QueueFamilyProperties>       QueueFamilyProperties;
         };
 
         std::vector<PhysicalGPU> gpus;

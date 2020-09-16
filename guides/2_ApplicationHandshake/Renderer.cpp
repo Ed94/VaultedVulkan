@@ -34,8 +34,7 @@ namespace Backend
 
 		if (!found)
 		{
-			for (const auto& layerAndExtenions : _installedLayerAndExtensions
-   )
+			for (const auto& layerAndExtenions : _installedLayerAndExtensions)
 			{
 				if (strcmp(Layer::LunarG_StandardValidation, layerAndExtenions.Layer.Name) == 0)
 				{
@@ -66,8 +65,7 @@ namespace Backend
 
 			for (auto validationLayerName : Fallback2Layers)
 			{
-				for (const auto& layerAndExtenions : _installedLayerAndExtensions
-       )
+				for (const auto& layerAndExtenions : _installedLayerAndExtensions)
 				{
 					if (strcmp(validationLayerName, layerAndExtenions.Layer.Name) == 0)
 					{
@@ -95,8 +93,7 @@ namespace Backend
 
 		if (!found)
 		{
-			for (const auto& layerAndExtenions : _installedLayerAndExtensions
-   )
+			for (const auto& layerAndExtenions : _installedLayerAndExtensions)
 			{
 				if (strcmp(Layer::LunarG_CoreValidation, layerAndExtenions.Layer.Name) == 0)
 				{
@@ -122,8 +119,7 @@ namespace Backend
 
 		for (auto validationLayerName : _layersSpecified)
 		{
-			for (const auto& layerAndExtenions : _installedLayerAndExtensions
-   )
+			for (const auto& layerAndExtenions : _installedLayerAndExtensions)
 			{
 				if (strcmp(validationLayerName, layerAndExtenions.Layer.Name) == 0)
 				{
@@ -216,7 +212,7 @@ namespace Backend
 
 		// Make sure the layers we are going to use are available to enable.
         if (CheckLayerSupport(installedLayerAndExtensions, desiredLayers)) LOG("Layers desired supported!");
-        
+
         else throw std::runtime_error("Error: Layers desired not supported.");
 
         AppInstance::AppInfo appInfo;
@@ -287,12 +283,12 @@ namespace Backend
 
             returnCode = EResult::Incomplete;
 
-            for (auto& layerAndExtensions : gpu.layersAndExtensions)
+            for (auto& layerAndExtensions : gpu.LayersAndExtensions)
             {
                 physicalDevice.GetAvailableExtensions(layerAndExtensions.Layer.Name, layerAndExtensions.Extensions);
             }
 
-            physicalDevice.GetAvailableQueueFamilies();
+            gpu.QueueFamilyProperties = physicalDevice.GetAvailableQueueFamilies();
 
             // Log info
 
@@ -300,9 +296,7 @@ namespace Backend
 
             gpuHandle << physicalDevice;
 
-            LOG(physicalDevice.GetProperties().Name + std::string(" Handle: ") + gpuHandle.str());
-
-            LOG("");
+            LOG(physicalDevice.GetProperties().Name + std::string(" Handle: ") + gpuHandle.str() + std::string("\n"));
         }
 
 		LOG("Vulkan application handshake complete!");

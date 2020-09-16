@@ -750,6 +750,8 @@ namespace VaultedThermals
 			}
 		};
 
+		using QueueFamilyProperties = PhysicalDevice::QueueFamilyProperties;
+
 		/** @} */
 	}
 
@@ -972,6 +974,8 @@ namespace VaultedThermals
 				return ESampleCount::_1;
 			}
 		};
+
+		using QueueFamilyProperties = PhysicalDevice::QueueFamilyProperties;
 
 		/** @} */
 	}
@@ -1281,6 +1285,8 @@ namespace VaultedThermals
 			Properties  properties ;
 			Properties2 properties2;
 		};
+
+		using QueueFamilyProperties = PhysicalDevice::QueueFamilyProperties;
 
 		/** @} */
 	}
