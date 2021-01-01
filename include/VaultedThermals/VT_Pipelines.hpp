@@ -1664,6 +1664,10 @@ namespace VaultedThermals
 				void Destroy()
 				{
 					Parent::Destroy(*device, handle, allocator);
+
+					handle    = Null<Handle>;
+					allocator = Memory::DefaultAllocator;
+					device    = nullptr     ;
 				}
 
 				/**
