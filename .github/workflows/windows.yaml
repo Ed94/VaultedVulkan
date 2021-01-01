@@ -38,7 +38,7 @@ jobs:
       - name: Install Vulkan SDK
         shell: pwsh
         run: |
-          Invoke-WebRequest -Uri "https://vulkan.lunarg.com/sdk/download/${{ env.vt_vulkan_version }}/windows/VulkanSDK-${{ env.vt_vulkan_version }}-Installer.exe?Human=true" -OutFile VulkanSDK.exe
+          Invoke-WebRequest -Uri "https://sdk.lunarg.com/sdk/download/${{ env.vt_vulkan_version }}/windows/VulkanSDK-${{ env.vt_vulkan_version }}-Installer.exe?u=" -OutFile VulkanSDK.exe
           $installer = Start-Process -FilePath VulkanSDK.exe -Wait -PassThru -ArgumentList @("/S");
           $installer.WaitForExit();
       - name: Configure CMake
