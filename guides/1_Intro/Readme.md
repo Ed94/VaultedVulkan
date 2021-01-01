@@ -1,12 +1,15 @@
 # Guide 1 Introduction: Learn the workspace
 
-This guide will go through all the necessary information reguarding the setup used for the guides along with getting started with the provided Utils library and CrossWindow.
+This guide will go through all the necessary information regarding the setup used for the guides along with getting started with the provided Utils library and CrossWindow.
 
 ## First lets go over the setup being used here for the tutorial:  
 
+So the editor being used for the tutorial is Visual Studio Code, check out these tips and tricks if your new to it:   
+[Tips & Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+
 The directories used in all the buildables are _Common and _Thirdparty. 
 
-_Common provides helper implementation for going through the guides more helpful.
+_Common provides helper implementation for going through the guides.
 
 _ThirdParty contains all the necessary dependencies with exception to the VaultedThermals library which the cmake automatically gets from the include directory.
 
@@ -16,7 +19,8 @@ Each guide will have a Readme.md file that is intended to be read on the library
 
 ## Now that your familiar with the setup lets move on to the guide itself: ##
 
-While completing this guide, use the [UserSpace](https://github.com/Ed94/VaultedThermals/tree/master/guides/UserSpace) to follow along. The guides are designed to build off from each other, so that once directory can be used for the entire set of guides here.
+While completing this guide, use the [UserSpace](https://github.com/Ed94/VaultedThermals/tree/master/guides/UserSpace) to follow along. The guides are designed to build off from each other, so that one directory can be used for the entire set of guides here.
+![img](https://i.imgur.com/RUMR6d3.png)
 
 **Now as with all the other guides its good to test to make sure that the guides source builds and runs on your machine so go ahead and do that:**   
 ![gif](https://i.imgur.com/8clt5Xh.gif)
@@ -28,13 +32,16 @@ While completing this guide, use the [UserSpace](https://github.com/Ed94/Vaulted
 
 The Utils library provides a Logger that will log to console and to a file with the time of the `LOG(message)` function being called for the first time.
 
-This will be the first thing we setup in your own xmain.
+This will be the first thing we setup in your own xmain **(Open up your main.cpp now)**.
 
 Go ahead and include it right after cross window:   
 ![img](https://i.imgur.com/QvHD9hg.png)
 
-**Open up your main.cpp now and give yourself a hello world message:**   
+**and give yourself a hello world message:**   
 ![img](https://i.imgur.com/Ug9XuFy.png)
+
+**Last Note: Don't forget to run it on the UserSpace target, this is will be your main target for the rest of the guides:**
+![img](https://i.imgur.com/66A0WSb.png)
 
 If you run the project now you should see your log pop up to the side with your message:   
 ![img](https://i.imgur.com/O1ATSca.png)
@@ -67,6 +74,6 @@ Now within the try block, create the window and provide it the wdesc, and eventq
 The create function will return if the window creation succeeds so wrap it in an if else as well.
 
 The rest of the code is the engine loop that currently only updates on events and detects when a window should close:   
-![img](https://i.imgur.com/tdUT8fS.png)
+![img](https://i.imgur.com/Yi6ptkC.png)
 
 This is everything required before getting our hands dirty. Next guide is completing a Vulkan application handshake.

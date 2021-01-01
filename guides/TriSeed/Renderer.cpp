@@ -161,7 +161,7 @@ namespace Backend
 
     // VKGPU
 
-    VKGPU::VKGPU(Window& _window) : messenger(appGPU)
+    VKGPU::VKGPU(Window& _window) : messenger(appVk)
     {
 		LOG("Creating Vulkan GPU backend.");
 
@@ -191,10 +191,26 @@ namespace Backend
     {
 		LOG("Preparing for GPU app handshake...");
 
-        std::vector<LayerAndExtensionProperties> installedAppExtensions;
+        std::vector<LayerAndExtensionProperties> installedLayerAndExtensions;
 
 		// Gives us all available layers and extensions for all vulkan compatible devices on this machine.
-        AppInstance::GetAvailableLayersAndExtensions(installedAppExtensions);
+        AppInstance::GetAvailableLayersAndExtensions(installedLayerAndExtensions);
+
+		LOG("\nLayers Available:");
+
+        for (auto& layerAndExtensions : installedLayerAndExtensions)
+        {
+            LOG(layerAndExtensions.Layer.Name);
+                
+            LOG("Extensions:");
+
+            for (auto& extension : layerAndExtensions.Extensions)
+            {
+                LOG(extension.Name);
+            }
+            
+            LOG("");
+        }
 
         std::vector<const char*> desiredExtensions =
         {
@@ -307,7 +323,9 @@ namespace Backend
 
 	void VKGPU::CeaseCommunication()
 	{
+		messenger.Destroy();
 
+		appVk.Destroy();
 	}
 
 	void VKGPU::EngageSuitableDevice(Window& _window)

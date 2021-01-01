@@ -182,9 +182,21 @@ namespace Backend
 		
 		// GPU Commmunication
 
-		AppInstance    appGPU;
-		PhysicalDevice phsycialDevice;
+		AppInstance    appVk ;
 		LogicalDevice  device;
+
+		struct PhysicalGPU
+        {
+            PhysicalGPU(PhysicalDevice& _physicalDevice, std::vector<LayerAndExtensionProperties>& _properties):
+                PhysicalDevice(_physicalDevice), LayersAndExtensions(_properties)
+            {}
+
+            V3::PhysicalDevice                       PhysicalDevice       ;
+            std::vector<LayerAndExtensionProperties> LayersAndExtensions  ;
+            std::vector<QueueFamilyProperties>       QueueFamilyProperties;
+        };
+
+		std::vector<PhysicalGPU> gpus;   // Listing of all physical gpus
 
 		DebugUtils::Messenger messenger;
 
