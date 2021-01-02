@@ -92,13 +92,13 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt id="aeac737086f6b303f496ae63a6e50335d">
-              <span class="m-doc-wrap-bumper">static auto <a href="#aeac737086f6b303f496ae63a6e50335d" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1Fence.html" class="m-doc">Fence</a>&gt; _fences) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aeac737086f6b303f496ae63a6e50335d" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1Fence.html" class="m-doc">Fence</a>&gt; _fences) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Reset the fences in the provided container.</dd>
-            <dt id="a25ca1cfc7b9adac060808e4bc77f2cc0">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a25ca1cfc7b9adac060808e4bc77f2cc0" class="m-doc-self">WaitForFence</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1Fence.html" class="m-doc">Fence</a>&gt; _fences,
+            <dt id="a559a609de4a0b88bc75ebec27d3f51af">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a559a609de4a0b88bc75ebec27d3f51af" class="m-doc-self">WaitForFence</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1Fence.html" class="m-doc">Fence</a>&gt; _fences,
               bool _waitForAll,
-              <a href="group__Corridors.html#ga99afca8daad59df55c5258e67e4db0c7" class="m-doc">uInt64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#ga1b10032b3199878c5fb3da6468357603" class="m-doc">uI64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Wait for one or more fences to enter the signaled state on the host.</dd>
           </dl>
@@ -145,18 +145,18 @@
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt id="a9aafacd818c4692dc7131a1d7edb7c8b">
-              <span class="m-doc-wrap-bumper">auto <a href="#a9aafacd818c4692dc7131a1d7edb7c8b" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9aafacd818c4692dc7131a1d7edb7c8b" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a fence.</dd>
             <dt id="aece13aef4afb7ea837a381d7f539f72e">
               <span class="m-doc-wrap-bumper">auto <a href="#aece13aef4afb7ea837a381d7f539f72e" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              const <a href="structVT_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="structVT_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a fence (logical device specified).</dd>
             <dt id="a6306e5ad3669d42e948967f8a487a2db">
               <span class="m-doc-wrap-bumper">auto <a href="#a6306e5ad3669d42e948967f8a487a2db" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
               const <a href="structVT_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
-              const Memory::AllocationCallbacks&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const Memory::AllocationCallbacks&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a fence (logical device and allocator specified).</dd>
             <dt id="a5dc285fa6f23cbc7964cd82a3d0dbfd9">
@@ -168,33 +168,33 @@
             </dt>
             <dd>Provides the logical device handle.</dd>
             <dt id="ad5ec298e4bc530012ffdb9f37a94e0cc">
-              <span class="m-doc-wrap-bumper">auto <a href="#ad5ec298e4bc530012ffdb9f37a94e0cc" class="m-doc-self">GetStatus</a>(</span><span class="m-doc-wrap">) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad5ec298e4bc530012ffdb9f37a94e0cc" class="m-doc-self">GetStatus</a>(</span><span class="m-doc-wrap">) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query the status of a fence from the host.</dd>
             <dt id="a5a1071eca23a0ea1317f09dc5e234006">
               <span class="m-doc-wrap-bumper">auto <a href="#a5a1071eca23a0ea1317f09dc5e234006" class="m-doc-self">GetOS_Handle</a>(</span><span class="m-doc-wrap">const GetOS_HandleInfo&amp; _win32Info,
-              OS_Handle&amp; _winHandle) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              OS_Handle&amp; _winHandle) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Platform agnostic way to export the os handle of the fence.</dd>
             <dt id="a8682fca935b527c7c7cd6024eb0cd7b1">
-              <span class="m-doc-wrap-bumper">auto <a href="#a8682fca935b527c7c7cd6024eb0cd7b1" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap">const ImportOS_HandleInfo&amp; _importInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8682fca935b527c7c7cd6024eb0cd7b1" class="m-doc-self">ImportOS_Handle</a>(</span><span class="m-doc-wrap">const ImportOS_HandleInfo&amp; _importInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Import a fence payload from a os handle.</dd>
             <dt id="aa661dd20133beac9bb2ed1ef02e1b18f">
-              <span class="m-doc-wrap-bumper">auto <a href="#aa661dd20133beac9bb2ed1ef02e1b18f" class="m-doc-self">RegisterDeviceEvent</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Fence_1_1DeviceEventInfo.html" class="m-doc">DeviceEventInfo</a> _eventInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa661dd20133beac9bb2ed1ef02e1b18f" class="m-doc-self">RegisterDeviceEvent</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Fence_1_1DeviceEventInfo.html" class="m-doc">DeviceEventInfo</a> _eventInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a fence that will be signaled when an event occurs on a device.</dd>
             <dt id="a3d4c3d9f5947fcc0eaa0cc1fcb847b9f">
               <span class="m-doc-wrap-bumper">auto <a href="#a3d4c3d9f5947fcc0eaa0cc1fcb847b9f" class="m-doc-self">RegisterDisplayEvent</a>(</span><span class="m-doc-wrap"><a href="structVT_1_1Corridors_1_1Display.html#aaa938ed194fecdd6e900c6a719428588" class="m-doc">Display::<wbr />Handle</a> _display,
-              const <a href="structVT_1_1V1_1_1Fence_1_1DisplayEventInfo.html" class="m-doc">DisplayEventInfo</a>&amp; _eventInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="structVT_1_1V1_1_1Fence_1_1DisplayEventInfo.html" class="m-doc">DisplayEventInfo</a>&amp; _eventInfo) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a fence that will be signaled when an event occurs on a Display object.</dd>
             <dt id="a7fea520d3c40f305f9f81490b0e5c61a">
-              <span class="m-doc-wrap-bumper">auto <a href="#a7fea520d3c40f305f9f81490b0e5c61a" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap">) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7fea520d3c40f305f9f81490b0e5c61a" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap">) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Set the state of fences to unsignaled from the host.</dd>
-            <dt id="a72c608728be8254597b9318117f3cfcc">
-              <span class="m-doc-wrap-bumper">auto <a href="#a72c608728be8254597b9318117f3cfcc" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga99afca8daad59df55c5258e67e4db0c7" class="m-doc">uInt64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a2934bd96152e946713994e0541af667b">
+              <span class="m-doc-wrap-bumper">auto <a href="#a2934bd96152e946713994e0541af667b" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga1b10032b3199878c5fb3da6468357603" class="m-doc">uI64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Wait for the fence to enter the signaled state on the host.</dd>
             <dt id="a57ac3fff4b11f47b3d34d06e33b4a402">

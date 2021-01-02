@@ -100,15 +100,15 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a></dd>
             <dt id="ac9356b4d17ae07e34f41732017adef35">
-              using <a href="#ac9356b4d17ae07e34f41732017adef35" class="m-doc-self">CreateFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__Corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, <a href="group__APISpec__Fundamentals.html#ga3f56f691948d0b060a953c74460f359d" class="m-doc">Flags</a>&gt;
+              using <a href="#ac9356b4d17ae07e34f41732017adef35" class="m-doc-self">CreateFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__Corridors.html#ga63b3553183c4842ceba676adc9a77379" class="m-doc">EUndefined</a>, <a href="group__APISpec__Fundamentals.html#ga3f56f691948d0b060a953c74460f359d" class="m-doc">Flags</a>&gt;
             </dt>
             <dd>Reserved for future use.</dd>
             <dt id="a15252396a61adc57be7292a8b0672c7d">
-              using <a href="#a15252396a61adc57be7292a8b0672c7d" class="m-doc-self">EServerity</a> = <a href="group__APISpec__Debugging.html#gaa051838b01c5068bc9bfdf0835ce5617" class="m-doc">EDebugUtils_<wbr />MessageSeverity</a>
+              using <a href="#a15252396a61adc57be7292a8b0672c7d" class="m-doc-self">EServerity</a> = <a href="group__APISpec__Debugging.html#gab7099b95a29ecc799241e05385d5de71" class="m-doc">EDebugUtils_<wbr />MessageSeverity</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a441d9b4a986d96dfee047ada20ee1074">
-              using <a href="#a441d9b4a986d96dfee047ada20ee1074" class="m-doc-self">EMessageType</a> = <a href="group__APISpec__Debugging.html#ga37585ef9ca9c197cc6b52e8f8d7fe586" class="m-doc">EDebugUtils_<wbr />MessageType</a>
+              using <a href="#a441d9b4a986d96dfee047ada20ee1074" class="m-doc-self">EMessageType</a> = <a href="group__APISpec__Debugging.html#ga2d14c96759a28a37af4edcc0234a446e" class="m-doc">EDebugUtils_<wbr />MessageType</a>
             </dt>
             <dd><span></span></dd>
             <dt>
@@ -120,11 +120,11 @@
             </dt>
             <dd>Pointer to the destroy debug messenger function.</dd>
             <dt>
-              using <a href="group__APISpec__Debugging.html#gaac8a220cce554575bc0ae26809af634a" class="m-doc">ServerityFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__APISpec__Debugging.html#gaa051838b01c5068bc9bfdf0835ce5617" class="m-doc">EServerity</a>, VkDebugUtilsMessageSeverityFlagsEXT&gt;
+              using <a href="group__APISpec__Debugging.html#gaac8a220cce554575bc0ae26809af634a" class="m-doc">ServerityFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__APISpec__Debugging.html#gab7099b95a29ecc799241e05385d5de71" class="m-doc">EServerity</a>, VkDebugUtilsMessageSeverityFlagsEXT&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a></dd>
             <dt id="ab208c7c480042aa9f502a2b3fb7d52f8">
-              using <a href="#ab208c7c480042aa9f502a2b3fb7d52f8" class="m-doc-self">TypeFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__APISpec__Debugging.html#ga37585ef9ca9c197cc6b52e8f8d7fe586" class="m-doc">EMessageType</a>, VkDebugUtilsMessageTypeFlagsEXT&gt;
+              using <a href="#ab208c7c480042aa9f502a2b3fb7d52f8" class="m-doc-self">TypeFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__APISpec__Debugging.html#ga2d14c96759a28a37af4edcc0234a446e" class="m-doc">EMessageType</a>, VkDebugUtilsMessageTypeFlagsEXT&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  APISpec_Debugging</dd>
           </dl>
@@ -136,7 +136,7 @@
               <span class="m-doc-wrap-bumper">static auto <a href="#a9e44031d4cb522d4b86653df7c968d7c" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
               const <a href="structVT_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="group__APISpec__Debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a>&amp; _messenger) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__APISpec__Debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a>&amp; _messenger) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Creates a debug messenger.</dd>
             <dt>
@@ -151,7 +151,7 @@
           <h2>Function documentation</h2>
           <section class="m-doc-details" id="a9e44031d4cb522d4b86653df7c968d7c"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />DebugUtils::<wbr />Messenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e44031d4cb522d4b86653df7c968d7c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a> VT::<wbr />V1::<wbr />DebugUtils::<wbr />Messenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e44031d4cb522d4b86653df7c968d7c" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
               const <a href="structVT_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
               <a href="group__APISpec__Debugging.html#gacd7cacbf36f05442406cfcbd508e9112" class="m-doc">Handle</a>&amp; _messenger)</span></span>

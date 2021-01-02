@@ -145,7 +145,7 @@
             </dt>
             <dd>Driver info string.</dd>
             <dt id="a4eaf6515339874e64cfe534f8825f936">
-              using <a href="#a4eaf6515339874e64cfe534f8825f936" class="m-doc-self">EDeviceType</a> = <a href="group__APISpec__Devices__and__Queues.html#gab5714cc65a396c2e5fac7ab2a1d489a8" class="m-doc">EPhysicalDeviceType</a>
+              using <a href="#a4eaf6515339874e64cfe534f8825f936" class="m-doc-self">EDeviceType</a> = <a href="group__APISpec__Devices__and__Queues.html#gad88461d4fc6c4267b443ba0d5f09693d" class="m-doc">EPhysicalDeviceType</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -181,7 +181,7 @@
             <dd>Query supported features. Reports capabilities of a physical device.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Formats.html#gada11580cdc16363b186f9384a5f6d6d5" class="m-doc">GetFormatProperties</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group__APISpec__Formats.html#ga46eee72a7b236b5cc31dc30bd2809f4a" class="m-doc">EFormat</a> _format,
+              <a href="group__APISpec__Formats.html#gacbb5aa73f3692afb971b0ad9778f5ced" class="m-doc">EFormat</a> _format,
               <a href="structVT_1_1Corridors_1_1FormatProperties.html" class="m-doc">FormatProperties</a>&amp; _properties)</span>
             </dt>
             <dd>Query supported format features which are properties of the physical device.</dd>
@@ -201,30 +201,30 @@
             </dt>
             <dd>Query general properties of physical devices once enumerated (Second Ver).</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Extending__Vulkan.html#ga3fe8173aadaa7144f7d289ab4a2ca95c" class="m-doc">QueryExtensionProperties</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Extending__Vulkan.html#gac79ef7872e9d6e919435378d97366e42" class="m-doc">QueryExtensionProperties</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
               <a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numExtensions,
-              <a href="structVT_1_1Corridors_1_1ExtensionProperties.html" class="m-doc">ExtensionProperties</a>* _extensionPropertiesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>* _numExtensions,
+              <a href="structVT_1_1Corridors_1_1ExtensionProperties.html" class="m-doc">ExtensionProperties</a>* _extensionPropertiesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Device extensions add new device-level functionality to the API, outside of the core specification.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Devices__and__Queues.html#ga6dc362b80139080845ded746216db1e9" class="m-doc">QueryQueueFamilyProperties</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numQueueFamilies,
+              <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Devices__and__Queues.html#ga09436b638b0d59845928407c7969b39b" class="m-doc">QueryQueueFamilyProperties</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>* _numQueueFamilies,
               <a href="structVT_1_1V1_1_1PhysicalDevice_1_1QueueFamilyProperties.html" class="m-doc">QueueFamilyProperties</a>* _queueFamilies)</span>
             </dt>
             <dd>Query properties of queues available on a physical device. Reports properties of the queues of the specified physical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Devices__and__Queues.html#ga1d68edfcac3cc2d3690c149e6ef5d2f7" class="m-doc">QueryQueueFamilyProperties2</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numProperties,
+              <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Devices__and__Queues.html#gabb3c4d92162157c8b66a6706565cf2a2" class="m-doc">QueryQueueFamilyProperties2</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>* _numProperties,
               <a href="structVT_1_1V1_1_1PhysicalDevice_1_1QueueFamilyProperties2.html" class="m-doc">QueueFamilyProperties2</a>* _properties)</span>
             </dt>
             <dd>Query properties of queues available on a physical device.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Devices__and__Queues.html#ga2e8560a4c56d76df5c64babef16ef48e" class="m-doc">QueryPerfomranceQueryCounters</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numCounters,
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Devices__and__Queues.html#gaa79d7ea1ca26b23a2b3cf7a8bc9dd6b0" class="m-doc">QueryPerfomranceQueryCounters</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">Handle</a> _handle,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _queueFamilyIndex,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>* _numCounters,
               <a href="structVT_1_1V1_1_1PhysicalDevice_1_1PerformanceCounter.html" class="m-doc">PerformanceCounter</a>* _counters,
-              <a href="structVT_1_1V1_1_1PhysicalDevice_1_1PerformanceCounter_1_1Description.html" class="m-doc">PerformanceCounter::<wbr />Description</a>* _counterDescriptions) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="structVT_1_1V1_1_1PhysicalDevice_1_1PerformanceCounter_1_1Description.html" class="m-doc">PerformanceCounter::<wbr />Description</a>* _counterDescriptions) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Enumerate the performance query counters available on a queue family of a physical device.</dd>
           </dl>

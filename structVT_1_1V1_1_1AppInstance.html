@@ -104,7 +104,7 @@
             </dt>
             <dd>Opaque handle to an instance object.</dd>
             <dt>
-              using <a href="group__APISpec__Initialization.html#ga1628748da10e837b3d68ab669cbb6d69" class="m-doc">CreateFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__Corridors.html#ga4d72c515f4de484c49238860d92b66c7" class="m-doc">EUndefined</a>, VkInstanceCreateFlags&gt;
+              using <a href="group__APISpec__Initialization.html#ga1628748da10e837b3d68ab669cbb6d69" class="m-doc">CreateFlags</a> = <a href="classVT_1_1V0_1_1Bitmask.html" class="m-doc">Bitmask</a>&lt;<a href="group__Corridors.html#ga63b3553183c4842ceba676adc9a77379" class="m-doc">EUndefined</a>, VkInstanceCreateFlags&gt;
             </dt>
             <dd>Reserved for future use...</dd>
           </dl>
@@ -115,7 +115,7 @@
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Initialization.html#gaefc4d5bbce2f855014cd58d7f912f7c7" class="m-doc">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1AppInstance_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
               const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
-              <a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a>&amp; _handle) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a>&amp; _handle) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a new Vulkan application instance.</dd>
             <dt>
@@ -124,30 +124,30 @@
             </dt>
             <dd>Destroy an application instance of Vulkan.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Initialization.html#gae481e0c8f306e13a339969fc62186a3b" class="m-doc">GetVersion</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _versionContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Initialization.html#ga092016d472f253980f449de2a05bc3e4" class="m-doc">GetVersion</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>&amp; _versionContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query the version of application instance-level functionality supported by the implementation.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Extending__Vulkan.html#ga5bde90c5c600a46306bea63bd25fc925" class="m-doc">QueryAvailableLayers</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numContainer,
-              <a href="structVT_1_1Corridors_1_1LayerProperties.html" class="m-doc">LayerProperties</a>* _propertiesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Extending__Vulkan.html#ga9104ad694beabc326e8689f0def8c7c3" class="m-doc">QueryAvailableLayers</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>&amp; _numContainer,
+              <a href="structVT_1_1Corridors_1_1LayerProperties.html" class="m-doc">LayerProperties</a>* _propertiesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query the available layers.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Extending__Vulkan.html#ga20807f88fcf490596d0d8ae14716d361" class="m-doc">QueryAvailableAppExtensions</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numProperties,
-              <a href="structVT_1_1Corridors_1_1ExtensionProperties.html" class="m-doc">ExtensionProperties</a>* _propertiesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Extending__Vulkan.html#ga31dac52c6f0b5d126e434601db253e13" class="m-doc">QueryAvailableAppExtensions</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2e2b27c3eec8908a1367050d6581ef90" class="m-doc">RoCStr</a> _layerName,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>&amp; _numProperties,
+              <a href="structVT_1_1Corridors_1_1ExtensionProperties.html" class="m-doc">ExtensionProperties</a>* _propertiesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query the available instance extensions.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Devices__and__Queues.html#ga5ee4cdb3dbddfac2c3551c661b917c4f" class="m-doc">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numDevices,
-              <a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a>* _deviceListing) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Devices__and__Queues.html#gaaa806a44067e0f41bbcb19af348b9bac" class="m-doc">QueryPhysicalDeviceListing</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>* _numDevices,
+              <a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a>* _deviceListing) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Retrieve a list of physical device objects representing the physical devices installed in the system, or get the number of them.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Devices__and__Queues.html#gae9ffba347efb3d2b52df8561f5afc1bb" class="m-doc">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>* _numGroups,
-              <a href="structVT_1_1V1_1_1PhysicalDevice_1_1Group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>* _groupProperties) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Devices__and__Queues.html#ga40e7ff4fc59460b047c7b60eba8d2508" class="m-doc">QueryPhysicalDeviceGroups</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#gaa1d433b25bec6e23ee726f47ad846ce7" class="m-doc">Handle</a> _handle,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>* _numGroups,
+              <a href="structVT_1_1V1_1_1PhysicalDevice_1_1Group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>* _groupProperties) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Retrieve a list of physical device groups.</dd>
             <dt>

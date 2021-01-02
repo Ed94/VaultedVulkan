@@ -78,7 +78,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueue">Specification</a></dd>
             <dt id="a6604da054edc8364f7495669e6feb123">
-              using <a href="#a6604da054edc8364f7495669e6feb123" class="m-doc-self">ECreateFlag</a> = <a href="group__APISpec__Devices__and__Queues.html#ga4ae31b866a5cd4553f48c1413ed88295" class="m-doc">ELogicalDeviceQueueCreateFlag</a>
+              using <a href="#a6604da054edc8364f7495669e6feb123" class="m-doc-self">ECreateFlag</a> = <a href="group__APISpec__Devices__and__Queues.html#ga16c60c7018152b590e2e5373c5229378" class="m-doc">ELogicalDeviceQueueCreateFlag</a>
             </dt>
             <dd><span></span></dd>
             <dt>
@@ -99,26 +99,26 @@
           <h2><a href="#pub-static-methods">Public static functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Devices__and__Queues.html#ga8cb6e923fd707c14a5cabbb078dfe713" class="m-doc">Get</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueIndex,
+              <span class="m-doc-wrap-bumper">static void <a href="group__APISpec__Devices__and__Queues.html#ga9aedf3af1b25df43310273710a889429" class="m-doc">Get</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga8b4b699ccf9c0ef21431d969fe734450" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _queueFamilyIndex,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _queueIndex,
               <a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">Handle</a>&amp; _queueReturn)</span>
             </dt>
             <dd>Get a queue handle from a device.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga5f7ef1088d05d23dab16d9c0d6df8abe" class="m-doc">QueuePresentation</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue,
-              const <a href="group__APISpec__Window__System__Integration__WSI.html#gafb8f2f93555a878911078874b160f133" class="m-doc">PresentationInfo</a>&amp; _presentation) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="group__APISpec__Window__System__Integration__WSI.html#gafb8f2f93555a878911078874b160f133" class="m-doc">PresentationInfo</a>&amp; _presentation) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd><a href="structVT_1_1V1_1_1LogicalDevice_1_1Queue.html" class="m-doc">Queue</a> an image for presentation.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Command__Buffers.html#gad875c6ce2c482effa2aac35bc8e651e2" class="m-doc">SubmitToQueue</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _submitCount,
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Command__Buffers.html#gadcfdb860a13ecb447d28318b0dd3eee4" class="m-doc">SubmitToQueue</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _submitCount,
               const <a href="group__APISpec__Command__Buffers.html#ga13106f4efe079db094a20309ebf46bb7" class="m-doc">SubmitInfo</a>* _submissions,
-              <a href="structVT_1_1V1_1_1LogicalDevice_1_1Queue.html#a2aca1c6595d1a229d03db6b43fbd9ffc" class="m-doc">Fence_<wbr />Handle</a> _fence) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="structVT_1_1V1_1_1LogicalDevice_1_1Queue.html#a2aca1c6595d1a229d03db6b43fbd9ffc" class="m-doc">Fence_<wbr />Handle</a> _fence) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Submit command buffers to the queue.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Synchronization__and__Cache__Control.html#gaf54b09173789b300d2aa86b9f724cf1c" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">Handle</a> _queue) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Synchronization__and__Cache__Control.html#gaf54b09173789b300d2aa86b9f724cf1c" class="m-doc">WaitUntilIdle</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gafdfa16b9f3762340dc271d7aa1cf3f62" class="m-doc">Handle</a> _queue) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>To wait on the host for the completion of outstanding queue operations for a given queue.</dd>
           </dl>

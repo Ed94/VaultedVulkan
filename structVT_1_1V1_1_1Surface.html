@@ -96,30 +96,30 @@
             </dt>
             <dd>Destroy a VkSurfaceKHR object.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#gaed962d37666a4dee33f796773cdf6ae9" class="m-doc">CheckPhysicalDeviceSupport</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _physDeviceHandle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a> _queueFamilyIndex,
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga9a2f5bf88c396370256b3e3358361b60" class="m-doc">CheckPhysicalDeviceSupport</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _physDeviceHandle,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _queueFamilyIndex,
               Surface::Handle _surfaceHandle,
-              <a href="group__APISpec__Fundamentals.html#gaf5aa2c678a4f6e291ea8cdc335cd7738" class="m-doc">Bool</a>&amp; _checkResult) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__APISpec__Fundamentals.html#gaf5aa2c678a4f6e291ea8cdc335cd7738" class="m-doc">Bool</a>&amp; _checkResult) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query if presentation is supported.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga24005da70eff31a282f2c51557dfba1b" class="m-doc">GetPhysicalDeviceCapabilities</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surface,
-              Surface::Capabilities&amp; _capabilitiesResult) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              Surface::Capabilities&amp; _capabilitiesResult) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query surface capabilities.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga056f9161f759b0b6ee055547b6672ca3" class="m-doc">GetFormats</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga3438bedf81663521007082be7044f441" class="m-doc">GetFormats</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surfaceHandle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numFormats,
-              Surface::Format* _formatsContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>&amp; _numFormats,
+              Surface::Format* _formatsContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query color formats supported by surface.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#ga1d5487f57caef844178835a5e990767d" class="m-doc">QuerySupportedPresentationModes</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="group__APISpec__Window__System__Integration__WSI.html#gafe8a9cb112b536c6db2b73423f5a2223" class="m-doc">QuerySupportedPresentationModes</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gaf37b72fc21cdb4a17f4d2e064afb7e8c" class="m-doc">PhysicalDevice::<wbr />Handle</a> _deviceHandle,
               Surface::Handle _surfaceHandle,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numPresentationModes,
-              <a href="group__APISpec__Window__System__Integration__WSI.html#ga2b9753018ef460b6d543aa9b1072df93" class="m-doc">EPresentationMode</a>* _presentationModesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>&amp; _numPresentationModes,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#ga6492897faeedb5a783c5c8cfb217ce88" class="m-doc">EPresentationMode</a>* _presentationModesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query supported presentation modes.</dd>
           </dl>

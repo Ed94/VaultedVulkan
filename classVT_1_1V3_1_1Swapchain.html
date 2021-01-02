@@ -128,26 +128,26 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a6973ca25568655894d28576e83866e4c">
-              <span class="m-doc-wrap-bumper">auto <a href="#a6973ca25568655894d28576e83866e4c" class="m-doc-self">AcquireNextImage</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga99afca8daad59df55c5258e67e4db0c7" class="m-doc">uInt64</a> _timeout,
+            <dt id="a8f915e0fb22ba1ad88e23590c4f69dfe">
+              <span class="m-doc-wrap-bumper">auto <a href="#a8f915e0fb22ba1ad88e23590c4f69dfe" class="m-doc-self">AcquireNextImage</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga1b10032b3199878c5fb3da6468357603" class="m-doc">uI64</a> _timeout,
               Semaphore::Handle _semaphore,
               Fence::Handle _fence,
-              <a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _imageIndex) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>&amp; _imageIndex) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Acquire an available presentable image to use, and retrieve the index of that image.</dd>
             <dt id="ac0d187dc675d6351a4406eec3319b975">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac0d187dc675d6351a4406eec3319b975" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac0d187dc675d6351a4406eec3319b975" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a swapchain with the specified create info.</dd>
             <dt id="a772e180ab01d1df5cc6bcf173c9cf643">
               <span class="m-doc-wrap-bumper">auto <a href="#a772e180ab01d1df5cc6bcf173c9cf643" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _deviceHandle,
-              const <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a swapchain with the specified logical device and create info.</dd>
             <dt id="a8473f73948f2a7d90506ed1b16671155">
               <span class="m-doc-wrap-bumper">auto <a href="#a8473f73948f2a7d90506ed1b16671155" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _deviceHandle,
               const <a href="structVT_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
-              const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create a swapchain with the specified logical device, create info, and allocator.</dd>
             <dt id="aa334c15d7f7e62c63e6d32cb67481e51">
@@ -155,12 +155,12 @@
             </dt>
             <dd>Destroy a swapchain.</dd>
             <dt id="a3f4256ddb31dba458ed6ce637237211e">
-              <span class="m-doc-wrap-bumper">auto <a href="#a3f4256ddb31dba458ed6ce637237211e" class="m-doc-self">GetImages</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a>&gt;&amp; _images) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3f4256ddb31dba458ed6ce637237211e" class="m-doc-self">GetImages</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="classVT_1_1V3_1_1Image.html" class="m-doc">Image</a>&gt;&amp; _images) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Gets the available swapchain images and stores them in the provided dynamic array container.</dd>
-            <dt id="af8a0701d788ee3448df1a253c1d8892f">
-              <span class="m-doc-wrap-bumper">auto <a href="#af8a0701d788ee3448df1a253c1d8892f" class="m-doc-self">QueryImages</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gab3970381df9aafa789b407f1de63f00f" class="m-doc">uint32</a>&amp; _numImages,
-              <a href="group__APISpec__Resource__Creation.html#ga274108ac188cab9c25c90deb9a46be8c" class="m-doc">Image::<wbr />Handle</a>* _imagesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga5bc5316b903289fe3018a7c0105f31fa" class="m-doc">EResult</a></span>
+            <dt id="a98b03fc0b13132e0afeb72ee7e18ce1f">
+              <span class="m-doc-wrap-bumper">auto <a href="#a98b03fc0b13132e0afeb72ee7e18ce1f" class="m-doc-self">QueryImages</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a>&amp; _numImages,
+              <a href="group__APISpec__Resource__Creation.html#ga274108ac188cab9c25c90deb9a46be8c" class="m-doc">Image::<wbr />Handle</a>* _imagesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Obtain the array of presentable images associated with a swapchain.</dd>
             <dt id="aff858a930fe01788a62a3ad13adf3d51">
