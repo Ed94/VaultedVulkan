@@ -2083,7 +2083,7 @@ namespace VaultedThermals
 			*/
 			~DescriptorPool()
 			{
-				if (handle == Null<Handle>) Destroy();
+				if (handle != Null<Handle>) Destroy(); 
 			}
 
 			/**
