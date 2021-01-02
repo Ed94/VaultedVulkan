@@ -71,7 +71,7 @@ namespace VaultedThermals
 					  EType   SType    = STypeEnum;
 				const void*   Next     = nullptr  ;
 				const char*   Name     = nullptr  ;
-					  float32 Color[4];
+					  f32     Color[4];
 			};
 
 			/** 
@@ -87,7 +87,7 @@ namespace VaultedThermals
 					  EType       SType  = STypeEnum;
 				const void*       Next   = nullptr  ;
 					  EObjectType Type  ;
-					  uInt64      Handle;
+					  uI64        Handle;
 				const char*       Name   = nullptr  ;
 			};
 
@@ -158,15 +158,15 @@ namespace VaultedThermals
 
 						  EType       SType                = STypeEnum;
 					const void*       Next                 = nullptr  ;
-						  FlagsMask   Flags               ;
+						  FlagsMask   Flags;
 					const char*       MesssageIDName       = nullptr  ;
-						  sint32      MessageIDNumber      = 0        ;
+						  si32        MessageIDNumber      = 0        ;
 					const char*       Message              = nullptr  ;
-						  uint32      QueueLabelCount      = 0        ;
+						  ui32        QueueLabelCount      = 0        ;
 					const Label*      QueueLabels          = nullptr  ;
-						  uint32      CMDBufferLabel_Count = 0        ;
+						  ui32        CMDBufferLabel_Count = 0        ;
 					const Label*      CMDBufferLabels      = nullptr  ;
-						  uint32      ObjectCount          = 0        ;
+						  ui32        ObjectCount          = 0        ;
 					const ObjectInfo* Objects              = nullptr  ;
 				};
 

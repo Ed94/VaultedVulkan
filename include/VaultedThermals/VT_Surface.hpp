@@ -84,12 +84,12 @@ namespace VaultedThermals
 			 */
 			struct Capabilities : V0::VKStruct_Base<VkSurfaceCapabilitiesKHR>
 			{
-				uint32              MinImageCount          ;
-				uint32              MaxImageCount          ;
+				ui32                MinImageCount          ;
+				ui32                MaxImageCount          ;
 				Extent2D            CurrentExtent          ;
 				Extent2D            MinImageExtent         ;
 				Extent2D            MaxImageExtent         ;
-				uint32              MaxImageArrayLayers    ;
+				ui32                MaxImageArrayLayers    ;
 				ETransformFlags     SupportedTransforms    ;
 				ETransform          CurrentTransform       ;
 				CompositeAlphaFlags SupportedCompositeAlpha;
@@ -263,7 +263,7 @@ namespace VaultedThermals
 			static EResult CheckPhysicalDeviceSupport
 			(
 				PhysicalDevice::Handle _physDeviceHandle,
-				uint32                 _queueFamilyIndex,
+				ui32                   _queueFamilyIndex,
 				Surface::Handle        _surfaceHandle   ,
 				Bool&                  _checkResult
 			)
@@ -307,7 +307,7 @@ namespace VaultedThermals
 			 * \param _formatsContainer
 			 * \return 
 			 */
-			static EResult GetFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, uint32& _numFormats, Surface::Format* _formatsContainer)
+			static EResult GetFormats(PhysicalDevice::Handle _deviceHandle, Surface::Handle _surfaceHandle, ui32& _numFormats, Surface::Format* _formatsContainer)
 			{
 				return EResult(vkGetPhysicalDeviceSurfaceFormatsKHR(_deviceHandle, _surfaceHandle, &_numFormats, _formatsContainer->operator VkSurfaceFormatKHR*()));
 			}
@@ -334,7 +334,7 @@ namespace VaultedThermals
 			(
 				PhysicalDevice::Handle _deviceHandle              , 
 				Surface::Handle        _surfaceHandle             , 
-				uint32&                _numPresentationModes      , 
+				ui32&                _numPresentationModes      , 
 				EPresentationMode*     _presentationModesContainer
 			)
 			{
@@ -391,7 +391,7 @@ namespace VaultedThermals
 				DynamicArray<Surface::Format>& _formatsContainer
 			)
 			{
-				uint32 numFormats; 
+				ui32 numFormats; 
 				
 				EResult result = GetFormats(_deviceHandle, _surfaceHandle, numFormats, nullptr);
 
@@ -419,7 +419,7 @@ namespace VaultedThermals
 				DynamicArray<EPresentationMode>& _presentationModesContainer
 			)
 			{
-				uint32 numPresentationModes; 
+				ui32 numPresentationModes; 
 				
 				EResult result = QuerySupportedPresentationModes(_deviceHandle, _surfaceHandle, numPresentationModes, nullptr);
 
@@ -571,7 +571,7 @@ namespace VaultedThermals
 			/**
 			@brief Query if presentation is supported.
 			*/
-			EResult CheckPhysicalDeviceSupport(uint32 _queueFamilyIndex, Bool& _checkResult)
+			EResult CheckPhysicalDeviceSupport(ui32 _queueFamilyIndex, Bool& _checkResult)
 			{
 				return Parent::CheckPhysicalDeviceSupport(*physicalDevice, _queueFamilyIndex, handle, _checkResult);
 			}

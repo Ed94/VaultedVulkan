@@ -106,7 +106,7 @@ namespace VaultedThermals
 				      EType      SType           = STypeEnum;
 				const void*      Next            = nullptr  ;
 				      DeviceSize AllocationSize ;
-				      uint32     MemoryTypeIndex;
+				      ui32     MemoryTypeIndex;
 			};
 
 			/** 
@@ -174,7 +174,7 @@ namespace VaultedThermals
 			{
 				DeviceSize Size          ;
 				DeviceSize Alignment     ;
-				uint32     MemoryTypeBits;
+				ui32       MemoryTypeBits;
 			};
 
 			/**
@@ -187,7 +187,7 @@ namespace VaultedThermals
 			struct Type : V0::VKStruct_Base<VkMemoryType>
 			{
 				PropertyFlags PropertyFlags;
-				uint32        HeapIndex    ;
+				ui32          HeapIndex    ;
 			};
 		};
 

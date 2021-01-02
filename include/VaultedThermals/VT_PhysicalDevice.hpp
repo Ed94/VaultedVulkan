@@ -81,10 +81,10 @@ namespace VaultedThermals
 			*/
 			struct ConformanceVersion : V0::VKStruct_Base<VkConformanceVersion>
 			{
-				uInt8 Major   ;
-				uInt8 Minor   ;
-				uInt8 Subminor;
-				uInt8 Patch   ;
+				uI8 Major   ;
+				uI8 Minor   ;
+				uI8 Subminor;
+				uI8 Patch   ;
 
 				bool operator==(const ConformanceVersion _other) 
 				{ return Major == _other.Major && Minor == _other.Minor && Subminor == _other.Subminor && Patch == _other.Patch ? true : false; }
@@ -173,7 +173,7 @@ namespace VaultedThermals
 
 				EType         SType               = STypeEnum;
 				void*         Next                = nullptr  ;
-				uint32        PhysicalDeviceCount;
+				ui32          PhysicalDeviceCount;
 				DeviceListing PhysicalDevices    ;
 				Bool          SubsetAllocation   ;
 			};
@@ -188,107 +188,107 @@ namespace VaultedThermals
 			*/
 			struct Limits : V0::VKStruct_Base<VkPhysicalDeviceLimits>
 			{
-				uint32           MaxImageDimension1D                            ;
-				uint32           MaxImageDimension2D                            ;
-				uint32           MaxImageDimension3D                            ;
-				uint32           MaxImageDimensionCube                          ;
-				uint32           MaxImageArrayLayers                            ;
-				uint32           MaxTexelBufferElements                         ;
-				uint32           MaxUniformBufferRange                          ;
-				uint32           MaxStorageBufferRange                          ;
-				uint32           MaxPushConstantsSize                           ;
-				uint32           MaxMemoryAllocationCount                       ;
-				uint32           MaxSamplerAllocationCount                      ;
+				ui32             MaxImageDimension1D                            ;
+				ui32             MaxImageDimension2D                            ;
+				ui32             MaxImageDimension3D                            ;
+				ui32             MaxImageDimensionCube                          ;
+				ui32             MaxImageArrayLayers                            ;
+				ui32             MaxTexelBufferElements                         ;
+				ui32             MaxUniformBufferRange                          ;
+				ui32             MaxStorageBufferRange                          ;
+				ui32             MaxPushConstantsSize                           ;
+				ui32             MaxMemoryAllocationCount                       ;
+				ui32             MaxSamplerAllocationCount                      ;
 				DeviceSize       BufferImageGranularity                         ;
 				DeviceSize       SparseAddressSpaceSize                         ;
-				uint32           MaxBoundDescriptorSets                         ;
-				uint32           MaxPerStageDescriptorSamplers                  ;
-				uint32           MaxPerStageDescriptorUniformBuffers            ;
-				uint32           MaxPerStageDescriptorStorageBuffers            ;
-				uint32           MaxPerStageDescriptorSampledImages             ;
-				uint32           MaxPerStageDescriptorStorageImages             ;
-				uint32           MaxPerStageDescriptorInputAttachments          ;
-				uint32           MaxPerStageResources                           ;
-				uint32           MaxDescriptorSetSamplers                       ;
-				uint32           MaxDescriptorSetUniformBuffers                 ;
-				uint32           MaxDescriptorSetUniformBuffersDynamic          ;
-				uint32           MaxDescriptorSetStorageBuffers                 ;
-				uint32           MaxDescriptorSetStorageBuffersDynamic          ;
-				uint32           MaxDescriptorSetSampledImages                  ;
-				uint32           MaxDescriptorSetStorageImages                  ;
-				uint32           MaxDescriptorSetInputAttachments               ;
-				uint32           MaxVertexInputAttributes                       ;
-				uint32           MaxVertexInputBindings                         ;
-				uint32           MaxVertexInputAttributeOffset                  ;
-				uint32           MaxVertexInputBindingStride                    ;
-				uint32           MaxVertexOutputComponents                      ;
-				uint32           MaxTessellationGenerationLevel                 ;
-				uint32           MaxTessellationPatchSize                       ;
-				uint32           MaxTessellationControlPerVertexInputComponents ;
-				uint32           MaxTessellationControlPerVertexOutputComponents;
-				uint32           MaxTessellationControlPerPatchOutputComponents ;
-				uint32           MaxTessellationControlTotalOutputComponents    ;
-				uint32           MaxTessellationEvaluationInputComponents       ;
-				uint32           MaxTessellationEvaluationOutputComponents      ;
-				uint32           MaxGeometryShaderInvocations                   ;
-				uint32           MaxGeometryInputComponents                     ;
-				uint32           MaxGeometryOutputComponents                    ;
-				uint32           MaxGeometryOutputVertices                      ;
-				uint32           MaxGeometryTotalOutputComponents               ;
-				uint32           MaxFragmentInputComponents                     ;
-				uint32           MaxFragmentOutputAttachments                   ;
-				uint32           MaxFragmentDualSrcAttachments                  ;
-				uint32           MaxFragmentCombinedOutputResources             ;
-				uint32           MaxComputeSharedMemorySize                     ;
-				uint32           MaxComputeWorkGroupCount[3]                    ;
-				uint32           MaxComputeWorkGroupInvocations                 ;
-				uint32           MaxComputeWorkGroupSize[3]                     ;
-				uint32           SubPixelPrecisionBits                          ;
-				uint32           SubTexelPrecisionBits                          ;
-				uint32           MipmapPrecisionBits                            ;
-				uint32           MaxDrawIndexedIndexValue                       ;
-				uint32           MaxDrawIndirectCount                           ;
-				float32          MaxSamplerLodBias                              ;
-				float32          MaxSamplerAnisotropy                           ;
-				uint32           MaxViewports                                   ;
-				uint32           MaxViewportDimensions[2]                       ;
-				float32          ViewportBoundsRange[2]                         ;
-				uint32           ViewportSubPixelBits                           ;
+				ui32             MaxBoundDescriptorSets                         ;
+				ui32             MaxPerStageDescriptorSamplers                  ;
+				ui32             MaxPerStageDescriptorUniformBuffers            ;
+				ui32             MaxPerStageDescriptorStorageBuffers            ;
+				ui32             MaxPerStageDescriptorSampledImages             ;
+				ui32             MaxPerStageDescriptorStorageImages             ;
+				ui32             MaxPerStageDescriptorInputAttachments          ;
+				ui32             MaxPerStageResources                           ;
+				ui32             MaxDescriptorSetSamplers                       ;
+				ui32             MaxDescriptorSetUniformBuffers                 ;
+				ui32             MaxDescriptorSetUniformBuffersDynamic          ;
+				ui32             MaxDescriptorSetStorageBuffers                 ;
+				ui32             MaxDescriptorSetStorageBuffersDynamic          ;
+				ui32             MaxDescriptorSetSampledImages                  ;
+				ui32             MaxDescriptorSetStorageImages                  ;
+				ui32             MaxDescriptorSetInputAttachments               ;
+				ui32             MaxVertexInputAttributes                       ;
+				ui32             MaxVertexInputBindings                         ;
+				ui32             MaxVertexInputAttributeOffset                  ;
+				ui32             MaxVertexInputBindingStride                    ;
+				ui32             MaxVertexOutputComponents                      ;
+				ui32             MaxTessellationGenerationLevel                 ;
+				ui32             MaxTessellationPatchSize                       ;
+				ui32             MaxTessellationControlPerVertexInputComponents ;
+				ui32             MaxTessellationControlPerVertexOutputComponents;
+				ui32             MaxTessellationControlPerPatchOutputComponents ;
+				ui32             MaxTessellationControlTotalOutputComponents    ;
+				ui32             MaxTessellationEvaluationInputComponents       ;
+				ui32             MaxTessellationEvaluationOutputComponents      ;
+				ui32             MaxGeometryShaderInvocations                   ;
+				ui32             MaxGeometryInputComponents                     ;
+				ui32             MaxGeometryOutputComponents                    ;
+				ui32             MaxGeometryOutputVertices                      ;
+				ui32             MaxGeometryTotalOutputComponents               ;
+				ui32             MaxFragmentInputComponents                     ;
+				ui32             MaxFragmentOutputAttachments                   ;
+				ui32             MaxFragmentDualSrcAttachments                  ;
+				ui32             MaxFragmentCombinedOutputResources             ;
+				ui32             MaxComputeSharedMemorySize                     ;
+				ui32             MaxComputeWorkGroupCount[3]                    ;
+				ui32             MaxComputeWorkGroupInvocations                 ;
+				ui32             MaxComputeWorkGroupSize[3]                     ;
+				ui32             SubPixelPrecisionBits                          ;
+				ui32             SubTexelPrecisionBits                          ;
+				ui32             MipmapPrecisionBits                            ;
+				ui32             MaxDrawIndexedIndexValue                       ;
+				ui32             MaxDrawIndirectCount                           ;
+				f32              MaxSamplerLodBias                              ;
+				f32              MaxSamplerAnisotropy                           ;
+				ui32             MaxViewports                                   ;
+				ui32             MaxViewportDimensions[2]                       ;
+				f32              ViewportBoundsRange[2]                         ;
+				ui32             ViewportSubPixelBits                           ;
 				size_t           MinMemoryMapAlignment                          ;
 				DeviceSize       MinTexelBufferOffsetAlignment                  ;
 				DeviceSize       MinUniformBufferOffsetAlignment                ;
 				DeviceSize       MinStorageBufferOffsetAlignment                ;
-				sint32           MinTexelOffset                                 ;
-				uint32           MaxTexelOffset                                 ;
-				sint32           MinTexelGatherOffset                           ;
-				uint32           MaxTexelGatherOffset                           ;
-				float32          MinInterpolationOffset                         ;
-				float32          MaxInterpolationOffset                         ;
-				uint32           SubPixelInterpolationOffsetBits                ;
-				uint32           MaxFramebufferWidth                            ;
-				uint32           MaxFramebufferHeight                           ;
-				uint32           MaxFramebufferLayers                           ;
+				si32             MinTexelOffset                                 ;
+				ui32             MaxTexelOffset                                 ;
+				si32             MinTexelGatherOffset                           ;
+				ui32             MaxTexelGatherOffset                           ;
+				f32              MinInterpolationOffset                         ;
+				f32              MaxInterpolationOffset                         ;
+				ui32             SubPixelInterpolationOffsetBits                ;
+				ui32             MaxFramebufferWidth                            ;
+				ui32             MaxFramebufferHeight                           ;
+				ui32             MaxFramebufferLayers                           ;
 				SampleCountFlags FramebufferColorSampleCounts                   ;
 				SampleCountFlags FramebufferDepthSampleCounts                   ;
 				SampleCountFlags FramebufferStencilSampleCounts                 ;
 				SampleCountFlags FramebufferNoAttachmentsSampleCounts           ;
-				uint32           MaxColorAttachments                            ;
+				ui32             MaxColorAttachments                            ;
 				SampleCountFlags SampledImageColorSampleCounts                  ;
 				SampleCountFlags SampledImageIntegerSampleCounts                ;
 				SampleCountFlags SampledImageDepthSampleCounts                  ;
 				SampleCountFlags SampledImageStencilSampleCounts                ;
 				SampleCountFlags StorageImageSampleCounts                       ;
-				uint32           MaxSampleMaskWords                             ;
+				ui32             MaxSampleMaskWords                             ;
 				Bool             TimestampComputeAndGraphics                    ;
-				float32          TimestampPeriod                                ;
-				uint32           MaxClipDistances                               ;
-				uint32           MaxCullDistances                               ;
-				uint32           MaxCombinedClipAndCullDistances                ;
-				uint32           DiscreteQueuePriorities                        ;
-				float32          PointSizeRange[2]                              ;
-				float32          LineWidthRange[2]                              ;
-				float32          PointSizeGranularity                           ;
-				float32          LineWidthGranularity                           ;
+				f32              TimestampPeriod                                ;
+				ui32             MaxClipDistances                               ;
+				ui32             MaxCullDistances                               ;
+				ui32             MaxCombinedClipAndCullDistances                ;
+				ui32             DiscreteQueuePriorities                        ;
+				f32              PointSizeRange[2]                              ;
+				f32              LineWidthRange[2]                              ;
+				f32              PointSizeGranularity                           ;
+				f32              LineWidthGranularity                           ;
 				Bool             StrictLines                                    ;
 				Bool             StandardSampleLocations                        ;
 				DeviceSize       OptimalBufferCopyOffsetAlignment               ;
@@ -303,9 +303,9 @@ namespace VaultedThermals
 			 */
 			struct MemoryProperties : V0::VKStruct_Base<VkPhysicalDeviceMemoryProperties>
 			{
-				uint32       TypeCount            ;
+				ui32         TypeCount            ;
 				Memory::Type Types[MaxMemoryTypes];
-				uint32       HeapCount            ;
+				ui32         HeapCount            ;
 				Memory::Heap Heaps[MaxMemoryHeaps];
 			};
 
@@ -375,10 +375,10 @@ namespace VaultedThermals
 			*/
 			struct Properties : V0::VKStruct_Base<VkPhysicalDeviceProperties>
 			{
-				uint32                 API_Version      ;
-				uint32                 DriverVersion    ;
-				uint32                 VenderID         ;
-				uint32                 ID               ;
+				ui32                   API_Version      ;
+				ui32                   DriverVersion    ;
+				ui32                   VenderID         ;
+				ui32                   ID               ;
 				EDeviceType            Type             ;
 				NameStr                Name             ;
 				UUID                   PipelineCacheUUID;
@@ -400,7 +400,7 @@ namespace VaultedThermals
 					UUID   DeviceUUID     ;
 					UUID   DriverUUID     ;
 					UUID   DeviceLUID     ;
-					uint32 DeviceNodeMask ;
+					ui32   DeviceNodeMask ;
 					Bool   DeviceLUIDValid;
 				};	
 
@@ -417,10 +417,10 @@ namespace VaultedThermals
 				{
 					EType  SType    = STypeEnum;
 					void*  Next     = nullptr  ;
-					uint32 Domain  ;
-					uint32 Bus     ;
-					uint32 Device  ;
-					uint32 Function;
+					ui32   Domain  ;
+					ui32   Bus     ;
+					ui32   Device  ;
+					ui32   Function;
 				};
 
 				/**
@@ -441,17 +441,17 @@ namespace VaultedThermals
 					UUID                   DeviceUUID                       ;
 					UUID                   DriverUUID                       ;
 					UUID                   DeviceLUID                       ;
-					uint32                 DeviceNodeMask                   ;
+					ui32                   DeviceNodeMask                   ;
 					Bool                   DeviceLUIDValid                  ;
-					uint32                 SubgroupSize                     ;
+					ui32                   SubgroupSize                     ;
 					ShaderStageFlags       SubgroupSupportedStages          ;
 					ESubgroupFeaturesFlag  SubgroupSupportedOperations      ;
 					Bool                   SubgroupQuadOperationsInAllStages;
 					EPointClippingBehavior PointClippingBehavior            ;
-					uint32                 MaxMultiviewViewCount            ;
-					uint32                 MaxMultiviewInstanceIndex        ;
+					ui32                   MaxMultiviewViewCount            ;
+					ui32                   MaxMultiviewInstanceIndex        ;
 					Bool                   ProtectedNoFault                 ;
-					uint32                 MaxPerSetDescriptors             ;
+					ui32                   MaxPerSetDescriptors             ;
 					DeviceSize             MaxMemoryAllocationSize          ;
 				};
 
@@ -489,7 +489,7 @@ namespace VaultedThermals
 					Bool                            ShaderRoundingModeRTZFloat16                        ;
 					Bool                            ShaderRoundingModeRTZFloat32                        ;
 					Bool                            ShaderRoundingModeRTZFloat64                        ;
-					uint32                          MaxUpdateAfterBindDescriptorsInAllPools             ;
+					ui32                            MaxUpdateAfterBindDescriptorsInAllPools             ;
 					Bool                            ShaderUniformBufferArrayNonUniformIndexingNative    ;
 					Bool                            ShaderSampledImageArrayNonUniformIndexingNative     ;
 					Bool                            ShaderStorageBufferArrayNonUniformIndexingNative    ;
@@ -497,28 +497,28 @@ namespace VaultedThermals
 					Bool                            ShaderInputAttachmentArrayNonUniformIndexingNative  ;
 					Bool                            RobustBufferAccessUpdateAfterBind                   ;
 					Bool                            QuadDivergentImplicitLod                            ;
-					uint32                          MaxPerStageDescriptorUpdateAfterBindSamplers        ;
-					uint32                          MaxPerStageDescriptorUpdateAfterBindUniformBuffers  ;
-					uint32                          MaxPerStageDescriptorUpdateAfterBindStorageBuffers  ;
-					uint32                          MaxPerStageDescriptorUpdateAfterBindSampledImages   ;
-					uint32                          MaxPerStageDescriptorUpdateAfterBindStorageImages   ;
-					uint32                          MaxPerStageDescriptorUpdateAfterBindInputAttachments;
-					uint32                          MaxPerStageUpdateAfterBindResources                 ;
-					uint32                          MaxDescriptorSetUpdateAfterBindSamplers             ;
-					uint32                          MaxDescriptorSetUpdateAfterBindUniformBuffers       ;
-					uint32                          MaxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
-					uint32                          MaxDescriptorSetUpdateAfterBindStorageBuffers       ;
-					uint32                          MaxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
-					uint32                          MaxDescriptorSetUpdateAfterBindSampledImages        ;
-					uint32                          MaxDescriptorSetUpdateAfterBindStorageImages        ;
-					uint32                          MaxDescriptorSetUpdateAfterBindInputAttachments     ;
+					ui32                            MaxPerStageDescriptorUpdateAfterBindSamplers        ;
+					ui32                            MaxPerStageDescriptorUpdateAfterBindUniformBuffers  ;
+					ui32                            MaxPerStageDescriptorUpdateAfterBindStorageBuffers  ;
+					ui32                            MaxPerStageDescriptorUpdateAfterBindSampledImages   ;
+					ui32                            MaxPerStageDescriptorUpdateAfterBindStorageImages   ;
+					ui32                            MaxPerStageDescriptorUpdateAfterBindInputAttachments;
+					ui32                            MaxPerStageUpdateAfterBindResources                 ;
+					ui32                            MaxDescriptorSetUpdateAfterBindSamplers             ;
+					ui32                            MaxDescriptorSetUpdateAfterBindUniformBuffers       ;
+					ui32                            MaxDescriptorSetUpdateAfterBindUniformBuffersDynamic;
+					ui32                            MaxDescriptorSetUpdateAfterBindStorageBuffers       ;
+					ui32                            MaxDescriptorSetUpdateAfterBindStorageBuffersDynamic;
+					ui32                            MaxDescriptorSetUpdateAfterBindSampledImages        ;
+					ui32                            MaxDescriptorSetUpdateAfterBindStorageImages        ;
+					ui32                            MaxDescriptorSetUpdateAfterBindInputAttachments     ;
 					ResolveModeFlags                SupportedDepthResolveModes                          ;
 					ResolveModeFlags                SupportedStencilResolveModes                        ;
 					Bool                            IndependentResolveNone                              ;
 					Bool                            IndependentResolve                                  ;
 					Bool                            FilterMinmaxSingleComponentFormats                  ;
 					Bool                            FilterMinmaxImageComponentMapping                   ;
-					uInt64                          MaxTimelineSemaphoreValueDifference                 ;
+					uI64                            MaxTimelineSemaphoreValueDifference                 ;
 					SampleCountFlags                FramebufferIntegerColorSampleCounts                 ;
 				};
 			};
@@ -556,8 +556,8 @@ namespace VaultedThermals
 				using Flags = Bitmask<EQueueFlag , VkQueueFlags>;
 
 				Flags    QueueFlags                 ;
-				uint32   QueueCount                 ;
-				uint32   TimestampValidBits         ;
+				ui32     QueueCount                 ;
+				ui32     TimestampValidBits         ;
 				Extent3D MinImageTransferGranularity;
 			};
 
@@ -681,7 +681,7 @@ namespace VaultedThermals
 
 			@ingroup APISpec_Extending_Vulkan
 			*/
-			static EResult QueryExtensionProperties(Handle _handle, RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
+			static EResult QueryExtensionProperties(Handle _handle, RoCStr _layerName, ui32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer)
 			{
 				return EResult(vkEnumerateDeviceExtensionProperties(_handle, _layerName, _numExtensions, *_extensionPropertiesContainer));
 			}
@@ -699,7 +699,7 @@ namespace VaultedThermals
 
 			@ingroup APISpec_Devices_and_Queues
 			*/
-			static void QueryQueueFamilyProperties(Handle _handle, uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies)
+			static void QueryQueueFamilyProperties(Handle _handle, ui32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies)
 			{
 				vkGetPhysicalDeviceQueueFamilyProperties(_handle, _numQueueFamilies, *_queueFamilies);
 			}	
@@ -715,7 +715,7 @@ namespace VaultedThermals
 			static void QueryQueueFamilyProperties2
 			(
 				Handle                  _handle       ,
-				uint32*                 _numProperties,
+				ui32*                   _numProperties,
 				QueueFamilyProperties2* _properties
 			)
 			{
@@ -733,8 +733,8 @@ namespace VaultedThermals
 			static EResult QueryPerfomranceQueryCounters
 			(
 				Handle                           _handle             ,
-				uint32                           _queueFamilyIndex   ,
-				uint32*                          _numCounters        ,
+				ui32                             _queueFamilyIndex   ,
+				ui32*                            _numCounters        ,
 				PerformanceCounter*              _counters           ,
 				PerformanceCounter::Description* _counterDescriptions
 			)
@@ -863,13 +863,13 @@ namespace VaultedThermals
 			/**
 			@brief Finds the memory type index based on the type filter and properties desired. (Returns the max value of uint32 otherwise)
 			*/
-			static uint32 FindMemoryType(Handle _handle, uint32 _typeFilter, Memory::PropertyFlags _properties)
+			static ui32 FindMemoryType(Handle _handle, ui32 _typeFilter, Memory::PropertyFlags _properties)
 			{
 				MemoryProperties memProperties;
 
 				GetMemoryProperties(_handle, memProperties);
 
-				for (uint32 index = 0; index < memProperties.TypeCount; index++)
+				for (ui32 index = 0; index < memProperties.TypeCount; index++)
 				{
 					if
 						(
@@ -893,7 +893,7 @@ namespace VaultedThermals
 			*/
 			static EResult GetAvailableLayerExtensions(Handle _handle, RoCStr _layerName, DynamicArray<ExtensionProperties>& _extensionListing)
 			{
-				uint32 count;
+				ui32 count;
 
 				EResult returnCode = QueryExtensionProperties(_handle, _layerName, &count, nullptr);
 
@@ -920,7 +920,7 @@ namespace VaultedThermals
 			{
 				EResult result;
 
-				for (uint32 index = 0; index < _layersAndExtensions.size(); index++)
+				for (ui32 index = 0; index < _layersAndExtensions.size(); index++)
 				{
 					result = GetAvailableLayerExtensions(_handle, _layersAndExtensions[index].Layer.Name, _layersAndExtensions[index].Extensions);
 
@@ -938,7 +938,7 @@ namespace VaultedThermals
 			*/
 			static DynamicArray<QueueFamilyProperties> GetAvailableQueueFamilies(Handle _handle)
 			{
-				DynamicArray<QueueFamilyProperties> queryResult; uint32 count;
+				DynamicArray<QueueFamilyProperties> queryResult; ui32 count;
 
 				QueryQueueFamilyProperties(_handle, &count, nullptr);
 
@@ -1080,9 +1080,9 @@ namespace VaultedThermals
 			/**
 			@brief Find the suitable memory type for the type filter and properties specified.
 			*/
-			uint32 FindMemoryType(uint32 _typeFilter, Memory::PropertyFlags _properties) const
+			ui32 FindMemoryType(ui32 _typeFilter, Memory::PropertyFlags _properties) const
 			{
-				for (uint32 index = 0; index < memoryProperties.TypeCount; index++)
+				for (ui32 index = 0; index < memoryProperties.TypeCount; index++)
 				{
 					auto flags = memoryProperties.Types[index].PropertyFlags;
 
@@ -1124,7 +1124,7 @@ namespace VaultedThermals
 			*/
 			DynamicArray<QueueFamilyProperties> GetAvailableQueueFamilies() const
 			{
-				DynamicArray<QueueFamilyProperties> queryResult; uint32 count;
+				DynamicArray<QueueFamilyProperties> queryResult; ui32 count;
 
 				QueryQueueFamilyProperties(&count, nullptr);
 
@@ -1203,7 +1203,7 @@ namespace VaultedThermals
 			/**
 			@brief Query properties of queues available on a physical device. Reports properties of the queues of the specified physical device.
 			*/
-			EResult QueryExtensionProperties(RoCStr _layerName, uint32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer) const
+			EResult QueryExtensionProperties(RoCStr _layerName, ui32* _numExtensions, ExtensionProperties* _extensionPropertiesContainer) const
 			{
 				return Parent::QueryExtensionProperties(handle, _layerName, _numExtensions, _extensionPropertiesContainer);
 			}
@@ -1211,7 +1211,7 @@ namespace VaultedThermals
 			/**
 			@brief Query properties of queues available on a physical device.
 			*/
-			void QueryQueueFamilyProperties(uint32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies) const
+			void QueryQueueFamilyProperties(ui32* _numQueueFamilies, QueueFamilyProperties* _queueFamilies) const
 			{
 				return Parent::QueryQueueFamilyProperties(handle, _numQueueFamilies, _queueFamilies);
 			}
@@ -1219,7 +1219,7 @@ namespace VaultedThermals
 			/**
 			@brief Query properties of queues available on a physical device.
 			*/
-			void QueryQueueFamilyProperties2(uint32* _numProperties, QueueFamilyProperties2* _properties) const
+			void QueryQueueFamilyProperties2(ui32* _numProperties, QueueFamilyProperties2* _properties) const
 			{
 				return Parent::QueryQueueFamilyProperties2(handle, _numProperties, _properties);
 			}
@@ -1229,8 +1229,8 @@ namespace VaultedThermals
 			*/
 			EResult QueryPerfomranceQueryCounters
 			(
-				uint32                           _queueFamilyIndex   ,
-				uint32*                          _numCounters        ,
+				ui32                             _queueFamilyIndex   ,
+				ui32*                            _numCounters        ,
 				PerformanceCounter*              _counters           ,
 				PerformanceCounter::Description* _counterDescriptions
 			) const

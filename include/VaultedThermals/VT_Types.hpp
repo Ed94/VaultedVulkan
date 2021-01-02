@@ -97,7 +97,7 @@ namespace VaultedThermals
 		*/
 		struct Offset2D : V0::VKStruct_Base<VkOffset2D>
 		{
-			sint32 X, Y;
+			si32 X, Y;
 
 			bool operator==(const Offset2D _other) {  return X == _other.X && Y == _other.Y ? true : false; }
 			bool operator!=(const Offset2D _other) {  return X != _other.X || Y != _other.Y ? true : false; }
@@ -113,7 +113,7 @@ namespace VaultedThermals
 		*/
 		struct Offset3D : V0::VKStruct_Base<VkOffset3D>
 		{
-			sint32 X, Y, Z;
+			si32 X, Y, Z;
 
 			bool operator==(const Offset3D& _other) { return X == _other.X && Y == _other.Y && Z == _other.Z ? true : false; }
 			bool operator!=(const Offset3D& _other) { return X != _other.X || Y != _other.Y || Z != _other.Z ? true : false; }
@@ -129,7 +129,7 @@ namespace VaultedThermals
 		*/
 		struct Extent2D : V0::VKStruct_Base<VkExtent2D>
 		{
-			uint32 Width, Height;
+			ui32 Width, Height;
 
 			bool operator==(const Extent2D _other) { return Width == _other.Width && Height == _other.Height ? true : false; }
 			bool operator!=(const Extent2D _other) { return Width != _other.Width || Height != _other.Height ? true : false; }
@@ -145,7 +145,7 @@ namespace VaultedThermals
 		*/
 		struct Extent3D : V0::VKStruct_Base<VkExtent3D>
 		{
-			uint32 Width, Height, Depth;
+			ui32 Width, Height, Depth;
 
 			bool operator==(const Extent3D& _other) { return Width == _other.Width && Height == _other.Height && Depth == _other.Depth ? true : false; }
 			bool operator!=(const Extent3D& _other) { return Width != _other.Width || Height != _other.Height || Depth == _other.Depth ? true : false; }
@@ -288,16 +288,16 @@ namespace VaultedThermals
 			/** @ingroup APISpec_Clear_Commands @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearColorValue">Specification</a>  */
 			union UColor
 			{
-				float32 InFloat[4];
-				sint32  InSInt [4];
-				uint32  InUInt [4];
+				f32  InFloat[4];
+				si32 InSInt [4];
+				ui32 InUInt [4];
 			};
 
 			/** @ingroup APISpec_Clear_Commands @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkClearDepthStencilValue">Specification</a>  */
 			struct UDepthStencil
 			{
-				float32 Depth  ;
-				uint32  Stencil;
+				f32  Depth  ;
+				ui32 Stencil;
 			};
 
 			union
@@ -339,7 +339,7 @@ namespace VaultedThermals
 		struct ExtensionProperties : V0::VKStruct_Base<VkExtensionProperties>
 		{
 			ExtensionNameStr Name       ;
-			uint32           SpecVersion;
+			ui32             SpecVersion;
 		};
 
 		/** @ingroup APISpec_Formats @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatProperties">Specification</a>  */
@@ -372,8 +372,8 @@ namespace VaultedThermals
 		struct LayerProperties : V0::VKStruct_Base<VkLayerProperties>
 		{
 			ExtensionNameStr Name                 ;
-			uint32           SpecVersion          ;
-			uint32           ImplementationVersion;
+			ui32             SpecVersion          ;
+			ui32             ImplementationVersion;
 			DescrptionStr    Descrption           ;
 		};
 
@@ -384,9 +384,9 @@ namespace VaultedThermals
 			EStencilOperation PassOp     ;
 			EStencilOperation DepthFailOp;
 			ECompareOperation CompareOp  ;
-			uint32            CompareMask;
-			uint32            WriteMask  ;
-			uint32            Reference  ;
+			ui32              CompareMask;
+			ui32              WriteMask  ;
+			ui32              Reference  ;
 
 			bool operator== (const StencilOperationState& _other)
 			{
@@ -422,9 +422,9 @@ namespace VaultedThermals
 		*/
 		struct Viewport : V0::VKStruct_Base<VkViewport>
 		{
-			float32 X       , Y       ;
-			float32 Width   , Height  ;
-			float32 MinDepth, MaxDepth;
+			f32 X       , Y       ;
+			f32 Width   , Height  ;
+			f32 MinDepth, MaxDepth;
 
 			bool operator== (const Viewport& _other) 
 			{
@@ -493,7 +493,7 @@ namespace VaultedThermals
 
 	namespace SPIR_V
 	{
-		using Bytecode = Corridors::uint32;   ///< Word size of a SPIR-V instruction.
+		using Bytecode = Corridors::ui32;   ///< Word size of a SPIR-V instruction.
 	}
 
 }

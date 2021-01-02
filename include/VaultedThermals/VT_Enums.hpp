@@ -35,7 +35,7 @@ namespace VaultedThermals
 		@enum Undefined Enum
 		@brief Necessary for Bitmasks in the Vulkan specification that are not defined but reserved for future use.
 		*/
-		enum class EUndefined : uint32 { VT_SpecifyBitmaskable = sizeof(uint32) };
+		enum class EUndefined : ui32 { VT_SpecifyBitmaskable = sizeof(ui32) };
 
 		/**
 		 * @enum Handle Enum
@@ -48,7 +48,7 @@ namespace VaultedThermals
 	#pragma endregion VT_Enums
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-		enum class EAccessFlag : uint32
+		enum class EAccessFlag : ui32
 		{
 			IndirectCommandRead                 = VK_ACCESS_INDIRECT_COMMAND_READ_BIT                ,
 			IndexRead                           = VK_ACCESS_INDEX_READ_BIT                           ,
@@ -98,7 +98,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlagBits">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class EAttachmentDescriptionFlag : uint32
+		enum class EAttachmentDescriptionFlag : ui32
 		{
 			AttachmentDescription_MAY_ALIAS = VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT,
 
@@ -106,7 +106,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentLoadOp">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class EAttachmentLoadOperation : uint32
+		enum class EAttachmentLoadOperation : ui32
 		{
 			Load     = VK_ATTACHMENT_LOAD_OP_LOAD     , 
 			Clear    = VK_ATTACHMENT_LOAD_OP_CLEAR    ,
@@ -114,14 +114,14 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentStoreOp">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class EAttachmentStoreOperation : uint32
+		enum class EAttachmentStoreOperation : ui32
 		{
 			Store    = VK_ATTACHMENT_STORE_OP_STORE    ,
 			DontCare = VK_ATTACHMENT_STORE_OP_DONT_CARE
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBlendFactor">Specification</a> @ingroup APISpec_The_Framebuffer */
-		enum class EBlendFactor : uint32
+		enum class EBlendFactor : ui32
 		{
 			Zero                      = VK_BLEND_FACTOR_ZERO                    ,
 			One                       = VK_BLEND_FACTOR_ONE                     ,
@@ -145,7 +145,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBlendOp">Specification</a> @ingroup APISpec_The_Framebuffer */
-		enum class EBlendOperation : uint32
+		enum class EBlendOperation : ui32
 		{
 			Add                  = VK_BLEND_OP_ADD                   ,
 			Subtract             = VK_BLEND_OP_SUBTRACT              ,
@@ -216,7 +216,7 @@ namespace VaultedThermals
 
 		@ingroup APISpec_Samplers
 		*/
-		enum EBorderColor : uint32
+		enum EBorderColor : ui32
 		{
 			Float_TransparentBlack = VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK,
 			Int_TransparentBlack   = VK_BORDER_COLOR_INT_TRANSPARENT_BLACK  ,
@@ -237,7 +237,7 @@ namespace VaultedThermals
 		 * 
 		 * @ingroup APISpec_Resource_Creation
 		 */
-		enum class EBufferCreateFlag : uint32
+		enum class EBufferCreateFlag : ui32
 		{
 			SparseBinding                       = VK_BUFFER_CREATE_SPARSE_BINDING_BIT                   ,
 			SparseResidency                     = VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT                 ,
@@ -251,7 +251,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferUsageFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EBufferUsage : uint32
+		enum class EBufferUsage : ui32
 		{
 			TransferSource      = VK_BUFFER_USAGE_TRANSFER_SRC_BIT        ,
 			TransferDestination = VK_BUFFER_USAGE_TRANSFER_DST_BIT        ,
@@ -267,7 +267,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorComponentFlagBits">Specification</a> @ingroup APISpec_The_Framebuffer */
-		enum class EColorComponentFlag : uint32
+		enum class EColorComponentFlag : ui32
 		{
 			R = VK_COLOR_COMPONENT_R_BIT,
 			G = VK_COLOR_COMPONENT_G_BIT,
@@ -278,7 +278,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorSpaceKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
-		enum class EColorSpace : uint32
+		enum class EColorSpace : ui32
 		{
 			SRGB_NonLinear                   = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR         ,
 			NonLinear_Display_P3             = VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT   ,
@@ -308,7 +308,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits ">Specification</a> @ingroup APISpec_Command_Buffers */
-		enum class ECommandBufferResetFlag : uInt32
+		enum class ECommandBufferResetFlag : uI32
 		{
 			ReleaseResources = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT,
 
@@ -316,7 +316,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits">Specification</a> @ingroup APISpec_Command_Buffers */
-		enum class ECommandBufferUsageFlag : uint32
+		enum class ECommandBufferUsageFlag : ui32
 		{
 			OneTimeSubmit      = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT     ,
 			RenderPassContinue = VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT,
@@ -326,7 +326,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlagBits">Specification</a> @ingroup APISpec_Command_Buffers */
-		enum class ECommandPoolCreateFlag : uint32
+		enum class ECommandPoolCreateFlag : ui32
 		{
 			Transient          = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT           ,
 			ResetCommandBuffer = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,
@@ -336,7 +336,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlagBits">Specification</a> @ingroup APISpec_Command_Buffers */
-		enum class ECommandPoolResetFlags : uInt32
+		enum class ECommandPoolResetFlags : uI32
 		{
 			ReleaseResources = VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT,
 
@@ -344,7 +344,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkComponentSwizzle">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EComponentSwizzle : uint32
+		enum class EComponentSwizzle : ui32
 		{
 			Identitity = VK_COMPONENT_SWIZZLE_IDENTITY,
 			Zero       = VK_COMPONENT_SWIZZLE_ZERO    ,
@@ -356,7 +356,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagBitsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
-		enum class ECompositeAlpha : uint32
+		enum class ECompositeAlpha : ui32
 		{
 			Opaque         = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR          ,
 			PreMultiplied  = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR  ,
@@ -367,7 +367,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompareOp">Specification</a> @ingroup APISpec_Fragment_Operations */
-		enum class ECompareOperation : uint32
+		enum class ECompareOperation : ui32
 		{
 			Never          = VK_COMPARE_OP_NEVER           ,
 			Less           = VK_COMPARE_OP_LESS            ,
@@ -380,7 +380,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCullModeFlagBits">Specification</a> @ingroup APISpec_Rasterization */
-		enum class ECullModeFlag : uint32
+		enum class ECullModeFlag : ui32
 		{
 			None           = VK_CULL_MODE_NONE          ,
 			Front          = VK_CULL_MODE_FRONT_BIT     ,
@@ -391,7 +391,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagBitsEXT">Specification</a> @ingroup APISpec_Debugging */
-		enum class EDebugUtils_MessageSeverity : uint32
+		enum class EDebugUtils_MessageSeverity : ui32
 		{
 			Verbose = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
 			Info    = VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT   ,
@@ -402,7 +402,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagBitsEXT">Specification</a> @ingroup APISpec_Debugging */
-		enum class EDebugUtils_MessageType : uint32
+		enum class EDebugUtils_MessageType : ui32
 		{
 			General     = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT    ,
 			Validation  = VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT ,
@@ -412,7 +412,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDependencyFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-		enum class EDependencyFlag : uint32
+		enum class EDependencyFlag : ui32
 		{
 			ByRegion = VK_DEPENDENCY_BY_REGION_BIT,
 
@@ -420,7 +420,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlagBits">Specification</a> @ingroup APISpec_Resource_Descriptors */
-		enum class EDescriptorBindingFlag : uint32
+		enum class EDescriptorBindingFlag : ui32
 		{
 			UpdateAfterBind              = VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT              ,
 			UpdateUnusedWhilePending     = VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT    ,
@@ -435,7 +435,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Descriptors */
-		enum class EDescriptorPoolCreateFlag : uint32
+		enum class EDescriptorPoolCreateFlag : ui32
 		{
 			FreeDescriptorSet   = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT  ,
 			UpdateAfterBind     = VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT    ,
@@ -445,7 +445,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Descriptors */
-		enum class EDescriptorSetLayoutCreateFlag : uint32
+		enum class EDescriptorSetLayoutCreateFlag : ui32
 		{
 			UpdateAfterBindPool           = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT    ,
 			PushDescriptor                = VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR       ,
@@ -455,7 +455,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorType">Specification</a> @ingroup APISpec_Resource_Descriptors */
-		enum class EDescriptorType : uint32
+		enum class EDescriptorType : ui32
 		{
 			Sampler                      = VK_DESCRIPTOR_TYPE_SAMPLER                   ,
 			CombinedImageSampler         = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER    ,
@@ -474,7 +474,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigFlagBitsNV">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class EDeviceDiagnosticConfigFlag : uint32
+		enum class EDeviceDiagnosticConfigFlag : ui32
 		{
 			EnableShaderDebugInfo      = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV    , 
 			EnableResourceTracking     = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV    , 
@@ -484,7 +484,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class EDeviceQueueCreateFlag : uint32
+		enum class EDeviceQueueCreateFlag : ui32
 		{
 			// Provided by VK_VERSION_1_1
 			Protected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
@@ -493,13 +493,13 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventTypeEXT">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class EDeviceEventType : uint32
+		enum class EDeviceEventType : ui32
 		{
 			DisplayHotPlug_ = VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDisplayEventTypeEXT">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-		enum class EDisplayEventType : uint32
+		enum class EDisplayEventType : ui32
 		{
 			FirstPixelOut_EXT = VK_DISPLAY_EVENT_TYPE_FIRST_PIXEL_OUT_EXT
 		};
@@ -543,7 +543,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDynamicState">Specification</a> @ingroup APISpec_Pipelines */
-		enum class EDynamicState : uint32
+		enum class EDynamicState : ui32
 		{
 			Viewport                      = VK_DYNAMIC_STATE_VIEWPORT                        ,
 			Scissor                       = VK_DYNAMIC_STATE_SCISSOR                         ,
@@ -564,7 +564,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlagBits">Specification</a> @ingroup APISpec_Additional_Capabilities */
-		enum class EExternalFenceHandleTypeFlag : uint32
+		enum class EExternalFenceHandleTypeFlag : ui32
 		{
 			OpaqueFD             = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT           ,
 			Opaque_Win32         = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT        ,
@@ -579,7 +579,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlagBits">Specification</a> @ingroup APISpec_Additional_Capabilities */
-		enum class EExternalSemaphoreHandleTypeFlag : uint32
+		enum class EExternalSemaphoreHandleTypeFlag : ui32
 		{
 			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT = 0x00000001,
 			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT = 0x00000002,
@@ -602,7 +602,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-		enum class EFenceCreateFlag : uint32
+		enum class EFenceCreateFlag : ui32
 		{
 			Signaled = VK_FENCE_CREATE_SIGNALED_BIT,
 
@@ -619,7 +619,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFilter">Specification</a> @ingroup APISpec_Samplers */
-		enum class EFilter : uint32
+		enum class EFilter : ui32
 		{
 			Nearest   = VK_FILTER_NEAREST  ,
 			Linear    = VK_FILTER_LINEAR   ,
@@ -635,7 +635,7 @@ namespace VaultedThermals
 		 * 
 		 * @ingroup APISpec_Formats
 		 */
-		enum class EFormat : uint32
+		enum class EFormat : ui32
 		{
 			Undefined                                            = VK_FORMAT_UNDEFINED                                     ,
 			R4_G4_UNormalized_8Pack                              = VK_FORMAT_R4G4_UNORM_PACK8                              ,
@@ -915,7 +915,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlagBits">Specification</a> @ingroup APISpec_Formats */
-		enum class EFormatFeatureFlag : uint32
+		enum class EFormatFeatureFlag : ui32
 		{
 			SampledImage             = VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT              ,
 			StorageImage             = VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT              ,
@@ -964,17 +964,17 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class EFrameBufferCreateFlag : uint32 { VT_SpecifyBitmaskable = sizeof(uint32) };
+		enum class EFrameBufferCreateFlag : ui32 { VT_SpecifyBitmaskable = sizeof(ui32) };
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFrontFace">Specification</a> @ingroup APISpec_Rasterization */
-		enum class EFrontFace : uint32
+		enum class EFrontFace : ui32
 		{
 			CounterClockwise = VK_FRONT_FACE_COUNTER_CLOCKWISE,
 			Clockwise        = VK_FRONT_FACE_CLOCKWISE
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageAspectFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageAspect : uint32
+		enum class EImageAspect : ui32
 		{
 			Color         = VK_IMAGE_ASPECT_COLOR_BIT             ,
 			Depth         = VK_IMAGE_ASPECT_DEPTH_BIT             ,
@@ -995,7 +995,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageCreateFlag : uint32
+		enum class EImageCreateFlag : ui32
 		{
 			SparseBinding                      = VK_IMAGE_CREATE_SPARSE_BINDING_BIT                       ,
 			SparseResidency                    = VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT                     ,
@@ -1023,7 +1023,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageLayout">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageLayout : uint32
+		enum class EImageLayout : ui32
 		{
 			Undefined                                    = VK_IMAGE_LAYOUT_UNDEFINED                                     ,
 			General                                      = VK_IMAGE_LAYOUT_GENERAL                                       ,
@@ -1053,7 +1053,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageTiling">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageTiling : uint32
+		enum class EImageTiling : ui32
 		{
 			Optimal                      = VK_IMAGE_TILING_OPTIMAL                ,
 			Linear                       = VK_IMAGE_TILING_LINEAR                 ,
@@ -1061,7 +1061,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageType">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageType : uint32
+		enum class EImageType : ui32
 		{
 			_1D = VK_IMAGE_TYPE_1D,
 			_2D = VK_IMAGE_TYPE_2D,
@@ -1069,7 +1069,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageUsageFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageUsage : uint32
+		enum class EImageUsage : ui32
 		{
 			TransferSource          = VK_IMAGE_USAGE_TRANSFER_SRC_BIT            ,
 			TransferDestination     = VK_IMAGE_USAGE_TRANSFER_DST_BIT            ,
@@ -1086,7 +1086,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageViewCreateFlag : uint32
+		enum class EImageViewCreateFlag : ui32
 		{
 			Fragment_DensityMapDynamiic = VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
 
@@ -1094,7 +1094,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class EImageViewType : uint32
+		enum class EImageViewType : ui32
 		{
 			_1D       = VK_IMAGE_VIEW_TYPE_1D        ,
 			_2D       = VK_IMAGE_VIEW_TYPE_2D        ,
@@ -1106,7 +1106,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkIndexType">Specification</a> @ingroup APISpec_Drawing_Commands */
-		enum class EIndexType : uint32
+		enum class EIndexType : ui32
 		{
 			uInt16   = VK_INDEX_TYPE_UINT16   ,
 			uInt32   = VK_INDEX_TYPE_UINT32   ,
@@ -1122,7 +1122,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class ELogicalDeviceQueueCreateFlag : uint32
+		enum class ELogicalDeviceQueueCreateFlag : ui32
 		{
 			CreateProtected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
 
@@ -1130,7 +1130,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLogicOp">Specification</a> @ingroup APISpec_The_Framebuffer */
-		enum class ELogicOperation : uint32
+		enum class ELogicOperation : ui32
 		{
 			Clear         = VK_LOGIC_OP_CLEAR        ,
 			And           = VK_LOGIC_OP_AND          ,
@@ -1151,7 +1151,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeapFlagBits">Specification</a> @ingroup APISpec_Memory_Allocation */
-		enum class EMemoryHeapFlag : uint32
+		enum class EMemoryHeapFlag : ui32
 		{
 			DeviceLocal       = VK_MEMORY_HEAP_DEVICE_LOCAL_BIT      ,
 			MultiInstance     = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT    ,
@@ -1163,7 +1163,7 @@ namespace VaultedThermals
 		/**
 		@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryOverallocationBehaviorAMD">Specification</a> @ingroup APISpec_Devices_and_Queues
 		*/
-		enum class EMemoryOverallocationBehaviorAMD : uint32
+		enum class EMemoryOverallocationBehaviorAMD : ui32
 		{
 			Default    = VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD   , 
 			Allowed    = VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD   , 
@@ -1171,7 +1171,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryPropertyFlagBits">Specification</a> @ingroup APISpec_Memory_Allocation */
-		enum class EMemoryPropertyFlag : uint32
+		enum class EMemoryPropertyFlag : ui32
 		{
 			DeviceLocal        = VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT       ,
 			HostVisible        = VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT       ,
@@ -1186,7 +1186,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkObjectType">Specification</a> @ingroup APISpec_Debugging */
-		enum class EObjectType : uint32
+		enum class EObjectType : ui32
 		{
 			Unknown                        = VK_OBJECT_TYPE_UNKNOWN                        ,
 			Instance                       = VK_OBJECT_TYPE_INSTANCE                       ,
@@ -1235,7 +1235,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterDescriptionFlagBitsKHR">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class EPerformanceCounterDescriptionFlag : uint32
+		enum class EPerformanceCounterDescriptionFlag : ui32
 		{
 			PerformanceImpacting = VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR,
 			ConcurrentlyImpacted = VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_KHR,
@@ -1244,7 +1244,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterScopeKHR">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class EPerformanceCounterScope : uint32
+		enum class EPerformanceCounterScope : ui32
 		{
 			Performance_CommandBuffer = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR,
 			Performance_RenderPass    = VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR   ,
@@ -1255,7 +1255,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterStorageKHR">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class EPerformanceCounterStorage : uint32
+		enum class EPerformanceCounterStorage : ui32
 		{
 			VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR = 0,
 			VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR = 1,
@@ -1266,7 +1266,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterUnitKHR">Specification</a> @ingroup APISpec_Devices_and_Queues */
-		enum class EPerformanceCounterUnit : uint32
+		enum class EPerformanceCounterUnit : ui32
 		{
 			Generic        = VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR         ,
 			Percentage     = VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR      ,
@@ -1282,14 +1282,14 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineBindPoint">Specification</a> @ingroup APISpec_Pipelines */
-		enum class EPipelineBindPoint : uint32
+		enum class EPipelineBindPoint : ui32
 		{
 			Graphics = VK_PIPELINE_BIND_POINT_GRAPHICS,
 			Compute  = VK_PIPELINE_BIND_POINT_COMPUTE 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlagBits">Specification</a> @ingroup APISpec_Pipelines */
-		enum class EPipelineCacheCreateFlag : uint32
+		enum class EPipelineCacheCreateFlag : ui32
 		{
 			Externally_Synchronized = VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT,
 
@@ -1297,7 +1297,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlagBits">Specification</a> @ingroup APISpec_Pipelines */
-		enum class EPipelineCreateFlag : uint32
+		enum class EPipelineCreateFlag : ui32
 		{
 			DisableOptimization                    = VK_PIPELINE_CREATE_DISABLE_OPTIMIZATION_BIT                        ,
 			AllowDerivatives                       = VK_PIPELINE_CREATE_ALLOW_DERIVATIVES_BIT                           ,
@@ -1325,7 +1325,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateFlagBits">Specification</a> @ingroup APISpec_Pipelines */
-		enum class EPipelineShaderStageCreateFlag : uint32
+		enum class EPipelineShaderStageCreateFlag : ui32
 		{
 			AllowVaryingSubgroupSize = VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT,
 			RequireFullSubgroups     = VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT     ,
@@ -1334,7 +1334,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-		enum class EPipelineStageFlag : uint32
+		enum class EPipelineStageFlag : ui32
 		{
 			TopOfPipe                    = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT                   ,
 			DrawIndirect                 = VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT                 ,
@@ -1358,7 +1358,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#primsrast-polygonmode">Specification</a> @ingroup APISpec_Rasterization */
-		enum class EPolygonMode : uint32
+		enum class EPolygonMode : ui32
 		{
 			Fill              = VK_POLYGON_MODE_FILL             ,
 			Line              = VK_POLYGON_MODE_LINE             ,
@@ -1367,7 +1367,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentModeKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
-		enum class EPresentationMode : uint32
+		enum class EPresentationMode : ui32
 		{
 			Immediate               = VK_PRESENT_MODE_IMMEDIATE_KHR                ,
 			Mailbox                 = VK_PRESENT_MODE_MAILBOX_KHR                  ,
@@ -1378,7 +1378,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPrimitiveTopology">Specification</a> @ingroup APISpec_Drawing_Commands */
-		enum class EPrimitiveTopology : uint32
+		enum class EPrimitiveTopology : ui32
 		{
 			PointList                   = VK_PRIMITIVE_TOPOLOGY_POINT_LIST                   ,
 			LineList                    = VK_PRIMITIVE_TOPOLOGY_LINE_LIST                    ,
@@ -1404,7 +1404,7 @@ namespace VaultedThermals
 
 		@ingroup APISpec_Devices_and_Queues
 		*/
-		enum class EPhysicalDeviceType : uint32
+		enum class EPhysicalDeviceType : ui32
 		{
 			Other          = VK_PHYSICAL_DEVICE_TYPE_OTHER         ,
 			IntergratedGPU = VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU,
@@ -1414,7 +1414,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPointClippingBehavior">Specification</a> @ingroup APISpec_Fixed-Function_Vertex_Post-Processing */
-		enum class EPointClippingBehavior : uint32
+		enum class EPointClippingBehavior : ui32
 		{
 			AllClipPlanes      = VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES      , 
 			UserClipPlanesOnly = VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY, 
@@ -1425,7 +1425,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlagBits">Specification</a> @ingroup APISpec_Queries */
-		enum class EQueryControlFlags : uint32
+		enum class EQueryControlFlags : ui32
 		{
 			Precise = VK_QUERY_CONTROL_PRECISE_BIT,
 
@@ -1435,7 +1435,7 @@ namespace VaultedThermals
 		/**
 		@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFlagBits">Specification</a> @ingroup APISpec_Devices_and_Queues
 		*/
-		enum class EQueueFlag : uint32
+		enum class EQueueFlag : ui32
 		{
 			Graphics      = VK_QUEUE_GRAPHICS_BIT      ,
 			Compute       = VK_QUEUE_COMPUTE_BIT       ,
@@ -1447,7 +1447,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlagBits">Specification</a> @ingroup APISpec_Queries */
-		enum class EQueryPipelineStatisticFlag : uint32
+		enum class EQueryPipelineStatisticFlag : ui32
 		{
 			AssemblyVertices                        = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT                   ,
 			AssemblyPrimitives                      = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT                 ,
@@ -1465,7 +1465,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResolveModeFlagBits">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class EResolveModeFlags : uint32
+		enum class EResolveModeFlags : ui32
 		{
 			None       = VK_RESOLVE_MODE_NONE ,
 			SampleZero = VK_RESOLVE_MODE_SAMPLE_ZERO_BIT ,
@@ -1484,7 +1484,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResult">Specification</a> @ingroup APISpec_Fundamentals */
-		enum class EResult : sint32
+		enum class EResult : si32
 		{
 			Success                                         = VK_SUCCESS                                           ,
 			Not_Ready                                       = VK_NOT_READY                                         ,
@@ -1534,7 +1534,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleCountFlagBits">Specification</a> @ingroup APISpec_Limits */
-		enum class ESampleCount : uint32
+		enum class ESampleCount : ui32
 		{
 			_1  = VK_SAMPLE_COUNT_1_BIT ,
 			_2  = VK_SAMPLE_COUNT_2_BIT ,
@@ -1548,7 +1548,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerAddressMode">Specification</a> @ingroup VkSamplerAddressMode */
-		enum class ESamplerAddressMode : uint32
+		enum class ESamplerAddressMode : ui32
 		{
 			Repeat         = VK_SAMPLER_ADDRESS_MODE_REPEAT         ,
 			MirroredRepeat = VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT,
@@ -1561,7 +1561,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlagBits">Specification</a> @ingroup VkSamplerCreateFlagBits */
-		enum class ESamplerCreateFlag : uint32
+		enum class ESamplerCreateFlag : ui32
 		{
 			Subsampled_EXT                     = VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT                      ,
 			SubsampledCoarseReconstruction_EXT = VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT,
@@ -1570,7 +1570,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerMipmapMode">Specification</a> @ingroup APISpec_Samplers */
-		enum class ESamplerMipmapMode : uint32
+		enum class ESamplerMipmapMode : ui32
 		{
 			Nearest = VK_SAMPLER_MIPMAP_MODE_NEAREST,
 			Linear  = VK_SAMPLER_MIPMAP_MODE_LINEAR 
@@ -1586,7 +1586,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreType">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-		enum class ESemaphoreType : uint32
+		enum class ESemaphoreType : ui32
 		{
 			Binary       = VK_SEMAPHORE_TYPE_BINARY      ,
 			Timeline     = VK_SEMAPHORE_TYPE_TIMELINE    ,
@@ -1595,7 +1595,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-		enum class ESemaphoreWaitFlag : uint32
+		enum class ESemaphoreWaitFlag : ui32
 		{
 			Any     = VK_SEMAPHORE_WAIT_ANY_BIT    ,
 			Any_KHR = VK_SEMAPHORE_WAIT_ANY_BIT_KHR,
@@ -1604,7 +1604,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderFloatControlsIndependence">Specification</a> @ingroup APISpec_Limits */
-		enum class EShaderFloatControlIndependence : uint32
+		enum class EShaderFloatControlIndependence : ui32
 		{
 			_32Bit_Only = VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY,
 			All         = VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL        ,
@@ -1617,7 +1617,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlagBits">Specification</a> @ingroup APISpec_Pipelines */
-		enum class EShaderStageFlag : uint32
+		enum class EShaderStageFlag : ui32
 		{
 			Vertex                 = VK_SHADER_STAGE_VERTEX_BIT                 ,
 			TessellationControl    = VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT   ,
@@ -1646,14 +1646,14 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSharingMode">Specification</a> @ingroup APISpec_Resource_Creation */
-		enum class ESharingMode : uint32
+		enum class ESharingMode : ui32
 		{
 			Exclusive  = VK_SHARING_MODE_EXCLUSIVE ,
 			Concurrent = VK_SHARING_MODE_CONCURRENT
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOp">Specification</a> @ingroup APISpec_Fragment_Operations */
-		enum class EStencilOperation : uint32
+		enum class EStencilOperation : ui32
 		{
 			Keep              = VK_STENCIL_OP_KEEP               ,
 			Zero              = VK_STENCIL_OP_ZERO               ,
@@ -1666,7 +1666,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStructureType">Specification</a> @ingroup APISpec_Fundamentals */
-		enum class EStructureType : uint32
+		enum class EStructureType : ui32
 		{
 			ApplicationInformation                                      = VK_STRUCTURE_TYPE_APPLICATION_INFO                                               ,
 			Instance_CreateInfo                                         = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO                                           ,
@@ -2220,7 +2220,7 @@ namespace VaultedThermals
 		
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubgroupFeatureFlagBits">Specification</a> @ingroup APISpec_Limits */
-		enum class ESubgroupFeaturesFlag : uint32
+		enum class ESubgroupFeaturesFlag : ui32
 		{
 			Basic           = VK_SUBGROUP_FEATURE_BASIC_BIT           ,
 			Vote            = VK_SUBGROUP_FEATURE_VOTE_BIT            ,
@@ -2238,17 +2238,17 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassContents">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class ESubpassContents : uint32
+		enum class ESubpassContents : ui32
 		{
 			Inline                  = VK_SUBPASS_CONTENTS_INLINE                   ,
 			SecondaryCommandBuffers = VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlagBits">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class ESubpassDescriptionFlag : uint32 { VT_SpecifyBitmaskable = sizeof(uint32) };
+		enum class ESubpassDescriptionFlag : ui32 { VT_SpecifyBitmaskable = sizeof(ui32) };
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagBitsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
-		enum class ESurfaceTransformFlag : uint32
+		enum class ESurfaceTransformFlag : ui32
 		{
 			Identity                     = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR                    ,
 			Rotate_90                    = VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR                   ,
@@ -2264,7 +2264,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagBitsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
-		enum class ESwapchainCreateFlag : uint32
+		enum class ESwapchainCreateFlag : ui32
 		{
 			SplitInstanceBindRegions = VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR ,
 			CreateProtected          = VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR                   ,
@@ -2274,7 +2274,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSystemAllocationScope">Specification</a> @ingroup APISpec_Memory_Allocation */
-		enum class ESystemAllocationScope : uint32
+		enum class ESystemAllocationScope : ui32
 		{
 			Command  = VK_SYSTEM_ALLOCATION_SCOPE_COMMAND ,
 			Object   = VK_SYSTEM_ALLOCATION_SCOPE_OBJECT  ,
@@ -2284,14 +2284,14 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationCheckEXT">Specification</a> @ingroup VkValidationCheckEXT */
-		enum class EValidationCheck : uint32
+		enum class EValidationCheck : ui32
 		{
 			All     = VK_VALIDATION_CHECK_ALL_EXT    ,
 			Shaders = VK_VALIDATION_CHECK_SHADERS_EXT 
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationFeatureEnableEXT">Specification</a> @ingroup APISpec_Initialization  */
-		enum class EValidationFeatureEnable : uint32
+		enum class EValidationFeatureEnable : ui32
 		{
 			GPU_Assisted                   = VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT                     ,
 			GPU_AssistedReserveBindingSlot = VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT,
@@ -2303,7 +2303,7 @@ namespace VaultedThermals
 		* @details
 		* <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVendorId.html">Specification</a> @ingroup APISpec_Devices_and_Queues
 		*/
-		enum class EVendorID : uint32
+		enum class EVendorID : ui32
 		{
 			VIV      = VK_VENDOR_ID_VIV     ,
 			VSI      = VK_VENDOR_ID_VSI     ,
@@ -2313,7 +2313,7 @@ namespace VaultedThermals
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputRate">Specification</a> @ingroup APISpec_Fixed-Function_Vertex_Processing */
-		enum class EVertexInputRate : uint32
+		enum class EVertexInputRate : ui32
 		{
 			Vertex   = VK_VERTEX_INPUT_RATE_VERTEX,
 			Instance = VK_VERTEX_INPUT_RATE_INSTANCE

@@ -43,29 +43,29 @@ namespace VaultedThermals
 
 		// Flexible
 
-		using uint32 = unsigned int;
-		using sint32 = signed   int;
+		using ui32 = unsigned int;
+		using si32 = signed   int;
 
 		// Strict
 
 		// Signed
 
-		using sInt8  = signed           char;
-		using sInt16 = signed short     int ;
-		using sInt32 = signed long      int ;
-		using sInt64 = signed long long int ;
+		using sI8  = signed           char;
+		using sI16 = signed short     int ;
+		using sI32 = signed long      int ;
+		using sI64 = signed long long int ;
 
 		// Unsigned
 
-		using uInt8  = unsigned           char;
-		using uInt16 = unsigned short     int ;
-		using uInt32 = unsigned long      int ;
-		using uInt64 = unsigned long long int ;
+		using uI8  = unsigned           char;
+		using uI16 = unsigned short     int ;
+		using uI32 = unsigned long      int ;
+		using uI64 = unsigned long long int ;
 
 		// Floats
 
-		using float32 = float ;
-		using float64 = double;
+		using f32 = float ;
+		using f64 = double;
 
 		// Data
 

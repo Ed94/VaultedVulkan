@@ -85,10 +85,10 @@ namespace VaultedThermals
 				      EType        SType                 = STypeEnum;
 				const void*        Next                  = nullptr  ;
 				      CreateFlags  Flags                ;
-					  DeviceSize   Size                 ;
-					  UsageFlags   Usage                ;
+				      DeviceSize   Size                 ;
+				      UsageFlags   Usage                ;
 				      ESharingMode SharingMode          ;
-					  uint32       QueueFamilyIndexCount;
+				      ui32         QueueFamilyIndexCount;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCopy">Specification</a> @ingroup APISpec_Copy_Commands */
@@ -109,8 +109,8 @@ namespace VaultedThermals
 				const void*       Next                = nullptr  ;
 				      AccessFlags SrcAccessMask      ;
 				      AccessFlags DstAccessMask      ;
-				      uint32      SrcQueueFamilyIndex;
-				      uint32      DstQueueFamilyIndex;
+				      ui32        SrcQueueFamilyIndex;
+				      ui32        DstQueueFamilyIndex;
 				      Handle      Buffer             ;
 				      DeviceSize  Offset             ;
 				      DeviceSize  Size               ;
@@ -312,15 +312,15 @@ namespace VaultedThermals
 				      EImageType   ImageType             = EImageType::_2D        ;
 				      EFormat      Format               ;
 				      Extent3D     Extent               ;
-				      uint32       MipmapLevels          = 0                      ;
-				      uint32       ArrayLayers          ;
+				      ui32         MipmapLevels          = 0                      ;
+				      ui32         ArrayLayers          ;
 				      ESampleCount Samples               = ESampleCount::_1       ;
 				      ETiling      Tiling                = EImageTiling::Optimal  ;
-					  UsageFlags   Usage                ;
+				      UsageFlags   Usage                ;
 				      ESharingMode SharingMode           = ESharingMode::Exclusive;
-				      uint32       QueueFamilyIndexCount = 0                      ;
-				const uint32*      QueueFamilyIndices    = nullptr                ;
-					  EImageLayout InitalLayout          = EImageLayout::Undefined;
+				      ui32         QueueFamilyIndexCount = 0                      ;
+				const ui32*        QueueFamilyIndices    = nullptr                ;
+				      EImageLayout InitalLayout          = EImageLayout::Undefined;
 			};
 
 			/** 
@@ -330,9 +330,9 @@ namespace VaultedThermals
 			struct SubresourceLayers : V0::VKStruct_Base<VkImageSubresourceLayers>
 			{
 				AspectFlags AspectMask    ;
-				uint32      MipLevel      ;
-				uint32      BaseArrayLayer;
-				uint32      LayerCount    ;
+				ui32        MipLevel      ;
+				ui32        BaseArrayLayer;
+				ui32        LayerCount    ;
 			};
 
 			/** 
@@ -342,10 +342,10 @@ namespace VaultedThermals
 			struct SubresourceRange : V0::VKStruct_Base<VkImageSubresourceRange>
 			{
 				AspectFlags AspectMask    ;
-				uint32      BaseMipLevel  ;
-				uint32      LevelCount    ;
-				uint32      BaseArrayLayer;
-				uint32      LayerCount    ;
+				ui32        BaseMipLevel  ;
+				ui32        LevelCount    ;
+				ui32        BaseArrayLayer;
+				ui32        LayerCount    ;
 			};
 
 			/** 
@@ -360,8 +360,8 @@ namespace VaultedThermals
 				      AccessFlags      DstAccessMask      ;
 				      EImageLayout     OldLayout          ;
 				      EImageLayout     NewLayout          ;
-				      uint32           SrcQueueFamilyIndex;
-				      uint32           DstQueueFamilyIndex;
+				      ui32             SrcQueueFamilyIndex;
+				      ui32             DstQueueFamilyIndex;
 				      Handle           Image              ;
 				      SubresourceRange SubresourceRange   ;
 			};
@@ -555,12 +555,12 @@ namespace VaultedThermals
 				      EType  SType           = STypeEnum;
 				const void*  Next            = nullptr  ;
 				      Handle SrcSet         ;
-				      uint32 SrcBinding     ;
-				      uint32 SrcArrayElement;
+				      ui32   SrcBinding     ;
+				      ui32   SrcArrayElement;
 				      Handle DstSet         ;
-				      uint32 DstBinding     ;
-				      uint32 DstArrayElement;
-				      uint32 DescriptorCount;
+				      ui32   DstBinding     ;
+				      ui32   DstArrayElement;
+				      ui32   DescriptorCount;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorImageInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
@@ -577,9 +577,9 @@ namespace VaultedThermals
 				      EType               SType           = STypeEnum;
 				const void*               Next            = nullptr  ;
 				      Handle              DstSet         ;
-				      uint32              DstBinding     ;
-				      uint32              DstArrayElement;
-				      uint32              DescriptorCount;
+				      ui32                DstBinding     ;
+				      ui32                DstArrayElement;
+				      ui32                DescriptorCount;
 				      EDescriptorType     DescriptorType ;
 				const ImageInfo*          ImageInfo       = nullptr  ;
 				const BufferInfo*         BufferInfo      = nullptr  ;
@@ -600,9 +600,9 @@ namespace VaultedThermals
 			static void Update
 			(
 				      LogicalDevice::Handle _device              ,
-				      uint32                _descriptorWriteCount,
+				      ui32                  _descriptorWriteCount,
 				const Write*                _descriptorWrites    ,
-				      uint32                _descriptorCopyCount ,
+				      ui32                  _descriptorCopyCount ,
 				const Copy*                 _descriptorCopies
 			)
 			{
@@ -634,10 +634,10 @@ namespace VaultedThermals
 			{
 				using PipelineLayoutDescriptorSetHandle = VkDescriptorSetLayout;   // Pipeline definitions not defined yet.
 
-					  EType                              SType              = STypeEnum;
+				      EType                              SType              = STypeEnum;
 				const void*                              Next               = nullptr  ;
-					  Handle                             DescriptorPool    ;
-					  uint32                             DescriptorSetCount;
+				      Handle                             DescriptorPool    ;
+				      ui32                               DescriptorSetCount;
 				const PipelineLayoutDescriptorSetHandle* SetLayouts        ;
 			};
 
@@ -645,17 +645,17 @@ namespace VaultedThermals
 			struct Size : V0::VKStruct_Base<VkDescriptorPoolSize>
 			{
 				EDescriptorType Type ;
-				uint32          Count;
+				ui32          Count;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct CreateInfo : V0::VKStruct_Base<VkDescriptorPoolCreateInfo, EStructureType::Descriptor_Pool_CreateInfo>
 			{
-					  EType       SType         = STypeEnum;
+				      EType       SType         = STypeEnum;
 				const void*       Next          = nullptr  ;
-					  CreateFlags Flags        ;
-					  uint32      MaxSets      ;
-					  uint32      PoolSizeCount = 0        ;
+				      CreateFlags Flags        ;
+				      ui32        MaxSets      ;
+				      ui32        PoolSizeCount = 0        ;
 				const Size*       PoolSizes     = nullptr  ;
 			};
 
@@ -671,9 +671,9 @@ namespace VaultedThermals
 			 */
 			static EResult Allocate
 			(
-					  LogicalDevice::Handle  _device        ,
+				      LogicalDevice::Handle  _device        ,
 				const AllocateInfo&          _allocateInfo  ,
-					  DescriptorSet::Handle* _descriptorSets
+				      DescriptorSet::Handle* _descriptorSets
 			)
 			{
 				return EResult(vkAllocateDescriptorSets(_device, _allocateInfo, _descriptorSets));
@@ -692,10 +692,10 @@ namespace VaultedThermals
 			 */
 			static EResult Create
 			(
-					  LogicalDevice::Handle         _device        ,
+				      LogicalDevice::Handle         _device        ,
 				const CreateInfo&                   _createInfo    ,
 				const Memory::AllocationCallbacks*  _allocator     ,
-					  Handle&                       _descriptorPool
+				      Handle&                       _descriptorPool
 			)
 			{
 				return EResult(vkCreateDescriptorPool(_device, _createInfo, _allocator->operator const VkAllocationCallbacks*(), &_descriptorPool));
@@ -735,7 +735,7 @@ namespace VaultedThermals
 			(
 				      LogicalDevice::Handle  _device            ,
 				      Handle                 _descriptorPool    ,
-				      uint32                 _descriptorSetCount,
+				      ui32                   _descriptorSetCount,
 				const DescriptorSet::Handle* _descriptorSets
 			)
 			{
@@ -1986,10 +1986,10 @@ namespace VaultedThermals
 			*/
 			void Update
 			(
-				      uint32                _descriptorWriteCount,
-				const Write*                _descriptorWrites    ,
-				      uint32                _descriptorCopyCount ,
-				const Copy*                 _descriptorCopies
+				      ui32   _descriptorWriteCount,
+				const Write* _descriptorWrites    ,
+				      ui32   _descriptorCopyCount ,
+				const Copy*  _descriptorCopies
 			)
 			{
 				Parent::Update(*device, _descriptorWriteCount, _descriptorWrites, _descriptorCopyCount, _descriptorCopies);
@@ -2161,7 +2161,7 @@ namespace VaultedThermals
 			/**
 			@brief Free descriptor sets within the specified handles container.
 			*/
-			EResult Free(uint32 _count, DescriptorSet::Handle* _handles)
+			EResult Free(ui32 _count, DescriptorSet::Handle* _handles)
 			{
 				return Parent::Free(*device, handle, _count, _handles);
 			}
@@ -2171,7 +2171,7 @@ namespace VaultedThermals
 			*/
 			EResult Free(DynamicArray<DescriptorSet::Handle> _handles)
 			{
-				return Parent::Free(*device, handle, static_cast<uint32>(_handles.size()), _handles.data());
+				return Parent::Free(*device, handle, static_cast<ui32>(_handles.size()), _handles.data());
 			}
 
 			/**

@@ -131,8 +131,8 @@ namespace VaultedThermals
 					      EType       SType            = STypeEnum       ;
 					const void*       Next             = nullptr         ;
 					      CreateFlags Flags           ;
-					      uint32      QueueFamilyIndex;
-					      uint32      QueueCount      ;
+					      ui32        QueueFamilyIndex;
+					      ui32        QueueCount      ;
 					const float*      QueuePriorities ;
 				};
 
@@ -152,7 +152,7 @@ namespace VaultedThermals
 				* \param _queueIndex
 				* \param _queueReturn
 				*/
-				static void Get(LogicalDevice::Handle _device, uint32 _queueFamilyIndex, uint32 _queueIndex, Handle& _queueReturn)
+				static void Get(LogicalDevice::Handle _device, ui32 _queueFamilyIndex, ui32 _queueIndex, Handle& _queueReturn)
 				{
 					vkGetDeviceQueue(_device, _queueFamilyIndex, _queueIndex, &_queueReturn);
 				}
@@ -190,7 +190,7 @@ namespace VaultedThermals
 				static EResult SubmitToQueue
 				(
 					      LogicalDevice::Queue::Handle _queue      ,
-					      uint32                       _submitCount,
+					      ui32                         _submitCount,
 					const SubmitInfo*                  _submissions,
 					      Fence_Handle                 _fence
 				)
@@ -228,8 +228,8 @@ namespace VaultedThermals
 				      EType       SType            = STypeEnum;
 				const void*       Next             = nullptr  ;
 				      CreateFlags Flags           ;
-				      uint32      QueueFamilyIndex;
-				      uint32      QueueIndex      ;
+				      ui32        QueueFamilyIndex;
+				      ui32        QueueIndex      ;
 
 				/**
 				* @details
@@ -258,7 +258,7 @@ namespace VaultedThermals
 			{
 				      EType   SType               = STypeEnum;
 				const void*   Next                = nullptr  ;
-				      uint32  PhysicalDeviceCount = 0        ;
+				      ui32    PhysicalDeviceCount = 0        ;
 				const Handle* PhysicalDevices     = nullptr  ;
 			};
 
@@ -287,7 +287,7 @@ namespace VaultedThermals
 			{
 				      EType  SType                       = STypeEnum;
 				const void*  Next                        = nullptr  ;
-				      uint32 PrivateDataSlotRequestCount;
+				      ui32   PrivateDataSlotRequestCount;
 			};
 
 			/**
@@ -300,11 +300,11 @@ namespace VaultedThermals
 				      EType                     SType                 = STypeEnum;
 				const void*                     Next                  = nullptr  ;
 				      CreateFlags               Flags                ;
-				      uint32                    QueueCreateInfoCount  = 0        ;
+				      ui32                      QueueCreateInfoCount  = 0        ;
 				const Queue::CreateInfo*        QueueCreateInfos      = nullptr  ;
-				      uint32                    EnabledLayerCount     = 0        ;
+				      ui32                      EnabledLayerCount     = 0        ;
 					  RoArray_of_RoCStr         EnabledLayerNames     = nullptr  ;
-				      uint32                    EnabledExtensionCount = 0        ;
+				      ui32                      EnabledExtensionCount = 0        ;
 					  RoArray_of_RoCStr         EnabledExtensionNames = nullptr  ;
 				const PhysicalDevice::Features* EnabledFeatures       = nullptr  ;
 			};
@@ -511,14 +511,14 @@ namespace VaultedThermals
 				/**
 				@brief Performs an assignment on construction.
 				*/
-				Queue(EQueueFlag _type, const LogicalDevice& _device, uint32 _familyIndex, uint32 _queueIndex) :
+				Queue(EQueueFlag _type, const LogicalDevice& _device, ui32 _familyIndex, ui32 _queueIndex) :
 					assignment(_type), device(&_device), familyIndex(_familyIndex), queueIndex(_queueIndex)
 				{}
 
 				/**
 				@brief Assigns the queue info.
 				*/
-				void Assign(const LogicalDevice& _logicalDevice, uint32 _familyIndex, uint32 _queueIndex, EQueueFlag _type)
+				void Assign(const LogicalDevice& _logicalDevice, ui32 _familyIndex, ui32 _queueIndex, EQueueFlag _type)
 				{
 					device      = &_logicalDevice;
 					familyIndex = _familyIndex   ;
@@ -529,7 +529,7 @@ namespace VaultedThermals
 				/**
 				@brief Provides the queue family index.
 				*/
-				uint32 GetFamilyIndex() const
+				ui32 GetFamilyIndex() const
 				{
 					return familyIndex;
 				}
@@ -537,7 +537,7 @@ namespace VaultedThermals
 				/**
 				@brief Provides the queue index in the queue family.
 				*/
-				uint32 GetQueueIndex() const
+				ui32 GetQueueIndex() const
 				{
 					return queueIndex;
 				}
@@ -577,7 +577,7 @@ namespace VaultedThermals
 				/**
 				@brief Submit command buffers to a queue.
 				*/
-				EResult SubmitToQueue(uint32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence) const
+				EResult SubmitToQueue(ui32 _submitCount, const SubmitInfo* _submissions, Fence_Handle _fence) const
 				{
 					return Parent::SubmitToQueue(handle, _submitCount, _submissions, _fence);
 				}
@@ -606,9 +606,9 @@ namespace VaultedThermals
 
 				const LogicalDevice* device;
 
-				uint32 familyIndex;
+				ui32 familyIndex;
 
-				uint32 queueIndex;
+				ui32 queueIndex;
 			};
 
 			/**

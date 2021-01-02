@@ -81,8 +81,8 @@ namespace VaultedThermals
 			struct BufferImageRegion : V0::VKStruct_Base<VkBufferImageCopy>
 			{
 				DeviceSize               BufferOffset      = Memory::ZeroOffset;
-				uint32                   BufferRowLength   = 0                 ;
-				uint32                   BufferImageHeight = 0                 ;
+				ui32                     BufferRowLength   = 0                 ;
+				ui32                     BufferImageHeight = 0                 ;
 				Image::SubresourceLayers ImageSubresource ;
 				Offset3D                 ImageOffset      ;
 				Extent3D                 ImageExtent      ;
@@ -97,7 +97,7 @@ namespace VaultedThermals
 				      EType                       SType                = STypeEnum                ;
 				const void*                       Next                 = nullptr                  ;
 				      RenderPass::Handle          RenderPass           = Null<RenderPass::Handle> ;
-				      uint32                      Subpass              = 0                        ;
+				      ui32                        Subpass              = 0                        ;
 				      Framebuffer::Handle         Framebuffer          = Null<Framebuffer::Handle>;
 				      Bool                        OcclusionQueryEnable = false                    ;
 				      QueryControlFlags           QueryFlags          ;
@@ -143,7 +143,7 @@ namespace VaultedThermals
 			{
 				      EType              SType           = STypeEnum;
 				const void*              Next            = nullptr  ;
-				      UsageFlags         Flags          ;
+				      UsageFlags         Flags;
 				const InheritanceWindow* InheritanceInfo = nullptr  ;
 			};
 
@@ -156,12 +156,12 @@ namespace VaultedThermals
 			{
 				      EType                 SType                = STypeEnum;
 				const void*                 Next                 = nullptr  ;
-				      uint32                WaitSemaphoreCount   = 0        ;
+				      ui32                  WaitSemaphoreCount   = 0        ;
 				const Semaphore::Handle*    WaitSemaphores       = nullptr  ;
 				const Pipeline::StageFlags* WaitDstStageMask     = nullptr  ;
-				      uint32                CommandBufferCount   = 0        ;
+				      ui32                  CommandBufferCount   = 0        ;
 				const Handle*               CommandBuffers       = nullptr  ;
-				      uint32                SignalSemaphoreCount = 0        ;
+				      ui32                  SignalSemaphoreCount = 0        ;
 				const Semaphore::Handle*    SignalSemaphores     = nullptr  ;
 
 
@@ -172,12 +172,12 @@ namespace VaultedThermals
 				*/
 				struct TimelineSemaphore : V0::VKStruct_Base<VkTimelineSemaphoreSubmitInfo>
 				{
-					      EType   SType                     = STypeEnum;
-					const void*   Next                      = nullptr  ;
-					      uint32  WaitSemaphoreValueCount   = 0        ;
-					const uInt64* WaitSemaphoreValues       = nullptr  ;
-					      uint32  SignalSemaphoreValueCount = 0        ;
-					const uInt64* SignalSemaphoreValues     = nullptr  ;
+					      EType SType                     = STypeEnum;
+					const void* Next                      = nullptr  ;
+					      ui32  WaitSemaphoreValueCount   = 0        ;
+					const uI64* WaitSemaphoreValues       = nullptr  ;
+					      ui32  SignalSemaphoreValueCount = 0        ;
+					const uI64* SignalSemaphoreValues     = nullptr  ;
 				};	
 
 				/**
@@ -187,12 +187,12 @@ namespace VaultedThermals
 				*/
 				struct D3D12Fence : V0::VKStruct_Base<VkD3D12FenceSubmitInfoKHR>
 				{
-					      EType   SType                      = STypeEnum;
-					const void*   Next                       = nullptr  ;
-					      uint32  WaitSemaphoreValuesCount   = 0        ;
-					const uInt64* WaitSemaphoreValues        = nullptr  ;
-					      uint32  SignalSemaphoreValuesCount = 0        ;
-					const uInt64* SignalSemaphoreValues      = nullptr  ;
+					      EType SType                      = STypeEnum;
+					const void* Next                       = nullptr  ;
+					      ui32  WaitSemaphoreValuesCount   = 0        ;
+					const uI64* WaitSemaphoreValues        = nullptr  ;
+					      ui32  SignalSemaphoreValuesCount = 0        ;
+					const uI64* SignalSemaphoreValues      = nullptr  ;
 				};
 
 				/**
@@ -204,13 +204,13 @@ namespace VaultedThermals
 				{
 					      EType           SType           = STypeEnum;
 					const void*           Next            = nullptr  ;
-					      uint32          AcquireCount    = 0        ;
+					      ui32            AcquireCount    = 0        ;
 					const Memory::Handle* AcquireSyncs    = nullptr  ;
-					const uInt64*         AcquireKeys     = nullptr  ;
-					const uint32*         AcquireTimeouts = nullptr  ;
-					      uint32          ReleaseCount    = 0        ;
+					const uI64*           AcquireKeys     = nullptr  ;
+					const ui32*           AcquireTimeouts = nullptr  ;
+					      ui32            ReleaseCount    = 0        ;
 					const Memory::Handle* ReleaseSyncs    = nullptr  ;
-					const uInt64*         ReleaseKeys     = nullptr  ;
+					const uI64*           ReleaseKeys     = nullptr  ;
 				};
 
 				/**
@@ -235,14 +235,14 @@ namespace VaultedThermals
 				*/
 				struct DeviceGroup : V0::VKStruct_Base<VkDeviceGroupSubmitInfo>
 				{
-					      EType   SType                        = STypeEnum;
-					const void*   Next                         = nullptr  ;
-					      uint32  WaitSemaphoreCount           = 0        ;
-					const uint32* WaitSemaphoreDeviceIndices   = nullptr  ;
-					      uint32  CommandBufferCount           = 0        ;
-					const uint32* CommandBufferDeviceMasks     = nullptr  ;
-					      uint32  SignalSemaphoreCount         = 0        ;
-					const uint32* SignalSemaphoreDeviceIndices = nullptr  ;
+					      EType SType                        = STypeEnum;
+					const void* Next                         = nullptr  ;
+					      ui32  WaitSemaphoreCount           = 0        ;
+					const ui32* WaitSemaphoreDeviceIndices   = nullptr  ;
+					      ui32  CommandBufferCount           = 0        ;
+					const ui32* CommandBufferDeviceMasks     = nullptr  ;
+					      ui32  SignalSemaphoreCount         = 0        ;
+					const ui32* SignalSemaphoreDeviceIndices = nullptr  ;
 				};
 
 				/**
@@ -252,9 +252,9 @@ namespace VaultedThermals
 				*/
 				struct PerformanceQuery : V0::VKStruct_Base<VkPerformanceQuerySubmitInfoKHR>
 				{
-					      EType  SType            = STypeEnum;
-					const void*  Next             = nullptr  ;
-					      uint32 CounterPassIndex = 0        ;
+					      EType SType            = STypeEnum;
+					const void* Next             = nullptr  ;
+					      ui32  CounterPassIndex = 0        ;
 				};
 			};
 
@@ -265,9 +265,9 @@ namespace VaultedThermals
 			*/
 			struct DeviceGroupBeginInfo : V0::VKStruct_Base<VkDeviceGroupCommandBufferBeginInfo>
 			{
-				      EType  SType      = STypeEnum;
-				const void*  Next       = nullptr  ;
-				      uint32 DeviceMask = 0        ;
+				      EType SType      = STypeEnum;
+				const void* Next       = nullptr  ;
+				      ui32  DeviceMask = 0        ;
 			};
 
 
@@ -311,22 +311,22 @@ namespace VaultedThermals
 				      Handle                   _commandBuffer     ,
 				      EPipelineBindPoint       _pipelineBindPoint ,
 				      Pipeline::Layout::Handle _layout            ,
-				      uint32                   _firstSet          ,
-				      uint32                   _descriptorSetCount,
+				      ui32                     _firstSet          ,
+				      ui32                     _descriptorSetCount,
 				const DescriptorSet::Handle*   _descriptorSets    ,
-				      uint32                   _dynamicOffsetCount,
-				const uint32*                  _dynamicOffsets
+				      ui32                     _dynamicOffsetCount,
+				const ui32*                    _dynamicOffsets
 			)
 			{
 				vkCmdBindDescriptorSets
 				(
-					_commandBuffer                         , 
-					VkPipelineBindPoint(_pipelineBindPoint), 
-					_layout                                , 
-					_firstSet                              , 
+					_commandBuffer                         ,
+					VkPipelineBindPoint(_pipelineBindPoint),
+					_layout                                ,
+					_firstSet                              ,
 					_descriptorSetCount                    ,
-					_descriptorSets                        , 
-					_dynamicOffsetCount                    , 
+					_descriptorSets                        ,
+					_dynamicOffsetCount                    ,
 					_dynamicOffsets
 				);
 			}
@@ -349,8 +349,8 @@ namespace VaultedThermals
 			static void BindVertexBuffers
 			(
 				      Handle          _commandBuffer,
-				      uint32          _firstBinding ,
-				      uint32          _bindingCount ,
+				      ui32            _firstBinding ,
+				      ui32            _bindingCount ,
 				const Buffer::Handle* _buffers      ,
 				const DeviceSize*     _offsets
 			)
@@ -390,7 +390,7 @@ namespace VaultedThermals
 				      EImageLayout  _srcImageLayout,
 				      Image::Handle _dstImage      ,
 				      EImageLayout  _dstImageLayout,
-				      uint32        _regionCount   ,
+				      ui32          _regionCount   ,
 				const Image::Blit*  _regions       ,
 				      EFilter       _filter
 			)
@@ -418,7 +418,7 @@ namespace VaultedThermals
 				      Handle            _commandBuffer    ,
 				      Buffer::Handle    _sourceBuffer     ,
 				      Buffer::Handle    _destinationBuffer,
-				      uint32            _regionCount      ,
+				      ui32              _regionCount      ,
 				const Buffer::CopyInfo* _regions
 			)
 			{
@@ -436,7 +436,7 @@ namespace VaultedThermals
 				      Buffer::Handle     _srcBuffer     ,
 				      Image::Handle      _dstImage      ,
 				      EImageLayout       _dstImageLayout,
-				      uint32             _regionCount   ,
+				      ui32               _regionCount   ,
 				const BufferImageRegion* _regions
 			)
 			{
@@ -448,7 +448,7 @@ namespace VaultedThermals
 			 * 
 			 * @ingroup APISpec_Drawing_Commands
 			 */
-			static void Draw(Handle _commandBuffer, uint32 _firstVertex, uint32 _vertexCount, uint32 _firstInstance, uint32 _instanceCount)
+			static void Draw(Handle _commandBuffer, ui32 _firstVertex, ui32 _vertexCount, ui32 _firstInstance, ui32 _instanceCount)
 			{
 				vkCmdDraw(_commandBuffer, _vertexCount, _instanceCount, _firstVertex, _firstInstance);
 			}
@@ -458,7 +458,7 @@ namespace VaultedThermals
 			 * 
 			 * @ingroup APISpec_Drawing_Commands
 			 */
-			static void DrawIndexed(Handle _commandBuffer, uint32 _indexCount, uint32 _instanceCount, uint32 _firstIndex, sint32 _vertexOffset, uint32 _firstInstance)
+			static void DrawIndexed(Handle _commandBuffer, ui32 _indexCount, ui32 _instanceCount, ui32 _firstIndex, si32 _vertexOffset, ui32 _firstInstance)
 			{
 				vkCmdDrawIndexed(_commandBuffer, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
 			}
@@ -498,7 +498,7 @@ namespace VaultedThermals
 			 * \param _secondaryBufferCount
 			 * \param _secondaryBuffers
 			 */
-			static void Execute(Handle _primaryCommandBuffer, uint32 _secondaryBufferCount, const Handle* _secondaryBuffers)
+			static void Execute(Handle _primaryCommandBuffer, ui32 _secondaryBufferCount, const Handle* _secondaryBuffers)
 			{
 				vkCmdExecuteCommands(_primaryCommandBuffer, _secondaryBufferCount, _secondaryBuffers);
 			}
@@ -538,11 +538,11 @@ namespace VaultedThermals
 				      Pipeline::StageFlags    _sourceStageMask         ,
 				      Pipeline::StageFlags    _destinationStageMask    ,
 				      DependencyFlags         _dependencyFlags         ,
-				      uint32                  _memoryBarrierCount      ,
+				      ui32                    _memoryBarrierCount      ,
 				const Memory::Barrier*        _memoryBarriers          ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
-				      uint32                  _imageMemoryBarrierCount ,
+				      ui32                    _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
 			)
 			{
@@ -566,7 +566,7 @@ namespace VaultedThermals
 			 * 
 			 * @ingroup APISpec_Command_Buffers
 			 */
-			static void SetDeviceMask(Handle _commandBuffer, uint32 _deviceMask)
+			static void SetDeviceMask(Handle _commandBuffer, ui32 _deviceMask)
 			{
 				vkCmdSetDeviceMask(_commandBuffer, _deviceMask);
 			}
@@ -589,15 +589,15 @@ namespace VaultedThermals
 			static void WaitForEvents
 			(
 				      Handle                  _commandBuffer           ,
-				      uint32                  _eventCount              ,
+				      ui32                    _eventCount              ,
 				const Event::Handle*          _events                  ,
 				      Pipeline::StageFlags    _srcStageMask            ,
 				      Pipeline::StageFlags    _dstStageMask            ,
-				      uint32                  _memoryBarrierCount      ,
+				      ui32                    _memoryBarrierCount      ,
 				const Memory::Barrier*        _memoryBarriers          ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
-				      uint32                  _imageMemoryBarrierCount ,
+				      ui32                    _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
 			)
 			{
@@ -654,7 +654,7 @@ namespace VaultedThermals
 				const void*               Next        = nullptr                     ;
 				      Handle              Pool        = Null<Handle>                ;
 				      ECommandBufferLevel Level       = ECommandBufferLevel::Primary;
-				      uint32              BufferCount = 1                           ;
+				      ui32                BufferCount = 1                           ;
 			};
 
 			/** 
@@ -667,7 +667,7 @@ namespace VaultedThermals
 				      EType       SType            = STypeEnum;
 				const void*       Next             = nullptr  ;
 				      CreateFlgas Flags           ;
-				      uint32      QueueFamilyIndex;
+				      ui32        QueueFamilyIndex;
 			};
 
 			/**
@@ -741,9 +741,9 @@ namespace VaultedThermals
 			 */
 			static void Free
 			(
-				      LogicalDevice::Handle _deviceHandle   ,
+				      LogicalDevice::Handle  _deviceHandle   ,
 				      Handle                 _commandPool   ,
-				      uint32                 _bufferCount   ,
+				      ui32                   _bufferCount   ,
 				const CommandBuffer::Handle* _commandBuffers
 			)
 			{
@@ -884,9 +884,9 @@ namespace VaultedThermals
 			*/
 			static void EndSingleTimeCommands
 			(
-				V1::CommandBuffer   ::Handle _commandBuffer, 
-				CommandPool         ::Handle _commandPool  , 
-				LogicalDevice       ::Handle _device       , 
+				V1::CommandBuffer   ::Handle _commandBuffer,
+				CommandPool         ::Handle _commandPool  ,
+				LogicalDevice       ::Handle _device       ,
 				LogicalDevice::Queue::Handle _queue
 			)
 			{
@@ -919,8 +919,8 @@ namespace VaultedThermals
 			/** @brief Uses a single-time command buffer to copy a buffer */
 			static void CopyBuffer
 			(
-				Buffer::Handle               _sourceBuffer     , 
-				Buffer::Handle               _destinationBuffer, 
+				Buffer::Handle               _sourceBuffer     ,
+				Buffer::Handle               _destinationBuffer,
 				Buffer::CopyInfo             _regionInfo       ,
 				LogicalDevice::Handle        _device           ,
 				CommandPool::Handle          _pool             ,
@@ -941,12 +941,12 @@ namespace VaultedThermals
 			*/
 			static void SubmitPipelineBarrier
 			(
-				      Handle                  _commandBuffer       ,
-				      Pipeline::StageFlags    _sourceStageMask     ,
-				      Pipeline::StageFlags    _destinationStageMask,
-				      DependencyFlags         _dependencyFlags     ,
-				      uint32                  _memoryBarrierCount  ,
-				const Memory::Barrier*        _memoryBarriers          
+				      Handle               _commandBuffer       ,
+				      Pipeline::StageFlags _sourceStageMask     ,
+				      Pipeline::StageFlags _destinationStageMask,
+				      DependencyFlags      _dependencyFlags     ,
+				      ui32                 _memoryBarrierCount  ,
+				const Memory::Barrier*     _memoryBarriers
 			)
 			{
 				Parent::SubmitPipelineBarrier
@@ -971,7 +971,7 @@ namespace VaultedThermals
 				      Pipeline::StageFlags    _sourceStageMask         ,
 				      Pipeline::StageFlags    _destinationStageMask    ,
 				      DependencyFlags         _dependencyFlags         ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    
 			)
 			{
@@ -993,12 +993,12 @@ namespace VaultedThermals
 			*/
 			static void SubmitPipelineBarrier
 			(
-				      Handle                  _commandBuffer           ,
-				      Pipeline::StageFlags    _sourceStageMask         ,
-				      Pipeline::StageFlags    _destinationStageMask    ,
-				      DependencyFlags         _dependencyFlags         ,
-				      uint32                  _imageMemoryBarrierCount ,
-				const Image::Memory_Barrier*  _imageMemoryBarriers
+				      Handle                 _commandBuffer           ,
+				      Pipeline::StageFlags   _sourceStageMask         ,
+				      Pipeline::StageFlags   _destinationStageMask    ,
+				      DependencyFlags        _dependencyFlags         ,
+				      ui32                   _imageMemoryBarrierCount ,
+				const Image::Memory_Barrier* _imageMemoryBarriers
 			)
 			{
 				Parent::SubmitPipelineBarrier
@@ -1022,11 +1022,11 @@ namespace VaultedThermals
 			static void WaitForEvents
 			(
 				      Handle               _commandBuffer     ,
-				      uint32               _eventCount        ,
+				      ui32                 _eventCount        ,
 				const Event::Handle*       _events            ,
 				      Pipeline::StageFlags _srcStageMask      ,
 				      Pipeline::StageFlags _dstStageMask      ,
-				      uint32               _memoryBarrierCount,
+				      ui32                 _memoryBarrierCount,
 				const Memory::Barrier*     _memoryBarriers
 			)
 			{
@@ -1050,11 +1050,11 @@ namespace VaultedThermals
 			static void WaitForEvents
 			(
 				      Handle                  _commandBuffer           ,
-				      uint32                  _eventCount              ,
+				      ui32                    _eventCount              ,
 				const Event::Handle*          _events                  ,
 				      Pipeline::StageFlags    _srcStageMask            ,
 				      Pipeline::StageFlags    _dstStageMask            ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers
 			)
 			{
@@ -1078,11 +1078,11 @@ namespace VaultedThermals
 			static void WaitForEvents
 			(
 				      Handle                 _commandBuffer          ,
-				      uint32                 _eventCount             ,
+				      ui32                   _eventCount             ,
 				const Event::Handle*         _events                 ,
 				      Pipeline::StageFlags   _srcStageMask           ,
 				      Pipeline::StageFlags   _dstStageMask           ,
-				      uint32                 _imageMemoryBarrierCount,
+				      ui32                   _imageMemoryBarrierCount,
 				const Image::Memory_Barrier* _imageMemoryBarriers
 			)
 			{
@@ -1184,8 +1184,8 @@ namespace VaultedThermals
 			(
 				      EPipelineBindPoint     _bindPoint         ,
 				      Pipeline::Layout&      _layout            ,
-				      uint32                 _firstSet          ,
-				      uint32                 _descritporSetCount,
+				      ui32                   _firstSet          ,
+				      ui32                   _descritporSetCount,
 				const DescriptorSet::Handle* _descriptorSets
 			) const
 			{
@@ -1199,11 +1199,11 @@ namespace VaultedThermals
 			(
 				      EPipelineBindPoint     _bindPoint         ,
 				      Pipeline::Layout&      _layout            ,
-				      uint32                 _firstSet          ,
-				      uint32                 _descritporSetCount,
+				      ui32                   _firstSet          ,
+				      ui32                   _descritporSetCount,
 				const DescriptorSet::Handle* _descriptorSets    ,
-				      uint32                 _dynamicOffsetCount,
-				const uint32*                _dynamicOffsets
+				      ui32                   _dynamicOffsetCount,
+				const ui32*                  _dynamicOffsets
 			) const
 			{
 				Parent::BindDescriptorSets(handle, _bindPoint, _layout, _firstSet, _descritporSetCount, _descriptorSets, _dynamicOffsetCount, _dynamicOffsets);
@@ -1220,7 +1220,7 @@ namespace VaultedThermals
 			/**
 			@brief Bind vertex buffers to a command buffer for use in subsequent draw commands. (No offsets)
 			*/
-			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers) const
+			void BindVertexBuffers(ui32 _firstBinding, ui32 _bindingCount, const Buffer::Handle* _buffers) const
 			{
 				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, 0);
 			}
@@ -1228,7 +1228,7 @@ namespace VaultedThermals
 			/**
 			@brief Bind vertex buffers to a command buffer for use in subsequent draw commands. 
 			*/
-			void BindVertexBuffers(uint32 _firstBinding, uint32 _bindingCount, const Buffer::Handle* _buffers, const DeviceSize* _offsets) const
+			void BindVertexBuffers(ui32 _firstBinding, ui32 _bindingCount, const Buffer::Handle* _buffers, const DeviceSize* _offsets) const
 			{
 				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, _offsets);
 			}
@@ -1244,7 +1244,7 @@ namespace VaultedThermals
 			/**
 			@brief Copy regions of a source image into a destination image, potentially performing format conversion, arbitrary scaling, and filtering.
 			*/
-			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, uint32 _regionCount, const Image::Blit* _regions, EFilter _filter) const
+			void BlitImage(Image& _src, EImageLayout _srcLayout, Image& _dst, EImageLayout _dstLayout, ui32 _regionCount, const Image::Blit* _regions, EFilter _filter) const
 			{
 				Parent::BlitImage(handle, _src, _srcLayout, _dst, _dstLayout, _regionCount, _regions, _filter);
 			}
@@ -1252,7 +1252,7 @@ namespace VaultedThermals
 			/**
 			@brief Copy data between buffer objects.
 			*/
-			void CopyBuffer(Buffer& _sourceBuffer, Buffer& _destinationBuffer, uint32 _regionCount, const Buffer::CopyInfo* _regions) const
+			void CopyBuffer(Buffer& _sourceBuffer, Buffer& _destinationBuffer, ui32 _regionCount, const Buffer::CopyInfo* _regions) const
 			{
 				Parent::Parent::CopyBuffer(handle, _sourceBuffer, _destinationBuffer, _regionCount, _regions);
 			}
@@ -1265,7 +1265,7 @@ namespace VaultedThermals
 				      Buffer&            _srcBuffer     ,
 				      Image&             _dstImage      ,
 				      EImageLayout       _dstImageLayout,
-				      uint32		     _regionCount   ,
+				      ui32		         _regionCount   ,
 				const BufferImageRegion* _regions
 			) const
 			{
@@ -1275,7 +1275,7 @@ namespace VaultedThermals
 			/**
 			@brief Record a non-indexed draw.
 			*/
-			void Draw(uint32 _firstVertex, uint32 _vertexCount, uint32 _firstInstance, uint32 _instanceCount) const
+			void Draw(ui32 _firstVertex, ui32 _vertexCount, ui32 _firstInstance, ui32 _instanceCount) const
 			{
 				Parent::Draw(handle, _firstVertex, _vertexCount, _firstInstance, _instanceCount);
 			}
@@ -1285,11 +1285,11 @@ namespace VaultedThermals
 			*/
 			void DrawIndexed
 			(
-				uint32 _indexCount   ,
-				uint32 _instanceCount,
-				uint32 _firstIndex   ,
-				sint32 _vertexOffset ,
-				uint32 _firstInstance
+				ui32 _indexCount   ,
+				ui32 _instanceCount,
+				ui32 _firstIndex   ,
+				si32 _vertexOffset ,
+				ui32 _firstInstance
 			) const
 			{
 				Parent::DrawIndexed(handle, _indexCount, _instanceCount, _firstIndex, _vertexOffset, _firstInstance);
@@ -1315,7 +1315,7 @@ namespace VaultedThermals
 			@brief A secondary command buffer must not be directly submitted to a queue. 
 			Instead, secondary command buffers are recorded to execute as part of a primary command buffer..
 			*/
-			void Execute(uint32 _secondaryBufferCount, const Handle* _secondaryBuffers) const
+			void Execute(ui32 _secondaryBufferCount, const Handle* _secondaryBuffers) const
 			{
 				Parent::Execute(handle, _secondaryBufferCount, _secondaryBuffers);
 			}
@@ -1335,11 +1335,11 @@ namespace VaultedThermals
 			*/
 			void SubmitPipelineBarrier
 			(
-				      Pipeline::StageFlags    _sourceStageMask         ,
-				      Pipeline::StageFlags    _destinationStageMask    ,
-				      DependencyFlags         _dependencyFlags         ,
-				      uint32                  _memoryBarrierCount      ,
-				const Memory::Barrier*        _memoryBarriers          
+				      Pipeline::StageFlags _sourceStageMask         ,
+				      Pipeline::StageFlags _destinationStageMask    ,
+				      DependencyFlags      _dependencyFlags         ,
+				      ui32                 _memoryBarrierCount      ,
+				const Memory::Barrier*     _memoryBarriers          
 			) const
 			{
 				Parent::SubmitPipelineBarrier
@@ -1361,7 +1361,7 @@ namespace VaultedThermals
 				      Pipeline::StageFlags    _sourceStageMask         ,
 				      Pipeline::StageFlags    _destinationStageMask    ,
 				      DependencyFlags         _dependencyFlags         ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    
 			) const
 			{
@@ -1381,11 +1381,11 @@ namespace VaultedThermals
 			*/
 			void SubmitPipelineBarrier
 			(
-				      Pipeline::StageFlags    _sourceStageMask         ,
-				      Pipeline::StageFlags    _destinationStageMask    ,
-				      DependencyFlags         _dependencyFlags         ,
-				      uint32                  _imageMemoryBarrierCount ,
-				const Image::Memory_Barrier*  _imageMemoryBarriers
+				      Pipeline::StageFlags   _sourceStageMask         ,
+				      Pipeline::StageFlags   _destinationStageMask    ,
+				      DependencyFlags        _dependencyFlags         ,
+				      ui32                   _imageMemoryBarrierCount ,
+				const Image::Memory_Barrier* _imageMemoryBarriers
 			) const
 			{
 				Parent::SubmitPipelineBarrier
@@ -1407,11 +1407,11 @@ namespace VaultedThermals
 				      Pipeline::StageFlags    _sourceStageMask         ,
 				      Pipeline::StageFlags    _destinationStageMask    ,
 				      DependencyFlags         _dependencyFlags         ,
-				      uint32                  _memoryBarrierCount      ,
+				      ui32                    _memoryBarrierCount      ,
 				const Memory::Barrier*        _memoryBarriers          ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
-				      uint32                  _imageMemoryBarrierCount ,
+				      ui32                    _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
 			) const
 			{
@@ -1435,7 +1435,7 @@ namespace VaultedThermals
 			/**
 			@brief Update the current device mask of a command buffer.
 			*/
-			void SetDeviceMask(uint32 _deviceMask) const
+			void SetDeviceMask(ui32 _deviceMask) const
 			{
 				Parent::SetDeviceMask(handle, _deviceMask);
 			}
@@ -1455,12 +1455,12 @@ namespace VaultedThermals
 			*/
 			void WaitForEvents
 			(
-				      uint32                  _eventCount              ,
-				const Event::Handle*          _events                  ,
-				      Pipeline::StageFlags    _srcStageMask            ,
-				      Pipeline::StageFlags    _dstStageMask            ,
-				      uint32                  _memoryBarrierCount      ,
-				const Memory::Barrier*        _memoryBarriers          
+				      ui32                 _eventCount              ,
+				const Event::Handle*       _events                  ,
+				      Pipeline::StageFlags _srcStageMask            ,
+				      Pipeline::StageFlags _dstStageMask            ,
+				      ui32                 _memoryBarrierCount      ,
+				const Memory::Barrier*     _memoryBarriers          
 			) const
 			{
 				Parent::WaitForEvents
@@ -1480,11 +1480,11 @@ namespace VaultedThermals
 			*/
 			void WaitForEvents
 			(
-				      uint32                  _eventCount              ,
+				      ui32                    _eventCount              ,
 				const Event::Handle*          _events                  ,
 				      Pipeline::StageFlags    _srcStageMask            ,
 				      Pipeline::StageFlags    _dstStageMask            ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    
 			) const
 			{
@@ -1505,12 +1505,12 @@ namespace VaultedThermals
 			*/
 			void WaitForEvents
 			(
-				      uint32                  _eventCount              ,
-				const Event::Handle*          _events                  ,
-				      Pipeline::StageFlags    _srcStageMask            ,
-				      Pipeline::StageFlags    _dstStageMask            ,
-				      uint32                  _imageMemoryBarrierCount ,
-				const Image::Memory_Barrier*  _imageMemoryBarriers
+				      ui32                   _eventCount              ,
+				const Event::Handle*         _events                  ,
+				      Pipeline::StageFlags   _srcStageMask            ,
+				      Pipeline::StageFlags   _dstStageMask            ,
+				      ui32                   _imageMemoryBarrierCount ,
+				const Image::Memory_Barrier* _imageMemoryBarriers
 			) const
 			{
 				Parent::WaitForEvents
@@ -1530,15 +1530,15 @@ namespace VaultedThermals
 			*/
 			void WaitForEvents
 			(
-				      uint32                  _eventCount              ,
+				      ui32                    _eventCount              ,
 				const Event::Handle*          _events                  ,
 				      Pipeline::StageFlags    _srcStageMask            ,
 				      Pipeline::StageFlags    _dstStageMask            ,
-				      uint32                  _memoryBarrierCount      ,
+				      ui32                    _memoryBarrierCount      ,
 				const Memory::Barrier*        _memoryBarriers          ,
-				      uint32                  _bufferMemoryBarrierCount,
+				      ui32                    _bufferMemoryBarrierCount,
 				const Buffer::Memory_Barrier* _bufferMemoryBarriers    ,
-				      uint32                  _imageMemoryBarrierCount ,
+				      ui32                    _imageMemoryBarrierCount ,
 				const Image::Memory_Barrier*  _imageMemoryBarriers
 			) const
 			{
@@ -1702,7 +1702,7 @@ namespace VaultedThermals
 			/**
 			@brief Allocate command buffers with the specified count and level.
 			*/
-			EResult Allocate(ECommandBufferLevel _level, uint32 _count, CommandBuffer::Handle* _buffers)
+			EResult Allocate(ECommandBufferLevel _level, ui32 _count, CommandBuffer::Handle* _buffers)
 			{
 				AllocateInfo allocInfo; 
 
@@ -1721,7 +1721,7 @@ namespace VaultedThermals
 			EResult Allocate
 			(
 				ECommandBufferLevel          _level         ,
-				uint32                       _count         ,
+				ui32                         _count         ,
 				DynamicArray<CommandBuffer>& _commandBuffers
 			)
 			{
@@ -1753,7 +1753,7 @@ namespace VaultedThermals
 			EResult Allocate
 			(
 				ECommandBufferLevel                  _level         ,
-				uint32                               _count         ,
+				ui32                                 _count         ,
 				DynamicArray<CommandBuffer>&         _commandBuffers,
 				DynamicArray<CommandBuffer::Handle>& _handles
 			)
@@ -1824,7 +1824,7 @@ namespace VaultedThermals
 			/**
 			@brief Free the command buffers based on the count and handle container provided.
 			*/
-			void Free(uint32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
+			void Free(ui32 _bufferCount, const CommandBuffer::Handle* _commandBuffers)
 			{
 				Parent::Free(*device, handle, _bufferCount, _commandBuffers);
 			}

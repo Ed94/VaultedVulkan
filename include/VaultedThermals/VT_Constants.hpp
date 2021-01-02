@@ -67,7 +67,7 @@ namespace VaultedThermals
 
 		@todo #TODO : Make a better brief/detailed elaboration.
 		*/
-		constexpr uint32 Subpass_External = VK_SUBPASS_EXTERNAL;
+		constexpr ui32 Subpass_External = VK_SUBPASS_EXTERNAL;
 
 		
 
@@ -84,7 +84,7 @@ namespace VaultedThermals
 
 			@ingroup APISpec__Appendix-E__Layers_and_Extensions_Informative
 			*/
-			static constexpr RoCStr DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME  ;
+			static constexpr RoCStr DebugUtility = VK_EXT_DEBUG_UTILS_EXTENSION_NAME;
 
 			/**
 			@brief It introduces VkSurfaceKHR objects, which abstract native platform surface or window objects for use with Vulkan. 
@@ -94,7 +94,7 @@ namespace VaultedThermals
 
 			@ingroup APISpec__Appendix-E__Layers_and_Extensions_Informative
 			*/
-			static constexpr RoCStr Surface      = VK_KHR_SURFACE_EXTENSION_NAME      ;
+			static constexpr RoCStr Surface      = VK_KHR_SURFACE_EXTENSION_NAME;
 
 			/**
 			@brief It provides a mechanism to create a VkSurfaceKHR object (defined by the VK_KHR_surface extension) that refers to a Win32 HWND, 
@@ -129,14 +129,14 @@ namespace VaultedThermals
 
 			@details <a href="https://vulkan.lunarg.com/doc/view/1.1.114.0/windows/api_dump_layer.html">Specification</a> 
 			*/
-			static constexpr RoCStr LunarG_API_Dump   = "VK_LAYER_LUNARG_api_dump"  ;
+			static constexpr RoCStr LunarG_API_Dump   = "VK_LAYER_LUNARG_api_dump";
 
 			/**
 			@brief Prints the real-time frames-per-second value to the application's title bar. (Only works on the most recently opened window)
 
 			@details <a href="https://vulkan.lunarg.com/doc/view/1.2.131.1/windows/monitor_layer.html">Specification</a> 
 			*/
-			static constexpr RoCStr LunarG_Monitor    = "VK_LAYER_LUNARG_monitor"   ;   // Shows FPS on the most recently created window.
+			static constexpr RoCStr LunarG_Monitor    = "VK_LAYER_LUNARG_monitor";   // Shows FPS on the most recently created window.
 
 			/**
 			@brief Records frames to image files.
@@ -171,20 +171,20 @@ namespace VaultedThermals
 
 			@details <a href="https://vulkan.lunarg.com/doc/view/1.1.85.0/linux/object_tracker_layer.html">Specification</a> 
 			*/
-			static constexpr RoCStr LunarG_ObjectTracker       = "VK_LAYER_LUNARG_object_tracker"      ;
+			static constexpr RoCStr LunarG_ObjectTracker       = "VK_LAYER_LUNARG_object_tracker";
 			/**
 			@brief Checks multi-threading of API calls for validity. 
 			Checks performed by this layer include ensuring that only one thread at a time uses an object in free-threaded API calls.
 
 			@details <a href="https://vulkan.lunarg.com/doc/view/1.1.108.0/mac/threading_layer.html">Specification</a> 
 			*/
-			static constexpr RoCStr Google_Threading           = "VK_LAYER_GOOGLE_threading"           ;
+			static constexpr RoCStr Google_Threading           = "VK_LAYER_GOOGLE_threading";
 			/**
 			@brief Wrap all Vulkan objects in a unique pointer at create time and unwrap them at use time
 
 			@details <a href="https://vulkan.lunarg.com/doc/view/1.1.85.0/linux/unique_objects_layer.html">Specification</a> 
 			*/
-			static constexpr RoCStr Google_UniqueObjedcts      = "VK_LAYER_GOOGLE_unique_objects"      ;
+			static constexpr RoCStr Google_UniqueObjedcts      = "VK_LAYER_GOOGLE_unique_objects";
 
 			// Meta Validation - Deprecated (Fallback 1)
 
@@ -224,15 +224,15 @@ namespace VaultedThermals
 			/**
 			@brief Ease of identification mask for identifying a asynchronous compute queue family.
 			*/
-			static constexpr uint32 ComputeAsync = 
-				uint32(EQueueFlag::Compute      ) |
-				uint32(EQueueFlag::Transfer     ) |
-				uint32(EQueueFlag::SparseBinding)  ;
+			static constexpr ui32 ComputeAsync = 
+				ui32(EQueueFlag::Compute      ) |
+				ui32(EQueueFlag::Transfer     ) |
+				ui32(EQueueFlag::SparseBinding)  ;
 
 			/**
 			@brief Ease of identification mask for identifying a transfer only queue family.
 			*/
-			static constexpr uint32 TransferOnly = uint32(EQueueFlag::Transfer) | uint32(EQueueFlag::SparseBinding);
+			static constexpr ui32 TransferOnly = ui32(EQueueFlag::Transfer) | ui32(EQueueFlag::SparseBinding);
 		};
 
 		/** @} */

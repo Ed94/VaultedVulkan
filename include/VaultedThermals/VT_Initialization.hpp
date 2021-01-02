@@ -53,7 +53,7 @@ namespace VaultedThermals
 		@param _minor Minor version number.
 		@param _patch Patch version number.
 		*/
-		inline uInt32 MakeVersion(uInt32 _major, uInt32 _minor, uInt32 _patch)
+		inline uI32 MakeVersion(uI32 _major, uI32 _minor, uI32 _patch)
 		{
 			return VK_MAKE_VERSION(_major, _minor, _patch);
 		}
@@ -111,9 +111,9 @@ namespace VaultedThermals
 				      EType        SType         = STypeEnum         ;
 				const void*        Next          = nullptr           ;
 				      RoCStr       AppName       = nullptr           ;
-				      uint32       AppVersion    = 0                 ;
+				      ui32         AppVersion    = 0                 ;
 				      RoCStr       EngineName    = nullptr           ;
-				      uint32       EngineVersion = 0                 ;
+				      ui32         EngineVersion = 0                 ;
 				      EAPI_Version API_Version   = EAPI_Version::_1_2;
 			};
 
@@ -128,9 +128,9 @@ namespace VaultedThermals
 				const void*             Next                  = nullptr  ;
 				      CreateFlags       Flags                ;
 				const AppInfo*          AppInfo               = nullptr  ;
-				      uint32            EnabledLayerCount     = 0        ;
+				      ui32              EnabledLayerCount     = 0        ;
 				      RoArray_of_RoCStr EnabledLayerNames     = nullptr  ;
-				      uint32            EnabledExtensionCount = 0        ;
+				      ui32              EnabledExtensionCount = 0        ;
 					  RoArray_of_RoCStr EnabledExtensionNames = nullptr  ;
 			};
 
@@ -146,9 +146,9 @@ namespace VaultedThermals
 			{
 					  EType                     SType                          = STypeEnum;
 				const void*                     Next                           = nullptr  ;
-					  uint32                    EnabledValidationFeatureCount  = 0        ;
+					  ui32                      EnabledValidationFeatureCount  = 0        ;
 				const EValidationFeatureEnable* EnabledValidationFeatures      = nullptr  ;
-					  uint32                    DisabledValidationFeatureCount = 0        ;
+					  ui32                      DisabledValidationFeatureCount = 0        ;
 				const EValidationFeatureEnable* DisabledValidationFeatures     = nullptr  ;
 			};
 
@@ -164,7 +164,7 @@ namespace VaultedThermals
 			{
 					  EType             SType                        = STypeEnum;
 				const void*             Next                         = nullptr  ;
-					  uint32            DisabledValidationCheckCount = 0        ;
+					  ui32              DisabledValidationCheckCount = 0        ;
 				const EValidationCheck* DisabledValidationChecks     = nullptr  ;
 			};
 
@@ -213,7 +213,7 @@ namespace VaultedThermals
 			 * 
 			 * @return Returns EResult code (Indicating the version was able to be retrieved).
 			 */
-			static EResult GetVersion(uint32& _versionContainer)
+			static EResult GetVersion(ui32& _versionContainer)
 			{
 				return EResult(vkEnumerateInstanceVersion(&_versionContainer));
 			}
@@ -231,7 +231,7 @@ namespace VaultedThermals
 
 			@return Returns EResult code (Indicating whether query was successful)
 			*/
-			static EResult QueryAvailableLayers(uint32& _numContainer, LayerProperties* _propertiesContainer)
+			static EResult QueryAvailableLayers(ui32& _numContainer, LayerProperties* _propertiesContainer)
 			{
 				return EResult(vkEnumerateInstanceLayerProperties(&_numContainer, *_propertiesContainer));
 			}
@@ -244,7 +244,7 @@ namespace VaultedThermals
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkEnumerateInstanceExtensionProperties">Specification</a>.
 			  
 			*/
-			static EResult QueryAvailableAppExtensions(RoCStr _layerName, uint32& _numProperties, ExtensionProperties* _propertiesContainer)
+			static EResult QueryAvailableAppExtensions(RoCStr _layerName, ui32& _numProperties, ExtensionProperties* _propertiesContainer)
 			{
 				return EResult(vkEnumerateInstanceExtensionProperties(_layerName, &_numProperties, *_propertiesContainer));
 			}
@@ -261,7 +261,7 @@ namespace VaultedThermals
 
 			@ingroup APISpec_Devices_and_Queues
 			*/
-			static EResult QueryPhysicalDeviceListing(Handle _handle, uint32* _numDevices, PhysicalDevice::Handle* _deviceListing)
+			static EResult QueryPhysicalDeviceListing(Handle _handle, ui32* _numDevices, PhysicalDevice::Handle* _deviceListing)
 			{
 				return EResult(vkEnumeratePhysicalDevices(_handle, _numDevices, _deviceListing));
 			}
@@ -277,7 +277,7 @@ namespace VaultedThermals
 			static EResult QueryPhysicalDeviceGroups
 			(
 				Handle                 _handle         ,
-				uint32*                _numGroups      ,
+				ui32*                _numGroups      ,
 				PhysicalDevice::Group* _groupProperties
 			)
 			{
@@ -366,7 +366,7 @@ namespace VaultedThermals
 			*/
 			static EResult GetAvailableLayers(DynamicArray<LayerProperties>& _container)
 			{
-				uint32 layerCount;
+				ui32 layerCount;
 
 				EResult result = QueryAvailableLayers(layerCount, nullptr);
 
@@ -384,7 +384,7 @@ namespace VaultedThermals
 			*/
 			static EResult GetAvailableLayerExtensions(RoCStr _layerName, DynamicArray<ExtensionProperties>& _propertiesContainer)
 			{
-				uint32 layerCount;
+				ui32 layerCount;
 
 				EResult result = QueryAvailableAppExtensions(_layerName, layerCount, nullptr);
 
@@ -408,7 +408,7 @@ namespace VaultedThermals
 
 				_layersAndExtensions.resize(layers.size());
 
-				for (uint32 index = 0; index < layers.size(); index++)
+				for (ui32 index = 0; index < layers.size(); index++)
 				{
 					_layersAndExtensions[index].Layer = layers[index];
 
@@ -427,7 +427,7 @@ namespace VaultedThermals
 			*/
 			static EResult GetAvailablePhysicalDevices(Handle _handle, DynamicArray<PhysicalDevice::Handle>& _deviceListing)
 			{
-				uint32 count; 
+				ui32 count; 
 				
 				//auto casted = reinterpret_cast<Vault_0::IDynamicArray<PhysicalDevice::Handle>*>(_deviceListing);
 
@@ -453,7 +453,7 @@ namespace VaultedThermals
 			 */
 			static EResult GetAvailablePhysicalDeviceGroups(Handle _handle, DynamicArray<PhysicalDevice::Group>& _groupListing)
 			{
-				uint32 count;
+				ui32 count;
 
 				EResult returnCode = QueryPhysicalDeviceGroups(_handle, &count, nullptr);
 
@@ -562,7 +562,7 @@ namespace VaultedThermals
 			*/
 			EResult GetAvailablePhysicalDevices(DynamicArray<PhysicalDevice>& _deviceListing) const 
 			{
-				uint32 count; DynamicArray<PhysicalDevice::Handle> handleList;
+				ui32 count; DynamicArray<PhysicalDevice::Handle> handleList;
 
 				EResult returnCode = QueryPhysicalDeviceListing(&count, nullptr);
 
@@ -590,7 +590,7 @@ namespace VaultedThermals
 			 */
 			EResult GetAvailablePhysicalDeviceGroups(DynamicArray<PhysicalDevice::Group>& _groupListing) const
 			{
-				uint32 count;
+				ui32 count;
 
 				EResult returnCode = QueryPhysicalDeviceGroups(&count, nullptr);
 
@@ -637,7 +637,7 @@ namespace VaultedThermals
 			Otherwise, pPhysicalDeviceCount must point to a variable set by the user to the number of elements in the pPhysicalDevices array, 
 			and on return the variable is overwritten with the number of handles actually written to pPhysicalDevices.
 			*/
-			EResult QueryPhysicalDeviceListing(uint32* _numDevices, PhysicalDevice::Handle* _deviceListing) const
+			EResult QueryPhysicalDeviceListing(ui32* _numDevices, PhysicalDevice::Handle* _deviceListing) const
 			{
 				return Parent::QueryPhysicalDeviceListing(handle, _numDevices, _deviceListing);
 			}
@@ -645,7 +645,7 @@ namespace VaultedThermals
 			/**
 			@brief Retrieve a list of physical device groups.
 			*/
-			EResult QueryPhysicalDeviceGroups(uint32* _numGroups, PhysicalDevice::Group* _groupProperties) const
+			EResult QueryPhysicalDeviceGroups(ui32* _numGroups, PhysicalDevice::Group* _groupProperties) const
 			{
 				return Parent::QueryPhysicalDeviceGroups(handle, _numGroups, _groupProperties);
 			}

@@ -70,13 +70,13 @@ namespace VaultedThermals
                       AddressMode       AddressModeU           ;
                       AddressMode       AddressModeV           ;
                       AddressMode       AddressModeW           ;
-                      float32           MipLodBias             ;
+                      f32               MipLodBias             ;
                       Bool              AnisotropyEnable       ;
-                      float32           MaxAnisotropy          ;
+                      f32               MaxAnisotropy          ;
                       Bool              CompareEnable          ;
                       ECompareOperation CompareOperation       ;
-                      float32           MinimumLod             ;
-                      float32           MaxLod                 ;
+                      f32               MinimumLod             ;
+                      f32               MaxLod                 ;
                       EBorderColor      BorderColor            ;
                       Bool              UnnormalizedCoordinates;
 			};

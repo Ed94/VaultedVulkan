@@ -97,7 +97,7 @@ namespace VaultedThermals
 				      EType                   SType      = STypeEnum;
 				const void*                   Next       = nullptr  ;
 				      Handle                  Fence     ;
-					  EExternalHandleTypeFlag HandleType;
+				      EExternalHandleTypeFlag HandleType;
 			};
 
 			/**
@@ -111,7 +111,7 @@ namespace VaultedThermals
 				const void*                   Next           = nullptr  ;
 				      Handle                  Fence         ;
 				      FenceImportFlags        Flags         ;
-					  EExternalHandleTypeFlag HandleType    ;
+				      EExternalHandleTypeFlag HandleType    ;
 				      OS_Handle               FileDescriptor;
 			};
 
@@ -173,7 +173,7 @@ namespace VaultedThermals
 				const void*                Next         = nullptr  ;
 				const SECURITY_ATTRIBUTES* Attributes  ;
 				      DWORD                AccessRights;
-					  LPCWSTR              Name        ;
+				      LPCWSTR              Name        ;
 			};
 
 			/**
@@ -186,7 +186,7 @@ namespace VaultedThermals
 				      EType                   SType      = STypeEnum;
 				const void*                   Next       = nullptr  ;
 				      Handle                  Fence     ;
-					  EExternalHandleTypeFlag HandleType;
+				      EExternalHandleTypeFlag HandleType;
 			};
 
 			/**
@@ -202,10 +202,10 @@ namespace VaultedThermals
 				      EType                   SType      = STypeEnum;
 				const void*                   Next       = nullptr  ;
 				      Handle                  Fence     ;
-					  FenceImportFlags        Flags     ;
-					  EExternalHandleTypeFlag HandleType;
+				      FenceImportFlags        Flags     ;
+				      EExternalHandleTypeFlag HandleType;
 				      OS_Handle               Handle    ;
-					  LPCWSTR                 Name      ;
+				      LPCWSTR                 Name      ;
 			};
 
 			/**
@@ -341,11 +341,11 @@ namespace VaultedThermals
 			*/
 			struct ExportableOS_HandleInfo : V0::VKStruct_Base<VkExportSemaphoreWin32HandleInfoKHR, EStructureType::ExportSemaphore_Win32Handle_Info_KHR>
 			{
-					  EType                SType        = STypeEnum;
+				      EType                SType        = STypeEnum;
 				const void*                Next         = nullptr  ;
 				const SECURITY_ATTRIBUTES* Attributes   = nullptr  ;
-					  DWORD                AccessRights;
-					  LPCWSTR              Name        ;
+				      DWORD                AccessRights;
+				      LPCWSTR              Name        ;
 			};
 
 			/** 
@@ -724,7 +724,7 @@ namespace VaultedThermals
 			 * \param _fenceCount
 			 * \return 
 			 */
-			static EResult Reset(LogicalDevice::Handle _logicalDevice, Handle* _fences, uint32 _fenceCount)
+			static EResult Reset(LogicalDevice::Handle _logicalDevice, Handle* _fences, ui32 _fenceCount)
 			{
 				return EResult(vkResetFences(_logicalDevice, _fenceCount, _fences));
 			}
@@ -747,10 +747,10 @@ namespace VaultedThermals
 			static EResult WaitForFences
 			(
 				      LogicalDevice::Handle _device    ,
-				      uint32                _fenceCount,
+				      ui32                  _fenceCount,
 				const Handle*               _fences    ,
 				      Bool                  _waitAll   ,
-				      uInt64                _timeout
+				      uI64                  _timeout
 			)
 			{
 				return EResult(vkWaitForFences(_device, _fenceCount, _fences, _waitAll, _timeout));
@@ -788,7 +788,7 @@ namespace VaultedThermals
 			{
 				      EType                   SType       = STypeEnum;
 				const void*                   Next        = nullptr  ;
-				      ExternalHandleTypeFlags HandleTypes;				
+				      ExternalHandleTypeFlags HandleTypes;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreSignalInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -797,7 +797,7 @@ namespace VaultedThermals
 				      EType  SType     = STypeEnum;
 				const void*  Next      = nullptr  ;
 				      Handle Semaphore;
-				      uInt64 Value    ;
+				      uI64   Value    ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -806,7 +806,7 @@ namespace VaultedThermals
 				      EType  SType         = STypeEnum;
 				const void*  Next          = nullptr  ;
 				      Handle SemaphoreType;
-				      uInt64 InitialValue ;
+				      uI64   InitialValue ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -815,9 +815,9 @@ namespace VaultedThermals
 				      EType     SType          = STypeEnum;
 				const void*     Next           = nullptr  ;
 				      WaitFlags Flags         ;
-				      uint32    SemaphoreCount;
+				      ui32      SemaphoreCount;
 				const Handle*   Semaphores     = nullptr  ;
-				const uInt64*   Values         = nullptr  ;
+				const uI64*     Values         = nullptr  ;
 			};
 
 			/**
@@ -881,11 +881,11 @@ namespace VaultedThermals
 			(
 				LogicalDevice::Handle _device   ,
 				Handle                _semaphore,
-				uInt64&               _value
+				uI64&                 _value
 			)
 			{
 				return EResult(vkGetSemaphoreCounterValue(_device, _semaphore, &_value));
-			}			
+			}
 
 			/**
 			 * @brief Signal a semaphore created with a SemaphoreType of Timeline with a particular counter value, on the host.
@@ -919,7 +919,7 @@ namespace VaultedThermals
 			(
 				      LogicalDevice::Handle _device  ,
 				const WaitInfo&             _waitInfo,
-				      uInt64                _timeout
+				      uI64                  _timeout
 			)
 			{
 				return EResult(vkWaitSemaphores(_device, _waitInfo, _timeout));
@@ -1458,13 +1458,13 @@ namespace VaultedThermals
 
 				for (auto& fence : _fences) handles.push_back(fence);
 
-				return Parent::Reset(device, handles.data(), static_cast<uint32>(_fences.size()));
+				return Parent::Reset(device, handles.data(), static_cast<ui32>(_fences.size()));
 			}
 
 			/**
 			@brief Wait for the fence to enter the signaled state on the host.
 			*/
-			EResult WaitFor(uInt64 _timeout)
+			EResult WaitFor(uI64 _timeout)
 			{
 				return Parent::WaitForFences(*device, 1, &handle, false, _timeout);
 			}
@@ -1472,7 +1472,7 @@ namespace VaultedThermals
 			/**
 			@brief Wait for one or more fences to enter the signaled state on the host.
 			*/
-			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, uInt64 _timeout)
+			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, uI64 _timeout)
 			{
 				auto device = _fences[0].GetDeviceHandle();
 
@@ -1480,7 +1480,7 @@ namespace VaultedThermals
 
 				for (auto& fence : _fences) handles.push_back(fence);
 
-				return Parent::WaitForFences(device, static_cast<uint32>(_fences.size()), handles.data(), _waitForAll, _timeout);
+				return Parent::WaitForFences(device, static_cast<ui32>(_fences.size()), handles.data(), _waitForAll, _timeout);
 			}
 
 			/**
@@ -1638,7 +1638,7 @@ namespace VaultedThermals
 			/**
 			@brief Query the current counter value of a semaphore created with a SemaphoreType of Timeline from the host.
 			*/
-			EResult GetCounterValue(uInt64& _value)
+			EResult GetCounterValue(uI64& _value)
 			{
 				return Parent::GetCounterValue(*device, handle, _value);
 			}
@@ -1670,7 +1670,7 @@ namespace VaultedThermals
 			/**
 			@brief Wait for a set of semaphores created with a VkSemaphoreType of VK_SEMAPHORE_TYPE_TIMELINE to reach particular counter values on the host.
 			*/
-			EResult WaitFor(const WaitInfo& _info, uInt64 _timeout)
+			EResult WaitFor(const WaitInfo& _info, uI64 _timeout)
 			{
 				return Parent::WaitFor(*device, _info, _timeout);
 			}

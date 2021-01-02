@@ -92,7 +92,7 @@ namespace VaultedThermals
 					      EType       SType           = STypeEnum;
 					const void*       Next            = nullptr  ;
 					      CreateFlags Flags          ;
-						  std::size_t InitialDataSize;
+					      std::size_t InitialDataSize;
 					const void*       InitialData     = nullptr  ;
 				};
 
@@ -192,9 +192,9 @@ namespace VaultedThermals
 					      CreateFlags      Flags                ;
 					      Bool             EnableLogicOperations;
 					      ELogicOperation  LogicOperation       ;
-					      uint32           AttachmentCount       = 0        ;
+					      ui32             AttachmentCount       = 0        ;
 					const AttachmentState* Attachments           = nullptr  ;
-					      float32          BlendConstants[4]    ;
+					      f32              BlendConstants[4]    ;
 				};
 			};
 
@@ -229,8 +229,8 @@ namespace VaultedThermals
 					      Bool                  StencilTestEnable    ;
 					      StencilOperationState Front                ;
 					      StencilOperationState Back                 ;
-					      float32               MinDepthBounds       ;
-					      float32               MaxDepthBounds       ;
+					      f32                   MinDepthBounds       ;
+					      f32                   MaxDepthBounds       ;
 				};
 			};
 
@@ -254,7 +254,7 @@ namespace VaultedThermals
 					      EType          SType      = STypeEnum;
 					const void*          Next       = nullptr  ;
 					      CreateFlags    Flags     ;
-					      uint32         StateCount = 0        ;
+					      ui32           StateCount = 0        ;
 					const EDynamicState* States     = nullptr  ;
 				};
 			};
@@ -307,8 +307,8 @@ namespace VaultedThermals
 				struct PushConstantRange : V0::VKStruct_Base<VkPushConstantRange>
 				{
 					ShaderStageFlags StageFlags;
-					uint32           Offset    ;
-					uint32           Size      ;
+					ui32             Offset    ;
+					ui32             Size      ;
 				};
 
 
@@ -337,9 +337,9 @@ namespace VaultedThermals
 					*/
 					struct Binding : V0::VKStruct_Base<VkDescriptorSetLayoutBinding>
 					{
-						      uint32           BindingID        ;
+						      ui32             BindingID        ;
 						      EDescriptorType  Type             ;
-						      uint32           Count            ;
+						      ui32             Count            ;
 						      ShaderStageFlags StageFlags       ;
 						const Sampler::Handle* ImmutableSamplers;
 
@@ -357,7 +357,7 @@ namespace VaultedThermals
 						{
 							      EType        SType        = STypeEnum;
 							const void*        Next         = nullptr  ;
-							      uint32       BindingCount = 0        ;
+							      ui32         BindingCount = 0        ;
 							const CreateFlags* BindingFlags = nullptr  ;
 						};
 					};
@@ -378,7 +378,7 @@ namespace VaultedThermals
 						      EType       SType        = STypeEnum;
 						const void*       Next         = nullptr  ;
 						      CreateFlags Flags       ;
-						      uint32      BindingCount = 0        ;
+						      ui32        BindingCount = 0        ;
 						const Binding*    Bindings     = nullptr  ;
 					};
 
@@ -400,9 +400,9 @@ namespace VaultedThermals
 						*/
 						struct SetVariableCount : V0::VKStruct_Base<VkDescriptorSetVariableDescriptorCountLayoutSupport, EStructureType::Descriptor_SetVariable_Descriptor_CountLayoutSupport>
 						{
-							EType  SType            = STypeEnum;
-							void*  Next             = nullptr  ;
-							uint32 MaxVariableCount;
+							EType SType            = STypeEnum;
+							void* Next             = nullptr  ;
+							ui32  MaxVariableCount;
 						};
 					};
 
@@ -478,9 +478,9 @@ namespace VaultedThermals
 					      EType                  SType                  = STypeEnum;
 					const void*                  Next                   = nullptr  ;
 					      CreateFlags            Flags                 ;
-					      uint32                 SetLayoutCount        ;
+					      ui32                   SetLayoutCount        ;
 					const DescriptorSet::Handle* SetLayouts             = nullptr  ;
-					      uint32                 PushConstantRangeCount = 0        ;
+					      ui32                   PushConstantRangeCount = 0        ;
 					const PushConstantRange*     PushConstantRanges     = nullptr  ;
 				};
 
@@ -557,7 +557,7 @@ namespace VaultedThermals
 					      CreateFlags  Flags                ;
 					      ESampleCount RasterizationSamples ;
 					      Bool         EnableSampleShading  ;
-					      float32      MinSampleShading     ;
+					      f32          MinSampleShading     ;
 					const SampleMask*  SampleMask            = nullptr  ;
 					      Bool         EnableAlphaToCoverage;
 					      Bool         EnableAlphaToOne     ;
@@ -594,10 +594,10 @@ namespace VaultedThermals
 					      CullModeFlags CullMode               ;
 					      EFrontFace    FrontFace              ;
 					      Bool          EnableDepthBias        ;
-					      float32       DepthBiasConstantFactor;
-					      float32       DepthBiasClamp         ;
-					      float32       DepthBiasSlopeFactor   ;
-					      float32       LineWidth              ;
+					      f32           DepthBiasConstantFactor;
+					      f32           DepthBiasClamp         ;
+					      f32           DepthBiasSlopeFactor   ;
+					      f32           LineWidth              ;
 				};
 			};
 
@@ -620,8 +620,8 @@ namespace VaultedThermals
 				*/
 				struct MapEntry : V0::VKStruct_Base<VkSpecializationMapEntry>
 				{
-					uint32      ConstantID;
-					uint32      Offset    ;
+					ui32        ConstantID;
+					ui32        Offset    ;
 					std::size_t Size      ;
 				};
 
@@ -631,7 +631,7 @@ namespace VaultedThermals
 				*/
 				struct Info : V0::VKStruct_Base<VkSpecializationInfo>
 				{
-					      uint32      MapEntryCount = 0      ;
+					      ui32        MapEntryCount = 0      ;
 					const MapEntry*   MapEntires    = nullptr;
 					      std::size_t SizeOfData    = 0      ;
 					const void*       Data          = nullptr;
@@ -695,7 +695,7 @@ namespace VaultedThermals
 					      EType       SType              = STypeEnum;
 					const void*       Next               = nullptr  ;
 					      CreateFlags Flags             ;
-					      uint32      PatchControlPoints;
+					      ui32        PatchControlPoints;
 				};
 			};
 
@@ -713,10 +713,10 @@ namespace VaultedThermals
 				*/
 				struct AttributeDescription : V0::VKStruct_Base<VkVertexInputAttributeDescription>
 				{
-					uint32  Location;
-					uint32  Binding ;
+					ui32    Location;
+					ui32    Binding ;
 					EFormat Format  ;
-					uint32  Offset  ;
+					ui32    Offset  ;
 				};
 
 				/** 
@@ -725,8 +725,8 @@ namespace VaultedThermals
 				*/
 				struct BindingDescription : V0::VKStruct_Base<VkVertexInputBindingDescription>
 				{
-					uint32           Binding  ;
-					uint32           Stride   ;
+					ui32             Binding  ;
+					ui32             Stride   ;
 					EVertexInputRate InputRate;
 				};
 
@@ -739,9 +739,9 @@ namespace VaultedThermals
 					      EType                 SType                         = STypeEnum;
 					const void*                 Next                          = nullptr  ;
 					      CreateFlags           Flags                        ;
-					      uint32                VertexBindingDescriptionCount = 0        ;
+					      ui32                  VertexBindingDescriptionCount = 0        ;
 					const BindingDescription*   BindingDescriptions           = nullptr  ;
-					      uint32                AttributeDescriptionCount     = 0        ;
+					      ui32                  AttributeDescriptionCount     = 0        ;
 					const AttributeDescription* AttributeDescription          = nullptr  ;
 				};
 			};
@@ -764,9 +764,9 @@ namespace VaultedThermals
 					      EType       SType         = STypeEnum;
 					const void*       Next          = nullptr  ;
 					      CreateFlags Flags        ;
-					      uint32      ViewportCount = 0        ;
+					      ui32        ViewportCount = 0        ;
 					const Viewport*   Viewports     = nullptr  ;
-					      uint32      ScissorCount  = 0        ;
+					      ui32        ScissorCount  = 0        ;
 					const Rect2D*     Scissors      = nullptr  ;
 				};
 			};
@@ -799,7 +799,7 @@ namespace VaultedThermals
 					      ShaderStage::CreateInfo ShaderStage       ;
 					      Layout::Handle          Layout            ;
 					      Pipeline::Handle        BasePipelineHandle;
-					      sint32                  BasePipelineIndex ;
+					      si32                    BasePipelineIndex ;
 				};
 
 				/**
@@ -821,7 +821,7 @@ namespace VaultedThermals
 				(
 					      LogicalDevice::Handle        _deviceHandle   ,
 					      Cache::Handle                _cache          ,
-					      uint32                       _createInfoCount,
+					      ui32                         _createInfoCount,
 					const CreateInfo*                  _createInfos    ,
 					const Memory::AllocationCallbacks* _allocator      ,
 					      Handle*                      _pipelines
@@ -858,7 +858,7 @@ namespace VaultedThermals
 					      EType                           SType              = STypeEnum;
 					const void*                           Next               = nullptr  ;
 					      CreateFlags                     Flags             ;
-					      uint32                          StageCount         = 0        ;
+					      ui32                            StageCount         = 0        ;
 					const ShaderStage::CreateInfo*        Stages             = nullptr  ;
 					const VertexInputState::CreateInfo*   VertexInputState   = nullptr  ;
 					const InputAssemblyState::CreateInfo* InputAssemblyState = nullptr  ;
@@ -871,9 +871,9 @@ namespace VaultedThermals
 					const DynamicState::CreateInfo*       DynamicState       = nullptr  ;
 					      Pipeline::Layout::Handle        Layout            ;
 					      RenderPass_Handle               RenderPass        ;
-					      uint32                          Subpass           ;
+					      ui32                            Subpass           ;
 					      Pipeline::Handle                BasePipelineHandle;
-					      sint32                          BasePipelineIndex ;
+					      si32                            BasePipelineIndex ;
 				};
 
 				/**
@@ -899,7 +899,7 @@ namespace VaultedThermals
 					{
 						      EType                          SType             = STypeEnum;
 						const void*                          Next              = nullptr  ;
-						      uint32                         StageCount        = 0        ;
+						      ui32                           StageCount        = 0        ;
 						const ShaderStage::CreateInfo*       Stages            = nullptr  ;
 						const VertexInputState::CreateInfo*  VertexInputState  = nullptr  ;
 						const TessellationState::CreateInfo* TessellationState = nullptr  ;
@@ -913,9 +913,9 @@ namespace VaultedThermals
 					{
 						      EType             SType         = STypeEnum;
 						const void*             Next          = nullptr  ;
-						      uint32            GroupCount    = 0        ;
+						      ui32              GroupCount    = 0        ;
 						const CreateInfo*       Groups        = nullptr  ;
-						      uint32            PipelineCount = 0        ;
+						      ui32              PipelineCount = 0        ;
 						const Pipeline::Handle* Pipelines     = nullptr  ;
 					};
 				};
@@ -940,7 +940,7 @@ namespace VaultedThermals
 				(
 					      LogicalDevice::Handle        _deviceHandle   ,
 					      Cache::Handle                _pipelineCache  ,
-					      uint32                       _createInfoCount,
+					      ui32                         _createInfoCount,
 					const CreateInfo*                  _createInfos    ,
 					const Memory::AllocationCallbacks* _allocator      ,
 					      Handle*                      _pipelines
@@ -1163,7 +1163,7 @@ namespace VaultedThermals
 				(
 					      LogicalDevice::Handle        _deviceHandle   ,
 					      Cache::Handle                _cache          ,
-					      uint32                       _createInfoCount,
+					      ui32                         _createInfoCount,
 					const CreateInfo*                  _createInfos    ,
 					      Handle*                      _pipelines
 				)
@@ -1194,7 +1194,7 @@ namespace VaultedThermals
 				(
 					      LogicalDevice::Handle _deviceHandle   ,
 					      Cache::Handle         _pipelineCache  ,
-					      uint32                _createInfoCount,
+					      ui32                  _createInfoCount,
 					const CreateInfo*           _createInfos    ,
 					      Handle*               _pipelines
 				)
@@ -1971,7 +1971,7 @@ namespace VaultedThermals
 			(
 				const LogicalDevice&                 _device         ,
 				const Cache&                         _cache          ,
-				      uint32                         _createInfoCount,
+				      ui32                           _createInfoCount,
 				const CreateInfo*                    _createInfos    ,
 				const Memory::AllocationCallbacks*   _allocator      ,
 				      DynamicArray<ComputePipeline>& _pipelines
@@ -2119,7 +2119,7 @@ namespace VaultedThermals
 			(
 				const LogicalDevice&                  _device         ,
 				const Cache&                          _cache          ,
-				      uint32                          _createInfoCount,
+				      ui32                            _createInfoCount,
 				const CreateInfo*                     _createInfos    ,
 				const Memory::AllocationCallbacks*    _allocator      ,
 				      DynamicArray<GraphicsPipeline>& _pipelines

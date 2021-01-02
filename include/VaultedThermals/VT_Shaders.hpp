@@ -77,7 +77,7 @@ namespace VaultedThermals
 				      EType             SType     = STypeEnum;
 				const void*             Next      = nullptr  ;
 				      CreateFlags       Flags    ;
-					  std::size_t       CodeSize  = 0        ;
+				      std::size_t       CodeSize  = 0        ;
 				const SPIR_V::Bytecode* Code      = nullptr  ;
 			};
 

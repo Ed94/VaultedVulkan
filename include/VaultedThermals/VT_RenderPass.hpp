@@ -82,12 +82,12 @@ namespace VaultedThermals
 				      EType              SType           = STypeEnum;
 				const void*              Next            = nullptr  ;
 				      CreateFlags        Flags          ;
-					  RenderPass_Handle  RenderPass     ;
-				      uint32             AttachmentCount = 0        ;
+				      RenderPass_Handle  RenderPass     ;
+				      ui32               AttachmentCount = 0        ;
 				const ImageView::Handle* Attachments     = nullptr  ;
-				      uint32             Width          ;
-				      uint32             Height         ;
-				      uint32             Layers         ;
+				      ui32               Width          ;
+				      ui32               Height         ;
+				      ui32               Layers         ;
 			};
 
 			/**
@@ -169,7 +169,7 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentReference">Specification</a> @ingroup APISpec_Render_Pass */
 			struct AttachmentReference : V0::VKStruct_Base<VkAttachmentReference>
 			{
-				uint32       Attachment;
+				ui32       Attachment;
 				EImageLayout Layout    ;
 			};
 
@@ -181,7 +181,7 @@ namespace VaultedThermals
 				      RenderPass::Handle  RenderPass     ;
 				      Framebuffer::Handle Framebuffer    ;
 				      Rect2D              RenderArea     ;
-				      uint32              ClearValueCount;
+				      ui32                ClearValueCount;
 				const ClearValue*         ClearValues     = nullptr  ;
 			};
 
@@ -190,21 +190,21 @@ namespace VaultedThermals
 			{
 				      SubpassDesriptionFlags Flags                  ;
 				      EPipelineBindPoint     PipelineBindPoint      ;
-				      uint32                 InputAttachmentCount   ;
+				      ui32                   InputAttachmentCount   ;
 				const AttachmentReference*   InputAttachments        = nullptr;
-				      uint32                 ColorAttachmentCount   ;
+				      ui32                   ColorAttachmentCount   ;
 				const AttachmentReference*   ColorAttachments        = nullptr;
 				const AttachmentReference*   ResolveAttachments      = nullptr;
 				const AttachmentReference*   DepthStencilAttachment  = nullptr;
-				      uint32                 PreserveAttachmentCount;
-				const uint32*                PreserveAttachments     = nullptr;
+				      ui32                   PreserveAttachmentCount;
+				const ui32*                  PreserveAttachments     = nullptr;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDependency">Specification</a> @ingroup APISpec_Render_Pass */
 			struct SubpassDependency : V0::VKStruct_Base<VkSubpassDependency>
 			{
-				uint32               SourceSubpass        ;
-				uint32               DestinationSubpass   ;
+				ui32                 SourceSubpass        ;
+				ui32                 DestinationSubpass   ;
 				Pipeline::StageFlags SourceStageMask      ;
 				Pipeline::StageFlags DestinationStageMask ;
 				AccessFlags          SourceAccessMask     ;
@@ -218,11 +218,11 @@ namespace VaultedThermals
 				      EType                  SType           = STypeEnum;
 				const void*                  Next            = nullptr  ;
 				      CreateFlags            Flags          ;
-				      uint32                 AttachmentCount = 0        ;
+				      ui32                   AttachmentCount = 0        ;
 				const AttachmentDescription* Attachments     = nullptr  ;
-				      uint32                 SubpassCount    = 0        ;
+				      ui32                   SubpassCount    = 0        ;
 				const SubpassDescription*    Subpasses       = nullptr  ;
-				      uint32                 DependencyCount = 0        ;
+				      ui32                   DependencyCount = 0        ;
 				const SubpassDependency*     Dependencies    = nullptr  ;
 			};
 

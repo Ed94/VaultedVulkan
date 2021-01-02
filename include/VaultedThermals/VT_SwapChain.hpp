@@ -86,15 +86,15 @@ namespace VaultedThermals
 				const void*                 Next                  = nullptr  ;
 				      CreateFlags           Flags                ;
 				      Surface::Handle       Surface              ;
-				      uint32                MinImageCount        ;
+				      ui32                  MinImageCount        ;
 				      EFormat               ImageFormat          ;
 				      EColorSpace           ImageColorSpace      ;
 				      Extent2D              ImageExtent          ;
-				      uint32                ImageArrayLayers     ;
+				      ui32                  ImageArrayLayers     ;
 				      Image::UsageFlags	    ImageUsage           ;
 				      ESharingMode          ImageSharingMode     ;
-				      uint32                QueueFamilyIndexCount = 0        ;
-				const uint32*               QueueFamilyIndices    = nullptr  ;
+				      ui32                  QueueFamilyIndexCount = 0        ;
+				const ui32*                 QueueFamilyIndices    = nullptr  ;
 				      ESurfaceTransformFlag PreTransform         ;
 				      ECompositeAlpha       CompositeAlpha       ;
 				      EPresentationMode     PresentationMode     ;
@@ -111,11 +111,11 @@ namespace VaultedThermals
 			{
 				      EType              SType              = STypeEnum;
 				const void*              Next               = nullptr  ;
-				      uint32             WaitSemaphoreCount = 0        ;
+				      ui32               WaitSemaphoreCount = 0        ;
 				const Semaphore::Handle* WaitSemaphores     = nullptr  ;
-				      uint32             SwapchainCount     = 0        ;
+				      ui32               SwapchainCount     = 0        ;
 				const Handle*            Swapchains         = nullptr  ;
-				const uint32*            ImageIndices       = nullptr  ;
+				const ui32*              ImageIndices       = nullptr  ;
 				      EResult*           Results            = nullptr  ;
 			};
 
@@ -130,10 +130,10 @@ namespace VaultedThermals
 			(
 				LogicalDevice::Handle _device    ,
 				Handle                _swapchain ,
-				uInt64                _timeout   ,
+				uI64                  _timeout   ,
 				Semaphore::Handle     _semaphore ,
 				Fence::Handle         _fence     ,
-				uint32&               _imageIndex
+				ui32&                 _imageIndex
 			)
 			{
 				return EResult(vkAcquireNextImageKHR(_device, _swapchain, _timeout, _semaphore, _fence, &_imageIndex));
@@ -198,7 +198,7 @@ namespace VaultedThermals
 			
 			<a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetSwapchainImagesKHR">Specification</a>
 			*/
-			static EResult QueryImages(LogicalDevice::Handle _deviceHandle, Handle _swapChain, uint32& _numImages, Image::Handle* _imagesContainer)
+			static EResult QueryImages(LogicalDevice::Handle _deviceHandle, Handle _swapChain, ui32& _numImages, Image::Handle* _imagesContainer)
 			{
 				return EResult(vkGetSwapchainImagesKHR(_deviceHandle, _swapChain, &_numImages, _imagesContainer));
 			}
@@ -256,7 +256,7 @@ namespace VaultedThermals
 				DynamicArray<Image::Handle>* _images
 			)
 			{
-				uint32 numImages;
+				ui32 numImages;
 
 				EResult result = QueryImages(_deviceHandle, _swapChain, numImages, nullptr);
 
@@ -335,10 +335,10 @@ namespace VaultedThermals
 			*/
 			EResult AcquireNextImage
 			(
-				uInt64                _timeout   ,
+				uI64                  _timeout   ,
 				Semaphore::Handle     _semaphore ,
 				Fence::Handle         _fence     ,
-				uint32&               _imageIndex
+				ui32&                 _imageIndex
 			)
 			{
 				return Parent::AcquireNextImage(*device, handle, _timeout, _semaphore, _fence, _imageIndex);
@@ -391,7 +391,7 @@ namespace VaultedThermals
 			*/
 			EResult GetImages(DynamicArray<Image>& _images)
 			{
-				uint32 numImages;
+				ui32 numImages;
 
 				EResult result = QueryImages(numImages, nullptr);
 
@@ -412,7 +412,7 @@ namespace VaultedThermals
 			/**
 			@brief Obtain the array of presentable images associated with a swapchain.
 			*/
-			EResult QueryImages(uint32& _numImages, Image::Handle* _imagesContainer)
+			EResult QueryImages(ui32& _numImages, Image::Handle* _imagesContainer)
 			{
 				return Parent::QueryImages(*device, handle, _numImages, _imagesContainer);
 			}
