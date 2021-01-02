@@ -1138,7 +1138,7 @@ namespace VaultedThermals
 			@brief Constructor with logical device, allocate info, and handle specified (acts as an Assign() call)
 			*/
 			CommandBuffer(const LogicalDevice& _device, Handle& _handle) :
-				device(&_device), handle(_handle)
+				handle(_handle), device(&_device)
 			{}
 
 			/**

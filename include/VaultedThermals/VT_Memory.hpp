@@ -267,7 +267,7 @@ namespace VaultedThermals
 			/**
 			@brief Constructor with logical device and allocator specified.
 			*/
-			Memory(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			Memory(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
 			/**

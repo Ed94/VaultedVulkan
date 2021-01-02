@@ -240,7 +240,7 @@ namespace VaultedThermals
 			/**
 			@brief Specifies the logical device and allocator.
 			*/
-			ShaderModule(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			ShaderModule(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
 			/**

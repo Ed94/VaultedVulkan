@@ -164,8 +164,8 @@ namespace VaultedThermals
 			Offset2D Offset;
 			Extent2D Extent;
 
-			bool operator==(const Rect2D& _other) { Offset == _other.Offset && Extent == _other.Extent ? true : false; }
-			bool operator!=(const Rect2D& _other) { Offset != _other.Offset || Extent != _other.Extent ? true : false; }
+			bool operator==(const Rect2D& _other) { return Offset == _other.Offset && Extent == _other.Extent ? true : false; }
+			bool operator!=(const Rect2D& _other) { return Offset != _other.Offset || Extent != _other.Extent ? true : false; }
 		};
 
 		/**

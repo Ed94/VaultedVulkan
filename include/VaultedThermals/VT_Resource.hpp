@@ -1462,7 +1462,7 @@ namespace VaultedThermals
 			*/
 			~BufferView()
 			{
-				if (handle = Null<Handle>) Destroy();
+				if (handle == Null<Handle>) Destroy();
 			}
 
 			/**
@@ -1674,6 +1674,8 @@ namespace VaultedThermals
 
 				if (returnCode == EResult::Success)
 					Parent::GetMemoryRequirements(*device, handle, memoryRequirements);
+
+				return returnCode;
 			}
 
 			/**
@@ -2056,13 +2058,13 @@ namespace VaultedThermals
 			/**
 			@brief Specifies logical device.
 			*/
-			DescriptorPool(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			DescriptorPool(const LogicalDevice& _device) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(&_device)
 			{}
 
 			/**
 			@brief Specifies logical device and allocator.
 			*/
-			DescriptorPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(Memory::DefaultAllocator), device(nullptr)
+			DescriptorPool(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
 			/**
@@ -2081,7 +2083,7 @@ namespace VaultedThermals
 			*/
 			~DescriptorPool()
 			{
-				if (handle = Null<Handle>) Destroy();
+				if (handle == Null<Handle>) Destroy();
 			}
 
 			/**

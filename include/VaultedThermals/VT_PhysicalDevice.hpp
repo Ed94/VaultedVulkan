@@ -854,6 +854,10 @@ namespace VaultedThermals
 
 							break;
 						}
+						case EImageTiling::DRM_FormatModifier_Extension:
+						{
+							return EResult::Error_FormatNotSupported;   // Not implemented yet.
+						}
 					}
 				}
 

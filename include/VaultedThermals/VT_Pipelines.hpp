@@ -1979,7 +1979,7 @@ namespace VaultedThermals
 			{
 				_pipelines.resize(_createInfoCount);
 
-				Handle* handles;
+				Handle* handles = nullptr;
 
 				EResult returnCode = 
 					Parent::Parent::Compute::Create
@@ -2127,7 +2127,7 @@ namespace VaultedThermals
 			{
 				_pipelines.resize(_createInfoCount);
 
-				Handle* handles;
+				Handle* handles = nullptr;
 
 				EResult returnCode = 
 					Parent::Parent::Graphics::Create

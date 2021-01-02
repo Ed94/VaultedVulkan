@@ -222,7 +222,7 @@ namespace VaultedThermals
 			/**
 			@brief Logical device and allocator specified.
 			*/
-			Sampler(const LogicalDevice& _device, const Memory::AllocationCallbacks _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
+			Sampler(const LogicalDevice& _device, const Memory::AllocationCallbacks& _allocator) : handle(Null<Handle>), allocator(&_allocator), device(&_device)
 			{}
 
 			/**
