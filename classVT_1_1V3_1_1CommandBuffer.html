@@ -235,37 +235,74 @@
             <dd>A secondary command buffer must not be directly submitted to a queue. Instead, secondary command buffers are recorded to execute as part of a primary command buffer..</dd>
             <dt id="a80bbaa42339777442a796359f0ef6a82">
               <span class="m-doc-wrap-bumper">void <a href="#a80bbaa42339777442a796359f0ef6a82" class="m-doc-self">ResetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
             </dt>
             <dd>Set the state of an event to unsignaled from a device.</dd>
+            <dt id="a85e4247967e77026cb482415dacedd14">
+              <span class="m-doc-wrap-bumper">void <a href="#a85e4247967e77026cb482415dacedd14" class="m-doc-self">SetDeviceMask</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _deviceMask) const</span>
+            </dt>
+            <dd>Update the current device bitfield of a command buffer.</dd>
+            <dt id="adc96fe51dfb1e4a28c5034ed8c234557">
+              <span class="m-doc-wrap-bumper">void <a href="#adc96fe51dfb1e4a28c5034ed8c234557" class="m-doc-self">SetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
+            </dt>
+            <dd>Set the state of an event to signaled from a device.</dd>
+            <dt id="a039ecdacf506fd36c09f7e14e96a2378">
+              <span class="m-doc-wrap-bumper">void <a href="#a039ecdacf506fd36c09f7e14e96a2378" class="m-doc-self">SetScissor</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _firstScissor,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _scissorCount,
+              const <a href="structVT_1_1Corridors_1_1Rect2D.html" class="m-doc">Rect2D</a>* _scissors) const</span>
+            </dt>
+            <dd>Set scissor rectangles dynamically.</dd>
+            <dt id="aed18e5d8c33ed9d98afba8e7a022fb51">
+              <span class="m-doc-wrap-bumper">void <a href="#aed18e5d8c33ed9d98afba8e7a022fb51" class="m-doc-self">SetScissor</a>(</span><span class="m-doc-wrap">const <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="structVT_1_1Corridors_1_1Rect2D.html" class="m-doc">Rect2D</a>&gt;&amp; _scissors) const</span>
+            </dt>
+            <dd>Set scissor rectangles dynamically.</dd>
+            <dt id="aec19838b5334a0523f56777ce073e35f">
+              <span class="m-doc-wrap-bumper">void <a href="#aec19838b5334a0523f56777ce073e35f" class="m-doc-self">SetScissor</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1Corridors_1_1Rect2D.html" class="m-doc">Rect2D</a>&amp; _scissor) const</span>
+            </dt>
+            <dd>Set scissor rectangles dynamically. (Single scissor)</dd>
+            <dt id="a73849face8ea6639903defbaf7f07a59">
+              <span class="m-doc-wrap-bumper">void <a href="#a73849face8ea6639903defbaf7f07a59" class="m-doc-self">SetViewport</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _firstViewport,
+              <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _viewportCount,
+              const <a href="structVT_1_1Corridors_1_1Viewport.html" class="m-doc">Viewport</a>* _viewports) const</span>
+            </dt>
+            <dd>Set viewport transformation parameters dynamically.</dd>
+            <dt id="a103e7056e638a75775c8e0a22a9958cd">
+              <span class="m-doc-wrap-bumper">void <a href="#a103e7056e638a75775c8e0a22a9958cd" class="m-doc-self">SetViewport</a>(</span><span class="m-doc-wrap">const <a href="group__Corridors.html#ga2df8cddd17fb945421873598501db889" class="m-doc">DynamicArray</a>&lt;<a href="structVT_1_1Corridors_1_1Viewport.html" class="m-doc">Viewport</a>&gt;&amp; _viewports) const</span>
+            </dt>
+            <dd>Set viewport transformation parameters dynamically.</dd>
+            <dt id="adaa9002468bf20e45045b7232310141f">
+              <span class="m-doc-wrap-bumper">void <a href="#adaa9002468bf20e45045b7232310141f" class="m-doc-self">SetViewport</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1Corridors_1_1Viewport.html" class="m-doc">Viewport</a>&amp; _viewport) const</span>
+            </dt>
+            <dd>Set viewport transformation parameters dynamically. (Single viewport)</dd>
             <dt id="a29a7a6fdf2fc138b55de451cb3b4228d">
-              <span class="m-doc-wrap-bumper">void <a href="#a29a7a6fdf2fc138b55de451cb3b4228d" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <span class="m-doc-wrap-bumper">void <a href="#a29a7a6fdf2fc138b55de451cb3b4228d" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga16888e2a66f31fd1214bed2a8ecf41bc" class="m-doc">DependencyFlags</a> _dependencyFlags,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _memoryBarrierCount,
               const <a href="structVT_1_1V0_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers) const</span>
             </dt>
             <dd>A version of SubmitPipelineBarrier where only a set of regular memory barriers are submitted.</dd>
             <dt id="a3c23ef9b42bdc8670b3b26b92150ef99">
-              <span class="m-doc-wrap-bumper">void <a href="#a3c23ef9b42bdc8670b3b26b92150ef99" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <span class="m-doc-wrap-bumper">void <a href="#a3c23ef9b42bdc8670b3b26b92150ef99" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga16888e2a66f31fd1214bed2a8ecf41bc" class="m-doc">DependencyFlags</a> _dependencyFlags,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _bufferMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers) const</span>
             </dt>
             <dd>A version where only a set of buffer memory barriers are submitted.</dd>
             <dt id="a58f772b6187dbbf03bcf8058bebfffb3">
-              <span class="m-doc-wrap-bumper">void <a href="#a58f772b6187dbbf03bcf8058bebfffb3" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <span class="m-doc-wrap-bumper">void <a href="#a58f772b6187dbbf03bcf8058bebfffb3" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga16888e2a66f31fd1214bed2a8ecf41bc" class="m-doc">DependencyFlags</a> _dependencyFlags,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _imageMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
             </dt>
             <dd>A version of SubmitPipelineBarrier where only a set of image memory barriers are submitted.</dd>
             <dt id="a419bcf7f952388605b2dcafd3c5750b1">
-              <span class="m-doc-wrap-bumper">void <a href="#a419bcf7f952388605b2dcafd3c5750b1" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> _dependencyFlags,
+              <span class="m-doc-wrap-bumper">void <a href="#a419bcf7f952388605b2dcafd3c5750b1" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _sourceStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _destinationStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga16888e2a66f31fd1214bed2a8ecf41bc" class="m-doc">DependencyFlags</a> _dependencyFlags,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _memoryBarrierCount,
               const <a href="structVT_1_1V0_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _bufferMemoryBarrierCount,
@@ -274,20 +311,11 @@
               const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
             </dt>
             <dd>Record a pipeline barrier.</dd>
-            <dt id="a85e4247967e77026cb482415dacedd14">
-              <span class="m-doc-wrap-bumper">void <a href="#a85e4247967e77026cb482415dacedd14" class="m-doc-self">SetDeviceMask</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _deviceMask) const</span>
-            </dt>
-            <dd>Update the current device mask of a command buffer.</dd>
-            <dt id="adc96fe51dfb1e4a28c5034ed8c234557">
-              <span class="m-doc-wrap-bumper">void <a href="#adc96fe51dfb1e4a28c5034ed8c234557" class="m-doc-self">SetEvent</a>(</span><span class="m-doc-wrap"><a href="classVT_1_1V3_1_1Event.html" class="m-doc">Event</a>&amp; _event,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _stageMask) const</span>
-            </dt>
-            <dd>Set the state of an event to signaled from a device.</dd>
             <dt id="a72d05dfe53c7a6369424e37744214c91">
               <span class="m-doc-wrap-bumper">void <a href="#a72d05dfe53c7a6369424e37744214c91" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _memoryBarrierCount,
               const <a href="structVT_1_1V0_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers) const</span>
             </dt>
@@ -295,8 +323,8 @@
             <dt id="a3183511e145fb5a374061cb4841e409a">
               <span class="m-doc-wrap-bumper">void <a href="#a3183511e145fb5a374061cb4841e409a" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _bufferMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Buffer_1_1Memory__Barrier.html" class="m-doc">Buffer::<wbr />Memory_Barrier</a>* _bufferMemoryBarriers) const</span>
             </dt>
@@ -304,8 +332,8 @@
             <dt id="aa5a22ae2ee6f3902c34f776806c7ff98">
               <span class="m-doc-wrap-bumper">void <a href="#aa5a22ae2ee6f3902c34f776806c7ff98" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _imageMemoryBarrierCount,
               const <a href="structVT_1_1V1_1_1Image_1_1Memory__Barrier.html" class="m-doc">Image::<wbr />Memory_Barrier</a>* _imageMemoryBarriers) const</span>
             </dt>
@@ -313,8 +341,8 @@
             <dt id="ac2355e50025c6cb67302b132c0128de2">
               <span class="m-doc-wrap-bumper">void <a href="#ac2355e50025c6cb67302b132c0128de2" class="m-doc-self">WaitForEvents</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _eventCount,
               const <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga85f166d926e9b651dace802a72537f82" class="m-doc">Event::<wbr />Handle</a>* _events,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
-              <a href="group__APISpec__Synchronization__and__Cache__Control.html#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _srcStageMask,
+              <a href="group__APISpec__Synchronization__and__Cache__Control.html#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">Pipeline::<wbr />StageFlags</a> _dstStageMask,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _memoryBarrierCount,
               const <a href="structVT_1_1V0_1_1Memory_1_1Barrier.html" class="m-doc">Memory::<wbr />Barrier</a>* _memoryBarriers,
               <a href="group__Corridors.html#ga10bf3c5b155628a474a1f38edd56f8d6" class="m-doc">ui32</a> _bufferMemoryBarrierCount,

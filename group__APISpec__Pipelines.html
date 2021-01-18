@@ -238,7 +238,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipeline">Specification</a></dd>
             <dt>
-              using <a href="#ga87dda678425b6a6dacb00d7f6528cc87" class="m-doc">ShaderStageFlags</a> = Bitmask&lt;EShaderStageFlag, VkShaderStageFlags&gt;
+              using <a href="#ga0bb1d42ab0d7f4732eb1c2be073257c0" class="m-doc">ShaderStageFlags</a> = Bitfield&lt;EShaderStageFlag, VkShaderStageFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a></dd>
             <dt>
@@ -246,19 +246,19 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.htmal#VkPipelineCache">Specification</a></dd>
             <dt>
-              using <a href="#gab8d5db6f034f0ee2a116e24ed41738a2" class="m-doc">CreateFlags</a> = Bitmask&lt;EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags&gt;
+              using <a href="#ga0d41b8882f22eb781c7dcce877aae10e" class="m-doc">CreateFlags</a> = Bitfield&lt;EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlags">Specification</a></dd>
             <dt>
-              using <a href="#ga4a4c79bda5d4557ca7279526a7d66022" class="m-doc">CreateFlags</a> = Bitmask&lt;EPipelineShaderStageCreateFlag, VkShaderStageFlags&gt;
+              using <a href="#ga56fe8a9adff6f8d28afa457098fd37e2" class="m-doc">CreateFlags</a> = Bitfield&lt;EPipelineShaderStageCreateFlag, VkShaderStageFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a></dd>
             <dt>
-              using <a href="#gadf85a13d66bd45090e84af6c67d3585d" class="m-doc">CreateFlags</a> = Bitmask&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
+              using <a href="#ga279ba98bbd8e1be35cbc6a97addf9dc1" class="m-doc">CreateFlags</a> = Bitfield&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a></dd>
             <dt>
-              using <a href="#gab82c42a369f9af4ed0c1889a5da6e3ce" class="m-doc">CreateFlags</a> = Bitmask&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
+              using <a href="#ga1c51fa7730c832799f699ea81d5866a8" class="m-doc">CreateFlags</a> = Bitfield&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a></dd>
           </dl>
@@ -273,10 +273,10 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindPipeline">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ga61abfdfd998078f86cceba6455b8a3a2" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              <span class="m-doc-wrap-bumper">static auto <a href="#ga59d3205920deaf0561fb7d78a3329d07" class="m-doc">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
               const CreateInfo&amp; _createInfo,
               const Memory::AllocationCallbacks* _allocator,
-              Cache::Handle&amp; _pipelineCache) -&gt; EResult</span>
+              Cache::Handle _pipelineCache) -&gt; EResult</span>
             </dt>
             <dd>Create a pipeline cache.</dd>
             <dt>
@@ -365,9 +365,9 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipeline">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga87dda678425b6a6dacb00d7f6528cc87"><div>
+          <section class="m-doc-details" id="ga0bb1d42ab0d7f4732eb1c2be073257c0"><div>
             <h3>
-              using <a href="#ga87dda678425b6a6dacb00d7f6528cc87" class="m-doc-self">ShaderStageFlags</a> = Bitmask&lt;EShaderStageFlag, VkShaderStageFlags&gt;
+              using <a href="#ga0bb1d42ab0d7f4732eb1c2be073257c0" class="m-doc-self">ShaderStageFlags</a> = Bitfield&lt;EShaderStageFlag, VkShaderStageFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a></p>
@@ -379,30 +379,30 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.htmal#VkPipelineCache">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="gab8d5db6f034f0ee2a116e24ed41738a2"><div>
+          <section class="m-doc-details" id="ga0d41b8882f22eb781c7dcce877aae10e"><div>
             <h3>
-              using <a href="#gab8d5db6f034f0ee2a116e24ed41738a2" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags&gt;
+              using <a href="#ga0d41b8882f22eb781c7dcce877aae10e" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga4a4c79bda5d4557ca7279526a7d66022"><div>
+          <section class="m-doc-details" id="ga56fe8a9adff6f8d28afa457098fd37e2"><div>
             <h3>
-              using <a href="#ga4a4c79bda5d4557ca7279526a7d66022" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EPipelineShaderStageCreateFlag, VkShaderStageFlags&gt;
+              using <a href="#ga56fe8a9adff6f8d28afa457098fd37e2" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EPipelineShaderStageCreateFlag, VkShaderStageFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="gadf85a13d66bd45090e84af6c67d3585d"><div>
+          <section class="m-doc-details" id="ga279ba98bbd8e1be35cbc6a97addf9dc1"><div>
             <h3>
-              using <a href="#gadf85a13d66bd45090e84af6c67d3585d" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
+              using <a href="#ga279ba98bbd8e1be35cbc6a97addf9dc1" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="gab82c42a369f9af4ed0c1889a5da6e3ce"><div>
+          <section class="m-doc-details" id="ga1c51fa7730c832799f699ea81d5866a8"><div>
             <h3>
-              using <a href="#gab82c42a369f9af4ed0c1889a5da6e3ce" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
+              using <a href="#ga1c51fa7730c832799f699ea81d5866a8" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EPipelineCreateFlag, VkPipelineCreateFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a></p>
@@ -419,12 +419,12 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdBindPipeline">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga61abfdfd998078f86cceba6455b8a3a2"><div>
+          <section class="m-doc-details" id="ga59d3205920deaf0561fb7d78a3329d07"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga61abfdfd998078f86cceba6455b8a3a2" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga59d3205920deaf0561fb7d78a3329d07" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
               const CreateInfo&amp; _createInfo,
               const Memory::AllocationCallbacks* _allocator,
-              Cache::Handle&amp; _pipelineCache)</span></span>
+              Cache::Handle _pipelineCache)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p>Create a pipeline cache.</p>

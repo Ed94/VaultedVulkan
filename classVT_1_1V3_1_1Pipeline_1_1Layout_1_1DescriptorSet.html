@@ -100,7 +100,7 @@
             <dd>Specify the logical device.</dd>
             <dt id="a3967e2f026ac90a45058b58c74805c7c">
               <span class="m-doc-wrap-bumper"><a href="#a3967e2f026ac90a45058b58c74805c7c" class="m-doc-self">DescriptorSet</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
+              const Memory::AllocationCallbacks&amp; _allocator)</span>
             </dt>
             <dd>Specify the logical device and allocator.</dd>
             <dt id="ab74030f5a3d7bcbbcfa8b3efe7506025">
@@ -128,23 +128,19 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a7139859cb35d52c967326d16ef8dcd29">
-              <span class="m-doc-wrap-bumper">void <a href="#a7139859cb35d52c967326d16ef8dcd29" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const CreateInfo&amp; _info)</span>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad690d5dac7a67530922a3c0b434449a2" class="m-doc">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Pipeline_1_1Layout_1_1DescriptorSet_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Assign the create info.</dd>
-            <dt id="aa62dc9a4b2b81a403ee5ee2bf449c43e">
-              <span class="m-doc-wrap-bumper">void <a href="#aa62dc9a4b2b81a403ee5ee2bf449c43e" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              const CreateInfo&amp; _info)</span>
+            <dt id="ace38ebe008050c915579cbf5617b3242">
+              <span class="m-doc-wrap-bumper">auto <a href="#ace38ebe008050c915579cbf5617b3242" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="structVT_1_1V1_1_1Pipeline_1_1Layout_1_1DescriptorSet_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
-            <dd>Assign the device and create info.</dd>
-            <dt id="a47e791348b1d771d562f6f6937a91249">
-              <span class="m-doc-wrap-bumper">void <a href="#a47e791348b1d771d562f6f6937a91249" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
-              const CreateInfo&amp; _info,
-              const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>&amp; _allocator)</span>
-            </dt>
-            <dd>Assign the logical device, create info, and allocator.</dd>
-            <dt id="a11e7b076d19887efb63c6ea6dfd5478a">
-              <span class="m-doc-wrap-bumper">auto <a href="#a11e7b076d19887efb63c6ea6dfd5478a" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
+            <dd>Create the descriptor set layout.</dd>
+            <dt id="a1e77bda1ebc820003cb994865f1b84cd">
+              <span class="m-doc-wrap-bumper">auto <a href="#a1e77bda1ebc820003cb994865f1b84cd" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="classVT_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              const <a href="structVT_1_1V1_1_1Pipeline_1_1Layout_1_1DescriptorSet_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const Memory::AllocationCallbacks&amp; _allocator) -&gt; <a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a></span>
             </dt>
             <dd>Create the descriptor set layout.</dd>
             <dt id="a45f284120ac6fb385f9e244a335094c3">
@@ -173,11 +169,7 @@
             </dt>
             <dd><span></span></dd>
             <dt id="a469b9a20299fd9d111dc634e98d6b9a3">
-              const <a href="structVT_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* <a href="#a469b9a20299fd9d111dc634e98d6b9a3" class="m-doc-self">allocator</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt id="aea3b9eb2537d71345d49aea33e495075">
-              CreateInfo <a href="#aea3b9eb2537d71345d49aea33e495075" class="m-doc-self">info</a>
+              const Memory::AllocationCallbacks* <a href="#a469b9a20299fd9d111dc634e98d6b9a3" class="m-doc-self">allocator</a>
             </dt>
             <dd><span></span></dd>
             <dt id="acca865cd1b5c4fb4e43c20f0d935a521">
@@ -189,6 +181,16 @@
             </dt>
             <dd><span></span></dd>
           </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ad690d5dac7a67530922a3c0b434449a2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="group__APISpec__Fundamentals.html#ga63c2e37b462c5400913c0dd4d28318bd" class="m-doc">EResult</a> VT::<wbr />V3::<wbr />Pipeline::<wbr />Layout::<wbr />DescriptorSet::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad690d5dac7a67530922a3c0b434449a2" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVT_1_1V1_1_1Pipeline_1_1Layout_1_1DescriptorSet_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info)</span></span>
+            </h3>
+            <p>Assign the create info.</p>
+<p>Assign the device and create info. Assign the logical device, create info, and allocator. Create the descriptor set layout.</p>
+          </div></section>
         </section>
       </div>
     </div>

@@ -203,11 +203,11 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayout">Specification</a></dd>
             <dt>
-              using <a href="#ga395796fd6472bf249299dd775b8a3e9b" class="m-doc">CreateFlags</a> = Bitmask&lt;EDescriptorBindingFlag,VkDescriptorBindingFlags&gt;
+              using <a href="#gaffed27eeaa74fc70183ab1fee32305e5" class="m-doc">CreateFlags</a> = Bitfield&lt;EDescriptorBindingFlag,VkDescriptorBindingFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlags">Specification</a></dd>
             <dt>
-              using <a href="#ga60acc84b95aa755e4571cbe2a51adb3d" class="m-doc">CreateFlags</a> = Bitmask&lt;EDescriptorSetLayoutCreateFlag, VkDescriptorSetLayoutCreateFlags&gt;
+              using <a href="#ga3fd7eb00fa4b55cc9d1278b04e478a09" class="m-doc">CreateFlags</a> = Bitfield&lt;EDescriptorSetLayoutCreateFlag, VkDescriptorSetLayoutCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateFlags">Specification</a></dd>
             <dt>
@@ -219,11 +219,11 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPool">Specification</a></dd>
             <dt>
-              using <a href="#ga1296bef1467b6aa0215caa9d7a41b33e" class="m-doc">CreateFlags</a> = Bitmask&lt;EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags&gt;
+              using <a href="#gadf1c8de3217e896d34bf7fe331cddd0d" class="m-doc">CreateFlags</a> = Bitfield&lt;EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlags">Specification</a></dd>
             <dt>
-              using <a href="#ga0aa25a213c9a60ced597acd854fc9702" class="m-doc">ResetFlags</a> = Bitmask&lt;EUndefined, VkDescriptorPoolResetFlags&gt;
+              using <a href="#ga816aaf063516d516f2a785f6200b07ec" class="m-doc">ResetFlags</a> = Bitfield&lt;EUndefined, VkDescriptorPoolResetFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolResetFlags">Specification</a></dd>
           </dl>
@@ -256,8 +256,8 @@
             </dt>
             <dd>Destroy a descriptor set layout.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#gad2fa9a3e938ee45b6e6d4ded88510424" class="m-doc">GetSupport</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
-              CreateInfo&amp; _createInfo,
+              <span class="m-doc-wrap-bumper">static void <a href="#ga2d9dac08b585d5d35b407f4132cf7699" class="m-doc">GetSupport</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _createInfo,
               Support&amp; _support)</span>
             </dt>
             <dd>Query whether a descriptor set layout can be created.</dd>
@@ -363,16 +363,16 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayout">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga395796fd6472bf249299dd775b8a3e9b"><div>
+          <section class="m-doc-details" id="gaffed27eeaa74fc70183ab1fee32305e5"><div>
             <h3>
-              using <a href="#ga395796fd6472bf249299dd775b8a3e9b" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EDescriptorBindingFlag,VkDescriptorBindingFlags&gt;
+              using <a href="#gaffed27eeaa74fc70183ab1fee32305e5" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EDescriptorBindingFlag,VkDescriptorBindingFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga60acc84b95aa755e4571cbe2a51adb3d"><div>
+          <section class="m-doc-details" id="ga3fd7eb00fa4b55cc9d1278b04e478a09"><div>
             <h3>
-              using <a href="#ga60acc84b95aa755e4571cbe2a51adb3d" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EDescriptorSetLayoutCreateFlag, VkDescriptorSetLayoutCreateFlags&gt;
+              using <a href="#ga3fd7eb00fa4b55cc9d1278b04e478a09" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EDescriptorSetLayoutCreateFlag, VkDescriptorSetLayoutCreateFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateFlags">Specification</a></p>
@@ -391,16 +391,16 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPool">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga1296bef1467b6aa0215caa9d7a41b33e"><div>
+          <section class="m-doc-details" id="gadf1c8de3217e896d34bf7fe331cddd0d"><div>
             <h3>
-              using <a href="#ga1296bef1467b6aa0215caa9d7a41b33e" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags&gt;
+              using <a href="#gadf1c8de3217e896d34bf7fe331cddd0d" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga0aa25a213c9a60ced597acd854fc9702"><div>
+          <section class="m-doc-details" id="ga816aaf063516d516f2a785f6200b07ec"><div>
             <h3>
-              using <a href="#ga0aa25a213c9a60ced597acd854fc9702" class="m-doc-self">ResetFlags</a> = Bitmask&lt;EUndefined, VkDescriptorPoolResetFlags&gt;
+              using <a href="#ga816aaf063516d516f2a785f6200b07ec" class="m-doc-self">ResetFlags</a> = Bitfield&lt;EUndefined, VkDescriptorPoolResetFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Resource_8hpp.html">&lt;VaultedThermals/VT_Resource.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolResetFlags">Specification</a></p>
@@ -485,10 +485,10 @@
             </table>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDescriptorSetLayout">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="gad2fa9a3e938ee45b6e6d4ded88510424"><div>
+          <section class="m-doc-details" id="ga2d9dac08b585d5d35b407f4132cf7699"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad2fa9a3e938ee45b6e6d4ded88510424" class="m-doc-self">GetSupport</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
-              CreateInfo&amp; _createInfo,
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2d9dac08b585d5d35b407f4132cf7699" class="m-doc-self">GetSupport</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _deviceHandle,
+              const CreateInfo&amp; _createInfo,
               Support&amp; _support)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>

@@ -260,7 +260,7 @@
           <h2><a href="#typedef-members">Typedefs</a></h2>
           <dl class="m-doc">
             <dt>
-              using <a href="#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc">StageFlags</a> = Bitmask&lt;EPipelineStageFlag, VkPipelineStageFlags&gt;
+              using <a href="#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc">StageFlags</a> = Bitfield&lt;EPipelineStageFlag, VkPipelineStageFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a></dd>
             <dt>
@@ -272,11 +272,11 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a></dd>
             <dt>
-              using <a href="#ga526cf90d70b172ffc8a35d09e28624e5" class="m-doc">ImportFlags</a> = Bitmask&lt;ESemaphoreImportFlag, VkSemaphoreImportFlags&gt;
+              using <a href="#gab134a1fda01ee49f47ee2f2df2a9c3cd" class="m-doc">ImportFlags</a> = Bitfield&lt;ESemaphoreImportFlag, VkSemaphoreImportFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a></dd>
             <dt>
-              using <a href="#gaed8e9cd5a2a5cf03ae6eec1ae65eeef4" class="m-doc">WaitFlags</a> = Bitmask&lt;ESemaphoreWaitFlag, VkSemaphoreWaitFlags&gt;
+              using <a href="#ga12833a3427214a86a1fd0d13f287d660" class="m-doc">WaitFlags</a> = Bitfield&lt;ESemaphoreWaitFlag, VkSemaphoreWaitFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a></dd>
             <dt>
@@ -284,23 +284,23 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEvent">Specification</a></dd>
             <dt>
-              using <a href="#ga5487108e024a497f3b8fa19da279fa6b" class="m-doc">CreateFlags</a> = Bitmask&lt;EFenceCreateFlag, VkFenceCreateFlags&gt;
+              using <a href="#ga8b061eceb4a2282d8fc243897563a63a" class="m-doc">CreateFlags</a> = Bitfield&lt;EFenceCreateFlag, VkFenceCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a></dd>
             <dt>
-              using <a href="#ga1157043eb8249ca71dcbcc44b8acd3f5" class="m-doc">ExternalHandleFlags</a> = Bitmask&lt;EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags&gt;
+              using <a href="#gafb2a03c1db4decbcc412d2db06fc2223" class="m-doc">ExternalHandleFlags</a> = Bitfield&lt;EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlags">Specification</a></dd>
             <dt>
-              using <a href="#ga3fbc031c8ae0b706509d97c01c369cfd" class="m-doc">AccessFlags</a> = Bitmask&lt;EAccessFlag, VkAccessFlags&gt;
+              using <a href="#ga52e0a3f340582a88c6eddb15fb9a2c95" class="m-doc">AccessFlags</a> = Bitfield&lt;EAccessFlag, VkAccessFlags&gt;
             </dt>
             <dd></dd>
             <dt>
-              using <a href="#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc">DependencyFlags</a> = Bitmask&lt;EDependencyFlag, VkDependencyFlags&gt;
+              using <a href="#ga16888e2a66f31fd1214bed2a8ecf41bc" class="m-doc">DependencyFlags</a> = Bitfield&lt;EDependencyFlag, VkDependencyFlags&gt;
             </dt>
             <dd></dd>
             <dt>
-              using <a href="#gaf7d36fa9f2f8aa291f39acf3987387ed" class="m-doc">FenceImportFlags</a> = Bitmask&lt;EFenceImportFlag, VkFenceImportFlags&gt;
+              using <a href="#ga3de40016d0913545f2002a9d55ff9a22" class="m-doc">FenceImportFlags</a> = Bitfield&lt;EFenceImportFlag, VkFenceImportFlags&gt;
             </dt>
             <dd></dd>
           </dl>
@@ -315,6 +315,12 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdResetEvent">Specification</a></dd>
             <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#gaa928350ea0bb7837351d4a7eea18d871" class="m-doc">SetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Event::Handle _event,
+              Pipeline::StageFlags _stageMask)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a></dd>
+            <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#gaf2492b84d99533000fcd883fa57937a1" class="m-doc">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
               Pipeline::StageFlags _sourceStageMask,
               Pipeline::StageFlags _destinationStageMask,
@@ -327,12 +333,6 @@
               const Image::Memory_Barrier* _imageMemoryBarriers)</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#gaa928350ea0bb7837351d4a7eea18d871" class="m-doc">SetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
-              Event::Handle _event,
-              Pipeline::StageFlags _stageMask)</span>
-            </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a></dd>
             <dt>
               <span class="m-doc-wrap-bumper">static void <a href="#ga4e615150721e23da80ef3ece4c8d5905" class="m-doc">WaitForEvents</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
               ui32 _eventCount,
@@ -567,9 +567,9 @@
         </section>
         <section>
           <h2>Typedef documentation</h2>
-          <section class="m-doc-details" id="gac7aacda0e58a9fc0a71892049d4b3e0d"><div>
+          <section class="m-doc-details" id="ga6367f44e30086e9c88d0b7792b1d34eb"><div>
             <h3>
-              using <a href="#gac7aacda0e58a9fc0a71892049d4b3e0d" class="m-doc-self">StageFlags</a> = Bitmask&lt;EPipelineStageFlag, VkPipelineStageFlags&gt;
+              using <a href="#ga6367f44e30086e9c88d0b7792b1d34eb" class="m-doc-self">StageFlags</a> = Bitfield&lt;EPipelineStageFlag, VkPipelineStageFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a></p>
@@ -588,16 +588,16 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphore">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga526cf90d70b172ffc8a35d09e28624e5"><div>
+          <section class="m-doc-details" id="gab134a1fda01ee49f47ee2f2df2a9c3cd"><div>
             <h3>
-              using <a href="#ga526cf90d70b172ffc8a35d09e28624e5" class="m-doc-self">ImportFlags</a> = Bitmask&lt;ESemaphoreImportFlag, VkSemaphoreImportFlags&gt;
+              using <a href="#gab134a1fda01ee49f47ee2f2df2a9c3cd" class="m-doc-self">ImportFlags</a> = Bitfield&lt;ESemaphoreImportFlag, VkSemaphoreImportFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="gaed8e9cd5a2a5cf03ae6eec1ae65eeef4"><div>
+          <section class="m-doc-details" id="ga12833a3427214a86a1fd0d13f287d660"><div>
             <h3>
-              using <a href="#gaed8e9cd5a2a5cf03ae6eec1ae65eeef4" class="m-doc-self">WaitFlags</a> = Bitmask&lt;ESemaphoreWaitFlag, VkSemaphoreWaitFlags&gt;
+              using <a href="#ga12833a3427214a86a1fd0d13f287d660" class="m-doc-self">WaitFlags</a> = Bitfield&lt;ESemaphoreWaitFlag, VkSemaphoreWaitFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a></p>
@@ -609,37 +609,37 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEvent">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga5487108e024a497f3b8fa19da279fa6b"><div>
+          <section class="m-doc-details" id="ga8b061eceb4a2282d8fc243897563a63a"><div>
             <h3>
-              using <a href="#ga5487108e024a497f3b8fa19da279fa6b" class="m-doc-self">CreateFlags</a> = Bitmask&lt;EFenceCreateFlag, VkFenceCreateFlags&gt;
+              using <a href="#ga8b061eceb4a2282d8fc243897563a63a" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EFenceCreateFlag, VkFenceCreateFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga1157043eb8249ca71dcbcc44b8acd3f5"><div>
+          <section class="m-doc-details" id="gafb2a03c1db4decbcc412d2db06fc2223"><div>
             <h3>
-              using <a href="#ga1157043eb8249ca71dcbcc44b8acd3f5" class="m-doc-self">ExternalHandleFlags</a> = Bitmask&lt;EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags&gt;
+              using <a href="#gafb2a03c1db4decbcc412d2db06fc2223" class="m-doc-self">ExternalHandleFlags</a> = Bitfield&lt;EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga3fbc031c8ae0b706509d97c01c369cfd"><div>
+          <section class="m-doc-details" id="ga52e0a3f340582a88c6eddb15fb9a2c95"><div>
             <h3>
-              using <a href="#ga3fbc031c8ae0b706509d97c01c369cfd" class="m-doc-self">AccessFlags</a> = Bitmask&lt;EAccessFlag, VkAccessFlags&gt;
+              using <a href="#ga52e0a3f340582a88c6eddb15fb9a2c95" class="m-doc-self">AccessFlags</a> = Bitfield&lt;EAccessFlag, VkAccessFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Types_8hpp.html">&lt;VaultedThermals/VT_Types.hpp&gt;</a></div>
             </h3>
 <p>@ &lt; =&quot;://..////1.2-//.#&quot;&gt;&lt;/&gt;</p>
           </div></section>
-          <section class="m-doc-details" id="ga39ea75a164c5f22037d3140d0cd288c7"><div>
+          <section class="m-doc-details" id="ga16888e2a66f31fd1214bed2a8ecf41bc"><div>
             <h3>
-              using <a href="#ga39ea75a164c5f22037d3140d0cd288c7" class="m-doc-self">DependencyFlags</a> = Bitmask&lt;EDependencyFlag, VkDependencyFlags&gt;
+              using <a href="#ga16888e2a66f31fd1214bed2a8ecf41bc" class="m-doc-self">DependencyFlags</a> = Bitfield&lt;EDependencyFlag, VkDependencyFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Types_8hpp.html">&lt;VaultedThermals/VT_Types.hpp&gt;</a></div>
             </h3>
 <p>@ &lt; =&quot;://..////1.2-//.#&quot;&gt;&lt;/&gt;</p>
           </div></section>
-          <section class="m-doc-details" id="gaf7d36fa9f2f8aa291f39acf3987387ed"><div>
+          <section class="m-doc-details" id="ga3de40016d0913545f2002a9d55ff9a22"><div>
             <h3>
-              using <a href="#gaf7d36fa9f2f8aa291f39acf3987387ed" class="m-doc-self">FenceImportFlags</a> = Bitmask&lt;EFenceImportFlag, VkFenceImportFlags&gt;
+              using <a href="#ga3de40016d0913545f2002a9d55ff9a22" class="m-doc-self">FenceImportFlags</a> = Bitfield&lt;EFenceImportFlag, VkFenceImportFlags&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Types_8hpp.html">&lt;VaultedThermals/VT_Types.hpp&gt;</a></div>
             </h3>
 <p>@ &lt; =&quot;://..////1.2-//.#&quot;&gt;&lt;/&gt;</p>
@@ -656,6 +656,15 @@
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdResetEvent">Specification</a></p>
           </div></section>
+          <section class="m-doc-details" id="gaa928350ea0bb7837351d4a7eea18d871"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa928350ea0bb7837351d4a7eea18d871" class="m-doc-self">SetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
+              Event::Handle _event,
+              Pipeline::StageFlags _stageMask)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a></p>
+          </div></section>
           <section class="m-doc-details" id="gaf2492b84d99533000fcd883fa57937a1"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf2492b84d99533000fcd883fa57937a1" class="m-doc-self">SubmitPipelineBarrier</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
@@ -671,15 +680,6 @@
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a></p>
-          </div></section>
-          <section class="m-doc-details" id="gaa928350ea0bb7837351d4a7eea18d871"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa928350ea0bb7837351d4a7eea18d871" class="m-doc-self">SetEvent</a>(</span><span class="m-doc-wrap">Handle _commandBuffer,
-              Event::Handle _event,
-              Pipeline::StageFlags _stageMask)</span></span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
-            </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga4e615150721e23da80ef3ece4c8d5905"><div>
             <h3>
