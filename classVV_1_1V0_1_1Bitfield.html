@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VV::V0::Bitfield class | VaultedVulkan</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedVulkan</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="modules.html">Modules</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Backend_8hpp.html">&lt;VaultedVulkan/VV_Backend.hpp&gt;</a></div>
+          <div class="m-doc-template">template&lt;typename EnumType, typename BitmaskRepresentation&gt;</div>
+          <span class="m-breadcrumb"><a href="namespaceVV.html">VV</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVV_1_1V0.html">V0</a>::<wbr/></span>Bitfield <span class="m-thin">class</span>
+        </h1>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>A wrapper object for bitmasks that allows for typesafe bitmask operations.</p>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="afdd577bca5289a77143d2063ea53d5df">
+              using <a href="#afdd577bca5289a77143d2063ea53d5df" class="m-doc-self">Enum</a> = EnumType
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac937f1f1e617945ce256fb65458982ea">
+              using <a href="#ac937f1f1e617945ce256fb65458982ea" class="m-doc-self">Representation</a> = BitmaskRepresentation
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a9b37f7748e6931dfc3bd5ad63a7176e3">
+              <span class="m-doc-wrap-bumper"><a href="#a9b37f7748e6931dfc3bd5ad63a7176e3" class="m-doc-self">Bitfield</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a125bd8225d37f87dbe32748a999d5675">
+              <span class="m-doc-wrap-bumper"><a href="#a125bd8225d37f87dbe32748a999d5675" class="m-doc-self">Bitfield</a>(</span><span class="m-doc-wrap"><a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _mask)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac20c4acd54d099815c8dc07940631ace">
+              <div class="m-doc-template">template&lt;typename... BitTypes&gt;</div>
+              <span class="m-doc-wrap-bumper"><a href="#ac20c4acd54d099815c8dc07940631ace" class="m-doc-self">Bitfield</a>(</span><span class="m-doc-wrap">const BitTypes... _bits)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="afa5aac9448ae5189808126f4d1431bb9">
+              <span class="m-doc-wrap-bumper"><a href="#afa5aac9448ae5189808126f4d1431bb9" class="m-doc-self">operator Representation</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="ab141f282f97cd3e55551c77a527edd6f">
+              <div class="m-doc-template">template&lt;typename... BitType&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#ab141f282f97cd3e55551c77a527edd6f" class="m-doc-self">Add</a>(</span><span class="m-doc-wrap">const BitType... _bits)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae36e1f1ff1772a9553a7d54ebafb78b8">
+              <div class="m-doc-template">template&lt;typename... BitType&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae36e1f1ff1772a9553a7d54ebafb78b8" class="m-doc-self">CheckForEither</a>(</span><span class="m-doc-wrap">const BitType... _bits) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a5705d285903d0fb4fb98ae86764abf2f">
+              <div class="m-doc-template">template&lt;typename... BitType&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a5705d285903d0fb4fb98ae86764abf2f" class="m-doc-self">Clear</a>(</span><span class="m-doc-wrap">const BitType... _bits)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a6f753008a6502f35a2a8faa550654cb0">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6f753008a6502f35a2a8faa550654cb0" class="m-doc-self">HasFlag</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#afdd577bca5289a77143d2063ea53d5df" class="m-doc">Enum</a> _bit) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a22ed7d5297371790a3ea9844fe983065">
+              <div class="m-doc-template">template&lt;typename... BitType&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a22ed7d5297371790a3ea9844fe983065" class="m-doc-self">HasExactly</a>(</span><span class="m-doc-wrap">const BitType... _bits) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0365575bb6884b8592fc0954ee5ab91d">
+              <span class="m-doc-wrap-bumper">auto <a href="#a0365575bb6884b8592fc0954ee5ab91d" class="m-doc-self">HasAnyFlag</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a20b27cc973ec4d936db78c8450dc52bb">
+              <span class="m-doc-wrap-bumper">auto <a href="#a20b27cc973ec4d936db78c8450dc52bb" class="m-doc-self">IsZero</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a529d945ae4e9ac86407f5325b8e4051d">
+              <span class="m-doc-wrap-bumper">void <a href="#a529d945ae4e9ac86407f5325b8e4051d" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a574fa9373136f386f457464d903cf3c1">
+              <div class="m-doc-template">template&lt;typename... BitType&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a574fa9373136f386f457464d903cf3c1" class="m-doc-self">Set</a>(</span><span class="m-doc-wrap">const BitType... _bits)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4e6de33612e25e54b7ea0143786d1d9a">
+              <div class="m-doc-template">template&lt;typename... BitType&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a4e6de33612e25e54b7ea0143786d1d9a" class="m-doc-self">Toggle</a>(</span><span class="m-doc-wrap">const BitType... _bits)</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a6d521774a7926f759448ec523c6c7f16">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6d521774a7926f759448ec523c6c7f16" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _mask) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="adef51193dab7e5a281fc86bc3c4e0b27">
+              <span class="m-doc-wrap-bumper">auto <a href="#adef51193dab7e5a281fc86bc3c4e0b27" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="af825ecd75ada2fe44f961c446f1cf50b">
+              <span class="m-doc-wrap-bumper">auto <a href="#af825ecd75ada2fe44f961c446f1cf50b" class="m-doc-self">operator&amp;=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _mask) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a5e4a3a7bf21f70d14918e065743ad880">
+              <span class="m-doc-wrap-bumper">auto <a href="#a5e4a3a7bf21f70d14918e065743ad880" class="m-doc-self">operator&amp;=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a7eae8a51e008ee47a3eaa69731fffa53">
+              <span class="m-doc-wrap-bumper">auto <a href="#a7eae8a51e008ee47a3eaa69731fffa53" class="m-doc-self">operator|=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _mask) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a5a1ec8e55312e06ab52fdb5c084ef0f1">
+              <span class="m-doc-wrap-bumper">auto <a href="#a5a1ec8e55312e06ab52fdb5c084ef0f1" class="m-doc-self">operator|=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3fcf94e4171e826f95100b2e6dd91f8b">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3fcf94e4171e826f95100b2e6dd91f8b" class="m-doc-self">operator^=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _mask) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa4dbb02e7153cb3ce1bb0f0bbe32b8ec">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa4dbb02e7153cb3ce1bb0f0bbe32b8ec" class="m-doc-self">operator^=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a584f0ab9fa72bb06c3da42636c4e8675">
+              <span class="m-doc-wrap-bumper">auto <a href="#a584f0ab9fa72bb06c3da42636c4e8675" class="m-doc-self">operator&lt;&lt;=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _mask) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a6ae518e3f42f2cf6cf31f5fe85d959f7">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6ae518e3f42f2cf6cf31f5fe85d959f7" class="m-doc-self">operator&gt;&gt;=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a>&amp;</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a08e8465fe04bd98832da1e9919606420">
+              <span class="m-doc-wrap-bumper">auto <a href="#a08e8465fe04bd98832da1e9919606420" class="m-doc-self">operator~</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ac64967395a849cff8b25bfb5668f3704">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac64967395a849cff8b25bfb5668f3704" class="m-doc-self">operator&amp;</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="ae41e66428c903eafdf8e86529ad2c758">
+              <span class="m-doc-wrap-bumper">auto <a href="#ae41e66428c903eafdf8e86529ad2c758" class="m-doc-self">operator&amp;</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3f9294115bde364d97bc04c113a15112">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3f9294115bde364d97bc04c113a15112" class="m-doc-self">operator|</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a21091d37012155dd449b65c2942cc707">
+              <span class="m-doc-wrap-bumper">auto <a href="#a21091d37012155dd449b65c2942cc707" class="m-doc-self">operator|</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a311cfd7b70628e22e798ea89b98570d6">
+              <span class="m-doc-wrap-bumper">auto <a href="#a311cfd7b70628e22e798ea89b98570d6" class="m-doc-self">operator^</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="acf14efa6c2287cba8c7425595b222bb6">
+              <span class="m-doc-wrap-bumper">auto <a href="#acf14efa6c2287cba8c7425595b222bb6" class="m-doc-self">operator^</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a499d9079ddbda14d01a12628ebc7bd94">
+              <span class="m-doc-wrap-bumper">auto <a href="#a499d9079ddbda14d01a12628ebc7bd94" class="m-doc-self">operator&lt;&lt;</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="abe3e7d2703e468064b5bf69eee03e816">
+              <span class="m-doc-wrap-bumper">auto <a href="#abe3e7d2703e468064b5bf69eee03e816" class="m-doc-self">operator&gt;&gt;</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) const -&gt; <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a839bc96367fcc4c489b70888d19d85fe">
+              <span class="m-doc-wrap-bumper">auto <a href="#a839bc96367fcc4c489b70888d19d85fe" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _other) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4c3184124e77f244532182151afaa628">
+              <span class="m-doc-wrap-bumper">auto <a href="#a4c3184124e77f244532182151afaa628" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a3b23296e1dbdb768d1002299a27b7497">
+              <span class="m-doc-wrap-bumper">auto <a href="#a3b23296e1dbdb768d1002299a27b7497" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> _other) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a4fd2876546b827baeb8e62deec10defb">
+              <span class="m-doc-wrap-bumper">auto <a href="#a4fd2876546b827baeb8e62deec10defb" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V0_1_1Bitfield.html" class="m-doc">_<wbr />ThisType</a> _other) const -&gt; bool</span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt id="a39a9f91de0625a9a6a64356fc258603f">
+              <a href="classVV_1_1V0_1_1Bitfield.html#ac937f1f1e617945ce256fb65458982ea" class="m-doc">Representation</a> <a href="#a39a9f91de0625a9a6a64356fc258603f" class="m-doc-self">bitfield</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

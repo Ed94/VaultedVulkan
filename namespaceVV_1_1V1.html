@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VV::V1 namespace | VaultedVulkan</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedVulkan</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="modules.html">Modules</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespaceVV.html">VV</a>::<wbr/></span>V1 <span class="m-thin">namespace</span>
+        </h1>
+        <p><span></span></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structVV_1_1V1_1_1AppInstance.html" class="m-doc">AppInstance</a>
+            </dt>
+            <dd>An object that manages the represented application process state within the GPU.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Buffer.html" class="m-doc">Buffer</a>
+            </dt>
+            <dd>A linear array of data.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1BufferView.html" class="m-doc">BufferView</a>
+            </dt>
+            <dd>A buffer view represents a contiguous range of a buffer and a specific format to be used to interpret the data.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1CommandBuffer.html" class="m-doc">CommandBuffer</a>
+            </dt>
+            <dd>Command buffers are objects used to record commands which can be subsequently submitted to a device queue for execution.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1CommandPool.html" class="m-doc">CommandPool</a>
+            </dt>
+            <dd>Command pools are opaque objects that command buffer memory is allocated from, and which allow the implementation to amortize the cost of resource creation across multiple command buffers. Command pools are externally synchronized, meaning that a command pool must not be used concurrently in multiple threads. That includes use via recording commands on any command buffers allocated from the pool, as well as operations that allocate, free, and reset command buffers or the pool itself.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1DebugUtils.html" class="m-doc">DebugUtils</a>
+            </dt>
+            <dd>Debug Utilities: Flexible utilities for debugging an application.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1DescriptorPool.html" class="m-doc">DescriptorPool</a>
+            </dt>
+            <dd>A descriptor pool maintains a pool of descriptors, from which descriptor sets are allocated. Descriptor pools are externally synchronized, meaning that the application must not allocate and/or free descriptor sets from the same pool in multiple threads simultaneously.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a>
+            </dt>
+            <dd>Descriptors are grouped together into descriptor set objects. A descriptor set object is an opaque object containing storage for a set of descriptors, where the types and number of descriptors is defined by a descriptor set layout.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Event.html" class="m-doc">Event</a>
+            </dt>
+            <dd>Events are a synchronization primitive that can be used to insert a fine-grained dependency between commands submitted to the same queue, or between the host and a queue. Events must not be used to insert a dependency between commands submitted to different queues. Events have two states - signaled and unsignaled.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Fence.html" class="m-doc">Fence</a>
+            </dt>
+            <dd>Fences are a synchronization primitive that can be used to insert a dependency from a queue to the host. Fences have two states - signaled and unsignaled.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Framebuffer.html" class="m-doc">Framebuffer</a>
+            </dt>
+            <dd>Render passes operate in conjunction with framebuffers. Framebuffers represent a collection of specific memory attachments that a render pass instance uses.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Image.html" class="m-doc">Image</a>
+            </dt>
+            <dd>Images represent multidimensional - up to 3 - arrays of data which can be used for various purposes (e.g. attachments, textures), by binding them to a graphics or compute pipeline via descriptor sets, or by directly specifying them as parameters to certain commands.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1ImageView.html" class="m-doc">ImageView</a>
+            </dt>
+            <dd>An object that represents an image subresource range of a specific image, and state that controls how the contents are interpreted.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>
+            </dt>
+            <dd>Represent logical connections to physical devices.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Memory.html" class="m-doc">Memory</a>
+            </dt>
+            <dd>General memory structures and functionality for device memory.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1PhysicalDevice.html" class="m-doc">PhysicalDevice</a>
+            </dt>
+            <dd>Represents a physical device.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Pipeline.html" class="m-doc">Pipeline</a>
+            </dt>
+            <dd>A monolithic object describing the entire graphics, raytracing, or compute pipeline.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1RenderPass.html" class="m-doc">RenderPass</a>
+            </dt>
+            <dd>A render pass represents a collection of attachments, subpasses, and dependencies between the subpasses, and describes how the attachments are used over the course of the subpasses.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Sampler.html" class="m-doc">Sampler</a>
+            </dt>
+            <dd>Represent the state of an image sampler which is used by the implementation to read image data and apply filtering and other transformations for the shader.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Semaphore.html" class="m-doc">Semaphore</a>
+            </dt>
+            <dd>Semaphores are a synchronization primitive that can be used to insert a dependency between queue operations or between a queue operation and the host. Binary semaphores have two states - signaled and unsignaled.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1ShaderModule.html" class="m-doc">ShaderModule</a>
+            </dt>
+            <dd>Shader modules contain shader code and one or more entry points.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Surface.html" class="m-doc">Surface</a>
+            </dt>
+            <dd>Native platform surface or window objects are abstracted by surface objects.</dd>
+            <dt>
+              struct <a href="structVV_1_1V1_1_1Swapchain.html" class="m-doc">Swapchain</a>
+            </dt>
+            <dd>A queue of images that can be presented to a surface.</dd>
+          </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="group__Vault__1.html#gaee0aef05df3bb662fe551ed0b6c5adcf" class="m-doc">Queue</a> = <a href="structVV_1_1V1_1_1LogicalDevice_1_1Queue.html" class="m-doc">LogicalDevice::<wbr />Queue</a>
+            </dt>
+            <dd>Typedef to expose queue outside of logical device. (To use similar to regular Vulkan API.</dd>
+            <dt>
+              using <a href="group__Vault__1.html#ga765c44873ebb15075ea4099ccb8a0e55" class="m-doc">QueueFamilyProperties</a> = <a href="structVV_1_1V1_1_1PhysicalDevice_1_1QueueFamilyProperties.html" class="m-doc">PhysicalDevice::<wbr />QueueFamilyProperties</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              using <a href="group__Vault__1.html#gad4ddadf096f147c8b68c6850db77c1cc" class="m-doc">PipelineLayout</a> = <a href="structVV_1_1V1_1_1Pipeline_1_1Layout.html" class="m-doc">Pipeline::<wbr />Layout</a>
+            </dt>
+            <dd>Typedef pipeline layout in more recognizable form.</dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

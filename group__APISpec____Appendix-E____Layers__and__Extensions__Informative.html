@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>API_Specification &raquo; APISpec__Appendix-E__Layers_and_Extensions_Informative module | VaultedThermals</title>
+  <title>API_Specification &raquo; APISpec__Appendix-E__Layers_and_Extensions_Informative module | VaultedVulkan</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -13,7 +13,7 @@
 <header><nav id="navigation">
   <div class="m-container">
     <div class="m-row">
-      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedThermals</a>
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedVulkan</a>
       <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
         <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
           <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
@@ -67,53 +67,53 @@
           <h2><a href="#var-members">Variables</a></h2>
           <dl class="m-doc">
             <dt>
-              static RoCStr <a href="#gac60bafc0f8de49020c4ada81036fa0a9" class="m-doc">DebugUtility</a> <span class="m-label m-flat m-primary">constexpr</span>
+              static RoCStr <a href="#ga891b34a9cedb382f846b95eb37dd5e89" class="m-doc">DebugUtility</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
             <dd>This extension provides the following capabilities: The ability to create a debug messenger which will pass along debug messages to an application supplied callback. The ability to identify specific Vulkan objects using a name or tag to improve tracking. The ability to identify specific sections within a VkQueue or VkCommandBuffer using labels to aid organization and offline analysis in external tools.</dd>
             <dt>
-              static RoCStr <a href="#ga0f49565c9d9d06d7e2c08695795dd465" class="m-doc">Surface</a> <span class="m-label m-flat m-primary">constexpr</span>
+              static RoCStr <a href="#gaeab2b113f4f358f611cf7b1a810e3f21" class="m-doc">Surface</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
             <dd>It introduces VkSurfaceKHR objects, which abstract native platform surface or window objects for use with Vulkan. It also provides a way to determine whether a queue family in a physical device supports presenting to particular surface.</dd>
             <dt>
-              static RoCStr <a href="#ga2738bfecf9ae3412d020f4c3fb90a261" class="m-doc">Win32Surface</a> <span class="m-label m-flat m-primary">constexpr</span>
+              static RoCStr <a href="#ga069e77173ce32934101d2c3ccd474020" class="m-doc">Win32Surface</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
             <dd>It provides a mechanism to create a VkSurfaceKHR object (defined by the VK_KHR_surface extension) that refers to a Win32 HWND, as well as a query to determine support for rendering to the windows desktop.</dd>
             <dt>
-              static RoCStr <a href="#gad919411a24e03133b80264270c45910a" class="m-doc">Swapchain</a> <span class="m-label m-flat m-primary">constexpr</span>
+              static RoCStr <a href="#gaab72b7bc3d2c80bd93c11710b8c495ea" class="m-doc">Swapchain</a> <span class="m-label m-flat m-primary">constexpr</span>
             </dt>
             <dd>Introduces VkSwapchainKHR objects, which provide the ability to present rendering results to a surface.</dd>
           </dl>
         </section>
         <section>
           <h2>Variable documentation</h2>
-          <section class="m-doc-details" id="gac60bafc0f8de49020c4ada81036fa0a9"><div>
+          <section class="m-doc-details" id="ga891b34a9cedb382f846b95eb37dd5e89"><div>
             <h3>
-              static RoCStr <a href="#gac60bafc0f8de49020c4ada81036fa0a9" class="m-doc-self">DebugUtility</a> <span class="m-label m-primary">constexpr</span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Constants_8hpp.html">&lt;VaultedThermals/VT_Constants.hpp&gt;</a></div>
+              static RoCStr <a href="#ga891b34a9cedb382f846b95eb37dd5e89" class="m-doc-self">DebugUtility</a> <span class="m-label m-primary">constexpr</span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Constants_8hpp.html">&lt;VaultedVulkan/VV_Constants.hpp&gt;</a></div>
             </h3>
             <p>This extension provides the following capabilities: The ability to create a debug messenger which will pass along debug messages to an application supplied callback. The ability to identify specific Vulkan objects using a name or tag to improve tracking. The ability to identify specific sections within a VkQueue or VkCommandBuffer using labels to aid organization and offline analysis in external tools.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_EXT_debug_utils">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga0f49565c9d9d06d7e2c08695795dd465"><div>
+          <section class="m-doc-details" id="gaeab2b113f4f358f611cf7b1a810e3f21"><div>
             <h3>
-              static RoCStr <a href="#ga0f49565c9d9d06d7e2c08695795dd465" class="m-doc-self">Surface</a> <span class="m-label m-primary">constexpr</span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Constants_8hpp.html">&lt;VaultedThermals/VT_Constants.hpp&gt;</a></div>
+              static RoCStr <a href="#gaeab2b113f4f358f611cf7b1a810e3f21" class="m-doc-self">Surface</a> <span class="m-label m-primary">constexpr</span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Constants_8hpp.html">&lt;VaultedVulkan/VV_Constants.hpp&gt;</a></div>
             </h3>
             <p>It introduces VkSurfaceKHR objects, which abstract native platform surface or window objects for use with Vulkan. It also provides a way to determine whether a queue family in a physical device supports presenting to particular surface.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_KHR_surface">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga2738bfecf9ae3412d020f4c3fb90a261"><div>
+          <section class="m-doc-details" id="ga069e77173ce32934101d2c3ccd474020"><div>
             <h3>
-              static RoCStr <a href="#ga2738bfecf9ae3412d020f4c3fb90a261" class="m-doc-self">Win32Surface</a> <span class="m-label m-primary">constexpr</span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Constants_8hpp.html">&lt;VaultedThermals/VT_Constants.hpp&gt;</a></div>
+              static RoCStr <a href="#ga069e77173ce32934101d2c3ccd474020" class="m-doc-self">Win32Surface</a> <span class="m-label m-primary">constexpr</span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Constants_8hpp.html">&lt;VaultedVulkan/VV_Constants.hpp&gt;</a></div>
             </h3>
             <p>It provides a mechanism to create a VkSurfaceKHR object (defined by the VK_KHR_surface extension) that refers to a Win32 HWND, as well as a query to determine support for rendering to the windows desktop.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_KHR_win32_surface">https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_<wbr />KHR_<wbr />win32_<wbr />surface</a></p>
           </div></section>
-          <section class="m-doc-details" id="gad919411a24e03133b80264270c45910a"><div>
+          <section class="m-doc-details" id="gaab72b7bc3d2c80bd93c11710b8c495ea"><div>
             <h3>
-              static RoCStr <a href="#gad919411a24e03133b80264270c45910a" class="m-doc-self">Swapchain</a> <span class="m-label m-primary">constexpr</span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Constants_8hpp.html">&lt;VaultedThermals/VT_Constants.hpp&gt;</a></div>
+              static RoCStr <a href="#gaab72b7bc3d2c80bd93c11710b8c495ea" class="m-doc-self">Swapchain</a> <span class="m-label m-primary">constexpr</span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Constants_8hpp.html">&lt;VaultedVulkan/VV_Constants.hpp&gt;</a></div>
             </h3>
             <p>Introduces VkSwapchainKHR objects, which provide the ability to present rendering results to a surface.</p>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VK_KHR_swapchain">Specification</a></p>
@@ -163,7 +163,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

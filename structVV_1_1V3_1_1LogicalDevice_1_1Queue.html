@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VV::V3::LogicalDevice::Queue struct | VaultedVulkan</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedVulkan</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="modules.html">Modules</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="namespaceVV.html">VV</a>::<wbr/></span><span class="m-breadcrumb"><a href="namespaceVV_1_1V3.html">V3</a>::<wbr/></span><span class="m-breadcrumb"><a href="classVV_1_1V3_1_1LogicalDevice.html">LogicalDevice</a>::<wbr/></span>Queue <span class="m-thin">struct</span>
+          <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__LogicalDevice_8hpp.html">&lt;VaultedVulkan/VV_LogicalDevice.hpp&gt;</a></div>
+        </h1>
+        <p>Queues handle different types of batched commands for the GPU to complete.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Vulkan queues provide an interface to the execution engines of a device. Commands for these execution engines are recorded into command buffers ahead of execution time. These command buffers are then submitted to queues with a queue submission command for execution in a number of batches. Once submitted to a queue, these commands will begin and complete execution without further application intervention, though the order of this execution is dependent on a number of implicit and explicit ordering constraints.</p><p>Note: This object only acts as a host interface to a given device object&#x27;s handle. The logical device of the queue manages the device object lifetime.</p>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structVV_1_1V1_1_1LogicalDevice_1_1Queue.html" class="m-doc">VV::V1::LogicalDevice::Queue</a>
+            </dt>
+            <dd>Queues handle different types of batched commands for the GPU to complete.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt id="a9d7944fdcaa520ee1807a5cdcf683d6d">
+              using <a href="#a9d7944fdcaa520ee1807a5cdcf683d6d" class="m-doc-self">Parent</a> = Parent::Queue
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt id="a099bbc9002a6dcc657c0044c1c7c1bac">
+              <span class="m-doc-wrap-bumper"><a href="#a099bbc9002a6dcc657c0044c1c7c1bac" class="m-doc-self">Queue</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Default constructor.</dd>
+            <dt id="a6ba0e951177e8c27b6f8ce35d85b28b9">
+              <span class="m-doc-wrap-bumper"><a href="#a6ba0e951177e8c27b6f8ce35d85b28b9" class="m-doc-self">Queue</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc">EQueueFlag</a> _type,
+              const <a href="classVV_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _device,
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _familyIndex,
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _queueIndex)</span>
+            </dt>
+            <dd>Performs an assignment on construction.</dd>
+            <dt id="ad40353cf8b47bb51631e9545997e2358">
+              <span class="m-doc-wrap-bumper"><a href="#ad40353cf8b47bb51631e9545997e2358" class="m-doc-self">operator const Handle&amp;</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd>Implicit conversion to give a readonly reference to its handle.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a90c4223342dcf915e6b44fb7769ae61f">
+              <span class="m-doc-wrap-bumper">void <a href="#a90c4223342dcf915e6b44fb7769ae61f" class="m-doc-self">Assign</a>(</span><span class="m-doc-wrap">const <a href="classVV_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>&amp; _logicalDevice,
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _familyIndex,
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _queueIndex,
+              <a href="group__APISpec__Devices__and__Queues.html#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc">EQueueFlag</a> _type)</span>
+            </dt>
+            <dd>Assigns the queue info.</dd>
+            <dt id="a6390a249cfabd426e5d4b1a4ce9bb0ca">
+              <span class="m-doc-wrap-bumper">auto <a href="#a6390a249cfabd426e5d4b1a4ce9bb0ca" class="m-doc-self">GetFamilyIndex</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a></span>
+            </dt>
+            <dd>Provides the queue family index.</dd>
+            <dt id="ab5e79d6cdb1a842c17166510587ddb81">
+              <span class="m-doc-wrap-bumper">auto <a href="#ab5e79d6cdb1a842c17166510587ddb81" class="m-doc-self">GetQueueIndex</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a></span>
+            </dt>
+            <dd>Provides the queue index in the queue family.</dd>
+            <dt id="a91c4ade19b7d75092110b93634ef9a42">
+              <span class="m-doc-wrap-bumper">auto <a href="#a91c4ade19b7d75092110b93634ef9a42" class="m-doc-self">GetType</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="group__APISpec__Devices__and__Queues.html#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc">EQueueFlag</a>&amp;</span>
+            </dt>
+            <dd>Provides the queue type.</dd>
+            <dt id="a93c9fc0b8f4b042e4a27761346361a39">
+              <span class="m-doc-wrap-bumper">void <a href="#a93c9fc0b8f4b042e4a27761346361a39" class="m-doc-self">Retrieve</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Retrieve a handle to a VkQueue object.</dd>
+            <dt id="a9a57be8284f7580405207c57fdffe093">
+              <span class="m-doc-wrap-bumper">auto <a href="#a9a57be8284f7580405207c57fdffe093" class="m-doc-self">FamilySpecified</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Informs if family was specified.</dd>
+            <dt id="ad2fb1f783db20106bb59d474704e6fa3">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad2fb1f783db20106bb59d474704e6fa3" class="m-doc-self">QueuePresentation</a>(</span><span class="m-doc-wrap">const <a href="group__APISpec__Window__System__Integration__WSI.html#ga98e2deb4be6aeca77e1110916588bfa4" class="m-doc">PresentationInfo</a>&amp; _presentationInfo) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>After queuing all rendering commands and transitioning the image to the correct layout, to queue an image for presentation.</dd>
+            <dt id="aa754a0ef19d6c929f9eb1085cc55dab2">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa754a0ef19d6c929f9eb1085cc55dab2" class="m-doc-self">SubmitToQueue</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _submitCount,
+              const <a href="group__APISpec__Command__Buffers.html#ga827e064b11262f309022b72e14f160ef" class="m-doc">SubmitInfo</a>* _submissions,
+              <a href="structVV_1_1V1_1_1LogicalDevice_1_1Queue.html#a8cc9fed2c050cd2e20b5498e2505376d" class="m-doc">Fence_<wbr />Handle</a> _fence) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Submit command buffers to a queue.</dd>
+            <dt id="a5c54095859ba9fd09a7906412da5dfd4">
+              <span class="m-doc-wrap-bumper">auto <a href="#a5c54095859ba9fd09a7906412da5dfd4" class="m-doc-self">WaitUntilIdle</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Wait on the host for the completion of outstanding queue operations for a given queue.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt id="ac595c472075afd42b6126b0cb6f95148">
+              <a href="group__APISpec__Devices__and__Queues.html#gae02c25624209d5a0b13db0aba1485671" class="m-doc">Handle</a> <a href="#ac595c472075afd42b6126b0cb6f95148" class="m-doc-self">handle</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a0f9084e3f591a3b6f67f8bd2464aaf2c">
+              <a href="group__APISpec__Devices__and__Queues.html#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc">EQueueFlag</a> <a href="#a0f9084e3f591a3b6f67f8bd2464aaf2c" class="m-doc-self">assignment</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a9a179f13274293f107690b5dd306684a">
+              const <a href="classVV_1_1V3_1_1LogicalDevice.html" class="m-doc">LogicalDevice</a>* <a href="#a9a179f13274293f107690b5dd306684a" class="m-doc-self">device</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="aa55b23ee4b355a4db0c8d37e13877fd2">
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> <a href="#aa55b23ee4b355a4db0c8d37e13877fd2" class="m-doc-self">familyIndex</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt id="a71935f5279802a14dd065e337c9d61c0">
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> <a href="#a71935f5279802a14dd065e337c9d61c0" class="m-doc-self">queueIndex</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

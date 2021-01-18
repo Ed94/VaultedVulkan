@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>API_Specification &raquo; APISpec_Additional_Capabilities module | VaultedThermals</title>
+  <title>API_Specification &raquo; APISpec_Additional_Capabilities module | VaultedVulkan</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -13,7 +13,7 @@
 <header><nav id="navigation">
   <div class="m-container">
     <div class="m-row">
-      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedThermals</a>
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedVulkan</a>
       <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
         <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
           <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
@@ -68,30 +68,30 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga61f77167c0b507df0d9c56f0647ab745" class="m-doc">EExternalFenceHandleTypeFlag</a> { </span><span class="m-doc-wrap"><a href="#gga61f77167c0b507df0d9c56f0647ab745a7bbaf09b0ef0d12813faa95a925736c1" class="m-doc">OpaqueFD</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745a81e77d89df705fea83f516e2d3a4396e" class="m-doc">Opaque_Win32</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745a955202da8530c89acbd0fb36b516f4e2" class="m-doc">Opaque_Win32_KMT</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745a2dca6be4963919cb83ff918ebac878e0" class="m-doc">SyncFD</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745a7f0d7473c320b34ec7edc5889870d7db" class="m-doc">OpaqueFD_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745ab0e2833232f60efc5ad2ee571135a8ad" class="m-doc">Opaque_Win32_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745a36e33ae09e63d3e5bad61c295f5ed8d4" class="m-doc">Opaque_Win32_KMT_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745addb7ffbee11fe298ba14f6705e61039a" class="m-doc">SyncFD_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR,
-              <a href="#gga61f77167c0b507df0d9c56f0647ab745a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM }</span>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga6cb525fb31eefd48c55276d45fac7743" class="m-doc">EExternalFenceHandleTypeFlag</a> { </span><span class="m-doc-wrap"><a href="#gga6cb525fb31eefd48c55276d45fac7743a7bbaf09b0ef0d12813faa95a925736c1" class="m-doc">OpaqueFD</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743a81e77d89df705fea83f516e2d3a4396e" class="m-doc">Opaque_Win32</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743a955202da8530c89acbd0fb36b516f4e2" class="m-doc">Opaque_Win32_KMT</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743a2dca6be4963919cb83ff918ebac878e0" class="m-doc">SyncFD</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743a7f0d7473c320b34ec7edc5889870d7db" class="m-doc">OpaqueFD_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743ab0e2833232f60efc5ad2ee571135a8ad" class="m-doc">Opaque_Win32_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743a36e33ae09e63d3e5bad61c295f5ed8d4" class="m-doc">Opaque_Win32_KMT_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743addb7ffbee11fe298ba14f6705e61039a" class="m-doc">SyncFD_KHR</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR,
+              <a href="#gga6cb525fb31eefd48c55276d45fac7743a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga08bde0ca06fa0868bc60e815fde4c208" class="m-doc">EExternalSemaphoreHandleTypeFlag</a> { </span><span class="m-doc-wrap"><a href="#gga08bde0ca06fa0868bc60e815fde4c208ae4ae588a71052bbfaa39816487a33ee7" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT</a> = 0x00000001,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208a322029dfa625632a85f09a0c0014234b" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT</a> = 0x00000002,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208af3067ea950a72c2df9670841525c1767" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</a> = 0x00000004,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208a8d30803f83e0fba0f35460bd448ca3d6" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT</a> = 0x00000008,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208af12b9b506ce3850562b417d0532cab34" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT</a> = 0x00000010,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208a1816d204252c72f0ddc1d56eee6143c6" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208a5eb45fe4a6887c1040d7a49220f66e6f" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208ac3fae41f0eb3ae1ba58901f04613b3bd" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208a26b6e8839a1fee86910c0db88d1d00ac" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208aa77998c46402435102f95ad5b067f5d2" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208a4ff064b4d9ddb7a3f4b4482d5adad5cb" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT,
-              <a href="#gga08bde0ca06fa0868bc60e815fde4c208a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM }</span>
+              <span class="m-doc-wrap-bumper">enum <a href="#gaa18cb4bb2e9248336239ae3878dae806" class="m-doc">EExternalSemaphoreHandleTypeFlag</a> { </span><span class="m-doc-wrap"><a href="#ggaa18cb4bb2e9248336239ae3878dae806ae4ae588a71052bbfaa39816487a33ee7" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT</a> = 0x00000001,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806a322029dfa625632a85f09a0c0014234b" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT</a> = 0x00000002,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806af3067ea950a72c2df9670841525c1767" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</a> = 0x00000004,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806a8d30803f83e0fba0f35460bd448ca3d6" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT</a> = 0x00000008,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806af12b9b506ce3850562b417d0532cab34" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT</a> = 0x00000010,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806a1816d204252c72f0ddc1d56eee6143c6" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806a5eb45fe4a6887c1040d7a49220f66e6f" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806ac3fae41f0eb3ae1ba58901f04613b3bd" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806a26b6e8839a1fee86910c0db88d1d00ac" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806aa77998c46402435102f95ad5b067f5d2" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806a4ff064b4d9ddb7a3f4b4482d5adad5cb" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT,
+              <a href="#ggaa18cb4bb2e9248336239ae3878dae806a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlagBits">Specification</a></dd>
           </dl>
@@ -100,34 +100,34 @@
           <h2><a href="#typedef-members">Typedefs</a></h2>
           <dl class="m-doc">
             <dt>
-              using <a href="#gabdb18e7d990ce3cd980fde36037d3bf2" class="m-doc">ExternalHandleTypeFlags</a> = Bitfield&lt;EExternalHandleType, VkExternalSemaphoreHandleTypeFlags&gt;
+              using <a href="#ga446c379f2cd5f718059d08cc07e8d977" class="m-doc">ExternalHandleTypeFlags</a> = Bitfield&lt;EExternalHandleType, VkExternalSemaphoreHandleTypeFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a></dd>
           </dl>
         </section>
         <section>
           <h2>Enum documentation</h2>
-          <section class="m-doc-details" id="ga61f77167c0b507df0d9c56f0647ab745"><div>
+          <section class="m-doc-details" id="ga6cb525fb31eefd48c55276d45fac7743"><div>
             <h3>
-              enum <a href="#ga61f77167c0b507df0d9c56f0647ab745" class="m-doc-self">EExternalFenceHandleTypeFlag</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+              enum <a href="#ga6cb525fb31eefd48c55276d45fac7743" class="m-doc-self">EExternalFenceHandleTypeFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlagBits">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga08bde0ca06fa0868bc60e815fde4c208"><div>
+          <section class="m-doc-details" id="gaa18cb4bb2e9248336239ae3878dae806"><div>
             <h3>
-              enum <a href="#ga08bde0ca06fa0868bc60e815fde4c208" class="m-doc-self">EExternalSemaphoreHandleTypeFlag</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+              enum <a href="#gaa18cb4bb2e9248336239ae3878dae806" class="m-doc-self">EExternalSemaphoreHandleTypeFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlagBits">Specification</a></p>
           </div></section>
         </section>
         <section>
           <h2>Typedef documentation</h2>
-          <section class="m-doc-details" id="gabdb18e7d990ce3cd980fde36037d3bf2"><div>
+          <section class="m-doc-details" id="ga446c379f2cd5f718059d08cc07e8d977"><div>
             <h3>
-              using <a href="#gabdb18e7d990ce3cd980fde36037d3bf2" class="m-doc-self">ExternalHandleTypeFlags</a> = Bitfield&lt;EExternalHandleType, VkExternalSemaphoreHandleTypeFlags&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__SyncAndCacheControl_8hpp.html">&lt;VaultedThermals/VT_SyncAndCacheControl.hpp&gt;</a></div>
+              using <a href="#ga446c379f2cd5f718059d08cc07e8d977" class="m-doc-self">ExternalHandleTypeFlags</a> = Bitfield&lt;EExternalHandleType, VkExternalSemaphoreHandleTypeFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__SyncAndCacheControl_8hpp.html">&lt;VaultedVulkan/VV_SyncAndCacheControl.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a></p>
           </div></section>
@@ -176,7 +176,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>API_Specification &raquo; APISpec_Fragment_Operations module | VaultedThermals</title>
+  <title>API_Specification &raquo; APISpec_Fragment_Operations module | VaultedVulkan</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -13,7 +13,7 @@
 <header><nav id="navigation">
   <div class="m-container">
     <div class="m-row">
-      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedThermals</a>
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedVulkan</a>
       <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
         <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
           <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
@@ -69,15 +69,15 @@
           <h2><a href="#nested-classes">Classes</a></h2>
           <dl class="m-doc">
             <dt>
-              struct <a href="structVT_1_1V1_1_1Pipeline_1_1DepthStencilState_1_1CreateInfo.html" class="m-doc">VT::V1::Pipeline::DepthStencilState::CreateInfo</a>
+              struct <a href="structVV_1_1V1_1_1Pipeline_1_1DepthStencilState_1_1CreateInfo.html" class="m-doc">VV::V1::Pipeline::DepthStencilState::CreateInfo</a>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a></dd>
             <dt>
-              struct <a href="structVT_1_1V1_1_1Pipeline_1_1DepthStencilState.html" class="m-doc">VT::V1::Pipeline::DepthStencilState</a>
+              struct <a href="structVV_1_1V1_1_1Pipeline_1_1DepthStencilState.html" class="m-doc">VV::V1::Pipeline::DepthStencilState</a>
             </dt>
-            <dd><a href="structVT_1_1V1_1_1Pipeline.html" class="m-doc">Pipeline</a> state controlling the depth bounds tests, stencil test, and depth test.</dd>
+            <dd><a href="structVV_1_1V1_1_1Pipeline.html" class="m-doc">Pipeline</a> state controlling the depth bounds tests, stencil test, and depth test.</dd>
             <dt>
-              struct <a href="structVT_1_1Corridors_1_1StencilOperationState.html" class="m-doc">VT::Corridors::StencilOperationState</a>
+              struct <a href="structVV_1_1Corridors_1_1StencilOperationState.html" class="m-doc">VV::Corridors::StencilOperationState</a>
             </dt>
             <dd></dd>
           </dl>
@@ -86,25 +86,25 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gaf4547f2a5b28c244e86d1952fa2e4415" class="m-doc">ECompareOperation</a> { </span><span class="m-doc-wrap"><a href="#ggaf4547f2a5b28c244e86d1952fa2e4415a6e7b34fa59e1bd229b207892956dc41c" class="m-doc">Never</a> = VK_COMPARE_OP_NEVER,
-              <a href="#ggaf4547f2a5b28c244e86d1952fa2e4415a1cfdf0e8d0c87a228c1f40d9bee7888b" class="m-doc">Less</a> = VK_COMPARE_OP_LESS,
-              <a href="#ggaf4547f2a5b28c244e86d1952fa2e4415af5f286e73bda105e538310b3190f75c5" class="m-doc">Equal</a> = VK_COMPARE_OP_EQUAL,
-              <a href="#ggaf4547f2a5b28c244e86d1952fa2e4415aa4cbdbb6070a5abb35fc95ecf1e22c14" class="m-doc">LessOrEqual</a> = VK_COMPARE_OP_LESS_OR_EQUAL,
-              <a href="#ggaf4547f2a5b28c244e86d1952fa2e4415a8768a6821cd735aea4f5b0df88c1fc6a" class="m-doc">Greater</a> = VK_COMPARE_OP_GREATER,
-              <a href="#ggaf4547f2a5b28c244e86d1952fa2e4415a19bb0af2c3c530538cb41aff7f235b96" class="m-doc">NotEqual</a> = VK_COMPARE_OP_NOT_EQUAL,
-              <a href="#ggaf4547f2a5b28c244e86d1952fa2e4415a6f2f0aefb3d22da0f3839453add5f937" class="m-doc">GreaterOrEqual</a> = VK_COMPARE_OP_GREATER_OR_EQUAL,
-              <a href="#ggaf4547f2a5b28c244e86d1952fa2e4415a68eec46437c384d8dad18d5464ebc35c" class="m-doc">Always</a> = VK_COMPARE_OP_ALWAYS }</span>
+              <span class="m-doc-wrap-bumper">enum <a href="#ga048b2e2201fb39d36f3a737f2ccf34b5" class="m-doc">ECompareOperation</a> { </span><span class="m-doc-wrap"><a href="#gga048b2e2201fb39d36f3a737f2ccf34b5a6e7b34fa59e1bd229b207892956dc41c" class="m-doc">Never</a> = VK_COMPARE_OP_NEVER,
+              <a href="#gga048b2e2201fb39d36f3a737f2ccf34b5a1cfdf0e8d0c87a228c1f40d9bee7888b" class="m-doc">Less</a> = VK_COMPARE_OP_LESS,
+              <a href="#gga048b2e2201fb39d36f3a737f2ccf34b5af5f286e73bda105e538310b3190f75c5" class="m-doc">Equal</a> = VK_COMPARE_OP_EQUAL,
+              <a href="#gga048b2e2201fb39d36f3a737f2ccf34b5aa4cbdbb6070a5abb35fc95ecf1e22c14" class="m-doc">LessOrEqual</a> = VK_COMPARE_OP_LESS_OR_EQUAL,
+              <a href="#gga048b2e2201fb39d36f3a737f2ccf34b5a8768a6821cd735aea4f5b0df88c1fc6a" class="m-doc">Greater</a> = VK_COMPARE_OP_GREATER,
+              <a href="#gga048b2e2201fb39d36f3a737f2ccf34b5a19bb0af2c3c530538cb41aff7f235b96" class="m-doc">NotEqual</a> = VK_COMPARE_OP_NOT_EQUAL,
+              <a href="#gga048b2e2201fb39d36f3a737f2ccf34b5a6f2f0aefb3d22da0f3839453add5f937" class="m-doc">GreaterOrEqual</a> = VK_COMPARE_OP_GREATER_OR_EQUAL,
+              <a href="#gga048b2e2201fb39d36f3a737f2ccf34b5a68eec46437c384d8dad18d5464ebc35c" class="m-doc">Always</a> = VK_COMPARE_OP_ALWAYS }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompareOp">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga2765dd40392e2aab56b7695bdf1c60c0" class="m-doc">EStencilOperation</a> { </span><span class="m-doc-wrap"><a href="#gga2765dd40392e2aab56b7695bdf1c60c0a02bce93bff905887ad2233110bf9c49e" class="m-doc">Keep</a> = VK_STENCIL_OP_KEEP,
-              <a href="#gga2765dd40392e2aab56b7695bdf1c60c0ad7ed4ee1df437474d005188535f74875" class="m-doc">Zero</a> = VK_STENCIL_OP_ZERO,
-              <a href="#gga2765dd40392e2aab56b7695bdf1c60c0a0ebe6df8a3ac338e0512acc741823fdb" class="m-doc">Replace</a> = VK_STENCIL_OP_REPLACE,
-              <a href="#gga2765dd40392e2aab56b7695bdf1c60c0a23605481779dc9a645413ffeaa2b6806" class="m-doc">IncrementAndClamp</a> = VK_STENCIL_OP_INCREMENT_AND_CLAMP,
-              <a href="#gga2765dd40392e2aab56b7695bdf1c60c0ab47742c29790cf90923a331deac2d46a" class="m-doc">DecrementAndClamp</a> = VK_STENCIL_OP_DECREMENT_AND_CLAMP,
-              <a href="#gga2765dd40392e2aab56b7695bdf1c60c0a9b8958acb7be504bb5f55f17c0eea366" class="m-doc">Invert</a> = VK_STENCIL_OP_INVERT,
-              <a href="#gga2765dd40392e2aab56b7695bdf1c60c0a73f45dbc72343cafde86b66b813b5c8a" class="m-doc">IncrementAndWrap</a> = VK_STENCIL_OP_INCREMENT_AND_WRAP,
-              <a href="#gga2765dd40392e2aab56b7695bdf1c60c0a834d6765724e43ec186c3e5019a5ee3d" class="m-doc">DecrementAndWrap</a> = VK_STENCIL_OP_DECREMENT_AND_WRAP }</span>
+              <span class="m-doc-wrap-bumper">enum <a href="#gadbc1155cc71842f0449c70e09f9b4771" class="m-doc">EStencilOperation</a> { </span><span class="m-doc-wrap"><a href="#ggadbc1155cc71842f0449c70e09f9b4771a02bce93bff905887ad2233110bf9c49e" class="m-doc">Keep</a> = VK_STENCIL_OP_KEEP,
+              <a href="#ggadbc1155cc71842f0449c70e09f9b4771ad7ed4ee1df437474d005188535f74875" class="m-doc">Zero</a> = VK_STENCIL_OP_ZERO,
+              <a href="#ggadbc1155cc71842f0449c70e09f9b4771a0ebe6df8a3ac338e0512acc741823fdb" class="m-doc">Replace</a> = VK_STENCIL_OP_REPLACE,
+              <a href="#ggadbc1155cc71842f0449c70e09f9b4771a23605481779dc9a645413ffeaa2b6806" class="m-doc">IncrementAndClamp</a> = VK_STENCIL_OP_INCREMENT_AND_CLAMP,
+              <a href="#ggadbc1155cc71842f0449c70e09f9b4771ab47742c29790cf90923a331deac2d46a" class="m-doc">DecrementAndClamp</a> = VK_STENCIL_OP_DECREMENT_AND_CLAMP,
+              <a href="#ggadbc1155cc71842f0449c70e09f9b4771a9b8958acb7be504bb5f55f17c0eea366" class="m-doc">Invert</a> = VK_STENCIL_OP_INVERT,
+              <a href="#ggadbc1155cc71842f0449c70e09f9b4771a73f45dbc72343cafde86b66b813b5c8a" class="m-doc">IncrementAndWrap</a> = VK_STENCIL_OP_INCREMENT_AND_WRAP,
+              <a href="#ggadbc1155cc71842f0449c70e09f9b4771a834d6765724e43ec186c3e5019a5ee3d" class="m-doc">DecrementAndWrap</a> = VK_STENCIL_OP_DECREMENT_AND_WRAP }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOp">Specification</a></dd>
           </dl>
@@ -113,34 +113,34 @@
           <h2><a href="#typedef-members">Typedefs</a></h2>
           <dl class="m-doc">
             <dt>
-              using <a href="#ga3399da16b35fbd4e55ec81671c43db33" class="m-doc">CreateFlags</a> = Bitfield&lt;EUndefined, VkPipelineDepthStencilStateCreateFlags&gt;
+              using <a href="#ga928084a07ea4d954a912c6d5482e21cc" class="m-doc">CreateFlags</a> = Bitfield&lt;EUndefined, VkPipelineDepthStencilStateCreateFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateFlags">Specification</a></dd>
           </dl>
         </section>
         <section>
           <h2>Enum documentation</h2>
-          <section class="m-doc-details" id="gaf4547f2a5b28c244e86d1952fa2e4415"><div>
+          <section class="m-doc-details" id="ga048b2e2201fb39d36f3a737f2ccf34b5"><div>
             <h3>
-              enum <a href="#gaf4547f2a5b28c244e86d1952fa2e4415" class="m-doc-self">ECompareOperation</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+              enum <a href="#ga048b2e2201fb39d36f3a737f2ccf34b5" class="m-doc-self">ECompareOperation</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompareOp">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga2765dd40392e2aab56b7695bdf1c60c0"><div>
+          <section class="m-doc-details" id="gadbc1155cc71842f0449c70e09f9b4771"><div>
             <h3>
-              enum <a href="#ga2765dd40392e2aab56b7695bdf1c60c0" class="m-doc-self">EStencilOperation</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+              enum <a href="#gadbc1155cc71842f0449c70e09f9b4771" class="m-doc-self">EStencilOperation</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStencilOp">Specification</a></p>
           </div></section>
         </section>
         <section>
           <h2>Typedef documentation</h2>
-          <section class="m-doc-details" id="ga3399da16b35fbd4e55ec81671c43db33"><div>
+          <section class="m-doc-details" id="ga928084a07ea4d954a912c6d5482e21cc"><div>
             <h3>
-              using <a href="#ga3399da16b35fbd4e55ec81671c43db33" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EUndefined, VkPipelineDepthStencilStateCreateFlags&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Pipelines_8hpp.html">&lt;VaultedThermals/VT_Pipelines.hpp&gt;</a></div>
+              using <a href="#ga928084a07ea4d954a912c6d5482e21cc" class="m-doc-self">CreateFlags</a> = Bitfield&lt;EUndefined, VkPipelineDepthStencilStateCreateFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Pipelines_8hpp.html">&lt;VaultedVulkan/VV_Pipelines.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateFlags">Specification</a></p>
           </div></section>
@@ -189,7 +189,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>API_Specification &raquo; APISpec_Queries module | VaultedThermals</title>
+  <title>API_Specification &raquo; APISpec_Queries module | VaultedVulkan</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="icon" href="favicon-dark.png" type="image/png" />
@@ -13,7 +13,7 @@
 <header><nav id="navigation">
   <div class="m-container">
     <div class="m-row">
-      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedThermals</a>
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">VaultedVulkan</a>
       <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
         <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
           <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
@@ -68,23 +68,23 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga3edf7e00ab34b08477110a1ce4503eca" class="m-doc">EQueryControlFlags</a> { </span><span class="m-doc-wrap"><a href="#gga3edf7e00ab34b08477110a1ce4503ecaaa15adae4bec50f3317d666972d3b9aeb" class="m-doc">Precise</a> = VK_QUERY_CONTROL_PRECISE_BIT,
-              <a href="#gga3edf7e00ab34b08477110a1ce4503ecaa9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_QUERY_CONTROL_FLAG_BITS_MAX_ENUM }</span>
+              <span class="m-doc-wrap-bumper">enum <a href="#gaa1ef6e74ad664bb3c7420c6e348846ec" class="m-doc">EQueryControlFlags</a> { </span><span class="m-doc-wrap"><a href="#ggaa1ef6e74ad664bb3c7420c6e348846ecaa15adae4bec50f3317d666972d3b9aeb" class="m-doc">Precise</a> = VK_QUERY_CONTROL_PRECISE_BIT,
+              <a href="#ggaa1ef6e74ad664bb3c7420c6e348846eca9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_QUERY_CONTROL_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga1bc75b598759cd4f936d835c0668bdc0" class="m-doc">EQueryPipelineStatisticFlag</a> { </span><span class="m-doc-wrap"><a href="#gga1bc75b598759cd4f936d835c0668bdc0af3774df3f5ad43aad08ee04b680fabf3" class="m-doc">AssemblyVertices</a> = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0af0dbac85990fbc6c7e5c20baa1e599d5" class="m-doc">AssemblyPrimitives</a> = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a45e66ae9dbab84ed1b96e98a7d8b1e14" class="m-doc">VertexShaderInovcations</a> = VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a88729d2c04615823d2a3b9c754d25b69" class="m-doc">GeometryShaderInvocations</a> = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a4b91dab751de2024205530e0d94d9dc4" class="m-doc">GeometryShaderPrimitives</a> = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a5e63ec4da21cdb2a3f2a21e63b188d83" class="m-doc">ClippingInocation</a> = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a6a874b0d9e2ac83f2939103b48505927" class="m-doc">ClippingPrimitives</a> = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a0f6a8c86db31432e333a548fa5554982" class="m-doc">FragmentShaderInvoations</a> = VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a854420efc78d5c9ad67be6602c7ce543" class="m-doc">TessellationControlShaderPatches</a> = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a1197dd4c57dfc696ad7feda251139c22" class="m-doc">TessellationEvaluationShaderInvocations</a> = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0ab720a64f2794918f15d1be3a67c3278d" class="m-doc">ComputeShaderInvocations</a> = VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT,
-              <a href="#gga1bc75b598759cd4f936d835c0668bdc0a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_QUERY_PIPELINE_STATISTIC_FLAG_BITS_MAX_ENUM }</span>
+              <span class="m-doc-wrap-bumper">enum <a href="#gaa7d88f575f79f768305d6959cfddfb81" class="m-doc">EQueryPipelineStatisticFlag</a> { </span><span class="m-doc-wrap"><a href="#ggaa7d88f575f79f768305d6959cfddfb81af3774df3f5ad43aad08ee04b680fabf3" class="m-doc">AssemblyVertices</a> = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_VERTICES_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81af0dbac85990fbc6c7e5c20baa1e599d5" class="m-doc">AssemblyPrimitives</a> = VK_QUERY_PIPELINE_STATISTIC_INPUT_ASSEMBLY_PRIMITIVES_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a45e66ae9dbab84ed1b96e98a7d8b1e14" class="m-doc">VertexShaderInovcations</a> = VK_QUERY_PIPELINE_STATISTIC_VERTEX_SHADER_INVOCATIONS_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a88729d2c04615823d2a3b9c754d25b69" class="m-doc">GeometryShaderInvocations</a> = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_INVOCATIONS_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a4b91dab751de2024205530e0d94d9dc4" class="m-doc">GeometryShaderPrimitives</a> = VK_QUERY_PIPELINE_STATISTIC_GEOMETRY_SHADER_PRIMITIVES_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a5e63ec4da21cdb2a3f2a21e63b188d83" class="m-doc">ClippingInocation</a> = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_INVOCATIONS_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a6a874b0d9e2ac83f2939103b48505927" class="m-doc">ClippingPrimitives</a> = VK_QUERY_PIPELINE_STATISTIC_CLIPPING_PRIMITIVES_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a0f6a8c86db31432e333a548fa5554982" class="m-doc">FragmentShaderInvoations</a> = VK_QUERY_PIPELINE_STATISTIC_FRAGMENT_SHADER_INVOCATIONS_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a854420efc78d5c9ad67be6602c7ce543" class="m-doc">TessellationControlShaderPatches</a> = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_CONTROL_SHADER_PATCHES_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a1197dd4c57dfc696ad7feda251139c22" class="m-doc">TessellationEvaluationShaderInvocations</a> = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81ab720a64f2794918f15d1be3a67c3278d" class="m-doc">ComputeShaderInvocations</a> = VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT,
+              <a href="#ggaa7d88f575f79f768305d6959cfddfb81a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_QUERY_PIPELINE_STATISTIC_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlagBits">Specification</a></dd>
           </dl>
@@ -93,45 +93,45 @@
           <h2><a href="#typedef-members">Typedefs</a></h2>
           <dl class="m-doc">
             <dt>
-              using <a href="#gae603216341203c2e4dbfaca33611c5e3" class="m-doc">QueryControlFlags</a> = Bitfield&lt;EQueryControlFlags, VkQueryControlFlags&gt;
+              using <a href="#ga13c06a79125e43d536103d1d7f4adc1f" class="m-doc">QueryControlFlags</a> = Bitfield&lt;EQueryControlFlags, VkQueryControlFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlags">Specification</a></dd>
             <dt>
-              using <a href="#gaf8b818ff1fa6489f5d85f3b2220c7c04" class="m-doc">QueryPipelineStatisticFlags</a> = Bitfield&lt;EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags&gt;
+              using <a href="#ga74640428e57779ba5033cfcbd7035347" class="m-doc">QueryPipelineStatisticFlags</a> = Bitfield&lt;EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags&gt;
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlags">Specification</a></dd>
           </dl>
         </section>
         <section>
           <h2>Enum documentation</h2>
-          <section class="m-doc-details" id="ga3edf7e00ab34b08477110a1ce4503eca"><div>
+          <section class="m-doc-details" id="gaa1ef6e74ad664bb3c7420c6e348846ec"><div>
             <h3>
-              enum <a href="#ga3edf7e00ab34b08477110a1ce4503eca" class="m-doc-self">EQueryControlFlags</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+              enum <a href="#gaa1ef6e74ad664bb3c7420c6e348846ec" class="m-doc-self">EQueryControlFlags</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlagBits">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga1bc75b598759cd4f936d835c0668bdc0"><div>
+          <section class="m-doc-details" id="gaa7d88f575f79f768305d6959cfddfb81"><div>
             <h3>
-              enum <a href="#ga1bc75b598759cd4f936d835c0668bdc0" class="m-doc-self">EQueryPipelineStatisticFlag</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Enums_8hpp.html">&lt;VaultedThermals/VT_Enums.hpp&gt;</a></div>
+              enum <a href="#gaa7d88f575f79f768305d6959cfddfb81" class="m-doc-self">EQueryPipelineStatisticFlag</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlagBits">Specification</a></p>
           </div></section>
         </section>
         <section>
           <h2>Typedef documentation</h2>
-          <section class="m-doc-details" id="gae603216341203c2e4dbfaca33611c5e3"><div>
+          <section class="m-doc-details" id="ga13c06a79125e43d536103d1d7f4adc1f"><div>
             <h3>
-              using <a href="#gae603216341203c2e4dbfaca33611c5e3" class="m-doc-self">QueryControlFlags</a> = Bitfield&lt;EQueryControlFlags, VkQueryControlFlags&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+              using <a href="#ga13c06a79125e43d536103d1d7f4adc1f" class="m-doc-self">QueryControlFlags</a> = Bitfield&lt;EQueryControlFlags, VkQueryControlFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Command_8hpp.html">&lt;VaultedVulkan/VV_Command.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlags">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="gaf8b818ff1fa6489f5d85f3b2220c7c04"><div>
+          <section class="m-doc-details" id="ga74640428e57779ba5033cfcbd7035347"><div>
             <h3>
-              using <a href="#gaf8b818ff1fa6489f5d85f3b2220c7c04" class="m-doc-self">QueryPipelineStatisticFlags</a> = Bitfield&lt;EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VT__Command_8hpp.html">&lt;VaultedThermals/VT_Command.hpp&gt;</a></div>
+              using <a href="#ga74640428e57779ba5033cfcbd7035347" class="m-doc-self">QueryPipelineStatisticFlags</a> = Bitfield&lt;EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags&gt;
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Command_8hpp.html">&lt;VaultedVulkan/VV_Command.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlags">Specification</a></p>
           </div></section>
@@ -180,7 +180,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedThermals. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
