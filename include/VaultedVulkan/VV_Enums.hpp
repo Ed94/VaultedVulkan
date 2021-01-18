@@ -1,25 +1,25 @@
 /*!
-@file VT_Enums.hpp
+@file VV_Enums.hpp
 
-@brief Vaulted Thermals: Enumerations
+@brief Vaulted Vulkan: Enumerations
 */
 
 #pragma once
 
 
 
-// VT
-#include "VT_Vaults.hpp"
-#include "VT_APISpecGroups.hpp"
-#include "VT_Platform.hpp"
-#include "VT_CPP_STL.hpp"
+// VV
+#include "VV_Vaults.hpp"
+#include "VV_APISpecGroups.hpp"
+#include "VV_Platform.hpp"
+#include "VV_CPP_STL.hpp"
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
     namespace Corridors

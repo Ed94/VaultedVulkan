@@ -1,7 +1,7 @@
 /*!
-@file VT_Backend.hpp
+@file VV_Backend.hpp
 
-@brief Vaulted Thermals: Backend
+@brief Vaulted Vulkan: Backend
 
 @details Contains implementation related to library backend.
 */
@@ -12,19 +12,19 @@
 
 
 
-// VT
-#include "VT_Vaults.hpp"
-#include "VT_APISpecGroups.hpp"
-#include "VT_Platform.hpp"
-#include "VT_CPP_STL.hpp"
-#include "VT_Enums.hpp"
+// VV
+#include "VV_Vaults.hpp"
+#include "VV_APISpecGroups.hpp"
+#include "VV_Platform.hpp"
+#include "VV_CPP_STL.hpp"
+#include "VV_Enums.hpp"
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
 	namespace V0
@@ -49,28 +49,28 @@ namespace VaultedThermals
 		/**
 		@brief Note: I do not use these as no optimization via inlining has been looked into as of yet...
 		*/
-		#ifdef VT_Option__Use_Inline_Hinting
+		#ifdef VV_Option__Use_Inline_Hinting
 
 			/** @brief Inline specification set to standard inline. */
 			#define VT_InlineSpecifier inline
 
-		#elif VT_Option__Use_Forced_Inlining
+		#elif VV_Option__Use_Forced_Inlining
 
 			#ifdef _WIN32
 
 				/** @brief Inline specification set to _forceinline. (Will force compiler to inline) */
-				#define VT_InlineSpecifier __forceinline
+				#define VV_InlineSpecifier __forceinline
 
 			#else
 
 				/** @brief Inline specification set to none. (Does not do influence compiler) */
-				#define VT_InlineSpecifier 
+				#define VV_InlineSpecifier 
 
 			#endif
 		#else
 
 			/** @brief Inline specification set to none. (Does not do influence compiler) */
-			#define VT_InlineSpecifier 
+			#define VV_InlineSpecifier 
 
 		#endif
 

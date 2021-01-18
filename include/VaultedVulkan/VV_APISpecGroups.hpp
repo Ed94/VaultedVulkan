@@ -1,7 +1,7 @@
 /*!
-@file VT_APISpecGroups.hpp
+@file VV_APISpecGroups.hpp
 
-@brief Vaulted Thermals: Official API Specification Groups
+@brief Vaulted Vulkan: Official API Specification Groups
 */
 
 
@@ -10,7 +10,7 @@
 
 
 
-#include "VT_Vaults.hpp"
+#include "VV_Vaults.hpp"
 
 
 

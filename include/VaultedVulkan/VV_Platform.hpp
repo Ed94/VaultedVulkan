@@ -1,7 +1,7 @@
 /*!
-@file VT_Platform.hpp
+@file VV_Platform.hpp
 
-@brief Vaulted Thermals: Platform Specification
+@brief Vaulted Vulkan: Platform Specification
 
 @details The Vulkan C-API header is included here and platform detection implementation is defined.
 */
@@ -45,8 +45,8 @@
 This guard is necessary to prevent redefinition errors. I am not entirely sure with pragma once
 specified, why this is required.
 */
-#ifndef VT_VULKAN_INCLUDEGUARD
-#define VT_VULKAN_INCLUDEGUARD
+#ifndef VV_VULKAN_INCLUDEGUARD
+#define VV_VULKAN_INCLUDEGUARD
 
 	#include <vulkan/vulkan.h>
 
@@ -54,18 +54,18 @@ specified, why this is required.
 
 
 // VT
-#include "VT_Vaults.hpp"
-#include "VT_APISpecGroups.hpp"
+#include "VV_Vaults.hpp"
+#include "VV_APISpecGroups.hpp"
 
 
 #pragma endregion Includes
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
 	namespace V0

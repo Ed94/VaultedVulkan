@@ -1,36 +1,36 @@
 /*!
-@file VaultedThermals.hpp
+@file VaultedVulkan.hpp
 
-@brief VaultedThermals Include Interface
+@brief VaultedVulkan Include Interface
 
 // Optional Features:
 
 The library single include header.
 
-Long namespace: #define VT_Option__Use_Long_Namespace
+Long namespace: #define VV_Option__Use_Long_Namespace
 
 Inlining:
-VT_Option__Use_Inline_Hinting
-VT_Option__Use_Forced_Inlining
+VV_Option__Use_Inline_Hinting
+VV_Option__Use_Forced_Inlining
 
 STL Exceptions (Note: right now the library does not STL exceptions but may in the future...):
-VT_Option__Use_STL_Exceptions
+VV_Option__Use_STL_Exceptions
 
 Defining your own containers:
 
-#define VT_Option__Use_Custom_Containers
+#define VV_Option__Use_Custom_Containers
 
 using Deque        = YourContainerHere
 using DynamicArray = YourContainerHere
 
 Vault 4 Use:
 
-In a hpp file, include VaultedThermals.hpp with this macro definition defined:
+In a hpp file, include VaultedVulkan.hpp with this macro definition defined:
 #define VT_Open_Vault_4
 
 This will include all V4 header implementation.
 
-In a cpp file, include VaultedThermals.hpp with this macro definition defined:
+In a cpp file, include VaultedVulkan.hpp with this macro definition defined:
 #define VT_V4_Setup_Implementation
 
 This will include all V4 object implementation.
@@ -43,9 +43,9 @@ This will include all V4 object implementation.
 
 
 /**
-@mainpage VaultedThermals
+@mainpage VaultedVulkan
 
-# VaultedThermals
+# VaultedVulkan
 A vulkan wrapper. 
 
 https://github.com/Ed94/VaultedThermals
@@ -98,37 +98,37 @@ Features that would be nice to have:
 
 
 
-#include "VaultedThermals/VT_Vaults.hpp"
-#include "VaultedThermals/VT_APISpecGroups.hpp"
-#include "VaultedThermals/VT_Platform.hpp"
-#include "VaultedThermals/VT_CPP_STL.hpp"
-#include "VaultedThermals/VT_Enums.hpp"
-#include "VaultedThermals/VT_Backend.hpp"
-#include "VaultedThermals/VT_Types.hpp"
-#include "VaultedThermals/VT_Constants.hpp"
-#include "VaultedThermals/VT_Memory_Backend.hpp"
-#include "VaultedThermals/VT_PhysicalDevice.hpp"
-#include "VaultedThermals/VT_Initialization.hpp"
-#include "VaultedThermals/VT_LogicalDevice.hpp"
-#include "VaultedThermals/VT_Memory.hpp"
-#include "VaultedThermals/VT_Sampler.hpp"
-#include "VaultedThermals/VT_Resource.hpp"
-#include "VaultedThermals/VT_SyncAndCacheControl.hpp"
-#include "VaultedThermals/VT_Shaders.hpp"
-#include "VaultedThermals/VT_Pipelines.hpp"
-#include "VaultedThermals/VT_RenderPass.hpp"
-#include "VaultedThermals/VT_Command.hpp"
-#include "VaultedThermals/VT_Surface.hpp"
-#include "VaultedThermals/VT_SwapChain.hpp"
-#include "VaultedThermals/VT_Debug.hpp"
+#include "VaultedVulkan/VV_Vaults.hpp"
+#include "VaultedVulkan/VV_APISpecGroups.hpp"
+#include "VaultedVulkan/VV_Platform.hpp"
+#include "VaultedVulkan/VV_CPP_STL.hpp"
+#include "VaultedVulkan/VV_Enums.hpp"
+#include "VaultedVulkan/VV_Backend.hpp"
+#include "VaultedVulkan/VV_Types.hpp"
+#include "VaultedVulkan/VV_Constants.hpp"
+#include "VaultedVulkan/VV_Memory_Backend.hpp"
+#include "VaultedVulkan/VV_PhysicalDevice.hpp"
+#include "VaultedVulkan/VV_Initialization.hpp"
+#include "VaultedVulkan/VV_LogicalDevice.hpp"
+#include "VaultedVulkan/VV_Memory.hpp"
+#include "VaultedVulkan/VV_Sampler.hpp"
+#include "VaultedVulkan/VV_Resource.hpp"
+#include "VaultedVulkan/VV_SyncAndCacheControl.hpp"
+#include "VaultedVulkan/VV_Shaders.hpp"
+#include "VaultedVulkan/VV_Pipelines.hpp"
+#include "VaultedVulkan/VV_RenderPass.hpp"
+#include "VaultedVulkan/VV_Command.hpp"
+#include "VaultedVulkan/VV_Surface.hpp"
+#include "VaultedVulkan/VV_SwapChain.hpp"
+#include "VaultedVulkan/VV_Debug.hpp"
 
 
 
-#ifdef VT_Open_Vault_4
+#ifdef VV_Open_Vault_4
 
-	#include "VaultedThermals/VTGPU_Comms.hpp"
-	#include "VaultedThermals/VTGPU_Comms_Implementation.hpp"
+	#include "VaultedVulkan/VVGPU_Comms.hpp"
+	#include "VaultedVulkan/VVGPU_Comms_Implementation.hpp"
 
-	#include "VaultedThermals/VTGPU_Renderer.hpp"
+	#include "VaultedVulkan/VVGPU_Renderer.hpp"
 
 #endif

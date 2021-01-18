@@ -1,7 +1,7 @@
 /*!
-@file VT_Vaults.hpp
+@file VV_Vaults.hpp
 
-@brief Vaulted Thermals: Vault Definitions
+@brief Vaulted Vulkan: Vault Definitions
 
 @details
 
@@ -29,7 +29,7 @@ Define macro: VT_Vault_MagmaChamber_Open if you want this. [Note: Currently not 
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
+#ifndef VV_Option__Use_Long_Namespace
 /**
 @defgroup VaultedThermals
 
@@ -37,7 +37,7 @@ Define macro: VT_Vault_MagmaChamber_Open if you want this. [Note: Currently not 
 
 @details For long namespace: #define VT_Option__Use_Long_Namespace
 */
-namespace VT
+namespace VV
 #else
 /**
 @defgroup VaultedThermals
@@ -47,7 +47,7 @@ namespace VT
 
 @details VT_Option__Use_Long_Namespace in use.
 */
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
 	/** 

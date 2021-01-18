@@ -1,7 +1,7 @@
 /*!
-@file VT_SyncAndCacheControl.hpp
+@file VV_SyncAndCacheControl.hpp
 
-@brief Vaulted Thermals: Synchronization and Cache Control
+@brief Vaulted Vulkan: Synchronization and Cache Control
 
 @details
 <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#synchronization">Specification</a> 
@@ -14,28 +14,28 @@
 
 
 // VT
-#include "VT_Vaults.hpp"
-#include "VT_APISpecGroups.hpp"
-#include "VT_Platform.hpp"
-#include "VT_CPP_STL.hpp"
-#include "VT_Enums.hpp"
-#include "VT_Backend.hpp"
-#include "VT_Types.hpp"
-#include "VT_Constants.hpp"
-#include "VT_Memory_Backend.hpp"
-#include "VT_PhysicalDevice.hpp"
-#include "VT_Initialization.hpp"
-#include "VT_LogicalDevice.hpp"
-#include "VT_Memory.hpp"
-#include "VT_Sampler.hpp"
-#include "VT_Resource.hpp"
+#include "VV_Vaults.hpp"
+#include "VV_APISpecGroups.hpp"
+#include "VV_Platform.hpp"
+#include "VV_CPP_STL.hpp"
+#include "VV_Enums.hpp"
+#include "VV_Backend.hpp"
+#include "VV_Types.hpp"
+#include "VV_Constants.hpp"
+#include "VV_Memory_Backend.hpp"
+#include "VV_PhysicalDevice.hpp"
+#include "VV_Initialization.hpp"
+#include "VV_LogicalDevice.hpp"
+#include "VV_Memory.hpp"
+#include "VV_Sampler.hpp"
+#include "VV_Resource.hpp"
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VualtedVulkan
 #endif
 {
 	namespace V0

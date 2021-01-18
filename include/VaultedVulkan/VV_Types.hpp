@@ -1,7 +1,7 @@
 /*!
-@file VT_Types.hpp
+@file VV_Types.hpp
 
-@brief Vaulted Thermals: Types
+@brief Vaulted Vulkan: Types
 
 @details
 */
@@ -13,19 +13,19 @@
 
 
 // VT
-#include "VT_Vaults.hpp"
-#include "VT_APISpecGroups.hpp"
-#include "VT_Platform.hpp"
-#include "VT_CPP_STL.hpp"
-#include "VT_Enums.hpp"
-#include "VT_Backend.hpp"
+#include "VV_Vaults.hpp"
+#include "VV_APISpecGroups.hpp"
+#include "VV_Platform.hpp"
+#include "VV_CPP_STL.hpp"
+#include "VV_Enums.hpp"
+#include "VV_Backend.hpp"
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
 #pragma region Common Object Types

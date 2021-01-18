@@ -1,7 +1,7 @@
 /*!
-@file VT_GPU.hpp
+@file VV_GPU.hpp
 
-@brief Vaulted Thermals: GPU Backend (Bootstrap)
+@brief Vaulted Vulkan: GPU Backend (Bootstrap)
 
 @details
 */
@@ -12,21 +12,21 @@
 
 
 
-#include "VTGPU_Comms.hpp"
+#include "VVGPU_Comms.hpp"
 
 
 
 /**
 @brief Implementation for V4 (must be dumped into a cpp file...)
 */
-#ifdef VT_V4_Setup_Implementation
+#ifdef VV_V4_Setup_Implementation
 
 
 
-#  ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#  ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #  else
-namespace VaultedThermals
+namespace VaultedVulkan
 #  endif
 {
 	namespace V4

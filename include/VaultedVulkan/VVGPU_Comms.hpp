@@ -1,7 +1,7 @@
 /*!
-@file VT_GPU_Comms.hpp
+@file VV_GPU_Comms.hpp
 
-@brief Vaulted Thermals: GPU Communication
+@brief Vaulted Vulkan: GPU Communication
 
 @details
 */
@@ -14,34 +14,34 @@
 
 // VT
 
-#include "VT_Vaults.hpp"
-#include "VT_Platform.hpp"
-#include "VT_CPP_STL.hpp"
-#include "VT_Enums.hpp"
-#include "VT_Backend.hpp"
-#include "VT_Types.hpp"
-#include "VT_Constants.hpp"
-#include "VT_Memory_Backend.hpp"
-#include "VT_PhysicalDevice.hpp"
-#include "VT_Initialization.hpp"
-#include "VT_LogicalDevice.hpp"
-#include "VT_Memory.hpp"
-#include "VT_Sampler.hpp"
-#include "VT_Resource.hpp"
-#include "VT_RenderPass.hpp"
-#include "VT_Shaders.hpp"
-#include "VT_Pipelines.hpp"
-#include "VT_Surface.hpp"
-#include "VT_SwapChain.hpp"
-#include "VT_Debug.hpp"
+#include "VV_Vaults.hpp"
+#include "VV_Platform.hpp"
+#include "VV_CPP_STL.hpp"
+#include "VV_Enums.hpp"
+#include "VV_Backend.hpp"
+#include "VV_Types.hpp"
+#include "VV_Constants.hpp"
+#include "VV_Memory_Backend.hpp"
+#include "VV_PhysicalDevice.hpp"
+#include "VV_Initialization.hpp"
+#include "VV_LogicalDevice.hpp"
+#include "VV_Memory.hpp"
+#include "VV_Sampler.hpp"
+#include "VV_Resource.hpp"
+#include "VV_RenderPass.hpp"
+#include "VV_Shaders.hpp"
+#include "VV_Pipelines.hpp"
+#include "VV_Surface.hpp"
+#include "VV_SwapChain.hpp"
+#include "VV_Debug.hpp"
 #include <type_traits>
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
 	namespace V4

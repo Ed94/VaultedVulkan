@@ -1,7 +1,7 @@
 /*!
-@file VT_Initialization.hpp
+@file VV_Initialization.hpp
 
-@brief Vaulted Thermals: Initialization
+@brief Vaulted Vulkan: Initialization
 
 @details Before using Vulkan, an application must initialize it by loading the Vulkan commands, and creating a VkInstance object.
 
@@ -16,24 +16,24 @@ Initialization Specification
 
 
 
-// VT
-#include "VT_Vaults.hpp"
-#include "VT_APISpecGroups.hpp"
-#include "VT_Platform.hpp"
-#include "VT_CPP_STL.hpp"
-#include "VT_Enums.hpp"
-#include "VT_Backend.hpp"
-#include "VT_Types.hpp"
-#include "VT_Constants.hpp"
-#include "VT_Memory_Backend.hpp"
-#include "VT_PhysicalDevice.hpp"
+// VV
+#include "VV_Vaults.hpp"
+#include "VV_APISpecGroups.hpp"
+#include "VV_Platform.hpp"
+#include "VV_CPP_STL.hpp"
+#include "VV_Enums.hpp"
+#include "VV_Backend.hpp"
+#include "VV_Types.hpp"
+#include "VV_Constants.hpp"
+#include "VV_Memory_Backend.hpp"
+#include "VV_PhysicalDevice.hpp"
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
 	namespace Corridors

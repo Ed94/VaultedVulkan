@@ -1,7 +1,7 @@
 /*!
-@file VT_LogicalDevice.hpp
+@file VV_LogicalDevice.hpp
 
-@brief Vaulted Thermals: Logical Device
+@brief Vaulted Vulkan: Logical Device
 */
 
 
@@ -10,25 +10,25 @@
 
 
 
-// VT
-#include "VT_Vaults.hpp"
-#include "VT_APISpecGroups.hpp"
-#include "VT_Platform.hpp"
-#include "VT_CPP_STL.hpp"
-#include "VT_Enums.hpp"
-#include "VT_Backend.hpp"
-#include "VT_Types.hpp"
-#include "VT_Constants.hpp"
-#include "VT_Memory_Backend.hpp"
-#include "VT_PhysicalDevice.hpp"
-#include "VT_Initialization.hpp"
+// VV
+#include "VV_Vaults.hpp"
+#include "VV_APISpecGroups.hpp"
+#include "VV_Platform.hpp"
+#include "VV_CPP_STL.hpp"
+#include "VV_Enums.hpp"
+#include "VV_Backend.hpp"
+#include "VV_Types.hpp"
+#include "VV_Constants.hpp"
+#include "VV_Memory_Backend.hpp"
+#include "VV_PhysicalDevice.hpp"
+#include "VV_Initialization.hpp"
 
 
 
-#ifndef VT_Option__Use_Long_Namespace
-namespace VT
+#ifndef VV_Option__Use_Long_Namespace
+namespace VV
 #else
-namespace VaultedThermals
+namespace VaultedVulkan
 #endif
 {
 	namespace V1
