@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(VT_Docs)
+project(VV_Docs)
 
 # ---- Dependencies ----
 
 include(../cmake/CPM.cmake)
 
-CPMAddPackage(NAME VaultedThermals SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
+CPMAddPackage(NAME VaultedVulkan SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
 
 CPMAddPackage(
   NAME MCSS
@@ -19,8 +19,8 @@ CPMAddPackage(
 # ---- Doxygen variables ----
 
 # set Doxyfile variables
-set(DOXYGEN_PROJECT_NAME VaultedThermals)
-set(DOXYGEN_PROJECT_VERSION ${VaultedTehrmals_VERSION})
+set(DOXYGEN_PROJECT_NAME VaultedVulkan)
+set(DOXYGEN_PROJECT_VERSION ${VaultedVulkan_VERSION})
 set(DOXYGEN_PROJECT_ROOT "${CMAKE_CURRENT_LIST_DIR}/..")
 set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/doxygen")
 
