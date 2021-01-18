@@ -1,4 +1,4 @@
-# VaultedThermals
+# VaultedVulkan
 A vulkan wrapper. 
 
 Documentation can be found here: [Docs Site](https://edsabode.dev/VaultedThermals/)
@@ -24,5 +24,5 @@ After that is done, this will be publicly released with some sort of open source
 
 ## Guides
 
-Head on over to ![guides](https://github.com/Ed94/VaultedThermals/tree/master/guides) to get started.
+Head on over to ![guides](https://github.com/Ed94/VaultedVulkan/tree/master/guides) to get started.
 
