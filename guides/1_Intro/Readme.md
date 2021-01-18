@@ -11,7 +11,7 @@ The directories used in all the buildables are _Common and _Thirdparty.
 
 _Common provides helper implementation for going through the guides.
 
-_ThirdParty contains all the necessary dependencies with exception to the VaultedThermals library which the cmake automatically gets from the include directory.
+_ThirdParty contains all the necessary dependencies with exception to the VaultedVulkan library which the cmake automatically gets from the include directory.
 
 The build directory will contain all the cmake packaging files including the binaries for the guides and user space in its bin subdirectory.
 
@@ -19,7 +19,7 @@ Each guide will have a Readme.md file that is intended to be read on the library
 
 ## Now that your familiar with the setup lets move on to the guide itself: ##
 
-While completing this guide, use the [UserSpace](https://github.com/Ed94/VaultedThermals/tree/master/guides/UserSpace) to follow along. The guides are designed to build off from each other, so that one directory can be used for the entire set of guides here.
+While completing this guide, use the [UserSpace](https://github.com/Ed94/VaultedVulkan/tree/master/guides/UserSpace) to follow along. The guides are designed to build off from each other, so that one directory can be used for the entire set of guides here.
 ![img](https://i.imgur.com/RUMR6d3.png)
 
 **Now as with all the other guides its good to test to make sure that the guides source builds and runs on your machine so go ahead and do that:**   

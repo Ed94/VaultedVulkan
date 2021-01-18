@@ -4,7 +4,7 @@
 
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 cmake_policy(VERSION 3.14)
-project(VT_Guides
+project(VV_Guides
         VERSION 0.1.0
         LANGUAGES CXX
 )
@@ -119,7 +119,7 @@ macro(MakeGuide guide)
     
 # Finalize App
 
-    # VT Guide: Triangle Seed
+    # VV Guide: Triangle Seed
     xwin_add_executable(
         ${guide}
         "${FILE_SOURCES_${guide}}"

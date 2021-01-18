@@ -1,4 +1,4 @@
-# Hello Triangle - VT Seed
+# Hello Triangle - VV Seed
 
 ## Summary:
 

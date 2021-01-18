@@ -6,7 +6,7 @@ My rule of thumb with guides is to be as explict as possible, and try to guide t
 
 ### Installation CMake / Visual Studio Code
 
-[Windows](https://github.com/Ed94/VaultedThermals/wiki/VT-Guides:-WIndows-Setup)
+[Windows](https://github.com/Ed94/VaultedThermals/wiki/VV-Guides:-Windows-Setup)
 
 Linux 
 
@@ -14,9 +14,9 @@ Mac
 
 ## Current Guides:
 
-**[1_Intro:](https://github.com/Ed94/VaultedThermals/tree/master/guides/1_Intro)** Learn about the guide's workspace.
+**[1_Intro:](https://github.com/Ed94/VaultedVulkan/tree/master/guides/1_Intro)** Learn about the guide's workspace.
 
-**[2_ApplicationHandshake](https://github.com/Ed94/VaultedThermals/tree/master/guides/2_ApplicationHandshake)** Setup vulkan <-> application communiction. Gather information about your machine's GPU capabilities, and learn how to setup validation the layer/s for debugging.
+**[2_ApplicationHandshake](https://github.com/Ed94/VaultedVulkan/tree/master/guides/2_ApplicationHandshake)** Setup vulkan <-> application communiction. Gather information about your machine's GPU capabilities, and learn how to setup validation the layer/s for debugging.
 
 **TriSeed:** Get VT setup with a barebones renderer with Vault 3, showing a the classic rainbow triangle.
 

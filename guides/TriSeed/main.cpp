@@ -43,7 +43,7 @@ void xmain(int argc, const char** argv)
 
         while (isRunning)
         {
-             bool shouldRender = true;
+            bool shouldRender = true;
 
             // Update the event queue for the window.
             eventQueue.update();   
@@ -61,7 +61,7 @@ void xmain(int argc, const char** argv)
 
                     //  gpu.Recalibrate(data.width, data.height);
 
-                     shouldRender = false;                
+                    shouldRender = false;                
                 }
 
                 // Handle window closing.

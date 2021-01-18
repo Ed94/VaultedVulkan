@@ -7,14 +7,14 @@ Goes over setting up our skeleton for a rendering backend with Vulkan using a cl
 In your UserSpace, create two new files: Renderer.hpp, and Renderer.cpp. We'll be setting up our skeleton for the bulk of the code the rest of the guides will use.
 ![gif](https://i.imgur.com/UF0km45.gif)
 
-Add the Utils and VT header to the top of Renderer.hpp
+Add the Utils and VV header to the top of Renderer.hpp
 ```cpp
 #pragma once
 
 // Utils
 #include "Utils.hpp"
 
-// VT
+// VV
 #include "VaultedThermals.hpp"
 ```
 
@@ -178,9 +178,9 @@ The first is the application info for the application instance, it provides gene
 ```cpp
 AppInstance::AppInfo appInfo;
 
-appInfo.AppName       = "VT Seed GPU"       ;
+appInfo.AppName       = "VV Seed GPU"       ;
 appInfo.AppVersion    = MakeVersion(0, 1, 0);
-appInfo.EngineName    = "VT Seed Engine"    ;
+appInfo.EngineName    = "VV Seed Engine"    ;
 appInfo.EngineVersion = MakeVersion(0, 1, 0);
 appInfo.API_Version   = EAPI_Version::_1_0  
 ```
