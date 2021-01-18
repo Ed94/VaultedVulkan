@@ -1,7 +1,7 @@
 # VaultedVulkan
 A vulkan wrapper. 
 
-Documentation can be found here: [Docs Site](https://edsabode.dev/VaultedThermals/)
+Documentation can be found here: [Docs Site](https://edsabode.dev/VaultedVulkan/)
 (Documentation is updated usually with implementation or if not during refactoring periods)
 
 ## Benefits:

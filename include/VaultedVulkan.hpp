@@ -50,7 +50,7 @@ A vulkan wrapper.
 
 https://github.com/Ed94/VaultedThermals
 
-Documentation can be found here: http://edsdigitalabode.com/VaultedThermals/index.html
+Documentation can be found here: http://edsdigitalabode.com/VaultedVulkan/index.html
 (Documentation is updated usually with implementation or if not during refactoring periods)
 
 ## Benefits:
@@ -72,7 +72,7 @@ After that is done, this will be publicly released with some sort of open source
 
 ## Guides
 
-Head on over to https://github.com/Ed94/VaultedThermals/tree/master/guides to get started.
+Head on over to https://github.com/Ed94/VaultedVulkan/tree/master/guides to get started.
 */
 
 
