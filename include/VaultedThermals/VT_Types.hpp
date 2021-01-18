@@ -38,7 +38,7 @@ namespace VaultedThermals
 
 	namespace Corridors
 	{
-		using V0::Bitmask;
+		using V0::Bitfield;
 
 		/** 
 		@addtogroup Corridors
@@ -216,37 +216,37 @@ namespace VaultedThermals
 		/**
 		 * @ingroup APISpec_Synchronization_and_Cache_Control @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
 		 */
-		using AccessFlags = Bitmask<EAccessFlag, VkAccessFlags>;
+		using AccessFlags = Bitfield<EAccessFlag, VkAccessFlags>;
 
 		/**
 		 * @ingroup APISpec_The_Framebuffer @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorComponentFlags">Specification</a>
 		 */
-		using ColorComponentFlags = Bitmask<EColorComponentFlag, VkColorComponentFlags>;
+		using ColorComponentFlags = Bitfield<EColorComponentFlag, VkColorComponentFlags>;
 
 		/**
 		 * @ingroup APISpec_Synchronization_and_Cache_Control @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlags">Specification</a> 
 		 */
-		using DependencyFlags = Bitmask<EDependencyFlag, VkDependencyFlags>;
+		using DependencyFlags = Bitfield<EDependencyFlag, VkDependencyFlags>;
 
 		/**
 		 * @ingroup APISpec_Synchronization_and_Cache_Control @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlags">Specification</a> 
 		 */
-		using FenceImportFlags = Bitmask<EFenceImportFlag, VkFenceImportFlags>;
+		using FenceImportFlags = Bitfield<EFenceImportFlag, VkFenceImportFlags>;
 
 		/**
 		 * @ingroup APISpec_Formats @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFormatFeatureFlags">Specification</a> 
 		 */
-		using FormatFeatureFlags = Bitmask<EFormatFeatureFlag, VkFormatFeatureFlags>;
+		using FormatFeatureFlags = Bitfield<EFormatFeatureFlag, VkFormatFeatureFlags>;
 
 		/**
 		 * @ingroup APISpec_Render_Pass @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResolveModeFlags">Specification</a>
 		 */
-		using ResolveModeFlags = Bitmask<EResolveModeFlags, VkResolveModeFlags>;
+		using ResolveModeFlags = Bitfield<EResolveModeFlags, VkResolveModeFlags>;
 
 		/**
 		* @ingroup APISpec_Limits @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleCountFlags">Specification</a> 
 		*/
-		using SampleCountFlags = Bitmask<ESampleCount, VkSampleCountFlags>;
+		using SampleCountFlags = Bitfield<ESampleCount, VkSampleCountFlags>;
 
 		/**
 		@}
@@ -494,6 +494,8 @@ namespace VaultedThermals
 	namespace SPIR_V
 	{
 		using Bytecode = Corridors::ui32;   ///< Word size of a SPIR-V instruction.
+
+		using Bytecode_Buffer = V0::DynamicArray<Bytecode>;
 	}
 
 }

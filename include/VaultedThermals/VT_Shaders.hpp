@@ -69,7 +69,7 @@ namespace VaultedThermals
 			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a> 
 			@ingroup APISpec_Shaders 
 			*/
-			using CreateFlags = Bitmask<EUndefined, Flags>;
+			using CreateFlags = Bitfield<EUndefined, Flags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderModuleCreateInfo">Specification</a> @ingroup APISpec_Shaders */
 			struct CreateInfo : V0::VKStruct_Base<VkShaderModuleCreateInfo, EStructureType::ShaderModule_CreateInfo>

@@ -65,13 +65,13 @@ namespace VaultedThermals
 			using EBufferLevel = ECommandBufferLevel;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryControlFlags">Specification</a> @ingroup APISpec_Queries */
-			using QueryControlFlags           = Bitmask<EQueryControlFlags         , VkQueryControlFlags          >;
+			using QueryControlFlags           = Bitfield<EQueryControlFlags         , VkQueryControlFlags          >;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlags">Specification</a> @ingroup APISpec_Queries */
-			using QueryPipelineStatisticFlags = Bitmask<EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags>;
+			using QueryPipelineStatisticFlags = Bitfield<EQueryPipelineStatisticFlag, VkQueryPipelineStatisticFlags>;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlags">Specification</a> @ingroup APISpec_Command_Buffers */
-			using ResetFlags                  = Bitmask<ECommandBufferResetFlag    , VkCommandBufferResetFlags    >;
+			using ResetFlags                  = Bitfield<ECommandBufferResetFlag    , VkCommandBufferResetFlags    >;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferUsageFlags">Specification</a> @ingroup APISpec_Command_Buffers */
-			using UsageFlags                  = Bitmask<ECommandBufferUsageFlag    , VkCommandBufferUsageFlags    >;
+			using UsageFlags                  = Bitfield<ECommandBufferUsageFlag    , VkCommandBufferUsageFlags    >;
 
 
 			/** 
@@ -528,10 +528,48 @@ namespace VaultedThermals
 			}
 
 			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a>
-			 * 
-			 * @ingroup APISpec_Synchronization_and_Cache_Control
-			 */
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetDeviceMask">Specification</a> 
+			* 
+			* @ingroup APISpec_Command_Buffers
+			*/
+			static void SetDeviceMask(Handle _commandBuffer, ui32 _deviceMask)
+			{
+				vkCmdSetDeviceMask(_commandBuffer, _deviceMask);
+			}
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a>
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
+			*/
+			static void SetEvent(Handle _commandBuffer, Event::Handle _event, Pipeline::StageFlags _stageMask)
+			{
+				vkCmdSetEvent(_commandBuffer, _event, _stageMask);
+			}
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetScissor">Specification</a>
+			*/
+			static void SetScissor(Handle _commandBuffer, ui32 _firstScissor, ui32 _scissorCount, const Rect2D* _scissors)
+			{
+				vkCmdSetScissor(_commandBuffer, _firstScissor, _scissorCount, *_scissors);
+			}
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetViewport">Specification</a>
+			* 
+			* @ingroup APISpec_Fixed-Function_Vertex_Post-Processing
+			*/
+			static void SetViewport(Handle _commandBuffer, ui32 _firstViewport, ui32 _viewportCount, const Viewport* _viewports)
+			{
+				vkCmdSetViewport(_commandBuffer, _firstViewport, _viewportCount, *_viewports);
+			}
+
+			/**
+			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdPipelineBarrier">Specification</a>
+			* 
+			* @ingroup APISpec_Synchronization_and_Cache_Control
+			*/
 			static void SubmitPipelineBarrier
 			(
 				      Handle                  _commandBuffer           ,
@@ -559,26 +597,6 @@ namespace VaultedThermals
 					_imageMemoryBarrierCount ,
 					*_imageMemoryBarriers
 				);
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetDeviceMask">Specification</a> 
-			 * 
-			 * @ingroup APISpec_Command_Buffers
-			 */
-			static void SetDeviceMask(Handle _commandBuffer, ui32 _deviceMask)
-			{
-				vkCmdSetDeviceMask(_commandBuffer, _deviceMask);
-			}
-
-			/**
-			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCmdSetEvent">Specification</a>
-			 * 
-			 * @ingroup APISpec_Synchronization_and_Cache_Control
-			 */
-			static void SetEvent(Handle _commandBuffer, Event::Handle _event, Pipeline::StageFlags _stageMask)
-			{
-				vkCmdSetEvent(_commandBuffer, _event, _stageMask);
 			}
 
 			/**
@@ -637,11 +655,11 @@ namespace VaultedThermals
 			using Handle = VkCommandPool;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlags">Specification</a> @ingroup APISpec_Command_Buffers */
-			using CreateFlgas = Bitmask<ECommandPoolCreateFlag, VkCommandPoolCreateFlags>;
+			using CreateFlgas = Bitfield<ECommandPoolCreateFlag, VkCommandPoolCreateFlags>;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlags">Specification</a> @ingroup APISpec_Command_Buffers */
-			using ResetFlags  = Bitmask<ECommandPoolResetFlags, VkCommandPoolResetFlags >;
+			using ResetFlags  = Bitfield<ECommandPoolResetFlags, VkCommandPoolResetFlags >;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolTrimFlags">Specification</a> @ingroup APISpec_Command_Buffers */
-			using TrimFlags   = Bitmask<EUndefined            , VkCommandPoolTrimFlags  >;
+			using TrimFlags   = Bitfield<EUndefined            , VkCommandPoolTrimFlags  >;
 
 			/**
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferAllocateInfo">Specification</a> 
@@ -936,6 +954,22 @@ namespace VaultedThermals
 
 			using Parent::CopyBuffer;
 
+			/** @brief Set scissor rectangles dynamically. (Single scissor) */
+			static void SetScissor(Handle _commandBuffer, const Rect2D& _scissors)
+			{
+				Parent::SetScissor(_commandBuffer, 0, 1, &_scissors);
+			}
+
+			using Parent::SetScissor;
+
+			/** @brief Set viewport transformation parameters dynamically. (Single viewport) */
+			static void SetViewport(Handle _commandBuffer, const Viewport& _viewport)
+			{
+				Parent::SetViewport(_commandBuffer, 0, 1, &_viewport);
+			}
+
+			using Parent::SetViewport;
+
 			/**
 			@brief A version of SubmitPipelineBarrier where only a set of regular memory barriers are submitted.
 			*/
@@ -1222,7 +1256,9 @@ namespace VaultedThermals
 			*/
 			void BindVertexBuffers(ui32 _firstBinding, ui32 _bindingCount, const Buffer::Handle* _buffers) const
 			{
-				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, 0);
+				unbound DeviceSize offsets[] = {0};
+
+				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, offsets);
 			}
 
 			/**
@@ -1328,6 +1364,62 @@ namespace VaultedThermals
 				Parent::ResetEvent(handle, _event, _stageMask);
 			}
 
+			/**
+			@brief Update the current device bitfield of a command buffer.
+			*/
+			void SetDeviceMask(ui32 _deviceMask) const
+			{
+				Parent::SetDeviceMask(handle, _deviceMask);
+			}
+
+			/**
+			@brief Set the state of an event to signaled from a device.
+			*/
+			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
+			{
+				Parent::SetEvent(handle, _event, _stageMask);
+			}
+
+			/** @brief Set scissor rectangles dynamically. */
+			void SetScissor(ui32 _firstScissor, ui32 _scissorCount, const Rect2D* _scissors) const
+			{
+				Parent::SetScissor(handle, _firstScissor, _scissorCount, _scissors);
+			}
+
+			/** @brief Set scissor rectangles dynamically. */
+			void SetScissor(const DynamicArray<Rect2D>& _scissors) const
+			{
+				Parent::SetScissor(handle, 0, static_cast<ui32>(_scissors.size()), _scissors.data());
+			}
+
+			/** @brief Set scissor rectangles dynamically. (Single scissor) */
+			void SetScissor(const Rect2D& _scissor) const
+			{
+				Parent::SetScissor(handle, _scissor);
+			}
+
+			/** @brief Set viewport transformation parameters dynamically. */
+			void SetViewport(ui32 _firstViewport, ui32 _viewportCount, const Viewport* _viewports) const
+			{
+				Parent::SetViewport(handle, _firstViewport, _viewportCount, _viewports);
+			}
+
+			/** 
+			@brief Set viewport transformation parameters dynamically. 
+			*/
+			void SetViewport(const DynamicArray<Viewport>& _viewports) const
+			{
+				Parent::SetViewport(handle, 0, static_cast<ui32>(_viewports.size()), _viewports.data());
+			}
+
+			/** 
+			@brief Set viewport transformation parameters dynamically. (Single viewport) 
+			*/
+			void SetViewport(const Viewport& _viewport) const
+			{
+				Parent::SetViewport(handle, _viewport);
+			}
+
 		#pragma region SubmitPipelineBarrier_OO
 
 			/**
@@ -1431,22 +1523,6 @@ namespace VaultedThermals
 			}
 
 		#pragma endregion SubmitPipelineBarrier_OO
-
-			/**
-			@brief Update the current device mask of a command buffer.
-			*/
-			void SetDeviceMask(ui32 _deviceMask) const
-			{
-				Parent::SetDeviceMask(handle, _deviceMask);
-			}
-
-			/**
-			@brief Set the state of an event to signaled from a device.
-			*/
-			void SetEvent(Event& _event, Pipeline::StageFlags _stageMask) const
-			{
-				Parent::SetEvent(handle, _event, _stageMask);
-			}
 
 		#pragma region WaitForEvents_OO
 

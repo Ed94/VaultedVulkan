@@ -60,10 +60,10 @@ namespace VaultedThermals
 			using Handle = VkPipeline;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a> @ingroup APISpec_Pipelines */
-			using ShaderStageFlags = Bitmask<EShaderStageFlag, VkShaderStageFlags>;
+			using ShaderStageFlags = Bitfield<EShaderStageFlag, VkShaderStageFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-			using StageFlags = Bitmask<EPipelineStageFlag, VkPipelineStageFlags>;
+			using StageFlags = Bitfield<EPipelineStageFlag, VkPipelineStageFlags>;
 
 			/**
 			 * @brief Pipeline cache objects allow the result of pipeline construction to be reused between pipelines and between runs of an application. 
@@ -84,7 +84,7 @@ namespace VaultedThermals
 				using Handle = VkPipelineCache;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateFlags">Specification</a> @ingroup APISpec_Pipelines  */
-				using CreateFlags = Bitmask<EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags>;
+				using CreateFlags = Bitfield<EPipelineCacheCreateFlag, VkPipelineCacheCreateFlags>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCacheCreateInfo">Specification</a> @ingroup APISpec_Pipelines */
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineCacheCreateInfo, EStructureType::Pipeline_Cache_CreateInfo>
@@ -115,7 +115,7 @@ namespace VaultedThermals
 					      LogicalDevice::Handle        _deviceHandle ,
 					const CreateInfo&                  _createInfo   ,
 					const Memory::AllocationCallbacks* _allocator    ,
-					      Cache::Handle&               _pipelineCache
+					      Cache::Handle                _pipelineCache
 				)
 				{
 					return EResult(vkCreatePipelineCache(_deviceHandle, _createInfo, *_allocator, &_pipelineCache));
@@ -178,7 +178,7 @@ namespace VaultedThermals
 					ColorComponentFlags ColorWriteMask              ;
 				};
 
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
 				/**
 				@ingroup APISpec_The_Framebuffer
@@ -211,7 +211,7 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateFlags">Specification</a> 
 				@ingroup APISpec_Fragment_Operations
 				*/
-				using CreateFlags = Bitmask<EUndefined, VkPipelineDepthStencilStateCreateFlags>;
+				using CreateFlags = Bitfield<EUndefined, VkPipelineDepthStencilStateCreateFlags>;
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDepthStencilStateCreateInfo">Specification</a>  
@@ -243,7 +243,7 @@ namespace VaultedThermals
 			*/
 			struct DynamicState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineDynamicStateCreateInfo">Specification</a>  
@@ -269,7 +269,7 @@ namespace VaultedThermals
 			*/
 			struct InputAssemblyState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a>  
@@ -347,7 +347,7 @@ namespace VaultedThermals
 						@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlags">Specification</a> 
 						@ingroup APISpec_Resource_Descriptors 
 						*/
-						using CreateFlags = Bitmask<EDescriptorBindingFlag ,VkDescriptorBindingFlags>;
+						using CreateFlags = Bitfield<EDescriptorBindingFlag ,VkDescriptorBindingFlags>;
 
 						/** 
 						@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutBindingFlagsCreateInfo">Specification</a> 
@@ -366,7 +366,7 @@ namespace VaultedThermals
 					@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateFlags">Specification</a>  
 					@ingroup APISpec_Resource_Descriptors
 					*/
-					using CreateFlags = Bitmask<EDescriptorSetLayoutCreateFlag, VkDescriptorSetLayoutCreateFlags>;
+					using CreateFlags = Bitfield<EDescriptorSetLayoutCreateFlag, VkDescriptorSetLayoutCreateFlags>;
 
 					/** 
 					@brief Information about the descriptor set layout.
@@ -460,14 +460,14 @@ namespace VaultedThermals
 					 * \param _createInfo
 					 * \param _support
 					 */
-					static void GetSupport(LogicalDevice::Handle _deviceHandle, CreateInfo& _createInfo, Support& _support)
+					static void GetSupport(LogicalDevice::Handle _deviceHandle, const CreateInfo& _createInfo, Support& _support)
 					{
 						vkGetDescriptorSetLayoutSupport(_deviceHandle, _createInfo, _support);
 					}
 				};
 
 
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< @brief Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< @brief Reserved for future use.
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineLayoutCreateInfo">Specification</a>  
@@ -478,7 +478,7 @@ namespace VaultedThermals
 					      EType                  SType                  = STypeEnum;
 					const void*                  Next                   = nullptr  ;
 					      CreateFlags            Flags                 ;
-					      ui32                   SetLayoutCount        ;
+					      ui32                   SetLayoutCount         = 0        ;
 					const DescriptorSet::Handle* SetLayouts             = nullptr  ;
 					      ui32                   PushConstantRangeCount = 0        ;
 					const PushConstantRange*     PushConstantRanges     = nullptr  ;
@@ -538,7 +538,7 @@ namespace VaultedThermals
 			*/
 			struct MultiSampleState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< Reserved for future use.
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSampleMask">Specification</a>  
@@ -571,13 +571,13 @@ namespace VaultedThermals
 			*/
 			struct RasterizationState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< Reserved for future use.
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCullModeFlags">Specification</a>  
 				@ingroup APISpec_Rasterization
 				*/
-				using CullModeFlags = Bitmask<ECullModeFlag, VkCullModeFlags>;
+				using CullModeFlags = Bitfield<ECullModeFlag, VkCullModeFlags>;
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineRasterizationStateCreateInfo">Specification</a>  
@@ -649,7 +649,7 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderStageFlags">Specification</a>  
 				@ingroup APISpec_Pipelines
 				*/
-				using CreateFlags = Bitmask<EPipelineShaderStageCreateFlag, VkShaderStageFlags>;
+				using CreateFlags = Bitfield<EPipelineShaderStageCreateFlag, VkShaderStageFlags>;
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateInfo">Specification</a>  
@@ -662,7 +662,7 @@ namespace VaultedThermals
 					      CreateFlags           Flags         ;
 					      EShaderStageFlag      Stage         ;
 					      ShaderModule::Handle  Module        ;
-					      RoCStr                Name          ;
+					      RoCStr                Name           = "main"   ;
 					const Specialization::Info* Specialization = nullptr  ;
 				};
 			};
@@ -684,7 +684,7 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateFlags">Specification</a>  
 				@ingroup APISpec_Tessellation
 				*/
-				using CreateFlags = Bitmask<EUndefined, VkPipelineTessellationStateCreateFlags>;
+				using CreateFlags = Bitfield<EUndefined, VkPipelineTessellationStateCreateFlags>;
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineTessellationStateCreateInfo">Specification</a>  
@@ -705,7 +705,7 @@ namespace VaultedThermals
 			 */
 			struct VertexInputState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< Reserved for future.
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkVertexInputAttributeDescription">Specification</a>  
@@ -736,13 +736,13 @@ namespace VaultedThermals
 				*/
 				struct CreateInfo : V0::VKStruct_Base<VkPipelineVertexInputStateCreateInfo, EStructureType::Pipeline_VertexInputState_CreateInfo>
 				{
-					      EType                 SType                         = STypeEnum;
-					const void*                 Next                          = nullptr  ;
-					      CreateFlags           Flags                        ;
-					      ui32                  VertexBindingDescriptionCount = 0        ;
-					const BindingDescription*   BindingDescriptions           = nullptr  ;
-					      ui32                  AttributeDescriptionCount     = 0        ;
-					const AttributeDescription* AttributeDescription          = nullptr  ;
+					      EType                 SType                     = STypeEnum;
+					const void*                 Next                      = nullptr  ;
+					      CreateFlags           Flags                     ;
+					      ui32                  BindingDescriptionCount   = 0        ;
+					const BindingDescription*   BindingDescriptions       = nullptr  ;
+					      ui32                  AttributeDescriptionCount = 0        ;
+					const AttributeDescription* AttributeDescriptions     = nullptr  ;
 				};
 			};
 
@@ -753,7 +753,7 @@ namespace VaultedThermals
 			*/
 			struct ViewportState
 			{
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< Reserved for future use.
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineViewportStateCreateInfo">Specification</a>  
@@ -785,7 +785,7 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a>  
 				@ingroup APISpec_Pipelines
 				*/
-				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
+				using CreateFlags = Bitfield<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkComputePipelineCreateInfo">Specification</a>  
@@ -845,7 +845,7 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlags">Specification</a>  
 				@ingroup APISpec_Pipelines
 				*/
-				using CreateFlags = Bitmask<EPipelineCreateFlag, VkPipelineCreateFlags>;
+				using CreateFlags = Bitfield<EPipelineCreateFlag, VkPipelineCreateFlags>;
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkGraphicsPipelineCreateInfo">Specification</a>  
@@ -1025,7 +1025,7 @@ namespace VaultedThermals
 				(
 					      LogicalDevice::Handle  _deviceHandle ,
 					const CreateInfo&            _createInfo   ,
-					      Cache::Handle&         _pipelineCache
+					      Cache::Handle          _pipelineCache
 				)
 				{
 					return Parent::Create(_deviceHandle, _createInfo, Memory::DefaultAllocator, _pipelineCache);
@@ -1466,44 +1466,67 @@ namespace VaultedThermals
 					/**
 					@brief Assign the create info.
 					*/
-					void Assign(const CreateInfo& _info)
+					/*void Assign(const CreateInfo& _info)
 					{
-						info = _info;
-
 						Parent::GetSupport(*device, info, support);
-					}
+					}*/
 
 					/**
 					@brief Assign the device and create info.
 					*/
-					void Assign(const LogicalDevice& _device, const CreateInfo& _info)
+					/*void Assign(const LogicalDevice& _device, const CreateInfo& _info)
 					{
-						device    = &_device                ;
-						info      = _info                   ;
+						device = &_device;
 
-						Parent::GetSupport(*device, info, support);
-					}
+						Parent::GetSupport(*device, _info, support);
+					}*/
 
 					/**
 					@brief Assign the logical device, create info, and allocator.
 					*/
-					void Assign(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
+					/*void Assign(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
 					{
 						device    = &_device   ;
-						info      = _info      ;
 						allocator = &_allocator;
 
 						Parent::GetSupport(*device, info, support);
+					}*/
+
+					/**
+					@brief Create the descriptor set layout.
+					*/
+					EResult Create(const CreateInfo& _info)
+					{
+						if (device == nullptr) return EResult::Not_Ready;
+
+						Parent::GetSupport(*device, _info, support);
+
+						return Parent::Create(*device, _info, allocator, handle);
 					}
 
 					/**
 					@brief Create the descriptor set layout.
 					*/
-					EResult Create()
+					EResult Create(const LogicalDevice& _device, const CreateInfo& _info)
 					{
-						if (device == nullptr) return EResult::Not_Ready;
+						device = &_device;
 
-						return Parent::Create(*device, info, allocator, handle);
+						Parent::GetSupport(*device, _info, support);
+
+						return Parent::Create(*device, _info, allocator, handle);
+					}
+
+					/**
+					@brief Create the descriptor set layout.
+					*/
+					EResult Create(const LogicalDevice& _device, const CreateInfo& _info, const Memory::AllocationCallbacks& _allocator)
+					{
+						device    = &_device   ;
+						allocator = &_allocator;
+
+						Parent::GetSupport(*device, _info, support);
+
+						return Parent::Create(*device, _info, allocator, handle);
 					}
 
 					/**
@@ -1582,8 +1605,6 @@ namespace VaultedThermals
 					Handle handle;
 
 					const Memory::AllocationCallbacks* allocator;
-
-					CreateInfo info;
 
 					const LogicalDevice* device;
 
@@ -2070,7 +2091,7 @@ namespace VaultedThermals
 			/**
 			@brief Create a graphics pipeline (logical device and cache specified).
 			*/
-			EResult Create(const LogicalDevice& _device, Cache& _cache, const CreateInfo& _info)
+			EResult Create(const LogicalDevice& _device, const Cache& _cache, const CreateInfo& _info)
 			{
 				device    = &_device;
 				cache     = &_cache ;

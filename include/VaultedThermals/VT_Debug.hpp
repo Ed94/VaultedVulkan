@@ -114,7 +114,7 @@ namespace VaultedThermals
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerEXT">Specification</a> @ingroup APISpec_Debugging */
 				using Handle = VkDebugUtilsMessengerEXT;
 
-				using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, Flags>;   ///< Reserved for future use.
 
 				using EServerity   = EDebugUtils_MessageSeverity;
 				using EMessageType = EDebugUtils_MessageType    ;
@@ -143,18 +143,18 @@ namespace VaultedThermals
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a>  
 				@ingroup APISpec_Debugging 
 				*/
-				using ServerityFlags = Bitmask<EServerity, VkDebugUtilsMessageSeverityFlagsEXT>;
+				using ServerityFlags = Bitfield<EServerity, VkDebugUtilsMessageSeverityFlagsEXT>;
 
 				/** 
 				@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagsEXT">Specification</a>  
 				@ingorup APISpec_Debugging 
 				*/
-				using TypeFlags = Bitmask<EMessageType, VkDebugUtilsMessageTypeFlagsEXT>;
+				using TypeFlags = Bitfield<EMessageType, VkDebugUtilsMessageTypeFlagsEXT>;
 
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessengerCallbackDataEXT">Specification</a> @ingroup APISpec_Debugging */
 				struct CallbackData : V0::VKStruct_Base<VkDebugUtilsMessengerCallbackDataEXT, EStructureType::DebugUtils_MessengerCallback_Data_EXT>
 				{
-					using FlagsMask = Bitmask<EUndefined, Flags>;
+					using FlagsMask = Bitfield<EUndefined, Flags>;
 
 						  EType       SType                = STypeEnum;
 					const void*       Next                 = nullptr  ;

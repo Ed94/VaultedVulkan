@@ -71,10 +71,10 @@ namespace VaultedThermals
 			using ECreateFlag = EBufferCreateFlag;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
-			using CreateFlags = Bitmask<EBufferCreateFlag, VkBufferCreateFlags>;
+			using CreateFlags = Bitfield<EBufferCreateFlag, VkBufferCreateFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferUsageFlags">Specification</a> @ingroup APISpec_Resource_Creation */
-			using UsageFlags = Bitmask<EBufferUsage, VkBufferUsageFlags>;
+			using UsageFlags = Bitfield<EBufferUsage, VkBufferUsageFlags>;
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferCreateInfo">Specification</a>
@@ -218,7 +218,7 @@ namespace VaultedThermals
 			using Handle = VkBufferView;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferViewCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
-			using CreateFlags = Bitmask<EUndefined, VkBufferViewCreateFlags>;
+			using CreateFlags = Bitfield<EUndefined, VkBufferViewCreateFlags>;
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateInfo.html">Specification</a> 
@@ -289,19 +289,19 @@ namespace VaultedThermals
 			using Handle = VkImage;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageAspectFlags">Specification</a> @ingroup APISpec_Resource_Creation */
-			using AspectFlags = Bitmask<EImageAspect, VkImageAspectFlags>;
+			using AspectFlags = Bitfield<EImageAspect, VkImageAspectFlags>;
 
 			using ECreateFlag = EImageCreateFlag;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
-			using CreateFlags = Bitmask<EImageCreateFlag, VkImageCreateFlags>;
+			using CreateFlags = Bitfield<EImageCreateFlag, VkImageCreateFlags>;
 
 			using ETiling = EImageTiling;
 
 			using EUsage = EImageUsage;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageUsageFlags">Specification</a> @ingroup APISpec_Resource_Creation */
-			using UsageFlags = Bitmask<EImageUsage, VkImageUsageFlags>;   ///< Bitmask specifying intended usage of an image.
+			using UsageFlags = Bitfield<EImageUsage, VkImageUsageFlags>;   ///< Bitfield specifying intended usage of an image.
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateInfo">Specification</a> @ingroup APISpec_Resource_Creation */
 			struct CreateInfo : V0::VKStruct_Base<VkImageCreateInfo, EStructureType::Image_CreateInfo>
@@ -464,7 +464,7 @@ namespace VaultedThermals
 			using EViewType = EImageViewType;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlags">Specification</a> @ingroup APISpec_Resource_Creation */
-			using CreateFlags = Bitmask<EImageViewCreateFlag, VkImageViewCreateFlags>;
+			using CreateFlags = Bitfield<EImageViewCreateFlag, VkImageViewCreateFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateInfo">Specification</a> @ingroup APISpec_Resource_Creation */
 			struct CreateInfo : V0::VKStruct_Base<VkImageViewCreateInfo, EStructureType::ImageView_CreateInfo>
@@ -624,10 +624,10 @@ namespace VaultedThermals
 			using Handle = VkDescriptorPool;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlags">Specification</a> @ingroup APISpec_Resource_Descriptors */
-			using CreateFlags = Bitmask<EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags>;
+			using CreateFlags = Bitfield<EDescriptorPoolCreateFlag, VkDescriptorPoolCreateFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolResetFlags">Specification</a> @ingroup APISpec_Resource_Descriptors */
-			using ResetFlags = Bitmask<EUndefined, VkDescriptorPoolResetFlags>;
+			using ResetFlags = Bitfield<EUndefined, VkDescriptorPoolResetFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetAllocateInfo">Specification</a> @ingroup APISpec_Resource_Descriptors */
 			struct AllocateInfo : V0::VKStruct_Base<VkDescriptorSetAllocateInfo, EStructureType::Descriptor_SetAllocateInfo>

@@ -69,7 +69,7 @@ namespace VaultedThermals
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlags">Specification</a>  
 			@ingroup APISpec_Render_Pass
 			*/
-			using CreateFlags = Bitmask<EFrameBufferCreateFlag, VkFramebufferCreateFlags>;
+			using CreateFlags = Bitfield<EFrameBufferCreateFlag, VkFramebufferCreateFlags>;
 
 			/** 
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateInfo">Specification</a>  
@@ -146,11 +146,11 @@ namespace VaultedThermals
 			using Handle = VkRenderPass;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescriptionFlags">Specification</a> @ingroup APISpec_Render_Pass */
-			using AttachmentDescriptionFlags = Bitmask<EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags>;
+			using AttachmentDescriptionFlags = Bitfield<EAttachmentDescriptionFlag, VkAttachmentDescriptionFlags>;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlags">Specification</a> @ingroup APISpec_Render_Pass */
-			using SubpassDesriptionFlags     = Bitmask<ESubpassDescriptionFlag   , VkSubpassDescriptionFlags   >;
+			using SubpassDesriptionFlags     = Bitfield<ESubpassDescriptionFlag   , VkSubpassDescriptionFlags   >;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkRenderPassCreateFlags">Specification</a> @ingroup APISpec_Render_Pass */
-			using CreateFlags                = Bitmask<EUndefined                , VkRenderPassCreateFlags     >;
+			using CreateFlags                = Bitfield<EUndefined                , VkRenderPassCreateFlags     >;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentDescription">Specification</a> @ingroup APISpec_Render_Pass */
 			struct AttachmentDescription : V0::VKStruct_Base<VkAttachmentDescription>

@@ -70,9 +70,9 @@ namespace VaultedThermals
 			using ETransform = ESurfaceTransformFlag;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
-			using ETransformFlags     = Bitmask<ESurfaceTransformFlag, VkSurfaceTransformFlagsKHR>;
+			using ETransformFlags     = Bitfield<ESurfaceTransformFlag, VkSurfaceTransformFlagsKHR>;
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
-			using CompositeAlphaFlags = Bitmask<ECompositeAlpha      , VkCompositeAlphaFlagsKHR  >;
+			using CompositeAlphaFlags = Bitfield<ECompositeAlpha      , VkCompositeAlphaFlagsKHR  >;
 
 			/**
 			 * @brief Structure describing capabilities of a surface.
@@ -159,7 +159,7 @@ namespace VaultedThermals
 			*/
 			struct CreateInfo : V0::VKStruct_Base<VkWin32SurfaceCreateInfoKHR, EStructureType::Win32_Surface_CreateInfo_KHR>
 			{
-				using CreateFlags = Bitmask<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
+				using CreateFlags = Bitfield<EUndefined, VkWin32SurfaceCreateFlagsKHR>;   ///< Reserved for future use.
 
 				      EType           SType       = STypeEnum        ;
 				const void*           Next        = nullptr          ;

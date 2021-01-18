@@ -99,7 +99,7 @@ namespace VaultedThermals
 			 
 			@details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInstanceCreateFlags">Specification</a>
 			 */
-			using CreateFlags = Bitmask<EUndefined, VkInstanceCreateFlags>;
+			using CreateFlags = Bitfield<EUndefined, VkInstanceCreateFlags>;
 
 			/**
 			@ingroup APISpec_Initialization

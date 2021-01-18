@@ -325,7 +325,7 @@ namespace VaultedThermals
 				      UUID                       CounterUUID;
 
 
-				using DescriptionFlags = Bitmask<EPerformanceCounterDescriptionFlag, VkPerformanceCounterDescriptionFlagsKHR>;
+				using DescriptionFlags = Bitfield<EPerformanceCounterDescriptionFlag, VkPerformanceCounterDescriptionFlagsKHR>;
 
 				/**
 				* @details
@@ -434,7 +434,7 @@ namespace VaultedThermals
 				*/
 				struct Vulkan11 : V0::VKStruct_Base<VkPhysicalDeviceVulkan11Properties, EStructureType::PhysicalDevice_Vulkan_1_1_Properties>
 				{
-					using ShaderStageFlags = Bitmask<EShaderStageFlag, VkShaderStageFlags>;
+					using ShaderStageFlags = Bitfield<EShaderStageFlag, VkShaderStageFlags>;
 
 					EType                  SType                             = STypeEnum;
 					void*                  Next                              = nullptr  ;
@@ -549,11 +549,11 @@ namespace VaultedThermals
 			struct QueueFamilyProperties : V0::VKStruct_Base<VkQueueFamilyProperties>
 			{
 				/**
-				* @brief Bitmask specifying capabilities of queues in a queue family.     
+				* @brief Bitfield specifying capabilities of queues in a queue family.     
 				* 
 				* @details <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFlags">Specification</a> 
 				*/
-				using Flags = Bitmask<EQueueFlag , VkQueueFlags>;
+				using Flags = Bitfield<EQueueFlag , VkQueueFlags>;
 
 				Flags    QueueFlags                 ;
 				ui32     QueueCount                 ;
@@ -586,7 +586,7 @@ namespace VaultedThermals
 				*/
 				struct Checkpoint : V0::VKStruct_Base<VkQueueFamilyCheckpointPropertiesNV, EStructureType::QueueFamilyCheckpoint_Properties_NV>
 				{
-					using Pipeline_StageFlags = Bitmask<EPipelineStageFlag, VkPipelineStageFlags>;   ///< Not defined yet. (See VT_Pipelines.hpp)
+					using Pipeline_StageFlags = Bitfield<EPipelineStageFlag, VkPipelineStageFlags>;   ///< Not defined yet. (See VT_Pipelines.hpp)
 
 					EType               SType                        = STypeEnum;
 					void*               Next                         = nullptr  ;

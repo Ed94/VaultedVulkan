@@ -69,8 +69,9 @@ namespace VaultedThermals
 
 		// Data
 
-		using VoidPtr  = void*  ;
-		using PtrArray = void*[];
+		using VoidPtr   =       void*  ;
+		using RoVoidPtr = const void*  ;
+		using PtrArray  =       void*[];
 
 		// RawStrings
 

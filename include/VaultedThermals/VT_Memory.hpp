@@ -210,12 +210,12 @@ namespace VaultedThermals
 			 */
 			static void WriteToGPU
 			(
-				      LogicalDevice::Handle _device,
-				      Handle                _memory,
-				      DeviceSize            _offset,
-				      DeviceSize            _size  ,
-				      MapFlags              _flags ,
-				const VoidPtr&              _data
+				LogicalDevice::Handle _device,
+				Handle                _memory,
+				DeviceSize            _offset,
+				DeviceSize            _size  ,
+				MapFlags              _flags ,
+				RoVoidPtr&            _data
 			)
 			{
 				VoidPtr gpuAddressing;
@@ -351,7 +351,7 @@ namespace VaultedThermals
 			@brief Writes to GPU memory by mapping to device memory specified by a
 			handle and then using memcpy to copy data specified in _data.
 			*/
-			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, VoidPtr& _data) const
+			void WriteToGPU(DeviceSize _offset, DeviceSize _size, MapFlags _flags, RoVoidPtr& _data) const
 			{
 				Parent::WriteToGPU(*device, handle, _offset, _size, _flags, _data);
 			}

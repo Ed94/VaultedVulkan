@@ -55,17 +55,17 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeapFlags">Specification</a>
 			 */
-			using HeapFlags = Bitmask<EMemoryHeapFlag, VkMemoryHeapFlags>;
+			using HeapFlags = Bitfield<EMemoryHeapFlag, VkMemoryHeapFlags>;
 
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryMapFlags">Specification</a>
 			*/
-			using MapFlags = Bitmask<EUndefined, VkMemoryMapFlags>;
+			using MapFlags = Bitfield<EUndefined, VkMemoryMapFlags>;
 
 			/**
 			* @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryPropertyFlags">Specification</a> 
 			*/
-			using PropertyFlags = Bitmask<EMemoryPropertyFlag, VkMemoryPropertyFlags>;
+			using PropertyFlags = Bitfield<EMemoryPropertyFlag, VkMemoryPropertyFlags>;
 
 			/**
 			@brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a>  

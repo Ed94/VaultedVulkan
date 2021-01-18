@@ -222,7 +222,7 @@ namespace VaultedThermals
 		struct QueueMask
 		{
 			/**
-			@brief Ease of identification mask for identifying a asynchronous compute queue family.
+			@brief Ease of identification bitfield for identifying a asynchronous compute queue family.
 			*/
 			static constexpr ui32 ComputeAsync = 
 				ui32(EQueueFlag::Compute      ) |
@@ -230,7 +230,7 @@ namespace VaultedThermals
 				ui32(EQueueFlag::SparseBinding)  ;
 
 			/**
-			@brief Ease of identification mask for identifying a transfer only queue family.
+			@brief Ease of identification bitfield for identifying a transfer only queue family.
 			*/
 			static constexpr ui32 TransferOnly = ui32(EQueueFlag::Transfer) | ui32(EQueueFlag::SparseBinding);
 		};

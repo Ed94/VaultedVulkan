@@ -184,117 +184,117 @@ namespace VaultedThermals
 		/**
 		A wrapper object for bitmasks that allows for typesafe bitmask operations.
 		*/
-		class Bitmask
+		class Bitfield
 		{
 		private:
 			static_assert(Bitmaskable<EnumType>(), "EnumType must be of Bitmaskable type.");
 
-			using _ThisType = Bitmask<EnumType, BitmaskRepresentation>;
+			using _ThisType = Bitfield<EnumType, BitmaskRepresentation>;
 
 		public:
 
 			using Enum           = EnumType             ;
 			using Representation = BitmaskRepresentation;
 
-			Bitmask() : mask(0) {}
+			Bitfield() : bitfield(0) {}
 
-			Bitmask(Representation _mask) : mask(_mask)
+			Bitfield(Representation _mask) : bitfield(_mask)
 			{}
 
 			template<typename... BitTypes>
-			Bitmask(const BitTypes... _bits) : mask(0)
+			Bitfield(const BitTypes... _bits) : bitfield(0)
 			{
-				mask = (Representation(_bits) | ...);
+				bitfield = (Representation(_bits) | ...);
 			}
 
 			template<typename... BitType>
 			void Add(const BitType... _bits)
 			{
-				mask |= (Representation(_bits) | ...);
+				bitfield |= (Representation(_bits) | ...);
 			}
 
 			template<typename... BitType>
 			bool CheckForEither(const BitType... _bits) const
 			{
-				return (mask & (Representation(_bits) | ...)) != 0;
+				return (bitfield & (Representation(_bits) | ...)) != 0;
 			}
 
 			template<typename... BitType>
 			void Clear(const BitType... _bits)
 			{
-				if (mask <= 0) return;
+				if (bitfield <= 0) return;
 
-				mask &= ~(Representation(_bits) | ...);
+				bitfield &= ~(Representation(_bits) | ...);
 			}
 
 			bool HasFlag(const Enum _bit) const
 			{
-				return (mask & Representation(_bit)) == Representation(_bit);
+				return (bitfield & Representation(_bit)) == Representation(_bit);
 			}
 
 			template<typename... BitType>
 			bool HasExactly(const BitType... _bits) const
 			{
-				return (mask & (Representation(_bits) | ...)) == mask;
+				return (bitfield & (Representation(_bits) | ...)) == bitfield;
 			}
 
-			bool HasAnyFlag() const { return mask != 0 ? true : false; }
-			bool IsZero    () const { return mask == 0 ? true : false; }	
+			bool HasAnyFlag() const { return bitfield != 0 ? true : false; }
+			bool IsZero    () const { return bitfield == 0 ? true : false; }	
 
-			void Reset() { mask = 0; }
+			void Reset() { bitfield = 0; }
 
 			template<typename... BitType>
 			void Set(const BitType... _bits)
 			{
-				mask = (Representation(_bits) | ...);
+				bitfield = (Representation(_bits) | ...);
 			}
 
 			template<typename... BitType>
 			void Toggle(const BitType... _bits)
 			{
-				mask ^= (Representation(_bits) | ...);
+				bitfield ^= (Representation(_bits) | ...);
 			}
 
-			operator Representation() const { return mask; }
+			operator Representation() const { return bitfield; }
 
-			_ThisType& operator= (const Representation _mask ) { mask = _mask      ; return *this; }
-			_ThisType& operator= (const _ThisType      _other) { mask = _other.mask; return *this; }
+			_ThisType& operator= (const Representation _mask ) { bitfield = _mask      ; return *this; }
+			_ThisType& operator= (const _ThisType      _other) { bitfield = _other.bitfield; return *this; }
 
-			_ThisType& operator&= (const Representation _mask ) { mask &= mask       ; return *this; }
-			_ThisType& operator&= (const _ThisType      _other) { mask &= _other.mask; return *this; }
+			_ThisType& operator&= (const Representation _mask ) { bitfield &= bitfield       ; return *this; }
+			_ThisType& operator&= (const _ThisType      _other) { bitfield &= _other.bitfield; return *this; }
 
-			_ThisType& operator|= (const Representation _mask ) { mask |= mask       ; return *this; }
-			_ThisType& operator|= (const _ThisType      _other) { mask |= _other.mask; return *this; }	
+			_ThisType& operator|= (const Representation _mask ) { bitfield |= bitfield       ; return *this; }
+			_ThisType& operator|= (const _ThisType      _other) { bitfield |= _other.bitfield; return *this; }	
 
-			_ThisType& operator^= (const Representation _mask ) { mask ^= mask       ; return *this; }
-			_ThisType& operator^= (const _ThisType      _other) { mask ^= _other.mask; return *this; }	
+			_ThisType& operator^= (const Representation _mask ) { bitfield ^= bitfield       ; return *this; }
+			_ThisType& operator^= (const _ThisType      _other) { bitfield ^= _other.bitfield; return *this; }	
 
-			_ThisType& operator<<= (const Representation _mask ) { mask <<= mask       ; return *this; }
-			_ThisType& operator>>= (const _ThisType      _other) { mask >>= _other.mask; return *this; }	
+			_ThisType& operator<<= (const Representation _mask ) { bitfield <<= bitfield       ; return *this; }
+			_ThisType& operator>>= (const _ThisType      _other) { bitfield >>= _other.bitfield; return *this; }	
 
-			_ThisType operator~ () const { return ~mask; }
+			_ThisType operator~ () const { return ~bitfield; }
 
-			Representation operator& (const Representation _other) const { return mask & _other     ; }
-			_ThisType      operator& (const _ThisType      _other) const { return mask & _other.mask; }
+			Representation operator& (const Representation _other) const { return bitfield & _other     ; }
+			_ThisType      operator& (const _ThisType      _other) const { return bitfield & _other.bitfield; }
 
-			Representation operator| (const Representation _other) const { return mask | _other     ; }
-			_ThisType      operator| (const _ThisType      _other) const { return mask | _other.mask; }
+			Representation operator| (const Representation _other) const { return bitfield | _other     ; }
+			_ThisType      operator| (const _ThisType      _other) const { return bitfield | _other.bitfield; }
 
-			Representation operator^ (const Representation _other) const { return mask ^ _other     ; }
-			_ThisType      operator^ (const _ThisType      _other) const { return mask ^ _other.mask; }
+			Representation operator^ (const Representation _other) const { return bitfield ^ _other     ; }
+			_ThisType      operator^ (const _ThisType      _other) const { return bitfield ^ _other.bitfield; }
 
-			Representation operator<< (const Representation _other) const { return mask << _other     ; }
-			_ThisType      operator>> (const _ThisType      _other) const { return mask >> _other.mask; }
+			Representation operator<< (const Representation _other) const { return bitfield << _other     ; }
+			_ThisType      operator>> (const _ThisType      _other) const { return bitfield >> _other.bitfield; }
 
-			bool operator== (const Representation _other) const { return mask == _other     ; }
-			bool operator== (const _ThisType      _other) const { return mask == _other.mask; }
+			bool operator== (const Representation _other) const { return bitfield == _other     ; }
+			bool operator== (const _ThisType      _other) const { return bitfield == _other.bitfield; }
 
-			bool operator!= (const Representation _other) const { return mask != _other     ; }
-			bool operator!= (const _ThisType      _other) const { return mask != _other.mask; }
+			bool operator!= (const Representation _other) const { return bitfield != _other     ; }
+			bool operator!= (const _ThisType      _other) const { return bitfield != _other.bitfield; }
 
 		protected:
 
-			Representation mask;
+			Representation bitfield;
 		};
 
 		/** @} */

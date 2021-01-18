@@ -62,13 +62,13 @@ namespace VaultedThermals
 			using EExternalHandleType = EExternalSemaphoreHandleTypeFlag;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlags">Specification</a> @ingroup APISpec_Additional_Capabilities */
-			using ExternalHandleTypeFlags = Bitmask<EExternalHandleType, VkExternalSemaphoreHandleTypeFlags>;
+			using ExternalHandleTypeFlags = Bitfield<EExternalHandleType, VkExternalSemaphoreHandleTypeFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-			using ImportFlags = Bitmask<ESemaphoreImportFlag, VkSemaphoreImportFlags>;
+			using ImportFlags = Bitfield<ESemaphoreImportFlag, VkSemaphoreImportFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-			using WaitFlags = Bitmask<ESemaphoreWaitFlag, VkSemaphoreWaitFlags>;
+			using WaitFlags = Bitfield<ESemaphoreWaitFlag, VkSemaphoreWaitFlags>;
 		};
 
 		template<EOS> struct Fence_Maker    ;
@@ -440,7 +440,7 @@ namespace VaultedThermals
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEvent">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 			using Handle = VkEvent;
 
-			using CreateFlags = Bitmask<EUndefined, VkEventCreateFlags>;   ///< @brief Reserved for future use.
+			using CreateFlags = Bitfield<EUndefined, VkEventCreateFlags>;   ///< @brief Reserved for future use.
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkEventCreateInfo">Specification</a> @ingroup  APISpec_Synchronization_and_Cache_Control */
 			struct CreateInfo : V0::VKStruct_Base<VkEventCreateInfo, EStructureType::Event_CreateInfo>
@@ -558,10 +558,10 @@ namespace VaultedThermals
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control
 			 */
-			using CreateFlags = Bitmask<EFenceCreateFlag, VkFenceCreateFlags>;
+			using CreateFlags = Bitfield<EFenceCreateFlag, VkFenceCreateFlags>;
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlags">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
-			using ExternalHandleFlags = Bitmask<EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags>;
+			using ExternalHandleFlags = Bitfield<EExternalFenceHandleTypeFlag, VkExternalFenceHandleTypeFlags>;
 
 			/**
 			 * @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control
@@ -774,7 +774,7 @@ namespace VaultedThermals
 			 */
 			struct CreateInfo : V0::VKStruct_Base<VkSemaphoreCreateInfo, EStructureType::Semaphore_CreateInfo>
 			{
-				using CreateFlags = Bitmask<EUndefined, VkSemaphoreCreateFlags>;
+				using CreateFlags = Bitfield<EUndefined, VkSemaphoreCreateFlags>;
 
 				      EType       SType = STypeEnum;
 				const void*       Next  = nullptr  ;

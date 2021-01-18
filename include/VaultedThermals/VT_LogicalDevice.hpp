@@ -54,7 +54,7 @@ namespace VaultedThermals
 			*/
 			using Handle = VkDevice;
 
-			using CreateFlags = Bitmask<EUndefined, Flags>;   ///< Reserved for future use.
+			using CreateFlags = Bitfield<EUndefined, Flags>;   ///< Reserved for future use.
 
 			/**
 			@ingroup APISpec_Devices_and_Queues
@@ -67,7 +67,7 @@ namespace VaultedThermals
 			*/
 			struct DiagnosticsConfigCreateInfo : V0::VKStruct_Base<VkDeviceDiagnosticsConfigCreateInfoNV, EStructureType::DeviceDiagnosticsConfig_CreateInfo_NV>
 			{
-				using ConfigFlags = Bitmask<EDeviceDiagnosticConfigFlag, VkDeviceDiagnosticsConfigFlagsNV>;
+				using ConfigFlags = Bitfield<EDeviceDiagnosticConfigFlag, VkDeviceDiagnosticsConfigFlagsNV>;
 
 				      EType       SType = STypeEnum;
 				const void*       Next  = nullptr  ;
@@ -96,7 +96,7 @@ namespace VaultedThermals
 				using ECreateFlag = ELogicalDeviceQueueCreateFlag;
 
 				/** @ingroup APISpec_Devices_and_Queues @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a> */
-				using CreateFlags = Bitmask<ECreateFlag, VkDeviceQueueCreateFlags>;
+				using CreateFlags = Bitfield<ECreateFlag, VkDeviceQueueCreateFlags>;
 
 				/**
 				@ingroup APISpec_Window_System_Integration_WSI
@@ -223,7 +223,7 @@ namespace VaultedThermals
 			struct Queue2 : V0::VKStruct_Base<VkDeviceQueueInfo2, EStructureType::DeviceQueueInfo2>
 			{
 				/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlags">Specification</a> @ingroup APISpec_Devices_and_Queues */
-				using CreateFlags = Bitmask<EDeviceQueueCreateFlag ,VkDeviceQueueCreateFlags>;
+				using CreateFlags = Bitfield<EDeviceQueueCreateFlag ,VkDeviceQueueCreateFlags>;
 
 				      EType       SType            = STypeEnum;
 				const void*       Next             = nullptr  ;

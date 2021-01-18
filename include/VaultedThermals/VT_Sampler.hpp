@@ -53,7 +53,7 @@ namespace VaultedThermals
 			using Handle = VkSampler;
 
             /** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlags">Specification</a> @ingroup APISpec_Samplers */
-            using CreateFlags = Bitmask<ESamplerCreateFlag, VkSamplerCreateFlags>;
+            using CreateFlags = Bitfield<ESamplerCreateFlag, VkSamplerCreateFlags>;
 
             using EMipmapMode = ESamplerMipmapMode ; 
             using AddressMode = ESamplerAddressMode;
