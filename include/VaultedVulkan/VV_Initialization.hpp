@@ -53,7 +53,7 @@ namespace VaultedVulkan
 		@param _minor Minor version number.
 		@param _patch Patch version number.
 		*/
-		inline uI32 MakeVersion(uI32 _major, uI32 _minor, uI32 _patch)
+		inline u32 MakeVersion(u32 _major, u32 _minor, u32 _patch)
 		{
 			return VK_MAKE_VERSION(_major, _minor, _patch);
 		}

@@ -750,7 +750,7 @@ namespace VualtedVulkan
 				      ui32                  _fenceCount,
 				const Handle*               _fences    ,
 				      Bool                  _waitAll   ,
-				      uI64                  _timeout
+				      u64                  _timeout
 			)
 			{
 				return EResult(vkWaitForFences(_device, _fenceCount, _fences, _waitAll, _timeout));
@@ -797,7 +797,7 @@ namespace VualtedVulkan
 				      EType  SType     = STypeEnum;
 				const void*  Next      = nullptr  ;
 				      Handle Semaphore;
-				      uI64   Value    ;
+				      u64   Value    ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreTypeCreateInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -806,7 +806,7 @@ namespace VualtedVulkan
 				      EType  SType         = STypeEnum;
 				const void*  Next          = nullptr  ;
 				      Handle SemaphoreType;
-				      uI64   InitialValue ;
+				      u64   InitialValue ;
 			};
 
 			/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreWaitInfo">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -817,7 +817,7 @@ namespace VualtedVulkan
 				      WaitFlags Flags         ;
 				      ui32      SemaphoreCount;
 				const Handle*   Semaphores     = nullptr  ;
-				const uI64*     Values         = nullptr  ;
+				const u64*     Values         = nullptr  ;
 			};
 
 			/**
@@ -881,7 +881,7 @@ namespace VualtedVulkan
 			(
 				LogicalDevice::Handle _device   ,
 				Handle                _semaphore,
-				uI64&                 _value
+				u64&                 _value
 			)
 			{
 				return EResult(vkGetSemaphoreCounterValue(_device, _semaphore, &_value));
@@ -919,7 +919,7 @@ namespace VualtedVulkan
 			(
 				      LogicalDevice::Handle _device  ,
 				const WaitInfo&             _waitInfo,
-				      uI64                  _timeout
+				      u64                  _timeout
 			)
 			{
 				return EResult(vkWaitSemaphores(_device, _waitInfo, _timeout));
@@ -1464,7 +1464,7 @@ namespace VualtedVulkan
 			/**
 			@brief Wait for the fence to enter the signaled state on the host.
 			*/
-			EResult WaitFor(uI64 _timeout)
+			EResult WaitFor(u64 _timeout)
 			{
 				return Parent::WaitForFences(*device, 1, &handle, false, _timeout);
 			}
@@ -1472,7 +1472,7 @@ namespace VualtedVulkan
 			/**
 			@brief Wait for one or more fences to enter the signaled state on the host.
 			*/
-			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, uI64 _timeout)
+			static EResult WaitForFence(DynamicArray<Fence> _fences, bool _waitForAll, u64 _timeout)
 			{
 				auto device = _fences[0].GetDeviceHandle();
 
@@ -1638,7 +1638,7 @@ namespace VualtedVulkan
 			/**
 			@brief Query the current counter value of a semaphore created with a SemaphoreType of Timeline from the host.
 			*/
-			EResult GetCounterValue(uI64& _value)
+			EResult GetCounterValue(u64& _value)
 			{
 				return Parent::GetCounterValue(*device, handle, _value);
 			}
@@ -1670,7 +1670,7 @@ namespace VualtedVulkan
 			/**
 			@brief Wait for a set of semaphores created with a VkSemaphoreType of VK_SEMAPHORE_TYPE_TIMELINE to reach particular counter values on the host.
 			*/
-			EResult WaitFor(const WaitInfo& _info, uI64 _timeout)
+			EResult WaitFor(const WaitInfo& _info, u64 _timeout)
 			{
 				return Parent::WaitFor(*device, _info, _timeout);
 			}

@@ -88,7 +88,7 @@ namespace VaultedVulkan
 					  EType       SType  = STypeEnum;
 				const void*       Next   = nullptr  ;
 					  EObjectType Type  ;
-					  uI64        Handle;
+					  u64        Handle;
 				const char*       Name   = nullptr  ;
 			};
 

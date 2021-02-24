@@ -506,7 +506,7 @@ namespace VaultedVulkan
 				/**
 				@brief Default constructor.
 				*/
-				Queue() { assignment = EQueueFlag::VT_SpecifyBitmaskable; }
+				Queue() { assignment = EQueueFlag::VV_SpecifyBitmaskable; }
 
 				/**
 				@brief Performs an assignment on construction.
@@ -563,7 +563,7 @@ namespace VaultedVulkan
 				*/
 				bool FamilySpecified() const
 				{
-					return assignment != EQueueFlag::VT_SpecifyBitmaskable ? true : false;
+					return assignment != EQueueFlag::VV_SpecifyBitmaskable ? true : false;
 				}
 
 				/**

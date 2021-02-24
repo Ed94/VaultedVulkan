@@ -155,9 +155,9 @@ namespace VaultedVulkan
 
 		template<typename Enum>
 		/**
-		@brief Will be defined with a true_type when enum has the VT_SpecifyBitmaskable enum value.
+		@brief Will be defined with a true_type when enum has the VV_SpecifyBitmaskable enum value.
 		*/
-		struct IsBitmaskable<Enum, decltype(static_cast<void>(Enum::VT_SpecifyBitmaskable))> : std::is_enum<Enum>
+		struct IsBitmaskable<Enum, decltype(static_cast<void>(Enum::VV_SpecifyBitmaskable))> : std::is_enum<Enum>
 		{};
 
 		template <typename Enum>
@@ -167,7 +167,7 @@ namespace VaultedVulkan
 		constexpr typename std::enable_if<IsBitmaskable<Enum>::value, bool>::
 		type Bitmaskable() noexcept
 		{
-			return static_cast<std::size_t>(Enum::VT_SpecifyBitmaskable) > std::size_t(0) ? true : false;
+			return static_cast<std::size_t>(Enum::VV_SpecifyBitmaskable) > std::size_t(0) ? true : false;
 		}
 
 		template <typename Enum> 

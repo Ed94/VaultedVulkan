@@ -50,17 +50,17 @@ namespace VaultedVulkan
 
 		// Signed
 
-		using sI8  = signed           char;
-		using sI16 = signed short     int ;
-		using sI32 = signed long      int ;
-		using sI64 = signed long long int ;
+		using s8  = signed           char;
+		using s16 = signed short     int ;
+		using s32 = signed long      int ;
+		using s64 = signed long long int ;
 
 		// Unsigned
 
-		using uI8  = unsigned           char;
-		using uI16 = unsigned short     int ;
-		using uI32 = unsigned long      int ;
-		using uI64 = unsigned long long int ;
+		using u8  = unsigned           char;
+		using u16 = unsigned short     int ;
+		using u32 = unsigned long      int ;
+		using u64 = unsigned long long int ;
 
 		// Floats
 

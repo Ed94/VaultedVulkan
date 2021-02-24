@@ -130,7 +130,7 @@ namespace VaultedVulkan
 			(
 				LogicalDevice::Handle _device    ,
 				Handle                _swapchain ,
-				uI64                  _timeout   ,
+				u64                   _timeout   ,
 				Semaphore::Handle     _semaphore ,
 				Fence::Handle         _fence     ,
 				ui32&                 _imageIndex
@@ -335,7 +335,7 @@ namespace VaultedVulkan
 			*/
 			EResult AcquireNextImage
 			(
-				uI64                  _timeout   ,
+				u64                   _timeout   ,
 				Semaphore::Handle     _semaphore ,
 				Fence::Handle         _fence     ,
 				ui32&                 _imageIndex

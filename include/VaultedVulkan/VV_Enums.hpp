@@ -35,7 +35,7 @@ namespace VaultedVulkan
 		@enum Undefined Enum
 		@brief Necessary for Bitmasks in the Vulkan specification that are not defined but reserved for future use.
 		*/
-		enum class EUndefined : ui32 { VT_SpecifyBitmaskable = sizeof(ui32) };
+		enum class EUndefined : ui32 { VV_SpecifyBitmaskable = sizeof(ui32) };
 
 		/**
 		 * @enum Handle Enum
@@ -81,7 +81,7 @@ namespace VaultedVulkan
 			AccelerationStructure_Read_NV       = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV       ,   // Provided by VK_NV_ray_tracing
 			AccelerationStructure_Write_NV      = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV      ,   // Provided by VK_NV_ray_tracing
 
-			VT_SpecifyBitmaskable = VK_ACCESS_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_ACCESS_FLAG_BITS_MAX_ENUM
 		};
 
 		/**
@@ -102,7 +102,7 @@ namespace VaultedVulkan
 		{
 			AttachmentDescription_MAY_ALIAS = VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT,
 
-			VT_SpecifyBitmaskable = VK_ATTACHMENT_DESCRIPTION_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_ATTACHMENT_DESCRIPTION_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAttachmentLoadOp">Specification</a> @ingroup APISpec_Render_Pass */
@@ -247,7 +247,7 @@ namespace VaultedVulkan
 			DeviceAddressCaptureReplayExtension = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT,
 			DeviceAddressCaptureReplayKHR       = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR,
 
-			VT_SpecifyBitmaskable = VK_BUFFER_USAGE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_BUFFER_USAGE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkBufferUsageFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
@@ -263,7 +263,7 @@ namespace VaultedVulkan
 			VertexBuffer        = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT       ,
 			IndirectBuffer      = VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT     ,
 
-			VT_SpecifyBitmaskable = VK_BUFFER_USAGE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_BUFFER_USAGE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorComponentFlagBits">Specification</a> @ingroup APISpec_The_Framebuffer */
@@ -274,7 +274,7 @@ namespace VaultedVulkan
 			B = VK_COLOR_COMPONENT_B_BIT,
 			A = VK_COLOR_COMPONENT_A_BIT,
 
-			VT_SpecifyBitmaskable = VK_COLOR_COMPONENT_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_COLOR_COMPONENT_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorSpaceKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
@@ -308,11 +308,11 @@ namespace VaultedVulkan
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits ">Specification</a> @ingroup APISpec_Command_Buffers */
-		enum class ECommandBufferResetFlag : uI32
+		enum class ECommandBufferResetFlag : u32
 		{
 			ReleaseResources = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT,
 
-			VT_SpecifyBitmaskable = VK_COMMAND_BUFFER_RESET_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_COMMAND_BUFFER_RESET_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits">Specification</a> @ingroup APISpec_Command_Buffers */
@@ -322,7 +322,7 @@ namespace VaultedVulkan
 			RenderPassContinue = VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT,
 			SimultaneousUse    = VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT    ,
 
-			VT_SpecifyBitmaskable = VK_COMMAND_BUFFER_USAGE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_COMMAND_BUFFER_USAGE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlagBits">Specification</a> @ingroup APISpec_Command_Buffers */
@@ -332,15 +332,15 @@ namespace VaultedVulkan
 			ResetCommandBuffer = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,
 			Protected          = VK_COMMAND_POOL_CREATE_PROTECTED_BIT           ,
 
-			VT_SpecifyBitmaskable = VK_COMMAND_POOL_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_COMMAND_POOL_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlagBits">Specification</a> @ingroup APISpec_Command_Buffers */
-		enum class ECommandPoolResetFlags : uI32
+		enum class ECommandPoolResetFlags : u32
 		{
 			ReleaseResources = VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT,
 
-			VT_SpecifyBitmaskable = VK_COMMAND_POOL_RESET_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_COMMAND_POOL_RESET_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkComponentSwizzle">Specification</a> @ingroup APISpec_Resource_Creation */
@@ -363,7 +363,7 @@ namespace VaultedVulkan
 			PostMultiplied = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR ,
 			Inherit        = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR         ,
 
-			VT_SpecifyBitmaskable = VK_COMPOSITE_ALPHA_FLAG_BITS_MAX_ENUM_KHR
+			VV_SpecifyBitmaskable = VK_COMPOSITE_ALPHA_FLAG_BITS_MAX_ENUM_KHR
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompareOp">Specification</a> @ingroup APISpec_Fragment_Operations */
@@ -387,7 +387,7 @@ namespace VaultedVulkan
 			Back           = VK_CULL_MODE_BACK_BIT      ,
 			Front_And_Back = VK_CULL_MODE_FRONT_AND_BACK,
 
-			VT_SpecifyBitmaskable = VK_CULL_MODE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_CULL_MODE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagBitsEXT">Specification</a> @ingroup APISpec_Debugging */
@@ -398,7 +398,7 @@ namespace VaultedVulkan
 			Warning = VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT,
 			Error   = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT  ,
 
-			VT_SpecifyBitmaskable = VK_DEBUG_UTILS_MESSAGE_SEVERITY_FLAG_BITS_MAX_ENUM_EXT
+			VV_SpecifyBitmaskable = VK_DEBUG_UTILS_MESSAGE_SEVERITY_FLAG_BITS_MAX_ENUM_EXT
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagBitsEXT">Specification</a> @ingroup APISpec_Debugging */
@@ -408,7 +408,7 @@ namespace VaultedVulkan
 			Validation  = VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT ,
 			Performance = VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT,
 
-			VT_SpecifyBitmaskable = VK_DEBUG_UTILS_MESSAGE_TYPE_FLAG_BITS_MAX_ENUM_EXT
+			VV_SpecifyBitmaskable = VK_DEBUG_UTILS_MESSAGE_TYPE_FLAG_BITS_MAX_ENUM_EXT
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDependencyFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -416,7 +416,7 @@ namespace VaultedVulkan
 		{
 			ByRegion = VK_DEPENDENCY_BY_REGION_BIT,
 
-			VT_SpecifyBitmaskable = VK_DEPENDENCY_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_DEPENDENCY_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorBindingFlagBits">Specification</a> @ingroup APISpec_Resource_Descriptors */
@@ -431,7 +431,7 @@ namespace VaultedVulkan
 			PartiallyBound_EXT           = VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT            ,
 			VariableDescriptorCount_EXT  = VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT  ,
 
-			VT_SpecifyBitmaskable = VK_DESCRIPTOR_BINDING_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_DESCRIPTOR_BINDING_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorPoolCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Descriptors */
@@ -441,7 +441,7 @@ namespace VaultedVulkan
 			UpdateAfterBind     = VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT    ,
 			UpdateAfterBind_EXT = VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT,
 
-			VT_SpecifyBitmaskable = VK_DESCRIPTOR_POOL_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_DESCRIPTOR_POOL_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorSetLayoutCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Descriptors */
@@ -451,7 +451,7 @@ namespace VaultedVulkan
 			PushDescriptor                = VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR       ,
 			UpdateAfterBindPool_Extension = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT,
 
-			VT_SpecifyBitmaskable = VK_DESCRIPTOR_SET_LAYOUT_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_DESCRIPTOR_SET_LAYOUT_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDescriptorType">Specification</a> @ingroup APISpec_Resource_Descriptors */
@@ -480,7 +480,7 @@ namespace VaultedVulkan
 			EnableResourceTracking     = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV    , 
 			EnableAutomaticCheckpoints = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV,
 
-			VT_SpecifyBitmaskable = VK_DEVICE_DIAGNOSTICS_CONFIG_FLAG_BITS_MAX_ENUM_NV
+			VV_SpecifyBitmaskable = VK_DEVICE_DIAGNOSTICS_CONFIG_FLAG_BITS_MAX_ENUM_NV
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a> @ingroup APISpec_Devices_and_Queues */
@@ -489,7 +489,7 @@ namespace VaultedVulkan
 			// Provided by VK_VERSION_1_1
 			Protected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
 
-			VT_SpecifyBitmaskable = VK_DEVICE_QUEUE_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_DEVICE_QUEUE_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventTypeEXT">Specification</a> @ingroup APISpec_Devices_and_Queues */
@@ -575,7 +575,7 @@ namespace VaultedVulkan
 			Opaque_Win32_KMT_KHR = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_KHR,   // Provided by VK_KHR_external_fence_capabilities
 			SyncFD_KHR           = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT_KHR         ,   // Provided by VK_KHR_external_fence_capabilities
 
-			VT_SpecifyBitmaskable = VK_EXTERNAL_FENCE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_EXTERNAL_FENCE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlagBits">Specification</a> @ingroup APISpec_Additional_Capabilities */
@@ -598,7 +598,7 @@ namespace VaultedVulkan
 			// Provided by VK_KHR_external_semaphore_capabilities
 			VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT,
 
-			VT_SpecifyBitmaskable = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceCreateFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -606,7 +606,7 @@ namespace VaultedVulkan
 		{
 			Signaled = VK_FENCE_CREATE_SIGNALED_BIT,
 
-			VT_SpecifyBitmaskable = VK_FENCE_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_FENCE_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFenceImportFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -615,7 +615,7 @@ namespace VaultedVulkan
 			Temporary     = VK_FENCE_IMPORT_TEMPORARY_BIT    ,   // Provided by VK_KHR_external_fence
 			Temporary_KHR = VK_FENCE_IMPORT_TEMPORARY_BIT_KHR,
 
-			VT_SpecifyBitmaskable = VK_FENCE_IMPORT_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_FENCE_IMPORT_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFilter">Specification</a> @ingroup APISpec_Samplers */
@@ -960,11 +960,11 @@ namespace VaultedVulkan
 			CositedChromaSamples_KHR                                              = VK_FORMAT_FEATURE_COSITED_CHROMA_SAMPLES_BIT_KHR                                                 ,
 			SampledImageFilterCubic_EXT                                           = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT                                             ,   // Provided by VK_EXT_filter_cubic
 
-			VT_SpecifyBitmaskable = VK_FORMAT_FEATURE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_FORMAT_FEATURE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFramebufferCreateFlagBits">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class EFrameBufferCreateFlag : ui32 { VT_SpecifyBitmaskable = sizeof(ui32) };
+		enum class EFrameBufferCreateFlag : ui32 { VV_SpecifyBitmaskable = sizeof(ui32) };
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkFrontFace">Specification</a> @ingroup APISpec_Rasterization */
 		enum class EFrontFace : ui32
@@ -991,7 +991,7 @@ namespace VaultedVulkan
 			KHR_Plane_1   = VK_IMAGE_ASPECT_PLANE_1_BIT_KHR       ,
 			KHR_Plane_2   = VK_IMAGE_ASPECT_PLANE_2_BIT_KHR       ,
 
-			VT_SpecifyBitmaskable = VK_IMAGE_ASPECT_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_IMAGE_ASPECT_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
@@ -1019,7 +1019,7 @@ namespace VaultedVulkan
 			Disjoint_KHR                       = VK_IMAGE_CREATE_DISJOINT_BIT_KHR                         ,
 			Alias_KHR                          = VK_IMAGE_CREATE_ALIAS_BIT_KHR                            ,
 
-			VT_SpecifyBitmaskable = VK_IMAGE_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_IMAGE_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageLayout">Specification</a> @ingroup APISpec_Resource_Creation */
@@ -1082,7 +1082,7 @@ namespace VaultedVulkan
 			Image_ShadingRate       = VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV   ,
 			DensityMap              = VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT,
 
-			VT_SpecifyBitmaskable = VK_IMAGE_USAGE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_IMAGE_USAGE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageViewCreateFlagBits">Specification</a> @ingroup APISpec_Resource_Creation */
@@ -1090,7 +1090,7 @@ namespace VaultedVulkan
 		{
 			Fragment_DensityMapDynamiic = VK_IMAGE_VIEW_CREATE_FRAGMENT_DENSITY_MAP_DYNAMIC_BIT_EXT,
 
-			VT_SpecifyBitmaskable = VK_IMAGE_VIEW_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_IMAGE_VIEW_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkImageView">Specification</a> @ingroup APISpec_Resource_Creation */
@@ -1126,7 +1126,7 @@ namespace VaultedVulkan
 		{
 			CreateProtected = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
 
-			VT_SpecifyBitmaskable = VK_DEVICE_QUEUE_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_DEVICE_QUEUE_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkLogicOp">Specification</a> @ingroup APISpec_The_Framebuffer */
@@ -1157,7 +1157,7 @@ namespace VaultedVulkan
 			MultiInstance     = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT    ,
 			MultiInstance_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR,
 
-			VT_SpecifyBitmaskable = VK_MEMORY_HEAP_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_MEMORY_HEAP_FLAG_BITS_MAX_ENUM
 		};
 
 		/**
@@ -1182,7 +1182,7 @@ namespace VaultedVulkan
 			DeviceCoherent_AMD = VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD,
 			DeviceUncached_AMD = VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD,
 
-			VT_SpecifyBitmaskable = VK_MEMORY_PROPERTY_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_MEMORY_PROPERTY_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkObjectType">Specification</a> @ingroup APISpec_Debugging */
@@ -1240,7 +1240,7 @@ namespace VaultedVulkan
 			PerformanceImpacting = VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR,
 			ConcurrentlyImpacted = VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_KHR,
 
-			VT_SpecifyBitmaskable = VK_PERFORMANCE_COUNTER_DESCRIPTION_FLAG_BITS_MAX_ENUM_KHR
+			VV_SpecifyBitmaskable = VK_PERFORMANCE_COUNTER_DESCRIPTION_FLAG_BITS_MAX_ENUM_KHR
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterScopeKHR">Specification</a> @ingroup APISpec_Devices_and_Queues */
@@ -1293,7 +1293,7 @@ namespace VaultedVulkan
 		{
 			Externally_Synchronized = VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT,
 
-			VT_SpecifyBitmaskable = VK_PIPELINE_CACHE_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_PIPELINE_CACHE_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineCreateFlagBits">Specification</a> @ingroup APISpec_Pipelines */
@@ -1321,7 +1321,7 @@ namespace VaultedVulkan
 			ViewIndexFromDeviceInex                = VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR            ,
 			DispatchBase_KHR                       = VK_PIPELINE_CREATE_DISPATCH_BASE_KHR                               ,
 
-			VT_SpecifyBitmaskable = VK_PIPELINE_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_PIPELINE_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineShaderStageCreateFlagBits">Specification</a> @ingroup APISpec_Pipelines */
@@ -1330,7 +1330,7 @@ namespace VaultedVulkan
 			AllowVaryingSubgroupSize = VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT_EXT,
 			RequireFullSubgroups     = VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT_EXT     ,
 
-			VT_SpecifyBitmaskable = VK_PIPELINE_SHADER_STAGE_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_PIPELINE_SHADER_STAGE_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineStageFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -1354,7 +1354,7 @@ namespace VaultedVulkan
 			AllGraphics                  = VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT                  ,
 			AllCommands                  = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT                  ,
 
-			VT_SpecifyBitmaskable = VK_PIPELINE_STAGE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_PIPELINE_STAGE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#primsrast-polygonmode">Specification</a> @ingroup APISpec_Rasterization */
@@ -1429,7 +1429,7 @@ namespace VaultedVulkan
 		{
 			Precise = VK_QUERY_CONTROL_PRECISE_BIT,
 
-			VT_SpecifyBitmaskable = VK_QUERY_CONTROL_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_QUERY_CONTROL_FLAG_BITS_MAX_ENUM
 		};
 
 		/**
@@ -1443,7 +1443,7 @@ namespace VaultedVulkan
 			SparseBinding = VK_QUEUE_SPARSE_BINDING_BIT,
 			Protected     = VK_QUEUE_PROTECTED_BIT     ,
 
-			VT_SpecifyBitmaskable = VK_QUEUE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_QUEUE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueryPipelineStatisticFlagBits">Specification</a> @ingroup APISpec_Queries */
@@ -1461,7 +1461,7 @@ namespace VaultedVulkan
 			TessellationEvaluationShaderInvocations = VK_QUERY_PIPELINE_STATISTIC_TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT,
 			ComputeShaderInvocations                = VK_QUERY_PIPELINE_STATISTIC_COMPUTE_SHADER_INVOCATIONS_BIT                ,
 
-			VT_SpecifyBitmaskable = VK_QUERY_PIPELINE_STATISTIC_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_QUERY_PIPELINE_STATISTIC_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResolveModeFlagBits">Specification</a> @ingroup APISpec_Render_Pass */
@@ -1480,7 +1480,7 @@ namespace VaultedVulkan
 			Min_KHR        = VK_RESOLVE_MODE_MIN_BIT_KHR        ,
 			Max_KHR        = VK_RESOLVE_MODE_MAX_BIT_KHR        ,
 
-			VT_SpecifyBitmaskable = VK_RESOLVE_MODE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_RESOLVE_MODE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResult">Specification</a> @ingroup APISpec_Fundamentals */
@@ -1544,7 +1544,7 @@ namespace VaultedVulkan
 			_32 = VK_SAMPLE_COUNT_32_BIT,
 			_64 = VK_SAMPLE_COUNT_64_BIT,
 
-			VT_SpecifyBitmaskable = VK_SAMPLE_COUNT_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_SAMPLE_COUNT_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerAddressMode">Specification</a> @ingroup VkSamplerAddressMode */
@@ -1566,7 +1566,7 @@ namespace VaultedVulkan
 			Subsampled_EXT                     = VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT                      ,
 			SubsampledCoarseReconstruction_EXT = VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT,
 
-			VT_SpecifyBitmaskable = VK_SAMPLER_CREATE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_SAMPLER_CREATE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerMipmapMode">Specification</a> @ingroup APISpec_Samplers */
@@ -1582,7 +1582,7 @@ namespace VaultedVulkan
 			Temporary     = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT    ,
 			Temporary_KHR = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR,
 
-			VT_SpecifyBitmaskable = VK_SEMAPHORE_IMPORT_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_SEMAPHORE_IMPORT_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreType">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
@@ -1600,7 +1600,7 @@ namespace VaultedVulkan
 			Any     = VK_SEMAPHORE_WAIT_ANY_BIT    ,
 			Any_KHR = VK_SEMAPHORE_WAIT_ANY_BIT_KHR,
 
-			VT_SpecifyBitmaskable = VK_SEMAPHORE_WAIT_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_SEMAPHORE_WAIT_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkShaderFloatControlsIndependence">Specification</a> @ingroup APISpec_Limits */
@@ -1642,7 +1642,7 @@ namespace VaultedVulkan
 			Intersection_NV        = VK_SHADER_STAGE_INTERSECTION_BIT_NV        ,
 			Callable_NV            = VK_SHADER_STAGE_CALLABLE_BIT_NV            ,
 
-			VT_SpecifyBitmaskable = VK_SHADER_STAGE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_SHADER_STAGE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSharingMode">Specification</a> @ingroup APISpec_Resource_Creation */
@@ -2234,7 +2234,7 @@ namespace VaultedVulkan
 			// Provided by VK_NV_shader_subgroup_partitioned
 			Partitioned_NV  =  VK_SUBGROUP_FEATURE_PARTITIONED_BIT_NV ,
 
-			VT_SpecifyBitmaskable = VK_SUBGROUP_FEATURE_FLAG_BITS_MAX_ENUM
+			VV_SpecifyBitmaskable = VK_SUBGROUP_FEATURE_FLAG_BITS_MAX_ENUM
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassContents">Specification</a> @ingroup APISpec_Render_Pass */
@@ -2245,7 +2245,7 @@ namespace VaultedVulkan
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSubpassDescriptionFlagBits">Specification</a> @ingroup APISpec_Render_Pass */
-		enum class ESubpassDescriptionFlag : ui32 { VT_SpecifyBitmaskable = sizeof(ui32) };
+		enum class ESubpassDescriptionFlag : ui32 { VV_SpecifyBitmaskable = sizeof(ui32) };
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagBitsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
 		enum class ESurfaceTransformFlag : ui32
@@ -2260,7 +2260,7 @@ namespace VaultedVulkan
 			Horizontal_Mirror_Rotate_270 = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR,
 			Inherit                      = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR                     ,
 
-			VT_SpecifyBitmaskable = VK_SURFACE_TRANSFORM_FLAG_BITS_MAX_ENUM_KHR
+			VV_SpecifyBitmaskable = VK_SURFACE_TRANSFORM_FLAG_BITS_MAX_ENUM_KHR
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagBitsKHR">Specification</a> @ingroup APISpec_Window_System_Integration_WSI */
@@ -2270,7 +2270,7 @@ namespace VaultedVulkan
 			CreateProtected          = VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR                   ,
 			CreateMutableFormat      = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR              ,
 
-			VT_SpecifyBitmaskable = VK_SWAPCHAIN_CREATE_FLAG_BITS_MAX_ENUM_KHR
+			VV_SpecifyBitmaskable = VK_SWAPCHAIN_CREATE_FLAG_BITS_MAX_ENUM_KHR
 		};
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSystemAllocationScope">Specification</a> @ingroup APISpec_Memory_Allocation */

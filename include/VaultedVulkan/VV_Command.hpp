@@ -175,9 +175,9 @@ namespace VaultedVulkan
 					      EType SType                     = STypeEnum;
 					const void* Next                      = nullptr  ;
 					      ui32  WaitSemaphoreValueCount   = 0        ;
-					const uI64* WaitSemaphoreValues       = nullptr  ;
+					const u64*  WaitSemaphoreValues       = nullptr  ;
 					      ui32  SignalSemaphoreValueCount = 0        ;
-					const uI64* SignalSemaphoreValues     = nullptr  ;
+					const u64*  SignalSemaphoreValues     = nullptr  ;
 				};	
 
 				/**
@@ -190,9 +190,9 @@ namespace VaultedVulkan
 					      EType SType                      = STypeEnum;
 					const void* Next                       = nullptr  ;
 					      ui32  WaitSemaphoreValuesCount   = 0        ;
-					const uI64* WaitSemaphoreValues        = nullptr  ;
+					const u64*  WaitSemaphoreValues        = nullptr  ;
 					      ui32  SignalSemaphoreValuesCount = 0        ;
-					const uI64* SignalSemaphoreValues      = nullptr  ;
+					const u64*  SignalSemaphoreValues      = nullptr  ;
 				};
 
 				/**
@@ -206,11 +206,11 @@ namespace VaultedVulkan
 					const void*           Next            = nullptr  ;
 					      ui32            AcquireCount    = 0        ;
 					const Memory::Handle* AcquireSyncs    = nullptr  ;
-					const uI64*           AcquireKeys     = nullptr  ;
+					const u64*            AcquireKeys     = nullptr  ;
 					const ui32*           AcquireTimeouts = nullptr  ;
 					      ui32            ReleaseCount    = 0        ;
 					const Memory::Handle* ReleaseSyncs    = nullptr  ;
-					const uI64*           ReleaseKeys     = nullptr  ;
+					const u64*            ReleaseKeys     = nullptr  ;
 				};
 
 				/**

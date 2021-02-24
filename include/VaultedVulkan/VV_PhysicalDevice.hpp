@@ -81,10 +81,10 @@ namespace VaultedVulkan
 			*/
 			struct ConformanceVersion : V0::VKStruct_Base<VkConformanceVersion>
 			{
-				uI8 Major   ;
-				uI8 Minor   ;
-				uI8 Subminor;
-				uI8 Patch   ;
+				u8 Major   ;
+				u8 Minor   ;
+				u8 Subminor;
+				u8 Patch   ;
 
 				bool operator==(const ConformanceVersion _other) 
 				{ return Major == _other.Major && Minor == _other.Minor && Subminor == _other.Subminor && Patch == _other.Patch ? true : false; }
@@ -518,7 +518,7 @@ namespace VaultedVulkan
 					Bool                            IndependentResolve                                  ;
 					Bool                            FilterMinmaxSingleComponentFormats                  ;
 					Bool                            FilterMinmaxImageComponentMapping                   ;
-					uI64                            MaxTimelineSemaphoreValueDifference                 ;
+					u64                            MaxTimelineSemaphoreValueDifference                 ;
 					SampleCountFlags                FramebufferIntegerColorSampleCounts                 ;
 				};
 			};
