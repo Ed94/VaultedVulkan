@@ -95,10 +95,10 @@
               <span class="m-doc-wrap-bumper">static auto <a href="#a6277f677601aa1f269751e30cf8d06bd" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="classVV_1_1V3_1_1Fence.html" class="m-doc">Fence</a>&gt; _fences) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Reset the fences in the provided container.</dd>
-            <dt id="a914fa987ea147c2fb9b47d5001d0de10">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a914fa987ea147c2fb9b47d5001d0de10" class="m-doc-self">WaitForFence</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="classVV_1_1V3_1_1Fence.html" class="m-doc">Fence</a>&gt; _fences,
+            <dt id="a4086abd5785e06850c7d663e121a52b6">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a4086abd5785e06850c7d663e121a52b6" class="m-doc-self">WaitForFence</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="classVV_1_1V3_1_1Fence.html" class="m-doc">Fence</a>&gt; _fences,
               bool _waitForAll,
-              <a href="group__Corridors.html#gae0049e11d495b193e9b93a968802881e" class="m-doc">uI64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#gac72fcca568f8dc1462ee87463511de46" class="m-doc">u64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Wait for one or more fences to enter the signaled state on the host.</dd>
           </dl>
@@ -193,8 +193,8 @@
               <span class="m-doc-wrap-bumper">auto <a href="#abf2fd63be225ddb39c4008ea64900a38" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap">) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Set the state of fences to unsignaled from the host.</dd>
-            <dt id="a513f7b0b120dcfbd1fbc22ca91435b76">
-              <span class="m-doc-wrap-bumper">auto <a href="#a513f7b0b120dcfbd1fbc22ca91435b76" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gae0049e11d495b193e9b93a968802881e" class="m-doc">uI64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            <dt id="ac26fcad300bf11252d5be3c27204083b">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac26fcad300bf11252d5be3c27204083b" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gac72fcca568f8dc1462ee87463511de46" class="m-doc">u64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Wait for the fence to enter the signaled state on the host.</dd>
             <dt id="a1c86b5efbddcf2cfd50fc6aa7f0c945e">

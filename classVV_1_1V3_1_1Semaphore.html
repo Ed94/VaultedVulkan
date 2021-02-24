@@ -147,8 +147,8 @@
               <span class="m-doc-wrap-bumper">void <a href="#acaf532d1b79892c8d7ea18a83f9cac21" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Destroy a semaphore.</dd>
-            <dt id="affe40541852747abf4a796e6a7756119">
-              <span class="m-doc-wrap-bumper">auto <a href="#affe40541852747abf4a796e6a7756119" class="m-doc-self">GetCounterValue</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gae0049e11d495b193e9b93a968802881e" class="m-doc">uI64</a>&amp; _value) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            <dt id="ade6a38797c646b920896d6cdf0902d18">
+              <span class="m-doc-wrap-bumper">auto <a href="#ade6a38797c646b920896d6cdf0902d18" class="m-doc-self">GetCounterValue</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#gac72fcca568f8dc1462ee87463511de46" class="m-doc">u64</a>&amp; _value) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Query the current counter value of a semaphore created with a SemaphoreType of Timeline from the host.</dd>
             <dt id="a1c5a0b3992c9c7758851ffa33c1cc693">
@@ -164,9 +164,9 @@
               <span class="m-doc-wrap-bumper">auto <a href="#a6dfbbaed8ad1ed1b34708e1ef95162b3" class="m-doc-self">Signal</a>(</span><span class="m-doc-wrap">const <a href="structVV_1_1V1_1_1Semaphore_1_1SignalInfo.html" class="m-doc">SignalInfo</a>&amp; _info) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Signal a semaphore created with a SemaphoreType of Timeline with a particular counter value, on the host.</dd>
-            <dt id="ae70272468b2243992f63169fed729736">
-              <span class="m-doc-wrap-bumper">auto <a href="#ae70272468b2243992f63169fed729736" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap">const <a href="structVV_1_1V1_1_1Semaphore_1_1WaitInfo.html" class="m-doc">WaitInfo</a>&amp; _info,
-              <a href="group__Corridors.html#gae0049e11d495b193e9b93a968802881e" class="m-doc">uI64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            <dt id="ac638f6e4700b93851a6586a32b7da70c">
+              <span class="m-doc-wrap-bumper">auto <a href="#ac638f6e4700b93851a6586a32b7da70c" class="m-doc-self">WaitFor</a>(</span><span class="m-doc-wrap">const <a href="structVV_1_1V1_1_1Semaphore_1_1WaitInfo.html" class="m-doc">WaitInfo</a>&amp; _info,
+              <a href="group__Corridors.html#gac72fcca568f8dc1462ee87463511de46" class="m-doc">u64</a> _timeout) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Wait for a set of semaphores created with a VkSemaphoreType of VK_SEMAPHORE_TYPE_TIMELINE to reach particular counter values on the host.</dd>
             <dt id="a78be192899ce285c0180152d62085051">

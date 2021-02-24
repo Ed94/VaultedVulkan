@@ -128,7 +128,7 @@
               <a href="#ggae446cd2389b918083bfb84e77ffda1a4a35f7a4d0017cc8c4ea4c3691caf1fdfa" class="m-doc">PreMultiplied</a> = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR,
               <a href="#ggae446cd2389b918083bfb84e77ffda1a4a2a785ad8378e547091a950e190ba0506" class="m-doc">PostMultiplied</a> = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR,
               <a href="#ggae446cd2389b918083bfb84e77ffda1a4ac49484faf79e2388b580e49444d6ac11" class="m-doc">Inherit</a> = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR,
-              <a href="#ggae446cd2389b918083bfb84e77ffda1a4a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_COMPOSITE_ALPHA_FLAG_BITS_MAX_ENUM_KHR }</span>
+              <a href="#ggae446cd2389b918083bfb84e77ffda1a4aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_COMPOSITE_ALPHA_FLAG_BITS_MAX_ENUM_KHR }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagBitsKHR">Specification</a></dd>
             <dt>
@@ -150,14 +150,14 @@
               <a href="#ggadb1e18b2b38afb25431458e9d9857fa5a598883e52c5cf2561e118b2f0fcfacd3" class="m-doc">Horizontal_Mirror_Rotate_180</a> = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR,
               <a href="#ggadb1e18b2b38afb25431458e9d9857fa5a44253e6afee75fb6b31a1416b46f81e0" class="m-doc">Horizontal_Mirror_Rotate_270</a> = VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR,
               <a href="#ggadb1e18b2b38afb25431458e9d9857fa5ac49484faf79e2388b580e49444d6ac11" class="m-doc">Inherit</a> = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR,
-              <a href="#ggadb1e18b2b38afb25431458e9d9857fa5a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_SURFACE_TRANSFORM_FLAG_BITS_MAX_ENUM_KHR }</span>
+              <a href="#ggadb1e18b2b38afb25431458e9d9857fa5aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_SURFACE_TRANSFORM_FLAG_BITS_MAX_ENUM_KHR }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagBitsKHR">Specification</a></dd>
             <dt>
               <span class="m-doc-wrap-bumper">enum <a href="#ga1c8bc3570c3ed5219484eb03d04635a4" class="m-doc">ESwapchainCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#gga1c8bc3570c3ed5219484eb03d04635a4a44ff641905c228a28dd70f657319ea41" class="m-doc">SplitInstanceBindRegions</a> = VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR,
               <a href="#gga1c8bc3570c3ed5219484eb03d04635a4a41602ba02f85ce770a44f3bff69832a7" class="m-doc">CreateProtected</a> = VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR,
               <a href="#gga1c8bc3570c3ed5219484eb03d04635a4a808e9c70ecc523728236207d04eb5ba0" class="m-doc">CreateMutableFormat</a> = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR,
-              <a href="#gga1c8bc3570c3ed5219484eb03d04635a4a9d765c024a83401b6221c934033478c7" class="m-doc">VT_SpecifyBitmaskable</a> = VK_SWAPCHAIN_CREATE_FLAG_BITS_MAX_ENUM_KHR }</span>
+              <a href="#gga1c8bc3570c3ed5219484eb03d04635a4aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_SWAPCHAIN_CREATE_FLAG_BITS_MAX_ENUM_KHR }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagBitsKHR">Specification</a></dd>
           </dl>
@@ -240,9 +240,9 @@
             </dt>
             <dd>Query supported presentation modes.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#ga1996613cd8cfb42636f2a3de44b21528" class="m-doc">AcquireNextImage</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              <span class="m-doc-wrap-bumper">static auto <a href="#gae9c5f5d510ca25c40e51705430d4949c" class="m-doc">AcquireNextImage</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
               Handle _swapchain,
-              uI64 _timeout,
+              u64 _timeout,
               Semaphore::Handle _semaphore,
               Fence::Handle _fence,
               ui32&amp; _imageIndex) -&gt; EResult</span>
@@ -579,11 +579,11 @@
             </table>
 <p>If pPresentModes is NULL, then the number of presentation modes supported for the given surface is returned in pPresentModeCount. Otherwise, pPresentModeCount must point to a variable set by the user to the number of elements in the pPresentModes array, and on return the variable is overwritten with the number of values actually written to pPresentModes.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfacePresentModesKHR">Specification</a></p>
           </div></section>
-          <section class="m-doc-details" id="ga1996613cd8cfb42636f2a3de44b21528"><div>
+          <section class="m-doc-details" id="gae9c5f5d510ca25c40e51705430d4949c"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1996613cd8cfb42636f2a3de44b21528" class="m-doc-self">AcquireNextImage</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
+              <span class="m-doc-wrap-bumper">static EResult </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae9c5f5d510ca25c40e51705430d4949c" class="m-doc-self">AcquireNextImage</a>(</span><span class="m-doc-wrap">LogicalDevice::Handle _device,
               Handle _swapchain,
-              uI64 _timeout,
+              u64 _timeout,
               Semaphore::Handle _semaphore,
               Fence::Handle _fence,
               ui32&amp; _imageIndex)</span></span>
