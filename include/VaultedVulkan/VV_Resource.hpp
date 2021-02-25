@@ -2089,9 +2089,36 @@ namespace VaultedVulkan
 			/**
 			@brief Allocates descriptor sets based on allocate info and provided via the handles container.
 			*/
-			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer)
+			EResult Allocate(AllocateInfo& _info, DescriptorSet::Handle* _handlesContainer) const
 			{
 				return Parent::Allocate(*device, _info, _handlesContainer);
+			}
+
+			/**
+			@brief Allocates descriptor sets based on allocate info and provided via the descriptor set dynamic array and handle array.
+			*/
+			EResult Allocate
+			(
+				AllocateInfo&                _info,
+				DynamicArray<DescriptorSet>& _sets  
+			) const
+			{
+				_sets.resize(_info.DescriptorSetCount); 
+				
+				DynamicArray<DescriptorSet::Handle> _handles; 
+				
+				_handles.resize(_info.DescriptorSetCount);
+
+				EResult returnCode = Parent::Allocate(*device, _info, _handles.data());
+
+				if (returnCode != EResult::Success) return returnCode;
+
+				for (DeviceSize index = 0; index < _info.DescriptorSetCount; index++)
+				{
+					_sets[index].Assign(*device, _handles[index]);
+				}
+
+				return returnCode;
 			}
 
 			/**
@@ -2102,7 +2129,7 @@ namespace VaultedVulkan
 				AllocateInfo&                        _info   ,
 				DynamicArray<DescriptorSet>&         _sets   ,
 				DynamicArray<DescriptorSet::Handle>& _handles
-			)
+			) const
 			{
 				_sets.resize(_info.DescriptorSetCount); _handles.resize(_info.DescriptorSetCount);
 
@@ -2163,7 +2190,7 @@ namespace VaultedVulkan
 			/**
 			@brief Free descriptor sets within the specified handles container.
 			*/
-			EResult Free(ui32 _count, DescriptorSet::Handle* _handles)
+			EResult Free(ui32 _count, DescriptorSet::Handle* _handles) const
 			{
 				return Parent::Free(*device, handle, _count, _handles);
 			}
@@ -2171,7 +2198,7 @@ namespace VaultedVulkan
 			/**
 			@brief Free descriptor sets specified in the dynamic array.
 			*/
-			EResult Free(DynamicArray<DescriptorSet::Handle> _handles)
+			EResult Free(DynamicArray<DescriptorSet::Handle> _handles) const
 			{
 				return Parent::Free(*device, handle, static_cast<ui32>(_handles.size()), _handles.data());
 			}
@@ -2179,7 +2206,7 @@ namespace VaultedVulkan
 			/**
 			@brief Return all descriptor sets allocated from a given pool to the pool, rather than freeing individual descriptor sets.
 			*/
-			EResult Reset(ResetFlags& _flags)
+			EResult Reset(ResetFlags& _flags) const
 			{
 				return Parent::Reset(*device, handle, _flags);
 			}

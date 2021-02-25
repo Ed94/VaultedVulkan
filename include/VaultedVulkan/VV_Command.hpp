@@ -1217,7 +1217,7 @@ namespace VaultedVulkan
 			void BindDescriptorSets
 			(
 				      EPipelineBindPoint     _bindPoint         ,
-				      Pipeline::Layout&      _layout            ,
+				const Pipeline::Layout&      _layout            ,
 				      ui32                   _firstSet          ,
 				      ui32                   _descritporSetCount,
 				const DescriptorSet::Handle* _descriptorSets
@@ -1232,7 +1232,7 @@ namespace VaultedVulkan
 			void BindDescriptorSets
 			(
 				      EPipelineBindPoint     _bindPoint         ,
-				      Pipeline::Layout&      _layout            ,
+				const Pipeline::Layout&      _layout            ,
 				      ui32                   _firstSet          ,
 				      ui32                   _descritporSetCount,
 				const DescriptorSet::Handle* _descriptorSets    ,
@@ -1246,7 +1246,7 @@ namespace VaultedVulkan
 			/**
 			@brief Bind an index buffer to a command buffer.
 			*/
-			void BindIndexBuffer(Buffer& _buffer, DeviceSize _offset, EIndexType _type) const
+			void BindIndexBuffer(const Buffer& _buffer, DeviceSize _offset, EIndexType _type) const
 			{
 				Parent::BindIndexBuffer(handle, _buffer, _offset, _type);
 			}
