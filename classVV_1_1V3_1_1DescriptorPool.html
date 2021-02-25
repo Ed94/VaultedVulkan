@@ -128,15 +128,20 @@
         <section id="pub-methods">
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
-            <dt id="a2dc3c9740fe32dca0ec0cf607329352f">
-              <span class="m-doc-wrap-bumper">auto <a href="#a2dc3c9740fe32dca0ec0cf607329352f" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="structVV_1_1V1_1_1DescriptorPool_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _info,
-              <a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>* _handlesContainer) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            <dt id="add92165596339886c5b94c79fa29b0f5">
+              <span class="m-doc-wrap-bumper">auto <a href="#add92165596339886c5b94c79fa29b0f5" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="structVV_1_1V1_1_1DescriptorPool_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _info,
+              <a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>* _handlesContainer) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Allocates descriptor sets based on allocate info and provided via the handles container.</dd>
-            <dt id="a86248365d719d33f70ec1522c8bdff30">
-              <span class="m-doc-wrap-bumper">auto <a href="#a86248365d719d33f70ec1522c8bdff30" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="structVV_1_1V1_1_1DescriptorPool_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _info,
+            <dt id="aa70ba5c6d4f204106543e69641ca1312">
+              <span class="m-doc-wrap-bumper">auto <a href="#aa70ba5c6d4f204106543e69641ca1312" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="structVV_1_1V1_1_1DescriptorPool_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _info,
+              <a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="classVV_1_1V3_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a>&gt;&amp; _sets) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Allocates descriptor sets based on allocate info and provided via the descriptor set dynamic array and handle array.</dd>
+            <dt id="aca98c13ac0eaf49dcdca29a750d67639">
+              <span class="m-doc-wrap-bumper">auto <a href="#aca98c13ac0eaf49dcdca29a750d67639" class="m-doc-self">Allocate</a>(</span><span class="m-doc-wrap"><a href="structVV_1_1V1_1_1DescriptorPool_1_1AllocateInfo.html" class="m-doc">AllocateInfo</a>&amp; _info,
               <a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="classVV_1_1V3_1_1DescriptorSet.html" class="m-doc">DescriptorSet</a>&gt;&amp; _sets,
-              <a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>&gt;&amp; _handles) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+              <a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>&gt;&amp; _handles) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Allocates descriptor sets based on allocate info and provided via the descriptor set dynamic array and handle array.</dd>
             <dt id="a1a3c619bb03cb26779937df143922f92">
@@ -158,17 +163,17 @@
               <span class="m-doc-wrap-bumper">void <a href="#a63a799a52f9ab3c5fa482eec8c5958e2" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap">)</span>
             </dt>
             <dd>Destroy a descriptor set.</dd>
-            <dt id="aa5f3f9e1039b89a604c6585e6abefc44">
-              <span class="m-doc-wrap-bumper">auto <a href="#aa5f3f9e1039b89a604c6585e6abefc44" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _count,
-              <a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>* _handles) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            <dt id="a035f2b0bee1a6844d7cd2442451aa6ec">
+              <span class="m-doc-wrap-bumper">auto <a href="#a035f2b0bee1a6844d7cd2442451aa6ec" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _count,
+              <a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>* _handles) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Free descriptor sets within the specified handles container.</dd>
-            <dt id="ac8f123146a0bfcd3a0b4274c13eda6df">
-              <span class="m-doc-wrap-bumper">auto <a href="#ac8f123146a0bfcd3a0b4274c13eda6df" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>&gt; _handles) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            <dt id="a10b13124c174cacbfef87673c0a88388">
+              <span class="m-doc-wrap-bumper">auto <a href="#a10b13124c174cacbfef87673c0a88388" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Resource__Descriptors.html#gaba7c9d2486379dd42cee7ed75dd53c99" class="m-doc">DescriptorSet::<wbr />Handle</a>&gt; _handles) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Free descriptor sets specified in the dynamic array.</dd>
-            <dt id="acca53942530441ae35af859aacbfc23e">
-              <span class="m-doc-wrap-bumper">auto <a href="#acca53942530441ae35af859aacbfc23e" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Resource__Descriptors.html#gafb84c1eaf0d94c84b71d5496e17a2625" class="m-doc">ResetFlags</a>&amp; _flags) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            <dt id="ad442599e2abb7afea482fa7c659d4bca">
+              <span class="m-doc-wrap-bumper">auto <a href="#ad442599e2abb7afea482fa7c659d4bca" class="m-doc-self">Reset</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Resource__Descriptors.html#gafb84c1eaf0d94c84b71d5496e17a2625" class="m-doc">ResetFlags</a>&amp; _flags) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Return all descriptor sets allocated from a given pool to the pool, rather than freeing individual descriptor sets.</dd>
             <dt id="af8faa0d9e379dc3b0a4aeae2387a19ed">
