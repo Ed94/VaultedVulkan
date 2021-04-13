@@ -127,6 +127,19 @@
               <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allcator) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Will create an image and immediately bind it to memory made just for it..</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#abf872f34c46ee2d940c26241161bc316" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              const <a href="structVV_1_1V1_1_1Image_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Resource__Creation.html#ga74252d866d64bef34e49a6599901c1fa" class="m-doc">Handle</a>&amp; _imageHandle) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create an image object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a6518a927f4e59f2f521c18f2daebfcd0" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Resource__Creation.html#ga74252d866d64bef34e49a6599901c1fa" class="m-doc">Handle</a> _image,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
+            </dt>
+            <dd>Destroy an image object.</dd>
           </dl>
         </section>
         <section>
@@ -269,6 +282,67 @@
               </tbody>
             </table>
           </div></section>
+          <section class="m-doc-details" id="abf872f34c46ee2d940c26241161bc316"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />Image::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abf872f34c46ee2d940c26241161bc316" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              const <a href="structVV_1_1V1_1_1Image_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Resource__Creation.html#ga74252d866d64bef34e49a6599901c1fa" class="m-doc">Handle</a>&amp; _imageHandle)</span></span>
+            </h3>
+            <p>Create an image object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_imageHandle</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateImage">Specification</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6518a927f4e59f2f521c18f2daebfcd0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />Image::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6518a927f4e59f2f521c18f2daebfcd0" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Resource__Creation.html#ga74252d866d64bef34e49a6599901c1fa" class="m-doc">Handle</a> _image,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
+            </h3>
+            <p>Destroy an image object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_image</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyImage">Specification</a>.</p>
+          </div></section>
         </section>
       </div>
     </div>
@@ -314,7 +388,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

@@ -179,23 +179,23 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga8b3fca3905597d9814cd898e403f9c5b" class="m-doc">EDeviceDiagnosticConfigFlag</a> { </span><span class="m-doc-wrap"><a href="#gga8b3fca3905597d9814cd898e403f9c5ba38cc231539370f5fcee4679cfd8a1188" class="m-doc">EnableShaderDebugInfo</a> = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga8b3fca3905597d9814cd898e403f9c5b" class="m-doc">EDeviceDiagnosticConfigFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga8b3fca3905597d9814cd898e403f9c5ba38cc231539370f5fcee4679cfd8a1188" class="m-doc">EnableShaderDebugInfo</a> = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV,
               <a href="#gga8b3fca3905597d9814cd898e403f9c5bab19e59da59531c9b668aa6051af28687" class="m-doc">EnableResourceTracking</a> = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV,
               <a href="#gga8b3fca3905597d9814cd898e403f9c5bacd30f7dd7d5a771a446233ded3a84388" class="m-doc">EnableAutomaticCheckpoints</a> = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV,
               <a href="#gga8b3fca3905597d9814cd898e403f9c5baa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_DEVICE_DIAGNOSTICS_CONFIG_FLAG_BITS_MAX_ENUM_NV }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigFlagBitsNV">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gaf03738868bfa9b2e0151d8137f7bb569" class="m-doc">EDeviceQueueCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#ggaf03738868bfa9b2e0151d8137f7bb569a56f0605c9795b173abd2e34fab7fc164" class="m-doc">Protected</a> = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gaf03738868bfa9b2e0151d8137f7bb569" class="m-doc">EDeviceQueueCreateFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggaf03738868bfa9b2e0151d8137f7bb569a56f0605c9795b173abd2e34fab7fc164" class="m-doc">Protected</a> = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
               <a href="#ggaf03738868bfa9b2e0151d8137f7bb569aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_DEVICE_QUEUE_CREATE_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga548e54f67d0bba05b2ee60663efa3ef7" class="m-doc">EDeviceEventType</a> { </span><span class="m-doc-wrap"><a href="#gga548e54f67d0bba05b2ee60663efa3ef7a876ad2f664f2bcd28feefa86f3cbe214" class="m-doc">DisplayHotPlug_</a> = VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT }</span>
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga548e54f67d0bba05b2ee60663efa3ef7" class="m-doc">EDeviceEventType</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga548e54f67d0bba05b2ee60663efa3ef7a876ad2f664f2bcd28feefa86f3cbe214" class="m-doc">DisplayHotPlug_</a> = VK_DEVICE_EVENT_TYPE_DISPLAY_HOTPLUG_EXT }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventTypeEXT">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga1766111594a3f7258b11b4e66b40fa13" class="m-doc">EDriverID</a> { </span><span class="m-doc-wrap"><a href="#gga1766111594a3f7258b11b4e66b40fa13a03fe683ef28b9ddfe7f658a0f4b3b80e" class="m-doc">Proprietary</a> = VK_DRIVER_ID_AMD_PROPRIETARY,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga1766111594a3f7258b11b4e66b40fa13" class="m-doc">EDriverID</a> { </span><span class="m-doc-wrap"><a href="#gga1766111594a3f7258b11b4e66b40fa13a03fe683ef28b9ddfe7f658a0f4b3b80e" class="m-doc">Proprietary</a> = VK_DRIVER_ID_AMD_PROPRIETARY,
               <a href="#gga1766111594a3f7258b11b4e66b40fa13a70fbba0bfa96d8d4bfb8a95b1f64c75b" class="m-doc">OpenSource</a> = VK_DRIVER_ID_AMD_OPEN_SOURCE,
               <a href="#gga1766111594a3f7258b11b4e66b40fa13ab86cd6b067e51191912bb086bf0c6838" class="m-doc">Mesa_RADV</a> = VK_DRIVER_ID_MESA_RADV,
               <a href="#gga1766111594a3f7258b11b4e66b40fa13ad0a308ac575dad08a48f5a0b51907529" class="m-doc">NvidiaProprietary</a> = VK_DRIVER_ID_NVIDIA_PROPRIETARY,
@@ -223,24 +223,24 @@
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gae65a98d6493bb687df83e2934c6dcca1" class="m-doc">ELogicalDeviceQueueCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#ggae65a98d6493bb687df83e2934c6dcca1a41602ba02f85ce770a44f3bff69832a7" class="m-doc">CreateProtected</a> = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gae65a98d6493bb687df83e2934c6dcca1" class="m-doc">ELogicalDeviceQueueCreateFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggae65a98d6493bb687df83e2934c6dcca1a41602ba02f85ce770a44f3bff69832a7" class="m-doc">CreateProtected</a> = VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT,
               <a href="#ggae65a98d6493bb687df83e2934c6dcca1aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_DEVICE_QUEUE_CREATE_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga2aacb670ab649cee0eaf7857cecaa0de" class="m-doc">EMemoryOverallocationBehaviorAMD</a> { </span><span class="m-doc-wrap"><a href="#gga2aacb670ab649cee0eaf7857cecaa0dea7a1920d61156abc05a60135aefe8bc67" class="m-doc">Default</a> = VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga2aacb670ab649cee0eaf7857cecaa0de" class="m-doc">EMemoryOverallocationBehaviorAMD</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga2aacb670ab649cee0eaf7857cecaa0dea7a1920d61156abc05a60135aefe8bc67" class="m-doc">Default</a> = VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD,
               <a href="#gga2aacb670ab649cee0eaf7857cecaa0deabb5fe5cd9c8c778e81b05ef53c166612" class="m-doc">Allowed</a> = VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD,
               <a href="#gga2aacb670ab649cee0eaf7857cecaa0deade99ae8770699a4725a85853a0790d24" class="m-doc">Disallowed</a> = VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryOverallocationBehaviorAMD">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gad7ea89ad4e79a0835042fd06068cd1ee" class="m-doc">EPerformanceCounterDescriptionFlag</a> { </span><span class="m-doc-wrap"><a href="#ggad7ea89ad4e79a0835042fd06068cd1eea10eb8dfd211dce42551be4ae2c55b132" class="m-doc">PerformanceImpacting</a> = VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gad7ea89ad4e79a0835042fd06068cd1ee" class="m-doc">EPerformanceCounterDescriptionFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggad7ea89ad4e79a0835042fd06068cd1eea10eb8dfd211dce42551be4ae2c55b132" class="m-doc">PerformanceImpacting</a> = VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_KHR,
               <a href="#ggad7ea89ad4e79a0835042fd06068cd1eea2acefa1cb03879ec39573689064011cd" class="m-doc">ConcurrentlyImpacted</a> = VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_KHR,
               <a href="#ggad7ea89ad4e79a0835042fd06068cd1eeaa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_PERFORMANCE_COUNTER_DESCRIPTION_FLAG_BITS_MAX_ENUM_KHR }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterDescriptionFlagBitsKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gabe540cb497bb4730fdde66043a41910c" class="m-doc">EPerformanceCounterScope</a> { </span><span class="m-doc-wrap"><a href="#ggabe540cb497bb4730fdde66043a41910ca0ee80cba1e0f0d52595227a1d3c08592" class="m-doc">Performance_CommandBuffer</a> = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gabe540cb497bb4730fdde66043a41910c" class="m-doc">EPerformanceCounterScope</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggabe540cb497bb4730fdde66043a41910ca0ee80cba1e0f0d52595227a1d3c08592" class="m-doc">Performance_CommandBuffer</a> = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR,
               <a href="#ggabe540cb497bb4730fdde66043a41910cab573fc56d2e9ce2a4c46ae282b089450" class="m-doc">Performance_RenderPass</a> = VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR,
               <a href="#ggabe540cb497bb4730fdde66043a41910ca0821f46fa1335f297bd650289bcf364e" class="m-doc">Performance_Command</a> = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR,
               <a href="#ggabe540cb497bb4730fdde66043a41910cae45277d438eff21fd564e0284e1e3702" class="m-doc">Query_Buffer</a> = VK_QUERY_SCOPE_COMMAND_BUFFER_KHR,
@@ -249,7 +249,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterScopeKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga3d8c8ecafe84f2798a77f2efce9c31f1" class="m-doc">EPerformanceCounterStorage</a> { </span><span class="m-doc-wrap"><a href="#gga3d8c8ecafe84f2798a77f2efce9c31f1acc342715f7e0697782f92085c67b70d0" class="m-doc">VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR</a> = 0,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga3d8c8ecafe84f2798a77f2efce9c31f1" class="m-doc">EPerformanceCounterStorage</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga3d8c8ecafe84f2798a77f2efce9c31f1acc342715f7e0697782f92085c67b70d0" class="m-doc">VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR</a> = 0,
               <a href="#gga3d8c8ecafe84f2798a77f2efce9c31f1ab92edefba43be7bbff7f2613c867ab3c" class="m-doc">VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR</a> = 1,
               <a href="#gga3d8c8ecafe84f2798a77f2efce9c31f1aa1bf2c9cb3e6ee7cada51c787143421a" class="m-doc">VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR</a> = 2,
               <a href="#gga3d8c8ecafe84f2798a77f2efce9c31f1ad806208ee554cf9331ac9474dc4134e5" class="m-doc">VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR</a> = 3,
@@ -258,7 +258,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterStorageKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga6fa48d9434ee58b9f3571a45d9aa2114" class="m-doc">EPerformanceCounterUnit</a> { </span><span class="m-doc-wrap"><a href="#gga6fa48d9434ee58b9f3571a45d9aa2114a8045a0a6c688b0635e3caccc408a1446" class="m-doc">Generic</a> = VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga6fa48d9434ee58b9f3571a45d9aa2114" class="m-doc">EPerformanceCounterUnit</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga6fa48d9434ee58b9f3571a45d9aa2114a8045a0a6c688b0635e3caccc408a1446" class="m-doc">Generic</a> = VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR,
               <a href="#gga6fa48d9434ee58b9f3571a45d9aa2114a37be07209f53a5d636d5c904ca9ae64c" class="m-doc">Percentage</a> = VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR,
               <a href="#gga6fa48d9434ee58b9f3571a45d9aa2114afba00bdab687ce01136a86bac8bac578" class="m-doc">Nanoseconds</a> = VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR,
               <a href="#gga6fa48d9434ee58b9f3571a45d9aa2114a600e754f49b68aa0fc90a9cd64eb7051" class="m-doc">Bytes</a> = VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR,
@@ -272,7 +272,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterUnitKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga30331dd7ccf0c2fe53cbe29a4472eb2f" class="m-doc">EPhysicalDeviceType</a> { </span><span class="m-doc-wrap"><a href="#gga30331dd7ccf0c2fe53cbe29a4472eb2fa6311ae17c1ee52b36e68aaf4ad066387" class="m-doc">Other</a> = VK_PHYSICAL_DEVICE_TYPE_OTHER,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga30331dd7ccf0c2fe53cbe29a4472eb2f" class="m-doc">EPhysicalDeviceType</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga30331dd7ccf0c2fe53cbe29a4472eb2fa6311ae17c1ee52b36e68aaf4ad066387" class="m-doc">Other</a> = VK_PHYSICAL_DEVICE_TYPE_OTHER,
               <a href="#gga30331dd7ccf0c2fe53cbe29a4472eb2fa65b0e191fa93a76b1d4d5ad468b7c26d" class="m-doc">IntergratedGPU</a> = VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU,
               <a href="#gga30331dd7ccf0c2fe53cbe29a4472eb2fa579514915ed87acffb605512eb600384" class="m-doc">DiscreteGPU</a> = VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU,
               <a href="#gga30331dd7ccf0c2fe53cbe29a4472eb2faf3f30276e28d22974fca049daff66986" class="m-doc">VirtualGPU</a> = VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU,
@@ -280,7 +280,7 @@
             </dt>
             <dd>Supported physical device types.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc">EQueueFlag</a> { </span><span class="m-doc-wrap"><a href="#gga102361bc2cb97d1cac56ae1bac16d323ad334dfcea59127bedfcdbe0a3ee7f494" class="m-doc">Graphics</a> = VK_QUEUE_GRAPHICS_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc">EQueueFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga102361bc2cb97d1cac56ae1bac16d323ad334dfcea59127bedfcdbe0a3ee7f494" class="m-doc">Graphics</a> = VK_QUEUE_GRAPHICS_BIT,
               <a href="#gga102361bc2cb97d1cac56ae1bac16d323aa623a8d0366bf079411aa30be45b2d10" class="m-doc">Compute</a> = VK_QUEUE_COMPUTE_BIT,
               <a href="#gga102361bc2cb97d1cac56ae1bac16d323a6950810f0d2bba97a6f710c7b965b84e" class="m-doc">Transfer</a> = VK_QUEUE_TRANSFER_BIT,
               <a href="#gga102361bc2cb97d1cac56ae1bac16d323a61bb3861c3c9e94fc7ca9c09af3a891a" class="m-doc">SparseBinding</a> = VK_QUEUE_SPARSE_BINDING_BIT,
@@ -289,7 +289,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga25bcd6ee8cdfcde6c9b402f0f7df3c46" class="m-doc">EVendorID</a> { </span><span class="m-doc-wrap"><a href="#gga25bcd6ee8cdfcde6c9b402f0f7df3c46a676f8176025ca604708700dfd8d8a124" class="m-doc">VIV</a> = VK_VENDOR_ID_VIV,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga25bcd6ee8cdfcde6c9b402f0f7df3c46" class="m-doc">EVendorID</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga25bcd6ee8cdfcde6c9b402f0f7df3c46a676f8176025ca604708700dfd8d8a124" class="m-doc">VIV</a> = VK_VENDOR_ID_VIV,
               <a href="#gga25bcd6ee8cdfcde6c9b402f0f7df3c46a31f259357875a2a9d7c9284adbfe5ded" class="m-doc">VSI</a> = VK_VENDOR_ID_VSI,
               <a href="#gga25bcd6ee8cdfcde6c9b402f0f7df3c46ad078abec195045db98f2b59b3378a781" class="m-doc">KAZAN</a> = VK_VENDOR_ID_KAZAN,
               <a href="#gga25bcd6ee8cdfcde6c9b402f0f7df3c46aab686f19cc01a1c4425a64910058199a" class="m-doc">CODEPLAY</a> = VK_VENDOR_ID_CODEPLAY,
@@ -399,77 +399,77 @@
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="ga8b3fca3905597d9814cd898e403f9c5b"><div>
             <h3>
-              enum <a href="#ga8b3fca3905597d9814cd898e403f9c5b" class="m-doc-self">EDeviceDiagnosticConfigFlag</a>
+              enum class <a href="#ga8b3fca3905597d9814cd898e403f9c5b" class="m-doc-self">EDeviceDiagnosticConfigFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceDiagnosticsConfigFlagBitsNV">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gaf03738868bfa9b2e0151d8137f7bb569"><div>
             <h3>
-              enum <a href="#gaf03738868bfa9b2e0151d8137f7bb569" class="m-doc-self">EDeviceQueueCreateFlag</a>
+              enum class <a href="#gaf03738868bfa9b2e0151d8137f7bb569" class="m-doc-self">EDeviceQueueCreateFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga548e54f67d0bba05b2ee60663efa3ef7"><div>
             <h3>
-              enum <a href="#ga548e54f67d0bba05b2ee60663efa3ef7" class="m-doc-self">EDeviceEventType</a>
+              enum class <a href="#ga548e54f67d0bba05b2ee60663efa3ef7" class="m-doc-self">EDeviceEventType</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceEventTypeEXT">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga1766111594a3f7258b11b4e66b40fa13"><div>
             <h3>
-              enum <a href="#ga1766111594a3f7258b11b4e66b40fa13" class="m-doc-self">EDriverID</a>
+              enum class <a href="#ga1766111594a3f7258b11b4e66b40fa13" class="m-doc-self">EDriverID</a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDriverId">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gae65a98d6493bb687df83e2934c6dcca1"><div>
             <h3>
-              enum <a href="#gae65a98d6493bb687df83e2934c6dcca1" class="m-doc-self">ELogicalDeviceQueueCreateFlag</a>
+              enum class <a href="#gae65a98d6493bb687df83e2934c6dcca1" class="m-doc-self">ELogicalDeviceQueueCreateFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDeviceQueueCreateFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga2aacb670ab649cee0eaf7857cecaa0de"><div>
             <h3>
-              enum <a href="#ga2aacb670ab649cee0eaf7857cecaa0de" class="m-doc-self">EMemoryOverallocationBehaviorAMD</a>
+              enum class <a href="#ga2aacb670ab649cee0eaf7857cecaa0de" class="m-doc-self">EMemoryOverallocationBehaviorAMD</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryOverallocationBehaviorAMD">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gad7ea89ad4e79a0835042fd06068cd1ee"><div>
             <h3>
-              enum <a href="#gad7ea89ad4e79a0835042fd06068cd1ee" class="m-doc-self">EPerformanceCounterDescriptionFlag</a>
+              enum class <a href="#gad7ea89ad4e79a0835042fd06068cd1ee" class="m-doc-self">EPerformanceCounterDescriptionFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterDescriptionFlagBitsKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gabe540cb497bb4730fdde66043a41910c"><div>
             <h3>
-              enum <a href="#gabe540cb497bb4730fdde66043a41910c" class="m-doc-self">EPerformanceCounterScope</a>
+              enum class <a href="#gabe540cb497bb4730fdde66043a41910c" class="m-doc-self">EPerformanceCounterScope</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterScopeKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga3d8c8ecafe84f2798a77f2efce9c31f1"><div>
             <h3>
-              enum <a href="#ga3d8c8ecafe84f2798a77f2efce9c31f1" class="m-doc-self">EPerformanceCounterStorage</a>
+              enum class <a href="#ga3d8c8ecafe84f2798a77f2efce9c31f1" class="m-doc-self">EPerformanceCounterStorage</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterStorageKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga6fa48d9434ee58b9f3571a45d9aa2114"><div>
             <h3>
-              enum <a href="#ga6fa48d9434ee58b9f3571a45d9aa2114" class="m-doc-self">EPerformanceCounterUnit</a>
+              enum class <a href="#ga6fa48d9434ee58b9f3571a45d9aa2114" class="m-doc-self">EPerformanceCounterUnit</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPerformanceCounterUnitKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga30331dd7ccf0c2fe53cbe29a4472eb2f"><div>
             <h3>
-              enum <a href="#ga30331dd7ccf0c2fe53cbe29a4472eb2f" class="m-doc-self">EPhysicalDeviceType</a>
+              enum class <a href="#ga30331dd7ccf0c2fe53cbe29a4472eb2f" class="m-doc-self">EPhysicalDeviceType</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p>Supported physical device types.</p>
@@ -477,14 +477,14 @@
           </div></section>
           <section class="m-doc-details" id="ga102361bc2cb97d1cac56ae1bac16d323"><div>
             <h3>
-              enum <a href="#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc-self">EQueueFlag</a>
+              enum class <a href="#ga102361bc2cb97d1cac56ae1bac16d323" class="m-doc-self">EQueueFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkQueueFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga25bcd6ee8cdfcde6c9b402f0f7df3c46"><div>
             <h3>
-              enum <a href="#ga25bcd6ee8cdfcde6c9b402f0f7df3c46" class="m-doc-self">EVendorID</a>
+              enum class <a href="#ga25bcd6ee8cdfcde6c9b402f0f7df3c46" class="m-doc-self">EVendorID</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
 <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVendorId.html">Specification</a></p>
@@ -746,7 +746,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

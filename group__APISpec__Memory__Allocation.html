@@ -107,18 +107,18 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga9baec6e528e595f6be3ecfd90ccf7308" class="m-doc">EInternalAllocationType</a> { </span><span class="m-doc-wrap"><a href="#gga9baec6e528e595f6be3ecfd90ccf7308a38492e6b60e40c59a376e2151778e2c7" class="m-doc">Executable</a> = VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE }</span>
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga9baec6e528e595f6be3ecfd90ccf7308" class="m-doc">EInternalAllocationType</a> { </span><span class="m-doc-wrap"><a href="#gga9baec6e528e595f6be3ecfd90ccf7308a38492e6b60e40c59a376e2151778e2c7" class="m-doc">Executable</a> = VK_INTERNAL_ALLOCATION_TYPE_EXECUTABLE }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInternalAllocationType">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga4bcb6e170011d92f1b4a03de8f7750c9" class="m-doc">EMemoryHeapFlag</a> { </span><span class="m-doc-wrap"><a href="#gga4bcb6e170011d92f1b4a03de8f7750c9ab61e4392ba9fbbb214a368e95f1d5582" class="m-doc">DeviceLocal</a> = VK_MEMORY_HEAP_DEVICE_LOCAL_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga4bcb6e170011d92f1b4a03de8f7750c9" class="m-doc">EMemoryHeapFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga4bcb6e170011d92f1b4a03de8f7750c9ab61e4392ba9fbbb214a368e95f1d5582" class="m-doc">DeviceLocal</a> = VK_MEMORY_HEAP_DEVICE_LOCAL_BIT,
               <a href="#gga4bcb6e170011d92f1b4a03de8f7750c9abf6c29fed093162c59e29818a8596362" class="m-doc">MultiInstance</a> = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT,
               <a href="#gga4bcb6e170011d92f1b4a03de8f7750c9a070761375553eb665cb5e3a43372d2c2" class="m-doc">MultiInstance_KHR</a> = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR,
               <a href="#gga4bcb6e170011d92f1b4a03de8f7750c9aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_MEMORY_HEAP_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeapFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga9c4063219f903716617e5750e2d2b757" class="m-doc">EMemoryPropertyFlag</a> { </span><span class="m-doc-wrap"><a href="#gga9c4063219f903716617e5750e2d2b757ab61e4392ba9fbbb214a368e95f1d5582" class="m-doc">DeviceLocal</a> = VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga9c4063219f903716617e5750e2d2b757" class="m-doc">EMemoryPropertyFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga9c4063219f903716617e5750e2d2b757ab61e4392ba9fbbb214a368e95f1d5582" class="m-doc">DeviceLocal</a> = VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
               <a href="#gga9c4063219f903716617e5750e2d2b757aadc80d27025d282563fab5fa234dff99" class="m-doc">HostVisible</a> = VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT,
               <a href="#gga9c4063219f903716617e5750e2d2b757a473e4607bf6b5bd89b55ffc80b329778" class="m-doc">HostCoherent</a> = VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
               <a href="#gga9c4063219f903716617e5750e2d2b757aa35cfabdf070dbf86b1680bd3a892760" class="m-doc">HostCached</a> = VK_MEMORY_PROPERTY_HOST_CACHED_BIT,
@@ -130,7 +130,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryPropertyFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga3565c6fa9725b197de82b656c2acaf9a" class="m-doc">ESystemAllocationScope</a> { </span><span class="m-doc-wrap"><a href="#gga3565c6fa9725b197de82b656c2acaf9aaee97be03cb04119af45014d815621ce1" class="m-doc">Command</a> = VK_SYSTEM_ALLOCATION_SCOPE_COMMAND,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga3565c6fa9725b197de82b656c2acaf9a" class="m-doc">ESystemAllocationScope</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga3565c6fa9725b197de82b656c2acaf9aaee97be03cb04119af45014d815621ce1" class="m-doc">Command</a> = VK_SYSTEM_ALLOCATION_SCOPE_COMMAND,
               <a href="#gga3565c6fa9725b197de82b656c2acaf9aa497031794414a552435f90151ac3b54b" class="m-doc">Object</a> = VK_SYSTEM_ALLOCATION_SCOPE_OBJECT,
               <a href="#gga3565c6fa9725b197de82b656c2acaf9aaab0cf104f39708eabd07b8cb67e149ba" class="m-doc">Cache</a> = VK_SYSTEM_ALLOCATION_SCOPE_CACHE,
               <a href="#gga3565c6fa9725b197de82b656c2acaf9aae0ac20adce6ffee48c7151b070aa5737" class="m-doc">Device</a> = VK_SYSTEM_ALLOCATION_SCOPE_DEVICE,
@@ -145,7 +145,7 @@
             <dt>
               using <a href="#ga3be4f77839252c5cdb8b84b9185f6486" class="m-doc">FPtr_Allocation</a> = PFN_vkAllocationFunction
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a><br /></dd>
             <dt>
               using <a href="#ga2262ed6e4987be34f8c5d39b0e91a9d5" class="m-doc">FPtr_Reallocation</a> = PFN_vkReallocationFunction
             </dt>
@@ -157,7 +157,7 @@
             <dt>
               using <a href="#ga59b004bf3db7e819ca9001305e28d561" class="m-doc">FPtr_InternalAllocationNotification</a> = PFN_vkInternalAllocationNotification
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a><br /></dd>
             <dt>
               using <a href="#ga93dd74f8d0c21a5f96fdc71968895eaf" class="m-doc">FPtr_InternalFreeNotification</a> = PFN_vkInternalFreeNotification
             </dt>
@@ -205,28 +205,28 @@
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="ga9baec6e528e595f6be3ecfd90ccf7308"><div>
             <h3>
-              enum <a href="#ga9baec6e528e595f6be3ecfd90ccf7308" class="m-doc-self">EInternalAllocationType</a>
+              enum class <a href="#ga9baec6e528e595f6be3ecfd90ccf7308" class="m-doc-self">EInternalAllocationType</a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkInternalAllocationType">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga4bcb6e170011d92f1b4a03de8f7750c9"><div>
             <h3>
-              enum <a href="#ga4bcb6e170011d92f1b4a03de8f7750c9" class="m-doc-self">EMemoryHeapFlag</a>
+              enum class <a href="#ga4bcb6e170011d92f1b4a03de8f7750c9" class="m-doc-self">EMemoryHeapFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryHeapFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga9c4063219f903716617e5750e2d2b757"><div>
             <h3>
-              enum <a href="#ga9c4063219f903716617e5750e2d2b757" class="m-doc-self">EMemoryPropertyFlag</a>
+              enum class <a href="#ga9c4063219f903716617e5750e2d2b757" class="m-doc-self">EMemoryPropertyFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryPropertyFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga3565c6fa9725b197de82b656c2acaf9a"><div>
             <h3>
-              enum <a href="#ga3565c6fa9725b197de82b656c2acaf9a" class="m-doc-self">ESystemAllocationScope</a>
+              enum class <a href="#ga3565c6fa9725b197de82b656c2acaf9a" class="m-doc-self">ESystemAllocationScope</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSystemAllocationScope">Specification</a></p>
@@ -239,7 +239,7 @@
               using <a href="#ga3be4f77839252c5cdb8b84b9185f6486" class="m-doc-self">FPtr_Allocation</a> = PFN_vkAllocationFunction
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Memory__Backend_8hpp.html">&lt;VaultedVulkan/VV_Memory_Backend.hpp&gt;</a></div>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a></p>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkAllocationFunction">Specification</a><br /></p>
           </div></section>
           <section class="m-doc-details" id="ga2262ed6e4987be34f8c5d39b0e91a9d5"><div>
             <h3>
@@ -260,7 +260,7 @@
               using <a href="#ga59b004bf3db7e819ca9001305e28d561" class="m-doc-self">FPtr_InternalAllocationNotification</a> = PFN_vkInternalAllocationNotification
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Memory__Backend_8hpp.html">&lt;VaultedVulkan/VV_Memory_Backend.hpp&gt;</a></div>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a></p>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#PFN_vkInternalAllocationNotification">Specification</a><br /></p>
           </div></section>
           <section class="m-doc-details" id="ga93dd74f8d0c21a5f96fdc71968895eaf"><div>
             <h3>
@@ -472,7 +472,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

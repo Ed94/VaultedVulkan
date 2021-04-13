@@ -130,6 +130,17 @@
               <a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="structVV_1_1V1_1_1PhysicalDevice_1_1Group.html" class="m-doc">PhysicalDevice::<wbr />Group</a>&gt;&amp; _groupListing) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Provides a list of the device groups present in the system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#abb6dfa3845c8e162a6b8070f719bc96d" class="m-doc">Create</a>(</span><span class="m-doc-wrap">const <a href="structVV_1_1V1_1_1AppInstance_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">Handle</a>&amp; _handle) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a new Vulkan application instance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a0a5c15fc7e9e1a1a1566252236fe98af" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">Handle</a> _handle,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
+            </dt>
+            <dd>Destroy an application instance of Vulkan.</dd>
           </dl>
         </section>
         <section>
@@ -170,6 +181,63 @@
               </tbody>
             </table>
 <aside class="m-note m-dim"><h4><a href="todo.html#_todo000004" class="m-doc">Todo</a></h4><p>Make the group listing container type specifiable using an interface.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abb6dfa3845c8e162a6b8070f719bc96d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abb6dfa3845c8e162a6b8070f719bc96d" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap">const <a href="structVV_1_1V1_1_1AppInstance_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">Handle</a>&amp; _handle)</span></span>
+            </h3>
+            <p>Create a new Vulkan application instance.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_info</td>
+                  <td>The creation specification structure to use.</td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td>Allocator desired (<a href="structVV_1_1V0_1_1Memory.html#ae13f3d8e410417f88369261d24542096" class="m-doc">Memory::<wbr />DefaultAllocator</a> if default desired).</td>
+                </tr>
+                <tr>
+                  <td>_handle</td>
+                  <td>Reference to object that will have the created object&#x27;s handle written to (if successful).</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Returns EResult code (Indicating how the creation went).</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateInstance">Create Instance Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="a0a5c15fc7e9e1a1a1566252236fe98af"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />AppInstance::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0a5c15fc7e9e1a1a1566252236fe98af" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">Handle</a> _handle,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
+            </h3>
+            <p>Destroy an application instance of Vulkan.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_handle</td>
+                  <td>Handle of the <a href="structVV_1_1V2_1_1AppInstance.html" class="m-doc">AppInstance</a>.</td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td>Optional: Allocator to use (<a href="structVV_1_1V0_1_1Memory.html#ae13f3d8e410417f88369261d24542096" class="m-doc">Memory::<wbr />DefaultAllocator</a> if default desired).</td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyInstance">Destroy Instance Specification</a></p>
           </div></section>
         </section>
       </div>
@@ -216,7 +284,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

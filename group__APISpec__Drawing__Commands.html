@@ -71,7 +71,7 @@
             <dt>
               struct <a href="structVV_1_1V1_1_1Pipeline_1_1InputAssemblyState_1_1CreateInfo.html" class="m-doc">VV::V1::Pipeline::InputAssemblyState::CreateInfo</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPipelineInputAssemblyStateCreateInfo">Specification</a><br /></dd>
             <dt>
               struct <a href="structVV_1_1V1_1_1Pipeline_1_1InputAssemblyState.html" class="m-doc">VV::V1::Pipeline::InputAssemblyState</a>
             </dt>
@@ -82,7 +82,7 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gab7a688addd3552874840185824edf168" class="m-doc">EIndexType</a> { </span><span class="m-doc-wrap"><a href="#ggab7a688addd3552874840185824edf168af292bf1ad9895f687bc980c60b93250a" class="m-doc">uInt16</a> = VK_INDEX_TYPE_UINT16,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gab7a688addd3552874840185824edf168" class="m-doc">EIndexType</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggab7a688addd3552874840185824edf168af292bf1ad9895f687bc980c60b93250a" class="m-doc">uInt16</a> = VK_INDEX_TYPE_UINT16,
               <a href="#ggab7a688addd3552874840185824edf168a7349df6dee200e063a08c04c1590344f" class="m-doc">uInt32</a> = VK_INDEX_TYPE_UINT32,
               <a href="#ggab7a688addd3552874840185824edf168a601a5520a2b5c224c409015e1072a8c5" class="m-doc">None_KHR</a> = VK_INDEX_TYPE_NONE_KHR,
               <a href="#ggab7a688addd3552874840185824edf168ab0cffa75aa037e628ccfdf46bcc086ac" class="m-doc">uInt8</a> = VK_INDEX_TYPE_UINT8_EXT,
@@ -90,7 +90,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkIndexType">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga0a420839b370d84456d4efc53fac4633" class="m-doc">EPrimitiveTopology</a> { </span><span class="m-doc-wrap"><a href="#gga0a420839b370d84456d4efc53fac4633a1a18ff71b3df3e362a2489eef4b30003" class="m-doc">PointList</a> = VK_PRIMITIVE_TOPOLOGY_POINT_LIST,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga0a420839b370d84456d4efc53fac4633" class="m-doc">EPrimitiveTopology</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga0a420839b370d84456d4efc53fac4633a1a18ff71b3df3e362a2489eef4b30003" class="m-doc">PointList</a> = VK_PRIMITIVE_TOPOLOGY_POINT_LIST,
               <a href="#gga0a420839b370d84456d4efc53fac4633a596e1b7afe8925f3f578c716d5af8fef" class="m-doc">LineList</a> = VK_PRIMITIVE_TOPOLOGY_LINE_LIST,
               <a href="#gga0a420839b370d84456d4efc53fac4633ae7f9e73b8edd21f420a63b3ace5768a2" class="m-doc">LineStrip</a> = VK_PRIMITIVE_TOPOLOGY_LINE_STRIP,
               <a href="#gga0a420839b370d84456d4efc53fac4633af5beeab7a1f452e5b0e9b03b44f0de92" class="m-doc">TriangleList</a> = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST,
@@ -138,14 +138,14 @@
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="gab7a688addd3552874840185824edf168"><div>
             <h3>
-              enum <a href="#gab7a688addd3552874840185824edf168" class="m-doc-self">EIndexType</a>
+              enum class <a href="#gab7a688addd3552874840185824edf168" class="m-doc-self">EIndexType</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkIndexType">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga0a420839b370d84456d4efc53fac4633"><div>
             <h3>
-              enum <a href="#ga0a420839b370d84456d4efc53fac4633" class="m-doc-self">EPrimitiveTopology</a>
+              enum class <a href="#ga0a420839b370d84456d4efc53fac4633" class="m-doc-self">EPrimitiveTopology</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPrimitiveTopology">Specification</a></p>
@@ -231,7 +231,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

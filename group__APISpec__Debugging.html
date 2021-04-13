@@ -106,7 +106,7 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gab143f45b43c63aef7f5f55d3cfb376f9" class="m-doc">EDebugUtils_MessageSeverity</a> { </span><span class="m-doc-wrap"><a href="#ggab143f45b43c63aef7f5f55d3cfb376f9ad4a9fa383ab700c5bdd6f31cf7df0faf" class="m-doc">Verbose</a> = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gab143f45b43c63aef7f5f55d3cfb376f9" class="m-doc">EDebugUtils_MessageSeverity</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggab143f45b43c63aef7f5f55d3cfb376f9ad4a9fa383ab700c5bdd6f31cf7df0faf" class="m-doc">Verbose</a> = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT,
               <a href="#ggab143f45b43c63aef7f5f55d3cfb376f9a4059b0251f66a18cb56f544728796875" class="m-doc">Info</a> = VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT,
               <a href="#ggab143f45b43c63aef7f5f55d3cfb376f9a0eaadb4fcb48a0a0ed7bc9868be9fbaa" class="m-doc">Warning</a> = VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT,
               <a href="#ggab143f45b43c63aef7f5f55d3cfb376f9a902b0d55fddef6f8d651fe1035b7d4bd" class="m-doc">Error</a> = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT,
@@ -114,14 +114,14 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagBitsEXT">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gae3b116055797b196a17ffe34bdb43813" class="m-doc">EDebugUtils_MessageType</a> { </span><span class="m-doc-wrap"><a href="#ggae3b116055797b196a17ffe34bdb43813a0db377921f4ce762c62526131097968f" class="m-doc">General</a> = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gae3b116055797b196a17ffe34bdb43813" class="m-doc">EDebugUtils_MessageType</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggae3b116055797b196a17ffe34bdb43813a0db377921f4ce762c62526131097968f" class="m-doc">General</a> = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT,
               <a href="#ggae3b116055797b196a17ffe34bdb43813a13148717f8faa9037f37d28971dfc219" class="m-doc">Validation</a> = VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT,
               <a href="#ggae3b116055797b196a17ffe34bdb43813a9446a98ad14416153cc4d45ab8b531bf" class="m-doc">Performance</a> = VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT,
               <a href="#ggae3b116055797b196a17ffe34bdb43813aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_DEBUG_UTILS_MESSAGE_TYPE_FLAG_BITS_MAX_ENUM_EXT }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagBitsEXT">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga24e424b29741d669378dd6f40fa57db6" class="m-doc">EObjectType</a> { </span><span class="m-doc-wrap"><a href="#gga24e424b29741d669378dd6f40fa57db6a88183b946cc5f0e8c96b2e66e1c74a7e" class="m-doc">Unknown</a> = VK_OBJECT_TYPE_UNKNOWN,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga24e424b29741d669378dd6f40fa57db6" class="m-doc">EObjectType</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga24e424b29741d669378dd6f40fa57db6a88183b946cc5f0e8c96b2e66e1c74a7e" class="m-doc">Unknown</a> = VK_OBJECT_TYPE_UNKNOWN,
               <a href="#gga24e424b29741d669378dd6f40fa57db6ad9a17c1c9e8ef6866e4dbeef41c741b2" class="m-doc">Instance</a> = VK_OBJECT_TYPE_INSTANCE,
               <a href="#gga24e424b29741d669378dd6f40fa57db6a824a3cc08b09357f5ab207dd2e7e6376" class="m-doc">PhysicalDevice</a> = VK_OBJECT_TYPE_PHYSICAL_DEVICE,
               <a href="#gga24e424b29741d669378dd6f40fa57db6ae0ac20adce6ffee48c7151b070aa5737" class="m-doc">Device</a> = VK_OBJECT_TYPE_DEVICE,
@@ -186,28 +186,28 @@
             <dt>
               using <a href="#gadc0fd9a1c8ca29e8c8b53bb90a7f1b86" class="m-doc">ServerityFlags</a> = Bitfield&lt;EServerity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a><br /></dd>
           </dl>
         </section>
         <section>
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="gab143f45b43c63aef7f5f55d3cfb376f9"><div>
             <h3>
-              enum <a href="#gab143f45b43c63aef7f5f55d3cfb376f9" class="m-doc-self">EDebugUtils_MessageSeverity</a>
+              enum class <a href="#gab143f45b43c63aef7f5f55d3cfb376f9" class="m-doc-self">EDebugUtils_MessageSeverity</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagBitsEXT">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gae3b116055797b196a17ffe34bdb43813"><div>
             <h3>
-              enum <a href="#gae3b116055797b196a17ffe34bdb43813" class="m-doc-self">EDebugUtils_MessageType</a>
+              enum class <a href="#gae3b116055797b196a17ffe34bdb43813" class="m-doc-self">EDebugUtils_MessageType</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageTypeFlagBitsEXT">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga24e424b29741d669378dd6f40fa57db6"><div>
             <h3>
-              enum <a href="#ga24e424b29741d669378dd6f40fa57db6" class="m-doc-self">EObjectType</a>
+              enum class <a href="#ga24e424b29741d669378dd6f40fa57db6" class="m-doc-self">EObjectType</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkObjectType">Specification</a></p>
@@ -243,7 +243,7 @@
               using <a href="#gadc0fd9a1c8ca29e8c8b53bb90a7f1b86" class="m-doc-self">ServerityFlags</a> = Bitfield&lt;EServerity, VkDebugUtilsMessageSeverityFlagsEXT&gt;
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Debug_8hpp.html">&lt;VaultedVulkan/VV_Debug.hpp&gt;</a></div>
             </h3>
-            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a></p>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkDebugUtilsMessageSeverityFlagsEXT">Specification</a><br /></p>
           </div></section>
         </section>
       </div>
@@ -290,7 +290,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

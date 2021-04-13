@@ -114,7 +114,42 @@
               <a href="group__Corridors.html#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a>&lt;<a href="group__APISpec__Resource__Creation.html#ga74252d866d64bef34e49a6599901c1fa" class="m-doc">Image::<wbr />Handle</a>&gt;* _images) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Provides all presentable images with the swapchain.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5cac4b15548d554a157f7feeff029587" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              const <a href="structVV_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#gaf4e4110b3ab1260dafadfef7a273bc38" class="m-doc">Handle</a>&amp; _swapChain) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a swapchain.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a7aa9618fb4948c6fbe8e2ac8d4b6d52a" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#gaf4e4110b3ab1260dafadfef7a273bc38" class="m-doc">Handle</a> _swapChainToDestroy,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
+            </dt>
+            <dd>Destroy a swapchain object.</dd>
           </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a5cac4b15548d554a157f7feeff029587"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />Swapchain::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5cac4b15548d554a157f7feeff029587" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              const <a href="structVV_1_1V1_1_1Swapchain_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#gaf4e4110b3ab1260dafadfef7a273bc38" class="m-doc">Handle</a>&amp; _swapChain)</span></span>
+            </h3>
+            <p>Create a swapchain.</p>
+<p>If the oldSwapchain parameter of pCreateInfo is a valid swapchain, which has exclusive full-screen access, that access is released from oldSwapchain. If the command succeeds in this case, the newly created swapchain will automatically acquire exclusive full-screen access from oldSwapchain. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateSwapchainKHR">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="a7aa9618fb4948c6fbe8e2ac8d4b6d52a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />Swapchain::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7aa9618fb4948c6fbe8e2ac8d4b6d52a" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Window__System__Integration__WSI.html#gaf4e4110b3ab1260dafadfef7a273bc38" class="m-doc">Handle</a> _swapChainToDestroy,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
+            </h3>
+            <p>Destroy a swapchain object.</p>
+<p>The application must not destroy a swapchain until after completion of all outstanding operations on images that were acquired from the swapchain. swapchain and all associated VkImage handles are destroyed, and must not be acquired or used any more by the application. <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroySwapchainKHR">Specification</a></p>
+          </div></section>
         </section>
       </div>
     </div>
@@ -160,7 +195,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

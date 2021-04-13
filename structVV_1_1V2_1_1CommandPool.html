@@ -127,6 +127,26 @@
               <a href="group__APISpec__Devices__and__Queues.html#gae02c25624209d5a0b13db0aba1485671" class="m-doc">LogicalDevice::<wbr />Queue::<wbr />Handle</a> _queue)</span>
             </dt>
             <dd>Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aa458f0310acc3d4b322a1ead5df95e94" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              const <a href="structVV_1_1V1_1_1CommandPool_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Command__Buffers.html#gab6567732f2935479092f72eebbdbca6d" class="m-doc">Handle</a>&amp; _commandPool) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a command pool.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#aec2c6a7beac116b3ee7ac026e7ba0526" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Command__Buffers.html#gab6567732f2935479092f72eebbdbca6d" class="m-doc">Handle</a> _commandPool,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a3c35505b003c910c263cb81e3f70938c" class="m-doc">Free</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Command__Buffers.html#gab6567732f2935479092f72eebbdbca6d" class="m-doc">Handle</a> _commandPool,
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _bufferCount,
+              const <a href="group__APISpec__Command__Buffers.html#ga066afe526cd0dcf188b18b5f837685ac" class="m-doc">CommandBuffer::<wbr />Handle</a>* _commandBuffers)</span>
+            </dt>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeCommandBuffers">Specification</a></dd>
           </dl>
         </section>
         <section>
@@ -148,6 +168,98 @@
             </h3>
             <p>Will end the recording and submit the command buffer created with the BeginSingleTimeCommands function.</p>
 <p>Will wait until the queue is idle that the commands were submitted to. Will also free the command buffer after completion.</p><p>Expected to be used with the BeginSingleTimeCommands function (defined above it).</p>
+          </div></section>
+          <section class="m-doc-details" id="aa458f0310acc3d4b322a1ead5df95e94"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa458f0310acc3d4b322a1ead5df95e94" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              const <a href="structVV_1_1V1_1_1CommandPool_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Command__Buffers.html#gab6567732f2935479092f72eebbdbca6d" class="m-doc">Handle</a>&amp; _commandPool)</span></span>
+            </h3>
+            <p>Create a command pool.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_commandPool</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateCommandPool">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="aec2c6a7beac116b3ee7ac026e7ba0526"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aec2c6a7beac116b3ee7ac026e7ba0526" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Command__Buffers.html#gab6567732f2935479092f72eebbdbca6d" class="m-doc">Handle</a> _commandPool,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyCommandPool">Specification</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_commandPool</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a3c35505b003c910c263cb81e3f70938c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />CommandPool::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3c35505b003c910c263cb81e3f70938c" class="m-doc-self">Free</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _deviceHandle,
+              <a href="group__APISpec__Command__Buffers.html#gab6567732f2935479092f72eebbdbca6d" class="m-doc">Handle</a> _commandPool,
+              <a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _bufferCount,
+              const <a href="group__APISpec__Command__Buffers.html#ga066afe526cd0dcf188b18b5f837685ac" class="m-doc">CommandBuffer::<wbr />Handle</a>* _commandBuffers)</span></span>
+            </h3>
+            <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkFreeCommandBuffers">Specification</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_deviceHandle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_commandPool</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_bufferCount</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_commandBuffers</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div></section>
         </section>
       </div>
@@ -194,7 +306,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

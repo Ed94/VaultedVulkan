@@ -78,6 +78,7 @@
             </dt>
             <dd>Structure describing a supported swapchain format-color space pair.</dd>
             <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
               struct <a href="structVV_1_1V0_1_1Surface__Maker_3_01EOS_1_1Windows_01_4_1_1CreateInfo.html" class="m-doc">VV::V0::Surface_Maker&lt;EOS::Windows&gt;::CreateInfo</a>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkWin32SurfaceCreateInfoKHR">Specification</a></dd>
@@ -103,7 +104,7 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga90c30a628f5649784f19485a2ae64236" class="m-doc">EColorSpace</a> { </span><span class="m-doc-wrap"><a href="#gga90c30a628f5649784f19485a2ae64236a1831aab4e62069f1a710adb010211787" class="m-doc">SRGB_NonLinear</a> = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga90c30a628f5649784f19485a2ae64236" class="m-doc">EColorSpace</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga90c30a628f5649784f19485a2ae64236a1831aab4e62069f1a710adb010211787" class="m-doc">SRGB_NonLinear</a> = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
               <a href="#gga90c30a628f5649784f19485a2ae64236a00cff915b117ded47da10fbf61256b88" class="m-doc">NonLinear_Display_P3</a> = VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT,
               <a href="#gga90c30a628f5649784f19485a2ae64236a0206ad49272c161551c0386350ce9e36" class="m-doc">ExtendedSRGB_Linear</a> = VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT,
               <a href="#gga90c30a628f5649784f19485a2ae64236a8749bd6cc584f2da0b69ab1f407737f6" class="m-doc">Display_P3_LInear</a> = VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT,
@@ -124,7 +125,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorSpaceKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gae446cd2389b918083bfb84e77ffda1a4" class="m-doc">ECompositeAlpha</a> { </span><span class="m-doc-wrap"><a href="#ggae446cd2389b918083bfb84e77ffda1a4afaa90538de35640e4b1e31ccf35b6eb5" class="m-doc">Opaque</a> = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gae446cd2389b918083bfb84e77ffda1a4" class="m-doc">ECompositeAlpha</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggae446cd2389b918083bfb84e77ffda1a4afaa90538de35640e4b1e31ccf35b6eb5" class="m-doc">Opaque</a> = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
               <a href="#ggae446cd2389b918083bfb84e77ffda1a4a35f7a4d0017cc8c4ea4c3691caf1fdfa" class="m-doc">PreMultiplied</a> = VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR,
               <a href="#ggae446cd2389b918083bfb84e77ffda1a4a2a785ad8378e547091a950e190ba0506" class="m-doc">PostMultiplied</a> = VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR,
               <a href="#ggae446cd2389b918083bfb84e77ffda1a4ac49484faf79e2388b580e49444d6ac11" class="m-doc">Inherit</a> = VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR,
@@ -132,7 +133,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagBitsKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga6426d83718a59b420d9d383e5236896e" class="m-doc">EPresentationMode</a> { </span><span class="m-doc-wrap"><a href="#gga6426d83718a59b420d9d383e5236896ea43f6615bbb2c40a5306ff804094420b1" class="m-doc">Immediate</a> = VK_PRESENT_MODE_IMMEDIATE_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga6426d83718a59b420d9d383e5236896e" class="m-doc">EPresentationMode</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga6426d83718a59b420d9d383e5236896ea43f6615bbb2c40a5306ff804094420b1" class="m-doc">Immediate</a> = VK_PRESENT_MODE_IMMEDIATE_KHR,
               <a href="#gga6426d83718a59b420d9d383e5236896ea2dcff8c037093c5d3552ad532e603f9f" class="m-doc">Mailbox</a> = VK_PRESENT_MODE_MAILBOX_KHR,
               <a href="#gga6426d83718a59b420d9d383e5236896eac589858dbe1d06c46544266ae4cd2c6f" class="m-doc">FIFO</a> = VK_PRESENT_MODE_FIFO_KHR,
               <a href="#gga6426d83718a59b420d9d383e5236896eaf9c147a80a20436a61bacc2f655cbea3" class="m-doc">FIFO_Relaxed</a> = VK_PRESENT_MODE_FIFO_RELAXED_KHR,
@@ -141,7 +142,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentModeKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gadb1e18b2b38afb25431458e9d9857fa5" class="m-doc">ESurfaceTransformFlag</a> { </span><span class="m-doc-wrap"><a href="#ggadb1e18b2b38afb25431458e9d9857fa5ac9c5c65fb4af9cf90eb99b3b84424189" class="m-doc">Identity</a> = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gadb1e18b2b38afb25431458e9d9857fa5" class="m-doc">ESurfaceTransformFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggadb1e18b2b38afb25431458e9d9857fa5ac9c5c65fb4af9cf90eb99b3b84424189" class="m-doc">Identity</a> = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR,
               <a href="#ggadb1e18b2b38afb25431458e9d9857fa5a6d9e88e083751898b2e3c92e2110cb5c" class="m-doc">Rotate_90</a> = VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR,
               <a href="#ggadb1e18b2b38afb25431458e9d9857fa5aa4108b82007a70b7b824a538645b1b98" class="m-doc">Rotate_180</a> = VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR,
               <a href="#ggadb1e18b2b38afb25431458e9d9857fa5acd0f69e3e36afeb4d097e0488994c88b" class="m-doc">Rotate_270</a> = VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR,
@@ -154,7 +155,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagBitsKHR">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga1c8bc3570c3ed5219484eb03d04635a4" class="m-doc">ESwapchainCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#gga1c8bc3570c3ed5219484eb03d04635a4a44ff641905c228a28dd70f657319ea41" class="m-doc">SplitInstanceBindRegions</a> = VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga1c8bc3570c3ed5219484eb03d04635a4" class="m-doc">ESwapchainCreateFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga1c8bc3570c3ed5219484eb03d04635a4a44ff641905c228a28dd70f657319ea41" class="m-doc">SplitInstanceBindRegions</a> = VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR,
               <a href="#gga1c8bc3570c3ed5219484eb03d04635a4a41602ba02f85ce770a44f3bff69832a7" class="m-doc">CreateProtected</a> = VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR,
               <a href="#gga1c8bc3570c3ed5219484eb03d04635a4a808e9c70ecc523728236207d04eb5ba0" class="m-doc">CreateMutableFormat</a> = VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR,
               <a href="#gga1c8bc3570c3ed5219484eb03d04635a4aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_SWAPCHAIN_CREATE_FLAG_BITS_MAX_ENUM_KHR }</span>
@@ -279,35 +280,35 @@
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="ga90c30a628f5649784f19485a2ae64236"><div>
             <h3>
-              enum <a href="#ga90c30a628f5649784f19485a2ae64236" class="m-doc-self">EColorSpace</a>
+              enum class <a href="#ga90c30a628f5649784f19485a2ae64236" class="m-doc-self">EColorSpace</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkColorSpaceKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gae446cd2389b918083bfb84e77ffda1a4"><div>
             <h3>
-              enum <a href="#gae446cd2389b918083bfb84e77ffda1a4" class="m-doc-self">ECompositeAlpha</a>
+              enum class <a href="#gae446cd2389b918083bfb84e77ffda1a4" class="m-doc-self">ECompositeAlpha</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCompositeAlphaFlagBitsKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga6426d83718a59b420d9d383e5236896e"><div>
             <h3>
-              enum <a href="#ga6426d83718a59b420d9d383e5236896e" class="m-doc-self">EPresentationMode</a>
+              enum class <a href="#ga6426d83718a59b420d9d383e5236896e" class="m-doc-self">EPresentationMode</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkPresentModeKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gadb1e18b2b38afb25431458e9d9857fa5"><div>
             <h3>
-              enum <a href="#gadb1e18b2b38afb25431458e9d9857fa5" class="m-doc-self">ESurfaceTransformFlag</a>
+              enum class <a href="#gadb1e18b2b38afb25431458e9d9857fa5" class="m-doc-self">ESurfaceTransformFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSurfaceTransformFlagBitsKHR">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga1c8bc3570c3ed5219484eb03d04635a4"><div>
             <h3>
-              enum <a href="#ga1c8bc3570c3ed5219484eb03d04635a4" class="m-doc-self">ESwapchainCreateFlag</a>
+              enum class <a href="#ga1c8bc3570c3ed5219484eb03d04635a4" class="m-doc-self">ESwapchainCreateFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSwapchainCreateFlagBitsKHR">Specification</a></p>
@@ -509,7 +510,7 @@
                 </tr>
               </tbody>
             </table>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceCapabilitiesKHR">Specification</a></p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfaceCapabilitiesKHR">Specification</a><br /></p>
           </div></section>
           <section class="m-doc-details" id="gae1755b06ec7019a4637921cd99e47349"><div>
             <h3>
@@ -577,7 +578,7 @@
                 </tr>
               </tbody>
             </table>
-<p>If pPresentModes is NULL, then the number of presentation modes supported for the given surface is returned in pPresentModeCount. Otherwise, pPresentModeCount must point to a variable set by the user to the number of elements in the pPresentModes array, and on return the variable is overwritten with the number of values actually written to pPresentModes.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfacePresentModesKHR">Specification</a></p>
+<p>If pPresentModes is NULL, then the number of presentation modes supported for the given surface is returned in pPresentModeCount. Otherwise, pPresentModeCount must point to a variable set by the user to the number of elements in the pPresentModes array, and on return the variable is overwritten with the number of values actually written to pPresentModes.</p><p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkGetPhysicalDeviceSurfacePresentModesKHR">Specification</a><br /></p>
           </div></section>
           <section class="m-doc-details" id="gae9c5f5d510ca25c40e51705430d4949c"><div>
             <h3>
@@ -678,7 +679,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

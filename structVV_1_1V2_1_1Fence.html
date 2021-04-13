@@ -108,6 +108,34 @@
               Handle _fence)</span>
             </dt>
             <dd>Destroy a fence (Default Allocator).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a0aded31857003891500e2de3d4cc5214" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _logicalDevice,
+              const <a href="structVV_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              Handle&amp; _fence) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a fence.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a19643cc0ea3d71534fb2b5ce4f9ce1a1" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _logicalDevice,
+              Handle _fence,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
+            </dt>
+            <dd>Destroy a fence.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a76265875743c8ec9ad632ae6c03ee2d1" class="m-doc">RegisterDeviceEvent</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              const <a href="structVV_1_1V1_1_1Fence_1_1DeviceEventInfo.html" class="m-doc">DeviceEventInfo</a>&amp; _deviceEventInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              Handle&amp; _fence) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a fence that will be signaled when an event occurs on a device.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a98be0ef4a086abf45c98f8b3ee0bbeac" class="m-doc">RegisterDisplayEvent</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="structVV_1_1Corridors_1_1Display.html#aee75cc38bb118ca3417cf1a2da04f0dd" class="m-doc">Display::<wbr />Handle</a> _display,
+              const <a href="structVV_1_1V1_1_1Fence_1_1DisplayEventInfo.html" class="m-doc">DisplayEventInfo</a>&amp; _displayEventInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              Handle&amp; _fence) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a fence that will be signaled when an event occurs on a Display object.</dd>
           </dl>
         </section>
         <section>
@@ -161,6 +189,88 @@
               </tbody>
             </table>
           </div></section>
+          <section class="m-doc-details" id="a0aded31857003891500e2de3d4cc5214"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />Fence::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0aded31857003891500e2de3d4cc5214" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _logicalDevice,
+              const <a href="structVV_1_1V1_1_1Fence_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              Handle&amp; _fence)</span></span>
+            </h3>
+            <p>Create a fence.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_logicalDevice</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createInfo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fence</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateFence">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="a19643cc0ea3d71534fb2b5ce4f9ce1a1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />Fence::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a19643cc0ea3d71534fb2b5ce4f9ce1a1" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _logicalDevice,
+              Handle _fence,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
+            </h3>
+            <p>Destroy a fence.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_logicalDevice</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_fence</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyFence">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="a76265875743c8ec9ad632ae6c03ee2d1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />Fence::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a76265875743c8ec9ad632ae6c03ee2d1" class="m-doc-self">RegisterDeviceEvent</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              const <a href="structVV_1_1V1_1_1Fence_1_1DeviceEventInfo.html" class="m-doc">DeviceEventInfo</a>&amp; _deviceEventInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              Handle&amp; _fence)</span></span>
+            </h3>
+            <p>Create a fence that will be signaled when an event occurs on a device.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDeviceEventEXT">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="a98be0ef4a086abf45c98f8b3ee0bbeac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />Fence::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a98be0ef4a086abf45c98f8b3ee0bbeac" class="m-doc-self">RegisterDisplayEvent</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="structVV_1_1Corridors_1_1Display.html#aee75cc38bb118ca3417cf1a2da04f0dd" class="m-doc">Display::<wbr />Handle</a> _display,
+              const <a href="structVV_1_1V1_1_1Fence_1_1DisplayEventInfo.html" class="m-doc">DisplayEventInfo</a>&amp; _displayEventInfo,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              Handle&amp; _fence)</span></span>
+            </h3>
+            <p>Create a fence that will be signaled when an event occurs on a Display object.</p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkRegisterDisplayEventEXT">Specification</a></p>
+          </div></section>
         </section>
       </div>
     </div>
@@ -206,7 +316,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

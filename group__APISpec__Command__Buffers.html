@@ -92,7 +92,7 @@
             <dt>
               struct <a href="structVV_1_1V1_1_1CommandBuffer_1_1SubmitInfo_1_1D3D12Fence.html" class="m-doc">VV::V1::CommandBuffer::SubmitInfo::D3D12Fence</a>
             </dt>
-            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkD3D12FenceSubmitInfoKHR">Specification</a><br /></dd>
             <dt>
               struct <a href="structVV_1_1V1_1_1CommandBuffer_1_1SubmitInfo_1_1Win32KeyedMutexAcquireRelease.html" class="m-doc">VV::V1::CommandBuffer::SubmitInfo::Win32KeyedMutexAcquireRelease</a>
             </dt>
@@ -151,31 +151,31 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gaa4192f4e24547f6b91c7ea329dc9bf2d" class="m-doc">ECommandBufferLevel</a> { </span><span class="m-doc-wrap"><a href="#ggaa4192f4e24547f6b91c7ea329dc9bf2da074de7e7c226d5c60f8af14c20725352" class="m-doc">Primary</a> = VK_COMMAND_BUFFER_LEVEL_PRIMARY,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gaa4192f4e24547f6b91c7ea329dc9bf2d" class="m-doc">ECommandBufferLevel</a> { </span><span class="m-doc-wrap"><a href="#ggaa4192f4e24547f6b91c7ea329dc9bf2da074de7e7c226d5c60f8af14c20725352" class="m-doc">Primary</a> = VK_COMMAND_BUFFER_LEVEL_PRIMARY,
               <a href="#ggaa4192f4e24547f6b91c7ea329dc9bf2da0c7d6cf19426e01dcfa32434828ed266" class="m-doc">Secondary</a> = VK_COMMAND_BUFFER_LEVEL_SECONDARY }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferLevel">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga1b92ca9af60b7b883c80cb8502c71999" class="m-doc">ECommandBufferResetFlag</a> { </span><span class="m-doc-wrap"><a href="#gga1b92ca9af60b7b883c80cb8502c71999ab797908cc250eec925f337c22108236d" class="m-doc">ReleaseResources</a> = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga1b92ca9af60b7b883c80cb8502c71999" class="m-doc">ECommandBufferResetFlag</a>: u32 { </span><span class="m-doc-wrap"><a href="#gga1b92ca9af60b7b883c80cb8502c71999ab797908cc250eec925f337c22108236d" class="m-doc">ReleaseResources</a> = VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT,
               <a href="#gga1b92ca9af60b7b883c80cb8502c71999aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_COMMAND_BUFFER_RESET_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits ">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga3b7978b4678534fbac6bba778c33e99d" class="m-doc">ECommandBufferUsageFlag</a> { </span><span class="m-doc-wrap"><a href="#gga3b7978b4678534fbac6bba778c33e99dab5ba1baa2d4b9c106c86bb3159a7d1b1" class="m-doc">OneTimeSubmit</a> = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga3b7978b4678534fbac6bba778c33e99d" class="m-doc">ECommandBufferUsageFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga3b7978b4678534fbac6bba778c33e99dab5ba1baa2d4b9c106c86bb3159a7d1b1" class="m-doc">OneTimeSubmit</a> = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT,
               <a href="#gga3b7978b4678534fbac6bba778c33e99da533a21f47350910bcb5bb7f2fa3b99de" class="m-doc">RenderPassContinue</a> = VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT,
               <a href="#gga3b7978b4678534fbac6bba778c33e99daac6d0f960bae99394095800d8f76d5ce" class="m-doc">SimultaneousUse</a> = VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT,
               <a href="#gga3b7978b4678534fbac6bba778c33e99daa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_COMMAND_BUFFER_USAGE_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga6aae3515ef65c1ba96f4e9280ad2022d" class="m-doc">ECommandPoolCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#gga6aae3515ef65c1ba96f4e9280ad2022dab1f023eff9a6b5308d6024e4c6b3d475" class="m-doc">Transient</a> = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga6aae3515ef65c1ba96f4e9280ad2022d" class="m-doc">ECommandPoolCreateFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga6aae3515ef65c1ba96f4e9280ad2022dab1f023eff9a6b5308d6024e4c6b3d475" class="m-doc">Transient</a> = VK_COMMAND_POOL_CREATE_TRANSIENT_BIT,
               <a href="#gga6aae3515ef65c1ba96f4e9280ad2022da402dc6bd58cf115fbf8b245c1c0b3796" class="m-doc">ResetCommandBuffer</a> = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,
               <a href="#gga6aae3515ef65c1ba96f4e9280ad2022da56f0605c9795b173abd2e34fab7fc164" class="m-doc">Protected</a> = VK_COMMAND_POOL_CREATE_PROTECTED_BIT,
               <a href="#gga6aae3515ef65c1ba96f4e9280ad2022daa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_COMMAND_POOL_CREATE_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gaf4f06c69ee57f3206c9b1df6cee2e470" class="m-doc">ECommandPoolResetFlags</a> { </span><span class="m-doc-wrap"><a href="#ggaf4f06c69ee57f3206c9b1df6cee2e470ab797908cc250eec925f337c22108236d" class="m-doc">ReleaseResources</a> = VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gaf4f06c69ee57f3206c9b1df6cee2e470" class="m-doc">ECommandPoolResetFlags</a>: u32 { </span><span class="m-doc-wrap"><a href="#ggaf4f06c69ee57f3206c9b1df6cee2e470ab797908cc250eec925f337c22108236d" class="m-doc">ReleaseResources</a> = VK_COMMAND_POOL_RESET_RELEASE_RESOURCES_BIT,
               <a href="#ggaf4f06c69ee57f3206c9b1df6cee2e470aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_COMMAND_POOL_RESET_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlagBits">Specification</a></dd>
@@ -293,35 +293,35 @@
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="gaa4192f4e24547f6b91c7ea329dc9bf2d"><div>
             <h3>
-              enum <a href="#gaa4192f4e24547f6b91c7ea329dc9bf2d" class="m-doc-self">ECommandBufferLevel</a>
+              enum class <a href="#gaa4192f4e24547f6b91c7ea329dc9bf2d" class="m-doc-self">ECommandBufferLevel</a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferLevel">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga1b92ca9af60b7b883c80cb8502c71999"><div>
             <h3>
-              enum <a href="#ga1b92ca9af60b7b883c80cb8502c71999" class="m-doc-self">ECommandBufferResetFlag</a>
+              enum class <a href="#ga1b92ca9af60b7b883c80cb8502c71999" class="m-doc-self">ECommandBufferResetFlag</a>: u32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits ">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga3b7978b4678534fbac6bba778c33e99d"><div>
             <h3>
-              enum <a href="#ga3b7978b4678534fbac6bba778c33e99d" class="m-doc-self">ECommandBufferUsageFlag</a>
+              enum class <a href="#ga3b7978b4678534fbac6bba778c33e99d" class="m-doc-self">ECommandBufferUsageFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandBufferResetFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga6aae3515ef65c1ba96f4e9280ad2022d"><div>
             <h3>
-              enum <a href="#ga6aae3515ef65c1ba96f4e9280ad2022d" class="m-doc-self">ECommandPoolCreateFlag</a>
+              enum class <a href="#ga6aae3515ef65c1ba96f4e9280ad2022d" class="m-doc-self">ECommandPoolCreateFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolCreateFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gaf4f06c69ee57f3206c9b1df6cee2e470"><div>
             <h3>
-              enum <a href="#gaf4f06c69ee57f3206c9b1df6cee2e470" class="m-doc-self">ECommandPoolResetFlags</a>
+              enum class <a href="#gaf4f06c69ee57f3206c9b1df6cee2e470" class="m-doc-self">ECommandPoolResetFlags</a>: u32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkCommandPoolResetFlagBits">Specification</a></p>
@@ -729,7 +729,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

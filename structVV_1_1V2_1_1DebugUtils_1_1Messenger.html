@@ -108,7 +108,84 @@
               <a href="group__APISpec__Debugging.html#gadc9d7f4d0ef404926cca22870b0b1ddb" class="m-doc">Handle</a> _messenger)</span>
             </dt>
             <dd>Destroy a debug messenger that used the default memory allocator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#afc52cb970112f2469c90b04f472bc4fe" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              const <a href="structVV_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Debugging.html#gadc9d7f4d0ef404926cca22870b0b1ddb" class="m-doc">Handle</a>&amp; _messenger) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Creates a debug messenger.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#aed1f0bc1976075b3cd4b46c0821843c3" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              <a href="group__APISpec__Debugging.html#gadc9d7f4d0ef404926cca22870b0b1ddb" class="m-doc">Handle</a> _messenger,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
+            </dt>
+            <dd>Destroys a debug messenger.</dd>
           </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="afc52cb970112f2469c90b04f472bc4fe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />DebugUtils::<wbr />Messenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afc52cb970112f2469c90b04f472bc4fe" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              const <a href="structVV_1_1V1_1_1DebugUtils_1_1Messenger_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _createSpec,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Debugging.html#gadc9d7f4d0ef404926cca22870b0b1ddb" class="m-doc">Handle</a>&amp; _messenger)</span></span>
+            </h3>
+            <p>Creates a debug messenger.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_appInstance</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_createSpec</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_messenger</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateDebugUtilsMessengerEXT">Specification</a></p>
+          </div></section>
+          <section class="m-doc-details" id="aed1f0bc1976075b3cd4b46c0821843c3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />DebugUtils::<wbr />Messenger::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aed1f0bc1976075b3cd4b46c0821843c3" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Initialization.html#ga3161c1be376229147e2c08fe8aadc457" class="m-doc">AppInstance::<wbr />Handle</a> _appInstance,
+              <a href="group__APISpec__Debugging.html#gadc9d7f4d0ef404926cca22870b0b1ddb" class="m-doc">Handle</a> _messenger,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
+            </h3>
+            <p>Destroys a debug messenger.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_appInstance</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_messenger</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkDestroyDebugUtilsMessengerEXT">Specification</a> .</p>
+          </div></section>
         </section>
       </div>
     </div>
@@ -154,7 +231,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

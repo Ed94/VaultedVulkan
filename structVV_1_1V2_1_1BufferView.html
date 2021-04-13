@@ -108,6 +108,19 @@
               <a href="group__APISpec__Resource__Creation.html#ga06e0aaf925141d74ce111007435492cc" class="m-doc">Handle</a> _bufferView)</span>
             </dt>
             <dd>Destroy a buffer view object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac87c3376dc5fd934336f0d921e463ef8" class="m-doc">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              const <a href="structVV_1_1V1_1_1BufferView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Resource__Creation.html#ga06e0aaf925141d74ce111007435492cc" class="m-doc">Handle</a>&amp; _bufferView) -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+            </dt>
+            <dd>Create a new buffer view object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a654c67397bb6d11d8c4c3b449ee8a43f" class="m-doc">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="group__APISpec__Resource__Creation.html#ga06e0aaf925141d74ce111007435492cc" class="m-doc">Handle</a> _bufferView,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span>
+            </dt>
+            <dd>Destroy a buffer view object.</dd>
           </dl>
         </section>
         <section>
@@ -161,6 +174,67 @@
               </tbody>
             </table>
           </div></section>
+          <section class="m-doc-details" id="ac87c3376dc5fd934336f0d921e463ef8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> VV::<wbr />V2::<wbr />BufferView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac87c3376dc5fd934336f0d921e463ef8" class="m-doc-self">Create</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              const <a href="structVV_1_1V1_1_1BufferView_1_1CreateInfo.html" class="m-doc">CreateInfo</a>&amp; _info,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator,
+              <a href="group__APISpec__Resource__Creation.html#ga06e0aaf925141d74ce111007435492cc" class="m-doc">Handle</a>&amp; _bufferView)</span></span>
+            </h3>
+            <p>Create a new buffer view object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_info</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_bufferView</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#vkCreateBufferView">Specification</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="a654c67397bb6d11d8c4c3b449ee8a43f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void VV::<wbr />V2::<wbr />BufferView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a654c67397bb6d11d8c4c3b449ee8a43f" class="m-doc-self">Destroy</a>(</span><span class="m-doc-wrap"><a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">LogicalDevice::<wbr />Handle</a> _device,
+              <a href="group__APISpec__Resource__Creation.html#ga06e0aaf925141d74ce111007435492cc" class="m-doc">Handle</a> _bufferView,
+              const <a href="structVV_1_1V0_1_1Memory_1_1AllocationCallbacks.html" class="m-doc">Memory::<wbr />AllocationCallbacks</a>* _allocator)</span></span>
+            </h3>
+            <p>Destroy a buffer view object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">_device</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_bufferView</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>_allocator</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html">Specification</a></p>
+          </div></section>
         </section>
       </div>
     </div>
@@ -206,7 +280,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

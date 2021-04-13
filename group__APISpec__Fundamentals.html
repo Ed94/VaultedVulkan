@@ -107,7 +107,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-commandsyntax">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a> { </span><span class="m-doc-wrap"><a href="#gga36dd8ea27fd1931aa2c95b0d959128f7a505a83f220c02df2f85c3810cd9ceb38" class="m-doc">Success</a> = VK_SUCCESS,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a>: si32 { </span><span class="m-doc-wrap"><a href="#gga36dd8ea27fd1931aa2c95b0d959128f7a505a83f220c02df2f85c3810cd9ceb38" class="m-doc">Success</a> = VK_SUCCESS,
               <a href="#gga36dd8ea27fd1931aa2c95b0d959128f7a8e8210e73415c74c2a6e6c86c2ae3471" class="m-doc">Not_Ready</a> = VK_NOT_READY,
               <a href="#gga36dd8ea27fd1931aa2c95b0d959128f7ac85a251cc457840f1e032f1b733e9398" class="m-doc">Timeout</a> = VK_TIMEOUT,
               <a href="#gga36dd8ea27fd1931aa2c95b0d959128f7a024a64b04f625ecadf7a9674da7a7b8c" class="m-doc">Event_Set</a> = VK_EVENT_SET,
@@ -154,7 +154,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResult">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gab27bc2b0367773535d6c11ea2cb9e7b8" class="m-doc">EStructureType</a> { </span><span class="m-doc-wrap"><a href="#ggab27bc2b0367773535d6c11ea2cb9e7b8a82e47a865d458ab9d41eb5c536c40d32" class="m-doc">ApplicationInformation</a> = VK_STRUCTURE_TYPE_APPLICATION_INFO,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gab27bc2b0367773535d6c11ea2cb9e7b8" class="m-doc">EStructureType</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggab27bc2b0367773535d6c11ea2cb9e7b8a82e47a865d458ab9d41eb5c536c40d32" class="m-doc">ApplicationInformation</a> = VK_STRUCTURE_TYPE_APPLICATION_INFO,
               <a href="#ggab27bc2b0367773535d6c11ea2cb9e7b8a028134cb5d21aafa1bc7cd31b0a01c61" class="m-doc">Instance_CreateInfo</a> = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
               <a href="#ggab27bc2b0367773535d6c11ea2cb9e7b8aecdb6b9bc2f50d7bf45e212719005fb3" class="m-doc">DeviceQueue_CreateInfo</a> = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
               <a href="#ggab27bc2b0367773535d6c11ea2cb9e7b8a5fba0eeba43f3ade1eb9f24a0c7ba0c0" class="m-doc">Device_CreateInfo</a> = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
@@ -726,14 +726,14 @@
           </div></section>
           <section class="m-doc-details" id="ga36dd8ea27fd1931aa2c95b0d959128f7"><div>
             <h3>
-              enum <a href="#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc-self">EResult</a>
+              enum class <a href="#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc-self">EResult</a>: si32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkResult">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gab27bc2b0367773535d6c11ea2cb9e7b8"><div>
             <h3>
-              enum <a href="#gab27bc2b0367773535d6c11ea2cb9e7b8" class="m-doc-self">EStructureType</a>
+              enum class <a href="#gab27bc2b0367773535d6c11ea2cb9e7b8" class="m-doc-self">EStructureType</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkStructureType">Specification</a></p>
@@ -754,14 +754,14 @@
               using <a href="#gad7e502a947c669fe7ccd212325b3bf10" class="m-doc-self">DeviceAddress</a> = VkDeviceAddress
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Types_8hpp.html">&lt;VaultedVulkan/VV_Types.hpp&gt;</a></div>
             </h3>
-<p>@ &lt; =&quot;://..////1.2-//.#&quot;&gt;&lt;/&gt;</p>
+<p>@ &lt; =&quot;://..////1.2-//.#&quot;&gt;&lt;/&gt;<br /></p>
           </div></section>
           <section class="m-doc-details" id="ga08b05330b87c2362a7e5e91022083115"><div>
             <h3>
               using <a href="#ga08b05330b87c2362a7e5e91022083115" class="m-doc-self">DeviceSize</a> = VkDeviceSize
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Types_8hpp.html">&lt;VaultedVulkan/VV_Types.hpp&gt;</a></div>
             </h3>
-<p>@ &lt; =&quot;://..////1.2-//.#&quot;&gt;&lt;/&gt;</p>
+<p>@ &lt; =&quot;://..////1.2-//.#&quot;&gt;&lt;/&gt;<br /></p>
           </div></section>
           <section class="m-doc-details" id="gae6845af89cb43a8e4bf59fe3e14ff3ea"><div>
             <h3>
@@ -816,7 +816,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

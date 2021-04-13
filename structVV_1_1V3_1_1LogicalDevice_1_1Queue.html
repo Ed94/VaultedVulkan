@@ -59,7 +59,6 @@
             <li>
               Reference
               <ul>
-                <li><a href="#base-classes">Base classes</a></li>
                 <li><a href="#pub-types">Public types</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
@@ -69,15 +68,6 @@
           </ul>
         </div>
 <p>Vulkan queues provide an interface to the execution engines of a device. Commands for these execution engines are recorded into command buffers ahead of execution time. These command buffers are then submitted to queues with a queue submission command for execution in a number of batches. Once submitted to a queue, these commands will begin and complete execution without further application intervention, though the order of this execution is dependent on a number of implicit and explicit ordering constraints.</p><p>Note: This object only acts as a host interface to a given device object&#x27;s handle. The logical device of the queue manages the device object lifetime.</p>
-        <section id="base-classes">
-          <h2><a href="#base-classes">Base classes</a></h2>
-          <dl class="m-doc">
-            <dt>
-              struct <a href="structVV_1_1V1_1_1LogicalDevice_1_1Queue.html" class="m-doc">VV::V1::LogicalDevice::Queue</a>
-            </dt>
-            <dd>Queues handle different types of batched commands for the GPU to complete.</dd>
-          </dl>
-        </section>
         <section id="pub-types">
           <h2><a href="#pub-types">Public types</a></h2>
           <dl class="m-doc">
@@ -138,13 +128,13 @@
             </dt>
             <dd>Informs if family was specified.</dd>
             <dt id="ad2fb1f783db20106bb59d474704e6fa3">
-              <span class="m-doc-wrap-bumper">auto <a href="#ad2fb1f783db20106bb59d474704e6fa3" class="m-doc-self">QueuePresentation</a>(</span><span class="m-doc-wrap">const <a href="group__APISpec__Window__System__Integration__WSI.html#ga98e2deb4be6aeca77e1110916588bfa4" class="m-doc">PresentationInfo</a>&amp; _presentationInfo) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad2fb1f783db20106bb59d474704e6fa3" class="m-doc-self">QueuePresentation</a>(</span><span class="m-doc-wrap">const PresentationInfo&amp; _presentationInfo) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>After queuing all rendering commands and transitioning the image to the correct layout, to queue an image for presentation.</dd>
             <dt id="aa754a0ef19d6c929f9eb1085cc55dab2">
               <span class="m-doc-wrap-bumper">auto <a href="#aa754a0ef19d6c929f9eb1085cc55dab2" class="m-doc-self">SubmitToQueue</a>(</span><span class="m-doc-wrap"><a href="group__Corridors.html#ga592434de9f3009eb8b61dd515c6a51bf" class="m-doc">ui32</a> _submitCount,
-              const <a href="group__APISpec__Command__Buffers.html#ga827e064b11262f309022b72e14f160ef" class="m-doc">SubmitInfo</a>* _submissions,
-              <a href="structVV_1_1V1_1_1LogicalDevice_1_1Queue.html#a8cc9fed2c050cd2e20b5498e2505376d" class="m-doc">Fence_<wbr />Handle</a> _fence) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
+              const SubmitInfo* _submissions,
+              Fence_Handle _fence) const -&gt; <a href="group__APISpec__Fundamentals.html#ga36dd8ea27fd1931aa2c95b0d959128f7" class="m-doc">EResult</a></span>
             </dt>
             <dd>Submit command buffers to a queue.</dd>
             <dt id="a5c54095859ba9fd09a7906412da5dfd4">
@@ -157,7 +147,7 @@
           <h2><a href="#pro-attribs">Protected variables</a></h2>
           <dl class="m-doc">
             <dt id="ac595c472075afd42b6126b0cb6f95148">
-              <a href="group__APISpec__Devices__and__Queues.html#gae02c25624209d5a0b13db0aba1485671" class="m-doc">Handle</a> <a href="#ac595c472075afd42b6126b0cb6f95148" class="m-doc-self">handle</a>
+              <a href="group__APISpec__Devices__and__Queues.html#gae18c0d18165bf657e221f7e4ab0aefc2" class="m-doc">Handle</a> <a href="#ac595c472075afd42b6126b0cb6f95148" class="m-doc-self">handle</a>
             </dt>
             <dd><span></span></dd>
             <dt id="a0f9084e3f591a3b6f67f8bd2464aaf2c">
@@ -222,7 +212,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

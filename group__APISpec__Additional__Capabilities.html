@@ -68,7 +68,7 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga6cb525fb31eefd48c55276d45fac7743" class="m-doc">EExternalFenceHandleTypeFlag</a> { </span><span class="m-doc-wrap"><a href="#gga6cb525fb31eefd48c55276d45fac7743a7bbaf09b0ef0d12813faa95a925736c1" class="m-doc">OpaqueFD</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga6cb525fb31eefd48c55276d45fac7743" class="m-doc">EExternalFenceHandleTypeFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga6cb525fb31eefd48c55276d45fac7743a7bbaf09b0ef0d12813faa95a925736c1" class="m-doc">OpaqueFD</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT,
               <a href="#gga6cb525fb31eefd48c55276d45fac7743a81e77d89df705fea83f516e2d3a4396e" class="m-doc">Opaque_Win32</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT,
               <a href="#gga6cb525fb31eefd48c55276d45fac7743a955202da8530c89acbd0fb36b516f4e2" class="m-doc">Opaque_Win32_KMT</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT,
               <a href="#gga6cb525fb31eefd48c55276d45fac7743a2dca6be4963919cb83ff918ebac878e0" class="m-doc">SyncFD</a> = VK_EXTERNAL_FENCE_HANDLE_TYPE_SYNC_FD_BIT,
@@ -80,7 +80,7 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gaa18cb4bb2e9248336239ae3878dae806" class="m-doc">EExternalSemaphoreHandleTypeFlag</a> { </span><span class="m-doc-wrap"><a href="#ggaa18cb4bb2e9248336239ae3878dae806ae4ae588a71052bbfaa39816487a33ee7" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT</a> = 0x00000001,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gaa18cb4bb2e9248336239ae3878dae806" class="m-doc">EExternalSemaphoreHandleTypeFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggaa18cb4bb2e9248336239ae3878dae806ae4ae588a71052bbfaa39816487a33ee7" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT</a> = 0x00000001,
               <a href="#ggaa18cb4bb2e9248336239ae3878dae806a322029dfa625632a85f09a0c0014234b" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_BIT</a> = 0x00000002,
               <a href="#ggaa18cb4bb2e9248336239ae3878dae806af3067ea950a72c2df9670841525c1767" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT</a> = 0x00000004,
               <a href="#ggaa18cb4bb2e9248336239ae3878dae806a8d30803f83e0fba0f35460bd448ca3d6" class="m-doc">VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT</a> = 0x00000008,
@@ -109,14 +109,14 @@
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="ga6cb525fb31eefd48c55276d45fac7743"><div>
             <h3>
-              enum <a href="#ga6cb525fb31eefd48c55276d45fac7743" class="m-doc-self">EExternalFenceHandleTypeFlag</a>
+              enum class <a href="#ga6cb525fb31eefd48c55276d45fac7743" class="m-doc-self">EExternalFenceHandleTypeFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalFenceHandleTypeFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gaa18cb4bb2e9248336239ae3878dae806"><div>
             <h3>
-              enum <a href="#gaa18cb4bb2e9248336239ae3878dae806" class="m-doc-self">EExternalSemaphoreHandleTypeFlag</a>
+              enum class <a href="#gaa18cb4bb2e9248336239ae3878dae806" class="m-doc-self">EExternalSemaphoreHandleTypeFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkExternalSemaphoreHandleTypeFlagBits">Specification</a></p>
@@ -176,7 +176,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

@@ -80,7 +80,7 @@
             <dt>module <a href="group__Pointers.html" class="m-doc">Pointers</a></dt>
             <dd><span></span></dd>
             <dt>module <a href="group__Common__Object__Types.html" class="m-doc">Common_Object_Types</a></dt>
-            <dd></dd>
+            <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#fundamentals-common-objects">Common Object Types Specification</a></dd>
           </dl>
         </section>
         <section id="namespaces">
@@ -143,21 +143,21 @@
           <h2><a href="#enum-members">Enums</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga47715ba52946256421ef095ab39777b1" class="m-doc">EUndefined</a> { </span><span class="m-doc-wrap"><a href="#gga47715ba52946256421ef095ab39777b1aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = sizeof(ui32) }</span>
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga47715ba52946256421ef095ab39777b1" class="m-doc">EUndefined</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga47715ba52946256421ef095ab39777b1aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = sizeof(ui32) }</span>
             </dt>
             <dd><span></span></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gaf6ff3ebbf450e866d05553299eb2a9b7" class="m-doc">EHandle</a> { </span><span class="m-doc-wrap"><a href="#ggaf6ff3ebbf450e866d05553299eb2a9b7abbb93ef26e3c101ff11cdd21cab08a94" class="m-doc">Null</a> = VK_NULL_HANDLE }</span>
+              <span class="m-doc-wrap-bumper">enum class <a href="#gaf6ff3ebbf450e866d05553299eb2a9b7" class="m-doc">EHandle</a> { </span><span class="m-doc-wrap"><a href="#ggaf6ff3ebbf450e866d05553299eb2a9b7abbb93ef26e3c101ff11cdd21cab08a94" class="m-doc">Null</a> = VK_NULL_HANDLE }</span>
             </dt>
             <dd><span></span></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga596eacd42f25c78f4c2ce7f96302162d" class="m-doc">EAPI_Version</a> { </span><span class="m-doc-wrap"><a href="#gga596eacd42f25c78f4c2ce7f96302162da8bb7139f46c42e58ed8352c4002bad34" class="m-doc">_1_0</a> = VK_API_VERSION_1_0,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga596eacd42f25c78f4c2ce7f96302162d" class="m-doc">EAPI_Version</a> { </span><span class="m-doc-wrap"><a href="#gga596eacd42f25c78f4c2ce7f96302162da8bb7139f46c42e58ed8352c4002bad34" class="m-doc">_1_0</a> = VK_API_VERSION_1_0,
               <a href="#gga596eacd42f25c78f4c2ce7f96302162da2cbc3c9fb6451a6f68b07403a0c9a30e" class="m-doc">_1_1</a> = VK_API_VERSION_1_1,
               <a href="#gga596eacd42f25c78f4c2ce7f96302162dad6903fcf3251d9ff2f2a7155dcab2e4e" class="m-doc">_1_2</a> = VK_API_VERSION_1_2 }</span>
             </dt>
             <dd><span></span></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga88cf35f9fdb4ecb23102f57120e16242" class="m-doc">ESamplerAddressMode</a> { </span><span class="m-doc-wrap"><a href="#gga88cf35f9fdb4ecb23102f57120e16242a7020426cfb0a204051be4b3053d2acc8" class="m-doc">Repeat</a> = VK_SAMPLER_ADDRESS_MODE_REPEAT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga88cf35f9fdb4ecb23102f57120e16242" class="m-doc">ESamplerAddressMode</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga88cf35f9fdb4ecb23102f57120e16242a7020426cfb0a204051be4b3053d2acc8" class="m-doc">Repeat</a> = VK_SAMPLER_ADDRESS_MODE_REPEAT,
               <a href="#gga88cf35f9fdb4ecb23102f57120e16242a12ce4a5977988214a6b098b8cb0bf695" class="m-doc">MirroredRepeat</a> = VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT,
               <a href="#gga88cf35f9fdb4ecb23102f57120e16242a74556551231333c36debc3d373261134" class="m-doc">ClampToEdge</a> = VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE,
               <a href="#gga88cf35f9fdb4ecb23102f57120e16242afb07f88f6f11cc5ab9c951290716f147" class="m-doc">ClampToBorder</a> = VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER,
@@ -166,19 +166,19 @@
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerAddressMode">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga58b93d623dca7563cef97bd149184fdf" class="m-doc">ESamplerCreateFlag</a> { </span><span class="m-doc-wrap"><a href="#gga58b93d623dca7563cef97bd149184fdfaf05de9d7bfc57e519234eda71a6c469e" class="m-doc">Subsampled_EXT</a> = VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga58b93d623dca7563cef97bd149184fdf" class="m-doc">ESamplerCreateFlag</a>: ui32 { </span><span class="m-doc-wrap"><a href="#gga58b93d623dca7563cef97bd149184fdfaf05de9d7bfc57e519234eda71a6c469e" class="m-doc">Subsampled_EXT</a> = VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT,
               <a href="#gga58b93d623dca7563cef97bd149184fdfa5f3bafb7a072695802a4faa32c851e18" class="m-doc">SubsampledCoarseReconstruction_EXT</a> = VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT,
               <a href="#gga58b93d623dca7563cef97bd149184fdfaa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_SAMPLER_CREATE_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#ga4136f11aeeeaab724af8204932870da9" class="m-doc">ESemaphoreImportFlag</a> { </span><span class="m-doc-wrap"><a href="#gga4136f11aeeeaab724af8204932870da9a10d85d7664a911bcaec89732098c269a" class="m-doc">Temporary</a> = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#ga4136f11aeeeaab724af8204932870da9" class="m-doc">ESemaphoreImportFlag</a> { </span><span class="m-doc-wrap"><a href="#gga4136f11aeeeaab724af8204932870da9a10d85d7664a911bcaec89732098c269a" class="m-doc">Temporary</a> = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT,
               <a href="#gga4136f11aeeeaab724af8204932870da9a669d3d3524eea1a088cee9f82a4ad12a" class="m-doc">Temporary_KHR</a> = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR,
               <a href="#gga4136f11aeeeaab724af8204932870da9aa6864c8370198fe44aca25446094b10e" class="m-doc">VV_SpecifyBitmaskable</a> = VK_SEMAPHORE_IMPORT_FLAG_BITS_MAX_ENUM }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlagBits">Specification</a></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">enum <a href="#gaf06e9b6535730f5232a09203be0bb96d" class="m-doc">EValidationCheck</a> { </span><span class="m-doc-wrap"><a href="#ggaf06e9b6535730f5232a09203be0bb96dab1c94ca2fbc3e78fc30069c8d0f01680" class="m-doc">All</a> = VK_VALIDATION_CHECK_ALL_EXT,
+              <span class="m-doc-wrap-bumper">enum class <a href="#gaf06e9b6535730f5232a09203be0bb96d" class="m-doc">EValidationCheck</a>: ui32 { </span><span class="m-doc-wrap"><a href="#ggaf06e9b6535730f5232a09203be0bb96dab1c94ca2fbc3e78fc30069c8d0f01680" class="m-doc">All</a> = VK_VALIDATION_CHECK_ALL_EXT,
               <a href="#ggaf06e9b6535730f5232a09203be0bb96daecee0a84af1bbe31d8aec4ce303fad9d" class="m-doc">Shaders</a> = VK_VALIDATION_CHECK_SHADERS_EXT }</span>
             </dt>
             <dd><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationCheckEXT">Specification</a></dd>
@@ -268,10 +268,12 @@
             </dt>
             <dd>Array of readonly array of readonly c-string.</dd>
             <dt>
+              <div class="m-doc-template">template&lt;class Type&gt;</div>
               using <a href="#ga196f15e1adf421b2331a72102d274dcf" class="m-doc">Deque</a> = std::deque&lt;Type&gt;
             </dt>
             <dd>Containers used for the library are defined here.</dd>
             <dt>
+              <div class="m-doc-template">template&lt;class Type&gt;</div>
               using <a href="#ga15a63fa24c203169c4e246fefd970080" class="m-doc">DynamicArray</a> = std::vector&lt;Type&gt;
             </dt>
             <dd>Typedef of std::vector.</dd>
@@ -361,49 +363,49 @@
           <h2>Enum documentation</h2>
           <section class="m-doc-details" id="ga47715ba52946256421ef095ab39777b1"><div>
             <h3>
-              enum <a href="#ga47715ba52946256421ef095ab39777b1" class="m-doc-self">EUndefined</a>
+              enum class <a href="#ga47715ba52946256421ef095ab39777b1" class="m-doc-self">EUndefined</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><span></span></p>
           </div></section>
           <section class="m-doc-details" id="gaf6ff3ebbf450e866d05553299eb2a9b7"><div>
             <h3>
-              enum <a href="#gaf6ff3ebbf450e866d05553299eb2a9b7" class="m-doc-self">EHandle</a>
+              enum class <a href="#gaf6ff3ebbf450e866d05553299eb2a9b7" class="m-doc-self">EHandle</a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><span></span></p>
           </div></section>
           <section class="m-doc-details" id="ga596eacd42f25c78f4c2ce7f96302162d"><div>
             <h3>
-              enum <a href="#ga596eacd42f25c78f4c2ce7f96302162d" class="m-doc-self">EAPI_Version</a>
+              enum class <a href="#ga596eacd42f25c78f4c2ce7f96302162d" class="m-doc-self">EAPI_Version</a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><span></span></p>
           </div></section>
           <section class="m-doc-details" id="ga88cf35f9fdb4ecb23102f57120e16242"><div>
             <h3>
-              enum <a href="#ga88cf35f9fdb4ecb23102f57120e16242" class="m-doc-self">ESamplerAddressMode</a>
+              enum class <a href="#ga88cf35f9fdb4ecb23102f57120e16242" class="m-doc-self">ESamplerAddressMode</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerAddressMode">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga58b93d623dca7563cef97bd149184fdf"><div>
             <h3>
-              enum <a href="#ga58b93d623dca7563cef97bd149184fdf" class="m-doc-self">ESamplerCreateFlag</a>
+              enum class <a href="#ga58b93d623dca7563cef97bd149184fdf" class="m-doc-self">ESamplerCreateFlag</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSamplerCreateFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="ga4136f11aeeeaab724af8204932870da9"><div>
             <h3>
-              enum <a href="#ga4136f11aeeeaab724af8204932870da9" class="m-doc-self">ESemaphoreImportFlag</a>
+              enum class <a href="#ga4136f11aeeeaab724af8204932870da9" class="m-doc-self">ESemaphoreImportFlag</a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkSemaphoreImportFlagBits">Specification</a></p>
           </div></section>
           <section class="m-doc-details" id="gaf06e9b6535730f5232a09203be0bb96d"><div>
             <h3>
-              enum <a href="#gaf06e9b6535730f5232a09203be0bb96d" class="m-doc-self">EValidationCheck</a>
+              enum class <a href="#gaf06e9b6535730f5232a09203be0bb96d" class="m-doc-self">EValidationCheck</a>: ui32
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__Enums_8hpp.html">&lt;VaultedVulkan/VV_Enums.hpp&gt;</a></div>
             </h3>
             <p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkValidationCheckEXT">Specification</a></p>
@@ -553,16 +555,22 @@
           </div></section>
           <section class="m-doc-details" id="ga196f15e1adf421b2331a72102d274dcf"><div>
             <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__CPP__STL_8hpp.html">&lt;VaultedVulkan/VV_CPP_STL.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;class Type&gt;
+              </div>
               using <a href="#ga196f15e1adf421b2331a72102d274dcf" class="m-doc-self">Deque</a> = std::deque&lt;Type&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__CPP__STL_8hpp.html">&lt;VaultedVulkan/VV_CPP_STL.hpp&gt;</a></div>
             </h3>
             <p>Containers used for the library are defined here.</p>
-<p>If library user decides to implement their own containers they must define containers that function the same as the STL containers used here with the same names. Typdef of std::deque.</p>
+<p>If library user decides to implement their own containers they must define containers that function the same as the STL containers used here with the same names.</p><p>Typdef of std::deque.</p>
           </div></section>
           <section class="m-doc-details" id="ga15a63fa24c203169c4e246fefd970080"><div>
             <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__CPP__STL_8hpp.html">&lt;VaultedVulkan/VV_CPP_STL.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;class Type&gt;
+              </div>
               using <a href="#ga15a63fa24c203169c4e246fefd970080" class="m-doc-self">DynamicArray</a> = std::vector&lt;Type&gt;
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="VV__CPP__STL_8hpp.html">&lt;VaultedVulkan/VV_CPP_STL.hpp&gt;</a></div>
             </h3>
             <p>Typedef of std::vector.</p>
           </div></section>
@@ -770,7 +778,7 @@
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>VaultedVulkan. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
