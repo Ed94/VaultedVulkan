@@ -32,7 +32,6 @@
 #include "VV_SyncAndCacheControl.hpp"
 
 
-
 #ifndef VV_Option__Use_Long_Namespace
 namespace VV
 #else
@@ -135,6 +134,7 @@ namespace VaultedVulkan
 		*/
 
 		/**
+
 		@brief Shader modules contain shader code and one or more entry points. 
 		*/
 		struct ShaderModule : public V1::ShaderModule

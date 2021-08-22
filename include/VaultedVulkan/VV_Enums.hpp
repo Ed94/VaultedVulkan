@@ -7,13 +7,11 @@
 #pragma once
 
 
-
 // VV
 #include "VV_Vaults.hpp"
 #include "VV_APISpecGroups.hpp"
 #include "VV_Platform.hpp"
 #include "VV_CPP_STL.hpp"
-
 
 
 #ifndef VV_Option__Use_Long_Namespace
@@ -29,7 +27,7 @@ namespace VaultedVulkan
 		@{
 		*/
 
-	#pragma region VT_Enums
+	#pragma region VV_Enums
 
 		/** 
 		@enum Undefined Enum
@@ -40,12 +38,12 @@ namespace VaultedVulkan
 		/**
 		 * @enum Handle Enum
 		 */
-		enum class EHandle
+	/*	enum class EHandle
 		{
 			Null = VK_NULL_HANDLE
-		};
+		};*/
 
-	#pragma endregion VT_Enums
+	#pragma endregion VV_Enums
 
 		/** @brief <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkAccessFlagBits">Specification</a> @ingroup APISpec_Synchronization_and_Cache_Control */
 		enum class EAccessFlag : ui32

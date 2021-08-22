@@ -1256,7 +1256,7 @@ namespace VaultedVulkan
 			*/
 			void BindVertexBuffers(ui32 _firstBinding, ui32 _bindingCount, const Buffer::Handle* _buffers) const
 			{
-				unbound DeviceSize offsets[] = {0};
+				static DeviceSize offsets[] = {0};
 
 				Parent::BindVertexBuffers(handle, _firstBinding, _bindingCount, _buffers, offsets);
 			}
